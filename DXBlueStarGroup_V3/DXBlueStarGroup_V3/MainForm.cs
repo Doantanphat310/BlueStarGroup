@@ -23,5 +23,19 @@ namespace DXBlueStarGroup_V3
             ShowUserControl.showControl(voucher, Content);
             this.Text = " Blue Star Group - Nhập chứng từ";
         }
+
+        private void ACE_User_Click(object sender, EventArgs e)
+        {
+            UserManageControl user = new UserManageControl();
+            ShowUserControl.showControl(user, Content);
+            this.Text = " Blue Star Group - Quản lý người dùng";
+        }
+
+        private void ACE_Company_Click(object sender, EventArgs e)
+        {
+            CompanyControl company = new CompanyControl();
+            ShowUserControl.showControl(company, Content);
+            this.Text = " Blue Star Group - Nhập thông tin công ty";
+        }
     }
 }

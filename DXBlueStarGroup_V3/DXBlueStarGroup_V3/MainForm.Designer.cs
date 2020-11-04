@@ -35,11 +35,11 @@
             this.ACE_Voucher = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ACE_Company = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ACE_User = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -109,23 +109,24 @@
             // accordionControlElement4
             // 
             this.accordionControlElement4.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement9,
+            this.ACE_Company,
             this.accordionControlElement8,
             this.accordionControlElement6,
             this.accordionControlElement7,
-            this.accordionControlElement5,
+            this.ACE_User,
             this.accordionControlElement10});
             this.accordionControlElement4.Expanded = true;
             this.accordionControlElement4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement4.ImageOptions.Image")));
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Text = "Quản trị hệ thống";
             // 
-            // accordionControlElement9
+            // ACE_Company
             // 
-            this.accordionControlElement9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement9.ImageOptions.Image")));
-            this.accordionControlElement9.Name = "accordionControlElement9";
-            this.accordionControlElement9.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement9.Text = "Thông tin doanh nghiệp";
+            this.ACE_Company.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement9.ImageOptions.Image")));
+            this.ACE_Company.Name = "ACE_Company";
+            this.ACE_Company.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ACE_Company.Text = "Thông tin doanh nghiệp";
+            this.ACE_Company.Click += new System.EventHandler(this.ACE_Company_Click);
             // 
             // accordionControlElement8
             // 
@@ -148,12 +149,13 @@
             this.accordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement7.Text = "Hàng hóa";
             // 
-            // accordionControlElement5
+            // ACE_User
             // 
-            this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement5.Text = "Người dùng";
+            this.ACE_User.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ACE_User.ImageOptions.Image")));
+            this.ACE_User.Name = "ACE_User";
+            this.ACE_User.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ACE_User.Text = "Người dùng";
+            this.ACE_User.Click += new System.EventHandler(this.ACE_User_Click);
             // 
             // accordionControlElement10
             // 
@@ -210,11 +212,11 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Voucher;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_User;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement9;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Company;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
     }
 }

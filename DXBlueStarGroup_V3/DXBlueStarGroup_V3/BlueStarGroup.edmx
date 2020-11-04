@@ -1,0 +1,1361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BlueStarGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="AccountGroupID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="AccountID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="TKNumber" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="AccountGroupID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BlueStarGroup.dbo.CommanyCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CommanyCustomer">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CompanyId" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" StoreGeneratedPattern="None" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" StoreGeneratedPattern="Computed" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="MST" Type="varchar" MaxLength="20" />
+          <Property Name="District" Type="nvarchar" MaxLength="250" />
+          <Property Name="Province" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="AccountBank" Type="varchar" MaxLength="50" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="250" />
+          <Property Name="BranchBank" Type="nvarchar" MaxLength="250" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="BackGround" Type="nvarchar(max)" />
+          <Property Name="StampCircel" Type="nvarchar(max)" />
+          <Property Name="StampSquare" Type="nvarchar(max)" />
+          <Property Name="SoQuyetDinh" Type="varchar" MaxLength="50" />
+          <Property Name="MaSoHD" Type="varchar" MaxLength="50" />
+          <Property Name="NoiQLThue" Type="nvarchar(max)" />
+          <Property Name="NHKhoBac" Type="nvarchar(max)" />
+          <Property Name="TKThuThue" Type="varchar" MaxLength="50" />
+          <Property Name="LapBieu" Type="nvarchar" MaxLength="250" />
+          <Property Name="KTTruong" Type="nvarchar" MaxLength="250" />
+          <Property Name="KTVien" Type="nvarchar" MaxLength="250" />
+          <Property Name="LanhDao" Type="nvarchar" MaxLength="250" />
+          <Property Name="ThuQuy" Type="nvarchar" MaxLength="250" />
+          <Property Name="ChucDanhLanhDao" Type="nvarchar" MaxLength="250" />
+          <Property Name="ChukyLapBieu" Type="nvarchar(max)" />
+          <Property Name="ChuKyKTTruong" Type="nvarchar(max)" />
+          <Property Name="ChuKyKeToanVien" Type="nvarchar(max)" />
+          <Property Name="ChuKyLanhDao" Type="nvarchar(max)" />
+          <Property Name="ChuKyThuQuy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="50" />
+          <Property Name="ParentID" Type="varchar" MaxLength="30" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="DepreciationDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="DepreciationID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="InvoiceDetailID" Type="varchar" MaxLength="40" />
+          <Property Name="WareHouseDetailID" Type="varchar" MaxLength="40" />
+          <Property Name="PeriodCurrent" Type="int" />
+          <Property Name="DepreciationDate" Type="datetime" />
+          <Property Name="QuantityPeriod" Type="int" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Descriptions" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="GeneralLedgerID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="20" />
+          <Property Name="AccountID" Type="varchar" MaxLength="10" />
+          <Property Name="ParentID" Type="varchar" MaxLength="30" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BlueStarGroup.dbo.GeneralLedgerCompany' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GeneralLedgerCompany">
+          <Key>
+            <PropertyRef Name="GeneralLedgerID" />
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="GeneralLedgerID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersIDetailD" Type="varchar" MaxLength="40" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="30" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Code1" Type="varchar" MaxLength="10" />
+          <Property Name="Code2" Type="varchar" MaxLength="10" />
+          <Property Name="Code3" Type="varchar" MaxLength="10" />
+          <Property Name="InvoiceNo" Type="varchar" MaxLength="10" />
+          <Property Name="InvoiceType" Type="varchar" MaxLength="1" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="VAT" Type="money" />
+          <Property Name="Discounts" Type="money" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="InvoiceDetailID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ItemID" Type="varchar" MaxLength="30" />
+          <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="GeneralLedgerID" Type="varchar" MaxLength="30" />
+          <Property Name="Startdate" Type="datetime" />
+          <Property Name="UseMonth" Type="int" />
+          <Property Name="DepreciationMonth" Type="int" />
+          <Property Name="CurrentMonth" Type="int" />
+          <Property Name="DepreciationAmount" Type="money" />
+          <Property Name="DepreciationPercent" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="ItemID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="20" />
+          <Property Name="ItemsTypeID" Type="varchar" MaxLength="10" />
+          <Property Name="Unit" Type="varchar" MaxLength="3" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BlueStarGroup.dbo.ItemsPriceCompany' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ItemsPriceCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ItemID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PricesSuggest" Type="money" />
+        </EntityType>
+        <EntityType Name="ItemsType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="ItemsTypeID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MasterInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="L_Cd" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="M_Cd" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="S_Cd" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TestID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="UserID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="UserId" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varbinary" MaxLength="30" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BlueStarGroup.dbo.UserRoleCompany' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserRoleCompany">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RoleID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyId" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Vouchers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="VouchersID" Type="varchar" MaxLength="58" StoreGeneratedPattern="Computed" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="VouchersTypeID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="VourchersTypeSumary" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VouchersDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="VouchersDetailID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersID" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="AccountID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GeneralLedgerID" Type="varchar" MaxLength="30" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="30" />
+          <Property Name="DebitAmount" Type="money" />
+          <Property Name="CreditAmount" Type="money" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VouchersType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" StoreGeneratedPattern="Computed" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersTypeID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SummaryName" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="WareHouseDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="36" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateName" Type="varchar" MaxLength="18" />
+          <Property Name="WareHouseDetailID" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersDetailID" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="30" />
+          <Property Name="ItemID" Type="varchar" MaxLength="30" />
+          <Property Name="Quantity" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Startdate" Type="datetime" />
+          <Property Name="UseMonth" Type="int" />
+          <Property Name="DepreciationMonth" Type="int" />
+          <Property Name="CurrentMonth" Type="int" />
+          <Property Name="DepreciationAmount" Type="money" />
+          <Property Name="DepreciationPercent" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Function Name="Fun_ConvertDateVarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="GenerateID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SumaryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertUSer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BlueStarGroupModelStoreContainer">
+          <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepreciationDetail" EntityType="Self.DepreciationDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralLedger" EntityType="Self.GeneralLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceDetail" EntityType="Self.InvoiceDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsType" EntityType="Self.ItemsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterInfo" EntityType="Self.MasterInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestID" EntityType="Self.TestID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VouchersDetail" EntityType="Self.VouchersDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VouchersType" EntityType="Self.VouchersType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WareHouseDetail" EntityType="Self.WareHouseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommanyCustomer" EntityType="Self.CommanyCustomer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CommanyCustomer].[CompanyId] AS [CompanyId], 
+    [CommanyCustomer].[CustomerID] AS [CustomerID]
+    FROM [dbo].[CommanyCustomer] AS [CommanyCustomer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GeneralLedgerCompany" EntityType="Self.GeneralLedgerCompany" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GeneralLedgerCompany].[GeneralLedgerID] AS [GeneralLedgerID], 
+    [GeneralLedgerCompany].[CompanyID] AS [CompanyID], 
+    [GeneralLedgerCompany].[CreateDate] AS [CreateDate], 
+    [GeneralLedgerCompany].[UpdateDate] AS [UpdateDate], 
+    [GeneralLedgerCompany].[CreateUser] AS [CreateUser], 
+    [GeneralLedgerCompany].[UpdateUser] AS [UpdateUser], 
+    [GeneralLedgerCompany].[Status] AS [Status]
+    FROM [dbo].[GeneralLedgerCompany] AS [GeneralLedgerCompany]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ItemsPriceCompany" EntityType="Self.ItemsPriceCompany" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ItemsPriceCompany].[CompanyID] AS [CompanyID], 
+    [ItemsPriceCompany].[ItemID] AS [ItemID], 
+    [ItemsPriceCompany].[PricesSuggest] AS [PricesSuggest]
+    FROM [dbo].[ItemsPriceCompany] AS [ItemsPriceCompany]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserRoleCompany" EntityType="Self.UserRoleCompany" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserRoleCompany].[UserID] AS [UserID], 
+    [UserRoleCompany].[RoleID] AS [RoleID], 
+    [UserRoleCompany].[CompanyId] AS [CompanyId], 
+    [UserRoleCompany].[CreateDate] AS [CreateDate], 
+    [UserRoleCompany].[UpdateDate] AS [UpdateDate], 
+    [UserRoleCompany].[CreateUser] AS [CreateUser], 
+    [UserRoleCompany].[UpdateUser] AS [UpdateUser], 
+    [UserRoleCompany].[Status] AS [Status]
+    FROM [dbo].[UserRoleCompany] AS [UserRoleCompany]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlueStarGroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="AccountGroupID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="AccountID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TKNumber" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AccountGroupID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CompanyID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountBank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BranchBank" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackGround" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StampCircel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StampSquare" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoQuyetDinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaSoHD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoiQLThue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NHKhoBac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TKThuThue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LapBieu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KTTruong" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KTVien" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LanhDao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ThuQuy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ChucDanhLanhDao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ChukyLapBieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuKyKTTruong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuKyKeToanVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuKyLanhDao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuKyThuQuy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DepreciationDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="DepreciationID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="InvoiceDetailID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="WareHouseDetailID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PeriodCurrent" Type="Int32" />
+          <Property Name="DepreciationDate" Type="DateTime" Precision="3" />
+          <Property Name="QuantityPeriod" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="GeneralLedgerID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AccountID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersIDetailD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Code1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Code2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Code3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VAT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discounts" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDetailID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="InvoiceID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GeneralLedgerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Startdate" Type="DateTime" Precision="3" />
+          <Property Name="UseMonth" Type="Int32" />
+          <Property Name="DepreciationMonth" Type="Int32" />
+          <Property Name="CurrentMonth" Type="Int32" />
+          <Property Name="DepreciationAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DepreciationPercent" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="ItemID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ItemsTypeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Unit" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ItemsType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="ItemsTypeID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MasterInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="L_Cd" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="M_Cd" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="S_Cd" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TestID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="Binary" MaxLength="30" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="VouchersID" Type="String" MaxLength="58" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="VouchersTypeID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VourchersTypeSumary" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VouchersDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="VouchersDetailID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GeneralLedgerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DebitAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VouchersType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersTypeID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WareHouseDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RowID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateName" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="WareHouseDetailID" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="VouchersDetailID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ItemID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Startdate" Type="DateTime" Precision="3" />
+          <Property Name="UseMonth" Type="Int32" />
+          <Property Name="DepreciationMonth" Type="Int32" />
+          <Property Name="CurrentMonth" Type="Int32" />
+          <Property Name="DepreciationAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DepreciationPercent" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommanyCustomer">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CompanyId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralLedgerCompany">
+          <Key>
+            <PropertyRef Name="GeneralLedgerID" />
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="GeneralLedgerID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ItemsPriceCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="CompanyID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PricesSuggest" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="UserRoleCompany">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BlueStarGroupEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="DepreciationDetails" EntityType="Self.DepreciationDetail" />
+          <EntitySet Name="GeneralLedgers" EntityType="Self.GeneralLedger" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetail" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ItemsTypes" EntityType="Self.ItemsType" />
+          <EntitySet Name="MasterInfoes" EntityType="Self.MasterInfo" />
+          <EntitySet Name="TestIDs" EntityType="Self.TestID" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <EntitySet Name="VouchersDetails" EntityType="Self.VouchersDetail" />
+          <EntitySet Name="VouchersTypes" EntityType="Self.VouchersType" />
+          <EntitySet Name="WareHouseDetails" EntityType="Self.WareHouseDetail" />
+          <EntitySet Name="CommanyCustomers" EntityType="Self.CommanyCustomer" />
+          <EntitySet Name="GeneralLedgerCompanies" EntityType="Self.GeneralLedgerCompany" />
+          <EntitySet Name="ItemsPriceCompanies" EntityType="Self.ItemsPriceCompany" />
+          <EntitySet Name="UserRoleCompanies" EntityType="Self.UserRoleCompany" />
+          <FunctionImport Name="GenerateID" ReturnType="Collection(String)">
+          <Parameter Name="SumaryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUSer" ReturnType="Collection(BlueStarGroupModel.InsertUSer_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="InsertUSer_Result">
+          <Property Type="String" Name="MessageCode" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="MessageBox" Nullable="false" MaxLength="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlueStarGroupModelStoreContainer" CdmEntityContainer="BlueStarGroupEntities">
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroup">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="AccountGroupID" ColumnName="AccountGroupID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="TKNumber" ColumnName="TKNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AccountGroupID" ColumnName="AccountGroupID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MST" ColumnName="MST" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AccountBank" ColumnName="AccountBank" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="BranchBank" ColumnName="BranchBank" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="BackGround" ColumnName="BackGround" />
+                <ScalarProperty Name="StampCircel" ColumnName="StampCircel" />
+                <ScalarProperty Name="StampSquare" ColumnName="StampSquare" />
+                <ScalarProperty Name="SoQuyetDinh" ColumnName="SoQuyetDinh" />
+                <ScalarProperty Name="MaSoHD" ColumnName="MaSoHD" />
+                <ScalarProperty Name="NoiQLThue" ColumnName="NoiQLThue" />
+                <ScalarProperty Name="NHKhoBac" ColumnName="NHKhoBac" />
+                <ScalarProperty Name="TKThuThue" ColumnName="TKThuThue" />
+                <ScalarProperty Name="LapBieu" ColumnName="LapBieu" />
+                <ScalarProperty Name="KTTruong" ColumnName="KTTruong" />
+                <ScalarProperty Name="KTVien" ColumnName="KTVien" />
+                <ScalarProperty Name="LanhDao" ColumnName="LanhDao" />
+                <ScalarProperty Name="ThuQuy" ColumnName="ThuQuy" />
+                <ScalarProperty Name="ChucDanhLanhDao" ColumnName="ChucDanhLanhDao" />
+                <ScalarProperty Name="ChukyLapBieu" ColumnName="ChukyLapBieu" />
+                <ScalarProperty Name="ChuKyKTTruong" ColumnName="ChuKyKTTruong" />
+                <ScalarProperty Name="ChuKyKeToanVien" ColumnName="ChuKyKeToanVien" />
+                <ScalarProperty Name="ChuKyLanhDao" ColumnName="ChuKyLanhDao" />
+                <ScalarProperty Name="ChuKyThuQuy" ColumnName="ChuKyThuQuy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepreciationDetails">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.DepreciationDetail">
+              <MappingFragment StoreEntitySet="DepreciationDetail">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="DepreciationID" ColumnName="DepreciationID" />
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+                <ScalarProperty Name="WareHouseDetailID" ColumnName="WareHouseDetailID" />
+                <ScalarProperty Name="PeriodCurrent" ColumnName="PeriodCurrent" />
+                <ScalarProperty Name="DepreciationDate" ColumnName="DepreciationDate" />
+                <ScalarProperty Name="QuantityPeriod" ColumnName="QuantityPeriod" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralLedgers">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.GeneralLedger">
+              <MappingFragment StoreEntitySet="GeneralLedger">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="GeneralLedgerID" ColumnName="GeneralLedgerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="VouchersIDetailD" ColumnName="VouchersIDetailD" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code1" ColumnName="Code1" />
+                <ScalarProperty Name="Code2" ColumnName="Code2" />
+                <ScalarProperty Name="Code3" ColumnName="Code3" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Discounts" ColumnName="Discounts" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceDetails">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.InvoiceDetail">
+              <MappingFragment StoreEntitySet="InvoiceDetail">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GeneralLedgerID" ColumnName="GeneralLedgerID" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="UseMonth" ColumnName="UseMonth" />
+                <ScalarProperty Name="DepreciationMonth" ColumnName="DepreciationMonth" />
+                <ScalarProperty Name="CurrentMonth" ColumnName="CurrentMonth" />
+                <ScalarProperty Name="DepreciationAmount" ColumnName="DepreciationAmount" />
+                <ScalarProperty Name="DepreciationPercent" ColumnName="DepreciationPercent" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="ItemsTypeID" ColumnName="ItemsTypeID" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsTypes">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.ItemsType">
+              <MappingFragment StoreEntitySet="ItemsType">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="ItemsTypeID" ColumnName="ItemsTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterInfoes">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.MasterInfo">
+              <MappingFragment StoreEntitySet="MasterInfo">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="L_Cd" ColumnName="L_Cd" />
+                <ScalarProperty Name="M_Cd" ColumnName="M_Cd" />
+                <ScalarProperty Name="S_Cd" ColumnName="S_Cd" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestIDs">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.TestID">
+              <MappingFragment StoreEntitySet="TestID">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.Voucher">
+              <MappingFragment StoreEntitySet="Vouchers">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="VouchersID" ColumnName="VouchersID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="VouchersTypeID" ColumnName="VouchersTypeID" />
+                <ScalarProperty Name="VourchersTypeSumary" ColumnName="VourchersTypeSumary" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VouchersDetails">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.VouchersDetail">
+              <MappingFragment StoreEntitySet="VouchersDetail">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="VouchersDetailID" ColumnName="VouchersDetailID" />
+                <ScalarProperty Name="VouchersID" ColumnName="VouchersID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="GeneralLedgerID" ColumnName="GeneralLedgerID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VouchersTypes">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.VouchersType">
+              <MappingFragment StoreEntitySet="VouchersType">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="VouchersTypeID" ColumnName="VouchersTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WareHouseDetails">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.WareHouseDetail">
+              <MappingFragment StoreEntitySet="WareHouseDetail">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="WareHouseDetailID" ColumnName="WareHouseDetailID" />
+                <ScalarProperty Name="VouchersDetailID" ColumnName="VouchersDetailID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="UseMonth" ColumnName="UseMonth" />
+                <ScalarProperty Name="DepreciationMonth" ColumnName="DepreciationMonth" />
+                <ScalarProperty Name="CurrentMonth" ColumnName="CurrentMonth" />
+                <ScalarProperty Name="DepreciationAmount" ColumnName="DepreciationAmount" />
+                <ScalarProperty Name="DepreciationPercent" ColumnName="DepreciationPercent" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommanyCustomers">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.CommanyCustomer">
+              <MappingFragment StoreEntitySet="CommanyCustomer">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralLedgerCompanies">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.GeneralLedgerCompany">
+              <MappingFragment StoreEntitySet="GeneralLedgerCompany">
+                <ScalarProperty Name="GeneralLedgerID" ColumnName="GeneralLedgerID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsPriceCompanies">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.ItemsPriceCompany">
+              <MappingFragment StoreEntitySet="ItemsPriceCompany">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="PricesSuggest" ColumnName="PricesSuggest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleCompanies">
+            <EntityTypeMapping TypeName="BlueStarGroupModel.UserRoleCompany">
+              <MappingFragment StoreEntitySet="UserRoleCompany">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GenerateID" FunctionName="BlueStarGroupModel.Store.GenerateID" />
+          <FunctionImportMapping FunctionImportName="InsertUSer" FunctionName="BlueStarGroupModel.Store.InsertUSer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlueStarGroupModel.InsertUSer_Result">
+                <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+                <ScalarProperty Name="MessageBox" ColumnName="MessageBox" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
