@@ -64,16 +64,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlueStarGroupDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BlueStarGroupDBDataSet.xsd</DependentUpon>
+    <Compile Include="Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CompanyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\CompanyControl.Designer.cs">
       <DependentUpon>CompanyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -105,6 +112,9 @@
     <EmbeddedResource Include="Views\CompanyControl.resx">
       <DependentUpon>CompanyControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,17 +138,6 @@
     <EmbeddedResource Include="Views\VoucherControl.resx">
       <DependentUpon>VoucherControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BlueStarGroupDBDataSet.xsc">
-      <DependentUpon>BlueStarGroupDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BlueStarGroupDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BlueStarGroupDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BlueStarGroupDBDataSet.xss">
-      <DependentUpon>BlueStarGroupDBDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -8,7 +8,7 @@ namespace BSClient.Utility
 {
     public class ClientCommon
     {
-        public static void showControl(System.Windows.Forms.Control control, System.Windows.Forms.Control Content)
+        public static void ShowControl(System.Windows.Forms.Control control, System.Windows.Forms.Control Content)
         {
             Content.Controls.Clear();
             control.Dock = System.Windows.Forms.DockStyle.Fill;
