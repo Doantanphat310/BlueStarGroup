@@ -101,6 +101,7 @@
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Login_Button);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.UserId_TextBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Password_TextBox.Properties)).EndInit();
