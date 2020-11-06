@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompanyControl));
+            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItemAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -189,6 +190,8 @@
             this.ItemForRowID = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLogo = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialogChuKy = new System.Windows.Forms.OpenFileDialog();
+            this.barCodeControl1 = new DevExpress.XtraEditors.BarCodeControl();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControlCompany)).BeginInit();
             this.dataLayoutControlCompany.SuspendLayout();
@@ -299,6 +302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRowID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -323,6 +327,7 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.FloatLocation = new System.Drawing.Point(89, 107);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemdelete),
@@ -404,6 +409,7 @@
             // 
             // dataLayoutControlCompany
             // 
+            this.dataLayoutControlCompany.Controls.Add(this.barCodeControl1);
             this.dataLayoutControlCompany.Controls.Add(this.dataNavigatorCompany);
             this.dataLayoutControlCompany.Controls.Add(this.gridControlCompany);
             this.dataLayoutControlCompany.Controls.Add(this.IDTextEdit);
@@ -486,7 +492,7 @@
             this.dataNavigatorCompany.Buttons.Remove.Visible = false;
             this.dataNavigatorCompany.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.dataNavigatorCompany.DataSource = this.companiesBindingSource;
-            this.dataNavigatorCompany.Location = new System.Drawing.Point(12, 503);
+            this.dataNavigatorCompany.Location = new System.Drawing.Point(12, 483);
             this.dataNavigatorCompany.Name = "dataNavigatorCompany";
             this.dataNavigatorCompany.Size = new System.Drawing.Size(241, 19);
             this.dataNavigatorCompany.StyleController = this.dataLayoutControlCompany;
@@ -501,7 +507,7 @@
             this.gridControlCompany.MainView = this.gridViewCompany;
             this.gridControlCompany.MenuManager = this.barManager1;
             this.gridControlCompany.Name = "gridControlCompany";
-            this.gridControlCompany.Size = new System.Drawing.Size(1083, 92);
+            this.gridControlCompany.Size = new System.Drawing.Size(1083, 72);
             this.gridControlCompany.TabIndex = 45;
             this.gridControlCompany.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCompany});
@@ -822,7 +828,7 @@
             // RowIDTextEdit
             // 
             this.RowIDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "RowID", true));
-            this.RowIDTextEdit.Location = new System.Drawing.Point(124, 526);
+            this.RowIDTextEdit.Location = new System.Drawing.Point(124, 506);
             this.RowIDTextEdit.MenuManager = this.barManager1;
             this.RowIDTextEdit.Name = "RowIDTextEdit";
             this.RowIDTextEdit.Size = new System.Drawing.Size(971, 20);
@@ -943,7 +949,7 @@
             // LogoTextEdit
             // 
             this.LogoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Logo", true));
-            this.LogoTextEdit.Location = new System.Drawing.Point(124, 550);
+            this.LogoTextEdit.Location = new System.Drawing.Point(124, 530);
             this.LogoTextEdit.MenuManager = this.barManager1;
             this.LogoTextEdit.Name = "LogoTextEdit";
             this.LogoTextEdit.Size = new System.Drawing.Size(971, 20);
@@ -1413,7 +1419,8 @@
             this.layoutControlItem2,
             this.layoutControlItem1,
             this.ItemForRowID,
-            this.ItemForLogo});
+            this.ItemForLogo,
+            this.layoutControlItem3});
             this.layoutControlGroupCompany.Name = "layoutControlGroupCompany";
             this.layoutControlGroupCompany.Size = new System.Drawing.Size(1107, 582);
             this.layoutControlGroupCompany.TextVisible = false;
@@ -1909,7 +1916,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dataNavigatorCompany;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 491);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 471);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(1087, 23);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1920,7 +1927,7 @@
             this.layoutControlItem1.Control = this.gridControlCompany;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 395);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1087, 96);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1087, 76);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1928,7 +1935,7 @@
             // 
             this.ItemForRowID.Control = this.RowIDTextEdit;
             this.ItemForRowID.Enabled = false;
-            this.ItemForRowID.Location = new System.Drawing.Point(0, 514);
+            this.ItemForRowID.Location = new System.Drawing.Point(0, 494);
             this.ItemForRowID.Name = "ItemForRowID";
             this.ItemForRowID.Size = new System.Drawing.Size(1087, 24);
             this.ItemForRowID.Text = "Row ID";
@@ -1937,7 +1944,7 @@
             // ItemForLogo
             // 
             this.ItemForLogo.Control = this.LogoTextEdit;
-            this.ItemForLogo.Location = new System.Drawing.Point(0, 538);
+            this.ItemForLogo.Location = new System.Drawing.Point(0, 518);
             this.ItemForLogo.Name = "ItemForLogo";
             this.ItemForLogo.Size = new System.Drawing.Size(1087, 24);
             this.ItemForLogo.Text = "Logo";
@@ -1946,6 +1953,25 @@
             // openFileDialogChuKy
             // 
             this.openFileDialogChuKy.FileName = "openFileDialogChuKy";
+            // 
+            // barCodeControl1
+            // 
+            this.barCodeControl1.Location = new System.Drawing.Point(12, 554);
+            this.barCodeControl1.Name = "barCodeControl1";
+            this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
+            this.barCodeControl1.Size = new System.Drawing.Size(1083, 16);
+            this.barCodeControl1.StyleController = this.dataLayoutControlCompany;
+            this.barCodeControl1.Symbology = code128Generator1;
+            this.barCodeControl1.TabIndex = 53;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.barCodeControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 542);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1087, 20);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // CompanyControl
             // 
@@ -2069,6 +2095,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRowID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2235,5 +2262,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForRowID;
         private DevExpress.XtraLayout.LayoutControlItem ItemForLogo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraEditors.BarCodeControl barCodeControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

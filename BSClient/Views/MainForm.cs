@@ -9,10 +9,12 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraBars.FluentDesignSystem;
 using BSClient.Utility;
+using BSClient.Base;
+using BSClient.Views;
 
 namespace BSClient
 {
-    public partial class MainForm : FluentDesignForm
+    public partial class MainForm : BaseForm
     {
         public MainForm()
         {
@@ -22,22 +24,29 @@ namespace BSClient
         private void ACE_Voucher_Click(object sender, EventArgs e)
         {
             VoucherControl voucher = new VoucherControl();
-            ClientCommon.showControl(voucher, Content);
+            ClientCommon.ShowControl(voucher, Content);
             this.Text = " Blue Star Group - Nhập chứng từ";
         }
 
         private void ACE_User_Click(object sender, EventArgs e)
         {
             UserManageControl user = new UserManageControl();
-            ClientCommon.showControl(user, Content);
+            ClientCommon.ShowControl(user, Content);
             this.Text = " Blue Star Group - Quản lý người dùng";
         }
 
         private void ACE_Company_Click(object sender, EventArgs e)
         {
             CompanyControl company = new CompanyControl();
-            ClientCommon.showControl(company, Content);
+            ClientCommon.ShowControl(company, Content);
             this.Text = " Blue Star Group - Nhập thông tin công ty";
+        }
+
+        private void Custommers_Button_Click(object sender, EventArgs e)
+        {
+            Customers control = new Customers();
+            this.ShowControl(control, Content);
+            this.Text = " Blue Star Group - Danh mục Khách hàng";
         }
     }
 }

@@ -35,7 +35,7 @@
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ACE_Company = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Custommers_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ACE_User = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -106,7 +106,7 @@
             // 
             this.accordionControlElement4.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.ACE_Company,
-            this.accordionControlElement8,
+            this.Custommers_Button,
             this.accordionControlElement6,
             this.accordionControlElement7,
             this.ACE_User,
@@ -122,11 +122,12 @@
             this.ACE_Company.Text = "Thông tin doanh nghiệp";
             this.ACE_Company.Click += new System.EventHandler(this.ACE_Company_Click);
             // 
-            // accordionControlElement8
+            // Custommers_Button
             // 
-            this.accordionControlElement8.Name = "accordionControlElement8";
-            this.accordionControlElement8.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement8.Text = "Đối tượng - Khách hàng";
+            this.Custommers_Button.Name = "Custommers_Button";
+            this.Custommers_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.Custommers_Button.Text = "Đối tượng - Khách hàng";
+            this.Custommers_Button.Click += new System.EventHandler(this.Custommers_Button_Click);
             // 
             // accordionControlElement6
             // 
@@ -204,7 +205,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_User;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Company;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
     }
