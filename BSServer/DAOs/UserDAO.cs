@@ -16,7 +16,7 @@ namespace BSServer.DAOs
 
         public User GetUserInfo(string userId)
         {
-            return this.Context.Users.Where(o => o.UserID == userId && o.Status != DATA_STATUS.Delete).FirstOrDefault<User>();
+            return this.Context.Users.Where(o => o.UserID == userId && o.IsDelete == null).FirstOrDefault<User>();
         }
     }
 }

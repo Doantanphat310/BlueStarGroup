@@ -1,7 +1,4 @@
 D:\Project\BlueStarGroup\BSServer3\obj\Debug\BSCommon.csprojAssemblyReference.cache
-D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSServer3.dll.config
-D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSServer3.dll
-D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSServer3.pdb
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
@@ -33,7 +30,9 @@ D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Memory.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Numerics.Vectors.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.csprojAssemblyReference.cache
 D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.csproj.CopyComplete
-D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSServer3.dll
-D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSServer3.pdb
+D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSCommon.dll.config
+D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSCommon.dll
+D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSCommon.pdb
+D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.dll
+D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.pdb

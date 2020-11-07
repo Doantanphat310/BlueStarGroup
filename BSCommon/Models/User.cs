@@ -17,7 +17,7 @@ namespace BSCommon.Models
 
         public string UserName { get; set; }
 
-        public string Status { get; set; }
+        public int? IsDelete { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

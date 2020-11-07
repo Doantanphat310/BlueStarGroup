@@ -95,8 +95,8 @@ D:\Project\BlueStarGroup\BlueStarGroup\obj\Debug\BSClient.MainForm.resources
 D:\Project\BlueStarGroup\BSClient\bin\Debug\BSClient.exe.config
 D:\Project\BlueStarGroup\BSClient\bin\Debug\BSClient.exe
 D:\Project\BlueStarGroup\BSClient\bin\Debug\BSClient.pdb
-D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer3.dll
-D:\Project\BlueStarGroup\BSClient\bin\Debug\ClassLibrary1.dll
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSCommon.dll
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Data.v19.1.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Printing.v19.1.Core.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Utils.v19.1.dll
@@ -113,10 +113,10 @@ D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.RichEdit.v19.1.Core.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.XtraTreeList.v19.1.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Office.v19.1.Core.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Images.v19.1.dll
-D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer3.pdb
-D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer3.dll.config
-D:\Project\BlueStarGroup\BSClient\bin\Debug\ClassLibrary1.pdb
-D:\Project\BlueStarGroup\BSClient\bin\Debug\ClassLibrary1.dll.config
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSCommon.pdb
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSCommon.dll.config
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer.pdb
+D:\Project\BlueStarGroup\BSClient\bin\Debug\BSServer.dll.config
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Data.v19.1.xml
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Printing.v19.1.Core.xml
 D:\Project\BlueStarGroup\BSClient\bin\Debug\DevExpress.Utils.v19.1.xml
@@ -185,7 +185,9 @@ D:\Project\BlueStarGroup\BSClient\bin\Debug\es\DevExpress.Office.v19.1.Core.reso
 D:\Project\BlueStarGroup\BSClient\bin\Debug\ja\DevExpress.Office.v19.1.Core.resources.dll
 D:\Project\BlueStarGroup\BSClient\bin\Debug\ru\DevExpress.Office.v19.1.Core.resources.dll
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.csprojAssemblyReference.cache
+D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.Base.BaseFormList.resources
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.CompanyControl.resources
+D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.Views.CustomerList.resources
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.Login.resources
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.MainForm.resources
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.Properties.Resources.resources
@@ -196,4 +198,3 @@ D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.exe.licenses
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.csproj.CopyComplete
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.exe
 D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.pdb
-D:\Project\BlueStarGroup\BSClient\obj\Debug\BSClient.Views.Customers.resources
