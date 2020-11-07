@@ -30,7 +30,6 @@ D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Memory.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Numerics.Vectors.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.csprojAssemblyReference.cache
 D:\Project\BlueStarGroup\BSCommon\obj\Debug\BSCommon.csproj.CopyComplete
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSCommon.dll.config
 D:\Project\BlueStarGroup\BSCommon\bin\Debug\BSCommon.dll
