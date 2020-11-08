@@ -17,7 +17,9 @@ namespace BSServer._Core.Context
 
         #region DbSet
 
-        public DbSet<UserInfo> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        //public DbSet<Customer> Customers { get; set; }
 
         #endregion DbSet
     }

@@ -8,8 +8,8 @@
     <ProjectGuid>{9855E958-9EE7-4B19-BDF0-C9607D71C406}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>BSServer</RootNamespace>
+    <AssemblyName>BSServer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -71,17 +71,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAOs\CustomerDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
+    <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Core\Base\BaseDAO.cs" />
     <Compile Include="_Core\Base\BaseDbContext.cs" />
     <Compile Include="_Core\Base\BaseLogic.cs" />
     <Compile Include="_Core\Const\SSServerConst.cs" />
     <Compile Include="_Core\Context\BSContext.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logics\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BSCommon\BSCommon.csproj">

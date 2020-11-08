@@ -12,7 +12,7 @@ namespace BSServer._Core.Base
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        public BaseDAO(UserInfo userInfo)
+        public BaseDAO(User userInfo)
         {
             //this.Logger = logger;
             this.UserInfo = userInfo;
@@ -26,7 +26,7 @@ namespace BSServer._Core.Base
         /// <summary>
         /// 
         /// </summary>
-        protected UserInfo UserInfo { get; set; }
+        protected User UserInfo { get; set; }
         /// <summary>
         /// 
         /// </summary>

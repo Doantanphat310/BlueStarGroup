@@ -44,7 +44,7 @@ namespace BSClient
 
         private void Custommers_Button_Click(object sender, EventArgs e)
         {
-            Customers control = new Customers();
+            CustomerList control = new CustomerList();
             this.ShowControl(control, Content);
             this.Text = " Blue Star Group - Danh mục Khách hàng";
         }
