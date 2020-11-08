@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
+using BSServer.Controllers;
+using BSCommon.Models;
 
 namespace BSClient
 {
@@ -42,6 +44,13 @@ namespace BSClient
             // columnPrice.Visible = true;
             // int C = columnPrice.VisibleIndex; // C returns "5"
             //col
+            VouchersTypeController voucherstype = new VouchersTypeController();
+            List<VouchersType> vouchersT = voucherstype.GetVouchersTypeInfo("1");
+            searchLookUpEditLoaiChungTu.Properties.DataSource = vouchersT;
+            searchLookUpEditLoaiChungTu.Properties.NullText = "Chọn loại chứng từ";
+            searchLookUpEditLoaiChungTu.Properties.ValueMember = "SummaryName";
+            searchLookUpEditLoaiChungTu.Properties.DisplayMember =  "Name";
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -51,8 +60,9 @@ namespace BSClient
 
         private void VoucherControl_Load(object sender, EventArgs e)
         {
-
-            gridViewVoucher.InitNewRow += new InitNewRowEventHandler(gridViewVoucher_InitNewRow);
+           // bool test = dateEditBDKT.SelectedRanges.IsDateSelected(DateTime.Now);
+          // searchLookUpEditLoaiChungTu.it
+            //gridViewVoucher.InitNewRow += new InitNewRowEventHandler(gridViewVoucher_InitNewRow);
         }
 
         public class PersonInfo
@@ -95,17 +105,17 @@ namespace BSClient
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
+            //gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
         }
 
         private void ACE_Them_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.AddNewRow();
+            //gridViewVoucher.AddNewRow();
         }
 
         private void ACE_delete_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.DeleteSelectedRows();
+            //gridViewVoucher.DeleteSelectedRows();
             // gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
 
         }
@@ -161,22 +171,52 @@ namespace BSClient
 
         private void ACE_CapNhat_MouseHover(object sender, EventArgs e)
         {
-            ACE_CapNhat.BackColor = Color.Aqua;
+            //ACE_CapNhat.BackColor = Color.Aqua;
         }
 
         private void ACE_CapNhat_MouseClick(object sender, MouseEventArgs e)
         {
-            ACE_CapNhat.BackColor = Color.White;
+            //ACE_CapNhat.BackColor = Color.White;
         }
 
         private void ACE_CapNhat_Leave(object sender, EventArgs e)
         {
-            ACE_CapNhat.ResetBackColor();
+            //ACE_CapNhat.ResetBackColor();
         }
 
         private void gridViewVoucher_RowCountChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelControl13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateEditBDKT_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            
         }
     }
 }

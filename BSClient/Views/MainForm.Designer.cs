@@ -173,8 +173,6 @@
             this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
-            this.BackgroundImageStore = global::BSClient.Properties.Resources.BackGroup;
             this.ClientSize = new System.Drawing.Size(1014, 763);
             this.ControlContainer = this.Content;
             this.Controls.Add(this.Content);

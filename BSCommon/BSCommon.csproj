@@ -93,6 +93,8 @@
   <ItemGroup>
     <Compile Include="Constant\SSCommonConst.cs" />
     <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\VouchersType.cs" />
+    <Compile Include="Models\VouchersTypeSearchLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
   </ItemGroup>

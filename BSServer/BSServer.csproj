@@ -72,7 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\VouchersTypeController.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
+    <Compile Include="DAOs\VouchersTypeDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Core\Base\BaseDAO.cs" />
     <Compile Include="_Core\Base\BaseDbContext.cs" />
