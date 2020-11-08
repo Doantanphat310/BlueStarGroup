@@ -29,8 +29,8 @@ namespace BSClient
                 return false;
             }
 
-            LoginController login = new LoginController();
-            UserInfo user = login.GetUserInfo(UserId_TextBox.Text);
+            UserController login = new UserController();
+            User user = login.GetUserInfo(UserId_TextBox.Text);
 
             if (user != null && user.Password == Password_TextBox.Text)
             {
