@@ -10,3 +10,4 @@ BSServer\config\**
 /.vs/BlueStarGroup/v16/.suo
 /.vs/BlueStarGroup/v16/Server/sqlite3/storage.ide-shm
 /.vs/BlueStarGroup/v16/Server/sqlite3/storage.ide-wal
+/BSClient/bin/Debug/BSClient.exe.config
