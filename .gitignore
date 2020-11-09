@@ -15,3 +15,4 @@ BSServer\config\**
 /BSClient/obj/Debug/BSClient.exe
 /BSClient/Properties/licenses.licx
 /BSClient/obj/Debug/BSClient.Views.UserList.resources
+/BSClient/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

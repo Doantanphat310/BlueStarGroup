@@ -117,12 +117,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\UserManageControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UserManageControl.Designer.cs">
-      <DependentUpon>UserManageControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utility\ClientCommon.cs" />
     <Compile Include="Views\VoucherControl.cs">
       <SubType>UserControl</SubType>
@@ -159,9 +153,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\UserManageControl.resx">
-      <DependentUpon>UserManageControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\VoucherControl.resx">
       <DependentUpon>VoucherControl.cs</DependentUpon>
     </EmbeddedResource>
