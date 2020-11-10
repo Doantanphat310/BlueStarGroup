@@ -119,11 +119,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\UserManageControl.cs" />
-    <Compile Include="Views\UserManageControl.Designer.cs">
-      <DependentUpon>UserManageControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utility\ClientCommon.cs" />
+    <Compile Include="Views\UserList.cs" />
+    <Compile Include="Views\UserList.Designer.cs">
+      <DependentUpon>UserList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\VAT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,8 +165,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\UserManageControl.resx">
-      <DependentUpon>UserManageControl.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserList.resx">
+      <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\VAT.resx">
       <DependentUpon>VAT.cs</DependentUpon>
