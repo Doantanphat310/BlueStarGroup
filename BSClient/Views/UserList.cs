@@ -10,8 +10,7 @@ using System.ComponentModel;
 
 namespace BSClient.Views
 {
-    public partial class UserList : XtraForm
-    {
+    public partial class UserList : XtraUserControl
         public BindingList<Customer> Custommers { get; set; }
 
         public List<Customer> CustomersDelete { get; set; } = new List<Customer>();
