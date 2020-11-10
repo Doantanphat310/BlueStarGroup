@@ -42,6 +42,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dataLayoutControlCompany = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.barCodeControl1 = new DevExpress.XtraEditors.BarCodeControl();
             this.dataNavigatorCompany = new DevExpress.XtraEditors.DataNavigator();
             this.companiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControlCompany = new DevExpress.XtraGrid.GridControl();
@@ -189,9 +190,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForRowID = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLogo = new DevExpress.XtraLayout.LayoutControlItem();
-            this.openFileDialogChuKy = new System.Windows.Forms.OpenFileDialog();
-            this.barCodeControl1 = new DevExpress.XtraEditors.BarCodeControl();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.openFileDialogChuKy = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControlCompany)).BeginInit();
             this.dataLayoutControlCompany.SuspendLayout();
@@ -475,10 +475,21 @@
             this.ItemForBackGround});
             this.dataLayoutControlCompany.Location = new System.Drawing.Point(0, 31);
             this.dataLayoutControlCompany.Name = "dataLayoutControlCompany";
+            this.dataLayoutControlCompany.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(337, 182, 650, 400);
             this.dataLayoutControlCompany.Root = this.layoutControlGroupCompany;
             this.dataLayoutControlCompany.Size = new System.Drawing.Size(1080, 599);
             this.dataLayoutControlCompany.TabIndex = 4;
             this.dataLayoutControlCompany.Text = "dataLayoutControl1";
+            // 
+            // barCodeControl1
+            // 
+            this.barCodeControl1.Location = new System.Drawing.Point(12, 554);
+            this.barCodeControl1.Name = "barCodeControl1";
+            this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
+            this.barCodeControl1.Size = new System.Drawing.Size(1083, 16);
+            this.barCodeControl1.StyleController = this.dataLayoutControlCompany;
+            this.barCodeControl1.Symbology = code128Generator1;
+            this.barCodeControl1.TabIndex = 53;
             // 
             // dataNavigatorCompany
             // 
@@ -1421,7 +1432,7 @@
             this.ItemForRowID,
             this.ItemForLogo,
             this.layoutControlItem3});
-            this.layoutControlGroupCompany.Name = "layoutControlGroupCompany";
+            this.layoutControlGroupCompany.Name = "Root";
             this.layoutControlGroupCompany.Size = new System.Drawing.Size(1107, 582);
             this.layoutControlGroupCompany.TextVisible = false;
             // 
@@ -1950,20 +1961,6 @@
             this.ItemForLogo.Text = "Logo";
             this.ItemForLogo.TextSize = new System.Drawing.Size(109, 13);
             // 
-            // openFileDialogChuKy
-            // 
-            this.openFileDialogChuKy.FileName = "openFileDialogChuKy";
-            // 
-            // barCodeControl1
-            // 
-            this.barCodeControl1.Location = new System.Drawing.Point(12, 554);
-            this.barCodeControl1.Name = "barCodeControl1";
-            this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
-            this.barCodeControl1.Size = new System.Drawing.Size(1083, 16);
-            this.barCodeControl1.StyleController = this.dataLayoutControlCompany;
-            this.barCodeControl1.Symbology = code128Generator1;
-            this.barCodeControl1.TabIndex = 53;
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.barCodeControl1;
@@ -1972,6 +1969,10 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(1087, 20);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // openFileDialogChuKy
+            // 
+            this.openFileDialogChuKy.FileName = "openFileDialogChuKy";
             // 
             // CompanyControl
             // 

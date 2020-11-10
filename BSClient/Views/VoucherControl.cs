@@ -5,6 +5,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
 using BSServer.Controllers;
 using BSCommon.Models;
+using BSClient.Utility;
 
 namespace BSClient
 {
@@ -218,6 +219,32 @@ namespace BSClient
         private void dateEditBDKT_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
             
+        }
+
+        private void InitGridView()
+        {
+            gridViewDSChungTu.Columns.Clear();
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerID", "Mã Khách hàng", 100, false);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerName", "Tên Khách hàng", 250);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerSName", "Tên viết tắt", 100);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Phone", "Điện thoại", 80);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Address", "Địa chỉ", 350);
+        }
+
+        private void SetupGridView()
+        {
+            ClientCommon.SetupGridView(this.gridViewDSChungTu);
+            this.gridViewDSChungTu.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridViewDSChungTu.OptionsView.ShowAutoFilterRow = true;
+            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+        }
+
+        private void LoadGridView()
+        {
+            CustomerController controller = new CustomerController();
+            VouchersInsert = new BindingList<Customer>(controller.GetCustomers());
+            gridViewDSChungTu.DataSource = Custommers;
         }
     }
 }
