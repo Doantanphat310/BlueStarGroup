@@ -31,13 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountGroup));
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
             this.tablePanel2 = new DevExpress.Utils.Layout.TablePanel();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.controlNavigator2 = new DevExpress.XtraEditors.ControlNavigator();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.controlNavigator2 = new DevExpress.XtraEditors.ControlNavigator();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
@@ -52,6 +53,11 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.searchLookUpEdit4 = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit4View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -59,7 +65,6 @@
             this.controlNavigator3 = new DevExpress.XtraEditors.ControlNavigator();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -69,11 +74,6 @@
             this.controlNavigator1 = new DevExpress.XtraEditors.ControlNavigator();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchLookUpEdit4 = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.searchLookUpEdit4View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel2)).BeginInit();
@@ -93,6 +93,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -101,10 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
-            this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4View)).BeginInit();
             this.SuspendLayout();
             // 
             // tablePanel1
@@ -162,6 +162,18 @@
             this.tablePanel2.Size = new System.Drawing.Size(526, 401);
             this.tablePanel2.TabIndex = 3;
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.tablePanel2.SetColumn(this.labelControl8, 1);
+            this.labelControl8.Location = new System.Drawing.Point(191, 4);
+            this.labelControl8.Name = "labelControl8";
+            this.tablePanel2.SetRow(this.labelControl8, 0);
+            this.labelControl8.Size = new System.Drawing.Size(104, 18);
+            this.labelControl8.TabIndex = 11;
+            this.labelControl8.Text = "Thông tin sổ cái";
+            // 
             // panelControl4
             // 
             this.tablePanel2.SetColumn(this.panelControl4, 0);
@@ -175,25 +187,6 @@
             this.tablePanel2.SetRowSpan(this.panelControl4, 4);
             this.panelControl4.Size = new System.Drawing.Size(182, 124);
             this.panelControl4.TabIndex = 10;
-            // 
-            // controlNavigator2
-            // 
-            this.controlNavigator2.Buttons.Append.Enabled = false;
-            this.controlNavigator2.Buttons.Append.Visible = false;
-            this.controlNavigator2.Buttons.CancelEdit.Enabled = false;
-            this.controlNavigator2.Buttons.CancelEdit.Visible = false;
-            this.controlNavigator2.Buttons.Edit.Enabled = false;
-            this.controlNavigator2.Buttons.Edit.Visible = false;
-            this.controlNavigator2.Buttons.EndEdit.Enabled = false;
-            this.controlNavigator2.Buttons.EndEdit.Visible = false;
-            this.controlNavigator2.Buttons.Remove.Enabled = false;
-            this.controlNavigator2.Buttons.Remove.Visible = false;
-            this.controlNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlNavigator2.Location = new System.Drawing.Point(2, 303);
-            this.controlNavigator2.Name = "controlNavigator2";
-            this.controlNavigator2.Size = new System.Drawing.Size(319, 27);
-            this.controlNavigator2.TabIndex = 12;
-            this.controlNavigator2.Text = "controlNavigator2";
             // 
             // simpleButton10
             // 
@@ -248,6 +241,25 @@
             this.tablePanel2.SetRowSpan(this.panelControl3, 12);
             this.panelControl3.Size = new System.Drawing.Size(323, 332);
             this.panelControl3.TabIndex = 9;
+            // 
+            // controlNavigator2
+            // 
+            this.controlNavigator2.Buttons.Append.Enabled = false;
+            this.controlNavigator2.Buttons.Append.Visible = false;
+            this.controlNavigator2.Buttons.CancelEdit.Enabled = false;
+            this.controlNavigator2.Buttons.CancelEdit.Visible = false;
+            this.controlNavigator2.Buttons.Edit.Enabled = false;
+            this.controlNavigator2.Buttons.Edit.Visible = false;
+            this.controlNavigator2.Buttons.EndEdit.Enabled = false;
+            this.controlNavigator2.Buttons.EndEdit.Visible = false;
+            this.controlNavigator2.Buttons.Remove.Enabled = false;
+            this.controlNavigator2.Buttons.Remove.Visible = false;
+            this.controlNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.controlNavigator2.Location = new System.Drawing.Point(2, 303);
+            this.controlNavigator2.Name = "controlNavigator2";
+            this.controlNavigator2.Size = new System.Drawing.Size(319, 27);
+            this.controlNavigator2.TabIndex = 12;
+            this.controlNavigator2.Text = "controlNavigator2";
             // 
             // gridControl3
             // 
@@ -401,6 +413,57 @@
             this.panelControl2.Size = new System.Drawing.Size(559, 728);
             this.panelControl2.TabIndex = 2;
             // 
+            // panelControl5
+            // 
+            this.panelControl5.Controls.Add(this.searchLookUpEdit4);
+            this.panelControl5.Controls.Add(this.label1);
+            this.panelControl5.Controls.Add(this.labelControl2);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl5.Location = new System.Drawing.Point(2, 2);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(555, 45);
+            this.panelControl5.TabIndex = 12;
+            // 
+            // searchLookUpEdit4
+            // 
+            this.searchLookUpEdit4.Location = new System.Drawing.Point(403, 16);
+            this.searchLookUpEdit4.Name = "searchLookUpEdit4";
+            this.searchLookUpEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.searchLookUpEdit4.Properties.Appearance.Options.UseFont = true;
+            this.searchLookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpEdit4.Properties.PopupView = this.searchLookUpEdit4View;
+            this.searchLookUpEdit4.Size = new System.Drawing.Size(147, 24);
+            this.searchLookUpEdit4.TabIndex = 2;
+            // 
+            // searchLookUpEdit4View
+            // 
+            this.searchLookUpEdit4View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit4View.Name = "searchLookUpEdit4View";
+            this.searchLookUpEdit4View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit4View.OptionsView.ShowGroupPanel = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.label1.Location = new System.Drawing.Point(253, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Chọn tài khoản cấp 1";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl2.Location = new System.Drawing.Point(2, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(238, 19);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "Danh sách tài khoản Thuộc nhóm";
+            // 
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -479,17 +542,6 @@
             this.simpleButton9.Size = new System.Drawing.Size(80, 34);
             this.simpleButton9.TabIndex = 5;
             this.simpleButton9.Text = "Lưu";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl2.Location = new System.Drawing.Point(2, 2);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(238, 19);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Danh sách tài khoản Thuộc nhóm";
             // 
             // panelControl1
             // 
@@ -593,58 +645,6 @@
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "Lưu";
             // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl8.Appearance.Options.UseFont = true;
-            this.tablePanel2.SetColumn(this.labelControl8, 1);
-            this.labelControl8.Location = new System.Drawing.Point(191, 4);
-            this.labelControl8.Name = "labelControl8";
-            this.tablePanel2.SetRow(this.labelControl8, 0);
-            this.labelControl8.Size = new System.Drawing.Size(104, 18);
-            this.labelControl8.TabIndex = 11;
-            this.labelControl8.Text = "Thông tin sổ cái";
-            // 
-            // panelControl5
-            // 
-            this.panelControl5.Controls.Add(this.searchLookUpEdit4);
-            this.panelControl5.Controls.Add(this.label1);
-            this.panelControl5.Controls.Add(this.labelControl2);
-            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl5.Location = new System.Drawing.Point(2, 2);
-            this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(555, 45);
-            this.panelControl5.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.label1.Location = new System.Drawing.Point(253, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Chọn tài khoản cấp 1";
-            // 
-            // searchLookUpEdit4
-            // 
-            this.searchLookUpEdit4.Location = new System.Drawing.Point(403, 16);
-            this.searchLookUpEdit4.Name = "searchLookUpEdit4";
-            this.searchLookUpEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.searchLookUpEdit4.Properties.Appearance.Options.UseFont = true;
-            this.searchLookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEdit4.Properties.PopupView = this.searchLookUpEdit4View;
-            this.searchLookUpEdit4.Size = new System.Drawing.Size(147, 24);
-            this.searchLookUpEdit4.TabIndex = 2;
-            // 
-            // searchLookUpEdit4View
-            // 
-            this.searchLookUpEdit4View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEdit4View.Name = "searchLookUpEdit4View";
-            this.searchLookUpEdit4View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEdit4View.OptionsView.ShowGroupPanel = false;
-            // 
             // AccountGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,6 +672,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
+            this.panelControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -681,11 +686,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
-            this.panelControl5.ResumeLayout(false);
-            this.panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit4View)).EndInit();
             this.ResumeLayout(false);
 
         }
