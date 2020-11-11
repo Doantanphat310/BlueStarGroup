@@ -23,14 +23,14 @@ namespace BSClient
         
         private bool IsLogin()
         {
-            if (string.IsNullOrWhiteSpace(UserId_TextBox.Text) || string.IsNullOrWhiteSpace(Password_TextBox.Text))
+            if (string.IsNullOrWhiteSpace(UserName_TextBox.Text) || string.IsNullOrWhiteSpace(Password_TextBox.Text))
             {
                 MessageBox.Show("User or Pass is not empty!");
                 return false;
             }
 
             UserController login = new UserController();
-            User user = login.GetUserInfo(UserId_TextBox.Text);
+            User user = login.GetUserInfo(UserName_TextBox.Text);
 
             if (user != null && user.Password == Password_TextBox.Text)
             {

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
+using BSServer.Controllers;
+using BSCommon.Models;
+using BSClient.Utility;
 
 namespace BSClient
 {
@@ -42,6 +38,21 @@ namespace BSClient
             // columnPrice.Visible = true;
             // int C = columnPrice.VisibleIndex; // C returns "5"
             //col
+            VouchersTypeController voucherstype = new VouchersTypeController();
+            List<VouchersType> vouchersT = voucherstype.GetVouchersTypeInfo("1");
+
+            searchLookUpEditVoucherTypeXemChungTU.Properties.DataSource = vouchersT;
+            searchLookUpEditVoucherTypeXemChungTU.Properties.NullText = "Chọn loại chứng từ";
+            searchLookUpEditVoucherTypeXemChungTU.Properties.ValueMember = "VouchersTypeSName";
+            searchLookUpEditVoucherTypeXemChungTU.Properties.DisplayMember = "VouchersTypeName";
+
+            searchLookUpEditChungTuTypeDK.Properties.DataSource = vouchersT;
+            searchLookUpEditChungTuTypeDK.Properties.NullText = "Chọn loại chứng từ";
+            searchLookUpEditChungTuTypeDK.Properties.ValueMember = "VouchersTypeSName";
+            searchLookUpEditChungTuTypeDK.Properties.DisplayMember = "VouchersTypeName";
+
+            
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -51,8 +62,9 @@ namespace BSClient
 
         private void VoucherControl_Load(object sender, EventArgs e)
         {
-
-            gridViewVoucher.InitNewRow += new InitNewRowEventHandler(gridViewVoucher_InitNewRow);
+           // bool test = dateEditBDKT.SelectedRanges.IsDateSelected(DateTime.Now);
+          // searchLookUpEditLoaiChungTu.it
+            //gridViewVoucher.InitNewRow += new InitNewRowEventHandler(gridViewVoucher_InitNewRow);
         }
 
         public class PersonInfo
@@ -95,17 +107,17 @@ namespace BSClient
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
+            //gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
         }
 
         private void ACE_Them_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.AddNewRow();
+            //gridViewVoucher.AddNewRow();
         }
 
         private void ACE_delete_Click(object sender, EventArgs e)
         {
-            gridViewVoucher.DeleteSelectedRows();
+            //gridViewVoucher.DeleteSelectedRows();
             // gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
 
         }
@@ -161,22 +173,78 @@ namespace BSClient
 
         private void ACE_CapNhat_MouseHover(object sender, EventArgs e)
         {
-            ACE_CapNhat.BackColor = Color.Aqua;
+            //ACE_CapNhat.BackColor = Color.Aqua;
         }
 
         private void ACE_CapNhat_MouseClick(object sender, MouseEventArgs e)
         {
-            ACE_CapNhat.BackColor = Color.White;
+            //ACE_CapNhat.BackColor = Color.White;
         }
 
         private void ACE_CapNhat_Leave(object sender, EventArgs e)
         {
-            ACE_CapNhat.ResetBackColor();
+            //ACE_CapNhat.ResetBackColor();
         }
 
         private void gridViewVoucher_RowCountChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelControl13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateEditBDKT_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            
+        }
+
+        private void InitGridView()
+        {
+            gridViewDSChungTu.Columns.Clear();
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerID", "Mã Khách hàng", 100, false);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerName", "Tên Khách hàng", 250);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerSName", "Tên viết tắt", 100);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Phone", "Điện thoại", 80);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Address", "Địa chỉ", 350);
+        }
+
+        private void SetupGridView()
+        {
+            ClientCommon.SetupGridView(this.gridViewDSChungTu);
+            this.gridViewDSChungTu.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridViewDSChungTu.OptionsView.ShowAutoFilterRow = true;
+            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void LoadGridView()
+        {
+            //CustomerController controller = new CustomerController();
+            //VouchersInsert = new BindingList<Customer>(controller.GetCustomers());
+            //gridViewDSChungTu.DataSource = Custommers;
         }
     }
 }

@@ -3,27 +3,23 @@ using BSClient.Utility;
 using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace BSClient.Views
 {
-    public partial class CustomerList : BaseFormList
-    {
+    public partial class UserList : XtraUserControl
         public BindingList<Customer> Custommers { get; set; }
 
         public List<Customer> CustomersDelete { get; set; } = new List<Customer>();
 
-        public CustomerList()
+        public UserList()
         {
             InitializeComponent();
 
             LoadGrid();
-
-            this.Save_Click += CustomerList_Save_Click;
-            this.Delete_Click += CustomerList_Delete_Click;
-            this.AddNew_Click += CustomerList_AddNew_Click;
         }
 
         private void LoadGrid()
@@ -37,16 +33,16 @@ namespace BSClient.Views
 
         private void CustomerList_AddNew_Click(object sender, EventArgs e)
         {
-            Customer_GridView.AddNewRow();
+            User_GridView.AddNewRow();
         }
 
         private void CustomerList_Delete_Click(object sender, EventArgs e)
         {
-            int[] selectIndex = Customer_GridView.GetSelectedRows();
+            int[] selectIndex = User_GridView.GetSelectedRows();
 
             foreach (int index in selectIndex)
             {
-                Customer delete = Customer_GridView.GetRow(index) as Customer;
+                Customer delete = User_GridView.GetRow(index) as Customer;
                 if (string.IsNullOrWhiteSpace(delete.CustomerID))
                 {
                     continue;
@@ -56,7 +52,7 @@ namespace BSClient.Views
                 CustomersDelete.Add(delete);
             }
 
-            Customer_GridView.DeleteSelectedRows();
+            User_GridView.DeleteSelectedRows();
         }
 
         private void CustomerList_Save_Click(object sender, EventArgs e)
@@ -103,28 +99,29 @@ namespace BSClient.Views
 
         private void InitGridView()
         {
-            Customer_GridView.Columns.Clear();
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerID", "Mã Khách hàng", 100, false);
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerName", "Tên Khách hàng", 250);
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerSName", "Tên viết tắt", 100);
-            ClientCommon.AddColumn(this.Customer_GridView, "Phone", "Điện thoại", 80);
-            ClientCommon.AddColumn(this.Customer_GridView, "Address", "Địa chỉ", 350);
+            User_GridView.Columns.Clear();
+
+            ClientCommon.AddColumn(this.User_GridView, "UserID", "Mã Khách hàng", 100, false);
+            ClientCommon.AddColumn(this.User_GridView, "UserName", "Tên Khách hàng", 250);
+            ClientCommon.AddColumn(this.User_GridView, "FullName", "Tên viết tắt", 100);
+            ClientCommon.AddColumn(this.User_GridView, "Phone", "Điện thoại", 80);
+            ClientCommon.AddColumn(this.User_GridView, "Address", "Địa chỉ", 350);
         }
 
         private void SetupGridView()
         {
-            ClientCommon.SetupGridView(this.Customer_GridView);
-            this.Customer_GridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.Customer_GridView.OptionsView.ShowAutoFilterRow = true;
-            this.Customer_GridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-            this.Customer_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            ClientCommon.SetupGridView(this.User_GridView);
+            this.User_GridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.User_GridView.OptionsView.ShowAutoFilterRow = true;
+            this.User_GridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+            this.User_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
         }
 
         private void LoadGridView()
         {
             CustomerController controller = new CustomerController();
             Custommers = new BindingList<Customer>(controller.GetCustomers());
-            Customer_GridControl.DataSource = Custommers;
+            Role_GridControl.DataSource = Custommers;
         }
 
         private void Customer_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
@@ -133,6 +130,7 @@ namespace BSClient.Views
             {
                 return;
             }
+
             Customer row = e.Row as Customer;
             if (!string.IsNullOrWhiteSpace(row.CustomerID))
             {

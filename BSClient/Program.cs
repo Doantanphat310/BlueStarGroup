@@ -16,8 +16,9 @@ namespace BSClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
+           Application.Run(new MainForm());
 
+            /*
             Login fLogin = new Login();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
@@ -27,6 +28,7 @@ namespace BSClient
             {
                 Application.Exit();
             }
+            */
         }
     }
 }

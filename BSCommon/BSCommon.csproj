@@ -92,12 +92,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\SSCommonConst.cs" />
+    <Compile Include="Models\VouchersInsert.cs" />
+    <Compile Include="Models\VouchersDetailInsert.cs" />
+    <Compile Include="Models\VouchersType.cs" />
+    <Compile Include="Models\VouchersTypeSearchLookup.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerCompany.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\BSMessage.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
+    <Compile Include="Utility\GeneralCodeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

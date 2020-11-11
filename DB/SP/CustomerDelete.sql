@@ -7,7 +7,6 @@ AS
 	SET
 		UpdateDate = GETDATE(),
 		UpdateUser = @UserId,
-		Status = 0
+		IsDelete = 1
 	WHERE 
 		CustomerID = @CustomerID
-		AND Status = 1

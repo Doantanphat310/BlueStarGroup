@@ -17,6 +17,8 @@ namespace BSServer._Core.Context
 
         #region DbSet
 
+        public DbSet<VouchersType> VoucherTypes { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         //public DbSet<Customer> Customers { get; set; }
