@@ -236,15 +236,15 @@ namespace BSClient
             ClientCommon.SetupGridView(this.gridViewDSChungTu);
             this.gridViewDSChungTu.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewDSChungTu.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void LoadGridView()
         {
-            CustomerController controller = new CustomerController();
-            VouchersInsert = new BindingList<Customer>(controller.GetCustomers());
-            gridViewDSChungTu.DataSource = Custommers;
+            //CustomerController controller = new CustomerController();
+            //VouchersInsert = new BindingList<Customer>(controller.GetCustomers());
+            //gridViewDSChungTu.DataSource = Custommers;
         }
     }
 }

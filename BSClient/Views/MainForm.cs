@@ -30,9 +30,9 @@ namespace BSClient
 
         private void ACE_User_Click(object sender, EventArgs e)
         {
-            UserManageControl user = new UserManageControl();
-            ClientCommon.ShowControl(user, Content);
-            this.Text = " Blue Star Group - Quản lý người dùng";
+            //UserManageControl user = new UserManageControl();
+            //ClientCommon.ShowControl(user, Content);
+            //this.Text = " Blue Star Group - Quản lý người dùng";
         }
 
         private void ACE_Company_Click(object sender, EventArgs e)
@@ -47,6 +47,20 @@ namespace BSClient
             CustomerList control = new CustomerList();
             this.ShowControl(control, Content);
             this.Text = " Blue Star Group - Danh mục Khách hàng";
+        }
+
+        private void accordionControlElementHangHoa_Click(object sender, EventArgs e)
+        {
+            ItemType control = new ItemType();
+            this.ShowControl(control, Content);
+            this.Text = " Blue Star Group - Thông tin hàng hóa";
+        }
+
+        private void accordionControlElementAccountGroup_Click(object sender, EventArgs e)
+        {
+            AccountGroup control = new AccountGroup();
+            this.ShowControl(control, Content);
+            this.Text = " Blue Star Group - Thông tin hệ thống tài khoản và sổ cái";
         }
     }
 }

@@ -16,7 +16,7 @@ namespace BSClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new Views.BlueStarGroup());
+           Application.Run(new MainForm());
 
             /*
             Login fLogin = new Login();
