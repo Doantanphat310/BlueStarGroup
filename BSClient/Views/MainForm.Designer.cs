@@ -38,7 +38,7 @@
             this.Custommers_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ACE_User = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -109,7 +109,7 @@
             this.Custommers_Button,
             this.accordionControlElement6,
             this.accordionControlElement7,
-            this.ACE_User,
+            this.UserList_Button,
             this.accordionControlElement10});
             this.accordionControlElement4.Expanded = true;
             this.accordionControlElement4.Name = "accordionControlElement4";
@@ -141,12 +141,12 @@
             this.accordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement7.Text = "Hàng hóa";
             // 
-            // ACE_User
+            // UserList_Button
             // 
-            this.ACE_User.Name = "ACE_User";
-            this.ACE_User.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ACE_User.Text = "Người dùng";
-            this.ACE_User.Click += new System.EventHandler(this.ACE_User_Click);
+            this.UserList_Button.Name = "UserList_Button";
+            this.UserList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.UserList_Button.Text = "Người dùng";
+            this.UserList_Button.Click += new System.EventHandler(this.UserList_Button_Click);
             // 
             // accordionControlElement10
             // 
@@ -202,7 +202,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Voucher;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_User;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement UserList_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;

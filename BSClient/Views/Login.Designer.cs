@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.Login_Button = new DevExpress.XtraEditors.SimpleButton();
             this.UserName_TextBox = new DevExpress.XtraEditors.TextEdit();
-            this.Password_TextBox = new DevExpress.XtraEditors.TextEdit();
-            this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Main_LayoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.Password_TextBox = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.UserName_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.Password_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Bottom_Panel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.UserName_TextBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Password_TextBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_LayoutControl)).BeginInit();
             this.Main_LayoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Password_TextBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Password_Label)).BeginInit();
@@ -70,29 +70,6 @@
             this.UserName_TextBox.StyleController = this.Main_LayoutControl;
             this.UserName_TextBox.TabIndex = 2;
             // 
-            // Password_TextBox
-            // 
-            this.Password_TextBox.EditValue = "Ab123456";
-            this.Password_TextBox.Location = new System.Drawing.Point(60, 61);
-            this.Password_TextBox.Name = "Password_TextBox";
-            this.Password_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password_TextBox.Properties.Appearance.Options.UseFont = true;
-            this.Password_TextBox.Properties.PasswordChar = '*';
-            this.Password_TextBox.Size = new System.Drawing.Size(205, 26);
-            this.Password_TextBox.StyleController = this.Main_LayoutControl;
-            this.Password_TextBox.TabIndex = 2;
-            // 
-            // Exit_Button
-            // 
-            this.Exit_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Exit_Button.Appearance.Options.UseFont = true;
-            this.Exit_Button.Location = new System.Drawing.Point(155, 11);
-            this.Exit_Button.Name = "Exit_Button";
-            this.Exit_Button.Size = new System.Drawing.Size(80, 25);
-            this.Exit_Button.TabIndex = 0;
-            this.Exit_Button.Text = "Thoát";
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
-            // 
             // Main_LayoutControl
             // 
             this.Main_LayoutControl.Controls.Add(this.Password_TextBox);
@@ -105,6 +82,18 @@
             this.Main_LayoutControl.Size = new System.Drawing.Size(290, 113);
             this.Main_LayoutControl.TabIndex = 3;
             this.Main_LayoutControl.Text = "layoutControl1";
+            // 
+            // Password_TextBox
+            // 
+            this.Password_TextBox.EditValue = "Ab123456";
+            this.Password_TextBox.Location = new System.Drawing.Point(60, 61);
+            this.Password_TextBox.Name = "Password_TextBox";
+            this.Password_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password_TextBox.Properties.Appearance.Options.UseFont = true;
+            this.Password_TextBox.Properties.PasswordChar = '*';
+            this.Password_TextBox.Size = new System.Drawing.Size(205, 26);
+            this.Password_TextBox.StyleController = this.Main_LayoutControl;
+            this.Password_TextBox.TabIndex = 2;
             // 
             // Root
             // 
@@ -121,7 +110,7 @@
             // UserName_Label
             // 
             this.UserName_Label.Control = this.UserName_TextBox;
-            this.UserName_Label.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("layoutControlItem1.ImageOptions.Image")));
+            this.UserName_Label.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UserName_Label.ImageOptions.Image")));
             this.UserName_Label.Location = new System.Drawing.Point(0, 0);
             this.UserName_Label.Name = "UserName_Label";
             this.UserName_Label.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
@@ -135,7 +124,7 @@
             // Password_Label
             // 
             this.Password_Label.Control = this.Password_TextBox;
-            this.Password_Label.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("layoutControlItem2.ImageOptions.Image")));
+            this.Password_Label.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Password_Label.ImageOptions.Image")));
             this.Password_Label.Location = new System.Drawing.Point(0, 36);
             this.Password_Label.Name = "Password_Label";
             this.Password_Label.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
@@ -144,6 +133,17 @@
             this.Password_Label.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.Password_Label.TextSize = new System.Drawing.Size(30, 24);
             this.Password_Label.TextToControlDistance = 5;
+            // 
+            // Exit_Button
+            // 
+            this.Exit_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit_Button.Appearance.Options.UseFont = true;
+            this.Exit_Button.Location = new System.Drawing.Point(155, 11);
+            this.Exit_Button.Name = "Exit_Button";
+            this.Exit_Button.Size = new System.Drawing.Size(80, 25);
+            this.Exit_Button.TabIndex = 0;
+            this.Exit_Button.Text = "Thoát";
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
             // Bottom_Panel
             // 
@@ -169,9 +169,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             ((System.ComponentModel.ISupportInitialize)(this.UserName_TextBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Password_TextBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_LayoutControl)).EndInit();
             this.Main_LayoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Password_TextBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Password_Label)).EndInit();

@@ -26,5 +26,10 @@ namespace BSClient.Base
             control.Focus();
             Content.Controls.Add(control);
         }
+
+        public string GetTitle(string subTitle)
+        {
+            return $" Blue Star Group - {subTitle}";
+        }
     }
 }

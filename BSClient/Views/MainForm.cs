@@ -1,16 +1,8 @@
-﻿using DevExpress.XtraBars;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraBars.FluentDesignSystem;
+﻿using BSClient.Base;
 using BSClient.Utility;
-using BSClient.Base;
 using BSClient.Views;
+using BSCommon.Utility;
+using System;
 
 namespace BSClient
 {
@@ -28,11 +20,11 @@ namespace BSClient
             this.Text = " Blue Star Group - Nhập chứng từ";
         }
 
-        private void ACE_User_Click(object sender, EventArgs e)
+        private void UserList_Button_Click(object sender, EventArgs e)
         {
-            UserManageControl user = new UserManageControl();
-            ClientCommon.ShowControl(user, Content);
-            this.Text = " Blue Star Group - Quản lý người dùng";
+            UserList user = new UserList();
+            this.ShowControl(user, Content);
+            this.Text = this.GetTitle(BSTitle.UserList);
         }
 
         private void ACE_Company_Click(object sender, EventArgs e)
@@ -46,7 +38,7 @@ namespace BSClient
         {
             CustomerList control = new CustomerList();
             this.ShowControl(control, Content);
-            this.Text = " Blue Star Group - Danh mục Khách hàng";
+            this.Text = this.GetTitle(BSTitle.CustomerList);
         }
     }
 }

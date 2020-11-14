@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using BSServer.Controllers;
 using BSCommon.Models;
 using BSCommon.Utility;
+using BSClient.Utility;
 
 namespace BSClient
 {
@@ -30,9 +31,9 @@ namespace BSClient
             }
 
             UserController login = new UserController();
-            User user = login.GetUserInfo(UserName_TextBox.Text);
+            UserInfo user = login.GetUserInfo(UserName_TextBox.Text);
 
-            if (user != null && user.Password == Password_TextBox.Text)
+            if (user != null && ClientCommon.IsCheckPass(Password_TextBox.Text, user.Password))
             {
                 CommonInfo.UserInfo = user;
                 return true;
