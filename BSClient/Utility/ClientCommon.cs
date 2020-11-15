@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Columns;
+﻿using BSCommon.Utility;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
@@ -43,14 +44,17 @@ namespace BSClient.Utility
         {
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
             gridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
-            gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             gridView.OptionsBehavior.AutoPopulateColumns = true;
             gridView.OptionsPrint.EnableAppearanceOddRow = true;
             gridView.OptionsSelection.MultiSelect = multiSelect;
             gridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+        }
+
+        public static bool IsCheckPass(string password, string hashPassword)
+        {
+            return SHA1Helper.IsCheck(password, hashPassword);
         }
     }
 }

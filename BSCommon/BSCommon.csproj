@@ -102,13 +102,20 @@
     <Compile Include="Models\VouchersDetailInsert.cs" />
     <Compile Include="Models\VouchersType.cs" />
     <Compile Include="Models\VouchersTypeSearchLookup.cs" />
+    <Compile Include="Models\ResponseStatus.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerCompany.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\MasterInfo.cs" />
+    <Compile Include="Models\UserRoleInfo.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\BSMessage.cs" />
+    <Compile Include="Utility\BSTitle.cs" />
+    <Compile Include="Utility\CommonConstant.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
     <Compile Include="Utility\GeneralCodeHelper.cs" />
+    <Compile Include="Utility\SHA1Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

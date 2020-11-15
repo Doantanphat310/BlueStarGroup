@@ -8,9 +8,14 @@ namespace BSCommon.Utility
 {
     public static class GeneralCodeHelper
     {
-        //public static string CustomerCode()
-        //{
-        //    string code 
-        //}
+        public static string CustomerCode()
+        {
+            return "";
+        }
+
+        public static string UserID()
+        {
+            return "";
+        }
     }
 }

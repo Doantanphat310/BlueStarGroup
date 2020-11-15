@@ -8,17 +8,16 @@ namespace BSServer._Core.Base
     /// <summary>
     /// 
     /// </summary>
-    public class BaseDAO : IDisposable
+    public class BaseController : IDisposable
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        public BaseDAO(BSContext context)
+        public BaseController()
         {
             //this.Logger = logger;
             //this.UserInfo = userInfo;
-            this.Context = context;
         }
 
         /// <summary>
@@ -34,11 +33,6 @@ namespace BSServer._Core.Base
         /// 
         /// </summary>
         /// 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public BSContext Context { get; set; }
 
         public void Dispose()
         {
