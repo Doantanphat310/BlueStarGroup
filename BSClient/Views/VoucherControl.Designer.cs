@@ -34,34 +34,35 @@
             this.tabNavigationPageChungTu = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonCapNhat = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonNewSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.richTextBoxVoucherContent = new System.Windows.Forms.RichTextBox();
+            this.gridControlNhapDinhKhoan = new DevExpress.XtraGrid.GridControl();
+            this.gridViewDinhKhoan = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.NV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TK = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Tien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpEditChungTuTypeDK = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.VouchersTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VouchersTypeSName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditNgayNhapChungTu = new DevExpress.XtraEditors.DateEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButtonLoadVoucher = new DevExpress.XtraEditors.SimpleButton();
             this.searchLookUpEditVoucherTypeXemChungTU = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit4 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditNgayKT = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditBDKT = new DevExpress.XtraEditors.DateEdit();
@@ -159,18 +160,18 @@
             this.tabNavigationPageChungTu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhapDinhKhoan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDinhKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditChungTuTypeDK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditVoucherTypeXemChungTU.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSChungTu)).BeginInit();
@@ -276,40 +277,40 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.simpleButton3);
-            this.groupControl2.Controls.Add(this.simpleButton4);
+            this.groupControl2.Controls.Add(this.simpleButtonCapNhat);
+            this.groupControl2.Controls.Add(this.simpleButtonNewSave);
             this.groupControl2.Controls.Add(this.labelControl6);
             this.groupControl2.Controls.Add(this.simpleButton2);
             this.groupControl2.Controls.Add(this.simpleButton1);
-            this.groupControl2.Controls.Add(this.richTextBox1);
-            this.groupControl2.Controls.Add(this.gridControl2);
+            this.groupControl2.Controls.Add(this.richTextBoxVoucherContent);
+            this.groupControl2.Controls.Add(this.gridControlNhapDinhKhoan);
             this.groupControl2.Controls.Add(this.labelControl4);
             this.groupControl2.Controls.Add(this.labelControl5);
             this.groupControl2.Controls.Add(this.searchLookUpEditChungTuTypeDK);
-            this.groupControl2.Controls.Add(this.dateEdit1);
+            this.groupControl2.Controls.Add(this.dateEditNgayNhapChungTu);
             this.groupControl2.Location = new System.Drawing.Point(526, 3);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(540, 481);
             this.groupControl2.TabIndex = 13;
             this.groupControl2.Text = "Thông tin định khoản của chứng từ";
             // 
-            // simpleButton3
+            // simpleButtonCapNhat
             // 
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(109, 440);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton3.TabIndex = 21;
-            this.simpleButton3.Text = "Cập nhật";
+            this.simpleButtonCapNhat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCapNhat.ImageOptions.Image")));
+            this.simpleButtonCapNhat.Location = new System.Drawing.Point(109, 440);
+            this.simpleButtonCapNhat.Name = "simpleButtonCapNhat";
+            this.simpleButtonCapNhat.Size = new System.Drawing.Size(98, 37);
+            this.simpleButtonCapNhat.TabIndex = 21;
+            this.simpleButtonCapNhat.Text = "Lưu";
             // 
-            // simpleButton4
+            // simpleButtonNewSave
             // 
-            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(5, 440);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton4.TabIndex = 20;
-            this.simpleButton4.Text = "Lưu mới";
+            this.simpleButtonNewSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonNewSave.ImageOptions.Image")));
+            this.simpleButtonNewSave.Location = new System.Drawing.Point(5, 440);
+            this.simpleButtonNewSave.Name = "simpleButtonNewSave";
+            this.simpleButtonNewSave.Size = new System.Drawing.Size(98, 37);
+            this.simpleButtonNewSave.TabIndex = 20;
+            this.simpleButtonNewSave.Text = "Lưu mới";
             // 
             // labelControl6
             // 
@@ -321,84 +322,100 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(434, 397);
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(412, 397);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton2.Size = new System.Drawing.Size(120, 37);
             this.simpleButton2.TabIndex = 18;
             this.simpleButton2.Text = "Liên kết VAT";
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(434, 354);
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(412, 354);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton1.Size = new System.Drawing.Size(120, 37);
             this.simpleButton1.TabIndex = 17;
             this.simpleButton1.Text = "Liên kết kho";
             // 
-            // richTextBox1
+            // richTextBoxVoucherContent
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(5, 370);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(423, 64);
-            this.richTextBox1.TabIndex = 16;
-            this.richTextBox1.Text = "";
+            this.richTextBoxVoucherContent.Location = new System.Drawing.Point(5, 370);
+            this.richTextBoxVoucherContent.Name = "richTextBoxVoucherContent";
+            this.richTextBoxVoucherContent.Size = new System.Drawing.Size(401, 64);
+            this.richTextBoxVoucherContent.TabIndex = 16;
+            this.richTextBoxVoucherContent.Text = "";
             // 
-            // gridControl2
+            // gridControlNhapDinhKhoan
             // 
-            this.gridControl2.Location = new System.Drawing.Point(5, 50);
-            this.gridControl2.MainView = this.gridView3;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(527, 298);
-            this.gridControl2.TabIndex = 12;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
+            this.gridControlNhapDinhKhoan.Location = new System.Drawing.Point(5, 50);
+            this.gridControlNhapDinhKhoan.MainView = this.gridViewDinhKhoan;
+            this.gridControlNhapDinhKhoan.Name = "gridControlNhapDinhKhoan";
+            this.gridControlNhapDinhKhoan.Size = new System.Drawing.Size(527, 298);
+            this.gridControlNhapDinhKhoan.TabIndex = 12;
+            this.gridControlNhapDinhKhoan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDinhKhoan});
             // 
-            // gridView3
+            // gridViewDinhKhoan
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn7});
-            this.gridView3.GridControl = this.gridControl2;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridViewDinhKhoan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.NV,
+            this.TK,
+            this.DT,
+            this.SC,
+            this.Tien});
+            this.gridViewDinhKhoan.GridControl = this.gridControlNhapDinhKhoan;
+            this.gridViewDinhKhoan.Name = "gridViewDinhKhoan";
+            this.gridViewDinhKhoan.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridViewDinhKhoan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridViewDinhKhoan.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewDinhKhoan_ShowingEditor);
             // 
-            // gridColumn3
+            // NV
             // 
-            this.gridColumn3.Caption = "Nghiệp vụ";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
+            this.NV.Caption = "Nghiệp vụ";
+            this.NV.FieldName = "NV";
+            this.NV.Name = "NV";
+            this.NV.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.NV.Visible = true;
+            this.NV.VisibleIndex = 0;
             // 
-            // gridColumn4
+            // TK
             // 
-            this.gridColumn4.Caption = "Tài khoản";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
+            this.TK.Caption = "Tài khoản";
+            this.TK.FieldName = "TKNumber";
+            this.TK.Name = "TK";
+            this.TK.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.TK.Visible = true;
+            this.TK.VisibleIndex = 1;
             // 
-            // gridColumn5
+            // DT
             // 
-            this.gridColumn5.Caption = "Đối tượng";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
+            this.DT.Caption = "Đối tượng";
+            this.DT.FieldName = "CustomerName";
+            this.DT.Name = "DT";
+            this.DT.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.DT.Visible = true;
+            this.DT.VisibleIndex = 2;
             // 
-            // gridColumn6
+            // SC
             // 
-            this.gridColumn6.Caption = "Sổ cái";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 3;
+            this.SC.Caption = "Sổ cái";
+            this.SC.FieldName = "GeneralLedgerName";
+            this.SC.Name = "SC";
+            this.SC.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.SC.Visible = true;
+            this.SC.VisibleIndex = 3;
             // 
-            // gridColumn7
+            // Tien
             // 
-            this.gridColumn7.Caption = "Tiền";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
+            this.Tien.Caption = "Tiền";
+            this.Tien.DisplayFormat.FormatString = "c2";
+            this.Tien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Tien.FieldName = "Amount";
+            this.Tien.Name = "Tien";
+            this.Tien.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.Tien.Visible = true;
+            this.Tien.VisibleIndex = 4;
             // 
             // labelControl4
             // 
@@ -452,17 +469,17 @@
             this.VouchersTypeSName.Visible = true;
             this.VouchersTypeSName.VisibleIndex = 1;
             // 
-            // dateEdit1
+            // dateEditNgayNhapChungTu
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(94, 24);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEditNgayNhapChungTu.EditValue = null;
+            this.dateEditNgayNhapChungTu.Location = new System.Drawing.Point(94, 24);
+            this.dateEditNgayNhapChungTu.Name = "dateEditNgayNhapChungTu";
+            this.dateEditNgayNhapChungTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(164, 20);
-            this.dateEdit1.TabIndex = 13;
+            this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(164, 20);
+            this.dateEditNgayNhapChungTu.TabIndex = 13;
             // 
             // simpleButton7
             // 
@@ -475,9 +492,10 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButtonLoadVoucher);
             this.groupControl1.Controls.Add(this.searchLookUpEditVoucherTypeXemChungTU);
             this.groupControl1.Controls.Add(this.labelControl22);
-            this.groupControl1.Controls.Add(this.dateEdit4);
+            this.groupControl1.Controls.Add(this.dateEditNgayKT);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.dateEditBDKT);
@@ -488,9 +506,18 @@
             this.groupControl1.TabIndex = 12;
             this.groupControl1.Text = "Danh sách chứng từ";
             // 
+            // simpleButtonLoadVoucher
+            // 
+            this.simpleButtonLoadVoucher.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonLoadVoucher.ImageOptions.Image")));
+            this.simpleButtonLoadVoucher.Location = new System.Drawing.Point(481, 18);
+            this.simpleButtonLoadVoucher.Name = "simpleButtonLoadVoucher";
+            this.simpleButtonLoadVoucher.Size = new System.Drawing.Size(25, 23);
+            this.simpleButtonLoadVoucher.TabIndex = 23;
+            this.simpleButtonLoadVoucher.Click += new System.EventHandler(this.simpleButtonLoadVoucher_Click);
+            // 
             // searchLookUpEditVoucherTypeXemChungTU
             // 
-            this.searchLookUpEditVoucherTypeXemChungTU.Location = new System.Drawing.Point(376, 20);
+            this.searchLookUpEditVoucherTypeXemChungTU.Location = new System.Drawing.Point(340, 20);
             this.searchLookUpEditVoucherTypeXemChungTU.Name = "searchLookUpEditVoucherTypeXemChungTU";
             this.searchLookUpEditVoucherTypeXemChungTU.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -526,24 +553,24 @@
             // 
             // labelControl22
             // 
-            this.labelControl22.Location = new System.Drawing.Point(153, 23);
+            this.labelControl22.Location = new System.Drawing.Point(138, 23);
             this.labelControl22.Name = "labelControl22";
             this.labelControl22.Size = new System.Drawing.Size(40, 13);
             this.labelControl22.TabIndex = 12;
             this.labelControl22.Text = "Ngày KT";
             this.labelControl22.Click += new System.EventHandler(this.labelControl22_Click);
             // 
-            // dateEdit4
+            // dateEditNgayKT
             // 
-            this.dateEdit4.EditValue = null;
-            this.dateEdit4.Location = new System.Drawing.Point(203, 20);
-            this.dateEdit4.Name = "dateEdit4";
-            this.dateEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEditNgayKT.EditValue = null;
+            this.dateEditNgayKT.Location = new System.Drawing.Point(184, 20);
+            this.dateEditNgayKT.Name = "dateEditNgayKT";
+            this.dateEditNgayKT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit4.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEditNgayKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit4.Size = new System.Drawing.Size(95, 20);
-            this.dateEdit4.TabIndex = 13;
+            this.dateEditNgayKT.Size = new System.Drawing.Size(80, 20);
+            this.dateEditNgayKT.TabIndex = 13;
             // 
             // labelControl2
             // 
@@ -555,7 +582,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(304, 23);
+            this.labelControl3.Location = new System.Drawing.Point(270, 23);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(66, 13);
             this.labelControl3.TabIndex = 10;
@@ -571,7 +598,7 @@
             this.dateEditBDKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditBDKT.Properties.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Multiple;
-            this.dateEditBDKT.Size = new System.Drawing.Size(95, 20);
+            this.dateEditBDKT.Size = new System.Drawing.Size(80, 20);
             this.dateEditBDKT.TabIndex = 9;
             this.dateEditBDKT.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.dateEditBDKT_CustomDisplayText);
             // 
@@ -1474,19 +1501,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhapDinhKhoan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDinhKhoan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditChungTuTypeDK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditVoucherTypeXemChungTU.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSChungTu)).EndInit();
@@ -1562,19 +1589,19 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonCapNhat;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonNewSave;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private System.Windows.Forms.RichTextBox richTextBoxVoucherContent;
+        private DevExpress.XtraGrid.GridControl gridControlNhapDinhKhoan;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDinhKhoan;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditChungTuTypeDK;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dateEditNgayNhapChungTu;
         private DevExpress.XtraBars.Navigation.TabPane tabPaneVouchers;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageChungTu;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageLKVAT;
@@ -1655,17 +1682,18 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl22;
-        private DevExpress.XtraEditors.DateEdit dateEdit4;
+        private DevExpress.XtraEditors.DateEdit dateEditNgayKT;
         private DevExpress.XtraGrid.Columns.GridColumn VouchersTypeName;
         private DevExpress.XtraGrid.Columns.GridColumn VouchersTypeSName;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditVoucherTypeXemChungTU;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn NV;
+        private DevExpress.XtraGrid.Columns.GridColumn TK;
+        private DevExpress.XtraGrid.Columns.GridColumn DT;
+        private DevExpress.XtraGrid.Columns.GridColumn SC;
+        private DevExpress.XtraGrid.Columns.GridColumn Tien;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonLoadVoucher;
     }
 }

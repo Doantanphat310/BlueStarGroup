@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Models
 {
-    class VouchersDetailInsert
+   public class MaterialGL
     {
-        public string NV { get; set; }
-        public string TKNumber { get; set; }
-        public string CustomerName { get; set; }
+        public string AccountID { get; set; }
         public string GeneralLedgerName { get; set; }
-        public string Amount { get; set; }
+        public string GeneralLedgerID { get; set; }
     }
 }

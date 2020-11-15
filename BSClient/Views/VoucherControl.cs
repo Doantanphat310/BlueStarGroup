@@ -6,11 +6,17 @@ using System.IO;
 using BSServer.Controllers;
 using BSCommon.Models;
 using BSClient.Utility;
+using System.ComponentModel;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
 
 namespace BSClient
 {
     public partial class VoucherControl : DevExpress.XtraEditors.XtraUserControl
     {
+        public BindingList<Voucher> Voucher { get; set; }
+        public BindingList<VoucherDetailDinhKhoan> VoucherDetailDinhKhoan { get; set; }
         public VoucherControl()
         {
             InitializeComponent();
@@ -51,7 +57,11 @@ namespace BSClient
             searchLookUpEditChungTuTypeDK.Properties.ValueMember = "VouchersTypeSName";
             searchLookUpEditChungTuTypeDK.Properties.DisplayMember = "VouchersTypeName";
 
-            
+            initdatasourceGridview();
+            initControltoGridview();
+
+
+
 
         }
 
@@ -67,12 +77,12 @@ namespace BSClient
             //gridViewVoucher.InitNewRow += new InitNewRowEventHandler(gridViewVoucher_InitNewRow);
         }
 
-        public class PersonInfo
+        public class DinhkhoanInfo
         {
             private string _ID;
             private string _Name;
 
-            public PersonInfo(string ID, string Name)
+            public DinhkhoanInfo(string ID, string Name)
             {
                 _ID = ID;
                 _Name = Name;
@@ -117,7 +127,7 @@ namespace BSClient
 
         private void ACE_delete_Click(object sender, EventArgs e)
         {
-            //gridViewVoucher.DeleteSelectedRows();
+          //  gridViewVoucher.DeleteSelectedRows();
             // gridViewVoucher.DeleteRow(gridViewVoucher.FocusedRowHandle);
 
         }
@@ -224,11 +234,11 @@ namespace BSClient
         private void InitGridView()
         {
             gridViewDSChungTu.Columns.Clear();
-            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerID", "Mã Khách hàng", 100, false);
-            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerName", "Tên Khách hàng", 250);
-            ClientCommon.AddColumn(this.gridViewDSChungTu, "CustomerSName", "Tên viết tắt", 100);
-            ClientCommon.AddColumn(this.gridViewDSChungTu, "Phone", "Điện thoại", 80);
-            ClientCommon.AddColumn(this.gridViewDSChungTu, "Address", "Địa chỉ", 350);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Date", "Ngày nhập", 100, false);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "VouchersID", "Mã CT", 150);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "Amount", "Tiền", 100);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "VourchersTypeSumary", "Loại CT", 80);
+            ClientCommon.AddColumn(this.gridViewDSChungTu, "CreateUser", "Người nhập", 80);
         }
 
         private void SetupGridView()
@@ -236,15 +246,114 @@ namespace BSClient
             ClientCommon.SetupGridView(this.gridViewDSChungTu);
             this.gridViewDSChungTu.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewDSChungTu.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridViewDSChungTu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+            this.gridViewDSChungTu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
         }
 
-        private void LoadGridView()
+        private void LoadGridView(string CompanyID, DateTime NgayBD, DateTime NgayKT, string LoaiChungTu)
         {
-            //CustomerController controller = new CustomerController();
-            //VouchersInsert = new BindingList<Customer>(controller.GetCustomers());
-            //gridViewDSChungTu.DataSource = Custommers;
+            VoucherController controller = new VoucherController();
+            Voucher = new BindingList<Voucher>(controller.GetVouchersConditionCompany(CompanyID, NgayBD, NgayKT, LoaiChungTu));
+            gridControlDSChungTu.DataSource = Voucher;
+            //gridControlNhapDinhKhoan
+        }
+
+        private void simpleButtonLoadVoucher_Click(object sender, EventArgs e)
+        {
+            // view.GetRowCellValue(selectedRows(0), searchLookUpEdit.Properties.ValueMember)
+
+            //Dim view = searchLookUpEdit.Properties.View
+            //selectedRows = view.GetSelectedRows()
+            //If selectedRows.Count() > 0 Then
+            //    searchLookUpEdit.EditValue = view.GetRowCellValue(selectedRows(0), searchLookUpEdit.Properties.ValueMember)
+            //Else
+            //    searchLookUpEdit.EditValue = Nothing
+            //End If
+            
+         //   GridView view = searchLookUpEditVoucherTypeXemChungTU.Properties.View;
+          //   selectedRows = view.GetSelectedRows();
+
+          //  string valuemember = view.GetRowCellValue(selectedRows(0),searchLookUpEditVoucherTypeXemChungTU.Properties.ValueMember);
+
+           // LoadGridView("CompanyID", dateEditBDKT.DateTime, dateEditNgayKT.DateTime, searchLookUpEditVoucherTypeXemChungTU.Properties.ValueMember);
+        }
+
+      
+
+
+        
+    
+
+        private void gridViewDinhKhoan_ShowingEditor(object sender, CancelEventArgs e)
+        {
+           
+        }
+
+        RepositoryItemSearchLookUpEdit riLookup = new RepositoryItemSearchLookUpEdit();
+        RepositoryItemSearchLookUpEdit rsItemlookup = new RepositoryItemSearchLookUpEdit();
+        RepositoryItemSearchLookUpEdit rDTLookup = new RepositoryItemSearchLookUpEdit();
+        RepositoryItemSearchLookUpEdit rGLLookup = new RepositoryItemSearchLookUpEdit();
+
+        void initControltoGridview()
+        {
+
+
+            MaterialNVController MaterialNV = new MaterialNVController();
+            List<MaterialNV> materialNV = MaterialNV.GetMaterialNV();
+            riLookup.DataSource = materialNV;
+            riLookup.NullText = "Chọn nghiệp vụ";
+            riLookup.ValueMember = "NVSummary";
+            riLookup.DisplayMember = "NVName";
+            gridControlNhapDinhKhoan.RepositoryItems.Add(riLookup);
+            gridViewDinhKhoan.Columns["NV"].ColumnEdit = riLookup;
+
+           
+
+            ////////////////////////////////////
+            /// //TaiKhoan
+            MaterialNVController MaterialTK = new MaterialNVController();
+            List<MaterialTK> materialTK = MaterialTK.GetMaterialTK();
+            rsItemlookup.DataSource = materialTK;
+            rsItemlookup.NullText = "Chọn số tài khoản";
+            rsItemlookup.ValueMember = "AccountID";
+            rsItemlookup.DisplayMember = "TKNumber";
+            gridControlNhapDinhKhoan.RepositoryItems.Add(rsItemlookup);
+            gridViewDinhKhoan.Columns["TKNumber"].ColumnEdit = rsItemlookup;
+            gridViewDinhKhoan.BestFitColumns();
+
+            ///Doi Tuong
+            ///
+            MaterialNVController MaterialDT = new MaterialNVController();
+            List<MaterialDT> materialDT = MaterialDT.GetMaterialDT("CompanyID");
+            rDTLookup.DataSource = materialDT;
+            rDTLookup.NullText = "Chọn đối tượng";
+            rDTLookup.ValueMember = "CustomerID";
+            rDTLookup.DisplayMember = "CustomerSName";
+            gridControlNhapDinhKhoan.RepositoryItems.Add(rDTLookup);
+            gridViewDinhKhoan.Columns["CustomerName"].ColumnEdit = rDTLookup;
+            gridViewDinhKhoan.BestFitColumns();
+
+            ///So cai
+            ///
+            MaterialNVController MaterialGL = new MaterialNVController();
+            List<MaterialGL> materialGL = MaterialGL.GetMaterialGL("CompanyID");
+            rGLLookup.DataSource = materialGL;
+            rGLLookup.NullText = "Chọn sổ cái";
+            rGLLookup.ValueMember = "GeneralLedgerID";
+            rGLLookup.DisplayMember = "GeneralLedgerName";
+            gridControlNhapDinhKhoan.RepositoryItems.Add(rGLLookup);
+            gridViewDinhKhoan.Columns["GeneralLedgerName"].ColumnEdit = rGLLookup;
+            gridViewDinhKhoan.BestFitColumns();
+           
+
+
+        }
+
+        void initdatasourceGridview()
+        {
+            VoucherDetailDinhKhoanController controller = new VoucherDetailDinhKhoanController();
+            VoucherDetailDinhKhoan = new BindingList<VoucherDetailDinhKhoan>(controller.GetVoucherDetailDinhKhoan("a"));
+            gridControlNhapDinhKhoan.DataSource = VoucherDetailDinhKhoan;
         }
     }
 }

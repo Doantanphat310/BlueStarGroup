@@ -92,6 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\SSCommonConst.cs" />
+    <Compile Include="Models\MaterialGL.cs" />
+    <Compile Include="Models\MaterialNV.cs" />
+    <Compile Include="Models\MaterialDT.cs" />
+    <Compile Include="Models\MaterialTK.cs" />
+    <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Models\VoucherDetailDinhKhoan.cs" />
     <Compile Include="Models\VouchersInsert.cs" />
     <Compile Include="Models\VouchersDetailInsert.cs" />
     <Compile Include="Models\VouchersType.cs" />

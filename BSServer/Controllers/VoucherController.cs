@@ -1,4 +1,7 @@
-﻿using BSServer._Core.Context;
+﻿using BSCommon.Models;
+using BSServer._Core.Context;
+using BSServer.DAOs;
+using BSServer.Logics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,39 +14,38 @@ namespace BSServer.Controllers
     {
         private BSContext Context { get; set; }
 
-        private CustomerDAO CustomerDAO { get; set; }
+        private VoucherDAO VoucherDAO { get; set; }
 
 
-        private CustomerLogic CustomerLogic { get; set; }
+        private VoucherLogic VoucherLogic { get; set; }
 
-        public CustomerController()
+        public VoucherController()
         {
             this.Context = new BSContext();
             this.Context.Database.Log = Console.Write;
 
-            this.CustomerDAO = new CustomerDAO(this.Context);
-            this.CustomerLogic = new CustomerLogic(this.Context);
+            this.VoucherDAO = new VoucherDAO(this.Context);
+            this.VoucherLogic = new VoucherLogic(this.Context);
         }
 
-        public List<Customer> GetCustomers()
+        public List<Voucher> GetVouchers()
         {
-            return this.CustomerDAO.GetCustommers();
+            return this.VoucherDAO.GetVouchers();
+        }
+        public List<Voucher> GetVouchersCompany(string companyID)
+        {
+            return this.VoucherDAO.GetVouchersCompany(companyID);
         }
 
-        public List<Customer> GetCustommerNotCompany(string companyID)
+        public List<Voucher> GetVouchersConditionCompany(string companyID, DateTime NgayBD, DateTime NgayKT, string voucherType)
         {
-            return this.CustomerDAO.GetCustommerNotCompany(companyID);
-        }
-
-        public List<Customer> GetCustommersCompany(string companyID)
-        {
-            return this.CustomerDAO.GetCustommersCompany(companyID);
+            return this.VoucherDAO.GetVouchersCondition(companyID,NgayBD,NgayKT,voucherType);
         }
 
 
-        public bool SaveCustommers(List<Customer> customerCompanies)
+        public bool SaveCustommers(List<VouchersInsert> voucherCompanies)
         {
-            return this.CustomerLogic.SaveCustommersCompany(customerCompanies);
+            return this.VoucherLogic.SaveVouchersCompany(voucherCompanies);
         }
 
         public void Dispose()

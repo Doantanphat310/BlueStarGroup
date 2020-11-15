@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Models
 {
-    class VouchersDetailInsert
+   public class VoucherDetailDinhKhoan
     {
         public string NV { get; set; }
         public string TKNumber { get; set; }
         public string CustomerName { get; set; }
         public string GeneralLedgerName { get; set; }
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 }
