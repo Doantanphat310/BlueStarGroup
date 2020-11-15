@@ -16,10 +16,9 @@ namespace BSClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
 
-            Login fLogin = new Login();
-            if (fLogin.ShowDialog() == DialogResult.OK)
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
             {
                 Application.Run(new MainForm());
             }

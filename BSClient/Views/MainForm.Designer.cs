@@ -36,8 +36,8 @@
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ACE_Company = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Custommers_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElementAccountGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElementHangHoa = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -107,8 +107,8 @@
             this.accordionControlElement4.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.ACE_Company,
             this.Custommers_Button,
-            this.accordionControlElement6,
-            this.accordionControlElement7,
+            this.accordionControlElementAccountGroup,
+            this.accordionControlElementHangHoa,
             this.UserList_Button,
             this.accordionControlElement10});
             this.accordionControlElement4.Expanded = true;
@@ -129,17 +129,19 @@
             this.Custommers_Button.Text = "Đối tượng - Khách hàng";
             this.Custommers_Button.Click += new System.EventHandler(this.Custommers_Button_Click);
             // 
-            // accordionControlElement6
+            // accordionControlElementAccountGroup
             // 
-            this.accordionControlElement6.Name = "accordionControlElement6";
-            this.accordionControlElement6.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement6.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
+            this.accordionControlElementAccountGroup.Name = "accordionControlElementAccountGroup";
+            this.accordionControlElementAccountGroup.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElementAccountGroup.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
+            this.accordionControlElementAccountGroup.Click += new System.EventHandler(this.accordionControlElementAccountGroup_Click);
             // 
-            // accordionControlElement7
+            // accordionControlElementHangHoa
             // 
-            this.accordionControlElement7.Name = "accordionControlElement7";
-            this.accordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement7.Text = "Hàng hóa";
+            this.accordionControlElementHangHoa.Name = "accordionControlElementHangHoa";
+            this.accordionControlElementHangHoa.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElementHangHoa.Text = "Hàng hóa";
+            this.accordionControlElementHangHoa.Click += new System.EventHandler(this.accordionControlElementHangHoa_Click);
             // 
             // UserList_Button
             // 
@@ -173,8 +175,6 @@
             this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
-            this.BackgroundImageStore = global::BSClient.Properties.Resources.BackGroup;
             this.ClientSize = new System.Drawing.Size(1014, 763);
             this.ControlContainer = this.Content;
             this.Controls.Add(this.Content);
@@ -202,9 +202,9 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Voucher;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElementAccountGroup;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElementHangHoa;
         private DevExpress.XtraBars.Navigation.AccordionControlElement UserList_Button;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Company;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;

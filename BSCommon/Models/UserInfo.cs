@@ -31,6 +31,5 @@ namespace BSCommon.Models
         public string CreateUser { get; set; }
 
         public string UpdateUser { get; set; }
-
     }
 }

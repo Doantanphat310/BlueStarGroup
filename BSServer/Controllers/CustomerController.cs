@@ -27,6 +27,7 @@ namespace BSServer.Controllers
 
         public List<Customer> GetCustomers()
         {
+            
             return this.CustomerDAO.GetCustommers();
         }
 

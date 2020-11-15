@@ -104,7 +104,6 @@ namespace BSClient.Views
         private void InitGridView()
         {
             Customer_GridView.Columns.Clear();
-
             ClientCommon.AddColumn(this.Customer_GridView, "CustomerID", "Mã Khách hàng", 100, false);
             ClientCommon.AddColumn(this.Customer_GridView, "CustomerName", "Tên Khách hàng", 250);
             ClientCommon.AddColumn(this.Customer_GridView, "CustomerSName", "Tên viết tắt", 100);
@@ -134,7 +133,6 @@ namespace BSClient.Views
             {
                 return;
             }
-
             Customer row = e.Row as Customer;
             if (!string.IsNullOrWhiteSpace(row.CustomerID))
             {

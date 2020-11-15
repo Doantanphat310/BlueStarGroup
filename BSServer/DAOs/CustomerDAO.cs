@@ -67,13 +67,13 @@ namespace BSServer.DAOs
         public int InsertCustommersCompany(Customer customer)
         {
             string sql = @"
-CustomerInsert
-    @CustomerName,
-    @CustomerSName, 
-    @Address,
-    @Phone,
-    @UserId
-";
+            CustomerInsert
+            @CustomerName,
+            @CustomerSName, 
+            @Address,
+            @Phone,
+            @UserId
+            ";
             SqlParameter[] param = new SqlParameter[]
             {
                 new SqlParameter("@CustomerName", customer.CustomerName),

@@ -40,5 +40,19 @@ namespace BSClient
             this.ShowControl(control, Content);
             this.Text = this.GetTitle(BSTitle.CustomerList);
         }
+
+        private void accordionControlElementHangHoa_Click(object sender, EventArgs e)
+        {
+            ItemType control = new ItemType();
+            this.ShowControl(control, Content);
+            this.Text = " Blue Star Group - Thông tin hàng hóa";
+        }
+
+        private void accordionControlElementAccountGroup_Click(object sender, EventArgs e)
+        {
+            AccountGroup control = new AccountGroup();
+            this.ShowControl(control, Content);
+            this.Text = " Blue Star Group - Thông tin hệ thống tài khoản và sổ cái";
+        }
     }
 }
