@@ -35,9 +35,19 @@ namespace BSClient.Utility
             string fieldName,
             string caption,
             int width,
-            bool isAllowEdit = true)
+            object itemSource,
+            bool isAllowEdit = true,
+            params string[] ColumnNames)
         {
-            RepositoryItemComboBox itemCtrl = new RepositoryItemComboBox();
+            var itemCtrl = new RepositoryItemLookUpEdit
+            {
+                DataSource = itemSource
+            };
+
+            foreach (string col in ColumnNames)
+            {
+                itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col, col));
+            }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
         }
