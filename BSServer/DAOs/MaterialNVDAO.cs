@@ -47,6 +47,16 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
+        ///SPCheckMaterialTK_GL '111','GL6'    
+        public List<MaterialCheck> GetMaterialCheck(string accountID, string GLID)
+        {
+            return this.Context.Database.SqlQuery<MaterialCheck>(
+            "SPCheckMaterialTK_GL @AccountID, @GeneralLedgerID",
+            new SqlParameter("@AccountID", accountID),
+            new SqlParameter("@GeneralLedgerID", GLID)
+            ).ToList();
+        }
+
 
     }
 }

@@ -153,6 +153,7 @@
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.DKID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -311,6 +312,7 @@
             this.simpleButtonNewSave.Size = new System.Drawing.Size(98, 37);
             this.simpleButtonNewSave.TabIndex = 20;
             this.simpleButtonNewSave.Text = "Lưu mới";
+            this.simpleButtonNewSave.Click += new System.EventHandler(this.simpleButtonNewSave_Click);
             // 
             // labelControl6
             // 
@@ -359,6 +361,7 @@
             // gridViewDinhKhoan
             // 
             this.gridViewDinhKhoan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.DKID,
             this.NV,
             this.TK,
             this.DT,
@@ -367,8 +370,12 @@
             this.gridViewDinhKhoan.GridControl = this.gridControlNhapDinhKhoan;
             this.gridViewDinhKhoan.Name = "gridViewDinhKhoan";
             this.gridViewDinhKhoan.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridViewDinhKhoan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridViewDinhKhoan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridViewDinhKhoan.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewDinhKhoan_RowStyle);
+            this.gridViewDinhKhoan.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridViewDinhKhoan_CustomRowCellEdit);
             this.gridViewDinhKhoan.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewDinhKhoan_ShowingEditor);
+            this.gridViewDinhKhoan.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDinhKhoan_CellValueChanged);
+            this.gridViewDinhKhoan.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridViewDinhKhoan_RowUpdated);
             // 
             // NV
             // 
@@ -442,6 +449,8 @@
             this.searchLookUpEditChungTuTypeDK.Properties.PopupView = this.gridView2;
             this.searchLookUpEditChungTuTypeDK.Size = new System.Drawing.Size(164, 20);
             this.searchLookUpEditChungTuTypeDK.TabIndex = 15;
+            this.searchLookUpEditChungTuTypeDK.Popup += new System.EventHandler(this.searchLookUpEditChungTuTypeDK_Popup);
+            this.searchLookUpEditChungTuTypeDK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditChungTuTypeDK_KeyDown);
             // 
             // gridView2
             // 
@@ -514,6 +523,8 @@
             this.simpleButtonLoadVoucher.Size = new System.Drawing.Size(25, 23);
             this.simpleButtonLoadVoucher.TabIndex = 23;
             this.simpleButtonLoadVoucher.Click += new System.EventHandler(this.simpleButtonLoadVoucher_Click);
+            this.simpleButtonLoadVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.simpleButtonLoadVoucher_KeyDown);
+            this.simpleButtonLoadVoucher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.simpleButtonLoadVoucher_KeyPress);
             // 
             // searchLookUpEditVoucherTypeXemChungTU
             // 
@@ -524,6 +535,8 @@
             this.searchLookUpEditVoucherTypeXemChungTU.Properties.PopupView = this.gridView10;
             this.searchLookUpEditVoucherTypeXemChungTU.Size = new System.Drawing.Size(135, 20);
             this.searchLookUpEditVoucherTypeXemChungTU.TabIndex = 22;
+            this.searchLookUpEditVoucherTypeXemChungTU.Popup += new System.EventHandler(this.searchLookUpEditVoucherTypeXemChungTU_Popup);
+            this.searchLookUpEditVoucherTypeXemChungTU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditVoucherTypeXemChungTU_KeyDown);
             // 
             // gridView10
             // 
@@ -532,6 +545,7 @@
             this.gridColumn2});
             this.gridView10.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView10.Name = "gridView10";
+            this.gridView10.OptionsEditForm.ShowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
             this.gridView10.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView10.OptionsView.ShowGroupPanel = false;
             // 
@@ -1484,6 +1498,13 @@
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "Tên công ty đang thực hiện";
             // 
+            // DKID
+            // 
+            this.DKID.Caption = "VouchersDetailID";
+            this.DKID.FieldName = "VouchersDetailID";
+            this.DKID.Name = "DKID";
+            this.DKID.OptionsColumn.AllowEdit = false;
+            // 
             // VoucherControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1695,5 +1716,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn SC;
         private DevExpress.XtraGrid.Columns.GridColumn Tien;
         private DevExpress.XtraEditors.SimpleButton simpleButtonLoadVoucher;
+        private DevExpress.XtraGrid.Columns.GridColumn DKID;
     }
 }

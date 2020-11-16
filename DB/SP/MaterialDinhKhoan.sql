@@ -43,17 +43,21 @@ begin
 Select AccountID, GeneralLedgerName,GeneralLedgerID from GeneralLedger
 end
 
+select * from Accounts
+where AccountID = '1123'
 
-SPCheckMaterialTK_GL '111','GL6'
+SPCheckMaterialTK_GL '1113','GL2'
+select AccountID from Accounts where ParentID = '111'
+select * from GeneralLedger where AccountID in ( select AccountID from Accounts where ParentID = '111')
+select GeneralLedgerID,GeneralLedgerName,AccountID,ParentID from GeneralLedger
 
 alter proc SPCheckMaterialTK_GL
 @AccountID varchar(50), @GeneralLedgerID varchar(50)
 as
 begin
-	Declare @GeneralLedgerIDAccountID varchar(50)
-	set @GeneralLedgerIDAccountID = (Select GeneralLedgerID from GeneralLedger where AccountID = @AccountID )
-	if(exists(select * from GeneralLedger where AccountID = @AccountID and GeneralLedgerID = @GeneralLedgerID) 
-	or exists(Select * from GeneralLedger where GeneralLedgerID = @GeneralLedgerID and ParentID = @GeneralLedgerIDAccountID))
+	if(exists(select * from GeneralLedger where AccountID = @AccountID and GeneralLedgerID = @GeneralLedgerID))
+	or
+	(exists(Select * from GeneralLedger where @GeneralLedgerID in ( select GeneralLedgerID from GeneralLedger where AccountID in ( select AccountID from Accounts where ParentID = @AccountID))))
 	begin
 		Select '1' as msgCode, 'Correct' as msgName
 	end
@@ -63,11 +67,12 @@ end
 
 SPSelectVoucherDinhKhoanWithVoucher '1'
 
-Create proc SPSelectVoucherDinhKhoanWithVoucher
+alter proc SPSelectVoucherDinhKhoanWithVoucher
 @VoucherID varchar(50)
 as
 begin
 select 
+	A.VouchersDetailID,
 	case
 	when DebitAmount is not null then 'N'
 	When CreditAmount is not null then 'C'
@@ -86,7 +91,7 @@ on A.CustomerID = D.CustomerID
 where VouchersID = @VoucherID
 end
 
-
+SPSelectVoucherDinhKhoanWithVoucher
 Create proc SPSelectVoucherDinhKhoan
 as
 begin
