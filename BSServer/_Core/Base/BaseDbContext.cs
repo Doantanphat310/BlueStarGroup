@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
@@ -26,7 +27,15 @@ namespace BSServer._Core.Base
 {paramString}
 ";
 
-            return this.Database.SqlQuery<T>(sql, sqlParameter).ToList();
+            try
+            {
+                return this.Database.SqlQuery<T>(sql, sqlParameter).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Xử lý thất bại. " + ex.Message);
+                return null;
+            }
         }
 
         public int ExecuteDataFromProcedure(string procedureName, params SqlParameter[] sqlParameter)
@@ -36,8 +45,16 @@ namespace BSServer._Core.Base
 {procedureName}
 {paramString}
 ";
-
-            return this.Database.ExecuteSqlCommand(sql, sqlParameter);
+            try
+            {
+return this.Database.ExecuteSqlCommand(sql, sqlParameter);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Xử lý thất bại. " + ex.Message);
+                return -1;
+            }
+            
         }
 
         private string GetSqlParamString(SqlParameter[] sqlParameter)

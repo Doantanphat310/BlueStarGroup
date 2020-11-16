@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSCommon.Constant;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,5 +32,11 @@ namespace BSCommon.Models
         public string CreateUser { get; set; }
 
         public string UpdateUser { get; set; }
+
+        [NotMapped]
+        public ModifyMode Status { get; set; }
+
+        [NotMapped]
+        public string PasswordDisplay { get; set; }
     }
 }

@@ -99,5 +99,50 @@ namespace BSServer.DAOs
                 return false;
             }
         }
+
+        public bool InsertUserRoleCompany(UserRoleInfo userRoleInfo)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@UserID", userRoleInfo.UserID),
+                    new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
+                    new SqlParameter("@RoleID", userRoleInfo.UserRoleID),
+                    new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
+                };
+
+                this.Context.ExecuteDataFromProcedure("UserRoleCompanyInsert", sqlParameters);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Insert UserRoleCompany Fail! " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteUserRoleCompany(UserRoleInfo userRoleInfo)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@UserID", userRoleInfo.UserID),
+                    new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
+                    new SqlParameter("@RoleID", userRoleInfo.UserRoleID)
+                };
+
+                this.Context.ExecuteDataFromProcedure("UserRoleCompanyDelete", sqlParameters);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Delete UserRoleCompany Fail! " + ex.Message);
+                return false;
+            }
+        }
     }
 }

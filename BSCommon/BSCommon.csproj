@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant\CommonEnum.cs" />
     <Compile Include="Constant\SSCommonConst.cs" />
     <Compile Include="Models\MaterialGL.cs" />
     <Compile Include="Models\MaterialNV.cs" />

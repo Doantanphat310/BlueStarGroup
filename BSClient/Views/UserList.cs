@@ -1,13 +1,19 @@
 ﻿using BSClient.Base;
 using BSClient.Utility;
+using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
+using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BSClient.Views
 {
@@ -17,7 +23,9 @@ namespace BSClient.Views
 
         public BindingList<UserRoleInfo> DetailData { get; set; }
 
-        private int EntryMode = 0;
+        public List<UserInfo> MasterDelete { get; set; }
+
+        public List<UserRoleInfo> DetailDelete { get; set; }
 
         public UserList()
         {
@@ -30,21 +38,26 @@ namespace BSClient.Views
 
         private void InitComboBox()
         {
-            List<MasterInfo> userRoles = MasterInfoManager.GetUserRoles();
-            UserRole_ComboBox.Properties.DataSource = userRoles;
-            UserRole_ComboBox.Properties.ValueMember = "DetailCd";
-            UserRole_ComboBox.Properties.DisplayMember = "Value";
-
-            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("DetailCd", "Code", 50));
-            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Value", "Role", 100));
-
             List<Company> companys = GetCompanyList();
             CompanyID_ComboBox.Properties.DataSource = companys;
             CompanyID_ComboBox.Properties.ValueMember = "CompanyID";
             CompanyID_ComboBox.Properties.DisplayMember = "CompanyName";
+            CompanyID_ComboBox.Properties.ShowHeader = false;
+            CompanyID_ComboBox.Properties.NullText = "Chọn Công ty";
+            CompanyID_ComboBox.Properties.PopupFilterMode = PopupFilterMode.Contains;
 
             CompanyID_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("CompanyID", 50));
             CompanyID_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("CompanyName", 100));
+
+            List<MasterInfo> userRoles = MasterInfoManager.GetUserRoles();
+            UserRole_ComboBox.Properties.DataSource = userRoles;
+            UserRole_ComboBox.Properties.ValueMember = "DetailCd";
+            UserRole_ComboBox.Properties.DisplayMember = "Value";
+            UserRole_ComboBox.Properties.ShowHeader = false;
+            UserRole_ComboBox.Properties.NullText = "Chọn quyền";
+
+            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("DetailCd", 50));
+            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Value", 100));
         }
 
         private List<Company> GetCompanyList()
@@ -57,6 +70,13 @@ namespace BSClient.Views
 
         private void LoadGrid()
         {
+            LoadMasterGrid();
+
+            LoadDetailGrid();
+        }
+
+        private void LoadMasterGrid()
+        {
             InitGridView();
 
             SetupGridView();
@@ -64,82 +84,24 @@ namespace BSClient.Views
             LoadGridView();
         }
 
-        private void CustomerList_AddNew_Click(object sender, EventArgs e)
+        private void LoadDetailGrid()
         {
-            Users_GridView.AddNewRow();
-        }
+            InitDetailGridView();
 
-        private void CustomerList_Delete_Click(object sender, EventArgs e)
-        {
-            //int[] selectIndex = User_GridView.GetSelectedRows();
+            SetupDetailGridView();
 
-            //foreach (int index in selectIndex)
-            //{
-            //    Customer delete = User_GridView.GetRow(index) as Customer;
-            //    if (string.IsNullOrWhiteSpace(delete.CustomerID))
-            //    {
-            //        continue;
-            //    }
-
-            //    delete.Status = 3;
-            //    CustomersDelete.Add(delete);
-            //}
-
-            //User_GridView.DeleteSelectedRows();
-        }
-
-        private void CustomerList_Save_Click(object sender, EventArgs e)
-        {
-            //List<Customer> customersSave = new List<Customer>();
-
-            //foreach (var row in this.Custommers)
-            //{
-            //    if (string.IsNullOrWhiteSpace(row.CustomerID) && !string.IsNullOrWhiteSpace(row.CustomerName))
-            //    {
-            //        row.Status = 1;
-            //        customersSave.Add(row);
-            //        continue;
-            //    }
-
-            //    if (row.Status == 2 && !string.IsNullOrWhiteSpace(row.CustomerID))
-            //    {
-            //        row.Status = 2;
-            //        customersSave.Add(row);
-            //        continue;
-            //    }
-            //}
-
-            //if (CustomersDelete != null)
-            //{
-            //    customersSave.AddRange(CustomersDelete);
-            //}
-
-            //if (customersSave.Count > 0)
-            //{
-            //    CustomerController controller = new CustomerController();
-            //    if (controller.SaveCustommers(customersSave))
-            //    {
-            //        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-            //        CustomersDelete = new List<Customer>();
-            //        this.LoadGridView();
-            //    }
-            //    else
-            //    {
-            //        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
-            //    }
-            //}
+            LoadDetailGridView();
         }
 
         private void InitGridView()
         {
             this.Users_GridView.Columns.Clear();
 
-            this.Users_GridView.AddColumn("UserID", "Tên đăng nhập", 100, false);
-            this.Users_GridView.AddColumn("UserName", "Tên người dùng", 250, false);
-            this.Users_GridView.AddColumn("Phone", "Điện thoại", 80, false);
-            this.Users_GridView.AddColumn("Address", "Địa chỉ", 350, false);
-
-            InitDetailGridView();
+            this.Users_GridView.AddColumn("UserID", "Tên đăng nhập", 100, true);
+            this.Users_GridView.AddColumn("PasswordDisplay", "Mật khẩu", 100, true);
+            this.Users_GridView.AddColumn("UserName", "Tên người dùng", 250, true);
+            this.Users_GridView.AddColumn("Phone", "Điện thoại", 80, true);
+            this.Users_GridView.AddColumn("Address", "Địa chỉ", 350, true);
         }
 
         private void InitDetailGridView()
@@ -153,14 +115,17 @@ namespace BSClient.Views
 
         private void SetupGridView()
         {
-            this.Users_GridView.SetupGridView(multiSelect: false);
+            this.Users_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
 
-            this.SetupDetailGridView();
+            this.Users_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
+            this.Users_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void SetupDetailGridView()
         {
             UserRole_GridView.SetupGridView();
+
+            UserRole_GridView.OptionsView.ShowFilterPanelMode = ShowFilterPanelMode.Never;
         }
 
         private void LoadGridView()
@@ -168,8 +133,6 @@ namespace BSClient.Views
             UserController controller = new UserController();
             MasterData = new BindingList<UserInfo>(controller.GetUsers());
             Users_GridControl.DataSource = MasterData;
-
-            this.LoadDetailGridView();
         }
 
         private void LoadDetailGridView()
@@ -179,169 +142,242 @@ namespace BSClient.Views
             UserRole_GridControl.DataSource = DetailData;
         }
 
-        private void Customer_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
-        {
-            //if (e.Row == null)
-            //{
-            //    return;
-            //}
-
-            //Customer row = e.Row as Customer;
-            //if (!string.IsNullOrWhiteSpace(row.CustomerID))
-            //{
-            //    row.Status = 2;
-            //}
-        }
-
-        private void UserRole_GridView_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void UserAdd_Button_Click(object sender, EventArgs e)
-        {
-            EntryMode = 1;
-            SetEnabelEdit();
-        }
-
         private void UserDelete_Button_Click(object sender, EventArgs e)
         {
-            if (Users_GridView.SelectedRowsCount <= 0)
-            {
-                return;
-            }
+            int[] selectIndex = Users_GridView.GetSelectedRows();
 
-            using (UserController controller = new UserController())
+            foreach (int index in selectIndex)
             {
-                controller.DeleteUser(UserID_TextBox.Text);
-            };
+                UserInfo delete = Users_GridView.GetRow(index) as UserInfo;
+                if (delete.Status == ModifyMode.Insert)
+                {
+                    continue;
+                }
+
+                delete.Status = ModifyMode.Delete;
+                MasterDelete.Add(delete);
+            }
 
             Users_GridView.DeleteSelectedRows();
         }
 
-        private void UserUpdate_Button_Click(object sender, EventArgs e)
+        private void UserSave_Button_Click(object sender, EventArgs e)
         {
-            if (EntryMode == 1)
+            List<UserInfo> saveData = this.MasterData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+
+            if (MasterDelete != null)
             {
-                this.InsertUser();
-            }
-            else if (EntryMode == 2)
-            {
-                this.UpdateUser();
+                saveData?.AddRange(MasterDelete);
             }
 
-            EntryMode = 0;
-            SetEnabelEdit();
+            if (saveData?.Count > 0)
+            {
+                UserController controller = new UserController();
+                if (controller.SaveUser(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    MasterDelete = new List<UserInfo>();
+                    this.LoadGridView();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
         }
 
-        private void Users_GridView_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        private void UserRoleAddNew_Button_Click(object sender, EventArgs e)
         {
-            var selected = Users_GridView.GetSelectedRows();
+            string userID = Role_UserName_TextBox.Text;
+            string companyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID;
+            string userRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().DetailCd;
 
-            if (selected == null || selected.Length == 0)
+            if (string.IsNullOrEmpty(userID))
             {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
                 return;
             }
 
-            UserInfo selectedRow = Users_GridView.GetRow(selected[0]) as UserInfo;
-            Role_UserName_TextBox.Text = selectedRow.UserID;
-            UserName_TextBox.Text = selectedRow.UserName;
-            UserID_TextBox.Text = selectedRow.UserID;
-            Phone_TextBox.Text = selectedRow.Phone;
-            Address_TextBox.Text = selectedRow.Address;
-            Password_TextBox.Text = string.Empty;
-        }
-
-        private void New_Button_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Delete_Button_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserEdit_Button_Click(object sender, EventArgs e)
-        {
-            EntryMode = 2;
-            SetEnabelEdit();
-        }
-
-        private void SetEnabelEdit()
-        {
-            UserAdd_Button.Enabled = false;
-            UserEdit_Button.Enabled = false;
-            User_LayoutGroup.Enabled = true;
-            UserCancel_Button.Enabled = true;
-            UserUpdate_Button.Enabled = true;
-            UserDelete_Button.Enabled = false;
-
-            if (EntryMode == 1)
+            if (string.IsNullOrEmpty(companyID))
             {
-                UserID_TextBox.Enabled = true;
-            }
-            else if (EntryMode == 2)
-            {
-                UserID_TextBox.Enabled = false;
-            }
-            else if (EntryMode == 0)
-            {
-                User_LayoutGroup.Enabled = false;
-
-                UserAdd_Button.Enabled = true;
-                UserEdit_Button.Enabled = true;
-                UserDelete_Button.Enabled = true;
-                UserCancel_Button.Enabled = false;
-                UserUpdate_Button.Enabled = false;
-            }
-        }
-
-        private void UpdateUser()
-        {
-            var selected = Users_GridView.GetSelectedRows();
-            if (selected == null || selected.Length == 0)
-            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
                 return;
             }
 
-            var selectedRow = Users_GridView.GetRow(selected[0]) as UserInfo;
-            UserInfo userInfo = new UserInfo
+            if (string.IsNullOrEmpty(userRoleID))
             {
-                UserID = UserID_TextBox.Text,
-                Password = ClientCommon.IsCheckPass(Password_TextBox.Text, selectedRow.Password) ? null : Password_TextBox.Text,
-                UserName = UserName_TextBox.Text,
-                Phone = Phone_TextBox.Text,
-                Address = Address_TextBox.Text,
-            };
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
+                return;
+            }
 
-            using (UserController controller = new UserController())
+            if (DetailData.ToList().Find(o => o.UserID == userID && o.CompanyID == companyID && o.UserRoleID == userRoleID) != null)
             {
-                controller.UpdateUser(userInfo);
-            };
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000004);
+                return;
+            }
+
+            DetailData.Add(new UserRoleInfo
+            {
+                UserID = Role_UserName_TextBox.Text,
+                CompanyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID,
+                CompanyName = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyName,
+                UserRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().DetailCd,
+                UserRoleName = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Value,
+                Status = ModifyMode.Insert
+            });
         }
 
-        private void InsertUser()
+        private void UserRoleDelete_Button_Click(object sender, EventArgs e)
         {
-            UserInfo userInfo = new UserInfo
-            {
-                UserID = UserID_TextBox.Text,
-                Password = Password_TextBox.Text,
-                UserName = UserName_TextBox.Text,
-                Phone = Phone_TextBox.Text,
-                Address = Address_TextBox.Text,
-            };
+            int[] selectIndex = UserRole_GridView.GetSelectedRows();
 
-            using (UserController controller = new UserController())
+            foreach (int index in selectIndex)
             {
-                controller.InsertUser(userInfo);
-            };
+                UserRoleInfo delete = UserRole_GridView.GetRow(index).CastTo<UserRoleInfo>();
+                if (delete.Status == ModifyMode.Insert)
+                {
+                    continue;
+                }
+
+                delete.Status = ModifyMode.Delete;
+                DetailDelete.Add(delete);
+            }
+
+            UserRole_GridView.DeleteSelectedRows();
         }
 
         private void UserCancel_Button_Click(object sender, EventArgs e)
         {
-            EntryMode = 0;
-            SetEnabelEdit();
+            LoadGridView();
+        }
+
+        private void Users_GridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            int index = e.FocusedRowHandle;
+
+            if (Users_GridView.IsNewItemRow(index))
+            {
+                return;
+            }
+
+            UserInfo selectedRow = Users_GridView.GetRow(index).CastTo<UserInfo>();
+            if (selectedRow == null)
+            {
+                return;
+            }
+
+            Role_UserName_TextBox.Text = selectedRow.UserID;
+
+            // filter grid
+            UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";
+        }
+
+        private void Users_GridView_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            Console.WriteLine("edit");
+            string col = Users_GridView.FocusedColumn.FieldName;
+            int rowIndex = Users_GridView.FocusedRowHandle;
+            bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
+            if (col == "UserID" && !isNewRow)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void Users_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            int rowIndex = Users_GridView.FocusedRowHandle;
+            bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
+            GridView view = sender as GridView;
+            GridColumn column = view.Columns["UserID"];
+            UserInfo row = (e.Row as UserInfo);
+            if (isNewRow)
+            {
+                string userID = row.UserID;
+                // Kiểm tra tồn tại trong grid
+                if (MasterData.ToList().Count(o => o.UserID == userID) > 1)
+                {
+                    e.Valid = false;
+                    //Set errors with specific descriptions for the columns
+                    view.SetColumnError(column, "Tên đăng nhập đã tồn tại!");
+                }
+            }
+
+            if (string.IsNullOrEmpty(row.Password))
+            {
+                string userID = row.UserID;
+                // Kiểm tra tồn tại trong grid
+                if (MasterData.ToList().Count(o => o.UserID == userID) > 1)
+                {
+                    e.Valid = false;
+                    //Set errors with specific descriptions for the columns
+                    view.SetColumnError(column, "Mật khẩu không được trống.");
+                }
+            }
+        }
+
+        private void Users_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
+        {
+            // Suppress displaying the error message box
+            e.ExceptionMode = ExceptionMode.NoAction;
+        }
+
+        private void Users_GridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = Users_GridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            UserInfo row = e.Row as UserInfo;
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(row.PasswordDisplay))
+            {
+                row.Password = SHA1Helper.GetHash(row.PasswordDisplay);
+            }
+
+            row.Status = ModifyMode.Update;
+        }
+
+        private void Users_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            var item = e.CastTo<UserInfo>();
+            Console.WriteLine(item.UserID);
+        }
+
+        private void UserRoleCancel_Button_Click(object sender, EventArgs e)
+        {
+            LoadDetailGridView();
+        }
+
+        private void UserRoleSave_Button_Click(object sender, EventArgs e)
+        {
+            List<UserRoleInfo> saveData = this.DetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+
+            if (DetailDelete != null)
+            {
+                saveData?.AddRange(DetailDelete);
+            }
+
+            if (saveData?.Count > 0)
+            {
+                UserController controller = new UserController();
+                if (controller.SaveUserRoleCompany(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    DetailDelete = new List<UserRoleInfo>();
+                    this.LoadDetailGridView();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
         }
     }
 }

@@ -1,8 +1,12 @@
-﻿using BSCommon.Models;
+﻿using BSCommon.Constant;
+using BSCommon.Models;
 using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer.DAOs;
+using BSServer.Logics;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace BSServer.Controllers
 {
@@ -10,12 +14,15 @@ namespace BSServer.Controllers
     {
         private BSContext Context { get; set; }
 
+        private UserLogic UserLogic { get; set; }
+
         private UserDAO UserDAO { get; set; }
 
         public UserController()
         {
             this.Context = new BSContext();
             this.UserDAO = new UserDAO(this.Context);
+            this.UserLogic = new UserLogic(this.Context);
         }
 
         public UserInfo GetUserInfo(string userId)
@@ -32,7 +39,7 @@ namespace BSServer.Controllers
         {
             return this.UserDAO.GetUserRoleCompany();
         }
-        
+
         public bool InsertUser(UserInfo userInfo)
         {
             return this.UserDAO.InsertUser(userInfo);
@@ -46,6 +53,16 @@ namespace BSServer.Controllers
         public bool DeleteUser(string userID)
         {
             return this.UserDAO.DeleteUser(userID);
+        }
+
+        public bool SaveUser(List<UserInfo> dataList)
+        {
+            return this.UserLogic.SaveUser(dataList);
+        }
+
+        public bool SaveUserRoleCompany(List<UserRoleInfo> dataList)
+        {
+            return this.UserLogic.SaveUserRoleCompany(dataList);
         }
     }
 }
