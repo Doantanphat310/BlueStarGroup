@@ -80,12 +80,17 @@
     <Compile Include="DAOs\VoucherDetailDinhKhoanDAO.cs" />
     <Compile Include="DAOs\VouchersTypeDAO.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\MasterInfoController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAOs\CustomerDAO.cs" />
+    <Compile Include="DAOs\CompanyDAO.cs" />
+    <Compile Include="DAOs\MasterInfoDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\VoucherLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Core\Base\BaseController.cs" />
     <Compile Include="_Core\Base\BaseDAO.cs" />
     <Compile Include="_Core\Base\BaseDbContext.cs" />
     <Compile Include="_Core\Base\BaseLogic.cs" />
