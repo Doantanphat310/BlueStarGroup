@@ -1,4 +1,7 @@
-﻿using BSCommon.Models;
+﻿using BSCommon.Constant;
+using BSCommon.Models;
+using BSCommon.Utility;
+using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer.DAOs;
 using System;
@@ -7,15 +10,15 @@ using System.Data.Entity;
 
 namespace BSServer.Logics
 {
-    public class CustomerLogic
+    public class CustomerLogic : BaseLogic
     {
-        public CustomerLogic(BSContext context)
+        public CustomerLogic(BSContext context) : base(context)
         {
-            this.Context = context;
+            this.CommonDAO = new CommonDAO(this.Context);
             this.CustomerDAO = new CustomerDAO(this.Context);
         }
 
-        private BSContext Context { get; set; }
+        private CommonDAO CommonDAO { get; set; }
 
         private CustomerDAO CustomerDAO { get; set; }
 
@@ -30,18 +33,20 @@ namespace BSServer.Logics
                         switch (customer.Status)
                         {
                             // Add new
-                            case 1:
-                                this.CustomerDAO.InsertCustommersCompany(customer);
+                            case ModifyMode.Insert:
+                                customer.CustomerID = this.CommonDAO.GetCustomerID();
+
+                                this.CustomerDAO.InsertCustommer(customer);
                                 break;
 
                             // Update
-                            case 2:
-                                this.CustomerDAO.UpdateCustommersCompany(customer);
+                            case ModifyMode.Update:
+                                this.CustomerDAO.UpdateCustommer(customer);
                                 break;
 
                             // Delete
-                            case 3:
-                                this.CustomerDAO.DeleteCustommersCompany(customer);
+                            case ModifyMode.Delete:
+                                this.CustomerDAO.DeleteCustommer(customer);
                                 break;
                         }
                     }
@@ -53,7 +58,7 @@ namespace BSServer.Logics
                 catch (Exception e)
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
+                    Console.WriteLine("Lưu dữ liệu thất bại.\r\n" + e.Message);
                     return false;
                 }
             }

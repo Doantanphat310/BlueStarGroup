@@ -1,15 +1,20 @@
 ﻿using BSClient.Base;
 using BSClient.Utility;
+using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BSClient.Views
 {
-    public partial class CustomerList : BaseFormList
+    public partial class CustomerList : XtraUserControl
     {
         public BindingList<Customer> Custommers { get; set; }
 
@@ -20,10 +25,6 @@ namespace BSClient.Views
             InitializeComponent();
 
             LoadGrid();
-
-            this.Save_Click += CustomerList_Save_Click;
-            this.Delete_Click += CustomerList_Delete_Click;
-            this.AddNew_Click += CustomerList_AddNew_Click;
         }
 
         private void LoadGrid()
@@ -35,89 +36,21 @@ namespace BSClient.Views
             LoadGridView();
         }
 
-        private void CustomerList_AddNew_Click(object sender, EventArgs e)
-        {
-            Customer_GridView.AddNewRow();
-        }
-
-        private void CustomerList_Delete_Click(object sender, EventArgs e)
-        {
-            int[] selectIndex = Customer_GridView.GetSelectedRows();
-
-            foreach (int index in selectIndex)
-            {
-                Customer delete = Customer_GridView.GetRow(index) as Customer;
-                if (string.IsNullOrWhiteSpace(delete.CustomerID))
-                {
-                    continue;
-                }
-
-                delete.Status = 3;
-                CustomersDelete.Add(delete);
-            }
-
-            Customer_GridView.DeleteSelectedRows();
-        }
-
-        private void CustomerList_Save_Click(object sender, EventArgs e)
-        {
-            List<Customer> customersSave = new List<Customer>();
-
-            foreach (var row in this.Custommers)
-            {
-                if (string.IsNullOrWhiteSpace(row.CustomerID) && !string.IsNullOrWhiteSpace(row.CustomerName))
-                {
-                    row.Status = 1;
-                    customersSave.Add(row);
-                    continue;
-                }
-
-                if (row.Status == 2 && !string.IsNullOrWhiteSpace(row.CustomerID))
-                {
-                    row.Status = 2;
-                    customersSave.Add(row);
-                    continue;
-                }
-            }
-
-            if (CustomersDelete != null)
-            {
-                customersSave.AddRange(CustomersDelete);
-            }
-
-            if (customersSave.Count > 0)
-            {
-                CustomerController controller = new CustomerController();
-                if (controller.SaveCustommers(customersSave))
-                {
-                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    CustomersDelete = new List<Customer>();
-                    this.LoadGridView();
-                }
-                else
-                {
-                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
-                }
-            }
-        }
-
         private void InitGridView()
         {
             Customer_GridView.Columns.Clear();
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerID", "Mã Khách hàng", 100, false);
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerName", "Tên Khách hàng", 250);
-            ClientCommon.AddColumn(this.Customer_GridView, "CustomerSName", "Tên viết tắt", 100);
-            ClientCommon.AddColumn(this.Customer_GridView, "Phone", "Điện thoại", 80);
-            ClientCommon.AddColumn(this.Customer_GridView, "Address", "Địa chỉ", 350);
+            this.Customer_GridView.AddColumn("CustomerID", "Mã Khách hàng", 100, false);
+            this.Customer_GridView.AddColumn("CustomerName", "Tên Khách hàng", 250);
+            this.Customer_GridView.AddColumn("CustomerSName", "Tên viết tắt", 100);
+            this.Customer_GridView.AddColumn("Phone", "Điện thoại", 80);
+            this.Customer_GridView.AddColumn("Address", "Địa chỉ", 350);
         }
 
         private void SetupGridView()
         {
-            ClientCommon.SetupGridView(this.Customer_GridView);
-            this.Customer_GridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.Customer_GridView.OptionsView.ShowAutoFilterRow = true;
-            this.Customer_GridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-            this.Customer_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.Customer_GridView.SetupGridView();
+            this.Customer_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.Customer_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void LoadGridView()
@@ -129,15 +62,67 @@ namespace BSClient.Views
 
         private void Customer_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
-            if (e.Row == null)
+            Customer row = e.Row.CastTo<Customer>();
+            bool isNewRow = Customer_GridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                row.Status = ModifyMode.Insert;
+                return;
+            }
+
+            if (row.Status == ModifyMode.Insert)
             {
                 return;
             }
-            Customer row = e.Row as Customer;
-            if (!string.IsNullOrWhiteSpace(row.CustomerID))
+
+            row.Status = ModifyMode.Update;
+        }
+
+        private void Delete_Button_Click(object sender, EventArgs e)
+        {
+            this.Customer_GridView.DeleteSelectedRows();
+        }
+
+        private void Save_Button_Click(object sender, EventArgs e)
+        {
+            List<Customer> saveData = this.Custommers.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+
+            if (this.CustomersDelete != null)
             {
-                row.Status = 2;
+                saveData?.AddRange(this.CustomersDelete);
             }
+
+            if (saveData?.Count > 0)
+            {
+                CustomerController controller = new CustomerController();
+                if (controller.SaveCustommers(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    CustomersDelete = new List<Customer>();
+                    this.LoadGridView();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
+                }
+            }
+        }
+
+        private void Cancel_Button_Click(object sender, EventArgs e)
+        {
+            this.LoadGridView();
+        }
+
+        private void Customer_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            Customer delete = e.Row.CastTo<Customer>();
+            if (delete.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+
+            delete.Status = ModifyMode.Delete;
+            CustomersDelete.Add(delete);
         }
     }
 }

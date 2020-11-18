@@ -1,6 +1,8 @@
-﻿using DevExpress.XtraEditors.Repository;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Collections.Generic;
 
 namespace BSClient.Utility
 {
@@ -11,9 +13,21 @@ namespace BSClient.Utility
             string fieldName,
             string caption,
             int width,
-            bool isAllowEdit = true)
+            bool isAllowEdit = true,
+            string formatString = "")
         {
             RepositoryItemSpinEdit itemCtrl = new RepositoryItemSpinEdit();
+
+            if (!string.IsNullOrEmpty(formatString))
+            {
+                FormatInfo formatInfo = new FormatInfo
+                {
+                    FormatString = formatString,
+                    FormatType = FormatType.Numeric
+                };
+                itemCtrl.EditFormat.Assign(formatInfo);
+                itemCtrl.DisplayFormat.Assign(formatInfo);
+            }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
         }
@@ -37,16 +51,19 @@ namespace BSClient.Utility
             int width,
             object itemSource,
             bool isAllowEdit = true,
-            params string[] ColumnNames)
+            Dictionary<string, string> columnNames = null)
         {
             var itemCtrl = new RepositoryItemLookUpEdit
             {
                 DataSource = itemSource
             };
 
-            foreach (string col in ColumnNames)
+            if (columnNames != null)
             {
-                itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col, col));
+                foreach (var col in columnNames)
+                {
+                    itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col.Key, col.Value));
+                }
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
@@ -57,9 +74,21 @@ namespace BSClient.Utility
             string fieldName,
             string caption,
             int width,
-            bool isAllowEdit = true)
+            bool isAllowEdit = true,
+            string formatString = "")
         {
             RepositoryItemDateEdit itemCtrl = new RepositoryItemDateEdit();
+
+            if (!string.IsNullOrEmpty(formatString))
+            {
+                FormatInfo formatInfo = new FormatInfo
+                {
+                    FormatString = formatString,
+                    FormatType = FormatType.DateTime
+                };
+                itemCtrl.EditFormat.Assign(formatInfo);
+                itemCtrl.DisplayFormat.Assign(formatInfo);
+            }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
         }
@@ -82,7 +111,8 @@ namespace BSClient.Utility
             };
 
             col.OptionsColumn.AllowEdit = isAllowEdit;
-            col.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            col.AppearanceHeader.Options.UseTextOptions = true;
+            col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
 
             if (itemCtrl != null)
             {
@@ -99,9 +129,10 @@ namespace BSClient.Utility
             int checkBoxSelectorColumnWidth = 40,
             bool showAutoFilterRow = true)
         {
-            gridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-
+            gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
+
+            gridView.OptionsNavigation.AutoFocusNewRow = true;
 
             gridView.OptionsSelection.MultiSelect = multiSelect;
             if (multiSelect && checkBoxSelectorColumnWidth > 0)
@@ -111,10 +142,10 @@ namespace BSClient.Utility
                 gridView.OptionsSelection.CheckBoxSelectorColumnWidth = checkBoxSelectorColumnWidth;
             }
 
-            gridView.OptionsPrint.EnableAppearanceOddRow = true;
-
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
-            //gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            gridView.OptionsView.EnableAppearanceEvenRow = true;
+            gridView.OptionsView.ShowGroupPanel = false;
+            gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
         }
     }

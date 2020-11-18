@@ -33,116 +33,76 @@ namespace BSServer.DAOs
 
         public bool InsertUser(UserInfo userInfo)
         {
-            try
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                SqlParameter[] sqlParameters = new SqlParameter[]
-                {
-                    new SqlParameter("@UserID", userInfo.UserID),
-                    new SqlParameter("@Password", SHA1Helper.GetHash(userInfo.Password)),
-                    new SqlParameter("@UserName", userInfo.UserName),
-                    new SqlParameter("@Phone", userInfo.Phone),
-                    new SqlParameter("@Address", userInfo.Address),
-                    new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
-                };
+                new SqlParameter("@UserID", userInfo.UserID),
+                new SqlParameter("@Password", SHA1Helper.GetHash(userInfo.Password)),
+                new SqlParameter("@UserName", userInfo.UserName),
+                new SqlParameter("@Phone", userInfo.Phone),
+                new SqlParameter("@Address", userInfo.Address),
+                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
+            };
 
-                this.Context.ExecuteDataFromProcedure("UserInsert", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("UserInsert", sqlParameters);
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Insert User Fail! " + ex.Message);
-                return false;
-            }
+            return true;
         }
 
         public bool DeleteUser(string userID)
         {
-            try
-            {
-                SqlParameter[] sqlParameters = new SqlParameter[]
+            SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@UserID", userID),
                     new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
                };
 
-                this.Context.ExecuteDataFromProcedure("UserDelete", sqlParameters);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Delete User Fail! " + ex.Message);
-                return false;
-            }
+            this.Context.ExecuteDataFromProcedure("UserDelete", sqlParameters);
+            return true;
         }
 
         public bool UpdateUser(UserInfo userInfo)
         {
-            try
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                SqlParameter[] sqlParameters = new SqlParameter[]
-                {
-                    new SqlParameter("@UserID", userInfo.UserID),
-                    new SqlParameter("@Password", userInfo.Password),
-                    new SqlParameter("@UserName", userInfo.UserName),
-                    new SqlParameter("@Phone", userInfo.Phone),
-                    new SqlParameter("@Address", userInfo.Address),
-                    new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
-                };
+                new SqlParameter("@UserID", userInfo.UserID),
+                new SqlParameter("@Password", userInfo.Password),
+                new SqlParameter("@UserName", userInfo.UserName),
+                new SqlParameter("@Phone", userInfo.Phone),
+                new SqlParameter("@Address", userInfo.Address),
+                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
+            };
 
-                this.Context.ExecuteDataFromProcedure("UserUpdate", sqlParameters);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Update User Fail! " + ex.Message);
-                return false;
-            }
+            this.Context.ExecuteDataFromProcedure("UserUpdate", sqlParameters);
+            return true;
         }
 
         public bool InsertUserRoleCompany(UserRoleInfo userRoleInfo)
         {
-            try
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                SqlParameter[] sqlParameters = new SqlParameter[]
-                {
-                    new SqlParameter("@UserID", userRoleInfo.UserID),
-                    new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
-                    new SqlParameter("@RoleID", userRoleInfo.UserRoleID),
-                    new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
-                };
+                new SqlParameter("@UserID", userRoleInfo.UserID),
+                new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
+                new SqlParameter("@RoleID", userRoleInfo.UserRoleID),
+                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
+            };
 
-                this.Context.ExecuteDataFromProcedure("UserRoleCompanyInsert", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("UserRoleCompanyInsert", sqlParameters);
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Insert UserRoleCompany Fail! " + ex.Message);
-                return false;
-            }
+            return true;
         }
 
         public bool DeleteUserRoleCompany(UserRoleInfo userRoleInfo)
         {
-            try
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                SqlParameter[] sqlParameters = new SqlParameter[]
-                {
                     new SqlParameter("@UserID", userRoleInfo.UserID),
                     new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
                     new SqlParameter("@RoleID", userRoleInfo.UserRoleID)
-                };
+            };
 
-                this.Context.ExecuteDataFromProcedure("UserRoleCompanyDelete", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("UserRoleCompanyDelete", sqlParameters);
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Delete UserRoleCompany Fail! " + ex.Message);
-                return false;
-            }
+            return true;
         }
     }
 }
