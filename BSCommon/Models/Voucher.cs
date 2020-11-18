@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSCommon.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,12 @@ namespace BSCommon.Models
    public class Voucher
     {
         public string Description { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
         public string VouchersTypeID { get; set; }
-        public string VourchersTypeSumary { get; set; }
         public string CreateUser { get; set; }
         public string VouchersID { get; set; }
+        public string CompanyID { get; set; }
+        public ModifyMode Status { get; set; }
     }
 }

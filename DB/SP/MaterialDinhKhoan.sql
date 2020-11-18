@@ -30,10 +30,10 @@ begin
 Select CustomerID,CustomerSName,CustomerName from Customer
 end
 
-Create proc SPSelectMaterialTK
+alter proc SPSelectMaterialTK
 as
 begin
-Select AccountID, TKNumber, AccountsName from Accounts
+Select AccountID, AccountsName from Accounts
 end
 
 Create proc SPSelectMaterialGL

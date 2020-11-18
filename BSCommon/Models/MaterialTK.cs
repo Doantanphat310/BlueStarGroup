@@ -9,7 +9,6 @@ namespace BSCommon.Models
    public class MaterialTK
     {
         public string AccountID { get; set; }
-        public int TKNumber { get; set; }
         public string AccountsName { get; set; }
     }
 }

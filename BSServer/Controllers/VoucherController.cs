@@ -14,42 +14,45 @@ namespace BSServer.Controllers
     {
         private BSContext Context { get; set; }
 
-        private VoucherDAO VoucherDAO { get; set; }
-
-
         private VoucherLogic VoucherLogic { get; set; }
+
+        private VoucherDAO VoucherDAO { get; set; }
 
         public VoucherController()
         {
             this.Context = new BSContext();
-            this.Context.Database.Log = Console.Write;
-
             this.VoucherDAO = new VoucherDAO(this.Context);
             this.VoucherLogic = new VoucherLogic(this.Context);
         }
 
-        public List<Voucher> GetVouchers()
-        {
-            return this.VoucherDAO.GetVouchers();
-        }
-        public List<Voucher> GetVouchersCompany(string companyID)
+        public List<Voucher> GetVouchersCompany( string companyID)
         {
             return this.VoucherDAO.GetVouchersCompany(companyID);
         }
-
-        public List<Voucher> GetVouchersConditionCompany(string companyID, DateTime NgayBD, DateTime NgayKT, string voucherType)
+        //GetVouchersCondition
+        public List<Voucher> GetVouchersCondition(string companyID, DateTime NgayBD, DateTime NgayKT, string voucherType)
         {
-            return this.VoucherDAO.GetVouchersCondition(companyID,NgayBD,NgayKT,voucherType);
+            return this.VoucherDAO.GetVouchersCondition(companyID, NgayBD, NgayKT, voucherType);
         }
 
-
-        public bool SaveCustommers(List<VouchersInsert> voucherCompanies)
+        public bool InsertVouchers(Voucher voucherInfo)
         {
-            return this.VoucherLogic.SaveVouchersCompany(voucherCompanies);
+            return this.VoucherDAO.InsertVouchers(voucherInfo);
         }
 
-        public void Dispose()
+        public bool UpdateVoucherDetail(Voucher voucherInfo)
         {
+            return this.VoucherDAO.UpdateVoucher(voucherInfo);
+        }
+
+        public bool DeleteVoucher(string voucherID, string companyID)
+        {
+            return this.VoucherDAO.DeleteVoucher(voucherID,companyID);
+        }
+
+        public bool SaveVoucher(List<Voucher> dataList)
+        {
+            return this.VoucherLogic.SaveVoucher(dataList);
         }
     }
 }

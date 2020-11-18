@@ -99,6 +99,7 @@
     <Compile Include="Models\MaterialDT.cs" />
     <Compile Include="Models\MaterialTK.cs" />
     <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Models\VoucherDetail.cs" />
     <Compile Include="Models\VoucherDetailDinhKhoan.cs" />
     <Compile Include="Models\VouchersInsert.cs" />
     <Compile Include="Models\VouchersDetailInsert.cs" />

@@ -116,7 +116,6 @@ namespace BSClient.Views
         private void SetupGridView()
         {
             this.Users_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
-
             this.Users_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
             this.Users_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -124,7 +123,6 @@ namespace BSClient.Views
         private void SetupDetailGridView()
         {
             UserRole_GridView.SetupGridView();
-
             UserRole_GridView.OptionsView.ShowFilterPanelMode = ShowFilterPanelMode.Never;
         }
 
@@ -338,7 +336,7 @@ namespace BSClient.Views
 
             if (!string.IsNullOrEmpty(row.PasswordDisplay))
             {
-                row.Password = SHA1Helper.GetHash(row.PasswordDisplay);
+                row.Password = SHA1Helper.GetHash(row.PasswordDisplay); 
             }
 
             row.Status = ModifyMode.Update;

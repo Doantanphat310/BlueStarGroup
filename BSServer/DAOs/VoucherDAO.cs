@@ -19,33 +19,6 @@ namespace BSServer.DAOs
 
         private BSContext Context { get; set; }
 
-        //public List<CustomerCompany> GetCustommers(string customerId)
-        //{
-        //    if (string.IsNullOrEmpty(customerId))
-        //    {
-        //        return GetCustommers();
-        //    }
-        //    else
-        //    {
-        //        return GetCustommersById(customerId);
-        //    }
-        //}
-
-        //private List<CustomerCompany> GetCustommers()
-        //{
-        //    return this.Context.Customers.ToList();
-        //}
-
-        //private List<CustomerCompany> GetCustommersById(string customerId)
-        //{
-        //    return this.Context.Customers.Where(o => o.CustomerID == customerId).ToList();
-        //}
-
-        public List<Voucher> GetVouchers()
-        {
-            return Context.Database.SqlQuery<Voucher>("VoucherSelect").ToList();
-        }
-
         public List<Voucher> GetVouchersCompany(string companyID)
         {
             SqlParameter param = new SqlParameter("@CompanyID", companyID);
@@ -54,81 +27,85 @@ namespace BSServer.DAOs
                 .SqlQuery<Voucher>("VoucherCompanySelect @CompanyID", param)
                 .ToList();
         }
+        
 
         public List<Voucher> GetVouchersCondition(string companyID,DateTime NgayBD, DateTime NgayKT, string voucherType)
         {
             return   this.Context.Database.SqlQuery<Voucher>(
-            "VoucherConditionSelect @CompanyID, @NgayBD, @NgayKT, @VouchersTypeSumary, @UserName",
+            "VoucherConditionSelect @CompanyID, @NgayBD, @NgayKT, @VouchersTypeID, @UserName",
             new SqlParameter("@CompanyID", companyID),
             new SqlParameter("@NgayBD", NgayBD),
             new SqlParameter("@NgayKT", NgayKT),
-            new SqlParameter("@VouchersTypeSumary", voucherType),
-            new SqlParameter("@UserName", CommonInfo.UserInfo.UserName)
+            new SqlParameter("@VouchersTypeID", voucherType),
+            new SqlParameter("@UserName", CommonInfo.UserInfo.UserID)
             ).ToList();
         }
-
-        public int InsertVouchersCompany(VouchersInsert vouchersInsert)
+        
+        public bool InsertVouchers(Voucher voucherInfo)
         {
-            string sql = @"
-VouchersInsert
-@Amount,
-@Description, 
-@VouchersTypeID,
-@VourchersTypeSumary,
-@Date,
-@CompanyID,
-@CreateUser
-            ";
-            SqlParameter[] param = new SqlParameter[]
+            try
             {
-                new SqlParameter("@Amount", vouchersInsert.Amount),
-                new SqlParameter("@Description", vouchersInsert.Description ?? (object)DBNull.Value),
-                new SqlParameter("@VouchersTypeID", vouchersInsert.VouchersTypeID ?? (object)DBNull.Value),
-                new SqlParameter("@VourchersTypeSumary", vouchersInsert.VourchersTypeSumary ?? (object)DBNull.Value),
-                new SqlParameter("@Date", vouchersInsert.Date ?? (object)DBNull.Value),
-                new SqlParameter("@CompanyID", vouchersInsert.CompanyID ?? (object)DBNull.Value),
-                new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID)
-            };
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@VouchersID", voucherInfo.VouchersID),
+                    new SqlParameter("@Amount", voucherInfo.Amount),
+                    new SqlParameter("@Description", voucherInfo.Description),
+                    new SqlParameter("@VouchersTypeID", voucherInfo.VouchersTypeID),
+                    new SqlParameter("@Date", voucherInfo.Date),
+                    new SqlParameter("@CompanyID", voucherInfo.CompanyID),
+                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                };
+                this.Context.ExecuteDataFromProcedure("VouchersInsert", sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Insert Voucher Fail! " + ex.Message);
+                return false;
+            }
         }
-
-
-
-
-        public int UpdateVouchersCompany(VouchersInsert vouchersUpdate)
+        
+        public bool DeleteVoucher(string VoucherID, string CompanyID)
         {
-            string sql = @"
-VoucherUpdate
-    @VouchersID, 
-    @Amount,
-    @Description, 
-    @CreateUser
-";
-            SqlParameter[] param = new SqlParameter[]
+            try
             {
-                new SqlParameter("@VouchersID", vouchersUpdate.VouchersID),
-                new SqlParameter("@Amount", vouchersUpdate.Amount),
-                new SqlParameter("@Description", vouchersUpdate.Description ?? (object)DBNull.Value),
-                new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID)
-            };
+                SqlParameter[] sqlParameters = new SqlParameter[]
+               {
+                    new SqlParameter("@VoucherID", VoucherID),
+                    new SqlParameter("@CompanyID", CompanyID),
+                    new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
+               };
 
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
+                this.Context.ExecuteDataFromProcedure("VoucherDelete", sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Delete Vouchers Fail! " + ex.Message);
+                return false;
+            }
         }
-
-        public int DeleteVouchersCompany(VouchersInsert voucherUpdate)
+        
+        public bool UpdateVoucher(Voucher voucherInfo)
         {
-            string sql = @"
-VoucherDelete
-    @VoucherID, 
-    @UserId
-";
-            SqlParameter[] param = new SqlParameter[]
+            try
             {
-                new SqlParameter("VoucherID", voucherUpdate.VouchersID),
-                new SqlParameter("UserId", CommonInfo.UserInfo.UserID)
-            };
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@VouchersID", voucherInfo.VouchersID),
+                    new SqlParameter("@Amount", voucherInfo.Amount),
+                    new SqlParameter("@Description", voucherInfo.Description),
+                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                };
 
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
+                this.Context.ExecuteDataFromProcedure("VoucherUpdate", sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update Voucher Fail! " + ex.Message);
+                return false;
+            }
         }
     }
 }

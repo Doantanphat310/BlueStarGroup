@@ -33,23 +33,20 @@
             this.tabPaneVouchers = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageChungTu = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.VoucherDetail_groupControl = new DevExpress.XtraEditors.GroupControl();
+            this.Delete_VoucherDetailsimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.checkBoxThemDuLieu = new System.Windows.Forms.CheckBox();
             this.simpleButtonCapNhat = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonNewSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.richTextBoxVoucherContent = new System.Windows.Forms.RichTextBox();
-            this.gridControlNhapDinhKhoan = new DevExpress.XtraGrid.GridControl();
-            this.gridViewDinhKhoan = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.NV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TK = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Tien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.VoucherDetail_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.VoucherDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.searchLookUpEditChungTuTypeDK = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.VoucherTypeDK_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.VouchersTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VouchersTypeSName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,17 +54,17 @@
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButtonLoadVoucher = new DevExpress.XtraEditors.SimpleButton();
-            this.searchLookUpEditVoucherTypeXemChungTU = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.VoucherTypeXemChungTU_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.VouchersTypeID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditNgayKT = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditBDKT = new DevExpress.XtraEditors.DateEdit();
-            this.gridControlDSChungTu = new DevExpress.XtraGrid.GridControl();
-            this.gridViewDSChungTu = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Voucher_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.Voucher_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
@@ -153,30 +150,29 @@
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.DKID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
             this.tabPaneVouchers.SuspendLayout();
             this.tabNavigationPageChungTu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhapDinhKhoan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDinhKhoan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditChungTuTypeDK.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_groupControl)).BeginInit();
+            this.VoucherDetail_groupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditVoucherTypeXemChungTU.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlDSChungTu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDSChungTu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).BeginInit();
             this.tabNavigationPageLKVAT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -231,7 +227,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1080, 630);
             this.panelControl1.TabIndex = 0;
-            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // tabPaneVouchers
             // 
@@ -255,7 +250,7 @@
             // 
             this.tabNavigationPageChungTu.Caption = "Nhập chứng từ";
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton12);
-            this.tabNavigationPageChungTu.Controls.Add(this.groupControl2);
+            this.tabNavigationPageChungTu.Controls.Add(this.VoucherDetail_groupControl);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton7);
             this.tabNavigationPageChungTu.Controls.Add(this.groupControl1);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton15);
@@ -276,24 +271,46 @@
             this.simpleButton12.TabIndex = 26;
             this.simpleButton12.Text = "TK đối ứng";
             // 
-            // groupControl2
+            // VoucherDetail_groupControl
             // 
-            this.groupControl2.Controls.Add(this.simpleButtonCapNhat);
-            this.groupControl2.Controls.Add(this.simpleButtonNewSave);
-            this.groupControl2.Controls.Add(this.labelControl6);
-            this.groupControl2.Controls.Add(this.simpleButton2);
-            this.groupControl2.Controls.Add(this.simpleButton1);
-            this.groupControl2.Controls.Add(this.richTextBoxVoucherContent);
-            this.groupControl2.Controls.Add(this.gridControlNhapDinhKhoan);
-            this.groupControl2.Controls.Add(this.labelControl4);
-            this.groupControl2.Controls.Add(this.labelControl5);
-            this.groupControl2.Controls.Add(this.searchLookUpEditChungTuTypeDK);
-            this.groupControl2.Controls.Add(this.dateEditNgayNhapChungTu);
-            this.groupControl2.Location = new System.Drawing.Point(526, 3);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(540, 481);
-            this.groupControl2.TabIndex = 13;
-            this.groupControl2.Text = "Thông tin định khoản của chứng từ";
+            this.VoucherDetail_groupControl.Controls.Add(this.Delete_VoucherDetailsimpleButton);
+            this.VoucherDetail_groupControl.Controls.Add(this.checkBoxThemDuLieu);
+            this.VoucherDetail_groupControl.Controls.Add(this.simpleButtonCapNhat);
+            this.VoucherDetail_groupControl.Controls.Add(this.simpleButtonNewSave);
+            this.VoucherDetail_groupControl.Controls.Add(this.labelControl6);
+            this.VoucherDetail_groupControl.Controls.Add(this.simpleButton2);
+            this.VoucherDetail_groupControl.Controls.Add(this.simpleButton1);
+            this.VoucherDetail_groupControl.Controls.Add(this.richTextBoxVoucherContent);
+            this.VoucherDetail_groupControl.Controls.Add(this.VoucherDetail_gridControl);
+            this.VoucherDetail_groupControl.Controls.Add(this.labelControl4);
+            this.VoucherDetail_groupControl.Controls.Add(this.labelControl5);
+            this.VoucherDetail_groupControl.Controls.Add(this.VoucherTypeDK_searchLookUpEdit);
+            this.VoucherDetail_groupControl.Controls.Add(this.dateEditNgayNhapChungTu);
+            this.VoucherDetail_groupControl.Location = new System.Drawing.Point(526, 3);
+            this.VoucherDetail_groupControl.Name = "VoucherDetail_groupControl";
+            this.VoucherDetail_groupControl.Size = new System.Drawing.Size(540, 481);
+            this.VoucherDetail_groupControl.TabIndex = 13;
+            this.VoucherDetail_groupControl.Text = "Thông tin định khoản của chứng từ";
+            // 
+            // Delete_VoucherDetailsimpleButton
+            // 
+            this.Delete_VoucherDetailsimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Delete_VoucherDetailsimpleButton.ImageOptions.Image")));
+            this.Delete_VoucherDetailsimpleButton.Location = new System.Drawing.Point(213, 439);
+            this.Delete_VoucherDetailsimpleButton.Name = "Delete_VoucherDetailsimpleButton";
+            this.Delete_VoucherDetailsimpleButton.Size = new System.Drawing.Size(98, 37);
+            this.Delete_VoucherDetailsimpleButton.TabIndex = 23;
+            this.Delete_VoucherDetailsimpleButton.Text = "Xóa";
+            this.Delete_VoucherDetailsimpleButton.Click += new System.EventHandler(this.Delete_VoucherDetailsimpleButton_Click);
+            // 
+            // checkBoxThemDuLieu
+            // 
+            this.checkBoxThemDuLieu.AutoSize = true;
+            this.checkBoxThemDuLieu.Location = new System.Drawing.Point(412, 26);
+            this.checkBoxThemDuLieu.Name = "checkBoxThemDuLieu";
+            this.checkBoxThemDuLieu.Size = new System.Drawing.Size(118, 17);
+            this.checkBoxThemDuLieu.TabIndex = 22;
+            this.checkBoxThemDuLieu.Text = "Thêm mới chứng từ";
+            this.checkBoxThemDuLieu.UseVisualStyleBackColor = true;
             // 
             // simpleButtonCapNhat
             // 
@@ -303,6 +320,7 @@
             this.simpleButtonCapNhat.Size = new System.Drawing.Size(98, 37);
             this.simpleButtonCapNhat.TabIndex = 21;
             this.simpleButtonCapNhat.Text = "Lưu";
+            this.simpleButtonCapNhat.Click += new System.EventHandler(this.simpleButtonCapNhat_Click);
             // 
             // simpleButtonNewSave
             // 
@@ -348,81 +366,31 @@
             this.richTextBoxVoucherContent.TabIndex = 16;
             this.richTextBoxVoucherContent.Text = "";
             // 
-            // gridControlNhapDinhKhoan
+            // VoucherDetail_gridControl
             // 
-            this.gridControlNhapDinhKhoan.Location = new System.Drawing.Point(5, 50);
-            this.gridControlNhapDinhKhoan.MainView = this.gridViewDinhKhoan;
-            this.gridControlNhapDinhKhoan.Name = "gridControlNhapDinhKhoan";
-            this.gridControlNhapDinhKhoan.Size = new System.Drawing.Size(527, 298);
-            this.gridControlNhapDinhKhoan.TabIndex = 12;
-            this.gridControlNhapDinhKhoan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewDinhKhoan});
+            this.VoucherDetail_gridControl.Location = new System.Drawing.Point(5, 50);
+            this.VoucherDetail_gridControl.MainView = this.VoucherDetail_gridView;
+            this.VoucherDetail_gridControl.Name = "VoucherDetail_gridControl";
+            this.VoucherDetail_gridControl.Size = new System.Drawing.Size(527, 298);
+            this.VoucherDetail_gridControl.TabIndex = 12;
+            this.VoucherDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.VoucherDetail_gridView});
             // 
-            // gridViewDinhKhoan
+            // VoucherDetail_gridView
             // 
-            this.gridViewDinhKhoan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.DKID,
-            this.NV,
-            this.TK,
-            this.DT,
-            this.SC,
-            this.Tien});
-            this.gridViewDinhKhoan.GridControl = this.gridControlNhapDinhKhoan;
-            this.gridViewDinhKhoan.Name = "gridViewDinhKhoan";
-            this.gridViewDinhKhoan.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridViewDinhKhoan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridViewDinhKhoan.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewDinhKhoan_RowStyle);
-            this.gridViewDinhKhoan.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridViewDinhKhoan_CustomRowCellEdit);
-            this.gridViewDinhKhoan.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewDinhKhoan_ShowingEditor);
-            this.gridViewDinhKhoan.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDinhKhoan_CellValueChanged);
-            this.gridViewDinhKhoan.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridViewDinhKhoan_RowUpdated);
-            // 
-            // NV
-            // 
-            this.NV.Caption = "Nghiệp vụ";
-            this.NV.FieldName = "NV";
-            this.NV.Name = "NV";
-            this.NV.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.NV.Visible = true;
-            this.NV.VisibleIndex = 0;
-            // 
-            // TK
-            // 
-            this.TK.Caption = "Tài khoản";
-            this.TK.FieldName = "TKNumber";
-            this.TK.Name = "TK";
-            this.TK.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.TK.Visible = true;
-            this.TK.VisibleIndex = 1;
-            // 
-            // DT
-            // 
-            this.DT.Caption = "Đối tượng";
-            this.DT.FieldName = "CustomerName";
-            this.DT.Name = "DT";
-            this.DT.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.DT.Visible = true;
-            this.DT.VisibleIndex = 2;
-            // 
-            // SC
-            // 
-            this.SC.Caption = "Sổ cái";
-            this.SC.FieldName = "GeneralLedgerName";
-            this.SC.Name = "SC";
-            this.SC.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.SC.Visible = true;
-            this.SC.VisibleIndex = 3;
-            // 
-            // Tien
-            // 
-            this.Tien.Caption = "Tiền";
-            this.Tien.DisplayFormat.FormatString = "c2";
-            this.Tien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.Tien.FieldName = "Amount";
-            this.Tien.Name = "Tien";
-            this.Tien.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
-            this.Tien.Visible = true;
-            this.Tien.VisibleIndex = 4;
+            this.VoucherDetail_gridView.GridControl = this.VoucherDetail_gridControl;
+            this.VoucherDetail_gridView.Name = "VoucherDetail_gridView";
+            this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.VoucherDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.VoucherDetail_gridView_RowStyle);
+            this.VoucherDetail_gridView.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.VoucherDetail_gridView_CustomRowCellEdit);
+            this.VoucherDetail_gridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.VoucherDetail_gridView_ShowingEditor);
+            this.VoucherDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.VoucherDetail_gridView_FocusedRowChanged);
+            this.VoucherDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.VoucherDetail_gridView_CellValueChanged);
+            this.VoucherDetail_gridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.VoucherDetail_gridView_InvalidRowException);
+            this.VoucherDetail_gridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.VoucherDetail_gridView_RowDeleted);
+            this.VoucherDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.VoucherDetail_gridView_ValidateRow);
+            this.VoucherDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.VoucherDetail_gridView_RowUpdated);
             // 
             // labelControl4
             // 
@@ -434,23 +402,23 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(279, 27);
+            this.labelControl5.Location = new System.Drawing.Point(170, 28);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(66, 13);
             this.labelControl5.TabIndex = 14;
             this.labelControl5.Text = "Loại chứng từ";
             // 
-            // searchLookUpEditChungTuTypeDK
+            // VoucherTypeDK_searchLookUpEdit
             // 
-            this.searchLookUpEditChungTuTypeDK.Location = new System.Drawing.Point(368, 24);
-            this.searchLookUpEditChungTuTypeDK.Name = "searchLookUpEditChungTuTypeDK";
-            this.searchLookUpEditChungTuTypeDK.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.VoucherTypeDK_searchLookUpEdit.Location = new System.Drawing.Point(242, 24);
+            this.VoucherTypeDK_searchLookUpEdit.Name = "VoucherTypeDK_searchLookUpEdit";
+            this.VoucherTypeDK_searchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditChungTuTypeDK.Properties.PopupView = this.gridView2;
-            this.searchLookUpEditChungTuTypeDK.Size = new System.Drawing.Size(164, 20);
-            this.searchLookUpEditChungTuTypeDK.TabIndex = 15;
-            this.searchLookUpEditChungTuTypeDK.Popup += new System.EventHandler(this.searchLookUpEditChungTuTypeDK_Popup);
-            this.searchLookUpEditChungTuTypeDK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditChungTuTypeDK_KeyDown);
+            this.VoucherTypeDK_searchLookUpEdit.Properties.PopupView = this.gridView2;
+            this.VoucherTypeDK_searchLookUpEdit.Size = new System.Drawing.Size(164, 20);
+            this.VoucherTypeDK_searchLookUpEdit.TabIndex = 15;
+            this.VoucherTypeDK_searchLookUpEdit.Popup += new System.EventHandler(this.searchLookUpEditChungTuTypeDK_Popup);
+            this.VoucherTypeDK_searchLookUpEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditChungTuTypeDK_KeyDown);
             // 
             // gridView2
             // 
@@ -473,7 +441,7 @@
             // VouchersTypeSName
             // 
             this.VouchersTypeSName.Caption = "Mã loại chứng từ";
-            this.VouchersTypeSName.FieldName = "VouchersTypeSName";
+            this.VouchersTypeSName.FieldName = "VouchersTypeID";
             this.VouchersTypeSName.Name = "VouchersTypeSName";
             this.VouchersTypeSName.Visible = true;
             this.VouchersTypeSName.VisibleIndex = 1;
@@ -481,13 +449,14 @@
             // dateEditNgayNhapChungTu
             // 
             this.dateEditNgayNhapChungTu.EditValue = null;
-            this.dateEditNgayNhapChungTu.Location = new System.Drawing.Point(94, 24);
+            this.dateEditNgayNhapChungTu.Location = new System.Drawing.Point(72, 24);
             this.dateEditNgayNhapChungTu.Name = "dateEditNgayNhapChungTu";
+            this.dateEditNgayNhapChungTu.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dateEditNgayNhapChungTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(164, 20);
+            this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(80, 20);
             this.dateEditNgayNhapChungTu.TabIndex = 13;
             // 
             // simpleButton7
@@ -502,13 +471,13 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.simpleButtonLoadVoucher);
-            this.groupControl1.Controls.Add(this.searchLookUpEditVoucherTypeXemChungTU);
+            this.groupControl1.Controls.Add(this.VoucherTypeXemChungTU_searchLookUpEdit);
             this.groupControl1.Controls.Add(this.labelControl22);
             this.groupControl1.Controls.Add(this.dateEditNgayKT);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.dateEditBDKT);
-            this.groupControl1.Controls.Add(this.gridControlDSChungTu);
+            this.groupControl1.Controls.Add(this.Voucher_gridControl);
             this.groupControl1.Location = new System.Drawing.Point(3, 3);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(517, 481);
@@ -526,23 +495,23 @@
             this.simpleButtonLoadVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.simpleButtonLoadVoucher_KeyDown);
             this.simpleButtonLoadVoucher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.simpleButtonLoadVoucher_KeyPress);
             // 
-            // searchLookUpEditVoucherTypeXemChungTU
+            // VoucherTypeXemChungTU_searchLookUpEdit
             // 
-            this.searchLookUpEditVoucherTypeXemChungTU.Location = new System.Drawing.Point(340, 20);
-            this.searchLookUpEditVoucherTypeXemChungTU.Name = "searchLookUpEditVoucherTypeXemChungTU";
-            this.searchLookUpEditVoucherTypeXemChungTU.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Location = new System.Drawing.Point(340, 20);
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Name = "VoucherTypeXemChungTU_searchLookUpEdit";
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditVoucherTypeXemChungTU.Properties.PopupView = this.gridView10;
-            this.searchLookUpEditVoucherTypeXemChungTU.Size = new System.Drawing.Size(135, 20);
-            this.searchLookUpEditVoucherTypeXemChungTU.TabIndex = 22;
-            this.searchLookUpEditVoucherTypeXemChungTU.Popup += new System.EventHandler(this.searchLookUpEditVoucherTypeXemChungTU_Popup);
-            this.searchLookUpEditVoucherTypeXemChungTU.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditVoucherTypeXemChungTU_KeyDown);
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Properties.PopupView = this.gridView10;
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Size = new System.Drawing.Size(135, 20);
+            this.VoucherTypeXemChungTU_searchLookUpEdit.TabIndex = 22;
+            this.VoucherTypeXemChungTU_searchLookUpEdit.Popup += new System.EventHandler(this.searchLookUpEditVoucherTypeXemChungTU_Popup);
+            this.VoucherTypeXemChungTU_searchLookUpEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchLookUpEditVoucherTypeXemChungTU_KeyDown);
             // 
             // gridView10
             // 
             this.gridView10.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2});
+            this.VouchersTypeID});
             this.gridView10.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView10.Name = "gridView10";
             this.gridView10.OptionsEditForm.ShowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
@@ -557,13 +526,13 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
-            // gridColumn2
+            // VouchersTypeID
             // 
-            this.gridColumn2.Caption = "Mã loại chứng từ";
-            this.gridColumn2.FieldName = "VouchersTypeSName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.VouchersTypeID.Caption = "Mã loại chứng từ";
+            this.VouchersTypeID.FieldName = "VouchersTypeID";
+            this.VouchersTypeID.Name = "VouchersTypeID";
+            this.VouchersTypeID.Visible = true;
+            this.VouchersTypeID.VisibleIndex = 1;
             // 
             // labelControl22
             // 
@@ -572,7 +541,6 @@
             this.labelControl22.Size = new System.Drawing.Size(40, 13);
             this.labelControl22.TabIndex = 12;
             this.labelControl22.Text = "Ngày KT";
-            this.labelControl22.Click += new System.EventHandler(this.labelControl22_Click);
             // 
             // dateEditNgayKT
             // 
@@ -614,22 +582,25 @@
             this.dateEditBDKT.Properties.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Multiple;
             this.dateEditBDKT.Size = new System.Drawing.Size(80, 20);
             this.dateEditBDKT.TabIndex = 9;
-            this.dateEditBDKT.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.dateEditBDKT_CustomDisplayText);
             // 
-            // gridControlDSChungTu
+            // Voucher_gridControl
             // 
-            this.gridControlDSChungTu.Location = new System.Drawing.Point(4, 46);
-            this.gridControlDSChungTu.MainView = this.gridViewDSChungTu;
-            this.gridControlDSChungTu.Name = "gridControlDSChungTu";
-            this.gridControlDSChungTu.Size = new System.Drawing.Size(507, 430);
-            this.gridControlDSChungTu.TabIndex = 7;
-            this.gridControlDSChungTu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewDSChungTu});
+            this.Voucher_gridControl.Location = new System.Drawing.Point(4, 46);
+            this.Voucher_gridControl.MainView = this.Voucher_gridView;
+            this.Voucher_gridControl.Name = "Voucher_gridControl";
+            this.Voucher_gridControl.Size = new System.Drawing.Size(507, 430);
+            this.Voucher_gridControl.TabIndex = 7;
+            this.Voucher_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.Voucher_gridView});
             // 
-            // gridViewDSChungTu
+            // Voucher_gridView
             // 
-            this.gridViewDSChungTu.GridControl = this.gridControlDSChungTu;
-            this.gridViewDSChungTu.Name = "gridViewDSChungTu";
+            this.Voucher_gridView.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.Control;
+            this.Voucher_gridView.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.Voucher_gridView.GridControl = this.Voucher_gridControl;
+            this.Voucher_gridView.Name = "Voucher_gridView";
+            this.Voucher_gridView.OptionsScrollAnnotations.ShowSelectedRows = DevExpress.Utils.DefaultBoolean.True;
+            this.Voucher_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Voucher_gridView_RowClick);
             // 
             // simpleButton15
             // 
@@ -729,7 +700,6 @@
             this.labelControl18.Size = new System.Drawing.Size(81, 13);
             this.labelControl18.TabIndex = 19;
             this.labelControl18.Text = "Tổng tiền sau CK";
-            this.labelControl18.Click += new System.EventHandler(this.labelControl18_Click);
             // 
             // labelControl17
             // 
@@ -788,7 +758,6 @@
             this.simpleButton9.Size = new System.Drawing.Size(175, 25);
             this.simpleButton9.TabIndex = 12;
             this.simpleButton9.Text = "Tính lại giá";
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // textEdit1
             // 
@@ -829,7 +798,6 @@
             this.labelControl13.Size = new System.Drawing.Size(76, 13);
             this.labelControl13.TabIndex = 8;
             this.labelControl13.Text = "Chi tiết hóa đơn";
-            this.labelControl13.Click += new System.EventHandler(this.labelControl13_Click);
             // 
             // tablePanel1
             // 
@@ -1498,13 +1466,6 @@
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "Tên công ty đang thực hiện";
             // 
-            // DKID
-            // 
-            this.DKID.Caption = "VouchersDetailID";
-            this.DKID.FieldName = "VouchersDetailID";
-            this.DKID.Name = "DKID";
-            this.DKID.OptionsColumn.AllowEdit = false;
-            // 
             // VoucherControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1519,26 +1480,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).EndInit();
             this.tabPaneVouchers.ResumeLayout(false);
             this.tabNavigationPageChungTu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhapDinhKhoan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDinhKhoan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditChungTuTypeDK.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_groupControl)).EndInit();
+            this.VoucherDetail_groupControl.ResumeLayout(false);
+            this.VoucherDetail_groupControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditVoucherTypeXemChungTU.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlDSChungTu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDSChungTu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).EndInit();
             this.tabNavigationPageLKVAT.ResumeLayout(false);
             this.tabNavigationPageLKVAT.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
@@ -1594,11 +1555,11 @@
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl VoucherDetail_groupControl;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraGrid.GridControl gridControlDSChungTu;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDSChungTu;
+        private DevExpress.XtraGrid.GridControl Voucher_gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView Voucher_gridView;
         private DevExpress.XtraEditors.DateEdit dateEditBDKT;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
@@ -1616,11 +1577,11 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.RichTextBox richTextBoxVoucherContent;
-        private DevExpress.XtraGrid.GridControl gridControlNhapDinhKhoan;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDinhKhoan;
+        private DevExpress.XtraGrid.GridControl VoucherDetail_gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView VoucherDetail_gridView;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditChungTuTypeDK;
+        private DevExpress.XtraEditors.SearchLookUpEdit VoucherTypeDK_searchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.DateEdit dateEditNgayNhapChungTu;
         private DevExpress.XtraBars.Navigation.TabPane tabPaneVouchers;
@@ -1706,16 +1667,12 @@
         private DevExpress.XtraEditors.DateEdit dateEditNgayKT;
         private DevExpress.XtraGrid.Columns.GridColumn VouchersTypeName;
         private DevExpress.XtraGrid.Columns.GridColumn VouchersTypeSName;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditVoucherTypeXemChungTU;
+        private DevExpress.XtraEditors.SearchLookUpEdit VoucherTypeXemChungTU_searchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn NV;
-        private DevExpress.XtraGrid.Columns.GridColumn TK;
-        private DevExpress.XtraGrid.Columns.GridColumn DT;
-        private DevExpress.XtraGrid.Columns.GridColumn SC;
-        private DevExpress.XtraGrid.Columns.GridColumn Tien;
+        private DevExpress.XtraGrid.Columns.GridColumn VouchersTypeID;
         private DevExpress.XtraEditors.SimpleButton simpleButtonLoadVoucher;
-        private DevExpress.XtraGrid.Columns.GridColumn DKID;
+        private System.Windows.Forms.CheckBox checkBoxThemDuLieu;
+        private DevExpress.XtraEditors.SimpleButton Delete_VoucherDetailsimpleButton;
     }
 }

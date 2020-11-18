@@ -11,42 +11,41 @@ using System.Threading.Tasks;
 
 namespace BSServer.Logics
 {
-    public class VoucherLogic
+   public  class VoucherDetailLogic
     {
-
-        public VoucherLogic(BSContext context)
+        public VoucherDetailLogic(BSContext context)
         {
             this.Context = context;
-            this.VoucherDAO = new VoucherDAO(this.Context);
+            this.VoucherDetailDAO = new VoucherDetailDAO(this.Context);
         }
 
         private BSContext Context { get; set; }
 
-        private VoucherDAO VoucherDAO { get; set; }
+        private VoucherDetailDAO VoucherDetailDAO { get; set; }
 
-        public bool SaveVoucher(List<Voucher> saveData)
+        public bool SaveVoucherDetail(List<VoucherDetail> saveData)
         {
             using (DbContextTransaction transaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    foreach (Voucher data in saveData)
+                    foreach (VoucherDetail data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                this.VoucherDAO.InsertVouchers(data);
+                                this.VoucherDetailDAO.InsertVouchersDetail(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.VoucherDAO.UpdateVoucher(data);
+                                this.VoucherDetailDAO.UpdateVoucherDetail(data);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.VoucherDAO.DeleteVoucher(data.VouchersID,data.CompanyID);
+                                this.VoucherDetailDAO.DeleteVoucherDetail(data.VouchersDetailID,data.CompanyID);
                                 break;
                         }
                     }

@@ -1,5 +1,6 @@
-CREATE PROCEDURE VoucherDelete (
-	@VoucherID nvarchar(250),
+alter PROCEDURE VoucherDelete (
+	@VoucherID varchar(50),
+	@CompanyID varchar(50),
 	@UserId varchar(20)
 )
 AS
@@ -37,7 +38,3 @@ begin
 		where VouchersIDetailD in (select VouchersDetailID from VouchersDetail where VouchersID = @VoucherID)
 end
 
-
-EXEC sp_rename 'Invoice.Status', 'IsDelete', 'COLUMN';
-Alter table Invoice
-alter column IsDelete bit
