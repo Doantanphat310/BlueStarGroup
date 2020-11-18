@@ -116,7 +116,6 @@
     <Compile Include="Utility\BSTitle.cs" />
     <Compile Include="Utility\CommonConstant.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
-    <Compile Include="Utility\GeneralCodeHelper.cs" />
     <Compile Include="Utility\SHA1Helper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,25 @@ namespace BSServer._Core.Base
         {
         }
 
+        public long ExecuteScalar(string procedureName, params SqlParameter[] sqlParameter)
+        {
+            string paramString = GetSqlParamString(sqlParameter);
+            string sql = $@"
+{procedureName}
+{paramString}
+";
+
+            try
+            {
+                return this.Database.SqlQuery<long>(sql, sqlParameter).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Xử lý thất bại. " + ex.Message);
+                throw ex;
+            }
+        }
+
         public List<T> GetDataFromProcedure<T>(string procedureName, params SqlParameter[] sqlParameter)
         {
             string paramString = GetSqlParamString(sqlParameter);
@@ -34,7 +53,7 @@ namespace BSServer._Core.Base
             catch (Exception ex)
             {
                 Console.WriteLine("Xử lý thất bại. " + ex.Message);
-                return null;
+                throw ex;
             }
         }
 
@@ -47,14 +66,19 @@ namespace BSServer._Core.Base
 ";
             try
             {
-return this.Database.ExecuteSqlCommand(sql, sqlParameter);
+                foreach (var param in sqlParameter)
+                {
+                    param.Value = param.Value ?? DBNull.Value;
+                }
+
+                return this.Database.ExecuteSqlCommand(sql, sqlParameter);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Xử lý thất bại. " + ex.Message);
-                return -1;
+                throw ex;
             }
-            
+
         }
 
         private string GetSqlParamString(SqlParameter[] sqlParameter)

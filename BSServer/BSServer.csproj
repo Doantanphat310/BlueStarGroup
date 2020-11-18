@@ -87,6 +87,7 @@
     <Compile Include="DAOs\CompanyDAO.cs" />
     <Compile Include="DAOs\MasterInfoDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
+    <Compile Include="DAOs\CommonDAO.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\VoucherLogic.cs" />

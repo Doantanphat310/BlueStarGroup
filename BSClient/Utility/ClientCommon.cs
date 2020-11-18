@@ -11,6 +11,7 @@ namespace BSClient.Utility
 {
     public static class ClientCommon
     {
+        [Obsolete("Chuyển qua dùng BaseForm")]
         public static void ShowControl(System.Windows.Forms.Control control, System.Windows.Forms.Control Content)
         {
             Content.Controls.Clear();
@@ -20,6 +21,7 @@ namespace BSClient.Utility
             Content.Controls.Add(control);
         }
 
+        [Obsolete("Chuyển qua dùng GridViewHelper")]
         public static void AddColumn(GridView gridView, string fieldName, string caption, int width, bool isAllowEdit = true)
         {
             GridColumn col = new GridColumn
@@ -37,6 +39,7 @@ namespace BSClient.Utility
             gridView.Columns.Add(col);
         }
 
+        [Obsolete("Chuyển qua dùng GridViewHelper")]
         public static void SetupGridView(
             GridView gridView,
             bool columnAutoWidth = true,
