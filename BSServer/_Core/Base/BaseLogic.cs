@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSServer._Core.Context;
+using System;
 
 namespace BSServer._Core.Base
 {
@@ -8,10 +9,13 @@ namespace BSServer._Core.Base
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        public BaseLogic()
+        public BaseLogic(BSContext context)
         {
             //this.Logger = logger;
+            this.Context = context;
         }
+
+        public BSContext Context { get; set; }
 
         /// <summary>
         /// 

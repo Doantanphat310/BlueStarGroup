@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSCommon.Constant;
+using System;
 
 namespace BSCommon.Models
 {
@@ -17,6 +18,6 @@ namespace BSCommon.Models
         public DateTime? UpdateDate { get; set; }
         public string CreateUser { get; set; }
         public string UpdateUser { get; set; }
-        public int Status { get; set; }
+        public ModifyMode Status { get; set; }
     }
 }

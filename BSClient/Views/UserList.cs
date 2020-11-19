@@ -23,9 +23,9 @@ namespace BSClient.Views
 
         public BindingList<UserRoleInfo> DetailData { get; set; }
 
-        public List<UserInfo> MasterDelete { get; set; }
+        public List<UserInfo> MasterDelete { get; set; } = new List<UserInfo>();
 
-        public List<UserRoleInfo> DetailDelete { get; set; }
+        public List<UserRoleInfo> DetailDelete { get; set; } = new List<UserRoleInfo>();
 
         public UserList()
         {
@@ -144,20 +144,6 @@ namespace BSClient.Views
 
         private void UserDelete_Button_Click(object sender, EventArgs e)
         {
-            int[] selectIndex = Users_GridView.GetSelectedRows();
-
-            foreach (int index in selectIndex)
-            {
-                UserInfo delete = Users_GridView.GetRow(index) as UserInfo;
-                if (delete.Status == ModifyMode.Insert)
-                {
-                    continue;
-                }
-
-                delete.Status = ModifyMode.Delete;
-                MasterDelete.Add(delete);
-            }
-
             Users_GridView.DeleteSelectedRows();
         }
 
@@ -181,7 +167,7 @@ namespace BSClient.Views
                 }
                 else
                 {
-                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                 }
             }
         }
@@ -229,20 +215,6 @@ namespace BSClient.Views
 
         private void UserRoleDelete_Button_Click(object sender, EventArgs e)
         {
-            int[] selectIndex = UserRole_GridView.GetSelectedRows();
-
-            foreach (int index in selectIndex)
-            {
-                UserRoleInfo delete = UserRole_GridView.GetRow(index).CastTo<UserRoleInfo>();
-                if (delete.Status == ModifyMode.Insert)
-                {
-                    continue;
-                }
-
-                delete.Status = ModifyMode.Delete;
-                DetailDelete.Add(delete);
-            }
-
             UserRole_GridView.DeleteSelectedRows();
         }
 
@@ -284,36 +256,41 @@ namespace BSClient.Views
             }
         }
 
-        private void Users_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void Users_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
         {
             int rowIndex = Users_GridView.FocusedRowHandle;
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
-            GridView view = sender as GridView;
-            GridColumn column = view.Columns["UserID"];
-            UserInfo row = (e.Row as UserInfo);
             if (isNewRow)
             {
+                GridView view = sender as GridView;
+                GridColumn column;
+                UserInfo row = e.Row.CastTo<UserInfo>();
                 string userID = row.UserID;
                 // Kiểm tra tồn tại trong grid
                 if (MasterData.ToList().Count(o => o.UserID == userID) > 1)
                 {
                     e.Valid = false;
                     //Set errors with specific descriptions for the columns
+                    column = view.Columns[nameof(row.UserID)];
                     view.SetColumnError(column, "Tên đăng nhập đã tồn tại!");
                 }
-            }
 
-            if (string.IsNullOrEmpty(row.Password))
-            {
-                string userID = row.UserID;
-                // Kiểm tra tồn tại trong grid
-                if (MasterData.ToList().Count(o => o.UserID == userID) > 1)
+                // Kiểm tra mật khẩu empty
+                if (string.IsNullOrEmpty(row.PasswordDisplay))
                 {
                     e.Valid = false;
                     //Set errors with specific descriptions for the columns
+                    column = view.Columns[nameof(row.PasswordDisplay)];
                     view.SetColumnError(column, "Mật khẩu không được trống.");
                 }
             }
+
+            if (Users_GridView.IsNewItemRow(e.RowHandle))
+            {
+                Console.WriteLine("ValidateRow - IsNewItemRow " + e.RowHandle.ToString());
+            }
+
+            Console.WriteLine("ValidateRow - " + e.RowHandle.ToString());
         }
 
         private void Users_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
@@ -324,21 +301,22 @@ namespace BSClient.Views
 
         private void Users_GridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
-            bool isNewRow = Users_GridView.IsNewItemRow(e.RowHandle);
-            if (isNewRow)
-            {
-                return;
-            }
-
-            UserInfo row = e.Row as UserInfo;
-            if (row.Status == ModifyMode.Insert)
-            {
-                return;
-            }
-
+            UserInfo row = e.Row.CastTo<UserInfo>();
             if (!string.IsNullOrEmpty(row.PasswordDisplay))
             {
                 row.Password = SHA1Helper.GetHash(row.PasswordDisplay);
+            }
+
+            bool isNewRow = Users_GridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                row.Status = ModifyMode.Insert;
+                return;
+            }
+
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
             }
 
             row.Status = ModifyMode.Update;
@@ -346,8 +324,16 @@ namespace BSClient.Views
 
         private void Users_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            var item = e.CastTo<UserInfo>();
-            Console.WriteLine(item.UserID);
+            var delete = e.Row.CastTo<UserInfo>();
+            Console.WriteLine(delete.UserID);
+
+            if (delete.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+
+            delete.Status = ModifyMode.Delete;
+            MasterDelete.Add(delete);
         }
 
         private void UserRoleCancel_Button_Click(object sender, EventArgs e)
@@ -375,9 +361,31 @@ namespace BSClient.Views
                 }
                 else
                 {
-                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                 }
             }
+        }
+
+        private void Users_GridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+            if (Users_GridView.IsNewItemRow(e.RowHandle))
+            {
+                Console.WriteLine("InitNewRow - IsNewItemRow " + e.RowHandle.ToString());
+            }
+
+            Console.WriteLine("InitNewRow - " + e.RowHandle.ToString());
+        }
+
+        private void UserRole_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            UserRoleInfo delete = e.Row.CastTo<UserRoleInfo>();
+            if (delete.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+
+            delete.Status = ModifyMode.Delete;
+            DetailDelete.Add(delete);
         }
     }
 }

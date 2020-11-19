@@ -88,6 +88,7 @@
             this.UserRole_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.UserRole_GridView.GridControl = this.UserRole_GridControl;
             this.UserRole_GridView.Name = "UserRole_GridView";
+            this.UserRole_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.UserRole_GridView_RowDeleted);
             // 
             // Main_Table
             // 
@@ -266,10 +267,14 @@
             // 
             // Users_GridView
             // 
+            this.Users_GridView.Appearance.ViewCaption.Options.UseTextOptions = true;
+            this.Users_GridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Users_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.Users_GridView.GridControl = this.Users_GridControl;
             this.Users_GridView.Name = "Users_GridView";
+            this.Users_GridView.OptionsView.EnableAppearanceEvenRow = true;
             this.Users_GridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.Users_GridView_ShowingEditor);
+            this.Users_GridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.Users_GridView_InitNewRow);
             this.Users_GridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Users_GridView_FocusedRowChanged);
             this.Users_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.Users_GridView_InvalidRowException);
             this.Users_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.Users_GridView_RowDeleted);

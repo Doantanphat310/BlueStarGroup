@@ -1,5 +1,6 @@
 ﻿using BSCommon.Models;
 using BSCommon.Utility;
+using BSServer._Core.Base;
 using BSServer._Core.Context;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,11 @@ using System.Linq;
 
 namespace BSServer.DAOs
 {
-    public class CustomerDAO
+    public class CustomerDAO : BaseDAO
     {
-        public CustomerDAO(BSContext context)
+        public CustomerDAO(BSContext context) : base(context)
         {
-            this.Context = context;
         }
-
-        private BSContext Context { get; set; }
 
         //public List<CustomerCompany> GetCustommers(string customerId)
         //{
@@ -64,66 +62,45 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public int InsertCustommersCompany(Customer customer)
+        public int InsertCustommer(Customer customer)
         {
-            string sql = @"
-            CustomerInsert
-            @CustomerName,
-            @CustomerSName, 
-            @Address,
-            @Phone,
-            @UserId
-            ";
-            SqlParameter[] param = new SqlParameter[]
-            {
-                new SqlParameter("@CustomerName", customer.CustomerName),
-                new SqlParameter("@CustomerSName", customer.CustomerSName ?? (object)DBNull.Value),
-                new SqlParameter("@Address", customer.Address ?? (object)DBNull.Value),
-                new SqlParameter("@Phone", customer.Phone ?? (object)DBNull.Value),
-                new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
-            };
-
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
-        }
-
-        public int UpdateCustommersCompany(Customer customer)
-        {
-            string sql = @"
-CustomerUpdate
-    @CustomerID, 
-    @CustomerName,
-    @CustomerSName, 
-    @Address,
-    @Phone,
-    @UserId
-";
             SqlParameter[] param = new SqlParameter[]
             {
                 new SqlParameter("@CustomerID", customer.CustomerID),
                 new SqlParameter("@CustomerName", customer.CustomerName),
-                new SqlParameter("@CustomerSName", customer.CustomerSName ?? (object)DBNull.Value),
-                new SqlParameter("@Address", customer.Address ?? (object)DBNull.Value),
-                new SqlParameter("@Phone", customer.Phone ?? (object)DBNull.Value),
+                new SqlParameter("@CustomerSName", customer.CustomerSName),
+                new SqlParameter("@Address", customer.Address),
+                new SqlParameter("@Phone", customer.Phone),
                 new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
             };
 
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
+            return this.Context.ExecuteDataFromProcedure("CustomerInsert", param);
         }
 
-        public int DeleteCustommersCompany(Customer customer)
+        public int UpdateCustommer(Customer customer)
         {
-            string sql = @"
-CustomerDelete
-    @CustomerID, 
-    @UserId
-";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@CustomerID", customer.CustomerID),
+                new SqlParameter("@CustomerName", customer.CustomerName),
+                new SqlParameter("@CustomerSName", customer.CustomerSName),
+                new SqlParameter("@Address", customer.Address),
+                new SqlParameter("@Phone", customer.Phone),
+                new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
+            };
+
+            return this.Context.ExecuteDataFromProcedure("CustomerUpdate", param);
+        }
+
+        public int DeleteCustommer(Customer customer)
+        {
             SqlParameter[] param = new SqlParameter[]
             {
                 new SqlParameter("@CustomerID", customer.CustomerID),
                 new SqlParameter("UserId", CommonInfo.UserInfo.UserID)
             };
 
-            return this.Context.Database.ExecuteSqlCommand(sql, param);
+            return this.Context.ExecuteDataFromProcedure("CustomerDelete", param);
         }
     }
 }
