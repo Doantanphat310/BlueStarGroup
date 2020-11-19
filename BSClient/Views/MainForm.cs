@@ -16,7 +16,7 @@ namespace BSClient
         private void ACE_Voucher_Click(object sender, EventArgs e)
         {
             VoucherControl voucher = new VoucherControl();
-            ClientCommon.ShowControl(voucher, Content);
+            this.ShowControl(voucher, Content);
             this.Text = " Blue Star Group - Nhập chứng từ";
         }
 
@@ -30,7 +30,7 @@ namespace BSClient
         private void ACE_Company_Click(object sender, EventArgs e)
         {
             CompanyControl company = new CompanyControl();
-            ClientCommon.ShowControl(company, Content);
+            this.ShowControl(company, Content);
             this.Text = " Blue Star Group - Nhập thông tin công ty";
         }
 

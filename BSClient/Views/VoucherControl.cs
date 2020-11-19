@@ -146,7 +146,7 @@ namespace BSClient
             this.Voucher_gridView.AddColumn("VouchersTypeID", "Loại CT", 50, false);
             this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 100, false);
             this.Voucher_gridView.AddColumn("Date", "Ngày", 100, false);
-            this.Voucher_gridView.AddColumn("Amount", "Tiền", 100, false);
+            this.Voucher_gridView.AddSpinEditColumn("Amount", "Tiền", 100, false, "c2");
             this.Voucher_gridView.AddColumn("Description", "Nội dung", 100, false);
             this.Voucher_gridView.AddColumn("CreateUser", "Người tạo", 100, false);
         }
@@ -172,7 +172,7 @@ namespace BSClient
             this.VoucherDetail_gridView.AddColumn("AccountID", "Tài khoản", 80, true);
             this.VoucherDetail_gridView.AddColumn("CustomerID", "Đối tượng", 120, true);
             this.VoucherDetail_gridView.AddColumn("GeneralLedgerID", "Sổ cái", 180, true);
-            this.VoucherDetail_gridView.AddColumn("Amount", "Tiền", 100, true);
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true,"$#,##0.00");
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 80, false);
         }
 
@@ -427,29 +427,28 @@ namespace BSClient
                 return;
             }
 
-            #region Insert Voucher
+            #region set value to Insert Voucher
             VoucherController voucherController = new VoucherController();
             GlobalVarient.VoucherID++;
             Voucher voucher = new Voucher();
-            voucher.VouchersID = "VOU" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherID.ToString();
+          //  voucher.VouchersID = "VOU" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherID.ToString();
             voucher.Amount = Debit;
             voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
             voucher.VouchersTypeID = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
             voucher.Date = (DateTime)dateEditNgayNhapChungTu.EditValue;
             voucher.CompanyID = GlobalVarient.CompanyIDChoice;
             voucher.Status = ModifyMode.Insert;
-
-            voucherController.InsertVouchers(voucher);
-            LoadGridView();
-            #endregion Insert Voucher
+            //  voucherController.InsertVouchers(voucher);
+            //  LoadGridView();
+            #endregion set value to Insert Voucher
 
             #region set VoucherDetailID
             VoucherDetailController voucherDetailController = new VoucherDetailController();
             for (int i =0;i<VoucherDetailData.Count;i++)
             {
-                VoucherDetailData[i].VouchersID = voucher.VouchersID;
-                GlobalVarient.VoucherDetailID++;
-                VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
+               // VoucherDetailData[i].VouchersID = voucher.VouchersID;
+               // GlobalVarient.VoucherDetailID++;
+               // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                 VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 VoucherDetailData[i].Status = ModifyMode.Insert;
                 //voucherDetailController.InsertVouchersDetail(VoucherDetailData[i]);
@@ -460,7 +459,7 @@ namespace BSClient
             if (saveData?.Count > 0)
             {
                 VoucherDetailController controller = new VoucherDetailController();
-                if (controller.SaveVoucherDetail(saveData))
+                if (controller.SaveVoucher_Detail(saveData,voucher))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     VoucherDetailDelete = new List<VoucherDetail>();
@@ -470,6 +469,16 @@ namespace BSClient
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
                 }
+                //if (controller.SaveVoucherDetail(saveData))
+                //{
+                //    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                //    VoucherDetailDelete = new List<VoucherDetail>();
+                //    this.LoadVoucherDetailGridView(voucher.VouchersID);
+                //}
+                //else
+                //{
+                //    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                //}
             }
         }
 
@@ -728,7 +737,7 @@ namespace BSClient
                     VoucherDetailData[i].Status = ModifyMode.Insert;
                     VoucherDetailData[i].VouchersID = GlobalVarient.VoucherIDChoice;
                     GlobalVarient.VoucherDetailID++;
-                    VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
+                   // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                     VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 }
             }

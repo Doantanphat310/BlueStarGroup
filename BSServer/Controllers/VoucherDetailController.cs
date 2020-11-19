@@ -51,6 +51,10 @@ namespace BSServer.Controllers
         {
             return this.VoucherDetailLogic.SaveVoucherDetail(dataList);
         }
-        
+
+        public bool SaveVoucher_Detail(List<VoucherDetail> dataList, Voucher voucher)
+        {
+            return this.VoucherDetailLogic.SaveVoucher_Detail(dataList, voucher);
+        }
     }
 }

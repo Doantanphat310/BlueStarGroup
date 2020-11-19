@@ -1,11 +1,12 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Base;
+using BSClient.Utility;
 using System;
 
 using System.Windows.Forms;
 
 namespace BSClient.Views
 {
-    public partial class BlueStarGroup : Form
+    public partial class BlueStarGroup : BaseForm
     {
         public BlueStarGroup()
         {
@@ -20,7 +21,8 @@ namespace BSClient.Views
         private void NhapChungTuaccordionControlElement_Click(object sender, EventArgs e)
         {
             VoucherControl voucher = new VoucherControl();
-            ClientCommon.ShowControl(voucher, Content);
+            this.ShowControl(voucher, Content);
+            
             this.Text = " Blue Star Group - Nhập chứng từ";
         }
     }
