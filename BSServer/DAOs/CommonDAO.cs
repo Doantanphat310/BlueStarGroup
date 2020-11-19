@@ -46,6 +46,12 @@ namespace BSServer.DAOs
             long seq = GetMaxSEQ(SSServerConst.VoucherSymbol) + 1;
             return $"{SSServerConst.VoucherSymbol}{DateTime.Now.ToString("yyyyMMdd")}{seq.ToString("000000")}";
         }
+        
+        public string GetVoucherDetailID()
+        {
+            long seq = GetMaxSEQ(SSServerConst.VoucherDetailSymbol) + 1;
+            return $"{SSServerConst.VoucherDetailSymbol}{DateTime.Now.ToString("yyyyMMdd")}{seq.ToString("000000")}";
+        }
 
         public string GetInvoiceID()
         {

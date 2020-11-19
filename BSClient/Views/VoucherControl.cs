@@ -185,13 +185,14 @@ namespace BSClient
 
         private void LoadVoucherDetailGridView( string voucherID)
         {
+            tabNavigationPageLKKho.PageVisible = false;
+            tabNavigationPageLKVAT.PageVisible = false;
             VoucherDetailController controller = new VoucherDetailController();
             GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice);
           //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
             VoucherDetailData = new BindingList<VoucherDetail>(GlobalVarient.voucherDetailChoice);
             VoucherDetail_gridControl.DataSource = VoucherDetailData;
             VoucherDetailDelete = new List<VoucherDetail>();
-          
         }
 
         #endregion init design
@@ -785,6 +786,81 @@ namespace BSClient
             #endregion delete VoucherDetail
 
             this.LoadVoucherDetailGridView(GlobalVarient.VoucherIDChoice);
+        }
+
+        private void checkBoxThemDuLieu_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkBoxThemDuLieu.Checked)
+            {
+                Voucher_groupControl.Enabled = false;
+            }
+            else Voucher_groupControl.Enabled = true;
+        }
+        private void LKKhosimpleButton_Click(object sender, EventArgs e)
+        {
+            Showtabpane(2);
+        }
+
+        private void LKVATsimpleButton_Click(object sender, EventArgs e)
+        {
+            Showtabpane(1);
+        }
+
+        private void tabPaneVouchers_SelectedPageIndexChanged(object sender, EventArgs e)
+        {
+           // Showtabpane(tabPaneVouchers.SelectedPageIndex);
+        }
+
+        void Showtabpane(int SelectedIndexTabPane)
+        {
+            switch (SelectedIndexTabPane)
+            {
+                case 1:
+                    #region check TK
+                    //152, 156 Mở liên kết kho(Nhập, xuất)
+                    //1331, 3331 Mở liên kết VAT(Nhập, Xuất)
+                    int checkLKVAT = 0;
+                    foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
+                    {
+                        string checkAccountID = voucherDetail.AccountID.ToString().Substring(0, 3);
+                        if (checkAccountID == "133" || checkAccountID == "333")
+                        {
+                            tabNavigationPageLKVAT.PageVisible = true;
+                            tabPaneVouchers.SelectedPageIndex = 1;
+                            checkLKVAT = 1;
+                            break;
+                        }
+                    }
+                    if (checkLKVAT == 0)
+                    {
+                        tabNavigationPageLKVAT.PageVisible = false;
+                        tabPaneVouchers.SelectedPageIndex = 0;
+                    }
+                    break;
+                    #endregion check TK
+                    break;
+                case 2:
+                    int checkLKkho = 0;
+                    foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
+                    {
+                        string checkAccountID = voucherDetail.AccountID.ToString().Substring(0, 3);
+                        if (checkAccountID == "152" || checkAccountID == "156")
+                        {
+                            tabNavigationPageLKKho.PageVisible = true;
+                            ChitietKhogroupControl.Refresh();
+                            tabPaneVouchers.SelectedPageIndex = 2;
+                            checkLKkho = 1;
+                            break;
+                        }
+                    }
+                    if (checkLKkho == 0)
+                    {
+                        tabNavigationPageLKKho.PageVisible = false;
+                        tabPaneVouchers.SelectedPageIndex = 0;
+                    }
+                    break;
+            }
         }
     }
 }
