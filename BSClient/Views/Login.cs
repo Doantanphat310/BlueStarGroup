@@ -59,10 +59,5 @@ namespace BSClient
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            SHA1Helper.GetHash("Ab123456"); 
-        }
     }
 }
