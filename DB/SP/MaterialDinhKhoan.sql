@@ -21,6 +21,40 @@ Values('C', N'Có')
 select * from #MaterialNV
 end
 
+SPSelectMaterialInvoiceType
+alter proc SPSelectMaterialInvoiceType
+as
+begin
+	CREATE TABLE #MaterialInvoiceType
+	(
+	InvoiceTypeSummary varchar(1),
+	InvoiceTypeName Nvarchar(50),
+	)
+INSERT INTO #MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
+Values('R', N'Ra')
+INSERT INTO #MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
+Values('V', N'Vào')
+select * from #MaterialInvoiceType
+end
+
+create proc SPSelectMaterialWareHouseType
+as
+begin
+	CREATE TABLE #MaterialWareHouseType
+	(
+	WareHouseTypeSummary varchar(1),
+	WareHouseTypeName Nvarchar(50),
+	)
+INSERT INTO #MaterialInvoiceType (WareHouseTypeSummary,WareHouseTypeName)
+Values('X', N'Xuất')
+INSERT INTO #MaterialInvoiceType (WareHouseTypeSummary,WareHouseTypeName)
+Values('N', N'Nhập')
+select * from #MaterialInvoiceType
+end
+
+
+
+
 SPSelectMaterialDoiTuong'test'
 
 Create proc SPSelectMaterialDoiTuong

@@ -14,5 +14,7 @@ namespace BSCommon.Utility
         public const string BSM000004 = "Quyền người dùng đã tồn tại.";
         public const string BSM000005 = "Vui lòng chọn Công ty.";
         public const string BSM000006 = "Vui lòng chọn Quyền người dùng.";
+        public const string BSM000007 = "Định khoản không có tài khoản liên quan kho.";
+        public const string BSM000008 = "Định khoản không có tài khoản liên quan VAT.";
     }
 }

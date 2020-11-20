@@ -29,10 +29,11 @@ namespace BSClient
         #region Final
         public BindingList<Voucher> VoucherData { get; set; }
         public BindingList<VoucherDetail> VoucherDetailData { get; set; }
+        public BindingList<Invoice> InvoiceData { get; set; }
 
         public List<Voucher> VoucherDelete { get; set; }
-
         public List<VoucherDetail> VoucherDetailDelete { get; set; }
+        public List<Invoice> InvoiceDelete { get; set; }
         #endregion Final
         public VoucherControl()
         {
@@ -470,16 +471,6 @@ namespace BSClient
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
                 }
-                //if (controller.SaveVoucherDetail(saveData))
-                //{
-                //    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                //    VoucherDetailDelete = new List<VoucherDetail>();
-                //    this.LoadVoucherDetailGridView(voucher.VouchersID);
-                //}
-                //else
-                //{
-                //    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
-                //}
             }
         }
 
@@ -622,31 +613,6 @@ namespace BSClient
 
         private void VoucherDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-            //GridView view = sender as GridView;
-            //GridColumn columnAccountID = view.Columns["AccountID"];
-            //GridColumn columnGeneralLedgerID = view.Columns["GeneralLedgerID"];
-            //GridColumn columnNV = view.Columns["NV"];
-            //GridColumn columnAmount = view.Columns["Amount"];
-            //if (e.Column.FieldName == "GeneralLedgerID" && e.RowHandle == view.FocusedRowHandle)
-            //{
-            //    if (view.GetRowCellValue(e.RowHandle, "GeneralLedgerID") != null && view.GetRowCellValue(e.RowHandle, "AccountID") != null)
-            //    {
-            //        MaterialNVController controller = new MaterialNVController();
-            //        List<MaterialCheck> MaterialCheckData = controller.GetMaterialCheck(view.GetRowCellValue(e.RowHandle, "AccountID").ToString(), view.GetRowCellValue(e.RowHandle, "GeneralLedgerID").ToString());
-            //        bool msgCode = MaterialCheckData.Exists(s => s.msgCode == "0");
-            //        if (msgCode)
-            //        {
-            //            //e.Valid = false;
-            //            //Set errors with specific descriptions for the columns
-            //            view.SetColumnError(columnGeneralLedgerID, "Sổ cái không phù hợp với tài khoản!");
-            //            //  MessageBox.Show("Vui lòng chọn sổ cái của tài khoản đã nhập" + view.GetRowCellValue(e.RowHandle, "TKNumber").ToString() + "-" + view.GetRowCellValue(e.RowHandle, "GeneralLedgerName").ToString());
-            //        }
-            //        else
-            //        {
-            //            RowHandleList.Remove(e.RowHandle);
-            //        }
-            //    }
-            //}
         }
 
         private void VoucherDetail_gridView_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
@@ -828,6 +794,7 @@ namespace BSClient
                         {
                             tabNavigationPageLKVAT.PageVisible = true;
                             tabPaneVouchers.SelectedPageIndex = 1;
+                            LoadInvoiceGridviewFull();
                             checkLKVAT = 1;
                             break;
                         }
@@ -848,7 +815,6 @@ namespace BSClient
                         if (checkAccountID == "152" || checkAccountID == "156")
                         {
                             tabNavigationPageLKKho.PageVisible = true;
-                            ChitietKhogroupControl.Refresh();
                             tabPaneVouchers.SelectedPageIndex = 2;
                             checkLKkho = 1;
                             break;
@@ -862,5 +828,113 @@ namespace BSClient
                     break;
             }
         }
+
+        #region init Invoice TabPane
+        void LoadInvoiceGridviewFull()
+        {
+            Init_Invoice_GridView();
+            Setup_Invoice_GridView();
+            Load_Invoice_GridView();
+        }
+        private void Init_Invoice_GridView()
+        {
+            this.Invoice_gridView.Columns.Clear();
+            this.Invoice_gridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
+            this.Invoice_gridView.AddColumn("CustomerID", "Mã KH", 80, true);
+            this.Invoice_gridView.AddColumn("MaSo", "Mã số", 80, true);
+            this.Invoice_gridView.AddColumn("MauSo", "Mẫu số", 80, true);
+            this.Invoice_gridView.AddColumn("KyHieu", "Kí hiệu", 80, true);
+            this.Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
+            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true,"c2");
+            this.Invoice_gridView.AddSpinEditColumn("VAT", "% GTGT", 50, true, "#0%");
+            this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 80, true,"c2");
+            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 100, true,"c2");
+            this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 50, true);
+            this.Invoice_gridView.AddColumn("Description", "Nội dung", 150, true);
+            this.Invoice_gridView.AddColumn("CreateUser", "Người tạo", 80, false);
+
+            initControlto_Invoice_GridView();
+        }
+
+        private void Setup_Invoice_GridView()
+        {
+            this.Invoice_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.Invoice_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void Load_Invoice_GridView()
+        {
+            InvoiceController controller = new InvoiceController();
+            GlobalVarient.invoices = controller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
+            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
+            InvoiceData = new BindingList<Invoice>(GlobalVarient.invoices);
+            Invoice_gridControl.DataSource = InvoiceData;
+            InvoiceDelete = new List<Invoice>();
+        }
+
+        void initControlto_Invoice_GridView()
+        {
+            /// Invoice Type
+            /// 
+            MaterialNVController MaterialInvoiceType = new MaterialNVController();
+            List<MaterialInvoiceType> materialInvoiceType = MaterialInvoiceType.GetMaterialInvoiceType();
+            repositoryItemInvoiceType.DataSource = materialInvoiceType;
+            repositoryItemInvoiceType.NullText = "";
+            repositoryItemInvoiceType.ValueMember = "InvoiceTypeSummary";
+            repositoryItemInvoiceType.DisplayMember = "InvoiceTypeName";
+            Invoice_gridControl.RepositoryItems.Add(repositoryItemInvoiceType);
+            Invoice_gridView.Columns["InvoiceType"].ColumnEdit = repositoryItemInvoiceType;
+            repositoryItemInvoiceType.Popup += new EventHandler(repositoryItemInvoiceType_Popup);
+
+            ///Doi Tuong
+            ///
+            MaterialNVController MaterialDT = new MaterialNVController();
+            List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
+            repositoryItemCustomer.DataSource = materialDT;
+            repositoryItemCustomer.NullText = "";
+            repositoryItemCustomer.ValueMember = "CustomerID";
+            repositoryItemCustomer.DisplayMember = "CustomerSName";
+
+            Invoice_gridControl.RepositoryItems.Add(repositoryItemCustomer);
+            Invoice_gridView.Columns["CustomerID"].ColumnEdit = repositoryItemCustomer;
+            Invoice_gridView.BestFitColumns();
+            repositoryItemCustomer.Popup += new EventHandler(repositoryItemCustomer_Popup);
+       
+        }
+
+       
+        RepositoryItemSearchLookUpEdit repositoryItemInvoiceType = new RepositoryItemSearchLookUpEdit();
+        RepositoryItemSearchLookUpEdit repositoryItemWareHouseType = new RepositoryItemSearchLookUpEdit();
+        RepositoryItemSearchLookUpEdit repositoryItemCustomer = new RepositoryItemSearchLookUpEdit();
+
+
+        private void repositoryItemInvoiceType_Popup(object sender, EventArgs e)
+        {
+            var edit = sender as SearchLookUpEdit;
+            var popupForm = edit.GetPopupEditForm();
+            popupForm.KeyPreview = true;
+            popupForm.KeyUp -= popupForm_KeyUp;
+            popupForm.KeyUp += popupForm_KeyUp;
+        }
+
+        private void repositoryItemWareHouseType_Popup(object sender, EventArgs e)
+        {
+            var edit = sender as SearchLookUpEdit;
+            var popupForm = edit.GetPopupEditForm();
+            popupForm.KeyPreview = true;
+            popupForm.KeyUp -= popupForm_KeyUp;
+            popupForm.KeyUp += popupForm_KeyUp;
+        }
+
+        private void repositoryItemCustomer_Popup(object sender, EventArgs e)
+        {
+            var edit = sender as SearchLookUpEdit;
+            var popupForm = edit.GetPopupEditForm();
+            popupForm.KeyPreview = true;
+            popupForm.KeyUp -= popupForm_KeyUp;
+            popupForm.KeyUp += popupForm_KeyUp;
+        }
+        #endregion init Invoice TabPane
     }
 }
