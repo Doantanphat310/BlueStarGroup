@@ -209,7 +209,6 @@
     <EmbeddedResource Include="Base\BaseFormList.resx">
       <DependentUpon>BaseFormList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\AccountGroup.resx">
       <DependentUpon>AccountGroup.cs</DependentUpon>
     </EmbeddedResource>
