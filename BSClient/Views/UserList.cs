@@ -1,5 +1,4 @@
-﻿using BSClient.Base;
-using BSClient.Utility;
+﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -246,7 +245,6 @@ namespace BSClient.Views
 
         private void Users_GridView_ShowingEditor(object sender, CancelEventArgs e)
         {
-            Console.WriteLine("edit");
             string col = Users_GridView.FocusedColumn.FieldName;
             int rowIndex = Users_GridView.FocusedRowHandle;
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
@@ -284,13 +282,6 @@ namespace BSClient.Views
                     view.SetColumnError(column, "Mật khẩu không được trống.");
                 }
             }
-
-            if (Users_GridView.IsNewItemRow(e.RowHandle))
-            {
-                Console.WriteLine("ValidateRow - IsNewItemRow " + e.RowHandle.ToString());
-            }
-
-            Console.WriteLine("ValidateRow - " + e.RowHandle.ToString());
         }
 
         private void Users_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
@@ -364,16 +355,6 @@ namespace BSClient.Views
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                 }
             }
-        }
-
-        private void Users_GridView_InitNewRow(object sender, InitNewRowEventArgs e)
-        {
-            if (Users_GridView.IsNewItemRow(e.RowHandle))
-            {
-                Console.WriteLine("InitNewRow - IsNewItemRow " + e.RowHandle.ToString());
-            }
-
-            Console.WriteLine("InitNewRow - " + e.RowHandle.ToString());
         }
 
         private void UserRole_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)

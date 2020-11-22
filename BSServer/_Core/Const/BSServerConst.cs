@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BSServer._Core.Const
 {
-    public class SSServerConst
+    public class BSServerConst
     {
         public const string SSContext = "SSContext";
 
@@ -13,5 +13,6 @@ namespace BSServer._Core.Const
         public const string CustomerSymbol = "KH";
         public const string ItemSymbol = "SP";
         public const string CompanySymbol = "CTY";
+        public const string ItemTypeSymbol = "LSP";
     }
 }

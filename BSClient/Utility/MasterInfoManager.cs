@@ -1,5 +1,5 @@
-﻿using BSCommon.Models;
-using BSCommon.Utility;
+﻿using BSCommon.Constant;
+using BSCommon.Models;
 using BSServer.Controllers;
 using System.Collections.Generic;
 
@@ -11,7 +11,14 @@ namespace BSClient.Utility
         {
             MasterInfoController masterInfoController = new MasterInfoController();
 
-            return masterInfoController.GetMasterInfos(MasterType.UserRole);
+            return masterInfoController.GetMasterInfos(MasterType.USERROLE);
+        }
+
+        public static List<MasterInfo> GetItemUnit()
+        {
+            MasterInfoController masterInfoController = new MasterInfoController();
+
+            return masterInfoController.GetMasterInfos(MasterType.ITEMUNIT);
         }
     }
 }

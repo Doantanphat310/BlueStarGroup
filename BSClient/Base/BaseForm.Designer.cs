@@ -28,26 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            //this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            //this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            //this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            //this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            //((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.SuspendLayout();
-            
             // 
-            // Form1
+            // BaseForm
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 473);
-            //this.ControlContainer = this.fluentDesignFormContainer1;
-            //this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.ClientSize = new System.Drawing.Size(480, 244);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BaseForm";
-            //this.NavigationControl = this.accordionControl1;
             this.Text = "BaseForm";
-            //((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
 
         }

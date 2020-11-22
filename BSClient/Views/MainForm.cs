@@ -1,7 +1,7 @@
 ﻿using BSClient.Base;
 using BSClient.Utility;
 using BSClient.Views;
-using BSCommon.Utility;
+using BSCommon.Constant;
 using System;
 
 namespace BSClient
@@ -24,7 +24,7 @@ namespace BSClient
         {
             UserList user = new UserList();
             this.ShowControl(user, Content);
-            this.Text = this.GetTitle(BSTitle.UserList);
+            this.SetTitle(BSTitle.UserList);
         }
 
         private void ACE_Company_Click(object sender, EventArgs e)
@@ -38,14 +38,14 @@ namespace BSClient
         {
             CustomerList control = new CustomerList();
             this.ShowControl(control, Content);
-            this.Text = this.GetTitle(BSTitle.CustomerList);
+            this.SetTitle(BSTitle.CustomerList);
         }
 
         private void accordionControlElementHangHoa_Click(object sender, EventArgs e)
         {
-            ItemType control = new ItemType();
+            ItemList control = new ItemList();
             this.ShowControl(control, Content);
-            this.Text = " Blue Star Group - Thông tin hàng hóa";
+            this.Text = this.GetTitle(BSTitle.ItemList);
         }
 
         private void accordionControlElementAccountGroup_Click(object sender, EventArgs e)

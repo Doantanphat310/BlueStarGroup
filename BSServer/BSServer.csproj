@@ -71,11 +71,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\MaterialNVController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Controllers\VoucherDetailDinhKhoanController.cs" />
     <Compile Include="Controllers\VouchersTypeController.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
+    <Compile Include="DAOs\ItemsDAO.cs" />
     <Compile Include="DAOs\VoucherDAO.cs" />
     <Compile Include="DAOs\VoucherDetailDinhKhoanDAO.cs" />
     <Compile Include="DAOs\VouchersTypeDAO.cs" />
@@ -87,7 +89,7 @@
     <Compile Include="DAOs\CompanyDAO.cs" />
     <Compile Include="DAOs\MasterInfoDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
-    <Compile Include="DAOs\CommonDAO.cs" />
+    <Compile Include="Logics\ItemsLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\VoucherLogic.cs" />
@@ -96,8 +98,9 @@
     <Compile Include="_Core\Base\BaseDAO.cs" />
     <Compile Include="_Core\Base\BaseDbContext.cs" />
     <Compile Include="_Core\Base\BaseLogic.cs" />
-    <Compile Include="_Core\Const\SSServerConst.cs" />
+    <Compile Include="_Core\Const\BSServerConst.cs" />
     <Compile Include="_Core\Context\BSContext.cs" />
+    <Compile Include="_Core\Utility\GeneralID.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BSCommon\BSCommon.csproj">

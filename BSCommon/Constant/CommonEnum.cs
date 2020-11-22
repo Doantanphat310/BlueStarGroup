@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Constant
 {
-    //public class EntryMode
-    //{
-
-    //}
-
     public enum ModifyMode
     {
         None = 0,

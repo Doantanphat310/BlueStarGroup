@@ -1,8 +1,14 @@
-﻿using DevExpress.Utils;
+﻿using DevExpress.Data;
+using DevExpress.Utils;
+using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BSClient.Utility
 {
@@ -14,22 +20,29 @@ namespace BSClient.Utility
             string caption,
             int width,
             bool isAllowEdit = true,
-            string formatString = "")
+            string formatString = "#,###0",
+            SummaryItemType summaryType = SummaryItemType.None,
+            string summaryFormat = ""
+            )
         {
             RepositoryItemSpinEdit itemCtrl = new RepositoryItemSpinEdit();
+            //itemCtrl.Mask.MaskType = MaskType.Numeric;
+            //itemCtrl.Mask.EditMask = formatString;
+            itemCtrl.DisplayFormat.FormatString = formatString;
+            itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
+            itemCtrl.EditFormat.FormatString = formatString;
+            itemCtrl.EditFormat.FormatType = FormatType.Custom;
 
-            if (!string.IsNullOrEmpty(formatString))
+            GridColumnSummaryItem summaryItem = new GridColumnSummaryItem();
+
+            if (summaryType != SummaryItemType.None)
             {
-                FormatInfo formatInfo = new FormatInfo
-                {
-                    FormatString = formatString,
-                    FormatType = FormatType.Numeric
-                };
-                itemCtrl.EditFormat.Assign(formatInfo);
-                itemCtrl.DisplayFormat.Assign(formatInfo);
+                summaryFormat = string.IsNullOrEmpty(summaryFormat) ? formatString : summaryFormat;
+                summaryItem = new GridColumnSummaryItem(summaryType, fieldName, summaryFormat);
             }
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
+
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl, summaryItem: summaryItem);
         }
 
         public static void AddCheckBoxColumn(
@@ -41,21 +54,25 @@ namespace BSClient.Utility
         {
             RepositoryItemCheckEdit itemCtrl = new RepositoryItemCheckEdit();
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
-        public static void AddComboBoxColumn(
+        public static void AddLookupEditColumn(
             this GridView gridView,
             string fieldName,
             string caption,
             int width,
             object itemSource,
+            string valueMember,
+            string displayMember,
             bool isAllowEdit = true,
             Dictionary<string, string> columnNames = null)
         {
             var itemCtrl = new RepositoryItemLookUpEdit
             {
-                DataSource = itemSource
+                DataSource = itemSource,
+                DisplayMember = displayMember,
+                ValueMember = valueMember
             };
 
             if (columnNames != null)
@@ -66,7 +83,50 @@ namespace BSClient.Utility
                 }
             }
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+        }
+
+        public static void AddSearchLookupEditColumn(
+            this GridView gridView,
+            string fieldName,
+            string caption,
+            int width,
+            object itemSource,
+            string valueMember,
+            string displayMember,
+            bool isAllowEdit = true,
+            Dictionary<string, string> columnNames = null,
+            EventHandler editValueChanged = null)
+        {
+            var itemCtrl = new RepositoryItemSearchLookUpEdit
+            {
+                DataSource = itemSource,
+                DisplayMember = displayMember,
+                ValueMember = valueMember
+            };
+
+            if (editValueChanged != null)
+            {
+                itemCtrl.EditValueChanged += editValueChanged;
+            }
+
+            if (columnNames != null)
+            {
+                foreach (var col in columnNames)
+                {
+                    var gridCol = new GridColumn
+                    {
+                        FieldName = col.Key,
+                        Caption = col.Value,
+                        Visible = true,
+                    };
+
+                    //gridCol.OptionsColumn.AllowEdit = false;
+                    itemCtrl.View.Columns.Add(gridCol);                   
+                }
+            }
+
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
         public static void AddDateEditColumn(
@@ -75,22 +135,14 @@ namespace BSClient.Utility
             string caption,
             int width,
             bool isAllowEdit = true,
-            string formatString = "")
+            string formatString = "dd/MM/yyyy")
         {
             RepositoryItemDateEdit itemCtrl = new RepositoryItemDateEdit();
 
-            if (!string.IsNullOrEmpty(formatString))
-            {
-                FormatInfo formatInfo = new FormatInfo
-                {
-                    FormatString = formatString,
-                    FormatType = FormatType.DateTime
-                };
-                itemCtrl.EditFormat.Assign(formatInfo);
-                itemCtrl.DisplayFormat.Assign(formatInfo);
-            }
+            itemCtrl.DisplayFormat.FormatString = formatString;
+            itemCtrl.DisplayFormat.FormatType = FormatType.DateTime;
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl);
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
         public static void AddColumn(
@@ -99,7 +151,10 @@ namespace BSClient.Utility
             string caption,
             int width,
             bool isAllowEdit = true,
-            RepositoryItem itemCtrl = null)
+            bool fixedWidth = true,
+            RepositoryItem itemCtrl = null,
+            GridColumnSummaryItem summaryItem = null
+            )
         {
             GridColumn col = new GridColumn
             {
@@ -113,26 +168,73 @@ namespace BSClient.Utility
             col.OptionsColumn.AllowEdit = isAllowEdit;
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+            col.OptionsColumn.FixedWidth = fixedWidth;
 
             if (itemCtrl != null)
             {
                 col.ColumnEdit = itemCtrl;
             }
 
+            // Add Summary Item
+            if (summaryItem != null)
+            {
+                col.Summary.Add(summaryItem);
+            }
+
             gridView.Columns.Add(col);
+        }
+
+        private static GridColumn GetColumn(
+            string fieldName,
+            string caption,
+            int width,
+            bool isAllowEdit = true,
+            bool fixedWidth = true,
+            RepositoryItem itemCtrl = null,
+            GridSummaryItem summaryItem = null
+            )
+        {
+            GridColumn col = new GridColumn
+            {
+                Caption = caption,
+                Name = fieldName,
+                FieldName = fieldName,
+                Visible = true,
+                Width = width
+            };
+
+            col.OptionsColumn.AllowEdit = isAllowEdit;
+            col.AppearanceHeader.Options.UseTextOptions = true;
+            col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+            col.OptionsColumn.FixedWidth = fixedWidth;
+
+            if (itemCtrl != null)
+            {
+                col.ColumnEdit = itemCtrl;
+            }
+
+            // Add Summary Item
+            if (summaryItem != null)
+            {
+                col.Summary.Add(summaryItem);
+            }
+
+            return col;
         }
 
         public static void SetupGridView(
             this GridView gridView,
             bool columnAutoWidth = true,
             bool multiSelect = true,
-            int checkBoxSelectorColumnWidth = 40,
-            bool showAutoFilterRow = true)
+            int checkBoxSelectorColumnWidth = 30,
+            bool showAutoFilterRow = true,
+            bool showFooter = false,
+            bool allowAddRows = true)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
 
-            gridView.OptionsNavigation.AutoFocusNewRow = true;
+            //gridView.OptionsNavigation.AutoFocusNewRow = true;
 
             gridView.OptionsSelection.MultiSelect = multiSelect;
             if (multiSelect && checkBoxSelectorColumnWidth > 0)
@@ -147,6 +249,14 @@ namespace BSClient.Utility
             gridView.OptionsView.ShowGroupPanel = false;
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
+
+            if (allowAddRows)
+            {
+                gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+                gridView.OptionsBehavior.AllowAddRows = DefaultBoolean.True;
+            }
+
+            gridView.OptionsView.ShowFooter = showFooter;
         }
     }
 }

@@ -22,16 +22,5 @@ namespace BSClient.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RAYMOND\\SQLEXPRESS;Initial Catalog=BlueStarGroupDB;User ID=admin;Pass" +
-            "word=Ab123456")]
-        public string BlueStarGroupDBConnectionString {
-            get {
-                return ((string)(this["BlueStarGroupDBConnectionString"]));
-            }
-        }
     }
 }

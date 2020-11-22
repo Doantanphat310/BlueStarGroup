@@ -23,6 +23,9 @@ namespace BSServer._Core.Context
 
         public DbSet<MasterInfo> MasterInfo { get; set; }
 
+        public DbSet<Items> Items { get; set; }
+        public DbSet<ItemType> ItemType { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             builder.Entity<MasterInfo>().HasKey(model => new { model.MasterCd, model.DetailCd });

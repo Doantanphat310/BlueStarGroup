@@ -3,6 +3,7 @@ using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer._Core.Base;
 using BSServer._Core.Context;
+using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,8 @@ namespace BSServer.Logics
     {
         public CustomerLogic(BSContext context) : base(context)
         {
-            this.CommonDAO = new CommonDAO(this.Context);
             this.CustomerDAO = new CustomerDAO(this.Context);
         }
-
-        private CommonDAO CommonDAO { get; set; }
 
         private CustomerDAO CustomerDAO { get; set; }
 
@@ -28,13 +26,15 @@ namespace BSServer.Logics
             {
                 try
                 {
+                    long seq = this.CustomerDAO.GetCustomerSEQ();
                     foreach (Customer customer in customers)
                     {
                         switch (customer.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                customer.CustomerID = this.CommonDAO.GetCustomerID();
+                                seq++;
+                                customer.CustomerID = GenerateID.CustomerID(seq); ;
 
                                 this.CustomerDAO.InsertCustommer(customer);
                                 break;

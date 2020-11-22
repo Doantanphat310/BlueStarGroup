@@ -18,6 +18,6 @@ namespace BSCommon.Models
         public DateTime? UpdateDate { get; set; }
         public string CreateUser { get; set; }
         public string UpdateUser { get; set; }
-        public int Status { get; set; }
+        public int? IsDelete { get; set; }
     }
 }

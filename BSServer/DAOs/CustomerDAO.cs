@@ -1,6 +1,7 @@
 ﻿using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer._Core.Base;
+using BSServer._Core.Const;
 using BSServer._Core.Context;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ namespace BSServer.DAOs
     {
         public CustomerDAO(BSContext context) : base(context)
         {
+        }
+
+        public long GetCustomerSEQ()
+        {
+            return this.GetMaxSEQ(BSServerConst.CustomerSymbol);
         }
 
         //public List<CustomerCompany> GetCustommers(string customerId)
