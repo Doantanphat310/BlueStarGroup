@@ -92,9 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
-    <Compile Include="Constant\SSCommonConst.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\MaterialCheck.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\ItemsPriceCompany.cs" />
+    <Compile Include="Models\ItemsType.cs" />
+    <Compile Include="Models\Items.cs" />
     <Compile Include="Models\MaterialGL.cs" />
     <Compile Include="Models\MaterialInvoiceType.cs" />
     <Compile Include="Models\MaterialNV.cs" />
@@ -118,9 +121,9 @@
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\WareHouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\BSMessage.cs" />
-    <Compile Include="Utility\BSTitle.cs" />
-    <Compile Include="Utility\CommonConstant.cs" />
+    <Compile Include="Constant\BSMessage.cs" />
+    <Compile Include="Constant\BSTitle.cs" />
+    <Compile Include="Constant\CommonConstant.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
     <Compile Include="Utility\SHA1Helper.cs" />
   </ItemGroup>

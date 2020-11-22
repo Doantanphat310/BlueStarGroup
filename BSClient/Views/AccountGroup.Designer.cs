@@ -38,7 +38,6 @@
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.controlNavigator2 = new DevExpress.XtraEditors.ControlNavigator();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
@@ -62,7 +61,6 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.controlNavigator3 = new DevExpress.XtraEditors.ControlNavigator();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -71,7 +69,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.controlNavigator1 = new DevExpress.XtraEditors.ControlNavigator();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
@@ -234,32 +231,14 @@
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.controlNavigator2);
+            this.tablePanel2.SetColumn(this.panelControl3, 1);
             this.panelControl3.Controls.Add(this.gridControl3);
-            this.panelControl3.Location = new System.Drawing.Point(200, 30);
+            this.panelControl3.Location = new System.Drawing.Point(191, 47);
             this.panelControl3.Name = "panelControl3";
+            this.tablePanel2.SetRow(this.panelControl3, 1);
             this.tablePanel2.SetRowSpan(this.panelControl3, 12);
-            this.panelControl3.Size = new System.Drawing.Size(323, 332);
+            this.panelControl3.Size = new System.Drawing.Size(332, 332);
             this.panelControl3.TabIndex = 9;
-            // 
-            // controlNavigator2
-            // 
-            this.controlNavigator2.Buttons.Append.Enabled = false;
-            this.controlNavigator2.Buttons.Append.Visible = false;
-            this.controlNavigator2.Buttons.CancelEdit.Enabled = false;
-            this.controlNavigator2.Buttons.CancelEdit.Visible = false;
-            this.controlNavigator2.Buttons.Edit.Enabled = false;
-            this.controlNavigator2.Buttons.Edit.Visible = false;
-            this.controlNavigator2.Buttons.EndEdit.Enabled = false;
-            this.controlNavigator2.Buttons.EndEdit.Visible = false;
-            this.controlNavigator2.Buttons.Remove.Enabled = false;
-            this.controlNavigator2.Buttons.Remove.Visible = false;
-            this.controlNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlNavigator2.Location = new System.Drawing.Point(2, 303);
-            this.controlNavigator2.Name = "controlNavigator2";
-            this.controlNavigator2.Size = new System.Drawing.Size(319, 27);
-            this.controlNavigator2.TabIndex = 12;
-            this.controlNavigator2.Text = "controlNavigator2";
             // 
             // gridControl3
             // 
@@ -267,7 +246,7 @@
             this.gridControl3.Location = new System.Drawing.Point(2, 2);
             this.gridControl3.MainView = this.gridView4;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(319, 328);
+            this.gridControl3.Size = new System.Drawing.Size(328, 328);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -483,7 +462,6 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.simpleButton7);
-            this.panel3.Controls.Add(this.controlNavigator3);
             this.panel3.Controls.Add(this.simpleButton8);
             this.panel3.Controls.Add(this.simpleButton9);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -502,24 +480,6 @@
             this.simpleButton7.Size = new System.Drawing.Size(80, 34);
             this.simpleButton7.TabIndex = 8;
             this.simpleButton7.Text = "Hủy";
-            // 
-            // controlNavigator3
-            // 
-            this.controlNavigator3.Buttons.Append.Enabled = false;
-            this.controlNavigator3.Buttons.Append.Visible = false;
-            this.controlNavigator3.Buttons.CancelEdit.Enabled = false;
-            this.controlNavigator3.Buttons.CancelEdit.Visible = false;
-            this.controlNavigator3.Buttons.Edit.Enabled = false;
-            this.controlNavigator3.Buttons.Edit.Visible = false;
-            this.controlNavigator3.Buttons.EndEdit.Enabled = false;
-            this.controlNavigator3.Buttons.EndEdit.Visible = false;
-            this.controlNavigator3.Buttons.Remove.Enabled = false;
-            this.controlNavigator3.Buttons.Remove.Visible = false;
-            this.controlNavigator3.Location = new System.Drawing.Point(16, 9);
-            this.controlNavigator3.Name = "controlNavigator3";
-            this.controlNavigator3.Size = new System.Drawing.Size(226, 34);
-            this.controlNavigator3.TabIndex = 7;
-            this.controlNavigator3.Text = "controlNavigator3";
             // 
             // simpleButton8
             // 
@@ -584,7 +544,6 @@
             // 
             this.tablePanel1.SetColumn(this.panel1, 0);
             this.panel1.Controls.Add(this.simpleButton3);
-            this.panel1.Controls.Add(this.controlNavigator1);
             this.panel1.Controls.Add(this.simpleButton2);
             this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -604,24 +563,6 @@
             this.simpleButton3.Size = new System.Drawing.Size(80, 34);
             this.simpleButton3.TabIndex = 8;
             this.simpleButton3.Text = "Hủy";
-            // 
-            // controlNavigator1
-            // 
-            this.controlNavigator1.Buttons.Append.Enabled = false;
-            this.controlNavigator1.Buttons.Append.Visible = false;
-            this.controlNavigator1.Buttons.CancelEdit.Enabled = false;
-            this.controlNavigator1.Buttons.CancelEdit.Visible = false;
-            this.controlNavigator1.Buttons.Edit.Enabled = false;
-            this.controlNavigator1.Buttons.Edit.Visible = false;
-            this.controlNavigator1.Buttons.EndEdit.Enabled = false;
-            this.controlNavigator1.Buttons.EndEdit.Visible = false;
-            this.controlNavigator1.Buttons.Remove.Enabled = false;
-            this.controlNavigator1.Buttons.Remove.Visible = false;
-            this.controlNavigator1.Location = new System.Drawing.Point(12, 9);
-            this.controlNavigator1.Name = "controlNavigator1";
-            this.controlNavigator1.Size = new System.Drawing.Size(226, 34);
-            this.controlNavigator1.TabIndex = 7;
-            this.controlNavigator1.Text = "controlNavigator1";
             // 
             // simpleButton2
             // 
@@ -696,7 +637,6 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.Utils.Layout.TablePanel tablePanel2;
         private DevExpress.XtraEditors.PanelControl panelControl4;
-        private DevExpress.XtraEditors.ControlNavigator controlNavigator2;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
@@ -720,7 +660,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private System.Windows.Forms.Panel panel3;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.ControlNavigator controlNavigator3;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -729,7 +668,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.ControlNavigator controlNavigator1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl8;

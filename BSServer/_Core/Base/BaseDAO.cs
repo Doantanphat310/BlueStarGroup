@@ -2,6 +2,7 @@
 using BSServer._Core.Context;
 using System;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace BSServer._Core.Base
 {
@@ -39,6 +40,13 @@ namespace BSServer._Core.Base
         /// 
         /// </summary>
         public BSContext Context { get; set; }
+
+        protected long GetMaxSEQ(string type)
+        {
+            return this.Context.ExecuteScalar(
+                "GetSEQ",
+                new SqlParameter("@Type", type));
+        }
 
         public void Dispose()
         {

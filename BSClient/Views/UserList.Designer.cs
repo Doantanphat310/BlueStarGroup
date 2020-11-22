@@ -274,7 +274,6 @@
             this.Users_GridView.Name = "Users_GridView";
             this.Users_GridView.OptionsView.EnableAppearanceEvenRow = true;
             this.Users_GridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.Users_GridView_ShowingEditor);
-            this.Users_GridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.Users_GridView_InitNewRow);
             this.Users_GridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Users_GridView_FocusedRowChanged);
             this.Users_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.Users_GridView_InvalidRowException);
             this.Users_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.Users_GridView_RowDeleted);

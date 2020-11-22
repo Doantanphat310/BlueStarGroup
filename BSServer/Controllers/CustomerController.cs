@@ -13,7 +13,6 @@ namespace BSServer.Controllers
 
         private CustomerDAO CustomerDAO { get; set; }
 
-
         private CustomerLogic CustomerLogic { get; set; }
 
         public CustomerController()

@@ -4,7 +4,7 @@ using System;
 namespace BSCommon.Models
 {
     /// <summary>
-    /// User infomation
+    /// Customer infomation
     /// </summary>        
     public class Customer
     {
