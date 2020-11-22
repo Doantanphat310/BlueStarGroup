@@ -1,4 +1,7 @@
-create proc InvoiceInsert
+alter table Invoice
+alter column VAT 
+
+alter proc InvoiceInsert
 	@InvoiceID varchar(50),
 	@VouchersID varchar(50) ,
 	@CustomerID varchar(50) ,
@@ -10,7 +13,7 @@ create proc InvoiceInsert
 	@InvoiceType varchar(1) ,
 	@InvoiceDate datetime ,
 	@Amount money ,
-	@VAT money ,
+	@VAT numeric(3,2) ,
 	@Discounts money ,
 	@CreateUser varchar(50) ,
 	@CompanyID varchar(50) 

@@ -73,6 +73,45 @@
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageLKVAT = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.InvoiceCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DepreciationDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.DepreciationAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.DepreciationDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DepreciationDetail_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.DepreciationDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Depreciation_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.Depreciation_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.WareHouseDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.WareHouseSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.WareHouseDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouse_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.WareHouse_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.WareHouseDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.WareHouseDetailCalculator_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Invoice_gridControl = new DevExpress.XtraGrid.GridControl();
             this.Invoice_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -115,63 +154,24 @@
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tablePanel2 = new DevExpress.Utils.Layout.TablePanel();
-            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.simpleButton29 = new DevExpress.XtraEditors.SimpleButton();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
             this.searchLookUpEdit3 = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
-            this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.simpleButton29 = new DevExpress.XtraEditors.SimpleButton();
+            this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.WareHouseAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.WareHouseDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouse_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.WareHouse_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.WareHouseDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDetailCalculator_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.DepreciationDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetail_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.DepreciationDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Depreciation_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.Depreciation_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.WareHouseSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.InvoiceSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.InvoiceSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.InvoiceDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.InvoiceCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.WareHouseDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.DepreciationAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.DepreciationDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -196,6 +196,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).BeginInit();
             this.tabNavigationPageLKVAT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Invoice_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Invoice_gridView)).BeginInit();
             this.tabNavigationPageLKKho.SuspendLayout();
@@ -218,26 +231,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel2)).BeginInit();
             this.tablePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -706,6 +706,375 @@
             this.tabNavigationPageLKVAT.Name = "tabNavigationPageLKVAT";
             this.tabNavigationPageLKVAT.Size = new System.Drawing.Size(1076, 557);
             // 
+            // InvoiceAddNew_checkBox
+            // 
+            this.InvoiceAddNew_checkBox.AutoSize = true;
+            this.InvoiceAddNew_checkBox.Location = new System.Drawing.Point(697, -1);
+            this.InvoiceAddNew_checkBox.Name = "InvoiceAddNew_checkBox";
+            this.InvoiceAddNew_checkBox.Size = new System.Drawing.Size(113, 17);
+            this.InvoiceAddNew_checkBox.TabIndex = 23;
+            this.InvoiceAddNew_checkBox.Text = "Thêm mới hóa đơn";
+            this.InvoiceAddNew_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // InvoiceCancel_simpleButton
+            // 
+            this.InvoiceCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceCancel_simpleButton.ImageOptions.Image")));
+            this.InvoiceCancel_simpleButton.Location = new System.Drawing.Point(994, 112);
+            this.InvoiceCancel_simpleButton.Name = "InvoiceCancel_simpleButton";
+            this.InvoiceCancel_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceCancel_simpleButton.TabIndex = 23;
+            this.InvoiceCancel_simpleButton.Text = "Hủy";
+            // 
+            // InvoiceDelete_simpleButton
+            // 
+            this.InvoiceDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDelete_simpleButton.ImageOptions.Image")));
+            this.InvoiceDelete_simpleButton.Location = new System.Drawing.Point(994, 80);
+            this.InvoiceDelete_simpleButton.Name = "InvoiceDelete_simpleButton";
+            this.InvoiceDelete_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceDelete_simpleButton.TabIndex = 23;
+            this.InvoiceDelete_simpleButton.Text = "Xóa";
+            // 
+            // InvoiceSave_simpleButton
+            // 
+            this.InvoiceSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceSave_simpleButton.ImageOptions.Image")));
+            this.InvoiceSave_simpleButton.Location = new System.Drawing.Point(994, 48);
+            this.InvoiceSave_simpleButton.Name = "InvoiceSave_simpleButton";
+            this.InvoiceSave_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceSave_simpleButton.TabIndex = 23;
+            this.InvoiceSave_simpleButton.Text = "Lưu";
+            // 
+            // InvoiceSaveNew_simpleButton
+            // 
+            this.InvoiceSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceSaveNew_simpleButton.ImageOptions.Image")));
+            this.InvoiceSaveNew_simpleButton.Location = new System.Drawing.Point(994, 16);
+            this.InvoiceSaveNew_simpleButton.Name = "InvoiceSaveNew_simpleButton";
+            this.InvoiceSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceSaveNew_simpleButton.TabIndex = 23;
+            this.InvoiceSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceSaveNew_simpleButton.Click += new System.EventHandler(this.InvoiceSaveNew_simpleButton_Click);
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.label2);
+            this.groupControl2.Controls.Add(this.DepreciationDetailAddNew_checkBox);
+            this.groupControl2.Controls.Add(this.DepreciationAddNew_checkBox);
+            this.groupControl2.Controls.Add(this.DepreciationDetailSaveNew_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationSaveNew_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationDetailCancel_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationDetailDelete_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationDetailSave_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationCancel_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationDelete_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationSave_simpleButton);
+            this.groupControl2.Controls.Add(this.DepreciationDetail_gridControl);
+            this.groupControl2.Controls.Add(this.Depreciation_gridControl);
+            this.groupControl2.Location = new System.Drawing.Point(645, 146);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(425, 406);
+            this.groupControl2.TabIndex = 6;
+            this.groupControl2.Text = "Khấu hao";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Chi tiết khấu hao";
+            // 
+            // DepreciationDetailAddNew_checkBox
+            // 
+            this.DepreciationDetailAddNew_checkBox.AutoSize = true;
+            this.DepreciationDetailAddNew_checkBox.Location = new System.Drawing.Point(265, 203);
+            this.DepreciationDetailAddNew_checkBox.Name = "DepreciationDetailAddNew_checkBox";
+            this.DepreciationDetailAddNew_checkBox.Size = new System.Drawing.Size(153, 17);
+            this.DepreciationDetailAddNew_checkBox.TabIndex = 27;
+            this.DepreciationDetailAddNew_checkBox.Text = "Thêm mới chi tiết khấu hao";
+            this.DepreciationDetailAddNew_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // DepreciationAddNew_checkBox
+            // 
+            this.DepreciationAddNew_checkBox.AutoSize = true;
+            this.DepreciationAddNew_checkBox.Location = new System.Drawing.Point(208, 4);
+            this.DepreciationAddNew_checkBox.Name = "DepreciationAddNew_checkBox";
+            this.DepreciationAddNew_checkBox.Size = new System.Drawing.Size(118, 17);
+            this.DepreciationAddNew_checkBox.TabIndex = 24;
+            this.DepreciationAddNew_checkBox.Text = "Thêm mới khấu hao";
+            this.DepreciationAddNew_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // DepreciationDetailSaveNew_simpleButton
+            // 
+            this.DepreciationDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailSaveNew_simpleButton.ImageOptions.Image")));
+            this.DepreciationDetailSaveNew_simpleButton.Location = new System.Drawing.Point(10, 377);
+            this.DepreciationDetailSaveNew_simpleButton.Name = "DepreciationDetailSaveNew_simpleButton";
+            this.DepreciationDetailSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.DepreciationDetailSaveNew_simpleButton.TabIndex = 26;
+            this.DepreciationDetailSaveNew_simpleButton.Text = "Lưu mới";
+            // 
+            // DepreciationSaveNew_simpleButton
+            // 
+            this.DepreciationSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationSaveNew_simpleButton.ImageOptions.Image")));
+            this.DepreciationSaveNew_simpleButton.Location = new System.Drawing.Point(81, 168);
+            this.DepreciationSaveNew_simpleButton.Name = "DepreciationSaveNew_simpleButton";
+            this.DepreciationSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.DepreciationSaveNew_simpleButton.TabIndex = 23;
+            this.DepreciationSaveNew_simpleButton.Text = "Lưu mới";
+            // 
+            // DepreciationDetailCancel_simpleButton
+            // 
+            this.DepreciationDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailCancel_simpleButton.ImageOptions.Image")));
+            this.DepreciationDetailCancel_simpleButton.Location = new System.Drawing.Point(255, 377);
+            this.DepreciationDetailCancel_simpleButton.Name = "DepreciationDetailCancel_simpleButton";
+            this.DepreciationDetailCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationDetailCancel_simpleButton.TabIndex = 25;
+            this.DepreciationDetailCancel_simpleButton.Text = "Hủy";
+            // 
+            // DepreciationDetailDelete_simpleButton
+            // 
+            this.DepreciationDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailDelete_simpleButton.ImageOptions.Image")));
+            this.DepreciationDetailDelete_simpleButton.Location = new System.Drawing.Point(171, 377);
+            this.DepreciationDetailDelete_simpleButton.Name = "DepreciationDetailDelete_simpleButton";
+            this.DepreciationDetailDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationDetailDelete_simpleButton.TabIndex = 24;
+            this.DepreciationDetailDelete_simpleButton.Text = "Xóa";
+            // 
+            // DepreciationDetailSave_simpleButton
+            // 
+            this.DepreciationDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailSave_simpleButton.ImageOptions.Image")));
+            this.DepreciationDetailSave_simpleButton.Location = new System.Drawing.Point(87, 377);
+            this.DepreciationDetailSave_simpleButton.Name = "DepreciationDetailSave_simpleButton";
+            this.DepreciationDetailSave_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationDetailSave_simpleButton.TabIndex = 23;
+            this.DepreciationDetailSave_simpleButton.Text = "Lưu";
+            // 
+            // DepreciationCancel_simpleButton
+            // 
+            this.DepreciationCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationCancel_simpleButton.ImageOptions.Image")));
+            this.DepreciationCancel_simpleButton.Location = new System.Drawing.Point(342, 168);
+            this.DepreciationCancel_simpleButton.Name = "DepreciationCancel_simpleButton";
+            this.DepreciationCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationCancel_simpleButton.TabIndex = 22;
+            this.DepreciationCancel_simpleButton.Text = "Hủy";
+            // 
+            // DepreciationDelete_simpleButton
+            // 
+            this.DepreciationDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDelete_simpleButton.ImageOptions.Image")));
+            this.DepreciationDelete_simpleButton.Location = new System.Drawing.Point(248, 168);
+            this.DepreciationDelete_simpleButton.Name = "DepreciationDelete_simpleButton";
+            this.DepreciationDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationDelete_simpleButton.TabIndex = 21;
+            this.DepreciationDelete_simpleButton.Text = "Xóa";
+            // 
+            // DepreciationSave_simpleButton
+            // 
+            this.DepreciationSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationSave_simpleButton.ImageOptions.Image")));
+            this.DepreciationSave_simpleButton.Location = new System.Drawing.Point(158, 168);
+            this.DepreciationSave_simpleButton.Name = "DepreciationSave_simpleButton";
+            this.DepreciationSave_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.DepreciationSave_simpleButton.TabIndex = 20;
+            this.DepreciationSave_simpleButton.Text = "Lưu";
+            // 
+            // DepreciationDetail_gridControl
+            // 
+            this.DepreciationDetail_gridControl.Location = new System.Drawing.Point(7, 223);
+            this.DepreciationDetail_gridControl.MainView = this.DepreciationDetail_gridView;
+            this.DepreciationDetail_gridControl.Name = "DepreciationDetail_gridControl";
+            this.DepreciationDetail_gridControl.Size = new System.Drawing.Size(411, 148);
+            this.DepreciationDetail_gridControl.TabIndex = 1;
+            this.DepreciationDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.DepreciationDetail_gridView});
+            // 
+            // DepreciationDetail_gridView
+            // 
+            this.DepreciationDetail_gridView.GridControl = this.DepreciationDetail_gridControl;
+            this.DepreciationDetail_gridView.Name = "DepreciationDetail_gridView";
+            // 
+            // Depreciation_gridControl
+            // 
+            this.Depreciation_gridControl.Location = new System.Drawing.Point(7, 23);
+            this.Depreciation_gridControl.MainView = this.Depreciation_gridView;
+            this.Depreciation_gridControl.Name = "Depreciation_gridControl";
+            this.Depreciation_gridControl.Size = new System.Drawing.Size(411, 139);
+            this.Depreciation_gridControl.TabIndex = 0;
+            this.Depreciation_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.Depreciation_gridView});
+            // 
+            // Depreciation_gridView
+            // 
+            this.Depreciation_gridView.GridControl = this.Depreciation_gridControl;
+            this.Depreciation_gridView.Name = "Depreciation_gridView";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.WareHouseDetailAddNew_checkBox);
+            this.groupControl1.Controls.Add(this.WareHouseSaveNew_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseAddNew_checkBox);
+            this.groupControl1.Controls.Add(this.WareHouseDetailSaveNew_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseCancel_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseDelete_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseSave_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouse_gridControl);
+            this.groupControl1.Controls.Add(this.WareHouseDetailCancel_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseDetailDelete_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseDetailSave_simpleButton);
+            this.groupControl1.Controls.Add(this.WareHouseDetailCalculator_simpleButton);
+            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.labelControl9);
+            this.groupControl1.Controls.Add(this.WareHouseDetail_gridControl);
+            this.groupControl1.Location = new System.Drawing.Point(6, 146);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(633, 408);
+            this.groupControl1.TabIndex = 5;
+            // 
+            // WareHouseDetailAddNew_checkBox
+            // 
+            this.WareHouseDetailAddNew_checkBox.AutoSize = true;
+            this.WareHouseDetailAddNew_checkBox.Location = new System.Drawing.Point(480, 168);
+            this.WareHouseDetailAddNew_checkBox.Name = "WareHouseDetailAddNew_checkBox";
+            this.WareHouseDetailAddNew_checkBox.Size = new System.Drawing.Size(148, 17);
+            this.WareHouseDetailAddNew_checkBox.TabIndex = 23;
+            this.WareHouseDetailAddNew_checkBox.Text = "Thêm mới chi tiết hóa đơn";
+            this.WareHouseDetailAddNew_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // WareHouseSaveNew_simpleButton
+            // 
+            this.WareHouseSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseSaveNew_simpleButton.ImageOptions.Image")));
+            this.WareHouseSaveNew_simpleButton.Location = new System.Drawing.Point(5, 154);
+            this.WareHouseSaveNew_simpleButton.Name = "WareHouseSaveNew_simpleButton";
+            this.WareHouseSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.WareHouseSaveNew_simpleButton.TabIndex = 22;
+            this.WareHouseSaveNew_simpleButton.Text = "Lưu mới";
+            // 
+            // WareHouseAddNew_checkBox
+            // 
+            this.WareHouseAddNew_checkBox.AutoSize = true;
+            this.WareHouseAddNew_checkBox.Location = new System.Drawing.Point(537, 4);
+            this.WareHouseAddNew_checkBox.Name = "WareHouseAddNew_checkBox";
+            this.WareHouseAddNew_checkBox.Size = new System.Drawing.Size(91, 17);
+            this.WareHouseAddNew_checkBox.TabIndex = 21;
+            this.WareHouseAddNew_checkBox.Text = "Thêm mới kho";
+            this.WareHouseAddNew_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // WareHouseDetailSaveNew_simpleButton
+            // 
+            this.WareHouseDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailSaveNew_simpleButton.ImageOptions.Image")));
+            this.WareHouseDetailSaveNew_simpleButton.Location = new System.Drawing.Point(281, 377);
+            this.WareHouseDetailSaveNew_simpleButton.Name = "WareHouseDetailSaveNew_simpleButton";
+            this.WareHouseDetailSaveNew_simpleButton.Size = new System.Drawing.Size(73, 26);
+            this.WareHouseDetailSaveNew_simpleButton.TabIndex = 20;
+            this.WareHouseDetailSaveNew_simpleButton.Text = "Lưu mới";
+            // 
+            // WareHouseCancel_simpleButton
+            // 
+            this.WareHouseCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseCancel_simpleButton.ImageOptions.Image")));
+            this.WareHouseCancel_simpleButton.Location = new System.Drawing.Point(199, 154);
+            this.WareHouseCancel_simpleButton.Name = "WareHouseCancel_simpleButton";
+            this.WareHouseCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseCancel_simpleButton.TabIndex = 19;
+            this.WareHouseCancel_simpleButton.Text = "Hủy";
+            // 
+            // WareHouseDelete_simpleButton
+            // 
+            this.WareHouseDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDelete_simpleButton.ImageOptions.Image")));
+            this.WareHouseDelete_simpleButton.Location = new System.Drawing.Point(141, 154);
+            this.WareHouseDelete_simpleButton.Name = "WareHouseDelete_simpleButton";
+            this.WareHouseDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseDelete_simpleButton.TabIndex = 18;
+            this.WareHouseDelete_simpleButton.Text = "Xóa";
+            // 
+            // WareHouseSave_simpleButton
+            // 
+            this.WareHouseSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseSave_simpleButton.ImageOptions.Image")));
+            this.WareHouseSave_simpleButton.Location = new System.Drawing.Point(83, 154);
+            this.WareHouseSave_simpleButton.Name = "WareHouseSave_simpleButton";
+            this.WareHouseSave_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseSave_simpleButton.TabIndex = 17;
+            this.WareHouseSave_simpleButton.Text = "Lưu";
+            // 
+            // WareHouse_gridControl
+            // 
+            this.WareHouse_gridControl.Location = new System.Drawing.Point(5, 23);
+            this.WareHouse_gridControl.MainView = this.WareHouse_gridView;
+            this.WareHouse_gridControl.Name = "WareHouse_gridControl";
+            this.WareHouse_gridControl.Size = new System.Drawing.Size(623, 128);
+            this.WareHouse_gridControl.TabIndex = 16;
+            this.WareHouse_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WareHouse_gridView});
+            // 
+            // WareHouse_gridView
+            // 
+            this.WareHouse_gridView.GridControl = this.WareHouse_gridControl;
+            this.WareHouse_gridView.Name = "WareHouse_gridView";
+            // 
+            // WareHouseDetailCancel_simpleButton
+            // 
+            this.WareHouseDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailCancel_simpleButton.ImageOptions.Image")));
+            this.WareHouseDetailCancel_simpleButton.Location = new System.Drawing.Point(476, 377);
+            this.WareHouseDetailCancel_simpleButton.Name = "WareHouseDetailCancel_simpleButton";
+            this.WareHouseDetailCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseDetailCancel_simpleButton.TabIndex = 15;
+            this.WareHouseDetailCancel_simpleButton.Text = "Hủy";
+            // 
+            // WareHouseDetailDelete_simpleButton
+            // 
+            this.WareHouseDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailDelete_simpleButton.ImageOptions.Image")));
+            this.WareHouseDetailDelete_simpleButton.Location = new System.Drawing.Point(418, 377);
+            this.WareHouseDetailDelete_simpleButton.Name = "WareHouseDetailDelete_simpleButton";
+            this.WareHouseDetailDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseDetailDelete_simpleButton.TabIndex = 14;
+            this.WareHouseDetailDelete_simpleButton.Text = "Xóa";
+            // 
+            // WareHouseDetailSave_simpleButton
+            // 
+            this.WareHouseDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailSave_simpleButton.ImageOptions.Image")));
+            this.WareHouseDetailSave_simpleButton.Location = new System.Drawing.Point(360, 377);
+            this.WareHouseDetailSave_simpleButton.Name = "WareHouseDetailSave_simpleButton";
+            this.WareHouseDetailSave_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.WareHouseDetailSave_simpleButton.TabIndex = 13;
+            this.WareHouseDetailSave_simpleButton.Text = "Lưu";
+            // 
+            // WareHouseDetailCalculator_simpleButton
+            // 
+            this.WareHouseDetailCalculator_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailCalculator_simpleButton.ImageOptions.Image")));
+            this.WareHouseDetailCalculator_simpleButton.Location = new System.Drawing.Point(195, 377);
+            this.WareHouseDetailCalculator_simpleButton.Name = "WareHouseDetailCalculator_simpleButton";
+            this.WareHouseDetailCalculator_simpleButton.Size = new System.Drawing.Size(80, 25);
+            this.WareHouseDetailCalculator_simpleButton.TabIndex = 12;
+            this.WareHouseDetailCalculator_simpleButton.Text = "Tính lại giá";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(82, 380);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Mask.EditMask = "c";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit1.Size = new System.Drawing.Size(102, 20);
+            this.textEdit1.TabIndex = 11;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(2, 383);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(74, 13);
+            this.labelControl9.TabIndex = 10;
+            this.labelControl9.Text = "Tiền Chiết khấu";
+            // 
+            // WareHouseDetail_gridControl
+            // 
+            this.WareHouseDetail_gridControl.Location = new System.Drawing.Point(5, 186);
+            this.WareHouseDetail_gridControl.MainView = this.WareHouseDetail_gridView;
+            this.WareHouseDetail_gridControl.Name = "WareHouseDetail_gridControl";
+            this.WareHouseDetail_gridControl.Size = new System.Drawing.Size(623, 189);
+            this.WareHouseDetail_gridControl.TabIndex = 9;
+            this.WareHouseDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WareHouseDetail_gridView});
+            // 
+            // WareHouseDetail_gridView
+            // 
+            this.WareHouseDetail_gridView.GridControl = this.WareHouseDetail_gridControl;
+            this.WareHouseDetail_gridView.Name = "WareHouseDetail_gridView";
+            // 
             // Invoice_gridControl
             // 
             this.Invoice_gridControl.Location = new System.Drawing.Point(3, 16);
@@ -1134,99 +1503,71 @@
             this.tablePanel2.Size = new System.Drawing.Size(263, 353);
             this.tablePanel2.TabIndex = 2;
             // 
-            // labelControl30
+            // simpleButton29
             // 
-            this.tablePanel2.SetColumn(this.labelControl30, 0);
-            this.labelControl30.Location = new System.Drawing.Point(3, 6);
-            this.labelControl30.Name = "labelControl30";
-            this.tablePanel2.SetRow(this.labelControl30, 0);
-            this.labelControl30.Size = new System.Drawing.Size(52, 13);
-            this.labelControl30.TabIndex = 0;
-            this.labelControl30.Text = "Ngày nhập";
+            this.tablePanel2.SetColumn(this.simpleButton29, 0);
+            this.tablePanel2.SetColumnSpan(this.simpleButton29, 2);
+            this.simpleButton29.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton29.ImageOptions.Image")));
+            this.simpleButton29.Location = new System.Drawing.Point(3, 329);
+            this.simpleButton29.Name = "simpleButton29";
+            this.tablePanel2.SetRow(this.simpleButton29, 8);
+            this.simpleButton29.Size = new System.Drawing.Size(257, 21);
+            this.simpleButton29.TabIndex = 19;
+            this.simpleButton29.Text = "Xem nhanh file đính kèm";
             // 
-            // labelControl29
+            // textBox3
             // 
-            this.tablePanel2.SetColumn(this.labelControl29, 0);
-            this.labelControl29.Location = new System.Drawing.Point(3, 32);
-            this.labelControl29.Name = "labelControl29";
-            this.tablePanel2.SetRow(this.labelControl29, 1);
-            this.labelControl29.Size = new System.Drawing.Size(28, 13);
-            this.labelControl29.TabIndex = 1;
-            this.labelControl29.Text = "Sổ cái";
+            this.tablePanel2.SetColumn(this.textBox3, 1);
+            this.textBox3.Location = new System.Drawing.Point(122, 163);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.tablePanel2.SetRow(this.textBox3, 6);
+            this.textBox3.Size = new System.Drawing.Size(138, 131);
+            this.textBox3.TabIndex = 7;
             // 
-            // labelControl28
+            // textBox4
             // 
-            this.tablePanel2.SetColumn(this.labelControl28, 0);
-            this.labelControl28.Location = new System.Drawing.Point(3, 305);
-            this.labelControl28.Name = "labelControl28";
-            this.tablePanel2.SetRow(this.labelControl28, 7);
-            this.labelControl28.Size = new System.Drawing.Size(78, 13);
-            this.labelControl28.TabIndex = 6;
-            this.labelControl28.Text = "Dữ liệu đính kèm";
+            this.tablePanel2.SetColumn(this.textBox4, 1);
+            this.textBox4.Location = new System.Drawing.Point(122, 137);
+            this.textBox4.Name = "textBox4";
+            this.tablePanel2.SetRow(this.textBox4, 5);
+            this.textBox4.Size = new System.Drawing.Size(138, 20);
+            this.textBox4.TabIndex = 3;
             // 
-            // labelControl27
+            // comboBoxEdit3
             // 
-            this.tablePanel2.SetColumn(this.labelControl27, 0);
-            this.labelControl27.Location = new System.Drawing.Point(3, 222);
-            this.labelControl27.Name = "labelControl27";
-            this.tablePanel2.SetRow(this.labelControl27, 6);
-            this.labelControl27.Size = new System.Drawing.Size(42, 13);
-            this.labelControl27.TabIndex = 5;
-            this.labelControl27.Text = "Nội dung";
-            // 
-            // labelControl26
-            // 
-            this.tablePanel2.SetColumn(this.labelControl26, 0);
-            this.labelControl26.Location = new System.Drawing.Point(3, 140);
-            this.labelControl26.Name = "labelControl26";
-            this.tablePanel2.SetRow(this.labelControl26, 5);
-            this.labelControl26.Size = new System.Drawing.Size(78, 13);
-            this.labelControl26.TabIndex = 4;
-            this.labelControl26.Text = "Người giao nhận";
-            // 
-            // labelControl25
-            // 
-            this.tablePanel2.SetColumn(this.labelControl25, 0);
-            this.labelControl25.Location = new System.Drawing.Point(3, 114);
-            this.labelControl25.Name = "labelControl25";
-            this.tablePanel2.SetRow(this.labelControl25, 4);
-            this.labelControl25.Size = new System.Drawing.Size(26, 13);
-            this.labelControl25.TabIndex = 3;
-            this.labelControl25.Text = "TK có";
-            // 
-            // labelControl24
-            // 
-            this.tablePanel2.SetColumn(this.labelControl24, 0);
-            this.labelControl24.Location = new System.Drawing.Point(3, 88);
-            this.labelControl24.Name = "labelControl24";
-            this.tablePanel2.SetRow(this.labelControl24, 3);
-            this.labelControl24.Size = new System.Drawing.Size(27, 13);
-            this.labelControl24.TabIndex = 4;
-            this.labelControl24.Text = "TK nợ";
-            // 
-            // labelControl23
-            // 
-            this.tablePanel2.SetColumn(this.labelControl23, 0);
-            this.labelControl23.Location = new System.Drawing.Point(3, 60);
-            this.labelControl23.Name = "labelControl23";
-            this.tablePanel2.SetRow(this.labelControl23, 2);
-            this.labelControl23.Size = new System.Drawing.Size(66, 13);
-            this.labelControl23.TabIndex = 3;
-            this.labelControl23.Text = "Loại nhập kho";
-            // 
-            // dateEdit3
-            // 
-            this.tablePanel2.SetColumn(this.dateEdit3, 1);
-            this.dateEdit3.EditValue = null;
-            this.dateEdit3.Location = new System.Drawing.Point(122, 3);
-            this.dateEdit3.Name = "dateEdit3";
-            this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.tablePanel2.SetColumn(this.comboBoxEdit3, 1);
+            this.comboBoxEdit3.Location = new System.Drawing.Point(122, 85);
+            this.comboBoxEdit3.Name = "comboBoxEdit3";
+            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit3.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.tablePanel2.SetRow(this.comboBoxEdit3, 3);
+            this.comboBoxEdit3.Size = new System.Drawing.Size(138, 20);
+            this.comboBoxEdit3.TabIndex = 3;
+            // 
+            // comboBoxEdit4
+            // 
+            this.tablePanel2.SetColumn(this.comboBoxEdit4, 1);
+            this.comboBoxEdit4.Location = new System.Drawing.Point(122, 111);
+            this.comboBoxEdit4.Name = "comboBoxEdit4";
+            this.comboBoxEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tablePanel2.SetRow(this.dateEdit3, 0);
-            this.dateEdit3.Size = new System.Drawing.Size(138, 20);
-            this.dateEdit3.TabIndex = 3;
+            this.tablePanel2.SetRow(this.comboBoxEdit4, 4);
+            this.comboBoxEdit4.Size = new System.Drawing.Size(138, 20);
+            this.comboBoxEdit4.TabIndex = 4;
+            // 
+            // radioGroup2
+            // 
+            this.tablePanel2.SetColumn(this.radioGroup2, 1);
+            this.radioGroup2.Location = new System.Drawing.Point(122, 55);
+            this.radioGroup2.Name = "radioGroup2";
+            this.radioGroup2.Properties.Columns = 2;
+            this.radioGroup2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("N", "Nhập"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("X", "Xuất")});
+            this.tablePanel2.SetRow(this.radioGroup2, 2);
+            this.radioGroup2.Size = new System.Drawing.Size(138, 24);
+            this.radioGroup2.TabIndex = 3;
             // 
             // searchLookUpEdit3
             // 
@@ -1247,71 +1588,99 @@
             this.gridView7.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView7.OptionsView.ShowGroupPanel = false;
             // 
-            // radioGroup2
+            // dateEdit3
             // 
-            this.tablePanel2.SetColumn(this.radioGroup2, 1);
-            this.radioGroup2.Location = new System.Drawing.Point(122, 55);
-            this.radioGroup2.Name = "radioGroup2";
-            this.radioGroup2.Properties.Columns = 2;
-            this.radioGroup2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("N", "Nhập"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("X", "Xuất")});
-            this.tablePanel2.SetRow(this.radioGroup2, 2);
-            this.radioGroup2.Size = new System.Drawing.Size(138, 24);
-            this.radioGroup2.TabIndex = 3;
-            // 
-            // comboBoxEdit4
-            // 
-            this.tablePanel2.SetColumn(this.comboBoxEdit4, 1);
-            this.comboBoxEdit4.Location = new System.Drawing.Point(122, 111);
-            this.comboBoxEdit4.Name = "comboBoxEdit4";
-            this.comboBoxEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.tablePanel2.SetColumn(this.dateEdit3, 1);
+            this.dateEdit3.EditValue = null;
+            this.dateEdit3.Location = new System.Drawing.Point(122, 3);
+            this.dateEdit3.Name = "dateEdit3";
+            this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tablePanel2.SetRow(this.comboBoxEdit4, 4);
-            this.comboBoxEdit4.Size = new System.Drawing.Size(138, 20);
-            this.comboBoxEdit4.TabIndex = 4;
-            // 
-            // comboBoxEdit3
-            // 
-            this.tablePanel2.SetColumn(this.comboBoxEdit3, 1);
-            this.comboBoxEdit3.Location = new System.Drawing.Point(122, 85);
-            this.comboBoxEdit3.Name = "comboBoxEdit3";
-            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEdit3.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tablePanel2.SetRow(this.comboBoxEdit3, 3);
-            this.comboBoxEdit3.Size = new System.Drawing.Size(138, 20);
-            this.comboBoxEdit3.TabIndex = 3;
+            this.tablePanel2.SetRow(this.dateEdit3, 0);
+            this.dateEdit3.Size = new System.Drawing.Size(138, 20);
+            this.dateEdit3.TabIndex = 3;
             // 
-            // textBox4
+            // labelControl23
             // 
-            this.tablePanel2.SetColumn(this.textBox4, 1);
-            this.textBox4.Location = new System.Drawing.Point(122, 137);
-            this.textBox4.Name = "textBox4";
-            this.tablePanel2.SetRow(this.textBox4, 5);
-            this.textBox4.Size = new System.Drawing.Size(138, 20);
-            this.textBox4.TabIndex = 3;
+            this.tablePanel2.SetColumn(this.labelControl23, 0);
+            this.labelControl23.Location = new System.Drawing.Point(3, 60);
+            this.labelControl23.Name = "labelControl23";
+            this.tablePanel2.SetRow(this.labelControl23, 2);
+            this.labelControl23.Size = new System.Drawing.Size(66, 13);
+            this.labelControl23.TabIndex = 3;
+            this.labelControl23.Text = "Loại nhập kho";
             // 
-            // textBox3
+            // labelControl24
             // 
-            this.tablePanel2.SetColumn(this.textBox3, 1);
-            this.textBox3.Location = new System.Drawing.Point(122, 163);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.tablePanel2.SetRow(this.textBox3, 6);
-            this.textBox3.Size = new System.Drawing.Size(138, 131);
-            this.textBox3.TabIndex = 7;
+            this.tablePanel2.SetColumn(this.labelControl24, 0);
+            this.labelControl24.Location = new System.Drawing.Point(3, 88);
+            this.labelControl24.Name = "labelControl24";
+            this.tablePanel2.SetRow(this.labelControl24, 3);
+            this.labelControl24.Size = new System.Drawing.Size(27, 13);
+            this.labelControl24.TabIndex = 4;
+            this.labelControl24.Text = "TK nợ";
             // 
-            // simpleButton29
+            // labelControl25
             // 
-            this.tablePanel2.SetColumn(this.simpleButton29, 0);
-            this.tablePanel2.SetColumnSpan(this.simpleButton29, 2);
-            this.simpleButton29.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton29.ImageOptions.Image")));
-            this.simpleButton29.Location = new System.Drawing.Point(3, 329);
-            this.simpleButton29.Name = "simpleButton29";
-            this.tablePanel2.SetRow(this.simpleButton29, 8);
-            this.simpleButton29.Size = new System.Drawing.Size(257, 21);
-            this.simpleButton29.TabIndex = 19;
-            this.simpleButton29.Text = "Xem nhanh file đính kèm";
+            this.tablePanel2.SetColumn(this.labelControl25, 0);
+            this.labelControl25.Location = new System.Drawing.Point(3, 114);
+            this.labelControl25.Name = "labelControl25";
+            this.tablePanel2.SetRow(this.labelControl25, 4);
+            this.labelControl25.Size = new System.Drawing.Size(26, 13);
+            this.labelControl25.TabIndex = 3;
+            this.labelControl25.Text = "TK có";
+            // 
+            // labelControl26
+            // 
+            this.tablePanel2.SetColumn(this.labelControl26, 0);
+            this.labelControl26.Location = new System.Drawing.Point(3, 140);
+            this.labelControl26.Name = "labelControl26";
+            this.tablePanel2.SetRow(this.labelControl26, 5);
+            this.labelControl26.Size = new System.Drawing.Size(78, 13);
+            this.labelControl26.TabIndex = 4;
+            this.labelControl26.Text = "Người giao nhận";
+            // 
+            // labelControl27
+            // 
+            this.tablePanel2.SetColumn(this.labelControl27, 0);
+            this.labelControl27.Location = new System.Drawing.Point(3, 222);
+            this.labelControl27.Name = "labelControl27";
+            this.tablePanel2.SetRow(this.labelControl27, 6);
+            this.labelControl27.Size = new System.Drawing.Size(42, 13);
+            this.labelControl27.TabIndex = 5;
+            this.labelControl27.Text = "Nội dung";
+            // 
+            // labelControl28
+            // 
+            this.tablePanel2.SetColumn(this.labelControl28, 0);
+            this.labelControl28.Location = new System.Drawing.Point(3, 305);
+            this.labelControl28.Name = "labelControl28";
+            this.tablePanel2.SetRow(this.labelControl28, 7);
+            this.labelControl28.Size = new System.Drawing.Size(78, 13);
+            this.labelControl28.TabIndex = 6;
+            this.labelControl28.Text = "Dữ liệu đính kèm";
+            // 
+            // labelControl29
+            // 
+            this.tablePanel2.SetColumn(this.labelControl29, 0);
+            this.labelControl29.Location = new System.Drawing.Point(3, 32);
+            this.labelControl29.Name = "labelControl29";
+            this.tablePanel2.SetRow(this.labelControl29, 1);
+            this.labelControl29.Size = new System.Drawing.Size(28, 13);
+            this.labelControl29.TabIndex = 1;
+            this.labelControl29.Text = "Sổ cái";
+            // 
+            // labelControl30
+            // 
+            this.tablePanel2.SetColumn(this.labelControl30, 0);
+            this.labelControl30.Location = new System.Drawing.Point(3, 6);
+            this.labelControl30.Name = "labelControl30";
+            this.tablePanel2.SetRow(this.labelControl30, 0);
+            this.labelControl30.Size = new System.Drawing.Size(52, 13);
+            this.labelControl30.TabIndex = 0;
+            this.labelControl30.Text = "Ngày nhập";
             // 
             // labelControl1
             // 
@@ -1323,374 +1692,6 @@
             this.labelControl1.Size = new System.Drawing.Size(261, 23);
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "Tên công ty đang thực hiện";
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(this.WareHouseDetailAddNew_checkBox);
-            this.groupControl1.Controls.Add(this.WareHouseSaveNew_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseAddNew_checkBox);
-            this.groupControl1.Controls.Add(this.WareHouseDetailSaveNew_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseCancel_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseDelete_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseSave_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouse_gridControl);
-            this.groupControl1.Controls.Add(this.WareHouseDetailCancel_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseDetailDelete_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseDetailSave_simpleButton);
-            this.groupControl1.Controls.Add(this.WareHouseDetailCalculator_simpleButton);
-            this.groupControl1.Controls.Add(this.textEdit1);
-            this.groupControl1.Controls.Add(this.labelControl9);
-            this.groupControl1.Controls.Add(this.WareHouseDetail_gridControl);
-            this.groupControl1.Location = new System.Drawing.Point(6, 146);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(633, 408);
-            this.groupControl1.TabIndex = 5;
-            // 
-            // WareHouseAddNew_checkBox
-            // 
-            this.WareHouseAddNew_checkBox.AutoSize = true;
-            this.WareHouseAddNew_checkBox.Location = new System.Drawing.Point(537, 4);
-            this.WareHouseAddNew_checkBox.Name = "WareHouseAddNew_checkBox";
-            this.WareHouseAddNew_checkBox.Size = new System.Drawing.Size(91, 17);
-            this.WareHouseAddNew_checkBox.TabIndex = 21;
-            this.WareHouseAddNew_checkBox.Text = "Thêm mới kho";
-            this.WareHouseAddNew_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // WareHouseDetailSaveNew_simpleButton
-            // 
-            this.WareHouseDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.ImageOptions.Image")));
-            this.WareHouseDetailSaveNew_simpleButton.Location = new System.Drawing.Point(281, 377);
-            this.WareHouseDetailSaveNew_simpleButton.Name = "WareHouseDetailSaveNew_simpleButton";
-            this.WareHouseDetailSaveNew_simpleButton.Size = new System.Drawing.Size(73, 26);
-            this.WareHouseDetailSaveNew_simpleButton.TabIndex = 20;
-            this.WareHouseDetailSaveNew_simpleButton.Text = "Lưu mới";
-            // 
-            // WareHouseCancel_simpleButton
-            // 
-            this.WareHouseCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton13.ImageOptions.Image")));
-            this.WareHouseCancel_simpleButton.Location = new System.Drawing.Point(199, 154);
-            this.WareHouseCancel_simpleButton.Name = "WareHouseCancel_simpleButton";
-            this.WareHouseCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseCancel_simpleButton.TabIndex = 19;
-            this.WareHouseCancel_simpleButton.Text = "Hủy";
-            // 
-            // WareHouseDelete_simpleButton
-            // 
-            this.WareHouseDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton14.ImageOptions.Image")));
-            this.WareHouseDelete_simpleButton.Location = new System.Drawing.Point(141, 154);
-            this.WareHouseDelete_simpleButton.Name = "WareHouseDelete_simpleButton";
-            this.WareHouseDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDelete_simpleButton.TabIndex = 18;
-            this.WareHouseDelete_simpleButton.Text = "Xóa";
-            // 
-            // WareHouseSave_simpleButton
-            // 
-            this.WareHouseSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton17.ImageOptions.Image")));
-            this.WareHouseSave_simpleButton.Location = new System.Drawing.Point(83, 154);
-            this.WareHouseSave_simpleButton.Name = "WareHouseSave_simpleButton";
-            this.WareHouseSave_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseSave_simpleButton.TabIndex = 17;
-            this.WareHouseSave_simpleButton.Text = "Lưu";
-            // 
-            // WareHouse_gridControl
-            // 
-            this.WareHouse_gridControl.Location = new System.Drawing.Point(5, 23);
-            this.WareHouse_gridControl.MainView = this.WareHouse_gridView;
-            this.WareHouse_gridControl.Name = "WareHouse_gridControl";
-            this.WareHouse_gridControl.Size = new System.Drawing.Size(623, 128);
-            this.WareHouse_gridControl.TabIndex = 16;
-            this.WareHouse_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WareHouse_gridView});
-            // 
-            // WareHouse_gridView
-            // 
-            this.WareHouse_gridView.GridControl = this.WareHouse_gridControl;
-            this.WareHouse_gridView.Name = "WareHouse_gridView";
-            // 
-            // WareHouseDetailCancel_simpleButton
-            // 
-            this.WareHouseDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton30.ImageOptions.Image")));
-            this.WareHouseDetailCancel_simpleButton.Location = new System.Drawing.Point(476, 377);
-            this.WareHouseDetailCancel_simpleButton.Name = "WareHouseDetailCancel_simpleButton";
-            this.WareHouseDetailCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailCancel_simpleButton.TabIndex = 15;
-            this.WareHouseDetailCancel_simpleButton.Text = "Hủy";
-            // 
-            // WareHouseDetailDelete_simpleButton
-            // 
-            this.WareHouseDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton31.ImageOptions.Image")));
-            this.WareHouseDetailDelete_simpleButton.Location = new System.Drawing.Point(418, 377);
-            this.WareHouseDetailDelete_simpleButton.Name = "WareHouseDetailDelete_simpleButton";
-            this.WareHouseDetailDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailDelete_simpleButton.TabIndex = 14;
-            this.WareHouseDetailDelete_simpleButton.Text = "Xóa";
-            // 
-            // WareHouseDetailSave_simpleButton
-            // 
-            this.WareHouseDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton32.ImageOptions.Image")));
-            this.WareHouseDetailSave_simpleButton.Location = new System.Drawing.Point(360, 377);
-            this.WareHouseDetailSave_simpleButton.Name = "WareHouseDetailSave_simpleButton";
-            this.WareHouseDetailSave_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailSave_simpleButton.TabIndex = 13;
-            this.WareHouseDetailSave_simpleButton.Text = "Lưu";
-            // 
-            // WareHouseDetailCalculator_simpleButton
-            // 
-            this.WareHouseDetailCalculator_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton33.ImageOptions.Image")));
-            this.WareHouseDetailCalculator_simpleButton.Location = new System.Drawing.Point(195, 377);
-            this.WareHouseDetailCalculator_simpleButton.Name = "WareHouseDetailCalculator_simpleButton";
-            this.WareHouseDetailCalculator_simpleButton.Size = new System.Drawing.Size(80, 25);
-            this.WareHouseDetailCalculator_simpleButton.TabIndex = 12;
-            this.WareHouseDetailCalculator_simpleButton.Text = "Tính lại giá";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(82, 380);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Mask.EditMask = "c";
-            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(102, 20);
-            this.textEdit1.TabIndex = 11;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(2, 383);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(74, 13);
-            this.labelControl9.TabIndex = 10;
-            this.labelControl9.Text = "Tiền Chiết khấu";
-            // 
-            // WareHouseDetail_gridControl
-            // 
-            this.WareHouseDetail_gridControl.Location = new System.Drawing.Point(5, 186);
-            this.WareHouseDetail_gridControl.MainView = this.WareHouseDetail_gridView;
-            this.WareHouseDetail_gridControl.Name = "WareHouseDetail_gridControl";
-            this.WareHouseDetail_gridControl.Size = new System.Drawing.Size(623, 189);
-            this.WareHouseDetail_gridControl.TabIndex = 9;
-            this.WareHouseDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WareHouseDetail_gridView});
-            // 
-            // WareHouseDetail_gridView
-            // 
-            this.WareHouseDetail_gridView.GridControl = this.WareHouseDetail_gridControl;
-            this.WareHouseDetail_gridView.Name = "WareHouseDetail_gridView";
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Controls.Add(this.label2);
-            this.groupControl2.Controls.Add(this.DepreciationDetailAddNew_checkBox);
-            this.groupControl2.Controls.Add(this.DepreciationAddNew_checkBox);
-            this.groupControl2.Controls.Add(this.DepreciationDetailSaveNew_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationSaveNew_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailCancel_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailDelete_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailSave_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationCancel_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDelete_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationSave_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetail_gridControl);
-            this.groupControl2.Controls.Add(this.Depreciation_gridControl);
-            this.groupControl2.Location = new System.Drawing.Point(645, 146);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(425, 406);
-            this.groupControl2.TabIndex = 6;
-            this.groupControl2.Text = "Khấu hao";
-            // 
-            // DepreciationDetailCancel_simpleButton
-            // 
-            this.DepreciationDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton34.ImageOptions.Image")));
-            this.DepreciationDetailCancel_simpleButton.Location = new System.Drawing.Point(255, 377);
-            this.DepreciationDetailCancel_simpleButton.Name = "DepreciationDetailCancel_simpleButton";
-            this.DepreciationDetailCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailCancel_simpleButton.TabIndex = 25;
-            this.DepreciationDetailCancel_simpleButton.Text = "Hủy";
-            // 
-            // DepreciationDetailDelete_simpleButton
-            // 
-            this.DepreciationDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton35.ImageOptions.Image")));
-            this.DepreciationDetailDelete_simpleButton.Location = new System.Drawing.Point(171, 377);
-            this.DepreciationDetailDelete_simpleButton.Name = "DepreciationDetailDelete_simpleButton";
-            this.DepreciationDetailDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailDelete_simpleButton.TabIndex = 24;
-            this.DepreciationDetailDelete_simpleButton.Text = "Xóa";
-            // 
-            // DepreciationDetailSave_simpleButton
-            // 
-            this.DepreciationDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton36.ImageOptions.Image")));
-            this.DepreciationDetailSave_simpleButton.Location = new System.Drawing.Point(87, 377);
-            this.DepreciationDetailSave_simpleButton.Name = "DepreciationDetailSave_simpleButton";
-            this.DepreciationDetailSave_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailSave_simpleButton.TabIndex = 23;
-            this.DepreciationDetailSave_simpleButton.Text = "Lưu";
-            // 
-            // DepreciationCancel_simpleButton
-            // 
-            this.DepreciationCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton37.ImageOptions.Image")));
-            this.DepreciationCancel_simpleButton.Location = new System.Drawing.Point(342, 168);
-            this.DepreciationCancel_simpleButton.Name = "DepreciationCancel_simpleButton";
-            this.DepreciationCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationCancel_simpleButton.TabIndex = 22;
-            this.DepreciationCancel_simpleButton.Text = "Hủy";
-            // 
-            // DepreciationDelete_simpleButton
-            // 
-            this.DepreciationDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton38.ImageOptions.Image")));
-            this.DepreciationDelete_simpleButton.Location = new System.Drawing.Point(248, 168);
-            this.DepreciationDelete_simpleButton.Name = "DepreciationDelete_simpleButton";
-            this.DepreciationDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDelete_simpleButton.TabIndex = 21;
-            this.DepreciationDelete_simpleButton.Text = "Xóa";
-            // 
-            // DepreciationSave_simpleButton
-            // 
-            this.DepreciationSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton39.ImageOptions.Image")));
-            this.DepreciationSave_simpleButton.Location = new System.Drawing.Point(158, 168);
-            this.DepreciationSave_simpleButton.Name = "DepreciationSave_simpleButton";
-            this.DepreciationSave_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationSave_simpleButton.TabIndex = 20;
-            this.DepreciationSave_simpleButton.Text = "Lưu";
-            // 
-            // DepreciationDetail_gridControl
-            // 
-            this.DepreciationDetail_gridControl.Location = new System.Drawing.Point(7, 223);
-            this.DepreciationDetail_gridControl.MainView = this.DepreciationDetail_gridView;
-            this.DepreciationDetail_gridControl.Name = "DepreciationDetail_gridControl";
-            this.DepreciationDetail_gridControl.Size = new System.Drawing.Size(411, 148);
-            this.DepreciationDetail_gridControl.TabIndex = 1;
-            this.DepreciationDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.DepreciationDetail_gridView});
-            // 
-            // DepreciationDetail_gridView
-            // 
-            this.DepreciationDetail_gridView.GridControl = this.DepreciationDetail_gridControl;
-            this.DepreciationDetail_gridView.Name = "DepreciationDetail_gridView";
-            // 
-            // Depreciation_gridControl
-            // 
-            this.Depreciation_gridControl.Location = new System.Drawing.Point(7, 23);
-            this.Depreciation_gridControl.MainView = this.Depreciation_gridView;
-            this.Depreciation_gridControl.Name = "Depreciation_gridControl";
-            this.Depreciation_gridControl.Size = new System.Drawing.Size(411, 139);
-            this.Depreciation_gridControl.TabIndex = 0;
-            this.Depreciation_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.Depreciation_gridView});
-            // 
-            // Depreciation_gridView
-            // 
-            this.Depreciation_gridView.GridControl = this.Depreciation_gridControl;
-            this.Depreciation_gridView.Name = "Depreciation_gridView";
-            // 
-            // WareHouseSaveNew_simpleButton
-            // 
-            this.WareHouseSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton40.ImageOptions.Image")));
-            this.WareHouseSaveNew_simpleButton.Location = new System.Drawing.Point(5, 154);
-            this.WareHouseSaveNew_simpleButton.Name = "WareHouseSaveNew_simpleButton";
-            this.WareHouseSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.WareHouseSaveNew_simpleButton.TabIndex = 22;
-            this.WareHouseSaveNew_simpleButton.Text = "Lưu mới";
-            // 
-            // DepreciationSaveNew_simpleButton
-            // 
-            this.DepreciationSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton41.ImageOptions.Image")));
-            this.DepreciationSaveNew_simpleButton.Location = new System.Drawing.Point(81, 168);
-            this.DepreciationSaveNew_simpleButton.Name = "DepreciationSaveNew_simpleButton";
-            this.DepreciationSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.DepreciationSaveNew_simpleButton.TabIndex = 23;
-            this.DepreciationSaveNew_simpleButton.Text = "Lưu mới";
-            // 
-            // DepreciationDetailSaveNew_simpleButton
-            // 
-            this.DepreciationDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton42.ImageOptions.Image")));
-            this.DepreciationDetailSaveNew_simpleButton.Location = new System.Drawing.Point(10, 377);
-            this.DepreciationDetailSaveNew_simpleButton.Name = "DepreciationDetailSaveNew_simpleButton";
-            this.DepreciationDetailSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.DepreciationDetailSaveNew_simpleButton.TabIndex = 26;
-            this.DepreciationDetailSaveNew_simpleButton.Text = "Lưu mới";
-            // 
-            // InvoiceSaveNew_simpleButton
-            // 
-            this.InvoiceSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton43.ImageOptions.Image")));
-            this.InvoiceSaveNew_simpleButton.Location = new System.Drawing.Point(994, 16);
-            this.InvoiceSaveNew_simpleButton.Name = "InvoiceSaveNew_simpleButton";
-            this.InvoiceSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.InvoiceSaveNew_simpleButton.TabIndex = 23;
-            this.InvoiceSaveNew_simpleButton.Text = "Lưu mới";
-            // 
-            // InvoiceSave_simpleButton
-            // 
-            this.InvoiceSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton44.ImageOptions.Image")));
-            this.InvoiceSave_simpleButton.Location = new System.Drawing.Point(994, 48);
-            this.InvoiceSave_simpleButton.Name = "InvoiceSave_simpleButton";
-            this.InvoiceSave_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.InvoiceSave_simpleButton.TabIndex = 23;
-            this.InvoiceSave_simpleButton.Text = "Lưu";
-            // 
-            // InvoiceDelete_simpleButton
-            // 
-            this.InvoiceDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton45.ImageOptions.Image")));
-            this.InvoiceDelete_simpleButton.Location = new System.Drawing.Point(994, 80);
-            this.InvoiceDelete_simpleButton.Name = "InvoiceDelete_simpleButton";
-            this.InvoiceDelete_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.InvoiceDelete_simpleButton.TabIndex = 23;
-            this.InvoiceDelete_simpleButton.Text = "Xóa";
-            // 
-            // InvoiceCancel_simpleButton
-            // 
-            this.InvoiceCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton46.ImageOptions.Image")));
-            this.InvoiceCancel_simpleButton.Location = new System.Drawing.Point(994, 112);
-            this.InvoiceCancel_simpleButton.Name = "InvoiceCancel_simpleButton";
-            this.InvoiceCancel_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.InvoiceCancel_simpleButton.TabIndex = 23;
-            this.InvoiceCancel_simpleButton.Text = "Hủy";
-            // 
-            // InvoiceAddNew_checkBox
-            // 
-            this.InvoiceAddNew_checkBox.AutoSize = true;
-            this.InvoiceAddNew_checkBox.Location = new System.Drawing.Point(697, -1);
-            this.InvoiceAddNew_checkBox.Name = "InvoiceAddNew_checkBox";
-            this.InvoiceAddNew_checkBox.Size = new System.Drawing.Size(113, 17);
-            this.InvoiceAddNew_checkBox.TabIndex = 23;
-            this.InvoiceAddNew_checkBox.Text = "Thêm mới hóa đơn";
-            this.InvoiceAddNew_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // WareHouseDetailAddNew_checkBox
-            // 
-            this.WareHouseDetailAddNew_checkBox.AutoSize = true;
-            this.WareHouseDetailAddNew_checkBox.Location = new System.Drawing.Point(480, 168);
-            this.WareHouseDetailAddNew_checkBox.Name = "WareHouseDetailAddNew_checkBox";
-            this.WareHouseDetailAddNew_checkBox.Size = new System.Drawing.Size(148, 17);
-            this.WareHouseDetailAddNew_checkBox.TabIndex = 23;
-            this.WareHouseDetailAddNew_checkBox.Text = "Thêm mới chi tiết hóa đơn";
-            this.WareHouseDetailAddNew_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // DepreciationAddNew_checkBox
-            // 
-            this.DepreciationAddNew_checkBox.AutoSize = true;
-            this.DepreciationAddNew_checkBox.Location = new System.Drawing.Point(208, 4);
-            this.DepreciationAddNew_checkBox.Name = "DepreciationAddNew_checkBox";
-            this.DepreciationAddNew_checkBox.Size = new System.Drawing.Size(118, 17);
-            this.DepreciationAddNew_checkBox.TabIndex = 24;
-            this.DepreciationAddNew_checkBox.Text = "Thêm mới khấu hao";
-            this.DepreciationAddNew_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // DepreciationDetailAddNew_checkBox
-            // 
-            this.DepreciationDetailAddNew_checkBox.AutoSize = true;
-            this.DepreciationDetailAddNew_checkBox.Location = new System.Drawing.Point(265, 203);
-            this.DepreciationDetailAddNew_checkBox.Name = "DepreciationDetailAddNew_checkBox";
-            this.DepreciationDetailAddNew_checkBox.Size = new System.Drawing.Size(153, 17);
-            this.DepreciationDetailAddNew_checkBox.TabIndex = 27;
-            this.DepreciationDetailAddNew_checkBox.Text = "Thêm mới chi tiết khấu hao";
-            this.DepreciationDetailAddNew_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 204);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Chi tiết khấu hao";
             // 
             // VoucherControl
             // 
@@ -1728,6 +1729,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).EndInit();
             this.tabNavigationPageLKVAT.ResumeLayout(false);
             this.tabNavigationPageLKVAT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Invoice_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Invoice_gridView)).EndInit();
             this.tabNavigationPageLKKho.ResumeLayout(false);
@@ -1753,28 +1769,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel2)).EndInit();
             this.tablePanel2.ResumeLayout(false);
             this.tablePanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

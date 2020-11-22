@@ -53,15 +53,62 @@ select * from #MaterialInvoiceType
 end
 
 
-
+        public string MaSo { get; set; }
+        public string MauSo { get; set; }
+        public string KyHieu { get; set; }
 
 SPSelectMaterialDoiTuong'test'
 
-Create proc SPSelectMaterialDoiTuong
+alter table Customer
+Add  KyHieu varchar(50)
+
+select * from Customer where CustomerID = 'CUS1'
+
+alter proc SPSelectMaterialMaSoCustomer
+@CustomerID varchar(50)
+as
+begin
+	select * from Cu
+end
+
+
+select  distinct 
+	case
+	when A.Maso is null then B.Maso
+	else A.MaSo
+	end as 'Maso',
+	case
+	when A.MauSo is null then B.MauSo
+	else A.MauSo
+	end as 'MauSo',
+	case
+	when A.KyHieu is null then B.KyHieu
+	else A.KyHieu
+	end as 'KyHieu',
+	B.CustomerID,B.CustomerName,B.CustomerSName from Invoice as A  right JOIN Customer as B
+	on A.CustomerID = B.CustomerID 
+	order by CustomerID
+
+update Customer
+set Maso = Maso + 'PT', MauSo = MauSo + 'PT',kyHieu = KyHieu + 'PT'
+where CustomerID = 'CUS1'
+
+MS1PT	MAUS1PT	KH10DOMPT
+
+
+select * from Customer
+where CustomerID = 'CUS1' 
+SPSelectMaterialMaSoCustomer 'test'
+
+select * from Customer
+
+MS1	MAUS1	KH10DOM	CUS1	Vlxd 10 đởm	10DOM
+
+alter proc SPSelectMaterialDoiTuong
 @CompanyID varchar(50)
 as
 begin
-Select CustomerID,CustomerSName,CustomerName from Customer
+Select CustomerID,CustomerSName,CustomerName,MaSo,MauSo,KyHieu from Customer
 end
 
 alter proc SPSelectMaterialTK

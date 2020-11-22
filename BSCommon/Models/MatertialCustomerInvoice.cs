@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Models
 {
-   public class MaterialDT
+  public  class MatertialCustomerInvoice
     {
-        public string CustomerID { get; set; }
-        public string CustomerSName { get; set; }
-        public string CustomerName { get; set; }
         public string MaSo { get; set; }
         public string MauSo { get; set; }
         public string KyHieu { get; set; }
+        public string CustomerID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerSName { get; set; }
     }
 }

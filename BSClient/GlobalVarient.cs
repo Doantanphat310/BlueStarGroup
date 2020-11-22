@@ -15,5 +15,7 @@ namespace BSClient
         public static int VoucherDetailID = 0;
         public static Voucher voucherChoice = new Voucher();
         public static List<VoucherDetail> voucherDetailChoice = new List<VoucherDetail>();
+        public static List<Invoice> invoices = new List<Invoice>();
+
     }
 }

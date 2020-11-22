@@ -61,6 +61,14 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
+        public List<MatertialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
+        {
+            SqlParameter param = new SqlParameter("@CustomerID", customerID);
+            return this.Context.Database
+                .SqlQuery<MatertialCustomerInvoice>("SPSelectMaterialMaSoCustomer @CustomerID", param)
+                .ToList();
+        }
+
         ///SPCheckMaterialTK_GL '111','GL6'    
         public List<MaterialCheck> GetMaterialCheck(string accountID, string GLID)
         {

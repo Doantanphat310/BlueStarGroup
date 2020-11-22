@@ -47,7 +47,7 @@ namespace BSServer.Controllers
             return this.InvoiceDAO.DeleteInvoice(invoiceID, companyID);
         }
 
-        public bool SaveVoucherDetail(List<Invoice> dataList)
+        public bool SaveInvoice(List<Invoice> dataList)
         {
             return this.InvoiceLogic.SaveInvoice(dataList);
         }
