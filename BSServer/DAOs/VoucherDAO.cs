@@ -1,23 +1,20 @@
-﻿using BSServer._Core.Context;
+﻿using BSCommon.Models;
+using BSCommon.Utility;
+using BSServer._Core.Base;
+using BSServer._Core.Const;
+using BSServer._Core.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BSCommon.Models;
 using System.Data.SqlClient;
-using BSCommon.Utility;
+using System.Linq;
 
 namespace BSServer.DAOs
 {
-   public class VoucherDAO
+    public class VoucherDAO : BaseDAO
     {
-        public VoucherDAO(BSContext context)
+        public VoucherDAO(BSContext context):base(context)
         {
-            this.Context = context;
         }
-
-        private BSContext Context { get; set; }
 
         public List<Voucher> GetVouchersCompany(string companyID)
         {
@@ -27,7 +24,11 @@ namespace BSServer.DAOs
                 .SqlQuery<Voucher>("VoucherCompanySelect @CompanyID", param)
                 .ToList();
         }
-        
+
+        public long GetVoucherSEQ()
+        {
+            return this.GetMaxSEQ(BSServerConst.VoucherSymbol);
+        }
 
         public List<Voucher> GetVouchersCondition(string companyID,DateTime NgayBD, DateTime NgayKT, string voucherType)
         {

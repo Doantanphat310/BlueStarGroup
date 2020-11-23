@@ -1,6 +1,7 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
 using BSServer._Core.Context;
+using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,12 @@ namespace BSServer.Logics
             this.Context = context;
             this.VoucherDetailDAO = new VoucherDetailDAO(this.Context);
             this.VoucherDAO = new VoucherDAO(this.Context);
-            this.CommonDAO = new CommonDAO(this.Context);
         }
 
         private BSContext Context { get; set; }
 
         private VoucherDAO VoucherDAO { get; set; }
         private VoucherDetailDAO VoucherDetailDAO { get; set; }
-        private CommonDAO CommonDAO { get; set; }
 
         public bool SaveVoucherDetail(List<VoucherDetail> saveData)
         {
@@ -33,13 +32,15 @@ namespace BSServer.Logics
             {
                 try
                 {
+                    long seq = VoucherDetailDAO.GetVoucherDetailSEQ();
                     foreach (VoucherDetail data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                data.VouchersDetailID = CommonDAO.GetVoucherDetailID();
+                                seq++;
+                                data.VouchersDetailID = GenerateID.VoucherDetailID(seq);
                                 this.VoucherDetailDAO.InsertVouchersDetail(data);
                                 break;
 
@@ -77,12 +78,14 @@ namespace BSServer.Logics
                 {
                     #region insert voucher before detail
                     //get voucherID
+                    long seq = VoucherDAO.GetVoucherSEQ();
                     switch (voucher.Status)
                     {
                         // Add new
                         case ModifyMode.Insert:
                             //get, set voucherID
-                            voucher.VouchersID = this.CommonDAO.GetVoucherID();
+                            seq++;
+                            voucher.VouchersID = GenerateID.VoucherDetailID(seq);
                             this.VoucherDAO.InsertVouchers(voucher);
                             break;
 
@@ -98,14 +101,16 @@ namespace BSServer.Logics
                     }
                     #endregion insert voucher before detail
 
+                    long seqDetail = VoucherDetailDAO.GetVoucherDetailSEQ();
                     foreach (VoucherDetail data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
+                                seqDetail++;
                                 data.VouchersID = voucher.VouchersID;
-                                data.VouchersDetailID = CommonDAO.GetVoucherDetailID();
+                                data.VouchersDetailID = GenerateID.VoucherDetailID(seqDetail);
                                 this.VoucherDetailDAO.InsertVouchersDetail(data);
                                 break;
 

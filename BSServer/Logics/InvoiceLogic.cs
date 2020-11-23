@@ -1,6 +1,7 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
 using BSServer._Core.Context;
+using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,11 @@ namespace BSServer.Logics
         {
             this.Context = context;
             this.InvoiceDAO = new InvoiceDAO(this.Context);
-            this.CommonDAO = new CommonDAO(this.Context);
         }
 
         private BSContext Context { get; set; }
 
         private InvoiceDAO InvoiceDAO { get; set; }
-        private CommonDAO CommonDAO { get; set; }
 
         public bool SaveInvoice(List<Invoice> saveData)
         {
@@ -31,13 +30,16 @@ namespace BSServer.Logics
             {
                 try
                 {
+                    long seq = InvoiceDAO.GetInvoiceSEQ();
                     foreach (Invoice data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                data.InvoiceID = CommonDAO.GetInvoiceID();
+                                seq++;
+                                data.InvoiceID = GenerateID.InvoiceID(seq);
+
                                 this.InvoiceDAO.InsertInvoice(data);
                                 break;
 

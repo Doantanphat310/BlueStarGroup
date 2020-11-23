@@ -1,5 +1,10 @@
+
+InvoiceInsert 'test','test','test','test','test','test','test','test','t','2020-11-22',10,10.00,20,'Phat','Test'
+
+select * from Invoice
+
 alter table Invoice
-alter column VAT 
+alter column VAT decimal
 
 alter proc InvoiceInsert
 	@InvoiceID varchar(50),
@@ -13,7 +18,7 @@ alter proc InvoiceInsert
 	@InvoiceType varchar(1) ,
 	@InvoiceDate datetime ,
 	@Amount money ,
-	@VAT numeric(3,2) ,
+	@VAT decimal ,
 	@Discounts money ,
 	@CreateUser varchar(50) ,
 	@CompanyID varchar(50) 

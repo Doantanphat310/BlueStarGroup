@@ -112,16 +112,16 @@ namespace BSClient
             VoucherDetail_gridView.BestFitColumns();
             ///Doi Tuong
             ///
-            MaterialNVController MaterialDT = new MaterialNVController();
-            List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
-            rDTLookup.DataSource = materialDT;
-            rDTLookup.NullText = "";
-            rDTLookup.ValueMember = "CustomerID";
-            rDTLookup.DisplayMember = "CustomerSName";
-            VoucherDetail_gridControl.RepositoryItems.Add(rDTLookup);
-            VoucherDetail_gridView.Columns["CustomerID"].ColumnEdit = rDTLookup;
-            VoucherDetail_gridView.BestFitColumns();
-            rDTLookup.Popup += new EventHandler(rDTLookup_Popup);
+            //MaterialNVController MaterialDT = new MaterialNVController();
+            //List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
+            //rDTLookup.DataSource = materialDT;
+            //rDTLookup.NullText = "";
+            //rDTLookup.ValueMember = "CustomerID";
+            //rDTLookup.DisplayMember = "CustomerSName";
+            //VoucherDetail_gridControl.RepositoryItems.Add(rDTLookup);
+            //VoucherDetail_gridView.Columns["CustomerID"].ColumnEdit = rDTLookup;
+            //VoucherDetail_gridView.BestFitColumns();
+            //rDTLookup.Popup += new EventHandler(rDTLookup_Popup);
             ///So cai
             ///
             MaterialNVController MaterialGL = new MaterialNVController();
@@ -172,11 +172,34 @@ namespace BSClient
             this.VoucherDetail_gridView.Columns.Clear();
             this.VoucherDetail_gridView.AddColumn("NV", "NV", 50, true);
             this.VoucherDetail_gridView.AddColumn("AccountID", "Tài khoản", 80, true);
-            this.VoucherDetail_gridView.AddColumn("CustomerID", "Đối tượng", 120, true);
+            //this.VoucherDetail_gridView.AddColumn("CustomerID", "Đối tượng", 120, true);
+            MaterialNVController MaterialDT = new MaterialNVController();
+            List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn(
+                "CustomerID", "Mã KH", 120, materialDT, "CustomerID", "CustomerSName", true, editValueChanged: Customer_EditValueChanged);
             this.VoucherDetail_gridView.AddColumn("GeneralLedgerID", "Sổ cái", 180, true);
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true,"$#,##0.00");
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true, "$#,##0.00");
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 80, false);
+
+           
+            //MaterialNVController MaterialDT = new MaterialNVController();
+            //List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
+            //rDTLookup.DataSource = materialDT;
+            //rDTLookup.NullText = "";
+            //rDTLookup.ValueMember = "CustomerID";
+            //rDTLookup.DisplayMember = "CustomerSName";
+            //VoucherDetail_gridControl.RepositoryItems.Add(rDTLookup);
+            //VoucherDetail_gridView.Columns["CustomerID"].ColumnEdit = rDTLookup;
+            //VoucherDetail_gridView.BestFitColumns();
+            //rDTLookup.Popup += new EventHandler(rDTLookup_Popup);
         }
+
+        public void Customer_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialDT>();
+            // Muon lay gi ra thif dung selectRow.
+        }
+
 
         private void SetupVoucherDetailGridView()
         {
@@ -185,13 +208,13 @@ namespace BSClient
             this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
-        private void LoadVoucherDetailGridView( string voucherID)
+        private void LoadVoucherDetailGridView(string voucherID)
         {
             tabNavigationPageLKKho.PageVisible = false;
             tabNavigationPageLKVAT.PageVisible = false;
             VoucherDetailController controller = new VoucherDetailController();
             GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice);
-          //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
+            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
             VoucherDetailData = new BindingList<VoucherDetail>(GlobalVarient.voucherDetailChoice);
             VoucherDetail_gridControl.DataSource = VoucherDetailData;
             VoucherDetailDelete = new List<VoucherDetail>();
@@ -222,12 +245,12 @@ namespace BSClient
                 vouchertype = VoucherTypeXemChungTU_searchLookUpEdit.EditValue.ToString();
             }
 
-           
+
 
             #endregion check value parameter
             #region search voucher
             VoucherController controller = new VoucherController();
-            VoucherData = new BindingList<Voucher>(controller.GetVouchersCondition(GlobalVarient.CompanyIDChoice, (DateTime)dateEditBDKT.EditValue, (DateTime)dateEditNgayKT.EditValue,vouchertype));
+            VoucherData = new BindingList<Voucher>(controller.GetVouchersCondition(GlobalVarient.CompanyIDChoice, (DateTime)dateEditBDKT.EditValue, (DateTime)dateEditNgayKT.EditValue, vouchertype));
             Voucher_gridControl.DataSource = VoucherData;
             #endregion search voucher
 
@@ -310,7 +333,7 @@ namespace BSClient
         {
             return Value == null ? "" : Value.ToString();
         }
- 
+
 
         //private void gridViewDinhKhoan_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         //{
@@ -378,8 +401,8 @@ namespace BSClient
             PopupSearchLookUpEditForm form = sender as PopupSearchLookUpEditForm;
             if (e.KeyCode == Keys.Enter)
             {
-                    GridView view = form.OwnerEdit.Properties.View;
-                if(view.FocusedRowHandle > 0)
+                GridView view = form.OwnerEdit.Properties.View;
+                if (view.FocusedRowHandle > 0)
                 {
                     form.OwnerEdit.ClosePopup();
                 }
@@ -393,7 +416,7 @@ namespace BSClient
 
         private void simpleButtonNewSave_Click(object sender, EventArgs e)
         {
-            if(dateEditNgayNhapChungTu.EditValue == null)
+            if (dateEditNgayNhapChungTu.EditValue == null)
             {
                 MessageBoxHelper.ShowErrorMessage("Ngày nhập chứng từ không được để trống!");
                 return;
@@ -403,7 +426,7 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng chọn loại chứng từ!");
                 return;
             }
-            if(!checkBoxThemDuLieu.Checked)
+            if (!checkBoxThemDuLieu.Checked)
             {
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chứng từ trước khi lưu mới!");
                 return;
@@ -415,7 +438,7 @@ namespace BSClient
             foreach (var group in result)
             {
                 Console.WriteLine("Membername = {0} Totalcost={1}", group.nv, group.total);
-                if(group.nv == "N")
+                if (group.nv == "N")
                 {
                     Debit = group.total;
                 }
@@ -424,7 +447,7 @@ namespace BSClient
                     credit = group.total;
                 }
             }
-            if(Debit != credit)
+            if (Debit != credit)
             {
                 MessageBoxHelper.ShowErrorMessage("Tổng tiền nợ có phải bằng nhau!\n" + "N: " + Debit.ToString() + "\nC: " + credit.ToString());
                 return;
@@ -434,7 +457,7 @@ namespace BSClient
             VoucherController voucherController = new VoucherController();
             GlobalVarient.VoucherID++;
             Voucher voucher = new Voucher();
-          //  voucher.VouchersID = "VOU" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherID.ToString();
+            //  voucher.VouchersID = "VOU" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherID.ToString();
             voucher.Amount = Debit;
             voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
             voucher.VouchersTypeID = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
@@ -447,11 +470,11 @@ namespace BSClient
 
             #region set VoucherDetailID
             VoucherDetailController voucherDetailController = new VoucherDetailController();
-            for (int i =0;i<VoucherDetailData.Count;i++)
+            for (int i = 0; i < VoucherDetailData.Count; i++)
             {
-               // VoucherDetailData[i].VouchersID = voucher.VouchersID;
-               // GlobalVarient.VoucherDetailID++;
-               // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
+                // VoucherDetailData[i].VouchersID = voucher.VouchersID;
+                // GlobalVarient.VoucherDetailID++;
+                // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                 VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 VoucherDetailData[i].Status = ModifyMode.Insert;
                 //voucherDetailController.InsertVouchersDetail(VoucherDetailData[i]);
@@ -462,7 +485,7 @@ namespace BSClient
             if (saveData?.Count > 0)
             {
                 VoucherDetailController controller = new VoucherDetailController();
-                if (controller.SaveVoucher_Detail(saveData,voucher))
+                if (controller.SaveVoucher_Detail(saveData, voucher))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     VoucherDetailDelete = new List<VoucherDetail>();
@@ -482,7 +505,7 @@ namespace BSClient
             foreach (int index in selectIndex)
             {
                 VoucherDetail delete = VoucherDetail_gridView.GetRow(index) as VoucherDetail;
-                if(!string.IsNullOrEmpty(delete.VouchersDetailID))
+                if (!string.IsNullOrEmpty(delete.VouchersDetailID))
                 {
                     VoucherDetailData[index].Status = ModifyMode.Delete;
                     VoucherDetailDelete.Add(delete);
@@ -507,11 +530,11 @@ namespace BSClient
             {
                 return;
             }
-            
-           // Role_UserName_TextBox.Text = selectedRow.UserID;
+
+            // Role_UserName_TextBox.Text = selectedRow.UserID;
 
             // filter grid
-           // UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";
+            // UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";
         }
 
 
@@ -557,7 +580,7 @@ namespace BSClient
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnAmount, "Tiền phải lớn hơn 0!");
                 }
-             }
+            }
 
             if (!string.IsNullOrEmpty(row.AccountID) && !string.IsNullOrEmpty(row.GeneralLedgerID) && !string.IsNullOrEmpty(row.NV) && (CompareAmount))
             {
@@ -568,7 +591,7 @@ namespace BSClient
                 bool msgCode = MaterialCheckData.Exists(s => s.msgCode == "0");
                 if (msgCode)
                 {
-                   // view.Appearance.Row.BackColor = Color.Red;
+                    // view.Appearance.Row.BackColor = Color.Red;
                     e.Valid = false;
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnGeneralLedgerID, "Sổ cái không phù hợp với tài khoản!");
@@ -576,10 +599,10 @@ namespace BSClient
                 else
                 {
                     e.Valid = true;
-                   // view.Appearance.Row.BackColor = Color.White;
+                    // view.Appearance.Row.BackColor = Color.White;
                 }
             }
-           
+
         }
 
         private void VoucherDetail_gridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
@@ -705,7 +728,7 @@ namespace BSClient
                     VoucherDetailData[i].Status = ModifyMode.Insert;
                     VoucherDetailData[i].VouchersID = GlobalVarient.VoucherIDChoice;
                     GlobalVarient.VoucherDetailID++;
-                   // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
+                    // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                     VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 }
             }
@@ -719,9 +742,9 @@ namespace BSClient
                 VoucherDetailController controller = new VoucherDetailController();
                 if (controller.SaveVoucherDetail(saveData))
                 {
-                   // MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    // MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     checkAction++;
-                   // VoucherDetailDelete = new List<VoucherDetail>();
+                    // VoucherDetailDelete = new List<VoucherDetail>();
                 }
                 else
                 {
@@ -731,7 +754,7 @@ namespace BSClient
             }
 
             #region delete VoucherDetail
-            if(VoucherDetailDelete?.Count > 0)
+            if (VoucherDetailDelete?.Count > 0)
             {
                 VoucherDetailController controller = new VoucherDetailController();
                 if (controller.SaveVoucherDetail(VoucherDetailDelete))
@@ -776,7 +799,7 @@ namespace BSClient
 
         private void tabPaneVouchers_SelectedPageIndexChanged(object sender, EventArgs e)
         {
-           // Showtabpane(tabPaneVouchers.SelectedPageIndex);
+            // Showtabpane(tabPaneVouchers.SelectedPageIndex);
         }
 
         void Showtabpane(int SelectedIndexTabPane)
@@ -806,8 +829,8 @@ namespace BSClient
                         tabPaneVouchers.SelectedPageIndex = 0;
                     }
                     break;
-                    #endregion check TK
-                    
+                #endregion check TK
+
                 case 2:
                     int checkLKkho = 0;
                     foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
@@ -846,11 +869,11 @@ namespace BSClient
             this.Invoice_gridView.AddColumn("MauSo", "Mẫu số", 80, true);
             this.Invoice_gridView.AddColumn("KyHieu", "Kí hiệu", 80, true);
             this.Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true,"c2");
+            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "{0}%");
             this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 80, true, "c2");
-            this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true,"c2");
-            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 100, true,"c2");
+            this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true, "c2");
+            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 100, true, "c2");
             this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 60, true);
             this.Invoice_gridView.AddColumn("Description", "Nội dung", 150, true);
             this.Invoice_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
@@ -889,9 +912,9 @@ namespace BSClient
             Invoice_gridView.Columns["InvoiceType"].ColumnEdit = repositoryItemInvoiceType;
             repositoryItemInvoiceType.Popup += new EventHandler(repositoryItemInvoiceType_Popup);
 
-            ///Doi Tuong
-            ///
-            //MaterialNVController MaterialDT = new MaterialNVController();
+            /// Doi Tuong
+            // /
+            // MaterialNVController MaterialDT = new MaterialNVController();
             //List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
             //repositoryItemCustomer.DataSource = materialDT;
             //repositoryItemCustomer.NullText = "";
@@ -911,17 +934,17 @@ namespace BSClient
             repositoryItemCustomerInvoice.NullText = "";
             repositoryItemCustomerInvoice.ValueMember = "CustomerID";
             repositoryItemCustomerInvoice.DisplayMember = "CustomerSName";
-           
+
             Invoice_gridControl.RepositoryItems.Add(repositoryItemCustomerInvoice);
             Invoice_gridView.Columns["CustomerID"].ColumnEdit = repositoryItemCustomerInvoice;
             Invoice_gridView.BestFitColumns();
             repositoryItemCustomerInvoice.Popup += new EventHandler(repositoryItemCustomerInvoice_Popup);
         }
-        
+
         RepositoryItemSearchLookUpEdit repositoryItemInvoiceType = new RepositoryItemSearchLookUpEdit();
         RepositoryItemSearchLookUpEdit repositoryItemWareHouseType = new RepositoryItemSearchLookUpEdit();
         RepositoryItemSearchLookUpEdit repositoryItemCustomerInvoice = new RepositoryItemSearchLookUpEdit();
-        
+
         private void repositoryItemInvoiceType_Popup(object sender, EventArgs e)
         {
             var edit = sender as SearchLookUpEdit;
@@ -939,7 +962,7 @@ namespace BSClient
             popupForminvoice.KeyUp -= popupForminvoice_KeyUp;
             popupForminvoice.KeyUp += popupForminvoice_KeyUp;
         }
-        
+
         private void repositoryItemCustomerInvoice_Popup(object sender, EventArgs e)
         {
             var edit = sender as SearchLookUpEdit;
@@ -968,7 +991,7 @@ namespace BSClient
             popupControl.OwnerEdit.EditValueChanged -= new EventHandler(popupForminvoice_EditValueChanged);
             MatertialCustomerInvoice matertialCustomerInvoice = new MatertialCustomerInvoice();
             matertialCustomerInvoice = (MatertialCustomerInvoice)popupControl.OwnerEdit.GetSelectedDataRow();
-          //  MessageBox.Show(String.Format("MaSo: {0}, MauSo{1}", matertialCustomerInvoice.MaSo, matertialCustomerInvoice.MauSo));
+            //  MessageBox.Show(String.Format("MaSo: {0}, MauSo{1}", matertialCustomerInvoice.MaSo, matertialCustomerInvoice.MauSo));
             Invoice_gridView.SetFocusedRowCellValue("MaSo", matertialCustomerInvoice.MaSo);
             Invoice_gridView.SetFocusedRowCellValue("MauSo", matertialCustomerInvoice.MauSo);
             Invoice_gridView.SetFocusedRowCellValue("KyHieu", matertialCustomerInvoice.KyHieu);
@@ -986,7 +1009,7 @@ namespace BSClient
                 return;
             }
 
-          
+
 
             #region set VoucherID to invoice
             InvoiceController invoiceController = new InvoiceController();

@@ -1,5 +1,7 @@
 ﻿using BSCommon.Models;
 using BSCommon.Utility;
+using BSServer._Core.Base;
+using BSServer._Core.Const;
 using BSServer._Core.Context;
 using System;
 using System.Collections.Generic;
@@ -10,15 +12,13 @@ using System.Threading.Tasks;
 
 namespace BSServer.DAOs
 {
-   public class VoucherDetailDAO
+    public class VoucherDetailDAO: BaseDAO
     {
-        public VoucherDetailDAO(BSContext context)
+        public VoucherDetailDAO(BSContext context):base(context)
         {
-            this.Context = context;
         }
-        private BSContext Context { get; set; }
 
-        public List<VoucherDetail> GetVouchersDetailSelectVoucherID(string voucherID,string CompanyID)
+        public List<VoucherDetail> GetVouchersDetailSelectVoucherID(string voucherID, string CompanyID)
         {
             return this.Context.Database.SqlQuery<VoucherDetail>(
           "VouchersDetailSelectVoucherID @VouchersID, @CompanyID, @CreateUser",
@@ -26,6 +26,11 @@ namespace BSServer.DAOs
           new SqlParameter("@CompanyID", CompanyID),
           new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
           ).ToList();
+        }
+
+        public long GetVoucherDetailSEQ()
+        {
+            return this.GetMaxSEQ(BSServerConst.VoucherDetailSymbol);
         }
 
         public bool InsertVouchersDetail(VoucherDetail voucherDetailInfo)
@@ -54,7 +59,7 @@ namespace BSServer.DAOs
             }
         }
 
-        public bool DeleteVoucherDetail(string VouchersDetailID,string CompanyID)
+        public bool DeleteVoucherDetail(string VouchersDetailID, string CompanyID)
         {
             try
             {

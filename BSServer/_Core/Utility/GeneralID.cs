@@ -25,7 +25,12 @@ namespace BSServer._Core.Utility
             return GetGeneralIDWithDate(BSServerConst.VoucherSymbol, seq);
         }
 
-        public static string GetInvoiceID(long seq)
+        public static string VoucherDetailID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.VoucherDetailSymbol, seq);
+        }
+
+        public static string InvoiceID(long seq)
         {
             return GetGeneralIDWithDate(BSServerConst.InvoiceSymbol, seq);
         }

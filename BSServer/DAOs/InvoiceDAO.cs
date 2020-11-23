@@ -1,5 +1,7 @@
 ﻿using BSCommon.Models;
 using BSCommon.Utility;
+using BSServer._Core.Base;
+using BSServer._Core.Const;
 using BSServer._Core.Context;
 using System;
 using System.Collections.Generic;
@@ -10,13 +12,11 @@ using System.Threading.Tasks;
 
 namespace BSServer.DAOs
 {
-   public class InvoiceDAO
+    public class InvoiceDAO : BaseDAO
     {
-        public InvoiceDAO(BSContext context)
+        public InvoiceDAO(BSContext context) : base(context)
         {
-            this.Context = context;
         }
-        private BSContext Context { get; set; }
 
         public List<Invoice> GetInvoiceSelectVoucherID(string voucherID, string CompanyID)
         {
@@ -26,6 +26,11 @@ namespace BSServer.DAOs
           new SqlParameter("@CompanyID", CompanyID),
           new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
           ).ToList();
+        }
+
+        public long GetInvoiceSEQ()
+        {
+            return this.GetMaxSEQ(BSServerConst.InvoiceSymbol);
         }
 
         public bool InsertInvoice(Invoice invoice)
@@ -46,10 +51,10 @@ namespace BSServer.DAOs
                     new SqlParameter("@InvoiceType", invoice.InvoiceType),
                     new SqlParameter("@InvoiceDate", invoice.InvoiceDate),
                     new SqlParameter("@Amount", invoice.Amount),
-                    new SqlParameter("@VAT", invoice.VAT),
+                    new SqlParameter("@VAT",  invoice.VAT.ToString("000.00")),
                     new SqlParameter("@Discounts", invoice.Discounts),
-                    new SqlParameter("@CompanyID", invoice.CompanyID),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CompanyID", invoice.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("InvoiceInsert", sqlParameters);
                 return true;
