@@ -66,14 +66,22 @@ namespace BSClient.Utility
             string valueMember,
             string displayMember,
             bool isAllowEdit = true,
-            Dictionary<string, string> columnNames = null)
+            Dictionary<string, string> columnNames = null,
+            string nullText = "",
+            EventHandler editValueChanged = null)
         {
             var itemCtrl = new RepositoryItemLookUpEdit
             {
                 DataSource = itemSource,
                 DisplayMember = displayMember,
-                ValueMember = valueMember
+                ValueMember = valueMember,
+                NullText = nullText
             };
+
+            if (editValueChanged != null)
+            {
+                itemCtrl.EditValueChanged += editValueChanged;
+            }
 
             if (columnNames != null)
             {
@@ -96,13 +104,15 @@ namespace BSClient.Utility
             string displayMember,
             bool isAllowEdit = true,
             Dictionary<string, string> columnNames = null,
+            string nullText = "",
             EventHandler editValueChanged = null)
         {
             var itemCtrl = new RepositoryItemSearchLookUpEdit
             {
                 DataSource = itemSource,
                 DisplayMember = displayMember,
-                ValueMember = valueMember
+                ValueMember = valueMember,
+                NullText = nullText
             };
 
             if (editValueChanged != null)
@@ -121,8 +131,7 @@ namespace BSClient.Utility
                         Visible = true,
                     };
 
-                    //gridCol.OptionsColumn.AllowEdit = false;
-                    itemCtrl.View.Columns.Add(gridCol);                   
+                    itemCtrl.View.Columns.Add(gridCol);
                 }
             }
 
@@ -233,8 +242,6 @@ namespace BSClient.Utility
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
-
-            //gridView.OptionsNavigation.AutoFocusNewRow = true;
 
             gridView.OptionsSelection.MultiSelect = multiSelect;
             if (multiSelect && checkBoxSelectorColumnWidth > 0)
