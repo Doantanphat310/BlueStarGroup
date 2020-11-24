@@ -112,6 +112,7 @@ namespace BSClient.Views
             this.Items_GridView.AddColumn("ItemID", "Mã SP", 90, false);
             this.Items_GridView.AddColumn("ItemName", "Tên SP", 160, true, fixedWidth: false);
             this.Items_GridView.AddColumn("ItemSName", "Tên viết tắt", 80, true);
+            this.Items_GridView.AddColumn("ItemSpecification", "Quy cách", 80, true);
             this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, false);
 
             var itemSource = MasterInfoManager.GetItemUnit();
