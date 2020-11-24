@@ -1,10 +1,11 @@
 ﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
-using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -539,6 +540,25 @@ namespace BSClient.Views
                 GridView view = sender as GridView;
                 GridColumn column = view.Columns["ItemPrice"];
                 view.SetColumnError(column, BSMessage.BSM000014);
+            }
+        }
+
+        private void CompanyID_SearchLookUpEdit_Popup(object sender, EventArgs e)
+        {
+            SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
+            var popupForm = edit.GetPopupEditForm();
+            popupForm.KeyPreview = true;
+            popupForm.KeyPress += PopupForm_KeyPress;
+        }
+
+        private void PopupForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                PopupSearchLookUpEditForm popupForm = sender as PopupSearchLookUpEditForm;
+                var view = popupForm.OwnerEdit.Properties.View;
+                view.FocusedRowHandle = 0;
+                popupForm.OwnerEdit.ClosePopup();
             }
         }
     }
