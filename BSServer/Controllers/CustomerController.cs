@@ -30,17 +30,6 @@ namespace BSServer.Controllers
             return this.CustomerDAO.GetCustommers();
         }
 
-        public List<Customer> GetCustommerNotCompany(string companyID)
-        {
-            return this.CustomerDAO.GetCustommerNotCompany(companyID);
-        }
-
-        public List<Customer> GetCustommersCompany(string companyID)
-        {
-            return this.CustomerDAO.GetCustommersCompany(companyID);
-        }
-
-
         public bool SaveCustommers(List<Customer> customerCompanies)
         {
             return this.CustomerLogic.SaveCustommersCompany(customerCompanies);

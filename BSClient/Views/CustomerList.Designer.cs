@@ -46,7 +46,7 @@
             // Customer_GridControl
             // 
             this.Customer_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Customer_GridControl.Location = new System.Drawing.Point(2, 84);
+            this.Customer_GridControl.Location = new System.Drawing.Point(2, 39);
             this.Customer_GridControl.MainView = this.Customer_GridView;
             this.Customer_GridControl.Name = "Customer_GridControl";
             this.Customer_GridControl.Size = new System.Drawing.Size(834, 454);
@@ -59,7 +59,9 @@
             this.Customer_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.Customer_GridView.GridControl = this.Customer_GridControl;
             this.Customer_GridView.Name = "Customer_GridView";
+            this.Customer_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.Customer_GridView_InvalidRowException);
             this.Customer_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.Customer_GridView_RowDeleted);
+            this.Customer_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.Customer_GridView_ValidateRow);
             this.Customer_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.Customer_GridView_RowUpdated);
             // 
             // User_Group
@@ -67,7 +69,6 @@
             this.User_Group.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("User_Group.CaptionImageOptions.Image")));
             this.User_Group.Controls.Add(this.Customer_GridControl);
             this.User_Group.Controls.Add(this.UserButton_Panel);
-            this.User_Group.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.User_Group.Dock = System.Windows.Forms.DockStyle.Fill;
             this.User_Group.Location = new System.Drawing.Point(0, 0);
             this.User_Group.Name = "User_Group";
@@ -80,16 +81,17 @@
             this.UserButton_Panel.Controls.Add(this.Delete_Button);
             this.UserButton_Panel.Controls.Add(this.Cancel_Button);
             this.UserButton_Panel.Controls.Add(this.Save_Button);
-            this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 39);
+            this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 493);
             this.UserButton_Panel.Name = "UserButton_Panel";
             this.UserButton_Panel.Size = new System.Drawing.Size(834, 45);
             this.UserButton_Panel.TabIndex = 5;
             // 
             // Delete_Button
             // 
+            this.Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Delete_Button.ImageOptions.Image")));
-            this.Delete_Button.Location = new System.Drawing.Point(8, 5);
+            this.Delete_Button.Location = new System.Drawing.Point(547, 6);
             this.Delete_Button.Name = "Delete_Button";
             this.Delete_Button.Size = new System.Drawing.Size(90, 35);
             this.Delete_Button.TabIndex = 6;
@@ -98,8 +100,9 @@
             // 
             // Cancel_Button
             // 
+            this.Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Cancel_Button.ImageOptions.Image")));
-            this.Cancel_Button.Location = new System.Drawing.Point(200, 5);
+            this.Cancel_Button.Location = new System.Drawing.Point(739, 6);
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(90, 35);
             this.Cancel_Button.TabIndex = 7;
@@ -108,8 +111,9 @@
             // 
             // Save_Button
             // 
+            this.Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Save_Button.ImageOptions.Image")));
-            this.Save_Button.Location = new System.Drawing.Point(104, 5);
+            this.Save_Button.Location = new System.Drawing.Point(643, 6);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.Size = new System.Drawing.Size(90, 35);
             this.Save_Button.TabIndex = 7;
