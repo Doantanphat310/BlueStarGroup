@@ -125,6 +125,7 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVarient.cs" />
+    <Compile Include="Utility\LookUpEditHelper.cs" />
     <Compile Include="Utility\GridViewHelper.cs" />
     <Compile Include="Utility\MasterInfoManager.cs" />
     <Compile Include="Utility\MessageBoxHelper.cs" />

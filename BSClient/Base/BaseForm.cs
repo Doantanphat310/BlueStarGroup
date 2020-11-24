@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars.FluentDesignSystem;
+using System.Windows.Forms;
 
 namespace BSClient.Base
 {
@@ -9,7 +10,7 @@ namespace BSClient.Base
             InitializeComponent();
         }
 
-        public void ShowControl(System.Windows.Forms.Control control, FluentDesignFormContainer Content)
+        public void ShowControl(Control control, Control Content)
         {
             Content.Controls.Clear();
             control.Dock = System.Windows.Forms.DockStyle.Fill;

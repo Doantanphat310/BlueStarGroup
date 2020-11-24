@@ -103,7 +103,7 @@ namespace BSClient.Utility
             string valueMember,
             string displayMember,
             bool isAllowEdit = true,
-            Dictionary<string, string> columnNames = null,
+            Dictionary<string, string> columns = null,
             string nullText = "",
             EventHandler editValueChanged = null)
         {
@@ -120,9 +120,9 @@ namespace BSClient.Utility
                 itemCtrl.EditValueChanged += editValueChanged;
             }
 
-            if (columnNames != null)
+            if (columns != null)
             {
-                foreach (var col in columnNames)
+                foreach (var col in columns)
                 {
                     var gridCol = new GridColumn
                     {
