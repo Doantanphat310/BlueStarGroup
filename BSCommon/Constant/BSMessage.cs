@@ -17,5 +17,6 @@
         public const string BSM000012 = "Tên viết tắt không được để trống.";
         public const string BSM000013 = "Tên loại SP không được để trống.";
         public const string BSM000014 = "Giá SP phải lớn hơn 0.";
+        public const string BSM000015 = "Tên KH không được để trống.";
     }
 }

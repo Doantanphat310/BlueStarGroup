@@ -115,7 +115,6 @@
     <Compile Include="Models\ResponseStatus.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerCompany.cs" />
     <Compile Include="Models\MasterInfo.cs" />
     <Compile Include="Models\UserRoleInfo.cs" />
     <Compile Include="Models\UserInfo.cs" />

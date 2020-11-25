@@ -89,6 +89,7 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@ItemName", data.ItemName),
+                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
@@ -118,6 +119,7 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@ItemName", data.ItemName),
+                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
