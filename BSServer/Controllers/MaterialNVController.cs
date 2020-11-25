@@ -49,7 +49,7 @@ namespace BSServer.Controllers
             return this.MaterialNVDAO.GetMaterialGL(companyID);
         }
 
-        public List<MatertialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
+        public List<MaterialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
         {
             return this.MaterialNVDAO.GetMaterialCustomerInvoice(customerID);
         }

@@ -104,7 +104,7 @@
     <Compile Include="Models\MaterialDT.cs" />
     <Compile Include="Models\MaterialTK.cs" />
     <Compile Include="Models\MaterialWareHouseType.cs" />
-    <Compile Include="Models\MatertialCustomerInvoice.cs" />
+    <Compile Include="Models\MaterialCustomerInvoice.cs" />
     <Compile Include="Models\Voucher.cs" />
     <Compile Include="Models\VoucherDetail.cs" />
     <Compile Include="Models\VoucherDetailDinhKhoan.cs" />

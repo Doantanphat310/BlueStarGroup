@@ -15,5 +15,7 @@ namespace BSServer._Core.Const
         public const string ItemSymbol = "SP";
         public const string CompanySymbol = "CTY";
         public const string ItemTypeSymbol = "LSP";
+        public const string WareHouseSymbol = "WH";
+        public const string WareHouseDetailSymbol = "WHD";
     }
 }

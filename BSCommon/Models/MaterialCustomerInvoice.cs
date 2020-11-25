@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Models
 {
-  public  class MatertialCustomerInvoice
+  public  class MaterialCustomerInvoice
     {
         public string MaSo { get; set; }
         public string MauSo { get; set; }

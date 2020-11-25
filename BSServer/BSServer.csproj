@@ -78,6 +78,7 @@
     <Compile Include="Controllers\VoucherDetailController.cs" />
     <Compile Include="Controllers\VoucherDetailDinhKhoanController.cs" />
     <Compile Include="Controllers\VouchersTypeController.cs" />
+    <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DAOs\InvoiceDAO.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
     <Compile Include="DAOs\ItemsDAO.cs" />
@@ -93,12 +94,14 @@
     <Compile Include="DAOs\CompanyDAO.cs" />
     <Compile Include="DAOs\MasterInfoDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
+    <Compile Include="DAOs\WareHouseDAO.cs" />
     <Compile Include="Logics\InvoiceLogic.cs" />
     <Compile Include="Logics\ItemsLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\VoucherDetailLogic.cs" />
     <Compile Include="Logics\VoucherLogic.cs" />
+    <Compile Include="Logics\WareHouseLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Core\Base\BaseController.cs" />
     <Compile Include="_Core\Base\BaseDAO.cs" />

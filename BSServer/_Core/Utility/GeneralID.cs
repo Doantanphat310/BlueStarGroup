@@ -49,5 +49,14 @@ namespace BSServer._Core.Utility
         {
             return $"{type}{DateTime.Now.ToString("yyyyMMdd")}{seq.ToString("000000")}";
         }
+
+        public static string WareHouseID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.WareHouseSymbol, seq);
+        }
+        public static string WareHouseDetailID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.WareHouseDetailSymbol, seq);
+        }
     }
 }

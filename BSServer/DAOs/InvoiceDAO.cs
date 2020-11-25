@@ -107,6 +107,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@VAT", invoice.VAT),
                     new SqlParameter("@Discounts", invoice.Discounts),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CompanyID", invoice.CompanyID)
                 };
 
                 this.Context.ExecuteDataFromProcedure("InvoiceUpdate", sqlParameters);

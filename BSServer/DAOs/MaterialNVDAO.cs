@@ -61,11 +61,11 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public List<MatertialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
+        public List<MaterialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
         {
             SqlParameter param = new SqlParameter("@CustomerID", customerID);
             return this.Context.Database
-                .SqlQuery<MatertialCustomerInvoice>("SPSelectMaterialMaSoCustomer @CustomerID", param)
+                .SqlQuery<MaterialCustomerInvoice>("SPSelectMaterialMaSoCustomer @CustomerID", param)
                 .ToList();
         }
 
