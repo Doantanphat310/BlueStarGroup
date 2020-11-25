@@ -1,4 +1,4 @@
-create proc WareHouseUpdate
+alter proc WareHouseUpdate
 	@WarehouseID varchar(50),
 	@DebitAccountID varchar(50),
 	@CreditAccountID varchar(50),
@@ -6,7 +6,8 @@ create proc WareHouseUpdate
 	@DeliverReceiver nvarchar(250),
 	@Description nvarchar(max),
 	@Attachfile nvarchar(max),
-	@CreateUser varchar(50)
+	@CreateUser varchar(50),
+	@CompanyID varchar(50)
 as
 begin
 update WareHouse
@@ -18,6 +19,7 @@ set
 	Description=@Description,
 	Attachfile=@Attachfile,
 	UpdateUser=@CreateUser,
-	UpdateDate=getdate()
-	where WarehouseID = @WarehouseID
+	UpdateDate=getdate(),
+	CompanyID = @CompanyID
+	where WarehouseID = @WarehouseID and CreateUser = @CreateUser and CompanyID =@CompanyID
 end
