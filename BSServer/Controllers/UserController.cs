@@ -9,15 +9,12 @@ namespace BSServer.Controllers
 {
     public class UserController : BaseController
     {
-        private BSContext Context { get; set; }
-
         private UserLogic UserLogic { get; set; }
 
         private UserDAO UserDAO { get; set; }
 
         public UserController()
         {
-            this.Context = new BSContext();
             this.UserDAO = new UserDAO(this.Context);
             this.UserLogic = new UserLogic(this.Context);
         }

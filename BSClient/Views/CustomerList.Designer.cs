@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerList));
             this.Customer_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Customer_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.User_Group = new DevExpress.XtraEditors.GroupControl();
+            this.Customer_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.UserButton_Panel = new System.Windows.Forms.Panel();
             this.Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Save_Button = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.User_Group)).BeginInit();
-            this.User_Group.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).BeginInit();
+            this.Customer_GroupControl.SuspendLayout();
             this.UserButton_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,17 +64,17 @@
             this.Customer_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.Customer_GridView_ValidateRow);
             this.Customer_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.Customer_GridView_RowUpdated);
             // 
-            // User_Group
+            // Customer_GroupControl
             // 
-            this.User_Group.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("User_Group.CaptionImageOptions.Image")));
-            this.User_Group.Controls.Add(this.Customer_GridControl);
-            this.User_Group.Controls.Add(this.UserButton_Panel);
-            this.User_Group.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.User_Group.Location = new System.Drawing.Point(0, 0);
-            this.User_Group.Name = "User_Group";
-            this.User_Group.Size = new System.Drawing.Size(838, 540);
-            this.User_Group.TabIndex = 7;
-            this.User_Group.Text = "Danh mục Khách hàng";
+            this.Customer_GroupControl.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("User_Group.CaptionImageOptions.Image")));
+            this.Customer_GroupControl.Controls.Add(this.Customer_GridControl);
+            this.Customer_GroupControl.Controls.Add(this.UserButton_Panel);
+            this.Customer_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Customer_GroupControl.Location = new System.Drawing.Point(0, 0);
+            this.Customer_GroupControl.Name = "Customer_GroupControl";
+            this.Customer_GroupControl.Size = new System.Drawing.Size(838, 540);
+            this.Customer_GroupControl.TabIndex = 7;
+            this.Customer_GroupControl.Text = "Danh mục Khách hàng";
             // 
             // UserButton_Panel
             // 
@@ -124,13 +124,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.User_Group);
+            this.Controls.Add(this.Customer_GroupControl);
             this.Name = "CustomerList";
             this.Size = new System.Drawing.Size(838, 540);
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.User_Group)).EndInit();
-            this.User_Group.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).EndInit();
+            this.Customer_GroupControl.ResumeLayout(false);
             this.UserButton_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -139,7 +139,7 @@
         #endregion
         private DevExpress.XtraGrid.GridControl Customer_GridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView Customer_GridView;
-        private DevExpress.XtraEditors.GroupControl User_Group;
+        private DevExpress.XtraEditors.GroupControl Customer_GroupControl;
         private System.Windows.Forms.Panel UserButton_Panel;
         private DevExpress.XtraEditors.SimpleButton Delete_Button;
         private DevExpress.XtraEditors.SimpleButton Cancel_Button;

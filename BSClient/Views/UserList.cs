@@ -256,6 +256,7 @@ namespace BSClient.Views
 
         private void Users_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
         {
+            Users_GridView.ClearColumnErrors();
             int rowIndex = Users_GridView.FocusedRowHandle;
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
             if (isNewRow)
@@ -264,6 +265,16 @@ namespace BSClient.Views
                 GridColumn column;
                 UserInfo row = e.Row.CastTo<UserInfo>();
                 string userID = row.UserID;
+
+                // Kiểm tra user empty
+                if (string.IsNullOrEmpty(userID))
+                {
+                    e.Valid = false;
+                    //Set errors with specific descriptions for the columns
+                    column = view.Columns[nameof(row.UserID)];
+                    view.SetColumnError(column, "Tên đăng nhập không được trống.");
+                }
+
                 // Kiểm tra tồn tại trong grid
                 if (MasterData.ToList().Count(o => o.UserID == userID) > 1)
                 {

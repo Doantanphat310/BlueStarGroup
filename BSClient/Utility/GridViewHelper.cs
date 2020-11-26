@@ -1,14 +1,15 @@
 ﻿using DevExpress.Data;
 using DevExpress.Utils;
-using DevExpress.XtraEditors.Mask;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Windows.Forms;
 
 namespace BSClient.Utility
 {
@@ -26,8 +27,6 @@ namespace BSClient.Utility
             )
         {
             RepositoryItemSpinEdit itemCtrl = new RepositoryItemSpinEdit();
-            //itemCtrl.Mask.MaskType = MaskType.Numeric;
-            //itemCtrl.Mask.EditMask = formatString;
             itemCtrl.DisplayFormat.FormatString = formatString;
             itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
             itemCtrl.EditFormat.FormatString = formatString;
@@ -107,7 +106,7 @@ namespace BSClient.Utility
             string nullText = "",
             EventHandler editValueChanged = null)
         {
-            var itemCtrl = new RepositoryItemSearchLookUpEdit
+            RepositoryItemSearchLookUpEdit itemCtrl = new RepositoryItemSearchLookUpEdit
             {
                 DataSource = itemSource,
                 DisplayMember = displayMember,
@@ -135,7 +134,29 @@ namespace BSClient.Utility
                 }
             }
 
+            itemCtrl.Popup += ItemCtrl_SearchLookUpEdit_Popup;
+
+
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+        }
+
+        private static void ItemCtrl_SearchLookUpEdit_Popup(object sender, EventArgs e)
+        {
+            SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
+            PopupSearchLookUpEditForm popupForm = edit.GetPopupEditForm();
+            popupForm.KeyPreview = true;
+            popupForm.KeyPress += PopupForm_KeyPress;
+        }
+
+        private static void PopupForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                PopupSearchLookUpEditForm popupForm = sender as PopupSearchLookUpEditForm;
+                GridView view = popupForm.OwnerEdit.Properties.View;
+                view.FocusedRowHandle = 0;
+                popupForm.OwnerEdit.ClosePopup();
+            }
         }
 
         public static void AddDateEditColumn(

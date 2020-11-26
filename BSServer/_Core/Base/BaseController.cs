@@ -1,7 +1,5 @@
-﻿using BSCommon.Models;
-using BSServer._Core.Context;
+﻿using BSServer._Core.Context;
 using System;
-using System.Data.Entity;
 
 namespace BSServer._Core.Base
 {
@@ -16,9 +14,12 @@ namespace BSServer._Core.Base
         /// <param name="logger"></param>
         public BaseController()
         {
+            this.Context = new BSContext();
             //this.Logger = logger;
             //this.UserInfo = userInfo;
         }
+
+        protected BSContext Context { get; set; }
 
         /// <summary>
         /// 
