@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\MaterialNVController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Controllers\VoucherDetailDinhKhoanController.cs" />
     <Compile Include="Controllers\VouchersTypeController.cs" />
     <Compile Include="DAOs\InvoiceDAO.cs" />
+    <Compile Include="DAOs\AccountsDAO.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
     <Compile Include="DAOs\ItemsDAO.cs" />
     <Compile Include="DAOs\VoucherDAO.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="DAOs\MasterInfoDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
     <Compile Include="Logics\InvoiceLogic.cs" />
+    <Compile Include="Logics\AccountsLogic.cs" />
     <Compile Include="Logics\ItemsLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />

@@ -35,10 +35,10 @@
             this.ACE_Voucher = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ACE_Company = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Company_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Custommers_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElementAccountGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElementHangHoa = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.AccountList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ItemList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -106,10 +106,10 @@
             // accordionControlElement4
             // 
             this.accordionControlElement4.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.ACE_Company,
+            this.Company_Button,
             this.Custommers_Button,
-            this.accordionControlElementAccountGroup,
-            this.accordionControlElementHangHoa,
+            this.AccountList_Button,
+            this.ItemList_Button,
             this.UserList_Button,
             this.accordionControlElement10});
             this.accordionControlElement4.Expanded = true;
@@ -118,10 +118,10 @@
             // 
             // ACE_Company
             // 
-            this.ACE_Company.Name = "ACE_Company";
-            this.ACE_Company.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ACE_Company.Text = "Thông tin doanh nghiệp";
-            this.ACE_Company.Click += new System.EventHandler(this.ACE_Company_Click);
+            this.Company_Button.Name = "Company_Button";
+            this.Company_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.Company_Button.Text = "Thông tin doanh nghiệp";
+            this.Company_Button.Click += new System.EventHandler(this.Company_Button_Click);
             // 
             // Custommers_Button
             // 
@@ -132,17 +132,17 @@
             // 
             // accordionControlElementAccountGroup
             // 
-            this.accordionControlElementAccountGroup.Name = "accordionControlElementAccountGroup";
-            this.accordionControlElementAccountGroup.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElementAccountGroup.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
-            this.accordionControlElementAccountGroup.Click += new System.EventHandler(this.accordionControlElementAccountGroup_Click);
+            this.AccountList_Button.Name = "AccountList_Button";
+            this.AccountList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
+            this.AccountList_Button.Click += new System.EventHandler(this.AccountList_Button_Click);
             // 
             // accordionControlElementHangHoa
             // 
-            this.accordionControlElementHangHoa.Name = "accordionControlElementHangHoa";
-            this.accordionControlElementHangHoa.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElementHangHoa.Text = "Hàng hóa";
-            this.accordionControlElementHangHoa.Click += new System.EventHandler(this.accordionControlElementHangHoa_Click);
+            this.ItemList_Button.Name = "ItemList_Button";
+            this.ItemList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ItemList_Button.Text = "Hàng hóa";
+            this.ItemList_Button.Click += new System.EventHandler(this.ItemList_Button_Click);
             // 
             // UserList_Button
             // 
@@ -204,11 +204,11 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Voucher;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElementAccountGroup;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElementHangHoa;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement AccountList_Button;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ItemList_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement UserList_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Company;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement Company_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
     }
 }

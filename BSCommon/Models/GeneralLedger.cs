@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSCommon.Models
 {
     /// <summary>
     /// Item infomation
     /// </summary>        
-    [Table("Items")]
-    public class Items : BaseModel
+    public class GeneralLedger : BaseModel
     {
         [Key]
         public string ItemID { get; set; }
