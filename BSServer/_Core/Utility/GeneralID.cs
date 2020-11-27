@@ -58,5 +58,14 @@ namespace BSServer._Core.Utility
         {
             return GetGeneralIDWithDate(BSServerConst.WareHouseDetailSymbol, seq);
         }
+        public static string DepreciationID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.DepreciationSymbol, seq);
+        }
+
+        public static string DepreciationDetailID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.DepreciationDetailSymbol, seq);
+        }
     }
 }

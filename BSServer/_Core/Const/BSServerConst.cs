@@ -17,5 +17,8 @@ namespace BSServer._Core.Const
         public const string ItemTypeSymbol = "LSP";
         public const string WareHouseSymbol = "WH";
         public const string WareHouseDetailSymbol = "WHD";
+        public const string DepreciationSymbol = "DEP";
+        public const string DepreciationDetailSymbol = "DED";
+        
     }
 }

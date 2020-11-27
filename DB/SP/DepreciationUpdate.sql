@@ -1,5 +1,5 @@
 
-Create proc [dbo].[DepreciationUpdate]
+alter proc [dbo].[DepreciationUpdate]
 	@DepreciationID varchar(50),
 	@StartDate datetime,
 	@UseMonth int,
@@ -8,7 +8,6 @@ Create proc [dbo].[DepreciationUpdate]
 	@DepreciationAmount money,
 	@DepreciationPercent float,
 	@Status bit,
-	@CreateDate datetime,
 	@CreateUser varchar(50),
 	@CompanyID varchar(50)
 as

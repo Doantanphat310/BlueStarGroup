@@ -36,7 +36,7 @@ namespace BSServer.Controllers
         }
 
 
-        public bool InsertInvoice(WareHouse WareHouse)
+        public bool InsertWareHouse(WareHouse WareHouse)
         {
             return this.WareHouseDAO.InsertWareHouse(WareHouse);
         }

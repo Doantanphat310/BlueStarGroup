@@ -78,35 +78,35 @@
             this.InvoiceDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.InvoiceDepreciationgroupControl = new DevExpress.XtraEditors.GroupControl();
             this.label2 = new System.Windows.Forms.Label();
-            this.DepreciationDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.DepreciationAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.DepreciationDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.DepreciationDetail_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.DepreciationDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Depreciation_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.Depreciation_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.InvoiceDepreciationDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.InvoiceDepreciationAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.InvoiceDepreciationDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceDepreciationDetail_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.InvoiceDepreciationDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.InvoiceDepreciation_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.InvoiceDepreciation_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.InvoiceWareHouse_groupControl = new DevExpress.XtraEditors.GroupControl();
-            this.WareHouseDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
+            this.InvoiceWareHouseDetailAddNew_checkBox = new System.Windows.Forms.CheckBox();
             this.WareHouseSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouseAddNew_checkBox = new System.Windows.Forms.CheckBox();
-            this.WareHouseDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceWareHouseDetailSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceWareHouseCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouseDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouseSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceWareHouse_gridControl = new DevExpress.XtraGrid.GridControl();
             this.InvoiceWareHouse_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.WareHouseDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WareHouseDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceWareHouseDetailCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceWareHouseDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.InvoiceWareHouseDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouseDetailCalculator_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -196,12 +196,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).BeginInit();
             this.tabNavigationPageLKVAT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationgroupControl)).BeginInit();
+            this.InvoiceDepreciationgroupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationDetail_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationDetail_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciation_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciation_gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceWareHouse_groupControl)).BeginInit();
             this.InvoiceWareHouse_groupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceWareHouse_gridControl)).BeginInit();
@@ -409,6 +409,7 @@
             this.VoucherDetail_gridView.Name = "VoucherDetail_gridView";
             this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.VoucherDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.VoucherDetail_gridView_RowClick);
             this.VoucherDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.VoucherDetail_gridView_RowStyle);
             this.VoucherDetail_gridView.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.VoucherDetail_gridView_CustomRowCellEdit);
             this.VoucherDetail_gridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.VoucherDetail_gridView_ShowingEditor);
@@ -699,7 +700,7 @@
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceDelete_simpleButton);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceSave_simpleButton);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceSaveNew_simpleButton);
-            this.tabNavigationPageLKVAT.Controls.Add(this.groupControl2);
+            this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceDepreciationgroupControl);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceWareHouse_groupControl);
             this.tabNavigationPageLKVAT.Controls.Add(this.Invoice_gridControl);
             this.tabNavigationPageLKVAT.Controls.Add(this.label1);
@@ -757,26 +758,26 @@
             this.InvoiceSaveNew_simpleButton.Text = "Lưu mới";
             this.InvoiceSaveNew_simpleButton.Click += new System.EventHandler(this.InvoiceSaveNew_simpleButton_Click);
             // 
-            // groupControl2
+            // InvoiceDepreciationgroupControl
             // 
-            this.groupControl2.Controls.Add(this.label2);
-            this.groupControl2.Controls.Add(this.DepreciationDetailAddNew_checkBox);
-            this.groupControl2.Controls.Add(this.DepreciationAddNew_checkBox);
-            this.groupControl2.Controls.Add(this.DepreciationDetailSaveNew_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationSaveNew_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailCancel_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailDelete_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetailSave_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationCancel_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDelete_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationSave_simpleButton);
-            this.groupControl2.Controls.Add(this.DepreciationDetail_gridControl);
-            this.groupControl2.Controls.Add(this.Depreciation_gridControl);
-            this.groupControl2.Location = new System.Drawing.Point(645, 146);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(425, 406);
-            this.groupControl2.TabIndex = 6;
-            this.groupControl2.Text = "Khấu hao";
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.label2);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetailAddNew_checkBox);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationAddNew_checkBox);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetailSaveNew_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationSaveNew_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetailCancel_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetailDelete_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetailSave_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationCancel_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDelete_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationSave_simpleButton);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciationDetail_gridControl);
+            this.InvoiceDepreciationgroupControl.Controls.Add(this.InvoiceDepreciation_gridControl);
+            this.InvoiceDepreciationgroupControl.Location = new System.Drawing.Point(645, 146);
+            this.InvoiceDepreciationgroupControl.Name = "InvoiceDepreciationgroupControl";
+            this.InvoiceDepreciationgroupControl.Size = new System.Drawing.Size(425, 406);
+            this.InvoiceDepreciationgroupControl.TabIndex = 6;
+            this.InvoiceDepreciationgroupControl.Text = "Khấu hao";
             // 
             // label2
             // 
@@ -787,141 +788,149 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Chi tiết khấu hao";
             // 
-            // DepreciationDetailAddNew_checkBox
+            // InvoiceDepreciationDetailAddNew_checkBox
             // 
-            this.DepreciationDetailAddNew_checkBox.AutoSize = true;
-            this.DepreciationDetailAddNew_checkBox.Location = new System.Drawing.Point(265, 203);
-            this.DepreciationDetailAddNew_checkBox.Name = "DepreciationDetailAddNew_checkBox";
-            this.DepreciationDetailAddNew_checkBox.Size = new System.Drawing.Size(153, 17);
-            this.DepreciationDetailAddNew_checkBox.TabIndex = 27;
-            this.DepreciationDetailAddNew_checkBox.Text = "Thêm mới chi tiết khấu hao";
-            this.DepreciationDetailAddNew_checkBox.UseVisualStyleBackColor = true;
+            this.InvoiceDepreciationDetailAddNew_checkBox.AutoSize = true;
+            this.InvoiceDepreciationDetailAddNew_checkBox.Location = new System.Drawing.Point(265, 203);
+            this.InvoiceDepreciationDetailAddNew_checkBox.Name = "InvoiceDepreciationDetailAddNew_checkBox";
+            this.InvoiceDepreciationDetailAddNew_checkBox.Size = new System.Drawing.Size(153, 17);
+            this.InvoiceDepreciationDetailAddNew_checkBox.TabIndex = 27;
+            this.InvoiceDepreciationDetailAddNew_checkBox.Text = "Thêm mới chi tiết khấu hao";
+            this.InvoiceDepreciationDetailAddNew_checkBox.UseVisualStyleBackColor = true;
             // 
-            // DepreciationAddNew_checkBox
+            // InvoiceDepreciationAddNew_checkBox
             // 
-            this.DepreciationAddNew_checkBox.AutoSize = true;
-            this.DepreciationAddNew_checkBox.Location = new System.Drawing.Point(208, 4);
-            this.DepreciationAddNew_checkBox.Name = "DepreciationAddNew_checkBox";
-            this.DepreciationAddNew_checkBox.Size = new System.Drawing.Size(118, 17);
-            this.DepreciationAddNew_checkBox.TabIndex = 24;
-            this.DepreciationAddNew_checkBox.Text = "Thêm mới khấu hao";
-            this.DepreciationAddNew_checkBox.UseVisualStyleBackColor = true;
+            this.InvoiceDepreciationAddNew_checkBox.AutoSize = true;
+            this.InvoiceDepreciationAddNew_checkBox.Location = new System.Drawing.Point(208, 4);
+            this.InvoiceDepreciationAddNew_checkBox.Name = "InvoiceDepreciationAddNew_checkBox";
+            this.InvoiceDepreciationAddNew_checkBox.Size = new System.Drawing.Size(118, 17);
+            this.InvoiceDepreciationAddNew_checkBox.TabIndex = 24;
+            this.InvoiceDepreciationAddNew_checkBox.Text = "Thêm mới khấu hao";
+            this.InvoiceDepreciationAddNew_checkBox.UseVisualStyleBackColor = true;
             // 
-            // DepreciationDetailSaveNew_simpleButton
+            // InvoiceDepreciationDetailSaveNew_simpleButton
             // 
-            this.DepreciationDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailSaveNew_simpleButton.ImageOptions.Image")));
-            this.DepreciationDetailSaveNew_simpleButton.Location = new System.Drawing.Point(10, 377);
-            this.DepreciationDetailSaveNew_simpleButton.Name = "DepreciationDetailSaveNew_simpleButton";
-            this.DepreciationDetailSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.DepreciationDetailSaveNew_simpleButton.TabIndex = 26;
-            this.DepreciationDetailSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationDetailSaveNew_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.Location = new System.Drawing.Point(10, 377);
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.Name = "InvoiceDepreciationDetailSaveNew_simpleButton";
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.TabIndex = 26;
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceDepreciationDetailSaveNew_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationDetailSaveNew_simpleButton_Click);
             // 
-            // DepreciationSaveNew_simpleButton
+            // InvoiceDepreciationSaveNew_simpleButton
             // 
-            this.DepreciationSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationSaveNew_simpleButton.ImageOptions.Image")));
-            this.DepreciationSaveNew_simpleButton.Location = new System.Drawing.Point(81, 168);
-            this.DepreciationSaveNew_simpleButton.Name = "DepreciationSaveNew_simpleButton";
-            this.DepreciationSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
-            this.DepreciationSaveNew_simpleButton.TabIndex = 23;
-            this.DepreciationSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceDepreciationSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationSaveNew_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationSaveNew_simpleButton.Location = new System.Drawing.Point(81, 168);
+            this.InvoiceDepreciationSaveNew_simpleButton.Name = "InvoiceDepreciationSaveNew_simpleButton";
+            this.InvoiceDepreciationSaveNew_simpleButton.Size = new System.Drawing.Size(71, 26);
+            this.InvoiceDepreciationSaveNew_simpleButton.TabIndex = 23;
+            this.InvoiceDepreciationSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceDepreciationSaveNew_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationSaveNew_simpleButton_Click);
             // 
-            // DepreciationDetailCancel_simpleButton
+            // InvoiceDepreciationDetailCancel_simpleButton
             // 
-            this.DepreciationDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailCancel_simpleButton.ImageOptions.Image")));
-            this.DepreciationDetailCancel_simpleButton.Location = new System.Drawing.Point(255, 377);
-            this.DepreciationDetailCancel_simpleButton.Name = "DepreciationDetailCancel_simpleButton";
-            this.DepreciationDetailCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailCancel_simpleButton.TabIndex = 25;
-            this.DepreciationDetailCancel_simpleButton.Text = "Hủy";
+            this.InvoiceDepreciationDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationDetailCancel_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationDetailCancel_simpleButton.Location = new System.Drawing.Point(255, 377);
+            this.InvoiceDepreciationDetailCancel_simpleButton.Name = "InvoiceDepreciationDetailCancel_simpleButton";
+            this.InvoiceDepreciationDetailCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationDetailCancel_simpleButton.TabIndex = 25;
+            this.InvoiceDepreciationDetailCancel_simpleButton.Text = "Hủy";
             // 
-            // DepreciationDetailDelete_simpleButton
+            // InvoiceDepreciationDetailDelete_simpleButton
             // 
-            this.DepreciationDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailDelete_simpleButton.ImageOptions.Image")));
-            this.DepreciationDetailDelete_simpleButton.Location = new System.Drawing.Point(171, 377);
-            this.DepreciationDetailDelete_simpleButton.Name = "DepreciationDetailDelete_simpleButton";
-            this.DepreciationDetailDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailDelete_simpleButton.TabIndex = 24;
-            this.DepreciationDetailDelete_simpleButton.Text = "Xóa";
+            this.InvoiceDepreciationDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationDetailDelete_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationDetailDelete_simpleButton.Location = new System.Drawing.Point(171, 377);
+            this.InvoiceDepreciationDetailDelete_simpleButton.Name = "InvoiceDepreciationDetailDelete_simpleButton";
+            this.InvoiceDepreciationDetailDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationDetailDelete_simpleButton.TabIndex = 24;
+            this.InvoiceDepreciationDetailDelete_simpleButton.Text = "Xóa";
+            this.InvoiceDepreciationDetailDelete_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationDetailDelete_simpleButton_Click);
             // 
-            // DepreciationDetailSave_simpleButton
+            // InvoiceDepreciationDetailSave_simpleButton
             // 
-            this.DepreciationDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDetailSave_simpleButton.ImageOptions.Image")));
-            this.DepreciationDetailSave_simpleButton.Location = new System.Drawing.Point(87, 377);
-            this.DepreciationDetailSave_simpleButton.Name = "DepreciationDetailSave_simpleButton";
-            this.DepreciationDetailSave_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDetailSave_simpleButton.TabIndex = 23;
-            this.DepreciationDetailSave_simpleButton.Text = "Lưu";
+            this.InvoiceDepreciationDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationDetailSave_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationDetailSave_simpleButton.Location = new System.Drawing.Point(87, 377);
+            this.InvoiceDepreciationDetailSave_simpleButton.Name = "InvoiceDepreciationDetailSave_simpleButton";
+            this.InvoiceDepreciationDetailSave_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationDetailSave_simpleButton.TabIndex = 23;
+            this.InvoiceDepreciationDetailSave_simpleButton.Text = "Lưu";
+            this.InvoiceDepreciationDetailSave_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationDetailSave_simpleButton_Click);
             // 
-            // DepreciationCancel_simpleButton
+            // InvoiceDepreciationCancel_simpleButton
             // 
-            this.DepreciationCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationCancel_simpleButton.ImageOptions.Image")));
-            this.DepreciationCancel_simpleButton.Location = new System.Drawing.Point(342, 168);
-            this.DepreciationCancel_simpleButton.Name = "DepreciationCancel_simpleButton";
-            this.DepreciationCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationCancel_simpleButton.TabIndex = 22;
-            this.DepreciationCancel_simpleButton.Text = "Hủy";
+            this.InvoiceDepreciationCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationCancel_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationCancel_simpleButton.Location = new System.Drawing.Point(342, 168);
+            this.InvoiceDepreciationCancel_simpleButton.Name = "InvoiceDepreciationCancel_simpleButton";
+            this.InvoiceDepreciationCancel_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationCancel_simpleButton.TabIndex = 22;
+            this.InvoiceDepreciationCancel_simpleButton.Text = "Hủy";
+            this.InvoiceDepreciationCancel_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationCancel_simpleButton_Click);
             // 
-            // DepreciationDelete_simpleButton
+            // InvoiceDepreciationDelete_simpleButton
             // 
-            this.DepreciationDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationDelete_simpleButton.ImageOptions.Image")));
-            this.DepreciationDelete_simpleButton.Location = new System.Drawing.Point(248, 168);
-            this.DepreciationDelete_simpleButton.Name = "DepreciationDelete_simpleButton";
-            this.DepreciationDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationDelete_simpleButton.TabIndex = 21;
-            this.DepreciationDelete_simpleButton.Text = "Xóa";
+            this.InvoiceDepreciationDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationDelete_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationDelete_simpleButton.Location = new System.Drawing.Point(248, 168);
+            this.InvoiceDepreciationDelete_simpleButton.Name = "InvoiceDepreciationDelete_simpleButton";
+            this.InvoiceDepreciationDelete_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationDelete_simpleButton.TabIndex = 21;
+            this.InvoiceDepreciationDelete_simpleButton.Text = "Xóa";
+            this.InvoiceDepreciationDelete_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationDelete_simpleButton_Click);
             // 
-            // DepreciationSave_simpleButton
+            // InvoiceDepreciationSave_simpleButton
             // 
-            this.DepreciationSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DepreciationSave_simpleButton.ImageOptions.Image")));
-            this.DepreciationSave_simpleButton.Location = new System.Drawing.Point(158, 168);
-            this.DepreciationSave_simpleButton.Name = "DepreciationSave_simpleButton";
-            this.DepreciationSave_simpleButton.Size = new System.Drawing.Size(78, 26);
-            this.DepreciationSave_simpleButton.TabIndex = 20;
-            this.DepreciationSave_simpleButton.Text = "Lưu";
+            this.InvoiceDepreciationSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceDepreciationSave_simpleButton.ImageOptions.Image")));
+            this.InvoiceDepreciationSave_simpleButton.Location = new System.Drawing.Point(158, 168);
+            this.InvoiceDepreciationSave_simpleButton.Name = "InvoiceDepreciationSave_simpleButton";
+            this.InvoiceDepreciationSave_simpleButton.Size = new System.Drawing.Size(78, 26);
+            this.InvoiceDepreciationSave_simpleButton.TabIndex = 20;
+            this.InvoiceDepreciationSave_simpleButton.Text = "Lưu";
+            this.InvoiceDepreciationSave_simpleButton.Click += new System.EventHandler(this.InvoiceDepreciationSave_simpleButton_Click);
             // 
-            // DepreciationDetail_gridControl
+            // InvoiceDepreciationDetail_gridControl
             // 
-            this.DepreciationDetail_gridControl.Location = new System.Drawing.Point(7, 223);
-            this.DepreciationDetail_gridControl.MainView = this.DepreciationDetail_gridView;
-            this.DepreciationDetail_gridControl.Name = "DepreciationDetail_gridControl";
-            this.DepreciationDetail_gridControl.Size = new System.Drawing.Size(411, 148);
-            this.DepreciationDetail_gridControl.TabIndex = 1;
-            this.DepreciationDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.DepreciationDetail_gridView});
+            this.InvoiceDepreciationDetail_gridControl.Location = new System.Drawing.Point(7, 223);
+            this.InvoiceDepreciationDetail_gridControl.MainView = this.InvoiceDepreciationDetail_gridView;
+            this.InvoiceDepreciationDetail_gridControl.Name = "InvoiceDepreciationDetail_gridControl";
+            this.InvoiceDepreciationDetail_gridControl.Size = new System.Drawing.Size(411, 148);
+            this.InvoiceDepreciationDetail_gridControl.TabIndex = 1;
+            this.InvoiceDepreciationDetail_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.InvoiceDepreciationDetail_gridView});
             // 
-            // DepreciationDetail_gridView
+            // InvoiceDepreciationDetail_gridView
             // 
-            this.DepreciationDetail_gridView.GridControl = this.DepreciationDetail_gridControl;
-            this.DepreciationDetail_gridView.Name = "DepreciationDetail_gridView";
+            this.InvoiceDepreciationDetail_gridView.GridControl = this.InvoiceDepreciationDetail_gridControl;
+            this.InvoiceDepreciationDetail_gridView.Name = "InvoiceDepreciationDetail_gridView";
             // 
-            // Depreciation_gridControl
+            // InvoiceDepreciation_gridControl
             // 
-            this.Depreciation_gridControl.Location = new System.Drawing.Point(7, 23);
-            this.Depreciation_gridControl.MainView = this.Depreciation_gridView;
-            this.Depreciation_gridControl.Name = "Depreciation_gridControl";
-            this.Depreciation_gridControl.Size = new System.Drawing.Size(411, 139);
-            this.Depreciation_gridControl.TabIndex = 0;
-            this.Depreciation_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.Depreciation_gridView});
+            this.InvoiceDepreciation_gridControl.Location = new System.Drawing.Point(7, 23);
+            this.InvoiceDepreciation_gridControl.MainView = this.InvoiceDepreciation_gridView;
+            this.InvoiceDepreciation_gridControl.Name = "InvoiceDepreciation_gridControl";
+            this.InvoiceDepreciation_gridControl.Size = new System.Drawing.Size(411, 139);
+            this.InvoiceDepreciation_gridControl.TabIndex = 0;
+            this.InvoiceDepreciation_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.InvoiceDepreciation_gridView});
             // 
-            // Depreciation_gridView
+            // InvoiceDepreciation_gridView
             // 
-            this.Depreciation_gridView.GridControl = this.Depreciation_gridControl;
-            this.Depreciation_gridView.Name = "Depreciation_gridView";
+            this.InvoiceDepreciation_gridView.GridControl = this.InvoiceDepreciation_gridControl;
+            this.InvoiceDepreciation_gridView.Name = "InvoiceDepreciation_gridView";
+            this.InvoiceDepreciation_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceDepreciation_gridView_RowClick);
             // 
             // InvoiceWareHouse_groupControl
             // 
-            this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailAddNew_checkBox);
+            this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseDetailAddNew_checkBox);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseSaveNew_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseAddNew_checkBox);
-            this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailSaveNew_simpleButton);
+            this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseDetailSaveNew_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseCancel_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDelete_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseSave_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouse_gridControl);
-            this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailCancel_simpleButton);
-            this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailDelete_simpleButton);
-            this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailSave_simpleButton);
+            this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseDetailCancel_simpleButton);
+            this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseDetailDelete_simpleButton);
+            this.InvoiceWareHouse_groupControl.Controls.Add(this.InvoiceWareHouseDetailSave_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.WareHouseDetailCalculator_simpleButton);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.textEdit1);
             this.InvoiceWareHouse_groupControl.Controls.Add(this.labelControl9);
@@ -932,15 +941,15 @@
             this.InvoiceWareHouse_groupControl.Size = new System.Drawing.Size(633, 408);
             this.InvoiceWareHouse_groupControl.TabIndex = 5;
             // 
-            // WareHouseDetailAddNew_checkBox
+            // InvoiceWareHouseDetailAddNew_checkBox
             // 
-            this.WareHouseDetailAddNew_checkBox.AutoSize = true;
-            this.WareHouseDetailAddNew_checkBox.Location = new System.Drawing.Point(480, 168);
-            this.WareHouseDetailAddNew_checkBox.Name = "WareHouseDetailAddNew_checkBox";
-            this.WareHouseDetailAddNew_checkBox.Size = new System.Drawing.Size(148, 17);
-            this.WareHouseDetailAddNew_checkBox.TabIndex = 23;
-            this.WareHouseDetailAddNew_checkBox.Text = "Thêm mới chi tiết hóa đơn";
-            this.WareHouseDetailAddNew_checkBox.UseVisualStyleBackColor = true;
+            this.InvoiceWareHouseDetailAddNew_checkBox.AutoSize = true;
+            this.InvoiceWareHouseDetailAddNew_checkBox.Location = new System.Drawing.Point(480, 168);
+            this.InvoiceWareHouseDetailAddNew_checkBox.Name = "InvoiceWareHouseDetailAddNew_checkBox";
+            this.InvoiceWareHouseDetailAddNew_checkBox.Size = new System.Drawing.Size(148, 17);
+            this.InvoiceWareHouseDetailAddNew_checkBox.TabIndex = 23;
+            this.InvoiceWareHouseDetailAddNew_checkBox.Text = "Thêm mới chi tiết hóa đơn";
+            this.InvoiceWareHouseDetailAddNew_checkBox.UseVisualStyleBackColor = true;
             // 
             // WareHouseSaveNew_simpleButton
             // 
@@ -962,18 +971,19 @@
             this.WareHouseAddNew_checkBox.Text = "Thêm mới kho";
             this.WareHouseAddNew_checkBox.UseVisualStyleBackColor = true;
             // 
-            // WareHouseDetailSaveNew_simpleButton
+            // InvoiceWareHouseDetailSaveNew_simpleButton
             // 
-            this.WareHouseDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailSaveNew_simpleButton.ImageOptions.Image")));
-            this.WareHouseDetailSaveNew_simpleButton.Location = new System.Drawing.Point(281, 377);
-            this.WareHouseDetailSaveNew_simpleButton.Name = "WareHouseDetailSaveNew_simpleButton";
-            this.WareHouseDetailSaveNew_simpleButton.Size = new System.Drawing.Size(73, 26);
-            this.WareHouseDetailSaveNew_simpleButton.TabIndex = 20;
-            this.WareHouseDetailSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceWareHouseDetailSaveNew_simpleButton.ImageOptions.Image")));
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.Location = new System.Drawing.Point(281, 377);
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.Name = "InvoiceWareHouseDetailSaveNew_simpleButton";
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.Size = new System.Drawing.Size(73, 26);
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.TabIndex = 20;
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.Text = "Lưu mới";
+            this.InvoiceWareHouseDetailSaveNew_simpleButton.Click += new System.EventHandler(this.InvoiceWareHouseDetailSaveNew_simpleButton_Click);
             // 
             // InvoiceWareHouseCancel_simpleButton
             // 
-            this.InvoiceWareHouseCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseCancel_simpleButton.ImageOptions.Image")));
+            this.InvoiceWareHouseCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceWareHouseCancel_simpleButton.ImageOptions.Image")));
             this.InvoiceWareHouseCancel_simpleButton.Location = new System.Drawing.Point(199, 154);
             this.InvoiceWareHouseCancel_simpleButton.Name = "InvoiceWareHouseCancel_simpleButton";
             this.InvoiceWareHouseCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
@@ -1019,32 +1029,34 @@
             this.InvoiceWareHouse_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceWareHouse_gridView_RowStyle);
             this.InvoiceWareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouse_gridView_RowUpdated);
             // 
-            // WareHouseDetailCancel_simpleButton
+            // InvoiceWareHouseDetailCancel_simpleButton
             // 
-            this.WareHouseDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailCancel_simpleButton.ImageOptions.Image")));
-            this.WareHouseDetailCancel_simpleButton.Location = new System.Drawing.Point(476, 377);
-            this.WareHouseDetailCancel_simpleButton.Name = "WareHouseDetailCancel_simpleButton";
-            this.WareHouseDetailCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailCancel_simpleButton.TabIndex = 15;
-            this.WareHouseDetailCancel_simpleButton.Text = "Hủy";
+            this.InvoiceWareHouseDetailCancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceWareHouseDetailCancel_simpleButton.ImageOptions.Image")));
+            this.InvoiceWareHouseDetailCancel_simpleButton.Location = new System.Drawing.Point(476, 377);
+            this.InvoiceWareHouseDetailCancel_simpleButton.Name = "InvoiceWareHouseDetailCancel_simpleButton";
+            this.InvoiceWareHouseDetailCancel_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.InvoiceWareHouseDetailCancel_simpleButton.TabIndex = 15;
+            this.InvoiceWareHouseDetailCancel_simpleButton.Text = "Hủy";
             // 
-            // WareHouseDetailDelete_simpleButton
+            // InvoiceWareHouseDetailDelete_simpleButton
             // 
-            this.WareHouseDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailDelete_simpleButton.ImageOptions.Image")));
-            this.WareHouseDetailDelete_simpleButton.Location = new System.Drawing.Point(418, 377);
-            this.WareHouseDetailDelete_simpleButton.Name = "WareHouseDetailDelete_simpleButton";
-            this.WareHouseDetailDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailDelete_simpleButton.TabIndex = 14;
-            this.WareHouseDetailDelete_simpleButton.Text = "Xóa";
+            this.InvoiceWareHouseDetailDelete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceWareHouseDetailDelete_simpleButton.ImageOptions.Image")));
+            this.InvoiceWareHouseDetailDelete_simpleButton.Location = new System.Drawing.Point(418, 377);
+            this.InvoiceWareHouseDetailDelete_simpleButton.Name = "InvoiceWareHouseDetailDelete_simpleButton";
+            this.InvoiceWareHouseDetailDelete_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.InvoiceWareHouseDetailDelete_simpleButton.TabIndex = 14;
+            this.InvoiceWareHouseDetailDelete_simpleButton.Text = "Xóa";
+            this.InvoiceWareHouseDetailDelete_simpleButton.Click += new System.EventHandler(this.InvoiceWareHouseDetailDelete_simpleButton_Click);
             // 
-            // WareHouseDetailSave_simpleButton
+            // InvoiceWareHouseDetailSave_simpleButton
             // 
-            this.WareHouseDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailSave_simpleButton.ImageOptions.Image")));
-            this.WareHouseDetailSave_simpleButton.Location = new System.Drawing.Point(360, 377);
-            this.WareHouseDetailSave_simpleButton.Name = "WareHouseDetailSave_simpleButton";
-            this.WareHouseDetailSave_simpleButton.Size = new System.Drawing.Size(52, 26);
-            this.WareHouseDetailSave_simpleButton.TabIndex = 13;
-            this.WareHouseDetailSave_simpleButton.Text = "Lưu";
+            this.InvoiceWareHouseDetailSave_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceWareHouseDetailSave_simpleButton.ImageOptions.Image")));
+            this.InvoiceWareHouseDetailSave_simpleButton.Location = new System.Drawing.Point(360, 377);
+            this.InvoiceWareHouseDetailSave_simpleButton.Name = "InvoiceWareHouseDetailSave_simpleButton";
+            this.InvoiceWareHouseDetailSave_simpleButton.Size = new System.Drawing.Size(52, 26);
+            this.InvoiceWareHouseDetailSave_simpleButton.TabIndex = 13;
+            this.InvoiceWareHouseDetailSave_simpleButton.Text = "Lưu";
+            this.InvoiceWareHouseDetailSave_simpleButton.Click += new System.EventHandler(this.InvoiceWareHouseDetailSave_simpleButton_Click);
             // 
             // WareHouseDetailCalculator_simpleButton
             // 
@@ -1086,6 +1098,7 @@
             // 
             this.InvoiceWareHouseDetail_gridView.GridControl = this.InvoiceWareHouseDetail_gridControl;
             this.InvoiceWareHouseDetail_gridView.Name = "InvoiceWareHouseDetail_gridView";
+            this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
             // 
             // Invoice_gridControl
             // 
@@ -1744,13 +1757,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).EndInit();
             this.tabNavigationPageLKVAT.ResumeLayout(false);
             this.tabNavigationPageLKVAT.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DepreciationDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Depreciation_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationgroupControl)).EndInit();
+            this.InvoiceDepreciationgroupControl.ResumeLayout(false);
+            this.InvoiceDepreciationgroupControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationDetail_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationDetail_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciation_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciation_gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceWareHouse_groupControl)).EndInit();
             this.InvoiceWareHouse_groupControl.ResumeLayout(false);
             this.InvoiceWareHouse_groupControl.PerformLayout();
@@ -1906,35 +1919,35 @@
         private DevExpress.XtraEditors.SimpleButton InvoiceDelete_simpleButton;
         private DevExpress.XtraEditors.SimpleButton InvoiceSave_simpleButton;
         private DevExpress.XtraEditors.SimpleButton InvoiceSaveNew_simpleButton;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl InvoiceDepreciationgroupControl;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox DepreciationDetailAddNew_checkBox;
-        private System.Windows.Forms.CheckBox DepreciationAddNew_checkBox;
-        private DevExpress.XtraEditors.SimpleButton DepreciationDetailSaveNew_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationSaveNew_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationDetailCancel_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationDetailDelete_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationDetailSave_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationCancel_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationDelete_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton DepreciationSave_simpleButton;
-        private DevExpress.XtraGrid.GridControl DepreciationDetail_gridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView DepreciationDetail_gridView;
-        private DevExpress.XtraGrid.GridControl Depreciation_gridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView Depreciation_gridView;
+        private System.Windows.Forms.CheckBox InvoiceDepreciationDetailAddNew_checkBox;
+        private System.Windows.Forms.CheckBox InvoiceDepreciationAddNew_checkBox;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationDetailSaveNew_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationSaveNew_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationDetailCancel_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationDetailDelete_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationDetailSave_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationCancel_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationDelete_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceDepreciationSave_simpleButton;
+        private DevExpress.XtraGrid.GridControl InvoiceDepreciationDetail_gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView InvoiceDepreciationDetail_gridView;
+        private DevExpress.XtraGrid.GridControl InvoiceDepreciation_gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView InvoiceDepreciation_gridView;
         private DevExpress.XtraEditors.GroupControl InvoiceWareHouse_groupControl;
-        private System.Windows.Forms.CheckBox WareHouseDetailAddNew_checkBox;
+        private System.Windows.Forms.CheckBox InvoiceWareHouseDetailAddNew_checkBox;
         private DevExpress.XtraEditors.SimpleButton WareHouseSaveNew_simpleButton;
         private System.Windows.Forms.CheckBox WareHouseAddNew_checkBox;
-        private DevExpress.XtraEditors.SimpleButton WareHouseDetailSaveNew_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceWareHouseDetailSaveNew_simpleButton;
         private DevExpress.XtraEditors.SimpleButton InvoiceWareHouseCancel_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WareHouseDelete_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WareHouseSave_simpleButton;
         private DevExpress.XtraGrid.GridControl InvoiceWareHouse_gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView InvoiceWareHouse_gridView;
-        private DevExpress.XtraEditors.SimpleButton WareHouseDetailCancel_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton WareHouseDetailDelete_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton WareHouseDetailSave_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceWareHouseDetailCancel_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceWareHouseDetailDelete_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton InvoiceWareHouseDetailSave_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WareHouseDetailCalculator_simpleButton;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl9;

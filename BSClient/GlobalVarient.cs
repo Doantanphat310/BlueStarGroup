@@ -20,5 +20,16 @@ namespace BSClient
         public static List<WareHouse>  warehouseInvoice = new List<WareHouse>();
         public static WareHouse warehouseInvoiceChoice = new WareHouse();
 
+        public static List<WareHouseDetail> warehouseDetailInvoice = new List<WareHouseDetail>();
+        public static WareHouseDetail warehouseDetailInvoiceChoice = new WareHouseDetail();
+
+
+        public static List<Depreciation> InvoiceDepreciations = new List<Depreciation>();
+        public static Depreciation InvoiceDepreciationsChoice = new Depreciation();
+
+        public static List<DepreciationDetail> InvoiceDepreciationsDetail = new List<DepreciationDetail>();
+        public static DepreciationDetail InvoiceDepreciationsDetailChoice = new DepreciationDetail();
+
+
     }
 }
