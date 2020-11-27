@@ -74,6 +74,7 @@
     <Compile Include="Controllers\DepreciationController.cs" />
     <Compile Include="Controllers\DepreciationDetailController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\MaterialNVController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="DAOs\DepreciationDAO.cs" />
     <Compile Include="DAOs\DepreciationDetailDAO.cs" />
     <Compile Include="DAOs\InvoiceDAO.cs" />
+    <Compile Include="DAOs\AccountsDAO.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
     <Compile Include="DAOs\ItemsDAO.cs" />
     <Compile Include="DAOs\VoucherDAO.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Logics\DepreciationDetailLogic.cs" />
     <Compile Include="Logics\DepreciationLogic.cs" />
     <Compile Include="Logics\InvoiceLogic.cs" />
+    <Compile Include="Logics\AccountsLogic.cs" />
     <Compile Include="Logics\ItemsLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />

@@ -352,6 +352,7 @@
             this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(273, 20);
             this.CompanyID_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
             this.CompanyID_SearchLookUpEdit.TabIndex = 1;
+            this.CompanyID_SearchLookUpEdit.Popup += new System.EventHandler(this.CompanyID_SearchLookUpEdit_Popup);
             // 
             // CompanyID_SearchLookUpEditView
             // 

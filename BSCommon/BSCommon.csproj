@@ -95,6 +95,9 @@
     <Compile Include="Models\Depreciation.cs" />
     <Compile Include="Models\DepreciationDetail.cs" />
     <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\AccountGroup.cs" />
+    <Compile Include="Models\GeneralLedger.cs" />
+    <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\MaterialCheck.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ItemsPriceCompany.cs" />

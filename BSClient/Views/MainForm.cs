@@ -27,7 +27,7 @@ namespace BSClient
             this.SetTitle(BSTitle.UserList);
         }
 
-        private void ACE_Company_Click(object sender, EventArgs e)
+        private void Company_Button_Click(object sender, EventArgs e)
         {
             CompanyControl company = new CompanyControl();
             this.ShowControl(company, Content);
@@ -41,16 +41,16 @@ namespace BSClient
             this.SetTitle(BSTitle.CustomerList);
         }
 
-        private void accordionControlElementHangHoa_Click(object sender, EventArgs e)
+        private void ItemList_Button_Click(object sender, EventArgs e)
         {
             ItemList control = new ItemList();
             this.ShowControl(control, Content);
             this.Text = this.GetTitle(BSTitle.ItemList);
         }
 
-        private void accordionControlElementAccountGroup_Click(object sender, EventArgs e)
+        private void AccountList_Button_Click(object sender, EventArgs e)
         {
-            AccountGroup control = new AccountGroup();
+            AccountList control = new AccountList();
             this.ShowControl(control, Content);
             this.Text = " Blue Star Group - Thông tin hệ thống tài khoản và sổ cái";
         }

@@ -18,5 +18,12 @@
         public const string BSM000013 = "Tên loại SP không được để trống.";
         public const string BSM000014 = "Giá SP phải lớn hơn 0.";
         public const string BSM000015 = "Tên KH không được để trống.";
+        public const string BSM000016 = "Mã nhóm tài khoản không được để trống.";
+        public const string BSM000017 = "Tên nhóm tài khoản không được để trống.";
+        public const string BSM000018 = "Mã nhóm tài khoản đã tồn tại.";
+        public const string BSM000019 = "Mã tài khoản không được để trống.";
+        public const string BSM000020 = "Tên tài khoản không được để trống.";
+        public const string BSM000021 = "Mã tài khoản đã tồn tại.";
+        public const string BSM000022 = "<Nhóm TK> chưa được chọn.";
     }
 }
