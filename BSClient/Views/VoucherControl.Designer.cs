@@ -1027,6 +1027,7 @@
             this.InvoiceWareHouse_gridView.Name = "InvoiceWareHouse_gridView";
             this.InvoiceWareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouse_gridView_RowClick);
             this.InvoiceWareHouse_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceWareHouse_gridView_RowStyle);
+            this.InvoiceWareHouse_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceWareHouse_gridView_InitNewRow);
             this.InvoiceWareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouse_gridView_RowUpdated);
             // 
             // InvoiceWareHouseDetailCancel_simpleButton
@@ -1060,7 +1061,6 @@
             // 
             // WareHouseDetailCalculator_simpleButton
             // 
-            this.WareHouseDetailCalculator_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouseDetailCalculator_simpleButton.ImageOptions.Image")));
             this.WareHouseDetailCalculator_simpleButton.Location = new System.Drawing.Point(195, 377);
             this.WareHouseDetailCalculator_simpleButton.Name = "WareHouseDetailCalculator_simpleButton";
             this.WareHouseDetailCalculator_simpleButton.Size = new System.Drawing.Size(80, 25);
@@ -1099,6 +1099,7 @@
             this.InvoiceWareHouseDetail_gridView.GridControl = this.InvoiceWareHouseDetail_gridControl;
             this.InvoiceWareHouseDetail_gridView.Name = "InvoiceWareHouseDetail_gridView";
             this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
+            this.InvoiceWareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouseDetail_gridView_RowUpdated);
             // 
             // Invoice_gridControl
             // 

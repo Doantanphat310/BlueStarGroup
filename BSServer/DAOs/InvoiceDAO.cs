@@ -44,9 +44,9 @@ namespace BSServer.DAOs
                     new SqlParameter("@VouchersID", invoice.VouchersID),
                     new SqlParameter("@CustomerID", invoice.CustomerID),
                     new SqlParameter("@Description", invoice.Description),
-                    new SqlParameter("@MaSo",invoice.MaSo?? (object)DBNull.Value),
-                    new SqlParameter("@MauSo", invoice.MauSo),
-                    new SqlParameter("@KyHieu", invoice.KyHieu),
+                    new SqlParameter("@MaSo",invoice.InvoiceFormNo?? (object)DBNull.Value),
+                    new SqlParameter("@MauSo", invoice.FormNo),
+                    new SqlParameter("@KyHieu", invoice.SerialNo),
                     new SqlParameter("@InvoiceNo", invoice.InvoiceNo),
                     new SqlParameter("@InvoiceType", invoice.InvoiceType),
                     new SqlParameter("@InvoiceDate", invoice.InvoiceDate),
@@ -73,8 +73,9 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@InvoiceID", InvoiceID),
-                    new SqlParameter("@CompanyID", CompanyID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CompanyID", CompanyID)
+                    
                };
 
                 this.Context.ExecuteDataFromProcedure("InvoiceDelete", sqlParameters);
@@ -97,9 +98,9 @@ namespace BSServer.DAOs
                     new SqlParameter("@InvoiceID", invoice.InvoiceID),
                     new SqlParameter("@CustomerID", invoice.CustomerID),
                     new SqlParameter("@Description", invoice.Description),
-                    new SqlParameter("@MaSo",invoice.MaSo?? (object)DBNull.Value),
-                    new SqlParameter("@MauSo", invoice.MauSo),
-                    new SqlParameter("@KyHieu", invoice.KyHieu),
+                    new SqlParameter("@MaSo",invoice.InvoiceFormNo?? (object)DBNull.Value),
+                    new SqlParameter("@MauSo", invoice.FormNo),
+                    new SqlParameter("@KyHieu", invoice.SerialNo),
                     new SqlParameter("@InvoiceNo", invoice.InvoiceNo),
                     new SqlParameter("@InvoiceType", invoice.InvoiceType),
                     new SqlParameter("@InvoiceDate", invoice.InvoiceDate),

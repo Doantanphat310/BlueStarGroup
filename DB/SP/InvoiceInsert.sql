@@ -29,9 +29,9 @@ INSERT INTO Invoice(
 	VouchersID,
 	CustomerID,
 	Description,
-	MaSo,
-	MauSo,
-	KyHieu,
+	InvoiceFormNo,
+	FormNo,
+	SerialNo,
 	InvoiceNo,
 	InvoiceType,
 	InvoiceDate,
@@ -59,3 +59,5 @@ INSERT INTO Invoice(
 	@CreateUser,
 	@CompanyID)
 end
+
+select * from invoice

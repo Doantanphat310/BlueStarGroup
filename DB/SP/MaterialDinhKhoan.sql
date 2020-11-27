@@ -68,7 +68,7 @@ alter proc SPSelectMaterialMaSoCustomer
 @CustomerID varchar(50)
 as
 begin
-	select * from Cu
+	select * from Customer
 end
 
 
@@ -108,15 +108,17 @@ alter proc SPSelectMaterialDoiTuong
 @CompanyID varchar(50)
 as
 begin
-Select CustomerID,CustomerSName,CustomerName,MaSo,MauSo,KyHieu from Customer
+Select CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo from Customer
 end
+
+select * from  Customer
 
 alter proc SPSelectMaterialTK
 as
 begin
-Select AccountID, AccountsName from Accounts
+Select AccountID, AccountName from Accounts
 end
-
+select * from Accounts
 Create proc SPSelectMaterialGL
 @CompanyID varchar(50)
 as

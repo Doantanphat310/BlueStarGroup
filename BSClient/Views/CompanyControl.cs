@@ -16,7 +16,6 @@ namespace BSClient
     public partial class CompanyControl : DevExpress.XtraEditors.XtraUserControl
     {
         //DXBlueStarGroup_V3.BlueStarGroupEntities dbContext;
-        int rowindex = 0;
 
         public CompanyControl()
         {

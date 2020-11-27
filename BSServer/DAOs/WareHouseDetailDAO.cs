@@ -21,8 +21,19 @@ namespace BSServer.DAOs
         public List<WareHouseDetail> GetWareHouseDetailSelect(string warehouseDetailID, string CompanyID)
         {
             return this.Context.Database.SqlQuery<WareHouseDetail>(
-          "WareHouseDetailSelect @WareHouseID, @CompanyID, @CreateUser",
-          new SqlParameter("@WareHouseDetailID", warehouseDetailID),
+          "WareHouseDetailSelect @warehouseDetailID, @CompanyID, @CreateUser",
+          new SqlParameter("@WareHouseID", warehouseDetailID),
+          new SqlParameter("@CompanyID", CompanyID),
+          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          ).ToList();
+        }
+
+
+        public List<WareHouseDetail> GetWareHouseDetailSelectWahouseID(string warehouseID, string CompanyID)
+        {
+            return this.Context.Database.SqlQuery<WareHouseDetail>(
+          "WareHouseDetailSelectWahouseID @WareHouseID, @CompanyID, @CreateUser",
+          new SqlParameter("@WareHouseID", warehouseID),
           new SqlParameter("@CompanyID", CompanyID),
           new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
           ).ToList();

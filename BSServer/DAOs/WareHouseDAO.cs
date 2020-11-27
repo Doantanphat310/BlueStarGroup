@@ -29,11 +29,11 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
-        public List<WareHouse> GetWareWareHouseSelectInvoiceID(string voucherID, string CompanyID)
+        public List<WareHouse> GetWareWareHouseSelectInvoiceID(string invoiceID, string CompanyID)
         {
             return this.Context.Database.SqlQuery<WareHouse>(
-          "WareHouseSelectInvoiceID @VouchersID, @CompanyID, @CreateUser",
-          new SqlParameter("@VouchersID", voucherID),
+          "WareHouseSelectInvoiceID @InvoiceID, @CompanyID, @CreateUser",
+          new SqlParameter("@InvoiceID", invoiceID),
           new SqlParameter("@CompanyID", CompanyID),
           new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
           ).ToList();

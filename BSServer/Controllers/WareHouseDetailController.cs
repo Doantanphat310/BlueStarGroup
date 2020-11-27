@@ -29,7 +29,13 @@ namespace BSServer.Controllers
         {
             return this.WareHouseDetailDAO.GetWareHouseDetailSelect(warehouseDetailID, companyID);
         }
+
         
+
+        public List<WareHouseDetail> GetWareHouseDetailSelectWahouseID(string warehouseID, string companyID)
+        {
+            return this.WareHouseDetailDAO.GetWareHouseDetailSelectWahouseID(warehouseID, companyID);
+        }
 
         public bool InsertWareHouseDetail(WareHouseDetail WareHouseDetail)
         {

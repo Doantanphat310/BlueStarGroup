@@ -22,7 +22,7 @@ namespace BSServer.DAOs
         {
             return this.Context.Database.SqlQuery<DepreciationDetail>(
           "DepreciationDetailSelect @DepreciationID, @CreateUser, @CompanyID",
-          new SqlParameter("@VouchersID", DepreciationID),
+          new SqlParameter("@DepreciationID", DepreciationID),
           new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName),
           new SqlParameter("@CompanyID", CompanyID)
           ).ToList();
