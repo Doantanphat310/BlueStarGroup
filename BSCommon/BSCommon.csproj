@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
+    <Compile Include="Models\ColumnInfo.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\AccountGroup.cs" />
     <Compile Include="Models\GeneralLedger.cs" />

@@ -91,6 +91,10 @@ namespace BSClient.Utility
                     itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col.Key, col.Value));
                 }
             }
+            else
+            {
+                itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(displayMember));
+            }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
@@ -192,23 +196,18 @@ namespace BSClient.Utility
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             col.OptionsColumn.FixedWidth = fixedWidth;
+            col.OptionsColumn.AllowSize = false;
 
             if (itemCtrl != null)
             {
                 col.ColumnEdit = itemCtrl;
             }
 
-            // Add Summary Item
-            //if (summaryItem != null)
-            //{
-            //    col.SummaryFooter..Add(summaryItem);
-            //}
-
             gridView.Columns.Add(col);
         }
 
         public static void AddSearchLookupEditColumn(
-            this TreeList gridView,
+            this TreeList treeList,
             string fieldName,
             string caption,
             int width,
@@ -251,7 +250,7 @@ namespace BSClient.Utility
             itemCtrl.Popup += ItemCtrl_SearchLookUpEdit_Popup;
 
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+            treeList.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
         //private static GridColumn GetColumn(
@@ -292,17 +291,20 @@ namespace BSClient.Utility
         //    return col;
         //}
 
-        public static void SetupGridView(
-            this TreeList gridView,
+        public static void SetupTreeList(
+            this TreeList treeList,
             bool multiSelect = true)
         {
-            gridView.OptionsBehavior.AutoPopulateColumns = true;
+            treeList.OptionsBehavior.AutoPopulateColumns = true;
 
-            gridView.OptionsSelection.MultiSelect = multiSelect;
-            gridView.OptionsSelection.MultiSelectMode = TreeListMultiSelectMode.RowSelect;
-           
-            gridView.OptionsView.EnableAppearanceEvenRow = true;
-            gridView.OptionsView.ShowAutoFilterRow = false;
+            treeList.OptionsSelection.MultiSelect = multiSelect;
+            treeList.OptionsSelection.MultiSelectMode = TreeListMultiSelectMode.RowSelect;
+
+            treeList.OptionsView.EnableAppearanceEvenRow = true;
+            treeList.OptionsView.ShowAutoFilterRow = true;
+
+            treeList.OptionsNavigation.AutoFocusNewNode = true;
+            treeList.OptionsView.ShowFilterPanelMode = DevExpress.XtraTreeList.ShowFilterPanelMode.Never;
         }
     }
 }

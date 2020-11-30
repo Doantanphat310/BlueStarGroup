@@ -5,6 +5,18 @@ namespace BSServer._Core.Utility
 {
     public static class GenerateID
     {
+        private static string GetGeneralID(string type, long seq, int numChar = 10)
+        {
+            string format = new string('0', numChar);
+            return $"{type}{seq.ToString(format)}";
+        }
+
+        private static string GetGeneralIDWithDate(string type, long seq, int numChar = 6)
+        {
+            string format = new string('0', numChar);
+            return $"{type}{DateTime.Now.ToString("yyyyMMdd")}{seq.ToString(format)}";
+        }
+
         public static string CustomerID(long seq)
         {
             return GetGeneralID(BSServerConst.CustomerSymbol, seq);
@@ -40,14 +52,23 @@ namespace BSServer._Core.Utility
             return GetGeneralID(BSServerConst.ItemTypeSymbol, seq);
         }
 
-        private static string GetGeneralID(string type, long seq)
+        public static string WareHouseID(long seq)
         {
-            return $"{type}{seq.ToString("0000000000")}";
+            return GetGeneralIDWithDate(BSServerConst.WareHouseSymbol, seq);
         }
 
-        private static string GetGeneralIDWithDate(string type, long seq)
+        public static string WareHouseDetailID(long seq)
         {
-            return $"{type}{DateTime.Now.ToString("yyyyMMdd")}{seq.ToString("000000")}";
+            return GetGeneralIDWithDate(BSServerConst.WareHouseDetailSymbol, seq);
         }
+
+        /// <summary>
+        /// Mã nhóm tài khoản
+        /// </summary>
+        /// <param name="seq">số thứ tự</param>
+        /// <returns></returns>
+        public static string AccountGroupID(long seq) => GetGeneralID(BSServerConst.AccountGroupSymbol, seq, 6);
+
+        public static string GeneralLedgerID(long seq) => GetGeneralID(BSServerConst.GeneralLedgerSymbol, seq);
     }
 }
