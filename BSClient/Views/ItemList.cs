@@ -111,7 +111,7 @@ namespace BSClient.Views
             this.Items_GridView.Columns.Clear();
 
             this.Items_GridView.AddColumn("ItemID", "Mã SP", 90, false);
-            this.Items_GridView.AddColumn("ItemName", "Tên SP", 160, true, fixedWidth: false);
+            this.Items_GridView.AddColumn("ItemName", "Tên SP", 500, true);
             this.Items_GridView.AddColumn("ItemSName", "Tên viết tắt", 80, true);
             this.Items_GridView.AddColumn("ItemSpecification", "Quy cách", 80, true);
             this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, false);
@@ -144,12 +144,12 @@ namespace BSClient.Views
 
         private void SetupItemsGridView()
         {
-            this.Items_GridView.SetupGridView(allowAddRows: false);
+            this.Items_GridView.SetupGridView(columnAutoWidth: false);
         }
 
         private void SetupItemsCompanyGridView()
         {
-            ItemsCompany_GridView.SetupGridView(allowAddRows: false);
+            ItemsCompany_GridView.SetupGridView();
         }
 
         private void LoadItemTypeGridView()

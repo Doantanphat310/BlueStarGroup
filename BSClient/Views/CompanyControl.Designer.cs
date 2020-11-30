@@ -387,7 +387,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 630);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 764);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1080, 0);
             // 
@@ -397,7 +397,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 599);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 733);
             // 
             // barDockControlRight
             // 
@@ -405,7 +405,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1080, 31);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 599);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 733);
             // 
             // dataLayoutControlCompany
             // 
@@ -477,13 +477,13 @@
             this.dataLayoutControlCompany.Name = "dataLayoutControlCompany";
             this.dataLayoutControlCompany.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(337, 182, 650, 400);
             this.dataLayoutControlCompany.Root = this.layoutControlGroupCompany;
-            this.dataLayoutControlCompany.Size = new System.Drawing.Size(1080, 599);
+            this.dataLayoutControlCompany.Size = new System.Drawing.Size(1080, 733);
             this.dataLayoutControlCompany.TabIndex = 4;
             this.dataLayoutControlCompany.Text = "dataLayoutControl1";
             // 
             // barCodeControl1
             // 
-            this.barCodeControl1.Location = new System.Drawing.Point(12, 554);
+            this.barCodeControl1.Location = new System.Drawing.Point(-15, 688);
             this.barCodeControl1.Name = "barCodeControl1";
             this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
             this.barCodeControl1.Size = new System.Drawing.Size(1083, 16);
@@ -503,7 +503,7 @@
             this.dataNavigatorCompany.Buttons.Remove.Visible = false;
             this.dataNavigatorCompany.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.dataNavigatorCompany.DataSource = this.companiesBindingSource;
-            this.dataNavigatorCompany.Location = new System.Drawing.Point(12, 483);
+            this.dataNavigatorCompany.Location = new System.Drawing.Point(-15, 617);
             this.dataNavigatorCompany.Name = "dataNavigatorCompany";
             this.dataNavigatorCompany.Size = new System.Drawing.Size(241, 19);
             this.dataNavigatorCompany.StyleController = this.dataLayoutControlCompany;
@@ -514,11 +514,11 @@
             // gridControlCompany
             // 
             this.gridControlCompany.DataSource = this.companiesBindingSource;
-            this.gridControlCompany.Location = new System.Drawing.Point(12, 407);
+            this.gridControlCompany.Location = new System.Drawing.Point(-15, 407);
             this.gridControlCompany.MainView = this.gridViewCompany;
             this.gridControlCompany.MenuManager = this.barManager1;
             this.gridControlCompany.Name = "gridControlCompany";
-            this.gridControlCompany.Size = new System.Drawing.Size(1083, 72);
+            this.gridControlCompany.Size = new System.Drawing.Size(1083, 206);
             this.gridControlCompany.TabIndex = 45;
             this.gridControlCompany.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCompany});
@@ -839,7 +839,7 @@
             // RowIDTextEdit
             // 
             this.RowIDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "RowID", true));
-            this.RowIDTextEdit.Location = new System.Drawing.Point(124, 506);
+            this.RowIDTextEdit.Location = new System.Drawing.Point(97, 640);
             this.RowIDTextEdit.MenuManager = this.barManager1;
             this.RowIDTextEdit.Name = "RowIDTextEdit";
             this.RowIDTextEdit.Size = new System.Drawing.Size(971, 20);
@@ -849,7 +849,7 @@
             // NameTextEdit
             // 
             this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Name", true));
-            this.NameTextEdit.Location = new System.Drawing.Point(136, 42);
+            this.NameTextEdit.Location = new System.Drawing.Point(109, 42);
             this.NameTextEdit.MenuManager = this.barManager1;
             this.NameTextEdit.Name = "NameTextEdit";
             this.NameTextEdit.Size = new System.Drawing.Size(414, 20);
@@ -860,7 +860,7 @@
             // SummaryNameTextEdit
             // 
             this.SummaryNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "SummaryName", true));
-            this.SummaryNameTextEdit.Location = new System.Drawing.Point(666, 42);
+            this.SummaryNameTextEdit.Location = new System.Drawing.Point(639, 42);
             this.SummaryNameTextEdit.MenuManager = this.barManager1;
             this.SummaryNameTextEdit.Name = "SummaryNameTextEdit";
             this.SummaryNameTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -870,7 +870,7 @@
             // MSTTextEdit
             // 
             this.MSTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "MST", true));
-            this.MSTTextEdit.Location = new System.Drawing.Point(136, 138);
+            this.MSTTextEdit.Location = new System.Drawing.Point(109, 138);
             this.MSTTextEdit.MenuManager = this.barManager1;
             this.MSTTextEdit.Name = "MSTTextEdit";
             this.MSTTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -880,7 +880,7 @@
             // DistrictTextEdit
             // 
             this.DistrictTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "District", true));
-            this.DistrictTextEdit.Location = new System.Drawing.Point(666, 66);
+            this.DistrictTextEdit.Location = new System.Drawing.Point(639, 66);
             this.DistrictTextEdit.MenuManager = this.barManager1;
             this.DistrictTextEdit.Name = "DistrictTextEdit";
             this.DistrictTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -890,7 +890,7 @@
             // ProvinceTextEdit
             // 
             this.ProvinceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Province", true));
-            this.ProvinceTextEdit.Location = new System.Drawing.Point(666, 90);
+            this.ProvinceTextEdit.Location = new System.Drawing.Point(639, 90);
             this.ProvinceTextEdit.MenuManager = this.barManager1;
             this.ProvinceTextEdit.Name = "ProvinceTextEdit";
             this.ProvinceTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -900,7 +900,7 @@
             // PhoneTextEdit
             // 
             this.PhoneTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Phone", true));
-            this.PhoneTextEdit.Location = new System.Drawing.Point(136, 114);
+            this.PhoneTextEdit.Location = new System.Drawing.Point(109, 114);
             this.PhoneTextEdit.MenuManager = this.barManager1;
             this.PhoneTextEdit.Name = "PhoneTextEdit";
             this.PhoneTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -910,7 +910,7 @@
             // FaxTextEdit
             // 
             this.FaxTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Fax", true));
-            this.FaxTextEdit.Location = new System.Drawing.Point(666, 114);
+            this.FaxTextEdit.Location = new System.Drawing.Point(639, 114);
             this.FaxTextEdit.MenuManager = this.barManager1;
             this.FaxTextEdit.Name = "FaxTextEdit";
             this.FaxTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -920,7 +920,7 @@
             // EmailTextEdit
             // 
             this.EmailTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Email", true));
-            this.EmailTextEdit.Location = new System.Drawing.Point(401, 114);
+            this.EmailTextEdit.Location = new System.Drawing.Point(374, 114);
             this.EmailTextEdit.MenuManager = this.barManager1;
             this.EmailTextEdit.Name = "EmailTextEdit";
             this.EmailTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -930,7 +930,7 @@
             // AccountBankTextEdit
             // 
             this.AccountBankTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "AccountBank", true));
-            this.AccountBankTextEdit.Location = new System.Drawing.Point(666, 138);
+            this.AccountBankTextEdit.Location = new System.Drawing.Point(639, 138);
             this.AccountBankTextEdit.MenuManager = this.barManager1;
             this.AccountBankTextEdit.Name = "AccountBankTextEdit";
             this.AccountBankTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -940,7 +940,7 @@
             // BankTextEdit
             // 
             this.BankTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Bank", true));
-            this.BankTextEdit.Location = new System.Drawing.Point(666, 162);
+            this.BankTextEdit.Location = new System.Drawing.Point(639, 162);
             this.BankTextEdit.MenuManager = this.barManager1;
             this.BankTextEdit.Name = "BankTextEdit";
             this.BankTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -950,7 +950,7 @@
             // BranchBankTextEdit
             // 
             this.BranchBankTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "BranchBank", true));
-            this.BranchBankTextEdit.Location = new System.Drawing.Point(666, 186);
+            this.BranchBankTextEdit.Location = new System.Drawing.Point(639, 186);
             this.BranchBankTextEdit.MenuManager = this.barManager1;
             this.BranchBankTextEdit.Name = "BranchBankTextEdit";
             this.BranchBankTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -960,7 +960,7 @@
             // LogoTextEdit
             // 
             this.LogoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Logo", true));
-            this.LogoTextEdit.Location = new System.Drawing.Point(124, 530);
+            this.LogoTextEdit.Location = new System.Drawing.Point(97, 664);
             this.LogoTextEdit.MenuManager = this.barManager1;
             this.LogoTextEdit.Name = "LogoTextEdit";
             this.LogoTextEdit.Size = new System.Drawing.Size(971, 20);
@@ -1001,7 +1001,7 @@
             // SoQuyetDinhTextEdit
             // 
             this.SoQuyetDinhTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "SoQuyetDinh", true));
-            this.SoQuyetDinhTextEdit.Location = new System.Drawing.Point(136, 162);
+            this.SoQuyetDinhTextEdit.Location = new System.Drawing.Point(109, 162);
             this.SoQuyetDinhTextEdit.MenuManager = this.barManager1;
             this.SoQuyetDinhTextEdit.Name = "SoQuyetDinhTextEdit";
             this.SoQuyetDinhTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1011,7 +1011,7 @@
             // MaSoHDTextEdit
             // 
             this.MaSoHDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "MaSoHD", true));
-            this.MaSoHDTextEdit.Location = new System.Drawing.Point(136, 186);
+            this.MaSoHDTextEdit.Location = new System.Drawing.Point(109, 186);
             this.MaSoHDTextEdit.MenuManager = this.barManager1;
             this.MaSoHDTextEdit.Name = "MaSoHDTextEdit";
             this.MaSoHDTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1021,7 +1021,7 @@
             // NoiQLThueTextEdit
             // 
             this.NoiQLThueTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "NoiQLThue", true));
-            this.NoiQLThueTextEdit.Location = new System.Drawing.Point(401, 138);
+            this.NoiQLThueTextEdit.Location = new System.Drawing.Point(374, 138);
             this.NoiQLThueTextEdit.MenuManager = this.barManager1;
             this.NoiQLThueTextEdit.Name = "NoiQLThueTextEdit";
             this.NoiQLThueTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1031,7 +1031,7 @@
             // NHKhoBacTextEdit
             // 
             this.NHKhoBacTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "NHKhoBac", true));
-            this.NHKhoBacTextEdit.Location = new System.Drawing.Point(401, 162);
+            this.NHKhoBacTextEdit.Location = new System.Drawing.Point(374, 162);
             this.NHKhoBacTextEdit.MenuManager = this.barManager1;
             this.NHKhoBacTextEdit.Name = "NHKhoBacTextEdit";
             this.NHKhoBacTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1041,7 +1041,7 @@
             // TKThuThueTextEdit
             // 
             this.TKThuThueTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "TKThuThue", true));
-            this.TKThuThueTextEdit.Location = new System.Drawing.Point(401, 186);
+            this.TKThuThueTextEdit.Location = new System.Drawing.Point(374, 186);
             this.TKThuThueTextEdit.MenuManager = this.barManager1;
             this.TKThuThueTextEdit.Name = "TKThuThueTextEdit";
             this.TKThuThueTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1051,7 +1051,7 @@
             // LapBieuTextEdit
             // 
             this.LapBieuTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "LapBieu", true));
-            this.LapBieuTextEdit.Location = new System.Drawing.Point(136, 252);
+            this.LapBieuTextEdit.Location = new System.Drawing.Point(109, 252);
             this.LapBieuTextEdit.MenuManager = this.barManager1;
             this.LapBieuTextEdit.Name = "LapBieuTextEdit";
             this.LapBieuTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1061,7 +1061,7 @@
             // KTTruongTextEdit
             // 
             this.KTTruongTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "KTTruong", true));
-            this.KTTruongTextEdit.Location = new System.Drawing.Point(931, 252);
+            this.KTTruongTextEdit.Location = new System.Drawing.Point(904, 252);
             this.KTTruongTextEdit.MenuManager = this.barManager1;
             this.KTTruongTextEdit.Name = "KTTruongTextEdit";
             this.KTTruongTextEdit.Size = new System.Drawing.Size(152, 20);
@@ -1071,7 +1071,7 @@
             // KTVienTextEdit
             // 
             this.KTVienTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "KTVien", true));
-            this.KTVienTextEdit.Location = new System.Drawing.Point(666, 252);
+            this.KTVienTextEdit.Location = new System.Drawing.Point(639, 252);
             this.KTVienTextEdit.MenuManager = this.barManager1;
             this.KTVienTextEdit.Name = "KTVienTextEdit";
             this.KTVienTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1081,7 +1081,7 @@
             // LanhDaoTextEdit
             // 
             this.LanhDaoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "LanhDao", true));
-            this.LanhDaoTextEdit.Location = new System.Drawing.Point(136, 347);
+            this.LanhDaoTextEdit.Location = new System.Drawing.Point(109, 347);
             this.LanhDaoTextEdit.MenuManager = this.barManager1;
             this.LanhDaoTextEdit.Name = "LanhDaoTextEdit";
             this.LanhDaoTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1091,7 +1091,7 @@
             // ThuQuyTextEdit
             // 
             this.ThuQuyTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ThuQuy", true));
-            this.ThuQuyTextEdit.Location = new System.Drawing.Point(401, 252);
+            this.ThuQuyTextEdit.Location = new System.Drawing.Point(374, 252);
             this.ThuQuyTextEdit.MenuManager = this.barManager1;
             this.ThuQuyTextEdit.Name = "ThuQuyTextEdit";
             this.ThuQuyTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1101,7 +1101,7 @@
             // ChucDanhLanhDaoTextEdit
             // 
             this.ChucDanhLanhDaoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChucDanhLanhDao", true));
-            this.ChucDanhLanhDaoTextEdit.Location = new System.Drawing.Point(401, 347);
+            this.ChucDanhLanhDaoTextEdit.Location = new System.Drawing.Point(374, 347);
             this.ChucDanhLanhDaoTextEdit.MenuManager = this.barManager1;
             this.ChucDanhLanhDaoTextEdit.Name = "ChucDanhLanhDaoTextEdit";
             this.ChucDanhLanhDaoTextEdit.Size = new System.Drawing.Size(149, 20);
@@ -1111,7 +1111,7 @@
             // ChukyLapBieuTextEdit
             // 
             this.ChukyLapBieuTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChukyLapBieu", true));
-            this.ChukyLapBieuTextEdit.Location = new System.Drawing.Point(136, 276);
+            this.ChukyLapBieuTextEdit.Location = new System.Drawing.Point(109, 276);
             this.ChukyLapBieuTextEdit.MenuManager = this.barManager1;
             this.ChukyLapBieuTextEdit.Name = "ChukyLapBieuTextEdit";
             this.ChukyLapBieuTextEdit.Properties.ReadOnly = true;
@@ -1123,7 +1123,7 @@
             // ChuKyKTTruongTextEdit
             // 
             this.ChuKyKTTruongTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChuKyKTTruong", true));
-            this.ChuKyKTTruongTextEdit.Location = new System.Drawing.Point(931, 276);
+            this.ChuKyKTTruongTextEdit.Location = new System.Drawing.Point(904, 276);
             this.ChuKyKTTruongTextEdit.MenuManager = this.barManager1;
             this.ChuKyKTTruongTextEdit.Name = "ChuKyKTTruongTextEdit";
             this.ChuKyKTTruongTextEdit.Properties.ReadOnly = true;
@@ -1135,7 +1135,7 @@
             // ChuKyKeToanVienTextEdit
             // 
             this.ChuKyKeToanVienTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChuKyKeToanVien", true));
-            this.ChuKyKeToanVienTextEdit.Location = new System.Drawing.Point(666, 276);
+            this.ChuKyKeToanVienTextEdit.Location = new System.Drawing.Point(639, 276);
             this.ChuKyKeToanVienTextEdit.MenuManager = this.barManager1;
             this.ChuKyKeToanVienTextEdit.Name = "ChuKyKeToanVienTextEdit";
             this.ChuKyKeToanVienTextEdit.Properties.ReadOnly = true;
@@ -1147,7 +1147,7 @@
             // ChuKyLanhDaoTextEdit
             // 
             this.ChuKyLanhDaoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChuKyLanhDao", true));
-            this.ChuKyLanhDaoTextEdit.Location = new System.Drawing.Point(136, 371);
+            this.ChuKyLanhDaoTextEdit.Location = new System.Drawing.Point(109, 371);
             this.ChuKyLanhDaoTextEdit.MenuManager = this.barManager1;
             this.ChuKyLanhDaoTextEdit.Name = "ChuKyLanhDaoTextEdit";
             this.ChuKyLanhDaoTextEdit.Properties.ReadOnly = true;
@@ -1159,7 +1159,7 @@
             // ChuKyThuQuyTextEdit
             // 
             this.ChuKyThuQuyTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "ChuKyThuQuy", true));
-            this.ChuKyThuQuyTextEdit.Location = new System.Drawing.Point(401, 276);
+            this.ChuKyThuQuyTextEdit.Location = new System.Drawing.Point(374, 276);
             this.ChuKyThuQuyTextEdit.MenuManager = this.barManager1;
             this.ChuKyThuQuyTextEdit.Name = "ChuKyThuQuyTextEdit";
             this.ChuKyThuQuyTextEdit.Properties.ReadOnly = true;
@@ -1233,7 +1233,7 @@
             // AddressTextEdit
             // 
             this.AddressTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companiesBindingSource, "Address", true));
-            this.AddressTextEdit.Location = new System.Drawing.Point(136, 66);
+            this.AddressTextEdit.Location = new System.Drawing.Point(109, 66);
             this.AddressTextEdit.MenuManager = this.barManager1;
             this.AddressTextEdit.Name = "AddressTextEdit";
             this.AddressTextEdit.Properties.LinesCount = 2;
@@ -1243,7 +1243,7 @@
             // 
             // pictureEditLB
             // 
-            this.pictureEditLB.Location = new System.Drawing.Point(136, 300);
+            this.pictureEditLB.Location = new System.Drawing.Point(109, 300);
             this.pictureEditLB.MenuManager = this.barManager1;
             this.pictureEditLB.Name = "pictureEditLB";
             this.pictureEditLB.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1255,7 +1255,7 @@
             // 
             // pictureEditThQ
             // 
-            this.pictureEditThQ.Location = new System.Drawing.Point(401, 300);
+            this.pictureEditThQ.Location = new System.Drawing.Point(374, 300);
             this.pictureEditThQ.MenuManager = this.barManager1;
             this.pictureEditThQ.Name = "pictureEditThQ";
             this.pictureEditThQ.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1267,7 +1267,7 @@
             // 
             // pictureEditKTV
             // 
-            this.pictureEditKTV.Location = new System.Drawing.Point(666, 300);
+            this.pictureEditKTV.Location = new System.Drawing.Point(639, 300);
             this.pictureEditKTV.MenuManager = this.barManager1;
             this.pictureEditKTV.Name = "pictureEditKTV";
             this.pictureEditKTV.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1279,7 +1279,7 @@
             // 
             // pictureEditKTTruong
             // 
-            this.pictureEditKTTruong.Location = new System.Drawing.Point(931, 300);
+            this.pictureEditKTTruong.Location = new System.Drawing.Point(904, 300);
             this.pictureEditKTTruong.MenuManager = this.barManager1;
             this.pictureEditKTTruong.Name = "pictureEditKTTruong";
             this.pictureEditKTTruong.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1291,7 +1291,7 @@
             // 
             // pictureEditLD
             // 
-            this.pictureEditLD.Location = new System.Drawing.Point(666, 347);
+            this.pictureEditLD.Location = new System.Drawing.Point(639, 347);
             this.pictureEditLD.MenuManager = this.barManager1;
             this.pictureEditLD.Name = "pictureEditLD";
             this.pictureEditLD.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1303,7 +1303,7 @@
             // 
             // pictureEditLogo
             // 
-            this.pictureEditLogo.Location = new System.Drawing.Point(831, 76);
+            this.pictureEditLogo.Location = new System.Drawing.Point(804, 76);
             this.pictureEditLogo.MenuManager = this.barManager1;
             this.pictureEditLogo.Name = "pictureEditLogo";
             this.pictureEditLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -1433,7 +1433,7 @@
             this.ItemForLogo,
             this.layoutControlItem3});
             this.layoutControlGroupCompany.Name = "Root";
-            this.layoutControlGroupCompany.Size = new System.Drawing.Size(1107, 582);
+            this.layoutControlGroupCompany.Size = new System.Drawing.Size(1107, 716);
             this.layoutControlGroupCompany.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -1927,7 +1927,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dataNavigatorCompany;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 471);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 605);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(1087, 23);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1938,7 +1938,7 @@
             this.layoutControlItem1.Control = this.gridControlCompany;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 395);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1087, 76);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1087, 210);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1946,7 +1946,7 @@
             // 
             this.ItemForRowID.Control = this.RowIDTextEdit;
             this.ItemForRowID.Enabled = false;
-            this.ItemForRowID.Location = new System.Drawing.Point(0, 494);
+            this.ItemForRowID.Location = new System.Drawing.Point(0, 628);
             this.ItemForRowID.Name = "ItemForRowID";
             this.ItemForRowID.Size = new System.Drawing.Size(1087, 24);
             this.ItemForRowID.Text = "Row ID";
@@ -1955,7 +1955,7 @@
             // ItemForLogo
             // 
             this.ItemForLogo.Control = this.LogoTextEdit;
-            this.ItemForLogo.Location = new System.Drawing.Point(0, 518);
+            this.ItemForLogo.Location = new System.Drawing.Point(0, 652);
             this.ItemForLogo.Name = "ItemForLogo";
             this.ItemForLogo.Size = new System.Drawing.Size(1087, 24);
             this.ItemForLogo.Text = "Logo";
@@ -1964,7 +1964,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.barCodeControl1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 542);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 676);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(1087, 20);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -1985,7 +1985,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.MinimumSize = new System.Drawing.Size(1080, 630);
             this.Name = "CompanyControl";
-            this.Size = new System.Drawing.Size(1080, 630);
+            this.Size = new System.Drawing.Size(1080, 764);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControlCompany)).EndInit();
             this.dataLayoutControlCompany.ResumeLayout(false);

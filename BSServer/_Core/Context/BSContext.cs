@@ -29,6 +29,8 @@ namespace BSServer._Core.Context
         public DbSet<AccountGroup> AccountGroup { get; set; }
         public DbSet<Accounts> Accounts { get; set; }
 
+        public DbSet<GeneralLedger> GeneralLedger { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             builder.Entity<MasterInfo>().HasKey(model => new { model.MasterCd, model.DetailCd });
