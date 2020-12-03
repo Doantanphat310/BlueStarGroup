@@ -23,6 +23,7 @@ using DevExpress.Utils.Extensions;
 using DevExpress.XtraGrid.Columns;
 using System.Collections;
 using System.Data;
+using DevExpress.XtraGrid.Views.BandedGrid;
 
 namespace BSClient
 {
@@ -975,7 +976,7 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true,"c2");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false,"c2");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true,"c2");
         }
 
         private void Setup_InvoiceWareHouseDetail_GridView()
@@ -2007,7 +2008,7 @@ namespace BSClient
             this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
             this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false, "c2");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
         }
 
         private void Setup_WareHouseDetail_GridView()
@@ -2746,6 +2747,53 @@ namespace BSClient
                     e.HighPriority = true;
                 }
             }
+        }
+
+        private void InvoiceWareHouseDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            /*
+             BandedGridView view = sender as BandedGridView;
+    if (view == null) return;
+    if (e.Column.Caption != "FirstName") return;
+    string cellValue = e.Value.ToString() + " " + view.GetRowCellValue(e.RowHandle, view.Columns["LastName"]).ToString();
+    view.SetRowCellValue(e.RowHandle, view.Columns["FullName"], cellValue);
+             */
+            // sssssss
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                decimal QuantityFilter = (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+
+                if (QuantityFilter > 0)
+                {
+
+                    Decimal Cellprice = (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Amount") / QuantityFilter;
+
+                    if(Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Price"))
+                    {
+                        InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("Price", Cellprice);
+                    }
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage("Số lượng phải lớn hơn 0!");
+                    return;
+                }
+
+            }
+            else if(e.Column.FieldName == "Price")
+            {
+                Decimal Cellprice = (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                if(Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                {
+                    InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
+                }
+
+               
+            }
+           // Decimal cellValueAmount = (Decimal)e.Value;
+
         }
     }
 }

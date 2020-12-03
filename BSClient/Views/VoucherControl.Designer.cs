@@ -1073,6 +1073,7 @@
             this.InvoiceWareHouseDetail_gridView.Name = "InvoiceWareHouseDetail_gridView";
             this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
             this.InvoiceWareHouseDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceWareHouseDetail_gridView_RowStyle);
+            this.InvoiceWareHouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InvoiceWareHouseDetail_gridView_CellValueChanged);
             this.InvoiceWareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouseDetail_gridView_RowUpdated);
             // 
             // Invoice_gridControl
