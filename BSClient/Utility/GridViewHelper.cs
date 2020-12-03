@@ -136,7 +136,6 @@ namespace BSClient.Utility
 
             itemCtrl.Popup += ItemCtrl_SearchLookUpEdit_Popup;
 
-
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
@@ -199,6 +198,7 @@ namespace BSClient.Utility
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             col.OptionsColumn.FixedWidth = fixedWidth;
+            col.OptionsColumn.AllowSize = false;
 
             if (itemCtrl != null)
             {
@@ -254,12 +254,12 @@ namespace BSClient.Utility
 
         public static void SetupGridView(
             this GridView gridView,
-            bool columnAutoWidth = true,
+            bool columnAutoWidth = false,
             bool multiSelect = true,
             int checkBoxSelectorColumnWidth = 30,
             bool showAutoFilterRow = true,
             bool showFooter = false,
-            bool allowAddRows = true)
+            NewItemRowPosition newItemRow = NewItemRowPosition.Top)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
@@ -277,10 +277,11 @@ namespace BSClient.Utility
             gridView.OptionsView.ShowGroupPanel = false;
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
+            gridView.OptionsSelection.EnableAppearanceFocusedRow = true;
 
-            if (allowAddRows)
+            if (newItemRow != NewItemRowPosition.None)
             {
-                gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+                gridView.OptionsView.NewItemRowPosition = newItemRow;
                 gridView.OptionsBehavior.AllowAddRows = DefaultBoolean.True;
             }
 

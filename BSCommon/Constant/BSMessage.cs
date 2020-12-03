@@ -25,5 +25,8 @@
         public const string BSM000020 = "Tên tài khoản không được để trống.";
         public const string BSM000021 = "Mã tài khoản đã tồn tại.";
         public const string BSM000022 = "<Nhóm TK> chưa được chọn.";
+        public const string BSM000023 = "Vui lòng chọn Sổ cái.";
+        public const string BSM000024 = "Tên Sổ cái đã tồn tại.";
+        public const string BSM000025 = "Vui lòng nhập Tên Sổ cái.";
     }
 }

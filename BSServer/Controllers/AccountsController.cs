@@ -29,6 +29,11 @@ namespace BSServer.Controllers
             return this.AccountsDAO.GetAccounts();
         }
 
+        public List<GeneralLedger> GetGeneralLedger()
+        {
+            return this.AccountsDAO.GetGeneralLedger();
+        }
+
         public bool SaveAccountGroup(List<AccountGroup> dataList)
         {
             return this.AccountsLogic.SaveAccountGroup(dataList);
@@ -37,6 +42,11 @@ namespace BSServer.Controllers
         public bool SaveAccounts(List<Accounts> dataList)
         {
             return this.AccountsLogic.SaveAccounts(dataList);
+        }
+
+        public bool SaveGeneralLedger(List<GeneralLedger> dataList)
+        {
+            return this.AccountsLogic.SaveGeneralLedger(dataList);
         }
     }
 }

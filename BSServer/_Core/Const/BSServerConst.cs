@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BSServer._Core.Const
+﻿namespace BSServer._Core.Const
 {
     public class BSServerConst
     {
@@ -19,6 +15,7 @@ namespace BSServer._Core.Const
         public const string WareHouseDetailSymbol = "WHD";
         public const string DepreciationSymbol = "DEP";
         public const string DepreciationDetailSymbol = "DED";
-        
+        public const string AccountGroupSymbol = "LTK";
+        public const string GeneralLedgerSymbol = "SC";
     }
 }

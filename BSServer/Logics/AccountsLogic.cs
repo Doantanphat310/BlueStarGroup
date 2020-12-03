@@ -2,6 +2,7 @@
 using BSCommon.Models;
 using BSServer._Core.Base;
 using BSServer._Core.Context;
+using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
@@ -25,12 +26,15 @@ namespace BSServer.Logics
             {
                 try
                 {
+                    long seq = this.AccountsDAO.GetAccountGroupSEQ();
                     foreach (AccountGroup data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
+                                seq += 1;
+                                data.AccountGroupID = GenerateID.AccountGroupID(seq);
                                 this.AccountsDAO.InsertAccountGroup(data);
                                 break;
 
@@ -65,13 +69,25 @@ namespace BSServer.Logics
             {
                 try
                 {
+                    long seq = this.AccountsDAO.GetGeneralLedgerSEQ();
+
                     foreach (Accounts data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
+                                GeneralLedger generalLedger = new GeneralLedger
+                                {
+                                    GeneralLedgerID = GenerateID.GeneralLedgerID(seq),
+                                    AccountID = data.AccountID,
+                                    GeneralLedgerName = $"{data.AccountID} - {data.AccountName}"
+                                };
+
                                 this.AccountsDAO.InsertAccounts(data);
+
+                                this.AccountsDAO.InsertGeneralLedger(generalLedger);
+
                                 break;
 
                             // Update
@@ -82,6 +98,52 @@ namespace BSServer.Logics
                             // Delete
                             case ModifyMode.Delete:
                                 this.AccountsDAO.DeleteAccounts(data.AccountID);
+                                break;
+                        }
+                    }
+
+                    transaction.Commit();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine("Update data fail.\r\n" + e.Message);
+                    return false;
+                }
+            }
+        }
+
+        public bool SaveGeneralLedger(List<GeneralLedger> saveData)
+        {
+            using (DbContextTransaction transaction = Context.Database.BeginTransaction())
+            {
+                try
+                {
+                    long seq = this.AccountsDAO.GetGeneralLedgerSEQ();
+
+                    foreach (GeneralLedger data in saveData)
+                    {
+                        switch (data.Status)
+                        {
+                            // Add new
+                            case ModifyMode.Insert:
+                                seq++;
+                                data.GeneralLedgerID = GenerateID.GeneralLedgerID(seq);
+
+                                this.AccountsDAO.InsertGeneralLedger(data);
+
+                                break;
+
+                            // Update
+                            case ModifyMode.Update:
+                                this.AccountsDAO.UpdateGeneralLedger(data);
+                                break;
+
+                            // Delete
+                            case ModifyMode.Delete:
+                                this.AccountsDAO.DeleteGeneralLedger(data.GeneralLedgerID);
                                 break;
                         }
                     }
