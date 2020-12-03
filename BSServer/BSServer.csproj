@@ -103,6 +103,7 @@
     <Compile Include="DAOs\UserDAO.cs" />
     <Compile Include="DAOs\WareHouseDAO.cs" />
     <Compile Include="DAOs\WareHouseDetailDAO.cs" />
+    <Compile Include="Logics\CompanyLogic.cs" />
     <Compile Include="Logics\DepreciationDetailLogic.cs" />
     <Compile Include="Logics\DepreciationLogic.cs" />
     <Compile Include="Logics\InvoiceLogic.cs" />

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace BSClient
 {
-    public partial class CompanyControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class CompanyControl : DevExpress.XtraEditors.XtraForm
     {
         public CompanyControl()
         {
