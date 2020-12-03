@@ -1,13 +1,17 @@
 ﻿using BSCommon.Constant;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSCommon.Models
 {
     /// <summary>
     /// Customer infomation
     /// </summary>        
-    public class Customer
+    public class Customer : BaseModel
     {
+        [Key]
+        [Column(Order = 1)]
         public string CustomerID { get; set; }
         public string CustomerName { get; set; }
         public string CustomerSName { get; set; }
@@ -17,10 +21,5 @@ namespace BSCommon.Models
         public string SerialNo { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public DateTime? CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
-        public string CreateUser { get; set; }
-        public string UpdateUser { get; set; }
-        public ModifyMode Status { get; set; }
     }
 }

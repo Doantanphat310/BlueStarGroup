@@ -30,9 +30,9 @@ namespace BSClient
 
         private void Company_Button_Click(object sender, EventArgs e)
         {
-            CompanyControl company = new CompanyControl();
+            CompanyList company = new CompanyList();
             this.ShowControl(company, Content);
-            this.Text = " Blue Star Group - Nhập thông tin công ty";
+            this.SetTitle("Nhập thông tin công ty");
         }
 
         private void Custommers_Button_Click(object sender, EventArgs e)

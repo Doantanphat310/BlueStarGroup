@@ -1,4 +1,5 @@
 ﻿using BSCommon.Models;
+using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer.DAOs;
 using BSServer.Logics;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BSServer.Controllers
 {
-    public class CustomerController
+    public class CustomerController : BaseController
     {
         private BSContext Context { get; set; }
 
@@ -26,17 +27,13 @@ namespace BSServer.Controllers
 
         public List<Customer> GetCustomers()
         {
-            
+
             return this.CustomerDAO.GetCustommers();
         }
 
         public bool SaveCustommers(List<Customer> customerCompanies)
         {
             return this.CustomerLogic.SaveCustommersCompany(customerCompanies);
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

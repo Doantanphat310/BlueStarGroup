@@ -7,6 +7,7 @@ using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BSClient.Utility
@@ -73,7 +74,8 @@ namespace BSClient.Utility
            object itemSource,
            List<ColumnInfo> columns,
            string nullText = "",
-           bool enterChoiceFirstRow = true)
+           bool enterChoiceFirstRow = true,
+           int popupFormWidth = -1)
         {
             lookUpEdit.Properties.DataSource = itemSource;
             lookUpEdit.Properties.ValueMember = valueMember;
@@ -95,6 +97,11 @@ namespace BSClient.Utility
                     lookUpEdit.Properties.View.Columns.Add(gridCol);
                 }
             }
+
+            if (popupFormWidth >= 0)
+            {
+                lookUpEdit.Properties.PopupFormWidth = popupFormWidth;
+            }         
 
             if (enterChoiceFirstRow)
             {

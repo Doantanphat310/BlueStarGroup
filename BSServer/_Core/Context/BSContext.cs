@@ -1,9 +1,6 @@
 ﻿using BSCommon.Models;
 using BSServer._Core.Base;
-using BSServer._Core.Const;
-using System.Configuration;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 
 namespace BSServer._Core.Context
 {

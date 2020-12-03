@@ -19,5 +19,10 @@ namespace BSServer.Controllers
         {
             return this.CompanyDAO.GetCompanys();
         }
+
+        //public bool SaveCompany(List<Company> saveData)
+        //{
+        //    return this.CompanyDAO.SaveCustommersCompany(customerCompanies);
+        //}
     }
 }
