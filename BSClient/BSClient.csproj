@@ -137,7 +137,7 @@
       <DependentUpon>BlueStarGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CompanyControl.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\CompanyControl.Designer.cs">
       <DependentUpon>CompanyControl.cs</DependentUpon>
@@ -147,6 +147,12 @@
     </Compile>
     <Compile Include="Views\AccountList.Designer.cs">
       <DependentUpon>AccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompanyList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CompanyList.Designer.cs">
+      <DependentUpon>CompanyList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NewUserRole.cs">
       <SubType>Form</SubType>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AccountList.resx">
       <DependentUpon>AccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CompanyList.resx">
+      <DependentUpon>CompanyList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NewUserRole.resx">
       <DependentUpon>NewUserRole.cs</DependentUpon>
