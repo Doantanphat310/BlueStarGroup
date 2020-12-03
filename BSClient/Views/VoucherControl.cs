@@ -36,8 +36,16 @@ namespace BSClient
         public BindingList<WareHouse> InvoiceWarehouseData { get; set; }
         public BindingList<WareHouseDetail> InvoiceWarehouseDetailData { get; set; }
 
+        public BindingList<WareHouse> WarehouseData { get; set; }
+        public BindingList<WareHouseDetail> WarehouseDetailData { get; set; }
+
+        public BindingList<WareHouseDetail> InvoiceWarehouseDetailDataBackup { get; set; }
+
         public BindingList<Depreciation> InvoiceDepreciationData { get; set; }
         public BindingList<DepreciationDetail> InvoiceDepreciationDetailData { get; set; }
+
+        public BindingList<Depreciation> DepreciationData { get; set; }
+        public BindingList<DepreciationDetail> DepreciationDetailData { get; set; }
 
         public List<Voucher> VoucherDelete { get; set; }
         public List<VoucherDetail> VoucherDetailDelete { get; set; }
@@ -45,8 +53,16 @@ namespace BSClient
        // public List<WareHouse> WareHouseDelete { get; set; }
         public List<WareHouse> InvoiceWareHouseDelete { get; set; }
         public List<WareHouseDetail> InvoiceWareHouseDetailDelete { get; set; }
+
+        public List<WareHouse> WareHouseDelete { get; set; }
+        public List<WareHouseDetail> WareHouseDetailDelete { get; set; }
+
         public List<Depreciation> InvoiceDepreciationDelete { get; set; }
         public List<DepreciationDetail> InvoiceDepreciationDetailDelete { get; set; }
+
+
+        public List<Depreciation> DepreciationDelete { get; set; }
+        public List<DepreciationDetail> DepreciationDetailDelete { get; set; }
 
         public static MaterialNVController MaterialGL = new MaterialNVController();
         List<MaterialGL> materialGL = MaterialGL.GetMaterialGL(GlobalVarient.CompanyIDChoice);
@@ -70,7 +86,6 @@ namespace BSClient
             InitializeComponent();
             InitComboBox();
             LoadGrid();
-            initControltoGridview();
             VoucherDetailDelete = new List<VoucherDetail>();
         }
 
@@ -115,55 +130,7 @@ namespace BSClient
             VoucherTypeDK_searchLookUpEdit.Properties.DisplayMember = "VouchersTypeName";
         }
 
-        void initControltoGridview()
-        {
-
-
-            riLookup.DataSource = materialNV;
-            riLookup.NullText = "";
-            riLookup.ValueMember = "NVSummary";
-            riLookup.DisplayMember = "NVName";
-            VoucherDetail_gridControl.RepositoryItems.Add(riLookup);
-            VoucherDetail_gridView.Columns["NV"].ColumnEdit = riLookup;
-            riLookup.Popup += new EventHandler(riLookup_Popup);
-            ////////////////////////////////////
-            /// //TaiKhoan
-
-            rsItemlookup.DataSource = materialTK;
-            rsItemlookup.NullText = "";
-            rsItemlookup.ValueMember = "AccountID";
-            rsItemlookup.DisplayMember = "AccountID";
-            VoucherDetail_gridControl.RepositoryItems.Add(rsItemlookup);
-            VoucherDetail_gridView.Columns["AccountID"].ColumnEdit = rsItemlookup;
-            rsItemlookup.Popup += new EventHandler(rsItemlookup_Popup);
-            this.rsItemlookup.KeyDown += new KeyEventHandler(this.rsItemlookup_KeyDown);
-            VoucherDetail_gridView.BestFitColumns();
-            ///Doi Tuong
-            ///
-            //MaterialNVController MaterialDT = new MaterialNVController();
-            //List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
-            //rDTLookup.DataSource = materialDT;
-            //rDTLookup.NullText = "";
-            //rDTLookup.ValueMember = "CustomerID";
-            //rDTLookup.DisplayMember = "CustomerSName";
-            //VoucherDetail_gridControl.RepositoryItems.Add(rDTLookup);
-            //VoucherDetail_gridView.Columns["CustomerID"].ColumnEdit = rDTLookup;
-            //VoucherDetail_gridView.BestFitColumns();
-            //rDTLookup.Popup += new EventHandler(rDTLookup_Popup);
-            ///So cai
-            ///
-
-            rGLLookup.DataSource = materialGL;
-            rGLLookup.NullText = "";
-            rGLLookup.ValueMember = "GeneralLedgerID";
-            rGLLookup.DisplayMember = "GeneralLedgerName";
-            VoucherDetail_gridControl.RepositoryItems.Add(rGLLookup);
-            VoucherDetail_gridView.Columns["GeneralLedgerID"].ColumnEdit = rGLLookup;
-            VoucherDetail_gridView.BestFitColumns();
-            rGLLookup.Popup += new EventHandler(rGLLookup_Popup);
-        }
-
-
+       
 
         private void VoucherControl_Load(object sender, EventArgs e)
         {
@@ -172,17 +139,18 @@ namespace BSClient
         private void InitGridView()
         {
             this.Voucher_gridView.Columns.Clear();
-            this.Voucher_gridView.AddColumn("VouchersTypeID", "Loại CT", 50, false);
-            this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 100, false);
-            this.Voucher_gridView.AddColumn("Date", "Ngày", 100, false);
-            this.Voucher_gridView.AddSpinEditColumn("Amount", "Tiền", 100, false, "c2");
-            this.Voucher_gridView.AddColumn("Description", "Nội dung", 100, false);
+            this.Voucher_gridView.AddColumn("VouchersTypeID", "Loại", 30, false);
+            this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 110, false);
+            this.Voucher_gridView.AddColumn("Date", "Ngày", 70, false);
+            this.Voucher_gridView.AddSpinEditColumn("Amount", "Tiền", 120, false, "c2");
+            this.Voucher_gridView.AddColumn("Description", "Nội dung", 180, false);
             this.Voucher_gridView.AddColumn("CreateUser", "Người tạo", 100, false);
         }
 
         private void SetupGridView()
         {
             this.Voucher_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.Voucher_gridView.SetupGridView(columnAutoWidth: false);
             this.Voucher_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
             this.Voucher_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
         }
@@ -197,39 +165,24 @@ namespace BSClient
         private void InitVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.Columns.Clear();
-            this.VoucherDetail_gridView.AddColumn("NV", "NV", 50, true);
-            this.VoucherDetail_gridView.AddColumn("AccountID", "Tài khoản", 80, true);
-            //this.VoucherDetail_gridView.AddColumn("CustomerID", "Đối tượng", 120, true);
-
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn(
-                "CustomerID", "Mã KH", 120, materialDT, "CustomerID", "CustomerSName", true, editValueChanged: Customer_EditValueChanged);
-            this.VoucherDetail_gridView.AddColumn("GeneralLedgerID", "Sổ cái", 180, true);
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true, "$#,##0.00");
-            this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 80, false);
-
-           
-            //MaterialNVController MaterialDT = new MaterialNVController();
-            //List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
-            //rDTLookup.DataSource = materialDT;
-            //rDTLookup.NullText = "";
-            //rDTLookup.ValueMember = "CustomerID";
-            //rDTLookup.DisplayMember = "CustomerSName";
-            //VoucherDetail_gridControl.RepositoryItems.Add(rDTLookup);
-            //VoucherDetail_gridView.Columns["CustomerID"].ColumnEdit = rDTLookup;
-            //VoucherDetail_gridView.BestFitColumns();
-            //rDTLookup.Popup += new EventHandler(rDTLookup_Popup);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 140, materialGL, "GeneralLedgerID", "GeneralLedgerName", true, editValueChanged: GeneralLedger_EditValueChanged);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", true);
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "$#,##0.00");
+            this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
-
-        public void Customer_EditValueChanged(object sender, EventArgs e)
+        
+        public void GeneralLedger_EditValueChanged(object sender, EventArgs e)
         {
-            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialDT>();
-            // Muon lay gi ra thif dung selectRow.
-        }
-
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialGL>();
+            VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
+        }  
 
         private void SetupVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.VoucherDetail_gridView.SetupGridView(columnAutoWidth: false);
             this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
             this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -239,8 +192,10 @@ namespace BSClient
             tabNavigationPageLKKho.PageVisible = false;
             tabNavigationPageLKVAT.PageVisible = false;
             VoucherDetailController controller = new VoucherDetailController();
+            GlobalVarient.voucherDetailChoice =  new List<VoucherDetail>();
             GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice);
             //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
+            VoucherDetailData = null;
             VoucherDetailData = new BindingList<VoucherDetail>(GlobalVarient.voucherDetailChoice);
             VoucherDetail_gridControl.DataSource = VoucherDetailData;
             VoucherDetailDelete = new List<VoucherDetail>();
@@ -283,10 +238,7 @@ namespace BSClient
             LoadVoucherDetailGridView("00000000000000000LoadDefaulttoadnew");
 
         }
-
-
-
-
+        
         #region design Repository for VoucherDetail
         RepositoryItemSearchLookUpEdit riLookup = new RepositoryItemSearchLookUpEdit();
         RepositoryItemSearchLookUpEdit rsItemlookup = new RepositoryItemSearchLookUpEdit();
@@ -483,30 +435,19 @@ namespace BSClient
             VoucherController voucherController = new VoucherController();
             GlobalVarient.VoucherID++;
             Voucher voucher = new Voucher();
-            //  voucher.VouchersID = "VOU" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherID.ToString();
             voucher.Amount = Debit;
             voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
             voucher.VouchersTypeID = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
             voucher.Date = (DateTime)dateEditNgayNhapChungTu.EditValue;
             voucher.CompanyID = GlobalVarient.CompanyIDChoice;
             voucher.Status = ModifyMode.Insert;
-            //  voucherController.InsertVouchers(voucher);
-            //  LoadGridView();
             #endregion set value to Insert Voucher
-
-            #region set VoucherDetailID
             VoucherDetailController voucherDetailController = new VoucherDetailController();
             for (int i = 0; i < VoucherDetailData.Count; i++)
             {
-                // VoucherDetailData[i].VouchersID = voucher.VouchersID;
-                // GlobalVarient.VoucherDetailID++;
-                // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                 VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 VoucherDetailData[i].Status = ModifyMode.Insert;
-                //voucherDetailController.InsertVouchersDetail(VoucherDetailData[i]);
             }
-            #endregion set VoucherDetailID
-
             List<VoucherDetail> saveData = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert).ToList();
             if (saveData?.Count > 0)
             {
@@ -516,6 +457,7 @@ namespace BSClient
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     VoucherDetailDelete = new List<VoucherDetail>();
                     this.LoadVoucherDetailGridView(voucher.VouchersID);
+                    this.LoadGridView();
                 }
                 else
                 {
@@ -556,11 +498,6 @@ namespace BSClient
             {
                 return;
             }
-
-            // Role_UserName_TextBox.Text = selectedRow.UserID;
-
-            // filter grid
-            // UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";
         }
 
 
@@ -659,15 +596,6 @@ namespace BSClient
                 return;
             }
             row.Status = ModifyMode.Update;
-        }
-
-        private void VoucherDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
-        {
-        }
-
-        private void VoucherDetail_gridView_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
-        {
-
         }
 
         private void VoucherDetail_gridView_ShowingEditor(object sender, CancelEventArgs e)
@@ -802,6 +730,7 @@ namespace BSClient
             #endregion delete VoucherDetail
 
             this.LoadVoucherDetailGridView(GlobalVarient.VoucherIDChoice);
+            LoadGridView();
         }
 
         private void checkBoxThemDuLieu_CheckedChanged(object sender, EventArgs e)
@@ -853,6 +782,8 @@ namespace BSClient
                     {
                         tabNavigationPageLKVAT.PageVisible = false;
                         tabPaneVouchers.SelectedPageIndex = 0;
+                        
+                       
                     }
                     break;
                 #endregion check TK
@@ -866,6 +797,7 @@ namespace BSClient
                         {
                             tabNavigationPageLKKho.PageVisible = true;
                             tabPaneVouchers.SelectedPageIndex = 2;
+                            LoadWareHouseGridviewFull();
                             checkLKkho = 1;
                             break;
                         }
@@ -914,6 +846,7 @@ namespace BSClient
         private void Setup_InvoiceWareHouse_GridView()
         {
             this.InvoiceWareHouse_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.InvoiceWareHouse_gridView.SetupGridView(columnAutoWidth: false);
             this.InvoiceWareHouse_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             this.InvoiceWareHouse_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -947,17 +880,18 @@ namespace BSClient
         {
             this.InvoiceDepreciation_gridView.Columns.Clear();
             this.InvoiceDepreciation_gridView.AddColumn("StartDate", "Ngày BĐSD", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("UseMonth", "Số tháng SD", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("DepreciationAmount", "Tiền KH", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("DepreciationPercent", "% KH", 80, true);
-            this.InvoiceDepreciation_gridView.AddColumn("DepreciationAmountMonth", "Tiền/Tháng", 80, false);
+            this.InvoiceDepreciation_gridView.AddColumn("UseMonth", "Số tháng SD", 70, true);
+            this.InvoiceDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
+            this.InvoiceDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
+            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true,"C2");
+            this.InvoiceDepreciation_gridView.AddColumn("DepreciationPercent", "% KH", 40, true);
+            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmountMonth", "Tiền/Tháng", 120, false,"C2");
         }
 
         private void Setup_InvoiceDepreciation_GridView()
         {
             this.InvoiceDepreciation_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.InvoiceDepreciation_gridView.SetupGridView(columnAutoWidth: false);
             this.InvoiceDepreciation_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             this.InvoiceDepreciation_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -991,16 +925,17 @@ namespace BSClient
         private void Init_InvoiceDepreciationDetail_GridView()
         {
             this.InvoiceDepreciationDetail_gridView.Columns.Clear();
-            this.InvoiceDepreciationDetail_gridView.AddColumn("PeriodCurrent", "kỳ HT", 80, true);
+            this.InvoiceDepreciationDetail_gridView.AddColumn("PeriodCurrent", "kỳ HT", 40, true);
             this.InvoiceDepreciationDetail_gridView.AddColumn("DepreciationDate", "Ngày của kỳ", 80, true);
-            this.InvoiceDepreciationDetail_gridView.AddColumn("QuantityPeriod", "Số lượng kỳ", 80, true);
-            this.InvoiceDepreciationDetail_gridView.AddColumn("Amount", "Tiền", 80, true);
-            this.InvoiceDepreciationDetail_gridView.AddColumn("Descriptions", "Nội dung", 80, true);
+            this.InvoiceDepreciationDetail_gridView.AddColumn("QuantityPeriod", "SL kỳ", 40, true);
+            this.InvoiceDepreciationDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 110, true, "C2");
+            this.InvoiceDepreciationDetail_gridView.AddColumn("Descriptions", "Nội dung", 120, true);
         }
 
         private void Setup_InvoiceDepreciationDetail_GridView()
         {
             this.InvoiceDepreciationDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.InvoiceDepreciationDetail_gridView.SetupGridView(columnAutoWidth: false);
             this.InvoiceDepreciationDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             this.InvoiceDepreciationDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -1036,16 +971,17 @@ namespace BSClient
         private void Init_InvoiceWareHouseDetail_GridView()
         {
             this.InvoiceWareHouseDetail_gridView.Columns.Clear();
-            this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items,"ItemID", "ItemSName", true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
-            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 80, true);
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 120, true, "{0.00}");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 80, true,"c2");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 80, false,"c2");
+            this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm",80, items,"ItemID", "ItemSName", true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
+            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true,"c2");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false,"c2");
         }
 
         private void Setup_InvoiceWareHouseDetail_GridView()
         {
             this.InvoiceWareHouseDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.InvoiceWareHouseDetail_gridView.SetupGridView(columnAutoWidth: false);
             this.InvoiceWareHouseDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             this.InvoiceWareHouseDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -1079,11 +1015,11 @@ namespace BSClient
             this.Invoice_gridView.AddColumn("FormNo", "Mẫu số", 80, true);
             this.Invoice_gridView.AddColumn("SerialNo", "Kí hiệu", 80, true);
             this.Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 100, true, "c2");
+            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "{0}%");
-            this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 80, true, "c2");
+            this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 120, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true, "c2");
-            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 100, true, "c2");
+            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120,true, "c2");
             //this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 60, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
     "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", true);
@@ -1095,6 +1031,7 @@ namespace BSClient
         private void Setup_Invoice_GridView()
         {
             this.Invoice_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.Invoice_gridView.SetupGridView(columnAutoWidth: false);
             this.Invoice_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             this.Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
@@ -1600,15 +1537,19 @@ namespace BSClient
             //LoadInvoiceDepreciationGridviewFull()
             WareHouseDetail wareHouseDetail = InvoiceWareHouseDetail_gridView.GetRow(e.RowHandle).CastTo<WareHouseDetail>();
             GlobalVarient.warehouseDetailInvoiceChoice = wareHouseDetail;
+            GlobalVarient.InvoiceDepreciationsChoice = null;
             if (ChoiceWareHouseDetail == 0)
             {
                 LoadInvoiceDepreciationGridviewFull();
+                LoadInvoiceDepreciationDetailGridviewFull();
                 ChoiceWareHouseDetail = 1;
             }
             else
             {
                 Load_InvoiceDepreciation_GridView();
+                Load_InvoiceDepreciationDetail_GridView();
             }
+            
         }
 
         private void InvoiceDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
@@ -1756,6 +1697,15 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chi tiết khấu hao trước khi lưu mới!");
                 return;
             }
+
+            #region check so luong ky khau hao
+            //select gaa.Sum(aa => aa.Quantity)).FirstOrDefault();
+            var result = InvoiceDepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
+            if(result > GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth)
+            {
+                MessageBoxHelper.ShowErrorMessage("Số kỳ khấu hao chi tiết phải nhỏ hơn số kỳ khấu hao của hàng hóa!\n" + "Tổng số kỳ khấu hao của chi tiết: " + result.ToString() + "\nSố kỳ khấu hao của hàng hóa: " + GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth.ToString());
+            }
+            #endregion check so luong ky khau hao
             #region set DepreciationID to DepreciationDetail
             for (int i = 0; i < InvoiceDepreciationDetailData.Count; i++)
             {
@@ -1787,6 +1737,15 @@ namespace BSClient
         private void InvoiceDepreciationDetailSave_simpleButton_Click(object sender, EventArgs e)
         {
             #region set DepreciationID to DepreciationDetail
+
+            var result = InvoiceDepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
+            if (result > GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth)
+            {
+                MessageBoxHelper.ShowErrorMessage("Số kỳ khấu hao chi tiết phải nhỏ hơn số kỳ khấu hao của hàng hóa!\n" + "Tổng số kỳ khấu hao của chi tiết: " + result.ToString() + "\nSố kỳ khấu hao của hàng hóa: " + GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth.ToString());
+                return;
+            }
+
+
             for (int i = 0; i < InvoiceDepreciationDetailData.Count; i++)
             {
                 if (string.IsNullOrEmpty(InvoiceDepreciationDetailData[i].DepreciationDetailID))
@@ -1852,7 +1811,7 @@ namespace BSClient
                 }
             }
 
-            InvoiceDepreciation_gridView.DeleteSelectedRows();
+            InvoiceDepreciationDetail_gridView.DeleteSelectedRows();
         }
 
         private void InvoiceWareHouse_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
@@ -1885,6 +1844,908 @@ namespace BSClient
                 return;
             }
             row.Status = ModifyMode.Update;
+        }
+
+        private void InvoiceDepreciation_gridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = InvoiceDepreciation_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            Depreciation row = e.Row as Depreciation;
+            if (row.StatusA == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.StatusA = ModifyMode.Update;
+        }
+
+        private void InvoiceWareHouseDetail_gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                if (InvoiceWareHouseDetail_gridView.FocusedRowHandle == e.RowHandle)
+                {
+                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
+                    e.HighPriority = true;
+                }
+            }
+        }
+
+        private void InvoiceDepreciation_gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                if (InvoiceDepreciation_gridView.FocusedRowHandle == e.RowHandle)
+                {
+                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
+                    e.HighPriority = true;
+                }
+            }
+        }
+
+        private void InvoiceDepreciationDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = InvoiceDepreciationDetail_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            DepreciationDetail row = e.Row as DepreciationDetail;
+            if (row.StatusA == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.StatusA = ModifyMode.Update;
+        }
+
+
+
+     
+
+        private void InvoiceWareHouseDetailCalculator_simpleButton_Click(object sender, EventArgs e)
+        {
+            decimal TienCK = (decimal)InvoiceWareHouseDetailDiscount_textEdit.EditValue;
+            
+            decimal TienFullDetail = InvoiceWarehouseDetailData.Select(o => o.Amount).Sum();
+            decimal PercentDiscount = TienCK * 100 / TienFullDetail;
+            for (int i = 0; i < InvoiceWarehouseDetailData.Count; i++)
+            {
+
+                InvoiceWarehouseDetailData[i].Price = (InvoiceWarehouseDetailData[i].Amount - (InvoiceWarehouseDetailData[i].Amount * PercentDiscount / 100)) / InvoiceWarehouseDetailData[i].Quantity;
+
+            }
+            InvoiceWareHouseDetail_gridControl.RefreshDataSource();
+           // InvoiceWareHouseDetail_gridControl.DataSource = InvoiceWarehouseDetailData;
+        }
+
+        private void simpleButton24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region WareHouse tabpanel
+        void LoadWareHouseGridviewFull()
+        {
+            InvoiceController invoicecontroller = new InvoiceController();
+            GlobalVarient.invoices = invoicecontroller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
+            Init_WareHouse_GridView();
+            Setup_WareHouse_GridView();
+            Load_WareHouse_GridView();
+        }
+
+        private void Init_WareHouse_GridView()
+        {
+            this.WareHouse_gridView.Columns.Clear();
+            this.WareHouse_gridView.AddColumn("Date", "Ngày", 80, false);
+          
+            var columnShow = new Dictionary<string, string>
+            {
+                    {"InvoiceDate", "Ngày HĐ" },
+                    {"CustomerID", "Mã KH" },
+                    {"InvoiceFormNo", "Mã số" },
+                    {"FormNo", "Mẫu số" },
+                    {"SerialNo", "Ký hiệu" },
+                    {"InvoiceNo", "Số HĐ" },
+                    {"Amount", "Tiền" },
+                    {"VAT", "% GTGT" },
+                    {"VATAmount", "Tiền VAT" },
+                    {"Discounts", "CK" },
+                    {"TotalAmount", "Tổng tiền" },
+                    {"InvoiceType", "Loại HĐ" },
+                    {"Description", "Mô tả" },
+                    {"CreateUser", "Người tạo" }
+
+            };
+
+            this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", true, columns: columnShow);
+
+            this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", false);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", true);
+            this.WareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
+            this.WareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
+            this.WareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
+            this.WareHouse_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
+        }
+
+        private void Setup_WareHouse_GridView()
+        {
+            this.WareHouse_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.WareHouse_gridView.SetupGridView(columnAutoWidth: false);
+            this.WareHouse_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.WareHouse_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void Load_WareHouse_GridView()
+        {
+            
+            WareHouseController controller = new WareHouseController();
+            GlobalVarient.warehouse = controller.GetWareHouseSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
+            WarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouse);
+            WareHouse_gridControl.DataSource = WarehouseData;
+            WareHouseDelete = new List<WareHouse>();
+        }
+
+
+        void LoadWareHouseDetailGridviewFull()
+        {
+            Init_WareHouseDetail_GridView();
+            Setup_WareHouseDetail_GridView();
+            Load_WareHouseDetail_GridView();
+        }
+
+        private void Init_WareHouseDetail_GridView()
+        {
+            this.WareHouseDetail_gridView.Columns.Clear();
+            this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", true, editValueChanged: WareHouseDetail_EditValueChanged);
+            this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false, "c2");
+        }
+
+        private void Setup_WareHouseDetail_GridView()
+        {
+            this.WareHouseDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.WareHouseDetail_gridView.SetupGridView(columnAutoWidth: false);
+            this.WareHouseDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.WareHouseDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void Load_WareHouseDetail_GridView()
+        {
+            WareHouseDetailController controller = new WareHouseDetailController();
+            if (GlobalVarient.warehouseChoice == null || GlobalVarient.warehouseChoice.WarehouseID == null)
+            {
+                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID("00000", GlobalVarient.CompanyIDChoice);
+            }
+            else
+            {
+                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseChoice.WarehouseID, GlobalVarient.CompanyIDChoice);
+            }
+
+            WarehouseDetailData = new BindingList<WareHouseDetail>(GlobalVarient.warehouseDetail);
+            WareHouseDetail_gridControl.DataSource = WarehouseDetailData;
+            WareHouseDetailDelete = new List<WareHouseDetail>();
+        }
+
+
+        public void WareHouseDetail_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
+            WareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnit);
+        }
+
+        void Load_DepreciationGridviewFull()
+        {
+            Init_Depreciation_GridView();
+            Setup_Depreciation_GridView();
+            Load_Depreciation_GridView();
+        }
+
+        private void Init_Depreciation_GridView()
+        {
+            this.WareHouseDepreciation_gridView.Columns.Clear();
+            this.WareHouseDepreciation_gridView.AddColumn("StartDate", "Ngày BĐSD", 80, true);
+            this.WareHouseDepreciation_gridView.AddColumn("UseMonth", "Số tháng SD", 70, true);
+            this.WareHouseDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
+            this.WareHouseDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
+            this.WareHouseDepreciation_gridView.AddColumn("DepreciationPercent", "% KH", 40, true);
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountMonth", "Tiền/Tháng", 120, false, "C2");
+        }
+
+        private void Setup_Depreciation_GridView()
+        {
+            this.WareHouseDepreciation_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.WareHouseDepreciation_gridView.SetupGridView(columnAutoWidth: false);
+            this.WareHouseDepreciation_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.WareHouseDepreciation_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void Load_Depreciation_GridView()
+        {
+
+            DepreciationController controller = new DepreciationController();
+            if (GlobalVarient.warehouseDetailChoice == null || GlobalVarient.warehouseDetailChoice.WareHouseDetailID == null)
+            {
+                GlobalVarient.Depreciations = controller.GetDepreciationSelect("00000", GlobalVarient.CompanyIDChoice);
+            }
+            else
+            {
+                GlobalVarient.Depreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailChoice.WareHouseDetailID, GlobalVarient.CompanyIDChoice);
+            }
+
+            DepreciationData = new BindingList<Depreciation>(GlobalVarient.Depreciations);
+            WareHouseDepreciation_gridControl.DataSource = DepreciationData;
+            DepreciationDelete = new List<Depreciation>();
+        }
+
+
+        void Load_DepreciationDetailGridviewFull()
+        {
+            Init_DepreciationDetail_GridView();
+            Setup_DepreciationDetail_GridView();
+            Load_DepreciationDetail_GridView();
+        }
+
+        private void Init_DepreciationDetail_GridView()
+        {
+            this.DepreciationDetail_gridView.Columns.Clear();
+            this.DepreciationDetail_gridView.AddColumn("PeriodCurrent", "kỳ HT", 40, true);
+            this.DepreciationDetail_gridView.AddColumn("DepreciationDate", "Ngày của kỳ", 80, true);
+            this.DepreciationDetail_gridView.AddColumn("QuantityPeriod", "SL kỳ", 40, true);
+            this.DepreciationDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 110, true, "C2");
+            this.DepreciationDetail_gridView.AddColumn("Descriptions", "Nội dung", 120, true);
+        }
+
+        private void Setup_DepreciationDetail_GridView()
+        {
+            this.DepreciationDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
+            this.DepreciationDetail_gridView.SetupGridView(columnAutoWidth: false);
+            this.DepreciationDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+            this.DepreciationDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+        }
+
+        private void Load_DepreciationDetail_GridView()
+        {
+
+            DepreciationDetailController controller = new DepreciationDetailController();
+            if (GlobalVarient.DepreciationsChoice == null || GlobalVarient.DepreciationsChoice.DepreciationID == null)
+            {
+                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect("00000", GlobalVarient.CompanyIDChoice);
+            }
+            else
+            {
+                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect(GlobalVarient.DepreciationsChoice.DepreciationID, GlobalVarient.CompanyIDChoice);
+            }
+
+            DepreciationDetailData = new BindingList<DepreciationDetail>(GlobalVarient.DepreciationsDetail);
+            DepreciationDetail_gridControl.DataSource = DepreciationDetailData;
+            DepreciationDetailDelete = new List<DepreciationDetail>();
+        }
+
+        #endregion WareHouse tabpanel
+
+
+        int ChoiceWWareHouse = 0;
+        private void WareHouse_gridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            //InvoiceWareHouse_groupControl.Enabled = true;
+            WareHouse wareHouse = WareHouse_gridView.GetRow(e.RowHandle).CastTo<WareHouse>();
+            GlobalVarient.warehouseChoice = wareHouse;
+            if (ChoiceWWareHouse == 0)
+            {
+                // LoadInvoiceWareHouseGridviewFull();
+                LoadWareHouseDetailGridviewFull();
+                ChoiceWWareHouse = 1;
+            }
+            else
+            {
+                // Load_InvoiceWareHouse_GridView();
+                Load_WareHouseDetail_GridView();
+            }
+        }
+
+        private void WareHouse_gridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = WareHouse_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            WareHouse row = e.Row as WareHouse;
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.Status = ModifyMode.Update;
+        }
+
+        private void WWareHouseSaveNew_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region insert Phiếu kho.
+            //1 hóa đơn có thể có nhiều phiếu kho
+            if (!WareHouse_checkBox.Checked)
+            {
+                MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm phiếu kho trước khi lưu mới!");
+                return;
+            }
+            #region set VoucherID to WareHouse
+            for (int i = 0; i < WarehouseData.Count; i++)
+            {
+                WarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
+                WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+
+                WarehouseData[i].Status = ModifyMode.Insert;
+            }
+            #endregion set VoucherID to invoice
+
+            List<WareHouse> saveData = this.WarehouseData.Where(o => o.Status == ModifyMode.Insert).ToList();
+            if (saveData?.Count > 0)
+            {
+                WareHouseController controller = new WareHouseController();
+                if (controller.SaveWareHouse(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    WareHouseDelete = new List<WareHouse>();
+                    this.LoadWareHouseGridviewFull();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #endregion insert Phiếu kho.
+        }
+
+        private void WWareHouseSave_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region set Voucher to WareHouse
+            for (int i = 0; i < WarehouseData.Count; i++)
+            {
+                if (string.IsNullOrEmpty(WarehouseData[i].WarehouseID))
+                {
+                    WarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
+                    WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+                    WarehouseData[i].Status = ModifyMode.Insert;
+                }
+            }
+            #endregion  set VoucherID to WareHouse
+
+            int checkAction = 0;
+
+            List<WareHouse> saveData = this.WarehouseData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+            if (saveData?.Count > 0)
+            {
+                //  InvoiceController controller = new InvoiceController();
+                WareHouseController controller = new WareHouseController();
+                if (controller.SaveWareHouse(saveData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #region delete Invoice
+            if (WareHouseDelete?.Count > 0)
+            {
+                WareHouseController controller = new WareHouseController();
+                if (controller.SaveWareHouse(WareHouseDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            #endregion delete WareHouse
+            this.Load_WareHouse_GridView();
+        }
+
+        private void WWareHouseDelete_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = WareHouse_gridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                WareHouse delete = WareHouse_gridView.GetRow(index) as WareHouse;
+                if (!string.IsNullOrEmpty(delete.WarehouseID))
+                {
+                    WarehouseData[index].Status = ModifyMode.Delete;
+                    WareHouseDelete.Add(delete);
+                }
+            }
+
+            WareHouse_gridView.DeleteSelectedRows();
+        }
+
+        private void WWareHouseCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_WareHouse_GridView();
+        }
+
+
+        int ChoiceWWareHouseDetail = 0;
+
+        private void WareHouseDetail_gridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            WareHouseDepreciation_groupControl.Enabled = true;
+            //WareHouseDepreciation_gridControl
+            //LoadInvoiceDepreciationGridviewFull()
+            WareHouseDetail wareHouseDetail = WareHouseDetail_gridView.GetRow(e.RowHandle).CastTo<WareHouseDetail>();
+            GlobalVarient.warehouseDetailChoice = wareHouseDetail;
+            GlobalVarient.DepreciationsChoice = null;
+            if (ChoiceWWareHouseDetail == 0)
+            {
+                Load_DepreciationGridviewFull();
+                Load_DepreciationDetailGridviewFull();
+                ChoiceWWareHouseDetail = 1;
+            }
+            else
+            {
+                Load_Depreciation_GridView();
+                Load_DepreciationDetail_GridView();
+            }
+        }
+
+        private void WareHouseDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = WareHouseDetail_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            WareHouseDetail row = e.Row as WareHouseDetail;
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.Status = ModifyMode.Update;
+        }
+
+        private void WareHouseDetail_gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                if (WareHouseDetail_gridView.FocusedRowHandle == e.RowHandle)
+                {
+                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
+                    e.HighPriority = true;
+                }
+            }
+        }
+
+        private void WWareHouseDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region insert chi tiết Kho
+            //1 hóa đơn có thể có nhiều phiếu kho
+            if (!WareHouseDetailAddNew_checkBox.Checked)
+            {
+                MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chi tiết Kho trước khi lưu mới!");
+                return;
+            }
+            #region set warehouseID to WareHouseDetail
+            for (int i = 0; i < WarehouseDetailData.Count; i++)
+            {
+                WarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                WarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseChoice.WarehouseID;
+                WarehouseDetailData[i].Status = ModifyMode.Insert;
+            }
+            #endregion set warehouseID to WareHouseDetail
+
+            List<WareHouseDetail> saveData = this.WarehouseDetailData.Where(o => o.Status == ModifyMode.Insert).ToList();
+            if (saveData?.Count > 0)
+            {
+                WareHouseDetailController controller = new WareHouseDetailController();
+                if (controller.SaveWareHouseDetail(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    WareHouseDetailDelete = new List<WareHouseDetail>();
+
+                    this.LoadWareHouseDetailGridviewFull();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #endregion insert chi tiết kho
+        }
+
+        private void WWareHouseDetailSave_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region set warehouseID to WareHouseDetail
+            for (int i = 0; i < WarehouseDetailData.Count; i++)
+            {
+                if (string.IsNullOrEmpty(WarehouseDetailData[i].WareHouseDetailID))
+                {
+                    WarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    WarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseChoice.WarehouseID;
+                    WarehouseDetailData[i].Status = ModifyMode.Insert;
+                }
+            }
+            #endregion  set warehouseID to WareHouseDetail
+
+            int checkAction = 0;
+
+            List<WareHouseDetail> saveData = this.WarehouseDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+            if (saveData?.Count > 0)
+            {
+                //  InvoiceController controller = new InvoiceController();
+                WareHouseDetailController controller = new WareHouseDetailController();
+                if (controller.SaveWareHouseDetail(saveData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #region delete warehouseDetail
+            if (WareHouseDetailDelete?.Count > 0)
+            {
+                WareHouseDetailController controller = new WareHouseDetailController();
+                if (controller.SaveWareHouseDetail(WareHouseDetailDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            #endregion delete warehouseDetail
+            this.Load_WareHouseDetail_GridView();
+        }
+
+        private void WWareHouseDetailDelete_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = WareHouseDetail_gridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                WareHouseDetail delete = WareHouseDetail_gridView.GetRow(index) as WareHouseDetail;
+                if (!string.IsNullOrEmpty(delete.WarehouseID))
+                {
+                    WarehouseDetailData[index].Status = ModifyMode.Delete;
+                    WareHouseDetailDelete.Add(delete);
+                }
+            }
+
+            WareHouseDetail_gridView.DeleteSelectedRows();
+        }
+
+        private void WWareHouseDetailCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_WareHouse_GridView();
+        }
+
+        private void InvoiceWareHouseDetailCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_InvoiceWareHouseDetail_GridView();
+        }
+
+
+        int WareHouseChoiceDepreciation = 0;
+
+        private void WareHouseDepreciation_gridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            // InvoiceDepreciationgroupControl.Enabled = true;
+            //LoadInvoiceDepreciationGridviewFull()
+            Depreciation depreciation = WareHouseDepreciation_gridView.GetRow(e.RowHandle).CastTo<Depreciation>();
+            GlobalVarient.DepreciationsChoice = depreciation;
+            if (WareHouseChoiceDepreciation == 0)
+            {
+                Load_DepreciationDetailGridviewFull();
+                WareHouseChoiceDepreciation = 1;
+            }
+            else
+            {
+                Load_DepreciationDetail_GridView();
+            }
+        }
+
+        private void WareHouseDepreciation_gridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            bool isNewRow = WareHouseDepreciation_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+
+            Depreciation row = e.Row as Depreciation;
+            if (row.StatusA == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.StatusA = ModifyMode.Update;
+        }
+
+        private void WareHouseDepreciation_gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                if (WareHouseDepreciation_gridView.FocusedRowHandle == e.RowHandle)
+                {
+                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
+                    e.HighPriority = true;
+                }
+            }
+        }
+
+        private void WareHouseDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region insert Khấu hao
+            //1 hóa đơn có thể có nhiều phiếu kho
+            if (!DepreciationAddNew_checkBox.Checked)
+            {
+                MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm khấu hao trước khi lưu mới!");
+                return;
+            }
+            #region set warehouseDetailID to Depreciation
+            for (int i = 0; i < DepreciationData.Count; i++)
+            {
+                DepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                DepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailChoice.WareHouseDetailID;
+                DepreciationData[i].StatusA = ModifyMode.Insert;
+            }
+            #endregion set warehouseID to WareHouseDetail
+
+            List<Depreciation> saveData = this.DepreciationData.Where(o => o.StatusA == ModifyMode.Insert).ToList();
+            if (saveData?.Count > 0)
+            {
+                DepreciationController controller = new DepreciationController();
+                if (controller.SaveDepreciation(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    DepreciationDelete = new List<Depreciation>();
+                    this.Load_Depreciation_GridView();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #endregion insert Khấu hao
+        }
+
+        private void WareHouseDepreciationSave_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region set warehouseDetailID to Depreciation
+            for (int i = 0; i < DepreciationData.Count; i++)
+            {
+                if (string.IsNullOrEmpty(DepreciationData[i].WareHouseDetailID))
+                {
+                    DepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    DepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailChoice.WareHouseDetailID;
+                    DepreciationData[i].StatusA = ModifyMode.Insert;
+                }
+            }
+            #endregion  set warehouseDetailID to Depreciation
+
+            int checkAction = 0;
+
+            List<Depreciation> saveData = this.DepreciationData.Where(o => o.StatusA == ModifyMode.Insert || o.StatusA == ModifyMode.Update || o.StatusA == ModifyMode.Delete).ToList();
+            if (saveData?.Count > 0)
+            {
+                //  InvoiceController controller = new InvoiceController();
+                DepreciationController controller = new DepreciationController();
+                if (controller.SaveDepreciation(saveData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #region delete Depriciation
+            if (InvoiceDepreciationDelete?.Count > 0)
+            {
+                DepreciationController controller = new DepreciationController();
+                if (controller.SaveDepreciation(DepreciationDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            #endregion delete Depriciation
+            this.Load_Depreciation_GridView();
+        }
+
+        private void WareHouseDepreciationCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_Depreciation_GridView();
+        }
+
+        private void WareHouseDepreciationDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region insert Khấu hao
+            //1 hóa đơn có thể có nhiều phiếu kho
+            if (!DepreciationDetailAddNew_checkBox.Checked)
+            {
+                MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chi tiết khấu hao trước khi lưu mới!");
+                return;
+            }
+
+            #region check so luong ky khau hao
+            //select gaa.Sum(aa => aa.Quantity)).FirstOrDefault();
+            var result = DepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
+            if (result > GlobalVarient.DepreciationsChoice.DepreciationMonth)
+            {
+                MessageBoxHelper.ShowErrorMessage("Số kỳ khấu hao chi tiết phải nhỏ hơn số kỳ khấu hao của hàng hóa!\n" + "Tổng số kỳ khấu hao của chi tiết: " + result.ToString() + "\nSố kỳ khấu hao của hàng hóa: " + GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth.ToString());
+            }
+            #endregion check so luong ky khau hao
+            #region set DepreciationID to DepreciationDetail
+            for (int i = 0; i < DepreciationDetailData.Count; i++)
+            {
+                DepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                DepreciationDetailData[i].DepreciationID = GlobalVarient.DepreciationsChoice.DepreciationID;
+                DepreciationDetailData[i].StatusA = ModifyMode.Insert;
+            }
+            #endregion set warehouseID to WareHouseDetail
+
+            List<DepreciationDetail> saveData = this.DepreciationDetailData.Where(o => o.StatusA == ModifyMode.Insert).ToList();
+            if (saveData?.Count > 0)
+            {
+                DepreciationDetailController controller = new DepreciationDetailController();
+                if (controller.SaveDepreciationDetail(saveData))
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                    DepreciationDetailDelete = new List<DepreciationDetail>();
+                    this.Load_DepreciationDetail_GridView();
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+            #endregion insert khấu hao detail
+        }
+
+        private void WareHouseDepreciationDetailSave_simpleButton_Click(object sender, EventArgs e)
+        {
+            #region set DepreciationID to DepreciationDetail
+
+            var result = DepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
+            if (result > GlobalVarient.DepreciationsChoice.DepreciationMonth)
+            {
+                MessageBoxHelper.ShowErrorMessage("Số kỳ khấu hao chi tiết phải nhỏ hơn số kỳ khấu hao của hàng hóa!\n" + "Tổng số kỳ khấu hao của chi tiết: " + result.ToString() + "\nSố kỳ khấu hao của hàng hóa: " + GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth.ToString());
+                return;
+            }
+
+
+            for (int i = 0; i < DepreciationDetailData.Count; i++)
+            {
+                if (string.IsNullOrEmpty(DepreciationDetailData[i].DepreciationDetailID))
+                {
+                    DepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    DepreciationDetailData[i].DepreciationID = GlobalVarient.DepreciationsChoice.DepreciationID;
+                    DepreciationDetailData[i].StatusA = ModifyMode.Insert;
+                }
+            }
+            #endregion  set DepreciationID to DepreciationDetail
+
+            int checkAction = 0;
+
+            List<DepreciationDetail> saveData = this.DepreciationDetailData.Where(o => o.StatusA == ModifyMode.Insert || o.StatusA == ModifyMode.Update || o.StatusA == ModifyMode.Delete).ToList();
+            if (saveData?.Count > 0)
+            {
+                //  InvoiceController controller = new InvoiceController();
+                DepreciationDetailController controller = new DepreciationDetailController();
+                if (controller.SaveDepreciationDetail(saveData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #region delete Depriciation detail
+            if (DepreciationDetailDelete?.Count > 0)
+            {
+                DepreciationDetailController controller = new DepreciationDetailController();
+                if (controller.SaveDepreciationDetail(DepreciationDetailDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            #endregion delete Depriciation
+            this.Load_DepreciationDetail_GridView();
+        }
+
+        private void WareHouseDepreciationDetailDelete_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = DepreciationDetail_gridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                DepreciationDetail delete = DepreciationDetail_gridView.GetRow(index) as DepreciationDetail;
+                if (!string.IsNullOrEmpty(delete.DepreciationDetailID))
+                {
+                    DepreciationDetailData[index].StatusA = ModifyMode.Delete;
+                    DepreciationDetailDelete.Add(delete);
+                }
+            }
+
+            DepreciationDetail_gridView.DeleteSelectedRows();
+        }
+
+        private void WareHouseDepreciationDetailCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_DepreciationDetail_GridView();
+        }
+
+        private void InvoiceDepreciationDetailCancel_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_InvoiceDepreciationDetail_GridView();
+        }
+
+        private void WareHouse_gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                if (WareHouse_gridView.FocusedRowHandle == e.RowHandle)
+                {
+                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
+                    e.HighPriority = true;
+                }
+            }
         }
     }
 }

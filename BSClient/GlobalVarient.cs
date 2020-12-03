@@ -17,8 +17,15 @@ namespace BSClient
         public static List<VoucherDetail> voucherDetailChoice = new List<VoucherDetail>();
         public static List<Invoice> invoices = new List<Invoice>();
         public static Invoice invoiceChoice = new Invoice();
+
+        public static List<WareHouse> warehouse = new List<WareHouse>();
+        public static WareHouse warehouseChoice = new WareHouse();
+
         public static List<WareHouse>  warehouseInvoice = new List<WareHouse>();
         public static WareHouse warehouseInvoiceChoice = new WareHouse();
+
+        public static List<WareHouseDetail> warehouseDetail = new List<WareHouseDetail>();
+        public static WareHouseDetail warehouseDetailChoice = new WareHouseDetail();
 
         public static List<WareHouseDetail> warehouseDetailInvoice = new List<WareHouseDetail>();
         public static WareHouseDetail warehouseDetailInvoiceChoice = new WareHouseDetail();
@@ -27,8 +34,15 @@ namespace BSClient
         public static List<Depreciation> InvoiceDepreciations = new List<Depreciation>();
         public static Depreciation InvoiceDepreciationsChoice = new Depreciation();
 
+
+        public static List<Depreciation> Depreciations = new List<Depreciation>();
+        public static Depreciation DepreciationsChoice = new Depreciation();
+
         public static List<DepreciationDetail> InvoiceDepreciationsDetail = new List<DepreciationDetail>();
         public static DepreciationDetail InvoiceDepreciationsDetailChoice = new DepreciationDetail();
+
+        public static List<DepreciationDetail> DepreciationsDetail = new List<DepreciationDetail>();
+        public static DepreciationDetail DepreciationsDetailChoice = new DepreciationDetail();
 
 
     }

@@ -43,11 +43,10 @@ namespace BSServer.DAOs
                     new SqlParameter("@DepreciationID", depreciationdetail.DepreciationID),
                     new SqlParameter("@PeriodCurrent", depreciationdetail.PeriodCurrent),
                     new SqlParameter("@DepreciationDate", depreciationdetail.DepreciationDate),
-                    new SqlParameter("@QuantityPeriod", depreciationdetail.QuantityPeriod?? (object)DBNull.Value),
+                    new SqlParameter("@QuantityPeriod", depreciationdetail.QuantityPeriod),
                     new SqlParameter("@Amount", depreciationdetail.Amount),
-                    new SqlParameter("@Descriptions", depreciationdetail.Descriptions),
+                    new SqlParameter("@Descriptions", depreciationdetail.Descriptions?? (object)DBNull.Value),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
-                    new SqlParameter("@Status",  CommonInfo.UserInfo.UserID),
                     new SqlParameter("@CompanyID", depreciationdetail.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("DepreciationDetailInsert", sqlParameters);
@@ -93,9 +92,8 @@ namespace BSServer.DAOs
                     new SqlParameter("@DepreciationDate", depreciationdetail.DepreciationDate),
                     new SqlParameter("@QuantityPeriod", depreciationdetail.QuantityPeriod),
                     new SqlParameter("@Amount", depreciationdetail.Amount),
-                    new SqlParameter("@Descriptions", depreciationdetail.Descriptions),
+                    new SqlParameter("@Descriptions", depreciationdetail.Descriptions?? (object)DBNull.Value),
                     new SqlParameter("@CreateUser",  CommonInfo.UserInfo.UserID ),
-                    new SqlParameter("@Status", depreciationdetail.Status?? (object)DBNull.Value),
                     new SqlParameter("@CompanyID", depreciationdetail.CompanyID),
                 };
 

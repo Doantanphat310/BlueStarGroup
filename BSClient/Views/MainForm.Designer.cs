@@ -116,7 +116,7 @@
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Text = "Quản trị hệ thống";
             // 
-            // ACE_Company
+            // Company_Button
             // 
             this.Company_Button.Name = "Company_Button";
             this.Company_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -130,14 +130,14 @@
             this.Custommers_Button.Text = "Đối tượng - Khách hàng";
             this.Custommers_Button.Click += new System.EventHandler(this.Custommers_Button_Click);
             // 
-            // accordionControlElementAccountGroup
+            // AccountList_Button
             // 
             this.AccountList_Button.Name = "AccountList_Button";
             this.AccountList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
             this.AccountList_Button.Click += new System.EventHandler(this.AccountList_Button_Click);
             // 
-            // accordionControlElementHangHoa
+            // ItemList_Button
             // 
             this.ItemList_Button.Name = "ItemList_Button";
             this.ItemList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -190,6 +190,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BlueStarGroup";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);

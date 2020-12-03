@@ -3,6 +3,7 @@ using BSClient.Utility;
 using BSClient.Views;
 using BSCommon.Constant;
 using System;
+using System.Windows.Forms;
 
 namespace BSClient
 {
@@ -53,6 +54,12 @@ namespace BSClient
             AccountList control = new AccountList();
             this.ShowControl(control, Content);
             this.Text = " Blue Star Group - Thông tin hệ thống tài khoản và sổ cái";
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+           
+           // MessageBox.Show(Screen.PrimaryScreen.Bounds.Width.ToString());
         }
     }
 }

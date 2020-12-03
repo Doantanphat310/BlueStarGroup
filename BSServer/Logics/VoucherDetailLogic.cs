@@ -85,7 +85,7 @@ namespace BSServer.Logics
                         case ModifyMode.Insert:
                             //get, set voucherID
                             seq++;
-                            voucher.VouchersID = GenerateID.VoucherDetailID(seq);
+                            voucher.VouchersID = GenerateID.GetVoucherID(seq);
                             this.VoucherDAO.InsertVouchers(voucher);
                             break;
 

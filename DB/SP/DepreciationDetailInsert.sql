@@ -1,5 +1,5 @@
 
-Create proc [dbo].[DepreciationDetailInsert]
+alter proc [dbo].[DepreciationDetailInsert]
 	@DepreciationDetailID varchar(50),
 	@DepreciationID varchar(50),
 	@PeriodCurrent int,
@@ -8,10 +8,17 @@ Create proc [dbo].[DepreciationDetailInsert]
 	@Amount money,
 	@Descriptions nvarchar(max),
 	@CreateUser varchar(50),
-	@Status bit,
 	@CompanyID varchar(50)
 as
 begin
+Declare @Status bit
+Declare @DepDate datetime
+set @DepDate = dateadd(m, @PeriodCurrent, (select StartDate from Depreciation where DepreciationID = @DepreciationID))
+Set @Status = 0
+if(@DepreciationDate = @DepDate)
+begin
+Set @Status = 1
+end
 INSERT INTO DepreciationDetail(
 	DepreciationDetailID,
 	DepreciationID,
@@ -37,3 +44,5 @@ INSERT INTO DepreciationDetail(
 	@Status,
 	@CompanyID)
 end
+
+
