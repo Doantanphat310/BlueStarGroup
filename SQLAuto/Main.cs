@@ -117,6 +117,8 @@ ORDER BY
             {
                 this.GeneralInsertSP(path, item.Key, item.Value);
                 this.GeneralUpdateSP(path, item.Key, item.Value);
+
+
                 this.GeneralDeleteSP(path, item.Key, item.Value);
             }
         }
@@ -142,7 +144,18 @@ ORDER BY
         private void GeneralDeleteSP(string path, string tableName, List<ColumnInfo> columnInfos)
         {
             string fileName = $"{tableName}Delete.sql";
-            string sqlSP = CommonUtility.GeneralDeleteSP(tableName, columnInfos);
+
+            string sqlSP;
+
+            if (columnInfos.Find(o => o.ColumnName == "IsDelete") != null)
+            {
+                sqlSP = CommonUtility.GeneralDeleteLogicSP(tableName, columnInfos);
+            }
+            else
+            {
+                sqlSP = CommonUtility.GeneralDeleteSP(tableName, columnInfos);
+            }
+
             string filePath = Path.Combine(path, fileName);
 
             File.WriteAllText(filePath, sqlSP);
