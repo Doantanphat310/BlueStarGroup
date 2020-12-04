@@ -10,6 +10,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BSClient.Utility
@@ -346,6 +347,9 @@ namespace BSClient.Utility
             }
 
             gridView.OptionsView.ShowFooter = showFooter;
+
+            gridView.Appearance.FocusedRow.BackColor = SystemColors.Highlight;
+            gridView.Appearance.FocusedRow.Options.UseBackColor = true;
         }
     }
 }
