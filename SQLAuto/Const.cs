@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SQLAuto
+﻿namespace SQLAuto
 {
     public static class SPFormat
     {
@@ -12,7 +6,7 @@ namespace SQLAuto
 GO
 CREATE PROCEDURE {0}Insert (
 {1}
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO {0}(
@@ -25,22 +19,22 @@ AS
 {3}
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)
 ";
 
         public const string UPDATE = @"DROP PROCEDURE IF EXISTS {0}Update;
 GO
 CREATE PROCEDURE {0}Update (
 {1}
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE {0}
 	SET
 {2}
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
 {3}
 ";
@@ -60,13 +54,13 @@ AS
 GO
 CREATE PROCEDURE {0}Delete (
 {1}
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE {0}
 	SET
 		UpdateDate = GETDATE()
-		,UpdateUser = @UserId
+		,UpdateUser = @UpdateUser
 		,IsDelete = 1
 	WHERE 
 {2}

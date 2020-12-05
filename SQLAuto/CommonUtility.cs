@@ -9,14 +9,6 @@ namespace SQLAuto
 {
     public static class CommonUtility
     {
-        private static Dictionary<string, string> ConvertColumn = new Dictionary<string, string>
-        {
-            { "CreateDate", "GETDATE()" },
-            { "UpdateDate", "GETDATE()" },
-            { "CreateUser", "@UserId" },
-            { "UpdateUser", "@UserId" }
-        };
-
         private static readonly HashSet<string> IgnoreColumn = new HashSet<string>
         {
             "CreateDate",
@@ -99,7 +91,7 @@ namespace SQLAuto
 
                 if (col.IsKey == true)
                 {
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND", "\t\t");
+                    whereStr = whereStr.AddAndOparator($"{col.ColumnName} = @{col.ColumnName}", "\t\t");
                 }
                 else
                 {
@@ -128,7 +120,7 @@ namespace SQLAuto
                 if (col.IsKey == true)
                 {
                     parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize), "\t");
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND", "\t\t");
+                    whereStr = whereStr.AddAndOparator($"{col.ColumnName} = @{col.ColumnName}", "\t\t");
                 }
             }
 
@@ -155,7 +147,7 @@ namespace SQLAuto
                 if (col.IsKey == true)
                 {
                     parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize), "\t");
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND ", "\t\t");
+                    whereStr = whereStr.AddAndOparator($"{col.ColumnName} = @{col.ColumnName}", "\t\t");
                 }
             }
 
@@ -291,7 +283,7 @@ namespace SQLAuto
 
         public static string AddOrOparator(this string str, string content, string tabStr = "")
         {
-            return str.AddExpression(content, "OR ", tabStr);
+            return str.AddExpression(content, " OR ", tabStr);
         }
 
         public static string AddExpression(this string str, string content, string expression, string tabStr = "")
