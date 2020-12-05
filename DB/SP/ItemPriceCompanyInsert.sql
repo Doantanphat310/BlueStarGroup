@@ -4,7 +4,7 @@ CREATE PROCEDURE ItemPriceCompanyInsert (
 	@ItemID varchar(50)
 	,@CompanyID varchar(50)
 	,@ItemPrice money
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO ItemPriceCompany(
@@ -21,5 +21,5 @@ AS
 		,@ItemPrice
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

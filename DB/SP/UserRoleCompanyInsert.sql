@@ -4,7 +4,7 @@ CREATE PROCEDURE UserRoleCompanyInsert (
 	@UserID varchar(50)
 	,@CompanyID varchar(50)
 	,@RoleID varchar(50)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO UserRoleCompany(
@@ -21,5 +21,5 @@ AS
 		,@RoleID
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

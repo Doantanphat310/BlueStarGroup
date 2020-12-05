@@ -39,7 +39,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@SerialNo", customer.SerialNo),
                 new SqlParameter("@Address", customer.Address),
                 new SqlParameter("@Phone", customer.Phone),
-                new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             return this.Context.ExecuteDataFromProcedure("CustomerInsert", param);
@@ -57,7 +57,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@SerialNo", customer.SerialNo),
                 new SqlParameter("@Address", customer.Address),
                 new SqlParameter("@Phone", customer.Phone),
-                new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             return this.Context.ExecuteDataFromProcedure("CustomerUpdate", param);

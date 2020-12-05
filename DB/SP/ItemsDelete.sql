@@ -2,13 +2,13 @@ DROP PROCEDURE IF EXISTS ItemsDelete;
 GO
 CREATE PROCEDURE ItemsDelete (
 	@ItemID varchar(50)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE Items
 	SET
 		UpdateDate = GETDATE()
-		,UpdateUser = @UserId
+		,UpdateUser = @UpdateUser
 		,IsDelete = 1
 	WHERE 
 		ItemID = @ItemID

@@ -7,7 +7,7 @@ CREATE PROCEDURE ItemsUpdate (
 	,@ItemTypeID varchar(50)
 	,@ItemUnit varchar(3)
 	,@ItemSpecification nvarchar(250)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE Items
@@ -18,6 +18,6 @@ AS
 		,ItemUnit = @ItemUnit
 		,ItemSpecification = @ItemSpecification
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
 		ItemID = @ItemID

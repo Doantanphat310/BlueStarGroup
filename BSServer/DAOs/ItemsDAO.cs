@@ -49,7 +49,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemTypeName", data.ItemTypeName),
                 new SqlParameter("@ItemTypeSName", data.ItemTypeSName),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemTypeInsert", sqlParameters);
@@ -62,7 +62,7 @@ namespace BSServer.DAOs
             SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@ItemTypeID", ItemTypeID),
-                    new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
                };
 
             this.Context.ExecuteDataFromProcedure("ItemTypeDelete", sqlParameters);
@@ -76,7 +76,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemTypeName", data.ItemTypeName),
                 new SqlParameter("@ItemTypeSName", data.ItemTypeSName),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemTypeUpdate", sqlParameters);
@@ -93,7 +93,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemsInsert", sqlParameters);
@@ -106,7 +106,7 @@ namespace BSServer.DAOs
             SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@ItemID", ItemID),
-                    new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
                };
 
             this.Context.ExecuteDataFromProcedure("ItemsDelete", sqlParameters);
@@ -123,7 +123,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemsUpdate", sqlParameters);
@@ -137,7 +137,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemsID", data.ItemID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@ItemPrice", data.ItemPrice),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemPriceCompanyInsert", sqlParameters);
@@ -152,7 +152,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemsID", data.ItemID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@ItemPrice", data.ItemPrice),
-                new SqlParameter("@UserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemPriceCompanyUpdate", sqlParameters);

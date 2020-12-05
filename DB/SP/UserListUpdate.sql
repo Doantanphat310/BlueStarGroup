@@ -6,7 +6,7 @@ CREATE PROCEDURE UserListUpdate (
 	,@UserName nvarchar(250)
 	,@Phone varchar(10)
 	,@Address nvarchar(250)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE UserList
@@ -16,6 +16,6 @@ AS
 		,Phone = @Phone
 		,Address = @Address
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
 		UserID = @UserID

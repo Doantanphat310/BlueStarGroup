@@ -6,17 +6,16 @@ CREATE PROCEDURE AccountsUpdate (
 	,@AccountGroupID varchar(30)
 	,@AccountLevel tinyint
 	,@ParentID varchar(30)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE Accounts
 	SET
-		AccountID = @AccountID
-		,AccountName = @AccountName
+		AccountName = @AccountName
 		,AccountGroupID = @AccountGroupID
 		,AccountLevel = @AccountLevel
 		,ParentID = @ParentID
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
-
+		AccountID = @AccountID

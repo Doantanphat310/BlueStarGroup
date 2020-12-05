@@ -6,7 +6,7 @@ CREATE PROCEDURE AccountsInsert (
 	,@AccountGroupID varchar(30)
 	,@AccountLevel tinyint
 	,@ParentID varchar(30)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO Accounts(
@@ -27,5 +27,5 @@ AS
 		,@ParentID
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

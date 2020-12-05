@@ -8,4 +8,4 @@ AS
 	DELETE ItemPriceCompany
 	WHERE 
 		ItemID = @ItemID
-		ANDCompanyID = @CompanyID
+		AND CompanyID = @CompanyID

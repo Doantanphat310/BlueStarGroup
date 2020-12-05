@@ -10,7 +10,7 @@ CREATE PROCEDURE CustomerUpdate (
 	,@InvoiceFormNo varchar(20)
 	,@FormNo varchar(20)
 	,@SerialNo varchar(20)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE Customer
@@ -24,6 +24,6 @@ AS
 		,FormNo = @FormNo
 		,SerialNo = @SerialNo
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
 		CustomerID = @CustomerID

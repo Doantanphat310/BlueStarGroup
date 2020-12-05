@@ -31,7 +31,7 @@ CREATE PROCEDURE CompanyInsert (
 	,@ChuKyKeToanVien nvarchar(MAX)
 	,@ChuKyLanhDao nvarchar(MAX)
 	,@ChuKyThuQuy nvarchar(MAX)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO Company(
@@ -102,5 +102,5 @@ AS
 		,@ChuKyThuQuy
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

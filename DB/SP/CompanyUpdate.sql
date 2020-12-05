@@ -31,7 +31,7 @@ CREATE PROCEDURE CompanyUpdate (
 	,@ChuKyKeToanVien nvarchar(MAX)
 	,@ChuKyLanhDao nvarchar(MAX)
 	,@ChuKyThuQuy nvarchar(MAX)
-    ,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE Company
@@ -66,6 +66,6 @@ AS
 		,ChuKyLanhDao = @ChuKyLanhDao
 		,ChuKyThuQuy = @ChuKyThuQuy
         ,UpdateDate = GETDATE()
-        ,UpdateUser = @UserId
+        ,UpdateUser = @UpdateUser
 	WHERE 
 		CompanyID = @CompanyID

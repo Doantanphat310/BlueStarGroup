@@ -3,7 +3,7 @@ GO
 CREATE PROCEDURE AccountGroupInsert (
 	@AccountGroupID varchar(50)
 	,@AccountGroupName nvarchar(250)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO AccountGroup(
@@ -18,5 +18,5 @@ AS
 		,@AccountGroupName
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

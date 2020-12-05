@@ -6,7 +6,7 @@ CREATE PROCEDURE UserListInsert (
 	,@UserName nvarchar(250)
 	,@Phone varchar(10)
 	,@Address nvarchar(250)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO UserList(
@@ -27,5 +27,5 @@ AS
 		,@Address
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

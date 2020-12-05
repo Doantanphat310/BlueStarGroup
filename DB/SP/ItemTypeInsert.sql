@@ -4,7 +4,7 @@ CREATE PROCEDURE ItemTypeInsert (
 	@ItemTypeID varchar(50)
 	,@ItemTypeName nvarchar(250)
 	,@ItemTypeSName varchar(20)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO ItemType(
@@ -21,5 +21,5 @@ AS
 		,@ItemTypeSName
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)

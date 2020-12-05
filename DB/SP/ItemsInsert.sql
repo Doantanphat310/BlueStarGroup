@@ -7,7 +7,7 @@ CREATE PROCEDURE ItemsInsert (
 	,@ItemTypeID varchar(50)
 	,@ItemUnit varchar(3)
 	,@ItemSpecification nvarchar(250)
-    ,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO Items(
@@ -30,5 +30,5 @@ AS
 		,@ItemSpecification
         ,GETDATE()
         ,GETDATE()
-        ,@UserId
-        ,@UserId)
+        ,@UpdateUser
+        ,@UpdateUser)
