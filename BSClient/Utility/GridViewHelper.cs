@@ -182,7 +182,7 @@ namespace BSClient.Utility
                     Visible = true,
                 };
 
-                if(col.Width > 0)
+                if (col.Width > 0)
                 {
                     gridCol.Width = col.Width;
                 }
@@ -240,11 +240,10 @@ namespace BSClient.Utility
             string fieldName,
             string caption,
             int width,
-            bool isAllowEdit = true,
+            bool? isAllowEdit = null,
             bool fixedWidth = true,
             RepositoryItem itemCtrl = null,
-            GridColumnSummaryItem summaryItem = null
-            )
+            GridColumnSummaryItem summaryItem = null)
         {
             GridColumn col = new GridColumn
             {
@@ -255,7 +254,11 @@ namespace BSClient.Utility
                 Width = width
             };
 
-            col.OptionsColumn.AllowEdit = isAllowEdit;
+            if (isAllowEdit != null)
+            {
+                col.OptionsColumn.AllowEdit = isAllowEdit.Value;
+            }
+
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             col.OptionsColumn.FixedWidth = fixedWidth;
@@ -320,7 +323,8 @@ namespace BSClient.Utility
             int checkBoxSelectorColumnWidth = 30,
             bool showAutoFilterRow = true,
             bool showFooter = false,
-            NewItemRowPosition newItemRow = NewItemRowPosition.Top)
+            NewItemRowPosition newItemRow = NewItemRowPosition.Top,
+            bool editable = true)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
@@ -338,18 +342,30 @@ namespace BSClient.Utility
             gridView.OptionsView.ShowGroupPanel = false;
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
-            gridView.OptionsSelection.EnableAppearanceFocusedRow = true;
 
             if (newItemRow != NewItemRowPosition.None)
             {
                 gridView.OptionsView.NewItemRowPosition = newItemRow;
-                gridView.OptionsBehavior.AllowAddRows = DefaultBoolean.True;
             }
 
             gridView.OptionsView.ShowFooter = showFooter;
+            gridView.OptionsBehavior.Editable = editable;
 
-            gridView.Appearance.FocusedRow.BackColor = SystemColors.Highlight;
+            gridView.Appearance.FocusedRow.BackColor = ColorTranslator.FromHtml("#80bfff"); ;
             gridView.Appearance.FocusedRow.Options.UseBackColor = true;
+            gridView.FocusRectStyle = DrawFocusRectStyle.RowFocus;
+
+            gridView.RowStyle += GridView_RowStyle;
+        }
+
+        private static void GridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            var gridView = sender as GridView;
+            if (e.RowHandle == gridView.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = gridView.Appearance.FocusedRow.BackColor;
+                e.HighPriority = true;
+            }
         }
     }
 }

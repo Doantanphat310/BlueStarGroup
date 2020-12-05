@@ -9,6 +9,7 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Columns;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BSClient.Utility
@@ -305,6 +306,10 @@ namespace BSClient.Utility
 
             treeList.OptionsNavigation.AutoFocusNewNode = true;
             treeList.OptionsView.ShowFilterPanelMode = DevExpress.XtraTreeList.ShowFilterPanelMode.Never;
+
+            treeList.Appearance.FocusedRow.BackColor = ColorTranslator.FromHtml("#80bfff"); ;
+            treeList.Appearance.FocusedRow.Options.UseBackColor = true;
+            treeList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFocus;
         }
     }
 }
