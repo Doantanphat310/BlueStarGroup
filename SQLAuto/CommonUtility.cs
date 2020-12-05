@@ -26,54 +26,60 @@ namespace SQLAuto
             "IsDelete"
         };
 
-        private static Dictionary<string, string> TypeMap = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> TypeMapping = new Dictionary<string, string>()
         {
-            {"varchar", "string" },
-            {"nvarchar", "string" },
-            {"money", "decimal" },
-            {"datetime", "datetime" },
-            {"decimal", "decimal" },
-            {"bit", "bool" },
-            {"float", "float" },
-            {"tinyint", "byte" },
-            {"numeric", "decimal" },
-            {"int", "int" },
+            { "text", "string" },
+            { "date", "DateTime" },
+            { "time", "DateTime" },
+            { "datetime2", "DateTime" },
+            { "tinyint", "byte" },
+            { "smallint", "short" },
+            { "int", "int" },
+            { "smalldatetime", "DateTime" },
+            { "real", "decimal" },
+            { "money", "decimal" },
+            { "datetime", "DateTime" },
+            { "float", "decimal" },
+            { "ntext", "string" },
+            { "bit", "bool" },
+            { "decimal", "decimal" },
+            { "numeric", "decimal" },
+            { "smallmoney", "decimal" },
+            { "bigint", "long" },
+            { "varchar", "string" },
+            { "char", "string" },
+            { "nvarchar", "string" },
+            { "nchar", "string" }
         };
-        //        typeMap[typeof(byte)] = DbType.Byte;
-        //typeMap[typeof(sbyte)] = DbType.SByte;
-        //typeMap[typeof(short)] = DbType.Int16;
-        //typeMap[typeof(ushort)] = DbType.UInt16;
-        //typeMap[typeof(int)] = DbType.Int32;
-        //typeMap[typeof(uint)] = DbType.UInt32;
-        //typeMap[typeof(long)] = DbType.Int64;
-        //typeMap[typeof(ulong)] = DbType.UInt64;
-        //typeMap[typeof(float)] = DbType.Single;
-        //typeMap[typeof(double)] = DbType.Double;
-        //typeMap[typeof(decimal)] = DbType.Decimal;
-        //typeMap[typeof(bool)] = DbType.Boolean;
-        //typeMap[typeof(string)] = DbType.String;
-        //typeMap[typeof(char)] = DbType.StringFixedLength;
-        //typeMap[typeof(Guid)] = DbType.Guid;
-        //typeMap[typeof(DateTime)] = DbType.DateTime;
-        //typeMap[typeof(DateTimeOffset)] = DbType.DateTimeOffset;
-        //typeMap[typeof(byte[])] = DbType.Binary;
-        //typeMap[typeof(byte?)] = DbType.Byte;
-        //typeMap[typeof(sbyte?)] = DbType.SByte;
-        //typeMap[typeof(short?)] = DbType.Int16;
-        //typeMap[typeof(ushort?)] = DbType.UInt16;
-        //typeMap[typeof(int?)] = DbType.Int32;
-        //typeMap[typeof(uint?)] = DbType.UInt32;
-        //typeMap[typeof(long?)] = DbType.Int64;
-        //typeMap[typeof(ulong?)] = DbType.UInt64;
-        //typeMap[typeof(float?)] = DbType.Single;
-        //typeMap[typeof(double?)] = DbType.Double;
-        //typeMap[typeof(decimal?)] = DbType.Decimal;
-        //typeMap[typeof(bool?)] = DbType.Boolean;
-        //typeMap[typeof(char?)] = DbType.StringFixedLength;
-        //typeMap[typeof(Guid?)] = DbType.Guid;
-        //typeMap[typeof(DateTime?)] = DbType.DateTime;
-        //typeMap[typeof(DateTimeOffset?)] = DbType.DateTimeOffset;
-        //typeMap[typeof(System.Data.Linq.Binary)] = DbType.Binary;
+
+        public static string GeneralInsertSP(string tableName, List<ColumnInfo> columnInfos)
+        {
+            string result;
+            string format = SPFormat.INSERT;
+
+            string parramStr = "";
+            string columnsStr = "";
+            string valuesStr = "";
+            string parram;
+
+            foreach (var col in columnInfos)
+            {
+                if (IgnoreColumn.Contains(col.ColumnName))
+                {
+                    continue;
+                }
+
+                parram = GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize);
+                parramStr = parramStr.AddStr(parram, "\t");
+                columnsStr = columnsStr.AddStr(col.ColumnName, "\t\t");
+                valuesStr = valuesStr.AddStr($"@{col.ColumnName}", "\t\t");
+            }
+
+            result = string.Format(format, tableName, parramStr, columnsStr, valuesStr);
+
+            return result;
+        }
+
         public static string GeneralUpdateSP(string tableName, List<ColumnInfo> columnInfos)
         {
             string result;
@@ -89,51 +95,19 @@ namespace SQLAuto
                     continue;
                 }
 
-                parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize));
+                parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize), "\t");
 
                 if (col.IsKey == true)
                 {
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND");
+                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND", "\t\t");
                 }
                 else
                 {
-                    columnsStr = columnsStr.AddStr($"{col.ColumnName} = @{col.ColumnName}");
+                    columnsStr = columnsStr.AddStr($"{col.ColumnName} = @{col.ColumnName}", "\t\t");
                 }
             }
 
-            parramStr = parramStr.TrimStr();
-            columnsStr = columnsStr.TrimStr();
-            whereStr = whereStr.TrimStr();
             result = string.Format(format, tableName, parramStr, columnsStr, whereStr);
-
-            return result;
-        }
-
-        public static string GeneralInsertSP(string tableName, List<ColumnInfo> columnInfos)
-        {
-            string result;
-            string format = SPFormat.INSERT_PLUS;
-
-            string parramStr = "";
-            string columnsStr = "";
-            string valuesStr = "";
-
-            foreach (var col in columnInfos)
-            {
-                if (IgnoreColumn.Contains(col.ColumnName))
-                {
-                    continue;
-                }
-
-                parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize));
-                columnsStr = columnsStr.AddStr(col.ColumnName);
-                valuesStr = valuesStr.AddStr($"@{col.ColumnName}");
-            }
-
-            parramStr = parramStr.TrimStr();
-            columnsStr = columnsStr.TrimStr();
-            valuesStr = valuesStr.TrimStr();
-            result = string.Format(format, tableName, parramStr, columnsStr, valuesStr);
 
             return result;
         }
@@ -141,7 +115,6 @@ namespace SQLAuto
         public static string GeneralDeleteSP(string tableName, List<ColumnInfo> columnInfos)
         {
             string result;
-            string format = SPFormat.DELETE;
             string parramStr = "";
             string whereStr = "";
 
@@ -154,14 +127,14 @@ namespace SQLAuto
 
                 if (col.IsKey == true)
                 {
-                    parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize));
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND");
+                    parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize), "\t");
+                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND", "\t\t");
                 }
             }
 
             parramStr = parramStr.TrimStr();
             whereStr = whereStr.TrimStr();
-            result = string.Format(format, tableName, parramStr, whereStr);
+            result = string.Format(SPFormat.DELETE, tableName, parramStr, whereStr);
 
             return result;
         }
@@ -181,13 +154,11 @@ namespace SQLAuto
 
                 if (col.IsKey == true)
                 {
-                    parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize));
-                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND ");
+                    parramStr = parramStr.AddStr(GetSQLParam(col.ColumnName, col.TypeName, col.TypeSize), "\t");
+                    whereStr = whereStr.AddExpression($"{col.ColumnName} = @{col.ColumnName}", "AND ", "\t\t");
                 }
             }
 
-            parramStr = parramStr.TrimStr();
-            whereStr = whereStr.TrimStr();
             result = string.Format(SPFormat.DELETE_LOGIC, tableName, parramStr, whereStr);
 
             return result;
@@ -207,11 +178,21 @@ namespace SQLAuto
             {
                 column = string.Empty;
                 keyStr = string.Empty;
+
                 if (IgnoreColumn.Contains(col.ColumnName))
                 {
                     continue;
                 }
-                typeName = TypeMap[col.TypeName];
+
+                if (!TypeMapping.ContainsKey(col.TypeName))
+                {
+                    typeName = col.TypeName;
+                }
+                else
+                {
+                    typeName = TypeMapping[col.TypeName];
+                }
+
                 nullStr = col.IsNullable && typeName != "string" ? "?" : string.Empty;
 
                 if (col.IsKey == true && col.KeyOrder > 0)
@@ -219,7 +200,53 @@ namespace SQLAuto
                     keyStr = GetColumnKey(col.KeyOrder ?? 0);
                 }
 
-                column = string.Format(ModelFormat.Column_Format, col.ColumnName, TypeMap[col.TypeName], nullStr, keyStr);
+                column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr, keyStr);
+                columnsStr += Environment.NewLine + column;
+            }
+
+            columnsStr = columnsStr.TrimStr();
+            result = string.Format(ModelFormat.Class_Format, namespaceStr, tableName, columnsStr);
+
+            return result;
+        }
+
+        public static string GeneralDAO(string tableName, List<ColumnInfo> columnInfos)
+        {
+            string result;
+            string column;
+            string columnsStr = "";
+            string keyStr;
+            string nullStr;
+            string namespaceStr = "BSCommon.Models";
+            string typeName;
+
+            foreach (var col in columnInfos)
+            {
+                column = string.Empty;
+                keyStr = string.Empty;
+
+                if (IgnoreColumn.Contains(col.ColumnName))
+                {
+                    continue;
+                }
+
+                if (!TypeMapping.ContainsKey(col.TypeName))
+                {
+                    typeName = col.TypeName;
+                }
+                else
+                {
+                    typeName = TypeMapping[col.TypeName];
+                }
+
+                nullStr = col.IsNullable && typeName != "string" ? "?" : string.Empty;
+
+                if (col.IsKey == true && col.KeyOrder > 0)
+                {
+                    keyStr = GetColumnKey(col.KeyOrder ?? 0);
+                }
+
+                column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr, keyStr);
                 columnsStr += Environment.NewLine + column;
             }
 
@@ -231,7 +258,7 @@ namespace SQLAuto
 
         private static string GetColumnModel(string columnName, bool isNull, string typeName)
         {
-            string type = TypeMap[typeName];
+            string type = TypeMapping[typeName];
             string nullStr = (isNull && type != "string" ? "?" : string.Empty);
             return $@"
         /// <summary>
@@ -247,38 +274,40 @@ namespace SQLAuto
         [Column(Order = {keyOrder})]";
         }
 
-        public static string AddStr(this string str, string content)
+        public static string AddStr(this string str, string content, string tabStr = "")
         {
             if (string.IsNullOrEmpty(content)) return str;
 
-            str = str.AddExpression(content, ",");
+            str = str.AddExpression(content, ",", tabStr);
 
             return str;
         }
 
-        public static string AddExpression(this string str, string content, string expression)
+
+        public static string AddAndOparator(this string str, string content, string tabStr = "")
+        {
+            return str.AddExpression(content, "AND ", tabStr);
+        }
+
+        public static string AddOrOparator(this string str, string content, string tabStr = "")
+        {
+            return str.AddExpression(content, "OR ", tabStr);
+        }
+
+        public static string AddExpression(this string str, string content, string expression, string tabStr = "")
         {
             if (string.IsNullOrEmpty(content)) return str;
+
             if (string.IsNullOrEmpty(str))
             {
-                str = content;
+                str = tabStr + content;
             }
             else
             {
-                str += "\n" + $@"{expression}{content}";
+                str += "\r\n" + $@"{tabStr}{expression}{content}";
             }
 
             return str;
-        }
-
-        public static string AddAndOparator(this string str, string content)
-        {
-            return str.AddExpression(content, "AND ");
-        }
-
-        public static string AddOrOparator(this string str, string content)
-        {
-            return str.AddExpression(content, "OR ");
         }
 
         public static string TrimStr(this string str)

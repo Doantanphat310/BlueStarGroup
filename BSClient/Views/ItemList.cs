@@ -116,14 +116,9 @@ namespace BSClient.Views
             this.Items_GridView.AddColumn("ItemSpecification", "Quy cách", 80, true);
             this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, false);
 
-            var itemSource = MasterInfoManager.GetItemUnit();
-            var columnShow = new Dictionary<string, string>
-            {
-                {"DetailCd", "Mã ĐVT" },
-                {"Value", "Tên ĐVT" },
-            };
+            List<MasterInfo> itemSource = MasterInfoManager.GetItemUnit();
 
-            this.Items_GridView.AddLookupEditColumn("ItemUnit", "ĐVT", 80, itemSource, "DetailCd", "Value", columnNames: columnShow);
+            this.Items_GridView.AddLookupEditColumn("ItemUnit", "ĐVT", 80, itemSource, "Id", "Value");
         }
 
         private void InitItemsCompanyGridView()
@@ -144,7 +139,7 @@ namespace BSClient.Views
 
         private void SetupItemsGridView()
         {
-            this.Items_GridView.SetupGridView(columnAutoWidth: false);
+            this.Items_GridView.SetupGridView(columnAutoWidth: false, newItemRow: NewItemRowPosition.None);
         }
 
         private void SetupItemsCompanyGridView()
@@ -217,7 +212,7 @@ namespace BSClient.Views
         {
             List<Items> saveData = this.ItemsData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (ItemsDeleteData != null)
+            if (ItemsDeleteData != null && ItemsDeleteData.Count > 0)
             {
                 saveData?.AddRange(ItemsDeleteData);
             }
@@ -415,6 +410,8 @@ namespace BSClient.Views
             {
                 return;
             }
+
+            ItemName_TextEdit.EditValue = selectedRow.ItemName;
 
             // filter grid
             ItemsCompany_GridView.ActiveFilterString = $"[ItemID] = '{selectedRow.ItemID}'";

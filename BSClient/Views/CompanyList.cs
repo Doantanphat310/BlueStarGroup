@@ -1,26 +1,19 @@
-﻿using BSClient.Base;
-using BSClient.Utility;
+﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
-using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Windows.Forms;
 
 namespace BSClient.Views
 {
     public partial class CompanyList : XtraUserControl
     {
         public BindingList<Company> CompanyData { get; set; }
-
-        public List<Company> CompanyDeleteData { get; set; } = new List<Company>();
 
         public CompanyList()
         {
@@ -35,139 +28,97 @@ namespace BSClient.Views
 
             SetupGridView();
 
-            LoadGridView();
+            LoadDataGridView();
         }
 
         private void InitGridView()
         {
             Company_GridView.Columns.Clear();
-            this.Company_GridView.AddColumn("CompanyID", "Mã Khách hàng", 100, false);
-            this.Company_GridView.AddColumn("CompanyName", "Tên Khách hàng", 250, false);
+            this.Company_GridView.AddColumn("CompanyID", "Mã Công ty", 100, false);
+            this.Company_GridView.AddColumn("CompanyName", "Tên Công ty", 250, false);
             this.Company_GridView.AddColumn("CompanySName", "Tên viết tắt", 100, false);
             this.Company_GridView.AddColumn("Phone", "Điện thoại", 80, false);
-            this.Company_GridView.AddColumn("Address", "Địa chỉ", 350);
-            this.Company_GridView.AddColumn("MST", "MST", 350);
-            this.Company_GridView.AddColumn("District", "Quận", 350);
-            this.Company_GridView.AddColumn("Province", "Tỉnh", 350);
-            this.Company_GridView.AddColumn("Fax", "FAX", 350);
-            this.Company_GridView.AddColumn("Email", "Email", 350);
-            this.Company_GridView.AddColumn("AccountBank", "Tài khoản NH", 100);
-            this.Company_GridView.AddColumn("Bank", "Ngân hàng", 100);
-            this.Company_GridView.AddColumn("BranchBank", "Chi nhánh ngân hàng", 100);
+            this.Company_GridView.AddColumn("Address", "Địa chỉ", 350, false);
+            this.Company_GridView.AddColumn("MST", "MST", 100, false);
+            this.Company_GridView.AddColumn("Fax", "FAX", 100, false);
+            this.Company_GridView.AddColumn("Email", "Email", 100, false);
+            this.Company_GridView.AddColumn("BankAccount", "Tài khoản NH", 100, false);
+            this.Company_GridView.AddColumn("BankName", "Ngân hàng", 100, false);
+            this.Company_GridView.AddColumn("BankBranch", "Chi nhánh NH", 100, false);
         }
 
         private void SetupGridView()
         {
-            this.Company_GridView.SetupGridView();
+            this.Company_GridView.SetupGridView(multiSelect: false, checkBoxSelectorColumnWidth: 0, showAutoFilterRow: false, newItemRow: NewItemRowPosition.None);
         }
 
-        private void LoadGridView()
+        private void LoadDataGridView()
         {
-            CompanyController controller = new CompanyController();
-            CompanyData = new BindingList<Company>(controller.GetCompanys());
-            Company_GridControl.DataSource = CompanyData;
-        }
-
-        private void Company_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
-        {
-            Company row = e.Row.CastTo<Company>();
-            bool isNewRow = Company_GridView.IsNewItemRow(e.RowHandle);
-            if (isNewRow)
+            using (CompanyController controller = new CompanyController())
             {
-                row.Status = ModifyMode.Insert;
-                return;
+                CompanyData = new BindingList<Company>(controller.GetCompanys());
+                Company_GridControl.DataSource = CompanyData;
             }
-
-            if (row.Status == ModifyMode.Insert)
-            {
-                return;
-            }
-
-            row.Status = ModifyMode.Update;
         }
 
         private void Delete_Button_Click(object sender, EventArgs e)
         {
-            this.Company_GridView.DeleteSelectedRows();
-        }
+            Company company = Company_GridView.GetFocusedRow().CastTo<Company>();
 
-        private void Save_Button_Click(object sender, EventArgs e)
-        {
-            List<Company> saveData = this.CompanyData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
-
-            if (this.CompanyDeleteData != null)
+            if (company == null)
             {
-                saveData?.AddRange(this.CompanyDeleteData);
-            }
-
-            if (saveData?.Count > 0)
-            {
-                //CompanyController controller = new CompanyController();
-                //if (controller.SaveCompany(saveData))
-                //{
-                //    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                //    CompanyDeleteData = new List<Company>();
-                //    this.LoadGridView();
-                //}
-                //else
-                //{
-                //    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
-                //}
-            }
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            this.LoadGridView();
-        }
-
-        private void Company_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
-        {
-            Company delete = e.Row.CastTo<Company>();
-            if (delete.Status == ModifyMode.Insert)
-            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000026);
                 return;
             }
 
-            delete.Status = ModifyMode.Delete;
-            CompanyDeleteData.Add(delete);
+            using (CompanyController controller = new CompanyController())
+            {
+                controller.DeleteCompany(company);
+
+                CompanyData = new BindingList<Company>(controller.GetCompanys());
+                Company_GridControl.DataSource = CompanyData;
+            }
         }
 
-        private void Company_GridView_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        private void AddNew_Button_Click(object sender, EventArgs e)
         {
-            e.ExceptionMode = ExceptionMode.NoAction;
+            CompanyNew form = new CompanyNew();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                LoadDataGridView();
+            }
         }
 
-        private void Company_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void Edit_Button_Click(object sender, EventArgs e)
         {
-            Company_GridView.ClearColumnErrors();
+            ExcuteUpdate();
+        }
 
-            Company row = e.Row.CastTo<Company>();
-            GridView view = sender as GridView;
-
-            if (string.IsNullOrEmpty(row.CompanyName))
+        private void Company_GridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2)
             {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridColumn column = view.Columns[nameof(row.CompanyName)];
-                view.SetColumnError(column, BSMessage.BSM000015);
+                ExcuteUpdate();
+            }
+        }
+
+        private void ExcuteUpdate()
+        {
+            Company company = Company_GridView.GetFocusedRow().CastTo<Company>();
+
+            if (company == null)
+            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000026);
+                return;
             }
 
-            if (string.IsNullOrEmpty(row.CompanySName))
-            {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridColumn column = view.Columns[nameof(row.CompanySName)];
-                view.SetColumnError(column, BSMessage.BSM000012);
-            }
+            CompanyNew form = new CompanyNew(company);
 
-            // Kiểm tra tồn tại trong grid
-            if (CompanyData.ToList().Count(o => o.CompanySName == row.CompanySName) > 1)
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridColumn column = view.Columns[nameof(row.CompanySName)];
-                view.SetColumnError(column, BSMessage.BSM000010);
+                LoadDataGridView();
             }
         }
     }

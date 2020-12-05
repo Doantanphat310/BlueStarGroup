@@ -1,24 +1,24 @@
-DROP PROCEDURE IF EXISTS UserRoleCompanyInsert;
+DROP PROCEDURE IF EXISTS ItemPriceCompanyInsert;
 GO
-CREATE PROCEDURE UserRoleCompanyInsert (
-	@UserID varchar(50)
+CREATE PROCEDURE ItemPriceCompanyInsert (
+	@ItemID varchar(50)
 	,@CompanyID varchar(50)
-	,@RoleID varchar(50)
+	,@ItemPrice money
     ,@UserId varchar(20)
 )
 AS
-	INSERT INTO UserRoleCompany(
-		UserID
+	INSERT INTO ItemPriceCompany(
+		ItemID
 		,CompanyID
-		,RoleID
+		,ItemPrice
         ,CreateDate
         ,UpdateDate
         ,CreateUser
         ,UpdateUser)
 	VALUES(
-		@UserID
+		@ItemID
 		,@CompanyID
-		,@RoleID
+		,@ItemPrice
         ,GETDATE()
         ,GETDATE()
         ,@UserId

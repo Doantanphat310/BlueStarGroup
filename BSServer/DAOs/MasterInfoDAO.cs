@@ -13,11 +13,11 @@ namespace BSServer.DAOs
         {
         }
 
-        public List<MasterInfo> GetMasterInfos(string masterCd)
+        public List<MasterInfo> GetMasterInfos(string key)
         {
             return this.Context.Database
               .SqlQuery<MasterInfo>("MasterInfoSelect")
-              .Where(o => o.MasterCd == masterCd)
+              .Where(o => o.Key == key)
               .ToList();
         }
     }

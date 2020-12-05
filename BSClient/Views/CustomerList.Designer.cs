@@ -50,7 +50,7 @@
             this.Customer_GridControl.MainView = this.Customer_GridView;
             this.Customer_GridControl.Name = "Customer_GridControl";
             this.Customer_GridControl.Size = new System.Drawing.Size(834, 454);
-            this.Customer_GridControl.TabIndex = 1;
+            this.Customer_GridControl.TabIndex = 0;
             this.Customer_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Customer_GridView});
             // 
@@ -66,14 +66,14 @@
             // 
             // Customer_GroupControl
             // 
-            this.Customer_GroupControl.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("User_Group.CaptionImageOptions.Image")));
+            this.Customer_GroupControl.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Customer_GroupControl.CaptionImageOptions.Image")));
             this.Customer_GroupControl.Controls.Add(this.Customer_GridControl);
             this.Customer_GroupControl.Controls.Add(this.UserButton_Panel);
             this.Customer_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Customer_GroupControl.Location = new System.Drawing.Point(0, 0);
             this.Customer_GroupControl.Name = "Customer_GroupControl";
             this.Customer_GroupControl.Size = new System.Drawing.Size(838, 540);
-            this.Customer_GroupControl.TabIndex = 7;
+            this.Customer_GroupControl.TabIndex = 0;
             this.Customer_GroupControl.Text = "Danh mục Khách hàng";
             // 
             // UserButton_Panel
@@ -85,7 +85,7 @@
             this.UserButton_Panel.Location = new System.Drawing.Point(2, 493);
             this.UserButton_Panel.Name = "UserButton_Panel";
             this.UserButton_Panel.Size = new System.Drawing.Size(834, 45);
-            this.UserButton_Panel.TabIndex = 5;
+            this.UserButton_Panel.TabIndex = 1;
             // 
             // Delete_Button
             // 
@@ -94,7 +94,7 @@
             this.Delete_Button.Location = new System.Drawing.Point(547, 6);
             this.Delete_Button.Name = "Delete_Button";
             this.Delete_Button.Size = new System.Drawing.Size(90, 35);
-            this.Delete_Button.TabIndex = 6;
+            this.Delete_Button.TabIndex = 0;
             this.Delete_Button.Text = "Xóa";
             this.Delete_Button.Click += new System.EventHandler(this.Delete_Button_Click);
             // 
@@ -105,7 +105,7 @@
             this.Cancel_Button.Location = new System.Drawing.Point(739, 6);
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(90, 35);
-            this.Cancel_Button.TabIndex = 7;
+            this.Cancel_Button.TabIndex = 2;
             this.Cancel_Button.Text = "Hủy";
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
@@ -116,7 +116,7 @@
             this.Save_Button.Location = new System.Drawing.Point(643, 6);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.Size = new System.Drawing.Size(90, 35);
-            this.Save_Button.TabIndex = 7;
+            this.Save_Button.TabIndex = 1;
             this.Save_Button.Text = "Lưu";
             this.Save_Button.Click += new System.EventHandler(this.Save_Button_Click);
             // 

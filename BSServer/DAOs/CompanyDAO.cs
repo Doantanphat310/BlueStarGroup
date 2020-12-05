@@ -37,7 +37,31 @@ namespace BSServer.DAOs
                 new SqlParameter("@CompanySName", data.CompanySName),
                 new SqlParameter("@Address", data.Address),
                 new SqlParameter("@MST", data.MST),
+                new SqlParameter("@District", data.District),
+                new SqlParameter("@Province", data.Province),
                 new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@Fax", data.Fax),
+                new SqlParameter("@Email", data.Email),
+                new SqlParameter("@BankAccount", data.BankAccount),
+                new SqlParameter("@BankName", data.BankName),
+                new SqlParameter("@BankBranch", data.BankBranch),
+                new SqlParameter("@Logo", data.Logo),
+                new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
+                new SqlParameter("@MaSoHD", data.MaSoHD),
+                new SqlParameter("@NoiQLThue", data.NoiQLThue),
+                new SqlParameter("@NHKhoBac", data.NHKhoBac),
+                new SqlParameter("@TKThuThue", data.TKThuThue),
+                new SqlParameter("@LapBieu", data.LapBieu),
+                new SqlParameter("@KTTruong", data.KTTruong),
+                new SqlParameter("@KTVien", data.KTVien),
+                new SqlParameter("@LanhDao", data.LanhDao),
+                new SqlParameter("@ThuQuy", data.ThuQuy),
+                new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
+                new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
+                new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
+                new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
+                new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
+                new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
                 new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
             };
 
@@ -53,7 +77,31 @@ namespace BSServer.DAOs
                 new SqlParameter("@CompanySName", data.CompanySName),
                 new SqlParameter("@Address", data.Address),
                 new SqlParameter("@MST", data.MST),
+                new SqlParameter("@District", data.District),
+                new SqlParameter("@Province", data.Province),
                 new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@Fax", data.Fax),
+                new SqlParameter("@Email", data.Email),
+                new SqlParameter("@BankAccount", data.BankAccount),
+                new SqlParameter("@BankName", data.BankName),
+                new SqlParameter("@BankBranch", data.BankBranch),
+                new SqlParameter("@Logo", data.Logo),
+                new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
+                new SqlParameter("@MaSoHD", data.MaSoHD),
+                new SqlParameter("@NoiQLThue", data.NoiQLThue),
+                new SqlParameter("@NHKhoBac", data.NHKhoBac),
+                new SqlParameter("@TKThuThue", data.TKThuThue),
+                new SqlParameter("@LapBieu", data.LapBieu),
+                new SqlParameter("@KTTruong", data.KTTruong),
+                new SqlParameter("@KTVien", data.KTVien),
+                new SqlParameter("@LanhDao", data.LanhDao),
+                new SqlParameter("@ThuQuy", data.ThuQuy),
+                new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
+                new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
+                new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
+                new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
+                new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
+                new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
                 new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
             };
 
@@ -64,7 +112,7 @@ namespace BSServer.DAOs
         {
             SqlParameter[] param = new SqlParameter[]
             {
-                new SqlParameter("@CustomerID", data.CompanyID),
+                new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("UserId", CommonInfo.UserInfo.UserID)
             };
 

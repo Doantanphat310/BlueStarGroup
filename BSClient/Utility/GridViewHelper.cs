@@ -3,6 +3,7 @@ using DevExpress.Data;
 using DevExpress.Utils;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
@@ -33,6 +34,7 @@ namespace BSClient.Utility
             itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
             itemCtrl.EditFormat.FormatString = formatString;
             itemCtrl.EditFormat.FormatType = FormatType.Custom;
+            itemCtrl.EditMask = formatString;
 
             GridColumnSummaryItem summaryItem = new GridColumnSummaryItem();
 
@@ -66,16 +68,18 @@ namespace BSClient.Utility
             string valueMember,
             string displayMember,
             bool isAllowEdit = true,
-            Dictionary<string, string> columnNames = null,
+            List<ColumnInfo> columns = null,
             string nullText = "",
+            bool showHearder = false,
             EventHandler editValueChanged = null)
         {
-            var itemCtrl = new RepositoryItemLookUpEdit
+            RepositoryItemLookUpEdit itemCtrl = new RepositoryItemLookUpEdit
             {
                 DataSource = itemSource,
                 DisplayMember = displayMember,
                 ValueMember = valueMember,
-                NullText = nullText
+                NullText = nullText,
+                ShowHeader = showHearder
             };
 
             if (editValueChanged != null)
@@ -83,12 +87,28 @@ namespace BSClient.Utility
                 itemCtrl.EditValueChanged += editValueChanged;
             }
 
-            if (columnNames != null)
+            if (columns != null)
             {
-                foreach (var col in columnNames)
+                foreach (var col in columns)
                 {
-                    itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col.Key, col.Value));
+                    var colInfo = new LookUpColumnInfo
+                    {
+                        FieldName = col.FieldName,
+                        Caption = col.Caption,
+                        Visible = true,
+                    };
+
+                    if (col.Width > 0)
+                    {
+                        colInfo.Width = col.Width;
+                    }
+
+                    itemCtrl.Columns.Add(colInfo);
                 }
+            }
+            else
+            {
+                itemCtrl.Columns.Add(new LookUpColumnInfo(displayMember));
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
@@ -336,7 +356,7 @@ namespace BSClient.Utility
                 gridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
                 gridView.OptionsSelection.CheckBoxSelectorColumnWidth = checkBoxSelectorColumnWidth;
             }
-
+            gridView.OptionsNavigation.AutoFocusNewRow = true;
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
             gridView.OptionsView.EnableAppearanceEvenRow = true;
             gridView.OptionsView.ShowGroupPanel = false;

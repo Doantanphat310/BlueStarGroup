@@ -10,8 +10,6 @@ namespace BSServer.Controllers
 {
     public class CustomerController : BaseController
     {
-        private BSContext Context { get; set; }
-
         private CustomerDAO CustomerDAO { get; set; }
 
         private CustomerLogic CustomerLogic { get; set; }
