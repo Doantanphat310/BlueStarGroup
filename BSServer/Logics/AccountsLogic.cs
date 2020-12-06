@@ -77,6 +77,7 @@ namespace BSServer.Logics
                         {
                             // Add new
                             case ModifyMode.Insert:
+                                seq++;
                                 GeneralLedger generalLedger = new GeneralLedger
                                 {
                                     GeneralLedgerID = GenerateID.GeneralLedgerID(seq),
@@ -143,7 +144,7 @@ namespace BSServer.Logics
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.AccountsDAO.DeleteGeneralLedger(data.GeneralLedgerID);
+                                this.AccountsDAO.DeleteGeneralLedger(data);
                                 break;
                         }
                     }

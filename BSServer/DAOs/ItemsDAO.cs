@@ -1,10 +1,8 @@
-﻿using BSCommon.Constant;
-using BSCommon.Models;
+﻿using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer._Core.Base;
 using BSServer._Core.Const;
 using BSServer._Core.Context;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -60,10 +58,10 @@ namespace BSServer.DAOs
         public bool DeleteItemType(string ItemTypeID)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
-               {
-                    new SqlParameter("@ItemTypeID", ItemTypeID),
-                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-               };
+            {
+                new SqlParameter("@ItemTypeID", ItemTypeID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            };
 
             this.Context.ExecuteDataFromProcedure("ItemTypeDelete", sqlParameters);
             return true;

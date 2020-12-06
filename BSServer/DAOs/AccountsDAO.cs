@@ -125,12 +125,12 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
-                new SqlParameter("@ParentID", data.ParentID),
-                new SqlParameter("@AccountID", data.AccountID),
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+            new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+            new SqlParameter("@AccountID", data.AccountID),
+            new SqlParameter("@CompanyID", data.CompanyID),
+            new SqlParameter("@ParentID", data.ParentID),
+            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerInsert", sqlParameters);
@@ -138,31 +138,35 @@ namespace BSServer.DAOs
             return true;
         }
 
+
         public bool UpdateGeneralLedger(GeneralLedger data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
-                new SqlParameter("@ParentID", data.ParentID),
-                new SqlParameter("@AccountID", data.AccountID),
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+            new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+            new SqlParameter("@AccountID", data.AccountID),
+            new SqlParameter("@CompanyID", data.CompanyID),
+            new SqlParameter("@ParentID", data.ParentID),
+            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerUpdate", sqlParameters);
+
             return true;
         }
 
-        public bool DeleteGeneralLedger(string GeneralLedgerID)
+
+        public bool DeleteGeneralLedger(GeneralLedger data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", GeneralLedgerID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerDelete", sqlParameters);
+
             return true;
         }
     }

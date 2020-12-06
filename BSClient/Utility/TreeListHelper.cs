@@ -1,6 +1,8 @@
-﻿using DevExpress.Utils;
+﻿using BSCommon.Models;
+using DevExpress.Utils;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
@@ -25,7 +27,7 @@ namespace BSClient.Utility
             string valueMember,
             string displayMember,
             bool isAllowEdit = true,
-            Dictionary<string, string> columnNames = null,
+            List<ColumnInfo> columnNames = null,
             string nullText = "",
             bool showHearder = false,
             EventHandler editValueChanged = null)
@@ -48,7 +50,19 @@ namespace BSClient.Utility
             {
                 foreach (var col in columnNames)
                 {
-                    itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col.Key, col.Value));
+                    var colInfo = new LookUpColumnInfo
+                    {
+                        FieldName = col.FieldName,
+                        Caption = col.Caption,
+                        Visible = true,
+                    };
+
+                    if (col.Width > 0)
+                    {
+                        colInfo.Width = col.Width;
+                    }
+
+                    itemCtrl.Columns.Add(colInfo);
                 }
             }
             else
@@ -85,8 +99,7 @@ namespace BSClient.Utility
             int width,
             bool isAllowEdit = true,
             bool fixedWidth = true,
-            RepositoryItem itemCtrl = null
-            )
+            RepositoryItem itemCtrl = null)
         {
             TreeListColumn col = new TreeListColumn
             {
@@ -112,50 +125,37 @@ namespace BSClient.Utility
         }
 
         public static void AddSearchLookupEditColumn(
-            this TreeList treeList,
-            string fieldName,
-            string caption,
-            int width,
-            object itemSource,
-            string valueMember,
-            string displayMember,
-            bool isAllowEdit = true,
-            Dictionary<string, string> columns = null,
-            string nullText = "",
-            EventHandler editValueChanged = null)
+           this TreeList gridView,
+           string fieldName,
+           string caption,
+           int width,
+           object itemSource,
+           string valueMember,
+           string displayMember,
+           List<ColumnInfo> columns,
+           bool isAllowEdit = true,
+           string nullText = "",
+           EventHandler editValueChanged = null,
+           int popupFormWidth = -1,
+           bool enterChoiceFirstRow = true)
         {
-            RepositoryItemSearchLookUpEdit itemCtrl = new RepositoryItemSearchLookUpEdit
-            {
-                DataSource = itemSource,
-                DisplayMember = displayMember,
-                ValueMember = valueMember,
-                NullText = nullText
-            };
+            RepositoryItemSearchLookUpEdit itemCtrl = new RepositoryItemSearchLookUpEdit();
+
+            itemCtrl.SetupLookUpEdit(
+                valueMember,
+                displayMember,
+                itemSource, 
+                columns,
+                nullText: nullText,
+                enterChoiceFirstRow: enterChoiceFirstRow,
+                popupFormWidth: popupFormWidth);
 
             if (editValueChanged != null)
             {
                 itemCtrl.EditValueChanged += editValueChanged;
             }
 
-            if (columns != null)
-            {
-                foreach (var col in columns)
-                {
-                    var gridCol = new GridColumn
-                    {
-                        FieldName = col.Key,
-                        Caption = col.Value,
-                        Visible = true,
-                    };
-
-                    itemCtrl.View.Columns.Add(gridCol);
-                }
-            }
-
-            itemCtrl.Popup += ItemCtrl_SearchLookUpEdit_Popup;
-
-
-            treeList.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
         public static void SetupTreeList(
