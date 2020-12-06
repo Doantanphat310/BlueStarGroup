@@ -35,7 +35,7 @@ namespace BSServer.DAOs
         }
         public List<GeneralLedger> GetGeneralLedger()
         {
-            return this.Context.GeneralLedger.OrderBy(o => o.GeneralLedgerName).ToList();
+            return this.Context.GeneralLedger.Where(o => (o.IsDelete ?? false) == false).OrderBy(o => o.GeneralLedgerName).ToList();
         }
 
         public bool InsertAccountGroup(AccountGroup data)
