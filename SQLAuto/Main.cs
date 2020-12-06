@@ -95,6 +95,7 @@ ORDER BY
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine("Xử lý thất bại: " + ex.Message);
                 MessageBox.Show("Xử lý thất bại!");
                 return;
@@ -117,8 +118,6 @@ ORDER BY
             {
                 this.GeneralInsertSP(path, item.Key, item.Value);
                 this.GeneralUpdateSP(path, item.Key, item.Value);
-
-
                 this.GeneralDeleteSP(path, item.Key, item.Value);
             }
         }

@@ -3,6 +3,7 @@ using DevExpress.Data;
 using DevExpress.Utils;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
@@ -10,6 +11,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BSClient.Utility
@@ -32,6 +34,7 @@ namespace BSClient.Utility
             itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
             itemCtrl.EditFormat.FormatString = formatString;
             itemCtrl.EditFormat.FormatType = FormatType.Custom;
+            itemCtrl.EditMask = formatString;
 
             GridColumnSummaryItem summaryItem = new GridColumnSummaryItem();
 
@@ -65,16 +68,18 @@ namespace BSClient.Utility
             string valueMember,
             string displayMember,
             bool isAllowEdit = true,
-            Dictionary<string, string> columnNames = null,
+            List<ColumnInfo> columns = null,
             string nullText = "",
+            bool showHearder = false,
             EventHandler editValueChanged = null)
         {
-            var itemCtrl = new RepositoryItemLookUpEdit
+            RepositoryItemLookUpEdit itemCtrl = new RepositoryItemLookUpEdit
             {
                 DataSource = itemSource,
                 DisplayMember = displayMember,
                 ValueMember = valueMember,
-                NullText = nullText
+                NullText = nullText,
+                ShowHeader = showHearder
             };
 
             if (editValueChanged != null)
@@ -82,12 +87,28 @@ namespace BSClient.Utility
                 itemCtrl.EditValueChanged += editValueChanged;
             }
 
-            if (columnNames != null)
+            if (columns != null)
             {
-                foreach (var col in columnNames)
+                foreach (var col in columns)
                 {
-                    itemCtrl.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo(col.Key, col.Value));
+                    var colInfo = new LookUpColumnInfo
+                    {
+                        FieldName = col.FieldName,
+                        Caption = col.Caption,
+                        Visible = true,
+                    };
+
+                    if (col.Width > 0)
+                    {
+                        colInfo.Width = col.Width;
+                    }
+
+                    itemCtrl.Columns.Add(colInfo);
                 }
+            }
+            else
+            {
+                itemCtrl.Columns.Add(new LookUpColumnInfo(displayMember));
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
@@ -181,7 +202,7 @@ namespace BSClient.Utility
                     Visible = true,
                 };
 
-                if(col.Width > 0)
+                if (col.Width > 0)
                 {
                     gridCol.Width = col.Width;
                 }
@@ -239,11 +260,10 @@ namespace BSClient.Utility
             string fieldName,
             string caption,
             int width,
-            bool isAllowEdit = true,
+            bool? isAllowEdit = null,
             bool fixedWidth = true,
             RepositoryItem itemCtrl = null,
-            GridColumnSummaryItem summaryItem = null
-            )
+            GridColumnSummaryItem summaryItem = null)
         {
             GridColumn col = new GridColumn
             {
@@ -254,7 +274,11 @@ namespace BSClient.Utility
                 Width = width
             };
 
-            col.OptionsColumn.AllowEdit = isAllowEdit;
+            if (isAllowEdit != null)
+            {
+                col.OptionsColumn.AllowEdit = isAllowEdit.Value;
+            }
+
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             col.OptionsColumn.FixedWidth = fixedWidth;
@@ -319,7 +343,8 @@ namespace BSClient.Utility
             int checkBoxSelectorColumnWidth = 30,
             bool showAutoFilterRow = true,
             bool showFooter = false,
-            NewItemRowPosition newItemRow = NewItemRowPosition.Top)
+            NewItemRowPosition newItemRow = NewItemRowPosition.Top,
+            bool editable = true)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
@@ -331,21 +356,36 @@ namespace BSClient.Utility
                 gridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
                 gridView.OptionsSelection.CheckBoxSelectorColumnWidth = checkBoxSelectorColumnWidth;
             }
-
+            gridView.OptionsNavigation.AutoFocusNewRow = true;
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
             gridView.OptionsView.EnableAppearanceEvenRow = true;
             gridView.OptionsView.ShowGroupPanel = false;
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
-            gridView.OptionsSelection.EnableAppearanceFocusedRow = true;
 
             if (newItemRow != NewItemRowPosition.None)
             {
                 gridView.OptionsView.NewItemRowPosition = newItemRow;
-                gridView.OptionsBehavior.AllowAddRows = DefaultBoolean.True;
             }
 
             gridView.OptionsView.ShowFooter = showFooter;
+            gridView.OptionsBehavior.Editable = editable;
+
+            gridView.Appearance.FocusedRow.BackColor = ColorTranslator.FromHtml("#80bfff"); ;
+            gridView.Appearance.FocusedRow.Options.UseBackColor = true;
+            gridView.FocusRectStyle = DrawFocusRectStyle.RowFocus;
+
+            gridView.RowStyle += GridView_RowStyle;
+        }
+
+        private static void GridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            var gridView = sender as GridView;
+            if (e.RowHandle == gridView.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = gridView.Appearance.FocusedRow.BackColor;
+                e.HighPriority = true;
+            }
         }
     }
 }

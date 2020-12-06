@@ -40,7 +40,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserName", userInfo.UserName),
                 new SqlParameter("@Phone", userInfo.Phone),
                 new SqlParameter("@Address", userInfo.Address),
-                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID),
             };
 
             this.Context.ExecuteDataFromProcedure("UserInsert", sqlParameters);
@@ -53,7 +53,7 @@ namespace BSServer.DAOs
             SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@UserID", userID),
-                    new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
                };
 
             this.Context.ExecuteDataFromProcedure("UserDelete", sqlParameters);
@@ -69,7 +69,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserName", userInfo.UserName),
                 new SqlParameter("@Phone", userInfo.Phone),
                 new SqlParameter("@Address", userInfo.Address),
-                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID),
             };
 
             this.Context.ExecuteDataFromProcedure("UserUpdate", sqlParameters);
@@ -83,7 +83,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserID", userRoleInfo.UserID),
                 new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
                 new SqlParameter("@RoleID", userRoleInfo.UserRoleID),
-                new SqlParameter("@UpdateUserID", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserRoleCompanyInsert", sqlParameters);
@@ -95,9 +95,9 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                    new SqlParameter("@UserID", userRoleInfo.UserID),
-                    new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
-                    new SqlParameter("@RoleID", userRoleInfo.UserRoleID)
+                new SqlParameter("@UserID", userRoleInfo.UserID),
+                new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
+                new SqlParameter("@RoleID", userRoleInfo.UserRoleID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserRoleCompanyDelete", sqlParameters);

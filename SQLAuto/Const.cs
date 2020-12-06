@@ -1,67 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SQLAuto
+﻿namespace SQLAuto
 {
     public static class SPFormat
     {
-        public const string INSERT_PLUS = @"
-DROP PROCEDURE IF EXISTS {0}Insert;
+        public const string INSERT = @"DROP PROCEDURE IF EXISTS {0}Insert;
 GO
 CREATE PROCEDURE {0}Insert (
 {1}
-,@UserId varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO {0}(
 {2}
-,CreateDate
-,UpdateDate
-,CreateUser
-,UpdateUser)
+        ,CreateDate
+        ,UpdateDate
+        ,CreateUser
+        ,UpdateUser)
 	VALUES(
 {3}
-,GETDATE()
-,GETDATE()
-,@UserId
-,@UserId)
+        ,GETDATE()
+        ,GETDATE()
+        ,@UpdateUser
+        ,@UpdateUser)
 ";
 
-        public const string INSERT = @"
-DROP PROCEDURE IF EXISTS {0}Insert;
-GO
-CREATE PROCEDURE {0}Insert (
-	{1}
-)
-AS	
-	INSERT INTO {0}(
-		{2})
-	VALUES(
-		{3})
-";
-
-        public const string UPDATE = @"
-DROP PROCEDURE IF EXISTS {0}Update;
+        public const string UPDATE = @"DROP PROCEDURE IF EXISTS {0}Update;
 GO
 CREATE PROCEDURE {0}Update (
 {1}
-,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE {0}
 	SET
 {2}
-,UpdateDate = GETDATE()
-,UpdateUser = @UserId
+        ,UpdateDate = GETDATE()
+        ,UpdateUser = @UpdateUser
 	WHERE 
 {3}
 ";
 
-        public const string DELETE = @"
-DROP PROCEDURE IF EXISTS {0}Delete;
+        public const string DELETE = @"DROP PROCEDURE IF EXISTS {0}Delete;
 GO
 CREATE PROCEDURE {0}Delete (
 {1}
@@ -72,18 +50,17 @@ AS
 {2}
 ";
 
-        public const string DELETE_LOGIC = @"
-DROP PROCEDURE IF EXISTS {0}Delete;
+        public const string DELETE_LOGIC = @"DROP PROCEDURE IF EXISTS {0}Delete;
 GO
 CREATE PROCEDURE {0}Delete (
 {1}
-,@UserID varchar(20)
+    ,@UpdateUser varchar(20)
 )
 AS
 	UPDATE {0}
 	SET
-		,UpdateDate = GETDATE()
-		,UpdateUser = @UserId
+		UpdateDate = GETDATE()
+		,UpdateUser = @UpdateUser
 		,IsDelete = 1
 	WHERE 
 {2}

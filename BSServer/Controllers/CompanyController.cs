@@ -1,6 +1,7 @@
 ﻿using BSCommon.Models;
 using BSServer._Core.Base;
 using BSServer._Core.Context;
+using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System.Collections.Generic;
 
@@ -20,9 +21,21 @@ namespace BSServer.Controllers
             return this.CompanyDAO.GetCompanys();
         }
 
-        //public bool SaveCompany(List<Company> saveData)
-        //{
-        //    return this.CompanyDAO.SaveCustommersCompany(customerCompanies);
-        //}
+        public int InsertCompany(Company data)
+        {
+            long seq = this.CompanyDAO.GetCompanySEQ() + 1;
+            data.CompanyID = GenerateID.CompanyID(seq); ;
+            return this.CompanyDAO.InsertCompany(data);
+        }
+
+        public int UpdateCompany(Company data)
+        {
+            return this.CompanyDAO.UpdateCompany(data);
+        }
+
+        public int DeleteCompany(Company data)
+        {
+            return this.CompanyDAO.DeleteCompany(data);
+        }
     }
 }

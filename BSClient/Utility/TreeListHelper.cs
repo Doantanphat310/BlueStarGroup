@@ -9,53 +9,13 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Columns;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BSClient.Utility
 {
     public static class TreeListHelper
     {
-        //public static void AddSpinEditColumn(
-        //    this GridView gridView,
-        //    string fieldName,
-        //    string caption,
-        //    int width,
-        //    bool isAllowEdit = true,
-        //    string formatString = "#,###0",
-        //    SummaryItemType summaryType = SummaryItemType.None,
-        //    string summaryFormat = ""
-        //    )
-        //{
-        //    RepositoryItemSpinEdit itemCtrl = new RepositoryItemSpinEdit();
-        //    itemCtrl.DisplayFormat.FormatString = formatString;
-        //    itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
-        //    itemCtrl.EditFormat.FormatString = formatString;
-        //    itemCtrl.EditFormat.FormatType = FormatType.Custom;
-
-        //    GridColumnSummaryItem summaryItem = new GridColumnSummaryItem();
-
-        //    if (summaryType != SummaryItemType.None)
-        //    {
-        //        summaryFormat = string.IsNullOrEmpty(summaryFormat) ? formatString : summaryFormat;
-        //        summaryItem = new GridColumnSummaryItem(summaryType, fieldName, summaryFormat);
-        //    }
-
-
-        //    gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl, summaryItem: summaryItem);
-        //}
-
-        //public static void AddCheckBoxColumn(
-        //    this GridView gridView,
-        //    string fieldName,
-        //    string caption,
-        //    int width,
-        //    bool isAllowEdit = true)
-        //{
-        //    RepositoryItemCheckEdit itemCtrl = new RepositoryItemCheckEdit();
-
-        //    gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
-        //}
-
         public static void AddLookupEditColumn(
             this TreeList gridView,
             string fieldName,
@@ -117,61 +77,6 @@ namespace BSClient.Utility
                 popupForm.OwnerEdit.ClosePopup();
             }
         }
-
-        //public static void AddDateEditColumn(
-        //    this GridView gridView,
-        //    string fieldName,
-        //    string caption,
-        //    int width,
-        //    bool isAllowEdit = true,
-        //    string formatString = "dd/MM/yyyy")
-        //{
-        //    RepositoryItemDateEdit itemCtrl = new RepositoryItemDateEdit();
-
-        //    itemCtrl.DisplayFormat.FormatString = formatString;
-        //    itemCtrl.DisplayFormat.FormatType = FormatType.DateTime;
-
-        //    gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
-        //}
-
-        //public static void AddColumn(
-        //    this GridView gridView,
-        //    string fieldName,
-        //    string caption,
-        //    int width,
-        //    bool isAllowEdit = true,
-        //    bool fixedWidth = true,
-        //    RepositoryItem itemCtrl = null,
-        //    GridColumnSummaryItem summaryItem = null
-        //    )
-        //{
-        //    GridColumn col = new GridColumn
-        //    {
-        //        Caption = caption,
-        //        Name = fieldName,
-        //        FieldName = fieldName,
-        //        Visible = true,
-        //        Width = width
-        //    };
-
-        //    col.OptionsColumn.AllowEdit = isAllowEdit;
-        //    col.AppearanceHeader.Options.UseTextOptions = true;
-        //    col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-        //    col.OptionsColumn.FixedWidth = fixedWidth;
-
-        //    if (itemCtrl != null)
-        //    {
-        //        col.ColumnEdit = itemCtrl;
-        //    }
-
-        //    // Add Summary Item
-        //    if (summaryItem != null)
-        //    {
-        //        col.Summary.Add(summaryItem);
-        //    }
-
-        //    gridView.Columns.Add(col);
-        //}
 
         public static void AddColumn(
             this TreeList gridView,
@@ -253,44 +158,6 @@ namespace BSClient.Utility
             treeList.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
-        //private static GridColumn GetColumn(
-        //    string fieldName,
-        //    string caption,
-        //    int width,
-        //    bool isAllowEdit = true,
-        //    bool fixedWidth = true,
-        //    RepositoryItem itemCtrl = null,
-        //    GridSummaryItem summaryItem = null
-        //    )
-        //{
-        //    GridColumn col = new GridColumn
-        //    {
-        //        Caption = caption,
-        //        Name = fieldName,
-        //        FieldName = fieldName,
-        //        Visible = true,
-        //        Width = width
-        //    };
-
-        //    col.OptionsColumn.AllowEdit = isAllowEdit;
-        //    col.AppearanceHeader.Options.UseTextOptions = true;
-        //    col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-        //    col.OptionsColumn.FixedWidth = fixedWidth;
-
-        //    if (itemCtrl != null)
-        //    {
-        //        col.ColumnEdit = itemCtrl;
-        //    }
-
-        //    // Add Summary Item
-        //    if (summaryItem != null)
-        //    {
-        //        col.Summary.Add(summaryItem);
-        //    }
-
-        //    return col;
-        //}
-
         public static void SetupTreeList(
             this TreeList treeList,
             bool multiSelect = true)
@@ -305,6 +172,10 @@ namespace BSClient.Utility
 
             treeList.OptionsNavigation.AutoFocusNewNode = true;
             treeList.OptionsView.ShowFilterPanelMode = DevExpress.XtraTreeList.ShowFilterPanelMode.Never;
+
+            treeList.Appearance.FocusedRow.BackColor = ColorTranslator.FromHtml("#80bfff"); ;
+            treeList.Appearance.FocusedRow.Options.UseBackColor = true;
+            treeList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFocus;
         }
     }
 }

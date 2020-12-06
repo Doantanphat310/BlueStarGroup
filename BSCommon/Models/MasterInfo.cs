@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BSCommon.Models
 {
     /// <summary>
-    /// User role infomation
+    /// MasterInfo infomation
     /// </summary>
     public class MasterInfo
     {
-        public string MasterCd { get; set; }
+        public string Key { get; set; }
 
-        public string DetailCd { get; set; }
+        public string Id { get; set; }
 
         public string Value { get; set; }
 

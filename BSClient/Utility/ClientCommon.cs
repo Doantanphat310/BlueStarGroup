@@ -1,63 +1,69 @@
 ﻿using BSCommon.Utility;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Grid;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 
 namespace BSClient.Utility
 {
     public static class ClientCommon
     {
-        [Obsolete("Chuyển qua dùng BaseForm")]
-        public static void ShowControl(System.Windows.Forms.Control control, System.Windows.Forms.Control Content)
-        {
-            Content.Controls.Clear();
-            control.Dock = System.Windows.Forms.DockStyle.Fill;
-            control.BringToFront();
-            control.Focus();
-            Content.Controls.Add(control);
-        }
-
-        [Obsolete("Chuyển qua dùng GridViewHelper")]
-        public static void AddColumn(GridView gridView, string fieldName, string caption, int width, bool isAllowEdit = true)
-        {
-            GridColumn col = new GridColumn
-            {
-                Caption = caption,
-                Name = fieldName,
-                FieldName = fieldName,
-                Visible = true,
-                Width = width
-            };
-
-            col.OptionsColumn.AllowEdit = isAllowEdit;
-            col.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-
-            gridView.Columns.Add(col);
-        }
-
-        [Obsolete("Chuyển qua dùng GridViewHelper")]
-        public static void SetupGridView(
-            GridView gridView,
-            bool columnAutoWidth = true,
-            bool multiSelect = true)
-        {
-            gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
-            gridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
-            gridView.OptionsBehavior.AutoPopulateColumns = true;
-            gridView.OptionsPrint.EnableAppearanceOddRow = true;
-            gridView.OptionsSelection.MultiSelect = multiSelect;
-            gridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-
-            gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
-        }
-
         public static bool IsCheckPass(string password, string hashPassword)
         {
             return SHA1Helper.IsCheck(password, hashPassword);
+        }
+
+        public static Image Base64ToImage(string base64String)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(base64String)) return null;
+
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+                MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                ms.Write(imageBytes, 0, imageBytes.Length);
+                System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
+
+                return image;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string GetBase64StringFormImage(string imgPath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(imgPath)) return string.Empty;
+
+                byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
+                string base64String = Convert.ToBase64String(imageBytes);
+
+                return base64String;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        public static string ImageToBase64(Image image)
+        {
+            try
+            {
+                var imageStream = new MemoryStream();
+                image.Save(imageStream, System.Drawing.Imaging.ImageFormat.Bmp);
+                imageStream.Position = 0;
+                var imageBytes = imageStream.ToArray();
+                var ImageBase64 = Convert.ToBase64String(imageBytes);
+
+                return ImageBase64;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 }

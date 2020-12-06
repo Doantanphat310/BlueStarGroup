@@ -30,7 +30,7 @@ namespace BSServer._Core.Context
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            builder.Entity<MasterInfo>().HasKey(model => new { model.MasterCd, model.DetailCd });
+            builder.Entity<MasterInfo>().HasKey(model => new { model.Key, model.Id });
         }
 
         #endregion DbSet

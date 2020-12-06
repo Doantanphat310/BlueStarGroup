@@ -18,11 +18,6 @@ namespace BSCommon.Models
         public string CompanyID { get; set; }
 
         /// <summary>
-        /// CompanyCode
-        /// </summary>
-        public string CompanyCode { get; set; }
-
-        /// <summary>
         /// CompanyName
         /// </summary>
         public string CompanyName { get; set; }
@@ -68,39 +63,24 @@ namespace BSCommon.Models
         public string Email { get; set; }
 
         /// <summary>
-        /// AccountBank
+        /// BankAccount
         /// </summary>
-        public string AccountBank { get; set; }
+        public string BankAccount { get; set; }
 
         /// <summary>
-        /// Bank
+        /// BankName
         /// </summary>
-        public string Bank { get; set; }
+        public string BankName { get; set; }
 
         /// <summary>
-        /// BranchBank
+        /// BankBranch
         /// </summary>
-        public string BranchBank { get; set; }
+        public string BankBranch { get; set; }
 
         /// <summary>
         /// Logo
         /// </summary>
         public string Logo { get; set; }
-
-        /// <summary>
-        /// BackGround
-        /// </summary>
-        public string BackGround { get; set; }
-
-        /// <summary>
-        /// StampCircel
-        /// </summary>
-        public string StampCircel { get; set; }
-
-        /// <summary>
-        /// StampSquare
-        /// </summary>
-        public string StampSquare { get; set; }
 
         /// <summary>
         /// SoQuyetDinh
@@ -158,9 +138,9 @@ namespace BSCommon.Models
         public string ChucDanhLanhDao { get; set; }
 
         /// <summary>
-        /// ChukyLapBieu
+        /// ChuKyLapBieu
         /// </summary>
-        public string ChukyLapBieu { get; set; }
+        public string ChuKyLapBieu { get; set; }
 
         /// <summary>
         /// ChuKyKTTruong

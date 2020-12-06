@@ -50,12 +50,12 @@ namespace BSClient.Views
 
             List<MasterInfo> userRoles = MasterInfoManager.GetUserRoles();
             UserRole_ComboBox.Properties.DataSource = userRoles;
-            UserRole_ComboBox.Properties.ValueMember = "DetailCd";
+            UserRole_ComboBox.Properties.ValueMember = "Id";
             UserRole_ComboBox.Properties.DisplayMember = "Value";
             UserRole_ComboBox.Properties.ShowHeader = false;
             UserRole_ComboBox.Properties.NullText = "Chọn quyền";
 
-            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("DetailCd", 50));
+            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Id", 50));
             UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Value", 100));
         }
 
@@ -175,7 +175,7 @@ namespace BSClient.Views
         {
             string userID = Role_UserName_TextBox.Text;
             string companyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID;
-            string userRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().DetailCd;
+            string userRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id;
 
             if (string.IsNullOrEmpty(userID))
             {
@@ -206,7 +206,7 @@ namespace BSClient.Views
                 UserID = Role_UserName_TextBox.Text,
                 CompanyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID,
                 CompanyName = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyName,
-                UserRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().DetailCd,
+                UserRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id,
                 UserRoleName = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Value,
                 Status = ModifyMode.Insert
             });
