@@ -968,9 +968,9 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.Columns.Clear();
             this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", isAllowEdit: true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
             this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: true);
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, isAllowEdit: true, "#0.00");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, isAllowEdit: true, "c2");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, isAllowEdit: true, "c2");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "#0.00");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
         }
 
         private void Setup_InvoiceWareHouseDetail_GridView()
