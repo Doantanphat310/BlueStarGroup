@@ -888,6 +888,7 @@
             this.InvoiceDepreciation_gridView.Name = "InvoiceDepreciation_gridView";
             this.InvoiceDepreciation_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceDepreciation_gridView_RowClick);
             this.InvoiceDepreciation_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceDepreciation_gridView_InitNewRow);
+            this.InvoiceDepreciation_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.InvoiceDepreciation_gridView_FocusedRowChanged);
             this.InvoiceDepreciation_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceDepreciation_gridView_RowUpdated);
             // 
             // InvoiceWareHouse_groupControl
@@ -1073,6 +1074,7 @@
             this.InvoiceWareHouseDetail_gridView.GridControl = this.InvoiceWareHouseDetail_gridControl;
             this.InvoiceWareHouseDetail_gridView.Name = "InvoiceWareHouseDetail_gridView";
             this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
+            this.InvoiceWareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.InvoiceWareHouseDetail_gridView_FocusedRowChanged);
             this.InvoiceWareHouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InvoiceWareHouseDetail_gridView_CellValueChanged);
             this.InvoiceWareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouseDetail_gridView_RowUpdated);
             // 

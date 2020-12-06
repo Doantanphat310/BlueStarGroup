@@ -2870,5 +2870,40 @@ namespace BSClient
             }
             WareHouseDetail_gridControl.RefreshDataSource();
         }
+
+        private void InvoiceWareHouseDetail_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            InvoiceDepreciationgroupControl.Enabled = true;
+            //LoadInvoiceDepreciationGridviewFull()
+            WareHouseDetail wareHouseDetail = InvoiceWareHouseDetail_gridView.GetFocusedRow().CastTo<WareHouseDetail>();
+            GlobalVarient.warehouseDetailInvoiceChoice = wareHouseDetail;
+            GlobalVarient.InvoiceDepreciationsChoice = null;
+            if (ChoiceWareHouseDetail == 0)
+            {
+                LoadInvoiceDepreciationGridviewFull();
+                LoadInvoiceDepreciationDetailGridviewFull();
+                ChoiceWareHouseDetail = 1;
+            }
+            else
+            {
+                Load_InvoiceDepreciation_GridView();
+                Load_InvoiceDepreciationDetail_GridView();
+            }
+        }
+
+        private void InvoiceDepreciation_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            Depreciation depreciation = InvoiceDepreciation_gridView.GetFocusedRow().CastTo<Depreciation>();
+            GlobalVarient.InvoiceDepreciationsChoice = depreciation;
+            if (ChoiceDepreciation == 0)
+            {
+                LoadInvoiceDepreciationDetailGridviewFull();
+                ChoiceDepreciation = 1;
+            }
+            else
+            {
+                Load_InvoiceDepreciationDetail_GridView();
+            }
+        }
     }
 }
