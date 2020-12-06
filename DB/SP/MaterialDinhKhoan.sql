@@ -68,26 +68,55 @@ alter proc SPSelectMaterialMaSoCustomer
 @CustomerID varchar(50)
 as
 begin
-	select * from Customer
+	select  distinct 
+	case
+	when A.InvoiceFormNo is null then B.InvoiceFormNo
+	else A.InvoiceFormNo
+	end as 'InvoiceFormNo',
+	case
+	when A.FormNo is null then B.FormNo
+	else A.FormNo
+	end as 'FormNo',
+	case
+	when A.SerialNo is null then B.SerialNo
+	else A.SerialNo
+	end as 'SerialNo',
+	B.CustomerID,B.CustomerName,B.CustomerSName from Invoice as A  right JOIN Customer as B
+	on A.CustomerID = B.CustomerID 
+	order by CustomerID
 end
 
 
 select  distinct 
 	case
-	when A.Maso is null then B.Maso
-	else A.MaSo
-	end as 'Maso',
+	when A.InvoiceFormNo is null then B.InvoiceFormNo
+	else A.InvoiceFormNo
+	end as 'InvoiceFormNo',
 	case
-	when A.MauSo is null then B.MauSo
-	else A.MauSo
-	end as 'MauSo',
+	when A.FormNo is null then B.FormNo
+	else A.FormNo
+	end as 'FormNo',
 	case
-	when A.KyHieu is null then B.KyHieu
-	else A.KyHieu
-	end as 'KyHieu',
+	when A.SerialNo is null then B.SerialNo
+	else A.SerialNo
+	end as 'SerialNo',
 	B.CustomerID,B.CustomerName,B.CustomerSName from Invoice as A  right JOIN Customer as B
 	on A.CustomerID = B.CustomerID 
 	order by CustomerID
+
+KH0000000043
+KH0000000043
+KH0000001395
+KH0000001778
+KH0000001160
+KH0000001160
+KH0000001687
+
+select * from Invoice as A inner join Customer as B
+on A.CustomerID = B.CustomerID
+
+
+	InvoiceFormNo,FormNo,SerialNo 
 
 update Customer
 set Maso = Maso + 'PT', MauSo = MauSo + 'PT',kyHieu = KyHieu + 'PT'
@@ -138,15 +167,31 @@ alter proc SPCheckMaterialTK_GL
 @AccountID varchar(50), @GeneralLedgerID varchar(50)
 as
 begin
-	if(exists(select * from GeneralLedger where AccountID = @AccountID and GeneralLedgerID = @GeneralLedgerID))
-	or
-	(exists(Select * from GeneralLedger where @GeneralLedgerID in ( select GeneralLedgerID from GeneralLedger where AccountID in ( select AccountID from Accounts where ParentID = @AccountID))))
-	begin
-		Select '1' as msgCode, 'Correct' as msgName
-	end
-	else
-		Select '0' as msgCode, 'Incorrect' as msgName
+Declare @AccountID_GL varchar(50)
+Set @AccountID_GL = (select accountID from GeneralLedger where GeneralLedgerID = @GeneralLedgerID)
+if(exists(select * from GeneralLedger where AccountID = @AccountID and GeneralLedgerID = @GeneralLedgerID))
+or
+(exists(select * from Accounts where ParentID = @AccountID_GL))
+begin
+Select '1' as msgCode, 'Correct' as msgName
 end
+else Select '0' as msgCode, 'Incorrect' as msgName
+end
+
+select * from GeneralLedger where AccountID in (select AccountID from Accounts where ParentID = )
+
+SPCheckMaterialTK_GL '111','SC0000000203'
+
+select * from GeneralLedger where GeneralLedgerID = 'SC0000000158'
+
+Nếu accountID của sổ cái là là của sổ cái hoặc 
+accountID của sổ cái là cha của tài khoản thì ok
+
+select * from Accounts
+order by AccountID
+
+select * from GeneralLedger
+order by AccountID
 
 SPSelectVoucherDinhKhoanWithVoucher '1'
 

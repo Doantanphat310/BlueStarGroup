@@ -1,4 +1,4 @@
-DROP PROCEDURE IF EXISTS AccountGroupInsert;
+DROP PROCEDURE  AccountGroupInsert;
 GO
 CREATE PROCEDURE AccountGroupInsert (
 	@AccountGroupID varchar(50)

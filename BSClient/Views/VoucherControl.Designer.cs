@@ -148,7 +148,7 @@
             this.WWareHouseDetailDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WWareHouseDetailSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WWareHouseDetailCalculator_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.WWareHouseDetailDiscount_textEdit = new DevExpress.XtraEditors.TextEdit();
+            this.WareHouseDetailDiscount_textEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -203,7 +203,7 @@
             this.ChitietKhogroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WWareHouseDetailDiscount_textEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetailDiscount_textEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).BeginInit();
             this.SuspendLayout();
@@ -378,7 +378,6 @@
             this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.VoucherDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.VoucherDetail_gridView_RowClick);
-            this.VoucherDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.VoucherDetail_gridView_RowStyle);
             this.VoucherDetail_gridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.VoucherDetail_gridView_ShowingEditor);
             this.VoucherDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.VoucherDetail_gridView_FocusedRowChanged);
             this.VoucherDetail_gridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.VoucherDetail_gridView_InvalidRowException);
@@ -596,7 +595,7 @@
             this.Voucher_gridView.Name = "Voucher_gridView";
             this.Voucher_gridView.OptionsScrollAnnotations.ShowSelectedRows = DevExpress.Utils.DefaultBoolean.True;
             this.Voucher_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Voucher_gridView_RowClick);
-            this.Voucher_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.Voucher_gridView_RowStyle);
+            this.Voucher_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Voucher_gridView_FocusedRowChanged);
             // 
             // simpleButton15
             // 
@@ -888,7 +887,6 @@
             this.InvoiceDepreciation_gridView.GridControl = this.InvoiceDepreciation_gridControl;
             this.InvoiceDepreciation_gridView.Name = "InvoiceDepreciation_gridView";
             this.InvoiceDepreciation_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceDepreciation_gridView_RowClick);
-            this.InvoiceDepreciation_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceDepreciation_gridView_RowStyle);
             this.InvoiceDepreciation_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceDepreciation_gridView_InitNewRow);
             this.InvoiceDepreciation_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceDepreciation_gridView_RowUpdated);
             // 
@@ -1000,8 +998,8 @@
             this.InvoiceWareHouse_gridView.GridControl = this.InvoiceWareHouse_gridControl;
             this.InvoiceWareHouse_gridView.Name = "InvoiceWareHouse_gridView";
             this.InvoiceWareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouse_gridView_RowClick);
-            this.InvoiceWareHouse_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceWareHouse_gridView_RowStyle);
             this.InvoiceWareHouse_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceWareHouse_gridView_InitNewRow);
+            this.InvoiceWareHouse_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.InvoiceWareHouse_gridView_FocusedRowChanged);
             this.InvoiceWareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouse_gridView_RowUpdated);
             // 
             // InvoiceWareHouseDetailCancel_simpleButton
@@ -1075,7 +1073,6 @@
             this.InvoiceWareHouseDetail_gridView.GridControl = this.InvoiceWareHouseDetail_gridControl;
             this.InvoiceWareHouseDetail_gridView.Name = "InvoiceWareHouseDetail_gridView";
             this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
-            this.InvoiceWareHouseDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceWareHouseDetail_gridView_RowStyle);
             this.InvoiceWareHouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InvoiceWareHouseDetail_gridView_CellValueChanged);
             this.InvoiceWareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouseDetail_gridView_RowUpdated);
             // 
@@ -1094,7 +1091,7 @@
             this.Invoice_gridView.GridControl = this.Invoice_gridControl;
             this.Invoice_gridView.Name = "Invoice_gridView";
             this.Invoice_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Invoice_gridView_RowClick);
-            this.Invoice_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.Invoice_gridView_RowStyle);
+            this.Invoice_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Invoice_gridView_FocusedRowChanged);
             this.Invoice_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.Invoice_gridView_RowUpdated);
             // 
             // label1
@@ -1254,7 +1251,7 @@
             this.WareHouseDepreciation_gridView.GridControl = this.WareHouseDepreciation_gridControl;
             this.WareHouseDepreciation_gridView.Name = "WareHouseDepreciation_gridView";
             this.WareHouseDepreciation_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouseDepreciation_gridView_RowClick);
-            this.WareHouseDepreciation_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WareHouseDepreciation_gridView_RowStyle);
+            this.WareHouseDepreciation_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouseDepreciation_gridView_FocusedRowChanged);
             this.WareHouseDepreciation_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouseDepreciation_gridView_RowUpdated);
             // 
             // WareHouseDepreciationSave_simpleButton
@@ -1293,7 +1290,7 @@
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseDetailDelete_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseDetailSave_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseDetailCalculator_simpleButton);
-            this.ChitietKhogroupControl.Controls.Add(this.WWareHouseDetailDiscount_textEdit);
+            this.ChitietKhogroupControl.Controls.Add(this.WareHouseDetailDiscount_textEdit);
             this.ChitietKhogroupControl.Controls.Add(this.labelControl21);
             this.ChitietKhogroupControl.Controls.Add(this.WareHouseDetail_gridControl);
             this.ChitietKhogroupControl.Location = new System.Drawing.Point(3, 3);
@@ -1402,7 +1399,7 @@
             this.WareHouse_gridView.GridControl = this.WareHouse_gridControl;
             this.WareHouse_gridView.Name = "WareHouse_gridView";
             this.WareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouse_gridView_RowClick);
-            this.WareHouse_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WareHouse_gridView_RowStyle);
+            this.WareHouse_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouse_gridView_FocusedRowChanged);
             this.WareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouse_gridView_RowUpdated);
             // 
             // WWareHouseDetailCancel_simpleButton
@@ -1443,15 +1440,16 @@
             this.WWareHouseDetailCalculator_simpleButton.Size = new System.Drawing.Size(80, 25);
             this.WWareHouseDetailCalculator_simpleButton.TabIndex = 12;
             this.WWareHouseDetailCalculator_simpleButton.Text = "Tính lại giá";
+            this.WWareHouseDetailCalculator_simpleButton.Click += new System.EventHandler(this.WWareHouseDetailCalculator_simpleButton_Click);
             // 
-            // WWareHouseDetailDiscount_textEdit
+            // WareHouseDetailDiscount_textEdit
             // 
-            this.WWareHouseDetailDiscount_textEdit.Location = new System.Drawing.Point(781, 347);
-            this.WWareHouseDetailDiscount_textEdit.Name = "WWareHouseDetailDiscount_textEdit";
-            this.WWareHouseDetailDiscount_textEdit.Properties.Mask.EditMask = "c";
-            this.WWareHouseDetailDiscount_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.WWareHouseDetailDiscount_textEdit.Size = new System.Drawing.Size(102, 20);
-            this.WWareHouseDetailDiscount_textEdit.TabIndex = 11;
+            this.WareHouseDetailDiscount_textEdit.Location = new System.Drawing.Point(781, 347);
+            this.WareHouseDetailDiscount_textEdit.Name = "WareHouseDetailDiscount_textEdit";
+            this.WareHouseDetailDiscount_textEdit.Properties.Mask.EditMask = "c";
+            this.WareHouseDetailDiscount_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.WareHouseDetailDiscount_textEdit.Size = new System.Drawing.Size(102, 20);
+            this.WareHouseDetailDiscount_textEdit.TabIndex = 11;
             // 
             // labelControl21
             // 
@@ -1476,7 +1474,7 @@
             this.WareHouseDetail_gridView.GridControl = this.WareHouseDetail_gridControl;
             this.WareHouseDetail_gridView.Name = "WareHouseDetail_gridView";
             this.WareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouseDetail_gridView_RowClick);
-            this.WareHouseDetail_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WareHouseDetail_gridView_RowStyle);
+            this.WareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouseDetail_gridView_FocusedRowChanged);
             this.WareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouseDetail_gridView_RowUpdated);
             // 
             // labelControl1
@@ -1556,7 +1554,7 @@
             this.ChitietKhogroupControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouse_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WWareHouseDetailDiscount_textEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetailDiscount_textEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).EndInit();
             this.ResumeLayout(false);
@@ -1613,7 +1611,7 @@
         private DevExpress.XtraEditors.SimpleButton WWareHouseDetailDelete_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WWareHouseDetailSave_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WWareHouseDetailCalculator_simpleButton;
-        private DevExpress.XtraEditors.TextEdit WWareHouseDetailDiscount_textEdit;
+        private DevExpress.XtraEditors.TextEdit WareHouseDetailDiscount_textEdit;
         private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraGrid.GridControl WareHouseDetail_gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView WareHouseDetail_gridView;

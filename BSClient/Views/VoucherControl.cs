@@ -579,10 +579,7 @@ namespace BSClient
         {
         }
 
-        private void VoucherDetail_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-
-        }
+    
 
         private void VoucherDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
@@ -611,6 +608,8 @@ namespace BSClient
                 e.Cancel = true;
             }
         }
+
+
 
         private void Voucher_gridView_RowClick(object sender, RowClickEventArgs e)
         {
@@ -974,7 +973,7 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.Columns.Clear();
             this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm",80, items,"ItemID", "ItemSName", true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
             this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "#0.00");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true,"c2");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true,"c2");
         }
@@ -1011,7 +1010,7 @@ namespace BSClient
             this.Invoice_gridView.Columns.Clear();
             this.Invoice_gridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
-                "CustomerID", "Mã KH", 120, materialCustomerInvoice, "CustomerID", "CustomerSName", true, editValueChanged: invoice_EditValueChanged);
+                "CustomerID", "Mã KH", 120, materialCustomerInvoice, "CustomerID", "CustomerSName", true, editValueChanged: invoice_EditValueChanged,popupFormWidth:800);
             this.Invoice_gridView.AddColumn("InvoiceFormNo", "Mã số", 80, true);
             this.Invoice_gridView.AddColumn("FormNo", "Mẫu số", 80, true);
             this.Invoice_gridView.AddColumn("SerialNo", "Kí hiệu", 80, true);
@@ -1048,15 +1047,7 @@ namespace BSClient
         }
         
      
-        //private void popupForminvoice_EditValueChanged(object sender, EventArgs e)
-        //{
-        //    PopupSearchLookUpEditForm popupControl = (PopupSearchLookUpEditForm)((IPopupControl)sender).PopupWindow;
-        //    popupControl.OwnerEdit.EditValueChanged -= new EventHandler(popupForminvoice_EditValueChanged);
-        //    MaterialCustomerInvoice matertialCustomerInvoice = new MaterialCustomerInvoice();
-        //    matertialCustomerInvoice = (MaterialCustomerInvoice)popupControl.OwnerEdit.GetSelectedDataRow();
-        //    //  MessageBox.Show(String.Format("MaSo: {0}, MauSo{1}", matertialCustomerInvoice.MaSo, matertialCustomerInvoice.MauSo));
-
-        //}
+    
         
         public void invoice_EditValueChanged(object sender, EventArgs e)
         {
@@ -1362,41 +1353,10 @@ namespace BSClient
             InvoiceWareHouse_gridView.DeleteSelectedRows();
         }
 
-        private void Invoice_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (Invoice_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
 
-        private void Voucher_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (Voucher_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor  = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
 
-        private void InvoiceWareHouse_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (InvoiceWareHouse_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
+      
+
 
         private void InvoiceWareHouseCancel_simpleButton_Click(object sender, EventArgs e)
         {
@@ -1863,29 +1823,8 @@ namespace BSClient
             row.StatusA = ModifyMode.Update;
         }
 
-        private void InvoiceWareHouseDetail_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (InvoiceWareHouseDetail_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
 
-        private void InvoiceDepreciation_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (InvoiceDepreciation_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
+
 
         private void InvoiceDepreciationDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
@@ -2322,17 +2261,6 @@ namespace BSClient
             row.Status = ModifyMode.Update;
         }
 
-        private void WareHouseDetail_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (WareHouseDetail_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
 
         private void WWareHouseDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
@@ -2489,17 +2417,7 @@ namespace BSClient
             row.StatusA = ModifyMode.Update;
         }
 
-        private void WareHouseDepreciation_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (WareHouseDepreciation_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
+
 
         private void WareHouseDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
@@ -2733,17 +2651,7 @@ namespace BSClient
             this.Load_InvoiceDepreciationDetail_GridView();
         }
 
-        private void WareHouse_gridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                if (WareHouse_gridView.FocusedRowHandle == e.RowHandle)
-                {
-                    e.Appearance.BackColor = ColorTranslator.FromHtml("#80bfff");
-                    e.HighPriority = true;
-                }
-            }
-        }
+
 
         private void InvoiceWareHouseDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
@@ -2807,6 +2715,160 @@ namespace BSClient
 
                 InvoiceDepreciationDetail_gridView.SetFocusedRowCellValue("Amount", totalamount);
             }
+        }
+
+        void ResetDatagridviewinvoice()
+        {
+            ////warehouse
+            ///
+            //GlobalVarient.warehouse = null;
+            //WarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouse);
+            //WareHouse_gridControl.DataSource = WarehouseData;
+            ///warehouseDetail
+            ///depreciation
+            ///depreciationDetail
+        }
+
+        private void Voucher_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            VoucherDetail_groupControl.Enabled = true;
+            Voucher voucher = Voucher_gridView.GetFocusedRow().CastTo<Voucher>();
+            if (voucher == null)
+            {
+                return;
+            }
+            LoadVoucherDetailGridView(voucher.VouchersID);
+            richTextBoxVoucherContent.Text = voucher.Description;
+            dateEditNgayNhapChungTu.EditValue = voucher.Date;
+            VoucherTypeDK_searchLookUpEdit.EditValue = voucher.VouchersTypeID;
+            GlobalVarient.VoucherIDChoice = voucher.VouchersID;
+            GlobalVarient.voucherChoice = voucher;
+            Voucher_gridView.FocusRectStyle = DrawFocusRectStyle.RowFocus;
+
+
+        }
+
+        private void Invoice_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+
+            InvoiceWareHouse_groupControl.Enabled = true;
+           // Invoice invoice = Invoice_gridView.GetRow(e.RowHandle).CastTo<Invoice>();
+            Invoice invoice = Invoice_gridView.GetFocusedRow().CastTo<Invoice>();
+            if (invoice == null)
+            {
+                return;
+            }
+            GlobalVarient.invoiceChoice = invoice;
+            if (ChoiceInvoice == 0)
+            {
+                LoadInvoiceWareHouseGridviewFull();
+                ChoiceInvoice = 1;
+            }
+            else
+            {
+                Load_InvoiceWareHouse_GridView();
+            }
+
+        }
+
+        private void InvoiceWareHouse_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+
+            WareHouse wareHouse = InvoiceWareHouse_gridView.GetFocusedRow().CastTo<WareHouse>();
+            //if (wareHouse == null)
+            //{
+            //    return;
+            //}
+
+            GlobalVarient.warehouseInvoiceChoice = wareHouse;
+            if (ChoiceWareHouse == 0)
+            {
+                // LoadInvoiceWareHouseGridviewFull();
+                LoadInvoiceWareHouseDetailGridviewFull();
+                ChoiceWareHouse = 1;
+            }
+            else
+            {
+                // Load_InvoiceWareHouse_GridView();
+                Load_InvoiceWareHouseDetail_GridView();
+            }
+        }
+
+        private void WareHouseDetail_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            WareHouseDepreciation_groupControl.Enabled = true;
+            //WareHouseDepreciation_gridControl
+            //LoadInvoiceDepreciationGridviewFull()
+            WareHouseDetail wareHouseDetail = WareHouseDetail_gridView.GetFocusedRow().CastTo<WareHouseDetail>();
+
+
+            GlobalVarient.warehouseDetailChoice = wareHouseDetail;
+            GlobalVarient.DepreciationsChoice = null;
+            if (ChoiceWWareHouseDetail == 0)
+            {
+                Load_DepreciationGridviewFull();
+                Load_DepreciationDetailGridviewFull();
+                ChoiceWWareHouseDetail = 1;
+            }
+            else
+            {
+                Load_Depreciation_GridView();
+                Load_DepreciationDetail_GridView();
+            }
+        }
+
+        private void WareHouseDepreciation_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            Depreciation depreciation = WareHouseDepreciation_gridView.GetFocusedRow().CastTo<Depreciation>();
+
+
+            GlobalVarient.DepreciationsChoice = depreciation;
+            if (WareHouseChoiceDepreciation == 0)
+            {
+                Load_DepreciationDetailGridviewFull();
+                WareHouseChoiceDepreciation = 1;
+            }
+            else
+            {
+                Load_DepreciationDetail_GridView();
+            }
+        }
+
+        private void WareHouse_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            WareHouse wareHouse = WareHouse_gridView.GetFocusedRow().CastTo<WareHouse>();
+
+
+            GlobalVarient.warehouseChoice = wareHouse;
+            if (ChoiceWWareHouse == 0)
+            {
+                // LoadInvoiceWareHouseGridviewFull();
+                LoadWareHouseDetailGridviewFull();
+                ChoiceWWareHouse = 1;
+            }
+            else
+            {
+                // Load_InvoiceWareHouse_GridView();
+                Load_WareHouseDetail_GridView();
+            }
+        }
+
+        private void WWareHouseDetailCalculator_simpleButton_Click(object sender, EventArgs e)
+        {
+
+            decimal TienCK = (decimal)WareHouseDetailDiscount_textEdit.EditValue;
+
+            decimal TienFullDetail = WarehouseDetailData.Select(o => o.Amount).Sum();
+            decimal PercentDiscount = TienCK * 100 / TienFullDetail;
+            for (int i = 0; i < WarehouseDetailData.Count; i++)
+            {
+
+                WarehouseDetailData[i].Price = (WarehouseDetailData[i].Amount - (WarehouseDetailData[i].Amount * PercentDiscount / 100)) / WarehouseDetailData[i].Quantity;
+                WarehouseDetailData[i].Amount = WarehouseDetailData[i].Price * WarehouseDetailData[i].Quantity;
+                WarehouseDetailData[i].Status = ModifyMode.Update;
+
+            }
+            WareHouseDetail_gridControl.RefreshDataSource();
         }
     }
 }
