@@ -36,17 +36,17 @@ namespace BSServer.Logics
                                 seq++;
                                 customer.CustomerID = GenerateID.CustomerID(seq); ;
 
-                                this.CustomerDAO.InsertCustommer(customer);
+                                this.CustomerDAO.InsertCustomer(customer);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.CustomerDAO.UpdateCustommer(customer);
+                                this.CustomerDAO.UpdateCustomer(customer);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.CustomerDAO.DeleteCustommer(customer);
+                                this.CustomerDAO.DeleteCustomer(customer);
                                 break;
                         }
                     }

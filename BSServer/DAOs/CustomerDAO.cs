@@ -27,51 +27,59 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public int InsertCustommer(Customer customer)
+        public bool InsertCustomer(Customer data)
         {
-            SqlParameter[] param = new SqlParameter[]
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@CustomerID", customer.CustomerID),
-                new SqlParameter("@CustomerName", customer.CustomerName),
-                new SqlParameter("@CustomerSName", customer.CustomerSName),
-                new SqlParameter("@InvoiceFormNo", customer.InvoiceFormNo),
-                new SqlParameter("@FormNo", customer.FormNo),
-                new SqlParameter("@SerialNo", customer.SerialNo),
-                new SqlParameter("@Address", customer.Address),
-                new SqlParameter("@Phone", customer.Phone),
+                new SqlParameter("@CustomerID", data.CustomerID),
+                new SqlParameter("@CustomerName", data.CustomerName),
+                new SqlParameter("@CustomerSName", data.CustomerSName),
+                new SqlParameter("@Address", data.Address),
+                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
+                new SqlParameter("@FormNo", data.FormNo),
+                new SqlParameter("@SerialNo", data.SerialNo),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            return this.Context.ExecuteDataFromProcedure("CustomerInsert", param);
+            this.Context.ExecuteDataFromProcedure("CustomerInsert", sqlParameters);
+
+            return true;
         }
 
-        public int UpdateCustommer(Customer customer)
+        public bool UpdateCustomer(Customer data)
         {
-            SqlParameter[] param = new SqlParameter[]
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@CustomerID", customer.CustomerID),
-                new SqlParameter("@CustomerName", customer.CustomerName),
-                new SqlParameter("@CustomerSName", customer.CustomerSName),
-                new SqlParameter("@InvoiceFormNo", customer.InvoiceFormNo),
-                new SqlParameter("@FormNo", customer.FormNo),
-                new SqlParameter("@SerialNo", customer.SerialNo),
-                new SqlParameter("@Address", customer.Address),
-                new SqlParameter("@Phone", customer.Phone),
+                new SqlParameter("@CustomerID", data.CustomerID),
+                new SqlParameter("@CustomerName", data.CustomerName),
+                new SqlParameter("@CustomerSName", data.CustomerSName),
+                new SqlParameter("@Address", data.Address),
+                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
+                new SqlParameter("@FormNo", data.FormNo),
+                new SqlParameter("@SerialNo", data.SerialNo),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            return this.Context.ExecuteDataFromProcedure("CustomerUpdate", param);
+            this.Context.ExecuteDataFromProcedure("CustomerUpdate", sqlParameters);
+
+            return true;
         }
 
-        public int DeleteCustommer(Customer customer)
+        public bool DeleteCustomer(Customer data)
         {
-            SqlParameter[] param = new SqlParameter[]
+            SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@CustomerID", customer.CustomerID),
-                new SqlParameter("UserId", CommonInfo.UserInfo.UserID)
+            new SqlParameter("@CustomerID", data.CustomerID),
+            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            return this.Context.ExecuteDataFromProcedure("CustomerDelete", param);
+            this.Context.ExecuteDataFromProcedure("CustomerDelete", sqlParameters);
+
+            return true;
         }
     }
 }
