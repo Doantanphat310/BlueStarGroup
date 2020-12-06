@@ -14,7 +14,7 @@ Alter PROCEDURE [dbo].[VouchersDetailSelectVoucherID] (
 AS	
 	begin
 		select 
-	A.VouchersDetailID, A.VouchersID, A.AccountID, A.CustomerID, A.GeneralLedgerID,A.CompanyID,
+	A.VouchersDetailID, A.VouchersID, A.AccountID, A.CustomerID, A.GeneralLedgerID,A.CompanyID,A.Descriptions,
 	case
 	when DebitAmount is not null then 'N'
 	When CreditAmount is not null then 'C'
@@ -32,14 +32,3 @@ left join Customer as D
 on A.CustomerID = D.CustomerID
 where VouchersID = @VouchersID and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser and A.IsDelete is null
 	end
-
-	VouchersDetailSelectVoucherID'1','1','1'
-	
-   VouchersDetailSelectVoucherID  'VOU20201118100209451', 'COM0001', 'admin'
-   select * from VouchersDetail where VouchersID = 'VOU20201118100209451'
-
-   VOU20201118100209451
-VOU20201118100313372
-VOU20201118100729841
-VOU20201118055856761
-   select * from Vouchers

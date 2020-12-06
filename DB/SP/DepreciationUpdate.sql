@@ -6,7 +6,7 @@ alter proc [dbo].[DepreciationUpdate]
 	@DepreciationMonth int,
 	@CurrentMonth int,
 	@DepreciationAmount money,
-	@DepreciationPercent float,
+	@DepreciationAmountPerMonth money,
 	@Status bit,
 	@CreateUser varchar(50),
 	@CompanyID varchar(50)
@@ -19,7 +19,7 @@ set
 	DepreciationMonth=@DepreciationMonth,
 	CurrentMonth=@CurrentMonth,
 	DepreciationAmount=@DepreciationAmount,
-	DepreciationPercent=@DepreciationPercent,
+	DepreciationAmountPerMonth=@DepreciationAmountPerMonth,
 	Status=@Status,
 	updatedate = getdate(),
 	updateuser=@CreateUser

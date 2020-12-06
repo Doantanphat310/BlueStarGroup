@@ -13,7 +13,7 @@ namespace BSCommon.Models
         public string DepreciationID { get; set; }
         public Nullable<int> PeriodCurrent { get; set; }
         public Nullable<System.DateTime> DepreciationDate { get; set; }
-        public Nullable<int> QuantityPeriod { get; set; }
+        public int QuantityPeriod { get; set; } = 1;
         public Nullable<decimal> Amount { get; set; }
         public string Descriptions { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

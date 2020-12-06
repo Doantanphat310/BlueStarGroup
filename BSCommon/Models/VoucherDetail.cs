@@ -17,6 +17,7 @@ namespace BSCommon.Models
         public string CustomerID { get; set; }
         public string GeneralLedgerID { get; set; }
         public string CompanyID { get; set; }
+        public string Descriptions { get; set; }
         #endregion VoucherDetail table Sql
         public string NV { get; set; }
         public string CustomerName { get; set; }

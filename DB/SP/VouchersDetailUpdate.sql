@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-Create PROCEDURE [dbo].[VouchersDetailUpdate] (
+alter PROCEDURE [dbo].[VouchersDetailUpdate] (
 	@VouchersID varchar(50),
 	@VouchersDetailID varchar(50),
 	@NV varchar(50),
@@ -14,7 +14,8 @@ Create PROCEDURE [dbo].[VouchersDetailUpdate] (
 	@GeneralLedgerID varchar(50),
 	@Amount money,
 	@CompanyID varchar(50),
-	@CreateUser varchar(20)
+	@CreateUser varchar(20),
+	@Descriptions nvarchar(max)
 )
 AS	
 	begin
@@ -31,7 +32,8 @@ AS
 			CreditAmount = null,
 			CompanyID = @CompanyID,
 			UpdateUser = @CreateUser,
-			UpdateDate = GETDATE()
+			UpdateDate = GETDATE(),
+			Descriptions = @Descriptions
 			where VouchersDetailID = @VouchersDetailID
 		end
 		else if(@NV = 'C')
@@ -47,7 +49,8 @@ AS
 			CreditAmount = @Amount,
 			CompanyID = @CompanyID,
 			UpdateUser = @CreateUser,
-			UpdateDate = GETDATE()
+			UpdateDate = GETDATE(),
+			Descriptions = @Descriptions
 			where VouchersDetailID = @VouchersDetailID
 		end
 	end

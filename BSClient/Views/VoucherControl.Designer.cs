@@ -869,6 +869,8 @@
             // 
             this.InvoiceDepreciationDetail_gridView.GridControl = this.InvoiceDepreciationDetail_gridControl;
             this.InvoiceDepreciationDetail_gridView.Name = "InvoiceDepreciationDetail_gridView";
+            this.InvoiceDepreciationDetail_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceDepreciationDetail_gridView_InitNewRow);
+            this.InvoiceDepreciationDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InvoiceDepreciationDetail_gridView_CellValueChanged);
             this.InvoiceDepreciationDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceDepreciationDetail_gridView_RowUpdated);
             // 
             // InvoiceDepreciation_gridControl
@@ -887,6 +889,7 @@
             this.InvoiceDepreciation_gridView.Name = "InvoiceDepreciation_gridView";
             this.InvoiceDepreciation_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceDepreciation_gridView_RowClick);
             this.InvoiceDepreciation_gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.InvoiceDepreciation_gridView_RowStyle);
+            this.InvoiceDepreciation_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.InvoiceDepreciation_gridView_InitNewRow);
             this.InvoiceDepreciation_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceDepreciation_gridView_RowUpdated);
             // 
             // InvoiceWareHouse_groupControl

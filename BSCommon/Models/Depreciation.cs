@@ -18,13 +18,13 @@ namespace BSCommon.Models
         [Required(ErrorMessage = "Số tháng sử dụng không được để trống!")]
         public Nullable<int> UseMonth { get; set; }
         [Required(ErrorMessage = "Số tháng khấu hao không được để trống!")]
-        public Nullable<int> DepreciationMonth { get; set; }
+        public int DepreciationMonth { get; set; } = 1;
         [Required(ErrorMessage = "Tháng hiện tại không được để trống!")]
         public Nullable<int> CurrentMonth { get; set; }
-        [Required(ErrorMessage = "Tiền KH mỗi tháng không được để trống!")]
+        [Required(ErrorMessage = "Tiền KH không được để trống!")]
         public decimal DepreciationAmount { get; set; }
-        [Required(ErrorMessage = "% khấu hao mỗi tháng không được để trống!")]
-        public double DepreciationPercent { get; set; }
+        [Required(ErrorMessage = "Tiền khấu hao mỗi tháng không được để trống!")]
+        public decimal DepreciationAmountPerMonth { get { return this.DepreciationAmount / this.DepreciationMonth; } }
         public Nullable<bool> Status { get; set; }
         public Nullable<bool> IsDelete { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
@@ -33,6 +33,5 @@ namespace BSCommon.Models
         public string UpdateUser { get; set; }
         public string CompanyID { get; set; }
         public ModifyMode StatusA { get; set; }
-        public decimal DepreciationAmountMonth { get { return this.DepreciationAmount * (Decimal)this.DepreciationPercent /100 ; } }
     }
 }

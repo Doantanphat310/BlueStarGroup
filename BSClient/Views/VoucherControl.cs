@@ -171,6 +171,7 @@ namespace BSClient
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", true);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", true);
             this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "$#,##0.00");
+            this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
         
@@ -426,7 +427,7 @@ namespace BSClient
                     credit = group.total;
                 }
             }
-            if (Debit != credit)
+            if (Debit != credit && VoucherTypeDK_searchLookUpEdit.EditValue.ToString() != "DK")
             {
                 MessageBoxHelper.ShowErrorMessage("Tổng tiền nợ có phải bằng nhau!\n" + "N: " + Debit.ToString() + "\nC: " + credit.ToString());
                 return;
@@ -885,8 +886,7 @@ namespace BSClient
             this.InvoiceDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
             this.InvoiceDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
             this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true,"C2");
-            this.InvoiceDepreciation_gridView.AddColumn("DepreciationPercent", "% KH", 40, true);
-            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmountMonth", "Tiền/Tháng", 120, false,"C2");
+            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false,"C2");
         }
 
         private void Setup_InvoiceDepreciation_GridView()
@@ -2006,17 +2006,14 @@ namespace BSClient
             this.WareHouseDetail_gridView.Columns.Clear();
             this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}", DevExpress.Data.SummaryItemType.Sum,"{0.00}");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
         }
 
         private void Setup_WareHouseDetail_GridView()
         {
-            this.WareHouseDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
-            this.WareHouseDetail_gridView.SetupGridView(columnAutoWidth: false);
-            this.WareHouseDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-            this.WareHouseDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.WareHouseDetail_gridView.SetupGridView(multiSelect: true, showFooter: true, newItemRow:NewItemRowPosition.Top);
         }
 
         private void Load_WareHouseDetail_GridView()
@@ -2058,8 +2055,7 @@ namespace BSClient
             this.WareHouseDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
             this.WareHouseDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
-            this.WareHouseDepreciation_gridView.AddColumn("DepreciationPercent", "% KH", 40, true);
-            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountMonth", "Tiền/Tháng", 120, false, "C2");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false,"C2");
         }
 
         private void Setup_Depreciation_GridView()
@@ -2751,14 +2747,6 @@ namespace BSClient
 
         private void InvoiceWareHouseDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-            /*
-             BandedGridView view = sender as BandedGridView;
-    if (view == null) return;
-    if (e.Column.Caption != "FirstName") return;
-    string cellValue = e.Value.ToString() + " " + view.GetRowCellValue(e.RowHandle, view.Columns["LastName"]).ToString();
-    view.SetRowCellValue(e.RowHandle, view.Columns["FullName"], cellValue);
-             */
-            // sssssss
             GridView view = sender as GridView;
             if (view == null) return;
             if (e.Column.FieldName == "Amount")
@@ -2789,11 +2777,36 @@ namespace BSClient
                 {
                     InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
                 }
-
-               
             }
            // Decimal cellValueAmount = (Decimal)e.Value;
 
+        }
+
+        private void InvoiceDepreciation_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+            InvoiceDepreciation_gridView.SetFocusedRowCellValue("DepreciationAmount", GlobalVarient.warehouseDetailInvoiceChoice.Amount);
+        }
+
+        private void InvoiceDepreciationDetail_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+            int SoLuongKy = (int)InvoiceDepreciationDetail_gridView.GetFocusedRowCellValue("QuantityPeriod");
+            Decimal totalamount = SoLuongKy * GlobalVarient.InvoiceDepreciationsChoice.DepreciationAmountPerMonth;
+
+            InvoiceDepreciationDetail_gridView.SetFocusedRowCellValue("Amount", totalamount);
+        }
+
+        private void InvoiceDepreciationDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName != "QuantityPeriod") return;
+            if (e.Column.FieldName == "QuantityPeriod")
+            {
+                int SoLuongKy = (int)InvoiceDepreciationDetail_gridView.GetFocusedRowCellValue("QuantityPeriod");
+                Decimal totalamount = SoLuongKy * GlobalVarient.InvoiceDepreciationsChoice.DepreciationAmountPerMonth;
+
+                InvoiceDepreciationDetail_gridView.SetFocusedRowCellValue("Amount", totalamount);
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Amount", voucherDetailInfo.Amount),
                     new SqlParameter("@CompanyID", voucherDetailInfo.CompanyID),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@Descriptions", voucherDetailInfo.Descriptions),
                 };
                 this.Context.ExecuteDataFromProcedure("VouchersDetailInsert", sqlParameters);
                 return true;
@@ -96,6 +97,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Amount", voucherDetailInfo.Amount),
                     new SqlParameter("@CompanyID", voucherDetailInfo.CompanyID),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@Descriptions", voucherDetailInfo.Descriptions)
                 };
 
                 this.Context.ExecuteDataFromProcedure("VouchersDetailUpdate", sqlParameters);
