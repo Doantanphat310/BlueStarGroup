@@ -95,7 +95,7 @@ namespace BSClient.Utility
            string valueMember,
            string displayMember,
            object itemSource,
-           List<ColumnInfo> columns,
+           List<ColumnInfo> columns = null,
            string nullText = "",
            bool enterChoiceFirstRow = true,
            int popupFormWidth = -1)

@@ -33,7 +33,7 @@ namespace BSClient
         public BindingList<Voucher> VoucherData { get; set; }
         public BindingList<VoucherDetail> VoucherDetailData { get; set; }
         public BindingList<Invoice> InvoiceData { get; set; }
-      //  public BindingList<WareHouse> WarehouseData { get; set; }
+        //  public BindingList<WareHouse> WarehouseData { get; set; }
         public BindingList<WareHouse> InvoiceWarehouseData { get; set; }
         public BindingList<WareHouseDetail> InvoiceWarehouseDetailData { get; set; }
 
@@ -51,7 +51,7 @@ namespace BSClient
         public List<Voucher> VoucherDelete { get; set; }
         public List<VoucherDetail> VoucherDetailDelete { get; set; }
         public List<Invoice> InvoiceDelete { get; set; }
-       // public List<WareHouse> WareHouseDelete { get; set; }
+        // public List<WareHouse> WareHouseDelete { get; set; }
         public List<WareHouse> InvoiceWareHouseDelete { get; set; }
         public List<WareHouseDetail> InvoiceWareHouseDetailDelete { get; set; }
 
@@ -67,7 +67,7 @@ namespace BSClient
 
         public static MaterialNVController MaterialGL = new MaterialNVController();
         List<MaterialGL> materialGL = MaterialGL.GetMaterialGL(GlobalVarient.CompanyIDChoice);
-        public static  MaterialNVController MaterialNV = new MaterialNVController();
+        public static MaterialNVController MaterialNV = new MaterialNVController();
         List<MaterialNV> materialNV = MaterialNV.GetMaterialNV();
         public static MaterialNVController MaterialTK = new MaterialNVController();
         List<MaterialTK> materialTK = MaterialTK.GetMaterialTK();
@@ -131,11 +131,6 @@ namespace BSClient
             VoucherTypeDK_searchLookUpEdit.Properties.DisplayMember = "VouchersTypeName";
         }
 
-       
-
-        private void VoucherControl_Load(object sender, EventArgs e)
-        {
-        }
         #region init design
         private void InitGridView()
         {
@@ -166,20 +161,20 @@ namespace BSClient
         private void InitVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.Columns.Clear();
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", true);
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 140, materialGL, "GeneralLedgerID", "GeneralLedgerName", true, editValueChanged: GeneralLedger_EditValueChanged);
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", true);
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", true);
             this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "$#,##0.00");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 140, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true, editValueChanged: GeneralLedger_EditValueChanged);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
-        
+
         public void GeneralLedger_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialGL>();
             VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
-        }  
+        }
 
         private void SetupVoucherDetailGridView()
         {
@@ -194,7 +189,7 @@ namespace BSClient
             tabNavigationPageLKKho.PageVisible = false;
             tabNavigationPageLKVAT.PageVisible = false;
             VoucherDetailController controller = new VoucherDetailController();
-            GlobalVarient.voucherDetailChoice =  new List<VoucherDetail>();
+            GlobalVarient.voucherDetailChoice = new List<VoucherDetail>();
             GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice);
             //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
             VoucherDetailData = null;
@@ -240,7 +235,7 @@ namespace BSClient
             LoadVoucherDetailGridView("00000000000000000LoadDefaulttoadnew");
 
         }
-        
+
         #region design Repository for VoucherDetail
         RepositoryItemSearchLookUpEdit riLookup = new RepositoryItemSearchLookUpEdit();
         RepositoryItemSearchLookUpEdit rsItemlookup = new RepositoryItemSearchLookUpEdit();
@@ -579,7 +574,7 @@ namespace BSClient
         {
         }
 
-    
+
 
         private void VoucherDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
@@ -783,8 +778,8 @@ namespace BSClient
                     {
                         tabNavigationPageLKVAT.PageVisible = false;
                         tabPaneVouchers.SelectedPageIndex = 0;
-                        
-                       
+
+
                     }
                     break;
                 #endregion check TK
@@ -833,14 +828,14 @@ namespace BSClient
         {
             this.InvoiceWareHouse_gridView.Columns.Clear();
             this.InvoiceWareHouse_gridView.AddColumn("Date", "Ngày", 80, false);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", true);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", false);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", true);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", true);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", true);
             this.InvoiceWareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
             this.InvoiceWareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
             this.InvoiceWareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
+            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
+            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
+            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.InvoiceWareHouse_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
 
@@ -855,7 +850,7 @@ namespace BSClient
         private void Load_InvoiceWareHouse_GridView()
         {
             WareHouseController controller = new WareHouseController();
-            if(GlobalVarient.invoiceChoice == null || GlobalVarient.invoiceChoice.InvoiceID == null)
+            if (GlobalVarient.invoiceChoice == null || GlobalVarient.invoiceChoice.InvoiceID == null)
             {
                 GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID("00000", GlobalVarient.CompanyIDChoice);
             }
@@ -863,7 +858,7 @@ namespace BSClient
             {
                 GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID(GlobalVarient.invoiceChoice.InvoiceID, GlobalVarient.CompanyIDChoice);
             }
-           
+
             InvoiceWarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouseInvoice);
             InvoiceWareHouse_gridControl.DataSource = InvoiceWarehouseData;
             InvoiceWareHouseDelete = new List<WareHouse>();
@@ -884,8 +879,8 @@ namespace BSClient
             this.InvoiceDepreciation_gridView.AddColumn("UseMonth", "Số tháng SD", 70, true);
             this.InvoiceDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
             this.InvoiceDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
-            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true,"C2");
-            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false,"C2");
+            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
+            this.InvoiceDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false, "C2");
         }
 
         private void Setup_InvoiceDepreciation_GridView()
@@ -900,7 +895,7 @@ namespace BSClient
         {
 
             DepreciationController controller = new DepreciationController();
-            if(GlobalVarient.warehouseDetailInvoiceChoice == null || GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID==null)
+            if (GlobalVarient.warehouseDetailInvoiceChoice == null || GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID == null)
             {
                 GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect("00000", GlobalVarient.CompanyIDChoice);
             }
@@ -908,7 +903,7 @@ namespace BSClient
             {
                 GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID, GlobalVarient.CompanyIDChoice);
             }
-           
+
             InvoiceDepreciationData = new BindingList<Depreciation>(GlobalVarient.InvoiceDepreciations);
             InvoiceDepreciation_gridControl.DataSource = InvoiceDepreciationData;
             InvoiceDepreciationDelete = new List<Depreciation>();
@@ -971,11 +966,11 @@ namespace BSClient
         private void Init_InvoiceWareHouseDetail_GridView()
         {
             this.InvoiceWareHouseDetail_gridView.Columns.Clear();
-            this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm",80, items,"ItemID", "ItemSName", true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
-            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "#0.00");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true,"c2");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true,"c2");
+            this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", isAllowEdit: true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
+            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: true);
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, isAllowEdit: true, "#0.00");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, isAllowEdit: true, "c2");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, isAllowEdit: true, "c2");
         }
 
         private void Setup_InvoiceWareHouseDetail_GridView()
@@ -989,7 +984,7 @@ namespace BSClient
         private void Load_InvoiceWareHouseDetail_GridView()
         {
             WareHouseDetailController controller = new WareHouseDetailController();
-            if(GlobalVarient.warehouseInvoiceChoice == null || GlobalVarient.warehouseInvoiceChoice.WarehouseID==null)
+            if (GlobalVarient.warehouseInvoiceChoice == null || GlobalVarient.warehouseInvoiceChoice.WarehouseID == null)
             {
                 GlobalVarient.warehouseDetailInvoice = controller.GetWareHouseDetailSelectWahouseID("00000", GlobalVarient.CompanyIDChoice);
             }
@@ -1004,13 +999,13 @@ namespace BSClient
         }
         #endregion init invoice warehouse detail
 
-
         private void Init_Invoice_GridView()
         {
             this.Invoice_gridView.Columns.Clear();
             this.Invoice_gridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
-                "CustomerID", "Mã KH", 120, materialCustomerInvoice, "CustomerID", "CustomerSName", true, editValueChanged: invoice_EditValueChanged,popupFormWidth:800);
+                "CustomerID", "Mã KH", 120, materialCustomerInvoice, "CustomerID", "CustomerSName",
+                isAllowEdit: true, editValueChanged: invoice_EditValueChanged, popupFormWidth: 800);
             this.Invoice_gridView.AddColumn("InvoiceFormNo", "Mã số", 80, true);
             this.Invoice_gridView.AddColumn("FormNo", "Mẫu số", 80, true);
             this.Invoice_gridView.AddColumn("SerialNo", "Kí hiệu", 80, true);
@@ -1019,10 +1014,10 @@ namespace BSClient
             this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "{0}%");
             this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 120, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true, "c2");
-            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120,true, "c2");
+            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120, true, "c2");
             //this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 60, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
-    "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", true);
+                "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: true);
             this.Invoice_gridView.AddColumn("Description", "Nội dung", 150, true);
             this.Invoice_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
@@ -1045,10 +1040,10 @@ namespace BSClient
             Invoice_gridControl.DataSource = InvoiceData;
             InvoiceDelete = new List<Invoice>();
         }
-        
-     
-    
-        
+
+
+
+
         public void invoice_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialCustomerInvoice>();
@@ -1267,7 +1262,7 @@ namespace BSClient
             List<WareHouse> saveData = this.InvoiceWarehouseData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
             if (saveData?.Count > 0)
             {
-              //  InvoiceController controller = new InvoiceController();
+                //  InvoiceController controller = new InvoiceController();
                 WareHouseController controller = new WareHouseController();
                 if (controller.SaveWareHouse(saveData))
                 {
@@ -1355,7 +1350,7 @@ namespace BSClient
 
 
 
-      
+
 
 
         private void InvoiceWareHouseCancel_simpleButton_Click(object sender, EventArgs e)
@@ -1371,13 +1366,13 @@ namespace BSClient
             GlobalVarient.warehouseInvoiceChoice = wareHouse;
             if (ChoiceWareHouse == 0)
             {
-               // LoadInvoiceWareHouseGridviewFull();
+                // LoadInvoiceWareHouseGridviewFull();
                 LoadInvoiceWareHouseDetailGridviewFull();
                 ChoiceWareHouse = 1;
             }
             else
             {
-               // Load_InvoiceWareHouse_GridView();
+                // Load_InvoiceWareHouse_GridView();
                 Load_InvoiceWareHouseDetail_GridView();
             }
         }
@@ -1408,7 +1403,7 @@ namespace BSClient
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     InvoiceWareHouseDetailDelete = new List<WareHouseDetail>();
-                   
+
                     this.LoadInvoiceWareHouseDetailGridviewFull();
                 }
                 else
@@ -1510,7 +1505,7 @@ namespace BSClient
                 Load_InvoiceDepreciation_GridView();
                 Load_InvoiceDepreciationDetail_GridView();
             }
-            
+
         }
 
         private void InvoiceDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
@@ -1629,7 +1624,7 @@ namespace BSClient
         int ChoiceDepreciation = 0;
         private void InvoiceDepreciation_gridView_RowClick(object sender, RowClickEventArgs e)
         {
-           // InvoiceDepreciationgroupControl.Enabled = true;
+            // InvoiceDepreciationgroupControl.Enabled = true;
             //LoadInvoiceDepreciationGridviewFull()
             Depreciation depreciation = InvoiceDepreciation_gridView.GetRow(e.RowHandle).CastTo<Depreciation>();
             GlobalVarient.InvoiceDepreciationsChoice = depreciation;
@@ -1646,7 +1641,7 @@ namespace BSClient
 
         private void VoucherDetail_gridView_RowClick(object sender, RowClickEventArgs e)
         {
-           // LoadInvoiceDepreciationDetailGridviewFull()
+            // LoadInvoiceDepreciationDetailGridviewFull()
         }
 
         private void InvoiceDepreciationDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
@@ -1662,7 +1657,7 @@ namespace BSClient
             #region check so luong ky khau hao
             //select gaa.Sum(aa => aa.Quantity)).FirstOrDefault();
             var result = InvoiceDepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
-            if(result > GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth)
+            if (result > GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth)
             {
                 MessageBoxHelper.ShowErrorMessage("Số kỳ khấu hao chi tiết phải nhỏ hơn số kỳ khấu hao của hàng hóa!\n" + "Tổng số kỳ khấu hao của chi tiết: " + result.ToString() + "\nSố kỳ khấu hao của hàng hóa: " + GlobalVarient.InvoiceDepreciationsChoice.DepreciationMonth.ToString());
             }
@@ -1777,8 +1772,8 @@ namespace BSClient
 
         private void InvoiceWareHouse_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
-           
-            if(GlobalVarient.invoiceChoice.InvoiceType.ToString() == "V")
+
+            if (GlobalVarient.invoiceChoice.InvoiceType.ToString() == "V")
             {
                 InvoiceWareHouse_gridView.SetFocusedRowCellValue("Type", "N");
             }
@@ -1788,7 +1783,7 @@ namespace BSClient
             }
 
             InvoiceWareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.Date);
-            
+
         }
 
         private void InvoiceWareHouseDetail_gridView_RowUpdated(object sender, RowObjectEventArgs e)
@@ -1842,14 +1837,10 @@ namespace BSClient
             row.StatusA = ModifyMode.Update;
         }
 
-
-
-     
-
         private void InvoiceWareHouseDetailCalculator_simpleButton_Click(object sender, EventArgs e)
         {
             decimal TienCK = (decimal)InvoiceWareHouseDetailDiscount_textEdit.EditValue;
-            
+
             decimal TienFullDetail = InvoiceWarehouseDetailData.Select(o => o.Amount).Sum();
             decimal PercentDiscount = TienCK * 100 / TienFullDetail;
             for (int i = 0; i < InvoiceWarehouseDetailData.Count; i++)
@@ -1859,7 +1850,7 @@ namespace BSClient
 
             }
             InvoiceWareHouseDetail_gridControl.RefreshDataSource();
-           // InvoiceWareHouseDetail_gridControl.DataSource = InvoiceWarehouseDetailData;
+            // InvoiceWareHouseDetail_gridControl.DataSource = InvoiceWarehouseDetailData;
         }
 
         private void simpleButton24_Click(object sender, EventArgs e)
@@ -1881,36 +1872,35 @@ namespace BSClient
         {
             this.WareHouse_gridView.Columns.Clear();
             this.WareHouse_gridView.AddColumn("Date", "Ngày", 80, false);
-          
-            var columnShow = new Dictionary<string, string>
-            {
-                    {"InvoiceDate", "Ngày HĐ" },
-                    {"CustomerID", "Mã KH" },
-                    {"InvoiceFormNo", "Mã số" },
-                    {"FormNo", "Mẫu số" },
-                    {"SerialNo", "Ký hiệu" },
-                    {"InvoiceNo", "Số HĐ" },
-                    {"Amount", "Tiền" },
-                    {"VAT", "% GTGT" },
-                    {"VATAmount", "Tiền VAT" },
-                    {"Discounts", "CK" },
-                    {"TotalAmount", "Tổng tiền" },
-                    {"InvoiceType", "Loại HĐ" },
-                    {"Description", "Mô tả" },
-                    {"CreateUser", "Người tạo" }
 
+            List<ColumnInfo> columns = new List<ColumnInfo>
+            {
+                new ColumnInfo("InvoiceDate", "Ngày HĐ"),
+                new ColumnInfo("CustomerID", "Mã KH" ),
+                new ColumnInfo("InvoiceFormNo", "Mã số" ),
+                new ColumnInfo("FormNo", "Mẫu số" ),
+                new ColumnInfo("SerialNo", "Ký hiệu" ),
+                new ColumnInfo("InvoiceNo", "Số HĐ" ),
+                new ColumnInfo("Amount", "Tiền" ),
+                new ColumnInfo("VAT", "% GTGT" ),
+                new ColumnInfo("VATAmount", "Tiền VAT" ),
+                new ColumnInfo("Discounts", "CK" ),
+                new ColumnInfo("TotalAmount", "Tổng tiền" ),
+                new ColumnInfo("InvoiceType", "Loại HĐ" ),
+                new ColumnInfo("Description", "Mô tả" ),
+                new ColumnInfo("CreateUser", "Người tạo" )
             };
 
-            this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", true, columns: columnShow);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", isAllowEdit: true, columns: columns);
 
-            this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", true);
-            this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", false);
-            this.WareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", true);
-            this.WareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", true);
-            this.WareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", true);
             this.WareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
             this.WareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
             this.WareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.WareHouse_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
 
@@ -1924,7 +1914,7 @@ namespace BSClient
 
         private void Load_WareHouse_GridView()
         {
-            
+
             WareHouseController controller = new WareHouseController();
             GlobalVarient.warehouse = controller.GetWareHouseSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
             WarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouse);
@@ -1943,16 +1933,16 @@ namespace BSClient
         private void Init_WareHouseDetail_GridView()
         {
             this.WareHouseDetail_gridView.Columns.Clear();
-            this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}", DevExpress.Data.SummaryItemType.Sum,"{0.00}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}", DevExpress.Data.SummaryItemType.Sum, "{0.00}");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
+            this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
         }
 
         private void Setup_WareHouseDetail_GridView()
         {
-            this.WareHouseDetail_gridView.SetupGridView(multiSelect: true, showFooter: true, newItemRow:NewItemRowPosition.Top);
+            this.WareHouseDetail_gridView.SetupGridView(multiSelect: true, showFooter: true, newItemRow: NewItemRowPosition.Top);
         }
 
         private void Load_WareHouseDetail_GridView()
@@ -1994,7 +1984,7 @@ namespace BSClient
             this.WareHouseDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
             this.WareHouseDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
-            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false,"C2");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false, "C2");
         }
 
         private void Setup_Depreciation_GridView()
@@ -2666,7 +2656,7 @@ namespace BSClient
 
                     Decimal Cellprice = (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Amount") / QuantityFilter;
 
-                    if(Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Price"))
+                    if (Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Price"))
                     {
                         InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("Price", Cellprice);
                     }
@@ -2678,15 +2668,15 @@ namespace BSClient
                 }
 
             }
-            else if(e.Column.FieldName == "Price")
+            else if (e.Column.FieldName == "Price")
             {
                 Decimal Cellprice = (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
-                if(Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                if (Cellprice != (Decimal)InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Amount"))
                 {
                     InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
                 }
             }
-           // Decimal cellValueAmount = (Decimal)e.Value;
+            // Decimal cellValueAmount = (Decimal)e.Value;
 
         }
 
@@ -2752,7 +2742,7 @@ namespace BSClient
         {
 
             InvoiceWareHouse_groupControl.Enabled = true;
-           // Invoice invoice = Invoice_gridView.GetRow(e.RowHandle).CastTo<Invoice>();
+            // Invoice invoice = Invoice_gridView.GetRow(e.RowHandle).CastTo<Invoice>();
             Invoice invoice = Invoice_gridView.GetFocusedRow().CastTo<Invoice>();
             if (invoice == null)
             {
