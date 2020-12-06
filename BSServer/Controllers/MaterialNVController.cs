@@ -58,6 +58,12 @@ namespace BSServer.Controllers
         {
             return this.MaterialNVDAO.GetMaterialCheck(accountID,GLID);
         }
+
+        public List<MaterialCheck> GetMaterialCheckInvoiceNo(string InvoiceID,string CustomerID, string InvoiceFormNo, string FormNo, string SerialNo, string InvoiceNo)
+        {
+            return this.MaterialNVDAO.GetMaterialCheckInvoiceNo(InvoiceID,CustomerID, InvoiceFormNo,FormNo,SerialNo,InvoiceNo);
+        }
+
         public void Dispose()
         {
         }

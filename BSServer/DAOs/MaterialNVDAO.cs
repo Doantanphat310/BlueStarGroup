@@ -79,6 +79,21 @@ namespace BSServer.DAOs
             ).ToList();
         }
 
+        //create proc SPCheckInvoiceNo
+        // @CustomerID varchar(50),@InvoiceFormNo varchar(50),@FormNo varchar(50),@SerialNo varchar(50),@InvoiceNo varchar(50)
+        public List<MaterialCheck> GetMaterialCheckInvoiceNo(string InvoiceID,string CustomerID, string InvoiceFormNo, string FormNo, string SerialNo, string InvoiceNo)
+        {
+            return this.Context.Database.SqlQuery<MaterialCheck>(
+            "SPCheckInvoiceNo @InvoiceID, @CustomerID,@InvoiceFormNo,@FormNo,@SerialNo,@InvoiceNo",
+            new SqlParameter("@InvoiceID", InvoiceID ?? (object)DBNull.Value),
+            new SqlParameter("@CustomerID", CustomerID),
+            new SqlParameter("@InvoiceFormNo", InvoiceFormNo),
+            new SqlParameter("@FormNo", FormNo),
+            new SqlParameter("@SerialNo", SerialNo),
+            new SqlParameter("@InvoiceNo", InvoiceNo)
+            ).ToList();
+        }
+
 
     }
 }

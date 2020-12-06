@@ -58,8 +58,9 @@ namespace BSClient
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
-           // MessageBox.Show(Screen.PrimaryScreen.Bounds.Width.ToString());
+            CompanyList company = new CompanyList();
+            this.ShowControl(company, Content);
+            this.SetTitle("Thông tin công ty đang được quản lý");
         }
     }
 }

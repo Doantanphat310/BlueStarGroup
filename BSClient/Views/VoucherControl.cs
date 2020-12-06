@@ -161,12 +161,13 @@ namespace BSClient
         private void InitVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.Columns.Clear();
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "$#,##0.00");
-            this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
+   
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 140, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true, editValueChanged: GeneralLedger_EditValueChanged);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "C2");
+            this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
 
@@ -541,7 +542,7 @@ namespace BSClient
                     view.SetColumnError(columnAmount, "Tiền phải lớn hơn 0!");
                 }
             }
-
+            
             if (!string.IsNullOrEmpty(row.AccountID) && !string.IsNullOrEmpty(row.GeneralLedgerID) && !string.IsNullOrEmpty(row.NV) && (CompareAmount))
             {
                 //Tất cả dữ liệu đều có giá trị
@@ -556,11 +557,7 @@ namespace BSClient
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnGeneralLedgerID, "Sổ cái không phù hợp với tài khoản!");
                 }
-                else
-                {
-                    e.Valid = true;
-                    // view.Appearance.Row.BackColor = Color.White;
-                }
+               
             }
 
         }
@@ -1064,6 +1061,57 @@ namespace BSClient
 
         #endregion init Invoice TabPane
 
+        Boolean CheckInvoiceCondition()
+        {
+             //Trong một ngày, cùng xuất hóa đơn cho 1 công ty không được lớn hơn 20 triệu
+            List<Invoice> groupedList = InvoiceData
+                            .GroupBy(c => new
+                            {
+                                c.InvoiceDate,
+                                c.CustomerID
+                            })
+                            .Select(i =>
+                                new Invoice()
+                                {
+                                    InvoiceDate = i.First().InvoiceDate,
+                                    CustomerID = i.First().CustomerID,
+                                    Amount = i.Sum(k => k.Amount)
+                                }
+                            ).ToList();
+            for(int i =0; i<groupedList.Count;i++)
+            {
+                if(groupedList[i].Amount > 20000000)
+                {
+                    //check tồn tại tk ngân hàng
+                    List<VoucherDetail> groupedListVoucherDetail = VoucherDetailData
+                        .GroupBy(c => new
+                        {
+                            c.NV,
+                            c.AccountID,
+                            c.Amount
+                        })
+                        .Select(j =>
+                            new VoucherDetail()
+                            {
+                                NV = j.First().NV,
+                                AccountID = j.First().AccountID,
+                                Amount = j.Sum(k => k.Amount)
+                            }
+                        ).ToList();
+                    for(int ij =0; ij< groupedListVoucherDetail.Count; ij++)
+                    {
+                        //Tiền hóa đơn trong 1 ngày của cùng 1 khách hàng lớn hơn 20 triệu thì phải được thanh toán bằng tiền ngân hàng.
+                        if(groupedListVoucherDetail[ij].AccountID.Substring(0,3) == "112" && groupedListVoucherDetail[ij].Amount >= groupedList[i].Amount)
+                        {
+                            return true;
+                        }
+                    }
+                    ///Không tồn tại tk ngân hàng mà có tiền của hóa đơn cùng 1 công ty cùng 1 ngày lớn hơn 20 triệu.
+                    return false;
+                }
+            }
+            return true;
+        }
         private void InvoiceSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
             if (!InvoiceAddNew_checkBox.Checked)
@@ -1071,20 +1119,19 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm hóa đơn trước khi lưu mới!");
                 return;
             }
-
-
+            if (!CheckInvoiceCondition())
+            {
+                MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
+                return;
+            }
 
             #region set VoucherID to invoice
             InvoiceController invoiceController = new InvoiceController();
             for (int i = 0; i < InvoiceData.Count; i++)
             {
-                // VoucherDetailData[i].VouchersID = voucher.VouchersID;
-                // GlobalVarient.VoucherDetailID++;
-                // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                 InvoiceData[i].CompanyID = GlobalVarient.CompanyIDChoice;
                 InvoiceData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                 InvoiceData[i].Status = ModifyMode.Insert;
-                //voucherDetailController.InsertVouchersDetail(VoucherDetailData[i]);
             }
             #endregion set VoucherID to invoice
 
@@ -1108,6 +1155,11 @@ namespace BSClient
 
         private void InvoiceSave_simpleButton_Click(object sender, EventArgs e)
         {
+            if (!CheckInvoiceCondition())
+            {
+                MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
+                return;
+            }
             #region set invoice
             InvoiceController InvoiceController = new InvoiceController();
             for (int i = 0; i < InvoiceData.Count; i++)
@@ -2893,6 +2945,44 @@ namespace BSClient
             else
             {
                 Load_InvoiceDepreciationDetail_GridView();
+            }
+        }
+
+        private void VoucherDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+          
+        }
+
+        private void Invoice_gridView_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            //check trung số hóa đơn trên database
+            GridView view = sender as GridView;
+            GridColumn columnInvoiceNo = view.Columns["InvoiceNo"];
+            Invoice row = (e.Row as Invoice);
+            if (!string.IsNullOrEmpty(row.InvoiceNo) && !string.IsNullOrEmpty(row.InvoiceFormNo) && !string.IsNullOrEmpty(row.FormNo) && !string.IsNullOrEmpty(row.SerialNo))
+            {
+                //Kiểm tra trùng số hóa đơn
+                MaterialNVController controller = new MaterialNVController();
+                List<MaterialCheck> MaterialCheckData = controller.GetMaterialCheckInvoiceNo(row.InvoiceID,row.CustomerID.ToString(),row.InvoiceFormNo,row.FormNo,row.SerialNo,row.InvoiceNo) ;
+                bool msgCode = MaterialCheckData.Exists(s => s.msgCode == "0");
+                if (msgCode)
+                {
+                    e.Valid = false;
+                    view.SetColumnError(columnInvoiceNo, MaterialCheckData[0].msgName.ToString());
+                }
+            }
+
+            // check trên grid hiện tại
+            // Group the children by their parentId
+            var result = InvoiceData.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo,x.SerialNo,x.InvoiceNo })
+                                 .Select(x => new { CustomerID = x.First(), InvoiceFormNo = x.First(), FormNo= x.First(), SerialNo = x.First(), InvoiceNo = x.First(), Count = x.Count() }).ToList();
+            for(int i = 0; i < result.Count; i++)
+            {
+                if (result[i].Count > 1)
+                {
+                    e.Valid = false;
+                    view.SetColumnError(columnInvoiceNo,"Trùng số hóa đơn!");
+                }
             }
         }
     }

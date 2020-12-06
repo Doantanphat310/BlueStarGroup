@@ -380,6 +380,7 @@
             this.VoucherDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.VoucherDetail_gridView_RowClick);
             this.VoucherDetail_gridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.VoucherDetail_gridView_ShowingEditor);
             this.VoucherDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.VoucherDetail_gridView_FocusedRowChanged);
+            this.VoucherDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.VoucherDetail_gridView_CellValueChanged);
             this.VoucherDetail_gridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.VoucherDetail_gridView_InvalidRowException);
             this.VoucherDetail_gridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.VoucherDetail_gridView_RowDeleted);
             this.VoucherDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.VoucherDetail_gridView_ValidateRow);
@@ -1094,6 +1095,7 @@
             this.Invoice_gridView.Name = "Invoice_gridView";
             this.Invoice_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Invoice_gridView_RowClick);
             this.Invoice_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Invoice_gridView_FocusedRowChanged);
+            this.Invoice_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.Invoice_gridView_ValidateRow);
             this.Invoice_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.Invoice_gridView_RowUpdated);
             // 
             // label1
