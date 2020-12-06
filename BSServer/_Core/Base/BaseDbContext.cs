@@ -34,7 +34,7 @@ namespace BSServer._Core.Base
             catch (Exception ex)
             {
                 Console.WriteLine(@"Xử lý thất bại. " + ex.Message);
-                throw ex;
+                throw;
             }
         }
 

@@ -90,12 +90,23 @@ ORDER BY
                     return;
                 }
 
-                GeneralSPs();
-                GeneralModels();
+                if (SP_CheckBox.Checked)
+                {
+                    GeneralSPs();
+                }
+
+                if (Model_CheckBox.Checked)
+                {
+                    GeneralModels();
+                }
+
+                if (DAO_CheckBox.Checked)
+                {
+                    GeneralDAOs();
+                }
             }
             catch (Exception ex)
             {
-                Console.Clear();
                 Console.WriteLine("Xử lý thất bại: " + ex.Message);
                 MessageBox.Show("Xử lý thất bại!");
                 return;
@@ -109,16 +120,34 @@ ORDER BY
             var data = ColumnData.GroupBy(o => o.TableName).ToDictionary(o => o.Key, o => o.ToList());
             string path = Path.Combine(Environment.CurrentDirectory, "OUTPUT", "SP");
 
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            CreateFolder(path);
 
             foreach (var item in data)
             {
                 this.GeneralInsertSP(path, item.Key, item.Value);
                 this.GeneralUpdateSP(path, item.Key, item.Value);
                 this.GeneralDeleteSP(path, item.Key, item.Value);
+            }
+        }
+
+        private void CreateFolder(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            else
+            {
+                if (CleanData_CheckBox.Checked)
+                {
+                    Directory.Delete(path, true);
+                    while (Directory.Exists(path))
+                    {
+                        Console.WriteLine("Deleting folder...");
+                    }
+
+                    Directory.CreateDirectory(path);
+                }
             }
         }
 
@@ -165,10 +194,7 @@ ORDER BY
             var data = ColumnData.GroupBy(o => o.TableName).ToDictionary(o => o.Key, o => o.ToList());
             string path = Path.Combine(Environment.CurrentDirectory, "OUTPUT", "Models");
 
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            CreateFolder(path);
 
             foreach (var item in data)
             {
@@ -180,6 +206,28 @@ ORDER BY
         {
             string fileName = $"{tableName}.cs";
             string content = CommonUtility.GeneralModel(tableName, columnInfos);
+            string filePath = Path.Combine(path, fileName);
+
+            File.WriteAllText(filePath, content);
+        }
+
+        private void GeneralDAOs()
+        {
+            var data = ColumnData.GroupBy(o => o.TableName).ToDictionary(o => o.Key, o => o.ToList());
+            string path = Path.Combine(Environment.CurrentDirectory, "OUTPUT", "DAO");
+
+            CreateFolder(path);
+
+            foreach (var item in data)
+            {
+                this.GeneralDAO(path, item.Key, item.Value);
+            }
+        }
+
+        private void GeneralDAO(string path, string tableName, List<ColumnInfo> columnInfos)
+        {
+            string fileName = $"{tableName}DAO.cs";
+            string content = CommonUtility.GeneralDAO(tableName, columnInfos);
             string filePath = Path.Combine(path, fileName);
 
             File.WriteAllText(filePath, content);

@@ -94,4 +94,58 @@ namespace {0}
         /// </summary>{3}
         public {1}{2} {0} {{ get; set; }}";
     }
+
+    public static class DAOFormat
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string File_Format = @"using BSCommon.Models;
+using BSCommon.Utility;
+using BSServer._Core.Base;
+using BSServer._Core.Context;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+
+namespace {0}
+{{
+    public class {1}DAO : BaseDAO
+    {{
+        public {1}DAO(BSContext context) : base(context)
+        {{
+        }}
+        
+{2}
+
+{3}
+
+{4}
+    }}
+}}
+";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Class_Format = @"
+public bool {2}{0}({0} data)
+{{
+        SqlParameter[] sqlParameters = new SqlParameter[]
+        {{
+{1}
+        }};
+
+        this.Context.ExecuteDataFromProcedure(""{0}{2}"", sqlParameters);
+
+        return true;
+}}";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Param_Format = @"new SqlParameter(""@{0}"", data.{0}),";
+
+        public const string User_Format = @"new SqlParameter(""@UpdateUser"", CommonInfo.UserInfo.UserID)";
+    }
 }
