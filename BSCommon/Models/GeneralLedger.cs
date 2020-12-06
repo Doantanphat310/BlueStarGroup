@@ -15,6 +15,6 @@ namespace BSCommon.Models
         public string AccountID { get; set; }
         public string CompanyID { get; set; }
         public string ParentID { get; set; }
-        public int? IsDelete { get; set; }
+        public bool? IsDelete { get; set; }
     }
 }
