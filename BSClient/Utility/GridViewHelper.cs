@@ -114,60 +114,6 @@ namespace BSClient.Utility
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
-        [Obsolete("Dùng hàm dưới SetupLookUpEdit")]
-        public static void AddSearchLookupEditColumn(
-            this GridView gridView,
-            string fieldName,
-            string caption,
-            int width,
-            object itemSource,
-            string valueMember,
-            string displayMember,
-            bool isAllowEdit = true,
-            Dictionary<string, string> columns = null,
-            string nullText = "",
-            EventHandler editValueChanged = null,
-            int popupFormWidth = -1,
-            bool enterChoiceFirstRow = true)
-        {
-            RepositoryItemSearchLookUpEdit itemCtrl = new RepositoryItemSearchLookUpEdit
-            {
-                DataSource = itemSource,
-                DisplayMember = displayMember,
-                ValueMember = valueMember,
-                NullText = nullText
-            };
-
-            if (editValueChanged != null)
-            {
-                itemCtrl.EditValueChanged += editValueChanged;
-            }
-
-            if (columns != null)
-            {
-                foreach (var col in columns)
-                {
-                    var gridCol = new GridColumn
-                    {
-                        FieldName = col.Key,
-                        Caption = col.Value,
-                        Visible = true,
-                    };
-
-                    itemCtrl.View.Columns.Add(gridCol);
-                }
-            }
-
-            if (popupFormWidth <= 0)
-            {
-                itemCtrl.PopupFormWidth = popupFormWidth;
-            }
-
-            itemCtrl.Popup += ItemCtrl_SearchLookUpEdit_Popup;
-
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
-        }
-
         public static void AddSearchLookupEditColumn(
            this GridView gridView,
            string fieldName,
@@ -176,7 +122,7 @@ namespace BSClient.Utility
            object itemSource,
            string valueMember,
            string displayMember,
-           List<ColumnInfo> columns,
+           List<ColumnInfo> columns = null,
            bool isAllowEdit = true,
            string nullText = "",
            EventHandler editValueChanged = null,
