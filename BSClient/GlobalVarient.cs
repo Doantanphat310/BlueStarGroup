@@ -10,6 +10,8 @@ namespace BSClient
     public class GlobalVarient
     {
         public static string CompanyIDChoice = "COM0001";
+        public static Company CompanyChoice = new Company();
+
         public static string VoucherIDChoice = "";
         public static int VoucherID = 0;
         public static int VoucherDetailID = 0;
