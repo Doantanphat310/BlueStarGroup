@@ -1497,7 +1497,6 @@
             this.Controls.Add(this.panelControl1);
             this.Name = "VoucherControl";
             this.Size = new System.Drawing.Size(1330, 736);
-            this.Load += new System.EventHandler(this.VoucherControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();

@@ -205,47 +205,62 @@ namespace SQLAuto
         public static string GeneralDAO(string tableName, List<ColumnInfo> columnInfos)
         {
             string result;
-            string column;
-            string columnsStr = "";
-            string keyStr;
-            string nullStr;
-            string namespaceStr = "BSCommon.Models";
-            string typeName;
+            string namespaceStr = "BSServer.DAOs";
+            string insertStr;
+            string updateStr;
+            string deleteStr;
 
+            insertStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos), "Insert");
+            updateStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos), "Update");
+
+            if (columnInfos.Find(o => o.ColumnName == "IsDelete") != null)
+            {
+                deleteStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos, true, true), "Delete");
+            }
+            else
+            {
+                deleteStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos, true, false), "Delete");
+            }
+
+            result = string.Format(DAOFormat.File_Format, namespaceStr, tableName, insertStr, updateStr, deleteStr);
+
+            return result;
+        }
+
+        private static string GetDAOParam(List<ColumnInfo> columnInfos, bool isOnlyKey = false, bool addUser = true)
+        {
+            string param;
+            string paramStr = "";
             foreach (var col in columnInfos)
             {
-                column = string.Empty;
-                keyStr = string.Empty;
+                param = string.Empty;
 
                 if (IgnoreColumn.Contains(col.ColumnName))
                 {
                     continue;
                 }
 
-                if (!TypeMapping.ContainsKey(col.TypeName))
+                param = string.Format(DAOFormat.Param_Format, col.ColumnName);
+
+                if (isOnlyKey)
                 {
-                    typeName = col.TypeName;
+                    if (col.IsKey == true && col.KeyOrder > 0)
+                    {
+                        paramStr = paramStr.AddExpression(param, "", "\t\t\t");
+                    }
                 }
                 else
                 {
-                    typeName = TypeMapping[col.TypeName];
+                    paramStr = paramStr.AddExpression(param, "", "\t\t\t");
                 }
-
-                nullStr = col.IsNullable && typeName != "string" ? "?" : string.Empty;
-
-                if (col.IsKey == true && col.KeyOrder > 0)
-                {
-                    keyStr = GetColumnKey(col.KeyOrder ?? 0);
-                }
-
-                column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr, keyStr);
-                columnsStr += Environment.NewLine + column;
             }
 
-            columnsStr = columnsStr.TrimStr();
-            result = string.Format(ModelFormat.Class_Format, namespaceStr, tableName, columnsStr);
+            if (addUser)
+            {
+                paramStr = paramStr.AddExpression(DAOFormat.User_Format, "", "\t\t\t");
+            }
 
-            return result;
+            return paramStr.TrimStr();
         }
 
         private static string GetColumnModel(string columnName, bool isNull, string typeName)

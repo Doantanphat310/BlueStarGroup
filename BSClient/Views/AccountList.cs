@@ -6,6 +6,7 @@ using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Popup;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -34,8 +35,6 @@ namespace BSClient.Views
 
         public List<GeneralLedger> GeneralLedgerDeleteData { get; set; } = new List<GeneralLedger>();
 
-        public BindingSource AccountsBindingSource { get; set; }
-
         public AccountList()
         {
             InitializeComponent();
@@ -60,12 +59,15 @@ namespace BSClient.Views
             {
                 new ColumnInfo ("GeneralLedgerID", "Mã Sổ cái", 90),
                 new ColumnInfo ("GeneralLedgerName", "Tên Sổ cái", 250),
-                new ColumnInfo ("AccountID", "Tài khoản", 90),
-                new ColumnInfo ("CompanyID", "Công ty", 90),
-                new ColumnInfo ("ParentID", "Sổ cái chính", 90)
+                new ColumnInfo ("AccountID", "Tài khoản", 90)
             };
 
-            this.GeneralLedger_SearchLookUpEdit.SetupLookUpEdit("GeneralLedgerID", "GeneralLedgerName", GeneralLedgerData, columns);
+            this.GeneralLedger_SearchLookUpEdit.SetupLookUpEdit("GeneralLedgerID", "GeneralLedgerName", GetGeneralLedgerDataComboBox(), columns);
+        }
+
+        private List<GeneralLedger> GetGeneralLedgerDataComboBox()
+        {
+            return GeneralLedgerData.Where(o => string.IsNullOrEmpty(o.ParentID)).ToList();
         }
 
         private List<Company> GetCompanyList()
@@ -160,10 +162,12 @@ namespace BSClient.Views
             AccountsController controller = new AccountsController();
             AccountGroupData = new BindingList<AccountGroup>(controller.GetAccountGroup());
             AccountGroup_GridControl.DataSource = AccountGroupData;
-            AccountsBindingSource = new BindingSource
+
+            if (this.Account_TreeList.Columns["AccountGroupID"] != null)
             {
-                DataSource = AccountGroupData
-            };
+                var column = this.Account_TreeList.Columns["AccountGroupID"].ColumnEdit.CastTo<RepositoryItemLookUpEdit>();
+                column.DataSource = AccountGroupData;
+            }
         }
 
         private void LoadAccountsGridView()
@@ -179,6 +183,8 @@ namespace BSClient.Views
             AccountsController controller = new AccountsController();
             GeneralLedgerData = new BindingList<GeneralLedger>(controller.GetGeneralLedger());
             GeneralLedger_GridControl.DataSource = GeneralLedgerData;
+
+            this.GeneralLedger_SearchLookUpEdit.Properties.DataSource = GetGeneralLedgerDataComboBox();
         }
 
         private void AccountGroup_Delete_Button_Click(object sender, EventArgs e)
@@ -190,7 +196,7 @@ namespace BSClient.Views
         {
             List<AccountGroup> saveData = this.AccountGroupData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (AccountGroupDeleteData != null)
+            if (AccountGroupDeleteData != null && AccountGroupDeleteData.Count > 0)
             {
                 saveData?.AddRange(AccountGroupDeleteData);
             }
@@ -201,7 +207,7 @@ namespace BSClient.Views
                 if (controller.SaveAccountGroup(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    AccountsDeleteData = new List<Accounts>();
+                    AccountGroupDeleteData = new List<AccountGroup>();
                     this.LoadAccountGroupGridView();
                 }
                 else
@@ -225,7 +231,7 @@ namespace BSClient.Views
         {
             List<Accounts> saveData = this.AccountsData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (AccountsDeleteData != null)
+            if (AccountsDeleteData != null && AccountsDeleteData.Count > 0)
             {
                 saveData?.AddRange(AccountsDeleteData);
             }
@@ -238,6 +244,7 @@ namespace BSClient.Views
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     AccountsDeleteData = new List<Accounts>();
                     this.LoadAccountsGridView();
+                    this.LoadGeneralLedgerGridView();
                 }
                 else
                 {
@@ -300,7 +307,7 @@ namespace BSClient.Views
         {
             List<GeneralLedger> saveData = this.GeneralLedgerData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (GeneralLedgerDeleteData != null)
+            if (GeneralLedgerDeleteData != null && GeneralLedgerDeleteData.Count > 0)
             {
                 saveData?.AddRange(GeneralLedgerDeleteData);
             }
@@ -661,6 +668,17 @@ namespace BSClient.Views
                 GridColumn column = view.Columns["GeneralLedgerName"];
                 view.SetColumnError(column, BSMessage.BSM000024);
             }
+        }
+
+        private void GeneralLedger_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GeneralLedger selectedRow = GeneralLedger_SearchLookUpEdit.GetSelectedDataRow().CastTo<GeneralLedger>();
+            if (selectedRow == null)
+            {
+                return;
+            }
+
+            GeneralLedgerDetailName_TextBox.Text = selectedRow.GeneralLedgerName;
         }
     }
 }
