@@ -226,7 +226,6 @@
     <EmbeddedResource Include="Controls\ButtonGroup.resx">
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\BlueStarGroup.resx">
       <DependentUpon>BlueStarGroup.cs</DependentUpon>
     </EmbeddedResource>
