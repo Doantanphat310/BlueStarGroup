@@ -129,6 +129,7 @@ namespace BSClient.Views
             this.Account_TreeList.AddColumn("AccountName", "Tên TK", 250, true, fixedWidth: false);
             this.Account_TreeList.AddLookupEditColumn("AccountGroupID", "Loại TK", 220,
                 AccountGroupData, "AccountGroupID", "AccountGroupName");
+            this.Account_TreeList.AddCheckEditColumn("HoachToan", "Hoạch Toán", 80);
         }
 
         private void InitGeneralLedgerGridView()

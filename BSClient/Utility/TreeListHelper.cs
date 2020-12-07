@@ -119,6 +119,8 @@ namespace BSClient.Utility
             if (itemCtrl != null)
             {
                 col.ColumnEdit = itemCtrl;
+                gridView.RepositoryItems.AddRange(
+                    new RepositoryItem[] { itemCtrl });
             }
 
             gridView.Columns.Add(col);
@@ -144,7 +146,7 @@ namespace BSClient.Utility
             itemCtrl.SetupLookUpEdit(
                 valueMember,
                 displayMember,
-                itemSource, 
+                itemSource,
                 columns,
                 nullText: nullText,
                 enterChoiceFirstRow: enterChoiceFirstRow,
@@ -156,6 +158,49 @@ namespace BSClient.Utility
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+        }
+
+        public static void AddCheckEditColumn(
+           this TreeList gridView,
+           string fieldName,
+           string caption,
+           int width,
+           bool isAllowEdit = true)
+        {
+            RepositoryItemCheckEdit itemCtrl = new RepositoryItemCheckEdit()
+            {
+                AutoHeight = false
+            };
+
+            //itemCtrl.SetupLookUpEdit(
+            //    valueMember,
+            //    displayMember,
+            //    itemSource,
+            //    columns,
+            //    nullText: nullText,
+            //    enterChoiceFirstRow: enterChoiceFirstRow,
+            //    popupFormWidth: popupFormWidth);
+
+            //if (editValueChanged != null)
+            //{
+            //    itemCtrl.EditValueChanged += editValueChanged;
+            //}
+
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+
+            //this.treeListColumn1.Caption = "treeListColumn1";
+            //this.treeListColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
+            //this.treeListColumn1.FieldName = "treeListColumn1";
+            //this.treeListColumn1.Name = "treeListColumn1";
+            //this.treeListColumn1.Visible = true;
+            //this.treeListColumn1.VisibleIndex = 0;
+
+            //this.repositoryItemCheckEdit1.AutoHeight = false;
+            //this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+
+
+            //this.Account_TreeList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            //this.repositoryItemCheckEdit1});
         }
 
         public static void SetupTreeList(

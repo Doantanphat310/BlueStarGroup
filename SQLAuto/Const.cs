@@ -91,7 +91,16 @@ namespace {0}
         public const string Column_Format = @"
         /// <summary>
         /// {0}
-        /// </summary>{3}
+        /// </summary>
+        [Column(""{0}"")]
+        public {1}{2} {0} {{ get; set; }}";
+
+        public const string ColumnKey_Format = @"
+        /// <summary>
+        /// {0}
+        /// </summary>
+        [Key]
+        [Column(""{0}"", Order = {3})]
         public {1}{2} {0} {{ get; set; }}";
     }
 
@@ -114,12 +123,9 @@ namespace {0}
     {{
         public {1}DAO(BSContext context) : base(context)
         {{
-        }}
-        
+        }}        
 {2}
-
 {3}
-
 {4}
     }}
 }}
@@ -129,17 +135,17 @@ namespace {0}
         /// 
         /// </summary>
         public const string Class_Format = @"
-public bool {2}{0}({0} data)
-{{
-        SqlParameter[] sqlParameters = new SqlParameter[]
+        public bool {2}{0}({0} data)
         {{
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {{
 {1}
-        }};
+            }};
 
-        this.Context.ExecuteDataFromProcedure(""{0}{2}"", sqlParameters);
+            this.Context.ExecuteDataFromProcedure(""{0}{2}"", sqlParameters);
 
-        return true;
-}}";
+            return true;
+        }}";
 
         /// <summary>
         /// 

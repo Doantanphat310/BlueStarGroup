@@ -46,7 +46,7 @@ namespace BSServer.Logics
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.ItemsDAO.DeleteItemType(data.ItemTypeID);
+                                this.ItemsDAO.DeleteItemType(data);
                                 break;
                         }
                     }
@@ -90,7 +90,7 @@ namespace BSServer.Logics
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.ItemsDAO.DeleteItems(data.ItemID);
+                                this.ItemsDAO.DeleteItems(data);
                                 break;
                         }
                     }
@@ -120,17 +120,17 @@ namespace BSServer.Logics
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                this.ItemsDAO.InsertItemsCompany(data);
+                                this.ItemsDAO.InsertItemPriceCompany(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.ItemsDAO.UpdateItemsCompany(data);
+                                this.ItemsDAO.UpdateItemPriceCompany(data);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.ItemsDAO.DeleteItemsCompany(data);
+                                this.ItemsDAO.DeleteItemPriceCompany(data);
                                 break;
                         }
                     }

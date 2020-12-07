@@ -24,63 +24,65 @@ namespace BSServer.DAOs
             return this.Context.Users.Where(o => o.IsDelete == null).ToList();
         }
 
-        public List<UserRoleInfo> GetUserRoleCompany()
+        public List<UserRoleCompany> GetUserRoleCompany()
         {
-            return this.Context.GetDataFromProcedure<UserRoleInfo>("UserRoleCompanySelect");
+            return this.Context.GetDataFromProcedure<UserRoleCompany>("UserRoleCompanySelect");
         }
 
-        public bool InsertUser(UserInfo userInfo)
+        public bool InsertUserList(UserInfo data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", userInfo.UserID),
-                new SqlParameter("@Password", SHA1Helper.GetHash(userInfo.Password)),
-                new SqlParameter("@UserName", userInfo.UserName),
-                new SqlParameter("@Phone", userInfo.Phone),
-                new SqlParameter("@Address", userInfo.Address),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@Password", data.Password),
+                new SqlParameter("@UserName", data.UserName),
+                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@Address", data.Address),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            this.Context.ExecuteDataFromProcedure("UserInsert", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("UserListInsert", sqlParameters);
 
             return true;
         }
 
-        public bool DeleteUser(string userID)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-               {
-                    new SqlParameter("@UserID", userID),
-                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-               };
-
-            this.Context.ExecuteDataFromProcedure("UserDelete", sqlParameters);
-            return true;
-        }
-
-        public bool UpdateUser(UserInfo userInfo)
+        public bool UpdateUserList(UserInfo data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", userInfo.UserID),
-                new SqlParameter("@Password", userInfo.Password),
-                new SqlParameter("@UserName", userInfo.UserName),
-                new SqlParameter("@Phone", userInfo.Phone),
-                new SqlParameter("@Address", userInfo.Address),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@Password", data.Password),
+                new SqlParameter("@UserName", data.UserName),
+                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@Address", data.Address),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            this.Context.ExecuteDataFromProcedure("UserUpdate", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("UserListUpdate", sqlParameters);
+
             return true;
         }
 
-        public bool InsertUserRoleCompany(UserRoleInfo userRoleInfo)
+        public bool DeleteUserList(UserInfo data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", userRoleInfo.UserID),
-                new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
-                new SqlParameter("@RoleID", userRoleInfo.UserRoleID),
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("UserListDelete", sqlParameters);
+
+            return true;
+        }
+
+        public bool InsertUserRoleCompany(UserRoleCompany data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@RoleID", data.UserRoleID),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
@@ -89,13 +91,28 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool DeleteUserRoleCompany(UserRoleInfo userRoleInfo)
+        public bool UpdateUserRoleCompany(UserRoleCompany data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", userRoleInfo.UserID),
-                new SqlParameter("@CompanyID", userRoleInfo.CompanyID),
-                new SqlParameter("@RoleID", userRoleInfo.UserRoleID)
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@RoleID", data.UserRoleID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("UserRoleCompanyUpdate", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteUserRoleCompany(UserRoleCompany data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", data.UserID),
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@RoleID", data.UserRoleID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserRoleCompanyDelete", sqlParameters);

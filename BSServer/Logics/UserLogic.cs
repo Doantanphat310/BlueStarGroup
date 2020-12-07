@@ -32,17 +32,17 @@ namespace BSServer.Logics
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                this.UserDAO.InsertUser(data);
+                                this.UserDAO.InsertUserList(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.UserDAO.UpdateUser(data);
+                                this.UserDAO.UpdateUserList(data);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.UserDAO.DeleteUser(data.UserID);
+                                this.UserDAO.DeleteUserList(data);
                                 break;
                         }
                     }
@@ -60,13 +60,13 @@ namespace BSServer.Logics
             }
         }
 
-        public bool SaveUserRoleCompany(List<UserRoleInfo> saveData)
+        public bool SaveUserRoleCompany(List<UserRoleCompany> saveData)
         {
             using (DbContextTransaction transaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    foreach (UserRoleInfo data in saveData)
+                    foreach (UserRoleCompany data in saveData)
                     {
                         switch (data.Status)
                         {

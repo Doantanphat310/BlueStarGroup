@@ -33,6 +33,7 @@ namespace BSServer.DAOs
         {
             return this.Context.Accounts.OrderBy(o => o.AccountGroupID).ThenBy(o => o.AccountID).ToList();
         }
+
         public List<GeneralLedger> GetGeneralLedger()
         {
             return this.Context.GeneralLedger.Where(o => (o.IsDelete ?? false) == false).OrderBy(o => o.GeneralLedgerName).ToList();
@@ -52,17 +53,6 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool DeleteAccountGroup(string AccountGroupID)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-               {
-                    new SqlParameter("@AccountGroupID", AccountGroupID)
-               };
-
-            this.Context.ExecuteDataFromProcedure("AccountGroupDelete", sqlParameters);
-            return true;
-        }
-
         public bool UpdateAccountGroup(AccountGroup data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
@@ -73,6 +63,19 @@ namespace BSServer.DAOs
             };
 
             this.Context.ExecuteDataFromProcedure("AccountGroupUpdate", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteAccountGroup(AccountGroup data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@AccountGroupID", data.AccountGroupID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("AccountGroupDelete", sqlParameters);
+
             return true;
         }
 
@@ -85,23 +88,21 @@ namespace BSServer.DAOs
                 new SqlParameter("@AccountGroupID", data.AccountGroupID),
                 new SqlParameter("@AccountLevel", data.AccountLevel),
                 new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@HachToan", data.HachToan),
+                new SqlParameter("@DuNo", data.DuNo),
+                new SqlParameter("@DuCo", data.DuCo),
+                new SqlParameter("@ThongKe", data.ThongKe),
+                new SqlParameter("@NgoaiTe", data.NgoaiTe),
+                new SqlParameter("@TK152_156", data.TK152_156),
+                new SqlParameter("@VatTu", data.VatTu),
+                new SqlParameter("@ThueVAT", data.ThueVAT),
+                new SqlParameter("@HopDong", data.HopDong),
+                new SqlParameter("@CongNo", data.CongNo),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountsInsert", sqlParameters);
 
-            return true;
-        }
-
-        public bool DeleteAccounts(string AccountID)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-               {
-                    new SqlParameter("@AccountID", AccountID),
-                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-               };
-
-            this.Context.ExecuteDataFromProcedure("AccountsDelete", sqlParameters);
             return true;
         }
 
@@ -114,10 +115,33 @@ namespace BSServer.DAOs
                 new SqlParameter("@AccountGroupID", data.AccountGroupID),
                 new SqlParameter("@AccountLevel", data.AccountLevel),
                 new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@HachToan", data.HachToan),
+                new SqlParameter("@DuNo", data.DuNo),
+                new SqlParameter("@DuCo", data.DuCo),
+                new SqlParameter("@ThongKe", data.ThongKe),
+                new SqlParameter("@NgoaiTe", data.NgoaiTe),
+                new SqlParameter("@TK152_156", data.TK152_156),
+                new SqlParameter("@VatTu", data.VatTu),
+                new SqlParameter("@ThueVAT", data.ThueVAT),
+                new SqlParameter("@HopDong", data.HopDong),
+                new SqlParameter("@CongNo", data.CongNo),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountsUpdate", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteAccounts(Accounts data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@AccountID", data.AccountID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("AccountsDelete", sqlParameters);
+
             return true;
         }
 
@@ -125,12 +149,12 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-            new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
-            new SqlParameter("@AccountID", data.AccountID),
-            new SqlParameter("@CompanyID", data.CompanyID),
-            new SqlParameter("@ParentID", data.ParentID),
-            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+                new SqlParameter("@AccountID", data.AccountID),
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerInsert", sqlParameters);
@@ -138,17 +162,16 @@ namespace BSServer.DAOs
             return true;
         }
 
-
         public bool UpdateGeneralLedger(GeneralLedger data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-            new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
-            new SqlParameter("@AccountID", data.AccountID),
-            new SqlParameter("@CompanyID", data.CompanyID),
-            new SqlParameter("@ParentID", data.ParentID),
-            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+                new SqlParameter("@AccountID", data.AccountID),
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@ParentID", data.ParentID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerUpdate", sqlParameters);
@@ -156,13 +179,12 @@ namespace BSServer.DAOs
             return true;
         }
 
-
         public bool DeleteGeneralLedger(GeneralLedger data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-            new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("GeneralLedgerDelete", sqlParameters);

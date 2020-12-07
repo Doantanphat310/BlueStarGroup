@@ -197,10 +197,13 @@ namespace SQLAuto
 
                 if (col.IsKey == true && col.KeyOrder > 0)
                 {
-                    keyStr = GetColumnKey(col.KeyOrder ?? 0);
+                    column = string.Format(ModelFormat.ColumnKey_Format, col.ColumnName, typeName, nullStr, col.KeyOrder);
+                }
+                else
+                {
+                    column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr);
                 }
 
-                column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr, keyStr);
                 columnsStr += Environment.NewLine + column;
             }
 
@@ -254,18 +257,18 @@ namespace SQLAuto
                 {
                     if (col.IsKey == true && col.KeyOrder > 0)
                     {
-                        paramStr = paramStr.AddExpression(param, "", "\t\t\t");
+                        paramStr = paramStr.AddExpression(param, "", "\t\t\t\t");
                     }
                 }
                 else
                 {
-                    paramStr = paramStr.AddExpression(param, "", "\t\t\t");
+                    paramStr = paramStr.AddExpression(param, "", "\t\t\t\t");
                 }
             }
 
             if (addUser)
             {
-                paramStr = paramStr.AddExpression(DAOFormat.User_Format, "", "\t\t\t");
+                paramStr = paramStr.AddExpression(DAOFormat.User_Format, string.Empty, "\t\t\t\t");
             }
 
             return paramStr.TrimStr();
@@ -280,13 +283,6 @@ namespace SQLAuto
         /// {columnName}
         /// </summary>
         public {type}{nullStr} {columnName} {{ get; set; }} ";
-        }
-
-        private static string GetColumnKey(int keyOrder)
-        {
-            return $@"
-        [Key]
-        [Column(Order = {keyOrder})]";
         }
 
         public static string AddStr(this string str, string content, string tabStr = "")

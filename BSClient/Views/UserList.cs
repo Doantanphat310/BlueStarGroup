@@ -20,11 +20,11 @@ namespace BSClient.Views
     {
         public BindingList<UserInfo> MasterData { get; set; }
 
-        public BindingList<UserRoleInfo> DetailData { get; set; }
+        public BindingList<UserRoleCompany> DetailData { get; set; }
 
-        public List<UserInfo> MasterDelete { get; set; } = new List<UserInfo>();
+        public List<UserInfo> MasterDataDelete { get; set; } = new List<UserInfo>();
 
-        public List<UserRoleInfo> DetailDelete { get; set; } = new List<UserRoleInfo>();
+        public List<UserRoleCompany> DetailDataDelete { get; set; } = new List<UserRoleCompany>();
 
         public UserList()
         {
@@ -137,7 +137,7 @@ namespace BSClient.Views
         private void LoadDetailGridView()
         {
             UserController controller = new UserController();
-            DetailData = new BindingList<UserRoleInfo>(controller.GetUserRoleCompany());
+            DetailData = new BindingList<UserRoleCompany>(controller.GetUserRoleCompany());
             UserRole_GridControl.DataSource = DetailData;
         }
 
@@ -150,9 +150,9 @@ namespace BSClient.Views
         {
             List<UserInfo> saveData = this.MasterData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (MasterDelete != null)
+            if (MasterDataDelete != null && MasterDataDelete.Count > 0)
             {
-                saveData?.AddRange(MasterDelete);
+                saveData?.AddRange(MasterDataDelete);
             }
 
             if (saveData?.Count > 0)
@@ -161,7 +161,7 @@ namespace BSClient.Views
                 if (controller.SaveUser(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    MasterDelete = new List<UserInfo>();
+                    MasterDataDelete = new List<UserInfo>();
                     this.LoadGridView();
                 }
                 else
@@ -201,7 +201,7 @@ namespace BSClient.Views
                 return;
             }
 
-            DetailData.Add(new UserRoleInfo
+            DetailData.Add(new UserRoleCompany
             {
                 UserID = Role_UserName_TextBox.Text,
                 CompanyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID,
@@ -335,7 +335,7 @@ namespace BSClient.Views
             }
 
             delete.Status = ModifyMode.Delete;
-            MasterDelete.Add(delete);
+            MasterDataDelete.Add(delete);
         }
 
         private void UserRoleCancel_Button_Click(object sender, EventArgs e)
@@ -345,11 +345,11 @@ namespace BSClient.Views
 
         private void UserRoleSave_Button_Click(object sender, EventArgs e)
         {
-            List<UserRoleInfo> saveData = this.DetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+            List<UserRoleCompany> saveData = this.DetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (DetailDelete != null)
+            if (DetailDataDelete != null && DetailDataDelete.Count > 0)
             {
-                saveData?.AddRange(DetailDelete);
+                saveData?.AddRange(DetailDataDelete);
             }
 
             if (saveData?.Count > 0)
@@ -358,7 +358,7 @@ namespace BSClient.Views
                 if (controller.SaveUserRoleCompany(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    DetailDelete = new List<UserRoleInfo>();
+                    DetailDataDelete = new List<UserRoleCompany>();
                     this.LoadDetailGridView();
                 }
                 else
@@ -370,14 +370,14 @@ namespace BSClient.Views
 
         private void UserRole_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            UserRoleInfo delete = e.Row.CastTo<UserRoleInfo>();
+            UserRoleCompany delete = e.Row.CastTo<UserRoleCompany>();
             if (delete.Status == ModifyMode.Insert)
             {
                 return;
             }
 
             delete.Status = ModifyMode.Delete;
-            DetailDelete.Add(delete);
+            DetailDataDelete.Add(delete);
         }
     }
 }

@@ -99,10 +99,10 @@
     <Compile Include="Models\AccountGroup.cs" />
     <Compile Include="Models\GeneralLedger.cs" />
     <Compile Include="Models\Accounts.cs" />
+    <Compile Include="Models\ItemPriceCompany.cs" />
+    <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\MaterialCheck.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\ItemsPriceCompany.cs" />
-    <Compile Include="Models\ItemsType.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\MaterialGL.cs" />
     <Compile Include="Models\MaterialInvoiceType.cs" />
@@ -111,6 +111,8 @@
     <Compile Include="Models\MaterialTK.cs" />
     <Compile Include="Models\MaterialWareHouseType.cs" />
     <Compile Include="Models\MaterialCustomerInvoice.cs" />
+    <Compile Include="Models\UserList.cs" />
+    <Compile Include="Models\UserRoleCompany.cs" />
     <Compile Include="Models\Voucher.cs" />
     <Compile Include="Models\VoucherDetail.cs" />
     <Compile Include="Models\VoucherDetailDinhKhoan.cs" />
@@ -122,8 +124,6 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MasterInfo.cs" />
-    <Compile Include="Models\UserRoleInfo.cs" />
-    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\WareHouse.cs" />
     <Compile Include="Models\WareHouseDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

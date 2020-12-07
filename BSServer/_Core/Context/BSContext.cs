@@ -21,9 +21,11 @@ namespace BSServer._Core.Context
         public DbSet<MasterInfo> MasterInfo { get; set; }
 
         public DbSet<Items> Items { get; set; }
+
         public DbSet<ItemType> ItemType { get; set; }
 
         public DbSet<AccountGroup> AccountGroup { get; set; }
+
         public DbSet<Accounts> Accounts { get; set; }
 
         public DbSet<GeneralLedger> GeneralLedger { get; set; }
