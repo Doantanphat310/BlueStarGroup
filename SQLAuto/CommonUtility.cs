@@ -18,6 +18,14 @@ namespace SQLAuto
             "IsDelete"
         };
 
+        private static readonly HashSet<string> IgnoreModelColumn = new HashSet<string>
+        {
+            "CreateDate",
+            "UpdateDate",
+            "CreateUser",
+            "UpdateUser"
+        };
+
         private static readonly Dictionary<string, string> TypeMapping = new Dictionary<string, string>()
         {
             { "text", "string" },
@@ -171,7 +179,7 @@ namespace SQLAuto
                 column = string.Empty;
                 keyStr = string.Empty;
 
-                if (IgnoreColumn.Contains(col.ColumnName))
+                if (IgnoreModelColumn.Contains(col.ColumnName))
                 {
                     continue;
                 }
@@ -289,7 +297,6 @@ namespace SQLAuto
 
             return str;
         }
-
 
         public static string AddAndOparator(this string str, string content, string tabStr = "")
         {
