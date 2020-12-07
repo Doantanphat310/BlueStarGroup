@@ -55,18 +55,6 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool DeleteItemType(string ItemTypeID)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-            {
-                new SqlParameter("@ItemTypeID", ItemTypeID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-            };
-
-            this.Context.ExecuteDataFromProcedure("ItemTypeDelete", sqlParameters);
-            return true;
-        }
-
         public bool UpdateItemType(ItemType data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
@@ -78,6 +66,19 @@ namespace BSServer.DAOs
             };
 
             this.Context.ExecuteDataFromProcedure("ItemTypeUpdate", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteItemType(ItemType data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@ItemTypeID", data.ItemTypeID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("ItemTypeDelete", sqlParameters);
+
             return true;
         }
 
@@ -87,27 +88,15 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@ItemName", data.ItemName),
-                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
+                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemsInsert", sqlParameters);
 
-            return true;
-        }
-
-        public bool DeleteItems(string ItemID)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-               {
-                    new SqlParameter("@ItemID", ItemID),
-                    new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-               };
-
-            this.Context.ExecuteDataFromProcedure("ItemsDelete", sqlParameters);
             return true;
         }
 
@@ -117,22 +106,36 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@ItemName", data.ItemName),
-                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemUnit", data.ItemUnit),
+                new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemsUpdate", sqlParameters);
+
             return true;
         }
 
-        public bool InsertItemsCompany(ItemPriceCompany data)
+        public bool DeleteItems(Items data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@ItemsID", data.ItemID),
+                new SqlParameter("@ItemID", data.ItemID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("ItemsDelete", sqlParameters);
+
+            return true;
+        }
+
+        public bool InsertItemPriceCompany(ItemPriceCompany data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@ItemPrice", data.ItemPrice),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
@@ -143,11 +146,11 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool UpdateItemsCompany(ItemPriceCompany data)
+        public bool UpdateItemPriceCompany(ItemPriceCompany data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@ItemsID", data.ItemID),
+                new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@ItemPrice", data.ItemPrice),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
@@ -158,12 +161,12 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool DeleteItemsCompany(ItemPriceCompany ItemPriceCompany)
+        public bool DeleteItemPriceCompany(ItemPriceCompany data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                    new SqlParameter("@ItemsID", ItemPriceCompany.ItemID),
-                    new SqlParameter("@CompanyID", ItemPriceCompany.CompanyID)
+                new SqlParameter("@ItemID", data.ItemID),
+                new SqlParameter("@CompanyID", data.CompanyID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemPriceCompanyDelete", sqlParameters);

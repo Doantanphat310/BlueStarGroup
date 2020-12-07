@@ -29,24 +29,9 @@ namespace BSServer.Controllers
             return this.UserDAO.GetUsers();
         }
 
-        public List<UserRoleInfo> GetUserRoleCompany()
+        public List<UserRoleCompany> GetUserRoleCompany()
         {
             return this.UserDAO.GetUserRoleCompany();
-        }
-
-        public bool InsertUser(UserInfo userInfo)
-        {
-            return this.UserDAO.InsertUser(userInfo);
-        }
-
-        public bool UpdateUser(UserInfo userInfo)
-        {
-            return this.UserDAO.UpdateUser(userInfo);
-        }
-
-        public bool DeleteUser(string userID)
-        {
-            return this.UserDAO.DeleteUser(userID);
         }
 
         public bool SaveUser(List<UserInfo> dataList)
@@ -54,7 +39,7 @@ namespace BSServer.Controllers
             return this.UserLogic.SaveUser(dataList);
         }
 
-        public bool SaveUserRoleCompany(List<UserRoleInfo> dataList)
+        public bool SaveUserRoleCompany(List<UserRoleCompany> dataList)
         {
             return this.UserLogic.SaveUserRoleCompany(dataList);
         }

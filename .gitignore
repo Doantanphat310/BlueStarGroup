@@ -378,3 +378,5 @@ BSServer\config\**
 /BSClient/obj/Debug/BSClient.Views.UserList.resources
 /BSClient/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 .vs/
+
+Properties\licenses.licx

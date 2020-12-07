@@ -28,95 +28,101 @@ namespace BSServer.DAOs
             return this.GetMaxSEQ(BSServerConst.CompanySymbol);
         }
 
-        public int InsertCompany(Company data)
-        {
-            SqlParameter[] param = new SqlParameter[]
-            {
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@CompanyName", data.CompanyName),
-                new SqlParameter("@CompanySName", data.CompanySName),
-                new SqlParameter("@Address", data.Address),
-                new SqlParameter("@MST", data.MST),
-                new SqlParameter("@District", data.District),
-                new SqlParameter("@Province", data.Province),
-                new SqlParameter("@Phone", data.Phone),
-                new SqlParameter("@Fax", data.Fax),
-                new SqlParameter("@Email", data.Email),
-                new SqlParameter("@BankAccount", data.BankAccount),
-                new SqlParameter("@BankName", data.BankName),
-                new SqlParameter("@BankBranch", data.BankBranch),
-                new SqlParameter("@Logo", data.Logo),
-                new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
-                new SqlParameter("@MaSoHD", data.MaSoHD),
-                new SqlParameter("@NoiQLThue", data.NoiQLThue),
-                new SqlParameter("@NHKhoBac", data.NHKhoBac),
-                new SqlParameter("@TKThuThue", data.TKThuThue),
-                new SqlParameter("@LapBieu", data.LapBieu),
-                new SqlParameter("@KTTruong", data.KTTruong),
-                new SqlParameter("@KTVien", data.KTVien),
-                new SqlParameter("@LanhDao", data.LanhDao),
-                new SqlParameter("@ThuQuy", data.ThuQuy),
-                new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
-                new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
-                new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
-                new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
-                new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
-                new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-            };
+		public bool InsertCompany(Company data)
+		{
+			SqlParameter[] sqlParameters = new SqlParameter[]
+			{
+				new SqlParameter("@CompanyID", data.CompanyID),
+				new SqlParameter("@CompanyName", data.CompanyName),
+				new SqlParameter("@CompanySName", data.CompanySName),
+				new SqlParameter("@Address", data.Address),
+				new SqlParameter("@MST", data.MST),
+				new SqlParameter("@District", data.District),
+				new SqlParameter("@Province", data.Province),
+				new SqlParameter("@Phone", data.Phone),
+				new SqlParameter("@Fax", data.Fax),
+				new SqlParameter("@Email", data.Email),
+				new SqlParameter("@BankAccount", data.BankAccount),
+				new SqlParameter("@BankName", data.BankName),
+				new SqlParameter("@BankBranch", data.BankBranch),
+				new SqlParameter("@Logo", data.Logo),
+				new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
+				new SqlParameter("@MaSoHD", data.MaSoHD),
+				new SqlParameter("@NoiQLThue", data.NoiQLThue),
+				new SqlParameter("@NHKhoBac", data.NHKhoBac),
+				new SqlParameter("@TKThuThue", data.TKThuThue),
+				new SqlParameter("@LapBieu", data.LapBieu),
+				new SqlParameter("@KTTruong", data.KTTruong),
+				new SqlParameter("@KTVien", data.KTVien),
+				new SqlParameter("@LanhDao", data.LanhDao),
+				new SqlParameter("@ThuQuy", data.ThuQuy),
+				new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
+				new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
+				new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
+				new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
+				new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
+				new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
+				new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+			};
 
-            return this.Context.ExecuteDataFromProcedure("CompanyInsert", param);
-        }
+			this.Context.ExecuteDataFromProcedure("CompanyInsert", sqlParameters);
 
-        public int UpdateCompany(Company data)
-        {
-            SqlParameter[] param = new SqlParameter[]
-            {
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@CompanyName", data.CompanyName),
-                new SqlParameter("@CompanySName", data.CompanySName),
-                new SqlParameter("@Address", data.Address),
-                new SqlParameter("@MST", data.MST),
-                new SqlParameter("@District", data.District),
-                new SqlParameter("@Province", data.Province),
-                new SqlParameter("@Phone", data.Phone),
-                new SqlParameter("@Fax", data.Fax),
-                new SqlParameter("@Email", data.Email),
-                new SqlParameter("@BankAccount", data.BankAccount),
-                new SqlParameter("@BankName", data.BankName),
-                new SqlParameter("@BankBranch", data.BankBranch),
-                new SqlParameter("@Logo", data.Logo),
-                new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
-                new SqlParameter("@MaSoHD", data.MaSoHD),
-                new SqlParameter("@NoiQLThue", data.NoiQLThue),
-                new SqlParameter("@NHKhoBac", data.NHKhoBac),
-                new SqlParameter("@TKThuThue", data.TKThuThue),
-                new SqlParameter("@LapBieu", data.LapBieu),
-                new SqlParameter("@KTTruong", data.KTTruong),
-                new SqlParameter("@KTVien", data.KTVien),
-                new SqlParameter("@LanhDao", data.LanhDao),
-                new SqlParameter("@ThuQuy", data.ThuQuy),
-                new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
-                new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
-                new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
-                new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
-                new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
-                new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
-            };
+			return true;
+		}
 
-            return this.Context.ExecuteDataFromProcedure("CompanyUpdate", param);
-        }
+		public bool UpdateCompany(Company data)
+		{
+			SqlParameter[] sqlParameters = new SqlParameter[]
+			{
+				new SqlParameter("@CompanyID", data.CompanyID),
+				new SqlParameter("@CompanyName", data.CompanyName),
+				new SqlParameter("@CompanySName", data.CompanySName),
+				new SqlParameter("@Address", data.Address),
+				new SqlParameter("@MST", data.MST),
+				new SqlParameter("@District", data.District),
+				new SqlParameter("@Province", data.Province),
+				new SqlParameter("@Phone", data.Phone),
+				new SqlParameter("@Fax", data.Fax),
+				new SqlParameter("@Email", data.Email),
+				new SqlParameter("@BankAccount", data.BankAccount),
+				new SqlParameter("@BankName", data.BankName),
+				new SqlParameter("@BankBranch", data.BankBranch),
+				new SqlParameter("@Logo", data.Logo),
+				new SqlParameter("@SoQuyetDinh", data.SoQuyetDinh),
+				new SqlParameter("@MaSoHD", data.MaSoHD),
+				new SqlParameter("@NoiQLThue", data.NoiQLThue),
+				new SqlParameter("@NHKhoBac", data.NHKhoBac),
+				new SqlParameter("@TKThuThue", data.TKThuThue),
+				new SqlParameter("@LapBieu", data.LapBieu),
+				new SqlParameter("@KTTruong", data.KTTruong),
+				new SqlParameter("@KTVien", data.KTVien),
+				new SqlParameter("@LanhDao", data.LanhDao),
+				new SqlParameter("@ThuQuy", data.ThuQuy),
+				new SqlParameter("@ChucDanhLanhDao", data.ChucDanhLanhDao),
+				new SqlParameter("@ChuKyLapBieu", data.ChuKyLapBieu),
+				new SqlParameter("@ChuKyKTTruong", data.ChuKyKTTruong),
+				new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
+				new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
+				new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
+				new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+			};
 
-        public int DeleteCompany(Company data)
-        {
-            SqlParameter[] param = new SqlParameter[]
-            {
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("UserId", CommonInfo.UserInfo.UserID)
-            };
+			this.Context.ExecuteDataFromProcedure("CompanyUpdate", sqlParameters);
 
-            return this.Context.ExecuteDataFromProcedure("CompanyDelete", param);
-        }
-    }
+			return true;
+		}
+
+		public bool DeleteCompany(Company data)
+		{
+			SqlParameter[] sqlParameters = new SqlParameter[]
+			{
+				new SqlParameter("@CompanyID", data.CompanyID),
+				new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+			};
+
+			this.Context.ExecuteDataFromProcedure("CompanyDelete", sqlParameters);
+
+			return true;
+		}
+	}
 }

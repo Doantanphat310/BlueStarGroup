@@ -80,6 +80,8 @@
             this.GeneralLedger_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Main_TablePanel = new DevExpress.Utils.Layout.TablePanel();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GroupControl)).BeginInit();
             this.AccountGroup_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GridControl)).BeginInit();
@@ -117,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).BeginInit();
             this.Main_TablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // AccountGroup_GroupControl
@@ -125,28 +128,33 @@
             this.AccountGroup_GroupControl.Controls.Add(this.AccountGroup_GridControl);
             this.AccountGroup_GroupControl.Controls.Add(this.AccountGroup_Button_Panel);
             this.AccountGroup_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AccountGroup_GroupControl.Location = new System.Drawing.Point(3, 3);
+            this.AccountGroup_GroupControl.Location = new System.Drawing.Point(4, 5);
+            this.AccountGroup_GroupControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_GroupControl.Name = "AccountGroup_GroupControl";
             this.Main_TablePanel.SetRow(this.AccountGroup_GroupControl, 0);
-            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(339, 153);
+            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(510, 246);
             this.AccountGroup_GroupControl.TabIndex = 0;
             this.AccountGroup_GroupControl.Text = "Danh Mục Nhóm Tài Khoản";
             // 
             // AccountGroup_GridControl
             // 
             this.AccountGroup_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AccountGroup_GridControl.Location = new System.Drawing.Point(2, 20);
+            this.AccountGroup_GridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AccountGroup_GridControl.Location = new System.Drawing.Point(2, 29);
             this.AccountGroup_GridControl.MainView = this.AccountGroup_GridView;
+            this.AccountGroup_GridControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_GridControl.Name = "AccountGroup_GridControl";
             this.AccountGroup_GridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit1});
-            this.AccountGroup_GridControl.Size = new System.Drawing.Size(335, 86);
+            this.AccountGroup_GridControl.Size = new System.Drawing.Size(506, 146);
             this.AccountGroup_GridControl.TabIndex = 1;
             this.AccountGroup_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountGroup_GridView});
             // 
             // AccountGroup_GridView
             // 
+            this.AccountGroup_GridView.DetailHeight = 538;
+            this.AccountGroup_GridView.FixedLineWidth = 3;
             this.AccountGroup_GridView.GridControl = this.AccountGroup_GridControl;
             this.AccountGroup_GridView.Name = "AccountGroup_GridView";
             this.AccountGroup_GridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.AccountGroup_GridView_ShowingEditor);
@@ -177,18 +185,20 @@
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Cancel_Button);
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Save_Button);
             this.AccountGroup_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 106);
+            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 175);
+            this.AccountGroup_Button_Panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_Button_Panel.Name = "AccountGroup_Button_Panel";
-            this.AccountGroup_Button_Panel.Size = new System.Drawing.Size(335, 45);
+            this.AccountGroup_Button_Panel.Size = new System.Drawing.Size(506, 69);
             this.AccountGroup_Button_Panel.TabIndex = 0;
             // 
             // AccountGroup_Delete_Button
             // 
             this.AccountGroup_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountGroup_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountGroup_Delete_Button.ImageOptions.Image")));
-            this.AccountGroup_Delete_Button.Location = new System.Drawing.Point(78, 7);
+            this.AccountGroup_Delete_Button.Location = new System.Drawing.Point(121, 11);
+            this.AccountGroup_Delete_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_Delete_Button.Name = "AccountGroup_Delete_Button";
-            this.AccountGroup_Delete_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountGroup_Delete_Button.Size = new System.Drawing.Size(120, 51);
             this.AccountGroup_Delete_Button.TabIndex = 0;
             this.AccountGroup_Delete_Button.Text = "Xóa";
             this.AccountGroup_Delete_Button.Click += new System.EventHandler(this.AccountGroup_Delete_Button_Click);
@@ -197,9 +207,10 @@
             // 
             this.AccountGroup_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountGroup_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountGroup_Cancel_Button.ImageOptions.Image")));
-            this.AccountGroup_Cancel_Button.Location = new System.Drawing.Point(250, 7);
+            this.AccountGroup_Cancel_Button.Location = new System.Drawing.Point(379, 11);
+            this.AccountGroup_Cancel_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_Cancel_Button.Name = "AccountGroup_Cancel_Button";
-            this.AccountGroup_Cancel_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountGroup_Cancel_Button.Size = new System.Drawing.Size(120, 51);
             this.AccountGroup_Cancel_Button.TabIndex = 2;
             this.AccountGroup_Cancel_Button.Text = "Hủy";
             this.AccountGroup_Cancel_Button.Click += new System.EventHandler(this.AccountGroup_Cancel_Button_Click);
@@ -208,9 +219,10 @@
             // 
             this.AccountGroup_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountGroup_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountGroup_Save_Button.ImageOptions.Image")));
-            this.AccountGroup_Save_Button.Location = new System.Drawing.Point(164, 7);
+            this.AccountGroup_Save_Button.Location = new System.Drawing.Point(250, 11);
+            this.AccountGroup_Save_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AccountGroup_Save_Button.Name = "AccountGroup_Save_Button";
-            this.AccountGroup_Save_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountGroup_Save_Button.Size = new System.Drawing.Size(120, 51);
             this.AccountGroup_Save_Button.TabIndex = 1;
             this.AccountGroup_Save_Button.Text = "Lưu";
             this.AccountGroup_Save_Button.Click += new System.EventHandler(this.AccountGroup_Save_Button_Click);
@@ -221,43 +233,53 @@
             this.Accounts_GroupControl.Controls.Add(this.Account_TreeList);
             this.Accounts_GroupControl.Controls.Add(this.Accounts_Button_Panel);
             this.Accounts_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Accounts_GroupControl.Location = new System.Drawing.Point(348, 3);
+            this.Accounts_GroupControl.Location = new System.Drawing.Point(522, 5);
+            this.Accounts_GroupControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accounts_GroupControl.Name = "Accounts_GroupControl";
             this.Main_TablePanel.SetRow(this.Accounts_GroupControl, 0);
-            this.Accounts_GroupControl.Size = new System.Drawing.Size(498, 153);
+            this.Accounts_GroupControl.Size = new System.Drawing.Size(749, 246);
             this.Accounts_GroupControl.TabIndex = 1;
             this.Accounts_GroupControl.Text = "Danh Mục Tài Khoản";
             // 
             // Account_TreeList
             // 
+            this.Account_TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1});
             this.Account_TreeList.ContextMenuStrip = this.contextMenuStrip1;
             this.Account_TreeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Account_TreeList.Location = new System.Drawing.Point(2, 20);
+            this.Account_TreeList.FixedLineWidth = 3;
+            this.Account_TreeList.Location = new System.Drawing.Point(2, 29);
+            this.Account_TreeList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Account_TreeList.MinWidth = 30;
             this.Account_TreeList.Name = "Account_TreeList";
-            this.Account_TreeList.Size = new System.Drawing.Size(494, 86);
+            this.Account_TreeList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.Account_TreeList.Size = new System.Drawing.Size(745, 146);
             this.Account_TreeList.TabIndex = 2;
+            this.Account_TreeList.TreeLevelWidth = 27;
             this.Account_TreeList.InvalidNodeException += new DevExpress.XtraTreeList.InvalidNodeExceptionEventHandler(this.Account_TreeList_InvalidNodeException);
             this.Account_TreeList.ValidateNode += new DevExpress.XtraTreeList.ValidateNodeEventHandler(this.Account_TreeList_ValidateNode);
             this.Account_TreeList.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.Account_TreeList_ShowingEditor);
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(144, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 68);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 32);
             this.toolStripMenuItem1.Text = "Thêm TK con";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(186, 32);
             this.toolStripMenuItem2.Text = "Thêm TK";
             // 
             // Accounts_Button_Panel
@@ -270,9 +292,10 @@
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Save_Button);
             this.Accounts_Button_Panel.Controls.Add(this.menuStrip1);
             this.Accounts_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 106);
+            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 175);
+            this.Accounts_Button_Panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accounts_Button_Panel.Name = "Accounts_Button_Panel";
-            this.Accounts_Button_Panel.Size = new System.Drawing.Size(494, 45);
+            this.Accounts_Button_Panel.Size = new System.Drawing.Size(745, 69);
             this.Accounts_Button_Panel.TabIndex = 0;
             // 
             // dropDownButton1
@@ -281,9 +304,10 @@
             this.dropDownButton1.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
             this.dropDownButton1.DropDownControl = this.popupMenu;
             this.dropDownButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton1.ImageOptions.Image")));
-            this.dropDownButton1.Location = new System.Drawing.Point(145, 8);
+            this.dropDownButton1.Location = new System.Drawing.Point(222, 12);
+            this.dropDownButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.Size = new System.Drawing.Size(88, 32);
+            this.dropDownButton1.Size = new System.Drawing.Size(132, 49);
             this.dropDownButton1.TabIndex = 4;
             this.dropDownButton1.Text = "Thêm";
             // 
@@ -327,15 +351,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(849, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barDockControlTop.Size = new System.Drawing.Size(1274, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 459);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 706);
             this.barDockControlBottom.Manager = this.barManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(849, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1274, 0);
             // 
             // barDockControlLeft
             // 
@@ -343,23 +369,26 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 706);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(849, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1274, 0);
             this.barDockControlRight.Manager = this.barManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 706);
             // 
             // Accounts_Delete_Button
             // 
             this.Accounts_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Delete_Button.ImageOptions.Image")));
-            this.Accounts_Delete_Button.Location = new System.Drawing.Point(239, 7);
+            this.Accounts_Delete_Button.Location = new System.Drawing.Point(362, 11);
+            this.Accounts_Delete_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accounts_Delete_Button.Name = "Accounts_Delete_Button";
-            this.Accounts_Delete_Button.Size = new System.Drawing.Size(80, 33);
+            this.Accounts_Delete_Button.Size = new System.Drawing.Size(120, 51);
             this.Accounts_Delete_Button.TabIndex = 1;
             this.Accounts_Delete_Button.Text = "Xóa";
             this.Accounts_Delete_Button.Click += new System.EventHandler(this.Accounts_Delete_Button_Click);
@@ -368,9 +397,10 @@
             // 
             this.Accounts_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Cancel_Button.ImageOptions.Image")));
-            this.Accounts_Cancel_Button.Location = new System.Drawing.Point(411, 7);
+            this.Accounts_Cancel_Button.Location = new System.Drawing.Point(620, 11);
+            this.Accounts_Cancel_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accounts_Cancel_Button.Name = "Accounts_Cancel_Button";
-            this.Accounts_Cancel_Button.Size = new System.Drawing.Size(80, 33);
+            this.Accounts_Cancel_Button.Size = new System.Drawing.Size(120, 51);
             this.Accounts_Cancel_Button.TabIndex = 3;
             this.Accounts_Cancel_Button.Text = "Hủy";
             this.Accounts_Cancel_Button.Click += new System.EventHandler(this.Accounts_Cancel_Button_Click);
@@ -379,18 +409,21 @@
             // 
             this.Accounts_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Save_Button.ImageOptions.Image")));
-            this.Accounts_Save_Button.Location = new System.Drawing.Point(325, 7);
+            this.Accounts_Save_Button.Location = new System.Drawing.Point(492, 11);
+            this.Accounts_Save_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accounts_Save_Button.Name = "Accounts_Save_Button";
-            this.Accounts_Save_Button.Size = new System.Drawing.Size(80, 33);
+            this.Accounts_Save_Button.Size = new System.Drawing.Size(120, 51);
             this.Accounts_Save_Button.TabIndex = 2;
             this.Accounts_Save_Button.Text = "Lưu";
             this.Accounts_Save_Button.Click += new System.EventHandler(this.Accounts_Save_Button_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(490, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(741, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -413,26 +446,31 @@
             this.GeneralLedgerInfo_GroupControl.Controls.Add(this.GeneralLedger_GridControl);
             this.GeneralLedgerInfo_GroupControl.Controls.Add(this.GeneralLedgerInfo_Panel);
             this.GeneralLedgerInfo_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GeneralLedgerInfo_GroupControl.Location = new System.Drawing.Point(3, 162);
+            this.GeneralLedgerInfo_GroupControl.Location = new System.Drawing.Point(4, 261);
+            this.GeneralLedgerInfo_GroupControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedgerInfo_GroupControl.Name = "GeneralLedgerInfo_GroupControl";
             this.Main_TablePanel.SetRow(this.GeneralLedgerInfo_GroupControl, 1);
-            this.GeneralLedgerInfo_GroupControl.Size = new System.Drawing.Size(843, 294);
+            this.GeneralLedgerInfo_GroupControl.Size = new System.Drawing.Size(1267, 440);
             this.GeneralLedgerInfo_GroupControl.TabIndex = 2;
             this.GeneralLedgerInfo_GroupControl.Text = "Thông Tin Sổ Cái";
             // 
             // GeneralLedger_GridControl
             // 
             this.GeneralLedger_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GeneralLedger_GridControl.Location = new System.Drawing.Point(356, 20);
+            this.GeneralLedger_GridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GeneralLedger_GridControl.Location = new System.Drawing.Point(533, 29);
             this.GeneralLedger_GridControl.MainView = this.GeneralLedger_GridView;
+            this.GeneralLedger_GridControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_GridControl.Name = "GeneralLedger_GridControl";
-            this.GeneralLedger_GridControl.Size = new System.Drawing.Size(485, 272);
+            this.GeneralLedger_GridControl.Size = new System.Drawing.Size(732, 409);
             this.GeneralLedger_GridControl.TabIndex = 1;
             this.GeneralLedger_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GeneralLedger_GridView});
             // 
             // GeneralLedger_GridView
             // 
+            this.GeneralLedger_GridView.DetailHeight = 538;
+            this.GeneralLedger_GridView.FixedLineWidth = 3;
             this.GeneralLedger_GridView.GridControl = this.GeneralLedger_GridControl;
             this.GeneralLedger_GridView.Name = "GeneralLedger_GridView";
             this.GeneralLedger_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.GeneralLedger_GridView_InvalidRowException);
@@ -447,9 +485,10 @@
             this.GeneralLedgerInfo_Panel.Controls.Add(this.ItemPrice_LayoutControl);
             this.GeneralLedgerInfo_Panel.Controls.Add(this.GeneralLedgerInfo_Button_Panel);
             this.GeneralLedgerInfo_Panel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.GeneralLedgerInfo_Panel.Location = new System.Drawing.Point(2, 20);
+            this.GeneralLedgerInfo_Panel.Location = new System.Drawing.Point(2, 29);
+            this.GeneralLedgerInfo_Panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedgerInfo_Panel.Name = "GeneralLedgerInfo_Panel";
-            this.GeneralLedgerInfo_Panel.Size = new System.Drawing.Size(354, 272);
+            this.GeneralLedgerInfo_Panel.Size = new System.Drawing.Size(531, 409);
             this.GeneralLedgerInfo_Panel.TabIndex = 0;
             // 
             // ItemPrice_LayoutControl
@@ -459,29 +498,32 @@
             this.ItemPrice_LayoutControl.Controls.Add(this.CompanyID_SearchLookUpEdit);
             this.ItemPrice_LayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemPrice_LayoutControl.Location = new System.Drawing.Point(2, 2);
+            this.ItemPrice_LayoutControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ItemPrice_LayoutControl.Name = "ItemPrice_LayoutControl";
             this.ItemPrice_LayoutControl.Root = this.Root;
-            this.ItemPrice_LayoutControl.Size = new System.Drawing.Size(350, 227);
+            this.ItemPrice_LayoutControl.Size = new System.Drawing.Size(527, 342);
             this.ItemPrice_LayoutControl.TabIndex = 0;
             this.ItemPrice_LayoutControl.Text = "layoutControl1";
             // 
             // GeneralLedgerDetailName_TextBox
             // 
-            this.GeneralLedgerDetailName_TextBox.Location = new System.Drawing.Point(98, 60);
+            this.GeneralLedgerDetailName_TextBox.Location = new System.Drawing.Point(146, 86);
+            this.GeneralLedgerDetailName_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedgerDetailName_TextBox.Name = "GeneralLedgerDetailName_TextBox";
-            this.GeneralLedgerDetailName_TextBox.Size = new System.Drawing.Size(240, 20);
+            this.GeneralLedgerDetailName_TextBox.Size = new System.Drawing.Size(363, 28);
             this.GeneralLedgerDetailName_TextBox.StyleController = this.ItemPrice_LayoutControl;
             this.GeneralLedgerDetailName_TextBox.TabIndex = 9;
             // 
             // GeneralLedger_SearchLookUpEdit
             // 
-            this.GeneralLedger_SearchLookUpEdit.Location = new System.Drawing.Point(98, 36);
+            this.GeneralLedger_SearchLookUpEdit.Location = new System.Drawing.Point(146, 52);
+            this.GeneralLedger_SearchLookUpEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_SearchLookUpEdit.Name = "GeneralLedger_SearchLookUpEdit";
             this.GeneralLedger_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.GeneralLedger_SearchLookUpEdit.Properties.NullText = "";
             this.GeneralLedger_SearchLookUpEdit.Properties.PopupView = this.gridView3;
-            this.GeneralLedger_SearchLookUpEdit.Size = new System.Drawing.Size(240, 20);
+            this.GeneralLedger_SearchLookUpEdit.Size = new System.Drawing.Size(363, 28);
             this.GeneralLedger_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
             this.GeneralLedger_SearchLookUpEdit.TabIndex = 8;
             this.GeneralLedger_SearchLookUpEdit.EditValueChanged += new System.EventHandler(this.GeneralLedger_SearchLookUpEdit_EditValueChanged);
@@ -496,13 +538,14 @@
             // CompanyID_SearchLookUpEdit
             // 
             this.CompanyID_SearchLookUpEdit.EditValue = "";
-            this.CompanyID_SearchLookUpEdit.Location = new System.Drawing.Point(98, 12);
+            this.CompanyID_SearchLookUpEdit.Location = new System.Drawing.Point(146, 18);
+            this.CompanyID_SearchLookUpEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CompanyID_SearchLookUpEdit.Name = "CompanyID_SearchLookUpEdit";
             this.CompanyID_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.CompanyID_SearchLookUpEdit.Properties.NullText = "";
             this.CompanyID_SearchLookUpEdit.Properties.PopupView = this.CompanyID_SearchLookUpEditView;
-            this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(240, 20);
+            this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(363, 28);
             this.CompanyID_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
             this.CompanyID_SearchLookUpEdit.TabIndex = 1;
             this.CompanyID_SearchLookUpEdit.Popup += new System.EventHandler(this.CompanyID_SearchLookUpEdit_Popup);
@@ -525,7 +568,7 @@
             this.GeneralLedgerDetailName_Label,
             this.GeneralLedger_Label});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(350, 227);
+            this.Root.Size = new System.Drawing.Size(527, 342);
             this.Root.TextVisible = false;
             // 
             // Company_Label
@@ -533,27 +576,27 @@
             this.Company_Label.Control = this.CompanyID_SearchLookUpEdit;
             this.Company_Label.Location = new System.Drawing.Point(0, 0);
             this.Company_Label.Name = "Company_Label";
-            this.Company_Label.Size = new System.Drawing.Size(330, 24);
+            this.Company_Label.Size = new System.Drawing.Size(497, 34);
             this.Company_Label.Text = "Công ty";
-            this.Company_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.Company_Label.TextSize = new System.Drawing.Size(124, 19);
             // 
             // GeneralLedgerDetailName_Label
             // 
             this.GeneralLedgerDetailName_Label.Control = this.GeneralLedgerDetailName_TextBox;
-            this.GeneralLedgerDetailName_Label.Location = new System.Drawing.Point(0, 48);
+            this.GeneralLedgerDetailName_Label.Location = new System.Drawing.Point(0, 68);
             this.GeneralLedgerDetailName_Label.Name = "GeneralLedgerDetailName_Label";
-            this.GeneralLedgerDetailName_Label.Size = new System.Drawing.Size(330, 159);
+            this.GeneralLedgerDetailName_Label.Size = new System.Drawing.Size(497, 244);
             this.GeneralLedgerDetailName_Label.Text = "Tên sổ cái chi tiết";
-            this.GeneralLedgerDetailName_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.GeneralLedgerDetailName_Label.TextSize = new System.Drawing.Size(124, 19);
             // 
             // GeneralLedger_Label
             // 
             this.GeneralLedger_Label.Control = this.GeneralLedger_SearchLookUpEdit;
-            this.GeneralLedger_Label.Location = new System.Drawing.Point(0, 24);
+            this.GeneralLedger_Label.Location = new System.Drawing.Point(0, 34);
             this.GeneralLedger_Label.Name = "GeneralLedger_Label";
-            this.GeneralLedger_Label.Size = new System.Drawing.Size(330, 24);
+            this.GeneralLedger_Label.Size = new System.Drawing.Size(497, 34);
             this.GeneralLedger_Label.Text = "Sổ cái";
-            this.GeneralLedger_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.GeneralLedger_Label.TextSize = new System.Drawing.Size(124, 19);
             // 
             // GeneralLedgerInfo_Button_Panel
             // 
@@ -562,18 +605,20 @@
             this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_AddNew_Button);
             this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_Delete_Button);
             this.GeneralLedgerInfo_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GeneralLedgerInfo_Button_Panel.Location = new System.Drawing.Point(2, 229);
+            this.GeneralLedgerInfo_Button_Panel.Location = new System.Drawing.Point(2, 344);
+            this.GeneralLedgerInfo_Button_Panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedgerInfo_Button_Panel.Name = "GeneralLedgerInfo_Button_Panel";
-            this.GeneralLedgerInfo_Button_Panel.Size = new System.Drawing.Size(350, 41);
+            this.GeneralLedgerInfo_Button_Panel.Size = new System.Drawing.Size(527, 63);
             this.GeneralLedgerInfo_Button_Panel.TabIndex = 1;
             // 
             // GeneralLedger_Cancel_Button
             // 
             this.GeneralLedger_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GeneralLedger_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Cancel_Button.ImageOptions.Image")));
-            this.GeneralLedger_Cancel_Button.Location = new System.Drawing.Point(266, 5);
+            this.GeneralLedger_Cancel_Button.Location = new System.Drawing.Point(401, 8);
+            this.GeneralLedger_Cancel_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_Cancel_Button.Name = "GeneralLedger_Cancel_Button";
-            this.GeneralLedger_Cancel_Button.Size = new System.Drawing.Size(80, 33);
+            this.GeneralLedger_Cancel_Button.Size = new System.Drawing.Size(120, 51);
             this.GeneralLedger_Cancel_Button.TabIndex = 3;
             this.GeneralLedger_Cancel_Button.Text = "Hủy";
             this.GeneralLedger_Cancel_Button.Click += new System.EventHandler(this.GeneralLedger_Cancel_Button_Click);
@@ -582,9 +627,10 @@
             // 
             this.GeneralLedger_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GeneralLedger_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Save_Button.ImageOptions.Image")));
-            this.GeneralLedger_Save_Button.Location = new System.Drawing.Point(180, 5);
+            this.GeneralLedger_Save_Button.Location = new System.Drawing.Point(272, 8);
+            this.GeneralLedger_Save_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_Save_Button.Name = "GeneralLedger_Save_Button";
-            this.GeneralLedger_Save_Button.Size = new System.Drawing.Size(80, 33);
+            this.GeneralLedger_Save_Button.Size = new System.Drawing.Size(120, 51);
             this.GeneralLedger_Save_Button.TabIndex = 2;
             this.GeneralLedger_Save_Button.Text = "Lưu";
             this.GeneralLedger_Save_Button.Click += new System.EventHandler(this.GeneralLedger_Save_Button_Click);
@@ -593,9 +639,10 @@
             // 
             this.GeneralLedger_AddNew_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GeneralLedger_AddNew_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_AddNew_Button.ImageOptions.Image")));
-            this.GeneralLedger_AddNew_Button.Location = new System.Drawing.Point(8, 5);
+            this.GeneralLedger_AddNew_Button.Location = new System.Drawing.Point(14, 8);
+            this.GeneralLedger_AddNew_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_AddNew_Button.Name = "GeneralLedger_AddNew_Button";
-            this.GeneralLedger_AddNew_Button.Size = new System.Drawing.Size(80, 33);
+            this.GeneralLedger_AddNew_Button.Size = new System.Drawing.Size(120, 51);
             this.GeneralLedger_AddNew_Button.TabIndex = 0;
             this.GeneralLedger_AddNew_Button.Text = "Thêm";
             this.GeneralLedger_AddNew_Button.Click += new System.EventHandler(this.GeneralLedger_AddNew_Button_Click);
@@ -604,9 +651,10 @@
             // 
             this.GeneralLedger_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GeneralLedger_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Delete_Button.ImageOptions.Image")));
-            this.GeneralLedger_Delete_Button.Location = new System.Drawing.Point(94, 5);
+            this.GeneralLedger_Delete_Button.Location = new System.Drawing.Point(143, 8);
+            this.GeneralLedger_Delete_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneralLedger_Delete_Button.Name = "GeneralLedger_Delete_Button";
-            this.GeneralLedger_Delete_Button.Size = new System.Drawing.Size(80, 33);
+            this.GeneralLedger_Delete_Button.Size = new System.Drawing.Size(120, 51);
             this.GeneralLedger_Delete_Button.TabIndex = 1;
             this.GeneralLedger_Delete_Button.Text = "Xóa";
             this.GeneralLedger_Delete_Button.Click += new System.EventHandler(this.GeneralLedger_Delete_Button_Click);
@@ -621,11 +669,12 @@
             this.Main_TablePanel.Controls.Add(this.AccountGroup_GroupControl);
             this.Main_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main_TablePanel.Location = new System.Drawing.Point(0, 0);
+            this.Main_TablePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Main_TablePanel.Name = "Main_TablePanel";
             this.Main_TablePanel.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 100F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 300F)});
-            this.Main_TablePanel.Size = new System.Drawing.Size(849, 459);
+            this.Main_TablePanel.Size = new System.Drawing.Size(1274, 706);
             this.Main_TablePanel.TabIndex = 0;
             // 
             // popupMenu1
@@ -633,17 +682,32 @@
             this.popupMenu1.Manager = this.barManager;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "treeListColumn1";
+            this.treeListColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.treeListColumn1.FieldName = "treeListColumn1";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
             // AccountList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Main_TablePanel);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AccountList";
-            this.Size = new System.Drawing.Size(849, 459);
+            this.Size = new System.Drawing.Size(1274, 706);
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GroupControl)).EndInit();
             this.AccountGroup_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GridControl)).EndInit();
@@ -682,6 +746,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).EndInit();
             this.Main_TablePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -739,5 +804,7 @@
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }

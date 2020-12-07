@@ -72,6 +72,14 @@ namespace BSClient
             BindingTextEdit(this.TKThuThue_TextEdit);
             BindingTextEdit(this.BankBranch_TextEdit);
 
+            //Thông tin chữ ký
+            BindingTextEdit(this.Scheduler_TextEdit);
+            BindingTextEdit(this.Stockkeeper_TextEdit);
+            BindingTextEdit(this.Accountant_TextEdit);
+            BindingTextEdit(this.Leader_TextEdit);
+            BindingTextEdit(this.LeaderPosition_TextEdit);
+            BindingTextEdit(this.ChiefaAcountant_TextEdit);
+
             // Thông tin hình ảnh
             BindingPictureEdit(this.Logo_PictureEdit);
             BindingPictureEdit(this.SchedulerSignature_PictureEdit);

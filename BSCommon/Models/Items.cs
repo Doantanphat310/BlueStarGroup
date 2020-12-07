@@ -1,21 +1,56 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSCommon.Models
 {
     /// <summary>
-    /// Item infomation
+    /// Items infomation
     /// </summary>        
     [Table("Items")]
     public class Items : BaseModel
     {
+        /// <summary>
+        /// ItemID
+        /// </summary>
         [Key]
+        [Column("ItemID", Order = 1)]
         public string ItemID { get; set; }
+
+        /// <summary>
+        /// ItemName
+        /// </summary>
+        [Column("ItemName")]
         public string ItemName { get; set; }
+
+        /// <summary>
+        /// ItemSName
+        /// </summary>
+        [Column("ItemSName")]
         public string ItemSName { get; set; }
-        public string ItemSpecification { get; set; }
+
+        /// <summary>
+        /// ItemTypeID
+        /// </summary>
+        [Column("ItemTypeID")]
         public string ItemTypeID { get; set; }
+
+        /// <summary>
+        /// ItemUnit
+        /// </summary>
+        [Column("ItemUnit")]
         public string ItemUnit { get; set; }
-        public int? IsDelete { get; set; }
+
+        /// <summary>
+        /// ItemSpecification
+        /// </summary>
+        [Column("ItemSpecification")]
+        public string ItemSpecification { get; set; }
+
+        /// <summary>
+        /// IsDelete
+        /// </summary>
+        [Column("IsDelete")]
+        public bool? IsDelete { get; set; }
     }
 }
