@@ -21,19 +21,20 @@ namespace BSServer.Controllers
             return this.CompanyDAO.GetCompanys();
         }
 
-        public int InsertCompany(Company data)
+        public bool InsertCompany(Company data)
         {
             long seq = this.CompanyDAO.GetCompanySEQ() + 1;
-            data.CompanyID = GenerateID.CompanyID(seq); ;
+            data.CompanyID = GenerateID.CompanyID(seq);
+
             return this.CompanyDAO.InsertCompany(data);
         }
 
-        public int UpdateCompany(Company data)
+        public bool UpdateCompany(Company data)
         {
             return this.CompanyDAO.UpdateCompany(data);
         }
 
-        public int DeleteCompany(Company data)
+        public bool DeleteCompany(Company data)
         {
             return this.CompanyDAO.DeleteCompany(data);
         }

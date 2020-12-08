@@ -35,6 +35,8 @@ namespace BSClient.Views
 
         public List<GeneralLedger> GeneralLedgerDeleteData { get; set; } = new List<GeneralLedger>();
 
+        private BindingSource AccountBinSource { get; set; } = new BindingSource();
+
         public AccountList()
         {
             InitializeComponent();
@@ -42,6 +44,22 @@ namespace BSClient.Views
             LoadGrid();
 
             InitComboBox();
+
+            SetBindingData();
+        }
+
+        private void SetBindingData()
+        {
+            DataBindingHelper.BindingCheckEdit(this.HachToan_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.DuNo_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.DuCo_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.ThongKe_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.NgoaiTe_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.TK152_156_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.VatTu_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.ThueVAT_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.HopDong_CheckEdit, AccountBinSource);
+            DataBindingHelper.BindingCheckEdit(this.CongNo_CheckEdit, AccountBinSource);
         }
 
         private void InitComboBox()
@@ -174,7 +192,8 @@ namespace BSClient.Views
         {
             AccountsController controller = new AccountsController();
             AccountsData = new BindingList<Accounts>(controller.GetAccounts());
-            Account_TreeList.DataSource = AccountsData;
+            AccountBinSource.DataSource = AccountsData;
+            Account_TreeList.DataSource = AccountBinSource;
             Account_TreeList.ExpandAll();
         }
 
@@ -589,19 +608,19 @@ namespace BSClient.Views
         {
             Account_TreeList.ClearColumnErrors();
 
-            Accounts row = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
+            Accounts selected = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
             TreeList view = sender as TreeList;
             TreeListColumn column;
 
-            if (row == null) return;
+            if (selected == null) return;
 
-            string accountID = row.AccountID;
+            string accountID = selected.AccountID;
 
             if (string.IsNullOrWhiteSpace(accountID))
             {
                 e.Valid = false;
                 //Set errors with specific descriptions for the columns
-                column = view.Columns[nameof(row.AccountID)];
+                column = view.Columns[nameof(selected.AccountID)];
                 view.SetColumnError(column, BSMessage.BSM000019);
             }
 
@@ -609,27 +628,27 @@ namespace BSClient.Views
             if (AccountsData.ToList().Count(o => o.AccountID == accountID) > 1)
             {
                 e.Valid = false;
-                column = view.Columns[nameof(row.AccountID)];
+                column = view.Columns[nameof(selected.AccountID)];
                 view.SetColumnError(column, BSMessage.BSM000021);
             }
 
-            if (string.IsNullOrEmpty(row.AccountName))
+            if (string.IsNullOrEmpty(selected.AccountName))
             {
                 e.Valid = false;
-                column = view.Columns[nameof(row.AccountName)];
+                column = view.Columns[nameof(selected.AccountName)];
                 view.SetColumnError(column, BSMessage.BSM000020);
             }
 
-            if (string.IsNullOrEmpty(row.AccountGroupID))
+            if (string.IsNullOrEmpty(selected.AccountGroupID))
             {
                 e.Valid = false;
-                column = view.Columns[nameof(row.AccountGroupID)];
+                column = view.Columns[nameof(selected.AccountGroupID)];
                 view.SetColumnError(column, BSMessage.BSM000016);
             }
 
-            if (row.Status != ModifyMode.Insert)
+            if (selected.Status != ModifyMode.Insert)
             {
-                row.Status = ModifyMode.Update;
+                selected.Status = ModifyMode.Update;
             }
         }
 
@@ -679,6 +698,16 @@ namespace BSClient.Views
             }
 
             GeneralLedgerDetailName_TextBox.Text = selectedRow.GeneralLedgerName;
+        }
+
+        private void Account_CheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            Accounts selected = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
+
+            if (selected.Status != ModifyMode.Insert)
+            {
+                selected.Status = ModifyMode.Update;
+            }
         }
     }
 }

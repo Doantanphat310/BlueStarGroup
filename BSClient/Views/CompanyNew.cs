@@ -54,31 +54,39 @@ namespace BSClient
         private void SetBindingData()
         {
             // Thông tin công ty
-            BindingTextEdit(this.CompanyName_TextEdit);
-            BindingTextEdit(this.CompanySName_TextEdit);
-            BindingTextEdit(this.Address_TextEdit);
-            BindingTextEdit(this.District_TextEdit);
-            BindingTextEdit(this.Province_TextEdit);
-            BindingTextEdit(this.Phone_TextEdit);
-            BindingTextEdit(this.Email_TextEdit);
-            BindingTextEdit(this.Fax_TextEdit);
-            BindingTextEdit(this.MST_TextEdit);
-            BindingTextEdit(this.NoiQLThue_TextEdit);
-            BindingTextEdit(this.BankAccount_TextEdit);
-            BindingTextEdit(this.SoQuyetDinh_TextEdit);
-            BindingTextEdit(this.NHKhoBac_TextEdit);
-            BindingTextEdit(this.BankName_TextEdit);
-            BindingTextEdit(this.MaSoHD_TextEdit);
-            BindingTextEdit(this.TKThuThue_TextEdit);
-            BindingTextEdit(this.BankBranch_TextEdit);
+            DataBindingHelper.BindingTextEdit(this.CompanyName_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.CompanySName_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Address_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.District_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Province_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Phone_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Email_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Fax_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.MST_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.NoiQLThue_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.BankAccount_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.SoQuyetDinh_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.NHKhoBac_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.BankName_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.MaSoHD_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.TKThuThue_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.BankBranch_TextEdit, BinSource);
+            
+            //Thông tin chữ ký
+            DataBindingHelper.BindingTextEdit(this.Scheduler_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Stockkeeper_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Accountant_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.Leader_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.LeaderPosition_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.ChiefaAcountant_TextEdit, BinSource);
 
             // Thông tin hình ảnh
-            BindingPictureEdit(this.Logo_PictureEdit);
-            BindingPictureEdit(this.SchedulerSignature_PictureEdit);
-            BindingPictureEdit(this.StockkeeperSignature_PictureEdit);
-            BindingPictureEdit(this.AccountantSignature_PictureEdit);
-            BindingPictureEdit(this.ChiefaAcountantSignature_PictureEdit);
-            BindingPictureEdit(this.LeaderSignature_PictureEdit);
+            DataBindingHelper.BindingPictureEdit(this.Logo_PictureEdit, BinSource);
+            DataBindingHelper.BindingPictureEdit(this.SchedulerSignature_PictureEdit, BinSource);
+            DataBindingHelper.BindingPictureEdit(this.StockkeeperSignature_PictureEdit, BinSource);
+            DataBindingHelper.BindingPictureEdit(this.AccountantSignature_PictureEdit, BinSource);
+            DataBindingHelper.BindingPictureEdit(this.ChiefaAcountantSignature_PictureEdit, BinSource);
+            DataBindingHelper.BindingPictureEdit(this.LeaderSignature_PictureEdit, BinSource);
         }
 
         private void SetEnable()
@@ -97,39 +105,11 @@ namespace BSClient
             }
         }
 
-        private void BindingTextEdit(TextEdit edit)
-        {
-            try
-            {
-                edit.DataBindings.Clear();
-                Binding b = new Binding("EditValue", this.BinSource, edit.Tag.ToString(), true);
-                edit.DataBindings.Add(b);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi BindingTextEdit: " + ex.Message);
-            }
-        }
-
-        private void BindingPictureEdit(PictureEdit edit)
-        {
-            try
-            {
-                edit.DataBindings.Clear();
-                Binding b = new Binding("Image", this.BinSource, $"{edit.Tag.ToString()}Image", true);
-                edit.DataBindings.Add(b);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi BindingPictureEdit: " + ex.Message);
-            }
-        }
-
         public string GetImageFileName()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Title = "Chọn một ảnh chữ ký",
+                Title = "Chọn hình ảnh",
                 DefaultExt = "png",
                 Filter = "Image Files(*.BMP;*.PNG;*.JPG;*.JPEG)|*.BMP;*.PNG;*.JPG;*.JPEG",
                 CheckFileExists = true,

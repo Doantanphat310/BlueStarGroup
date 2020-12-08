@@ -73,8 +73,8 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-            new SqlParameter("@CustomerID", data.CustomerID),
-            new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@CustomerID", data.CustomerID),
+                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("CustomerDelete", sqlParameters);

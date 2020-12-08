@@ -45,7 +45,7 @@ namespace BSServer.Logics
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.AccountsDAO.DeleteAccountGroup(data.AccountGroupID);
+                                this.AccountsDAO.DeleteAccountGroup(data);
                                 break;
                         }
                     }
@@ -98,7 +98,7 @@ namespace BSServer.Logics
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.AccountsDAO.DeleteAccounts(data.AccountID);
+                                this.AccountsDAO.DeleteAccounts(data);
                                 break;
                         }
                     }

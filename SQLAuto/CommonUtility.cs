@@ -18,6 +18,14 @@ namespace SQLAuto
             "IsDelete"
         };
 
+        private static readonly HashSet<string> IgnoreModelColumn = new HashSet<string>
+        {
+            "CreateDate",
+            "UpdateDate",
+            "CreateUser",
+            "UpdateUser"
+        };
+
         private static readonly Dictionary<string, string> TypeMapping = new Dictionary<string, string>()
         {
             { "text", "string" },
@@ -171,7 +179,7 @@ namespace SQLAuto
                 column = string.Empty;
                 keyStr = string.Empty;
 
-                if (IgnoreColumn.Contains(col.ColumnName))
+                if (IgnoreModelColumn.Contains(col.ColumnName))
                 {
                     continue;
                 }
@@ -189,10 +197,13 @@ namespace SQLAuto
 
                 if (col.IsKey == true && col.KeyOrder > 0)
                 {
-                    keyStr = GetColumnKey(col.KeyOrder ?? 0);
+                    column = string.Format(ModelFormat.ColumnKey_Format, col.ColumnName, typeName, nullStr, col.KeyOrder);
+                }
+                else
+                {
+                    column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr);
                 }
 
-                column = string.Format(ModelFormat.Column_Format, col.ColumnName, typeName, nullStr, keyStr);
                 columnsStr += Environment.NewLine + column;
             }
 
@@ -246,18 +257,18 @@ namespace SQLAuto
                 {
                     if (col.IsKey == true && col.KeyOrder > 0)
                     {
-                        paramStr = paramStr.AddExpression(param, "", "\t\t\t");
+                        paramStr = paramStr.AddExpression(param, "", "\t\t\t\t");
                     }
                 }
                 else
                 {
-                    paramStr = paramStr.AddExpression(param, "", "\t\t\t");
+                    paramStr = paramStr.AddExpression(param, "", "\t\t\t\t");
                 }
             }
 
             if (addUser)
             {
-                paramStr = paramStr.AddExpression(DAOFormat.User_Format, "", "\t\t\t");
+                paramStr = paramStr.AddExpression(DAOFormat.User_Format, string.Empty, "\t\t\t\t");
             }
 
             return paramStr.TrimStr();
@@ -274,13 +285,6 @@ namespace SQLAuto
         public {type}{nullStr} {columnName} {{ get; set; }} ";
         }
 
-        private static string GetColumnKey(int keyOrder)
-        {
-            return $@"
-        [Key]
-        [Column(Order = {keyOrder})]";
-        }
-
         public static string AddStr(this string str, string content, string tabStr = "")
         {
             if (string.IsNullOrEmpty(content)) return str;
@@ -289,7 +293,6 @@ namespace SQLAuto
 
             return str;
         }
-
 
         public static string AddAndOparator(this string str, string content, string tabStr = "")
         {

@@ -287,6 +287,7 @@ namespace BSClient.Utility
                 gridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
                 gridView.OptionsSelection.CheckBoxSelectorColumnWidth = checkBoxSelectorColumnWidth;
             }
+
             gridView.OptionsNavigation.AutoFocusNewRow = true;
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
             gridView.OptionsView.EnableAppearanceEvenRow = true;

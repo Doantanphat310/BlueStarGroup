@@ -73,10 +73,19 @@ namespace BSClient.Views
 
             using (CompanyController controller = new CompanyController())
             {
-                controller.DeleteCompany(company);
+                try
+                {
+                    controller.DeleteCompany(company);
 
-                CompanyData = new BindingList<Company>(controller.GetCompanys());
-                Company_GridControl.DataSource = CompanyData;
+                    CompanyData = new BindingList<Company>(controller.GetCompanys());
+                    Company_GridControl.DataSource = CompanyData;
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
+                    return;
+                }
             }
         }
 
