@@ -29,5 +29,6 @@
         public const string BSM000024 = "Tên Sổ cái đã tồn tại.";
         public const string BSM000025 = "Vui lòng nhập Tên Sổ cái.";
         public const string BSM000026 = "Vui lòng chọn 1 dòng trên lưới.";
+        public const string BSM000027 = "Xóa dữ liệu thành công.";
     }
 }
