@@ -28,6 +28,14 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
+        public List<Invoice> GetInvoiceSameDaySamCustomer(string CompanyID)
+        {
+            return this.Context.Database.SqlQuery<Invoice>(
+          "InvoiceSameDaySamCustomer @CompanyID",
+          new SqlParameter("@CompanyID", CompanyID)
+          ).ToList();
+        }
+
         public long GetInvoiceSEQ()
         {
             return this.GetMaxSEQ(BSServerConst.InvoiceSymbol);
