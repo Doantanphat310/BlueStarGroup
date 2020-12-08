@@ -125,6 +125,7 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVarient.cs" />
+    <Compile Include="Utility\DataBindingHelper.cs" />
     <Compile Include="Utility\TreeListHelper.cs" />
     <Compile Include="Utility\LookUpEditHelper.cs" />
     <Compile Include="Utility\GridViewHelper.cs" />
@@ -141,12 +142,6 @@
     </Compile>
     <Compile Include="Views\CompanyNew.Designer.cs">
       <DependentUpon>CompanyNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CompanyControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CompanyControl.Designer.cs">
-      <DependentUpon>CompanyControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\AccountList.cs">
       <SubType>UserControl</SubType>
@@ -232,9 +227,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CompanyNew.resx">
       <DependentUpon>CompanyNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CompanyControl.resx">
-      <DependentUpon>CompanyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AccountList.resx">
       <DependentUpon>AccountList.cs</DependentUpon>
