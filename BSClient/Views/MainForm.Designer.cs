@@ -33,7 +33,6 @@
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ACE_Voucher = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Company_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Custommers_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -42,6 +41,9 @@
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.Report_Group = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.SoCaiChiTiet_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +64,8 @@
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
-            this.accordionControlElement4});
+            this.accordionControlElement4,
+            this.Report_Group});
             this.accordionControl1.Location = new System.Drawing.Point(0, 27);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
             this.accordionControl1.Name = "accordionControl1";
@@ -74,8 +77,7 @@
             // accordionControlElement1
             // 
             this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.ACE_Voucher,
-            this.accordionControlElement3});
+            this.ACE_Voucher});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Công việc mỗi ngày";
@@ -91,17 +93,6 @@
             this.ACE_Voucher.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ACE_Voucher.Text = "Nhập chứng từ";
             this.ACE_Voucher.Click += new System.EventHandler(this.ACE_Voucher_Click);
-            // 
-            // accordionControlElement3
-            // 
-            this.accordionControlElement3.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
-            this.accordionControlElement3.Name = "accordionControlElement3";
-            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement3.Text = "Báo cáo";
             // 
             // accordionControlElement4
             // 
@@ -167,6 +158,29 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
+            // Report_Group
+            // 
+            this.Report_Group.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.BangCanDoiSoPhatSinh_Item,
+            this.SoCaiChiTiet_Item});
+            this.Report_Group.Expanded = true;
+            this.Report_Group.Name = "Report_Group";
+            this.Report_Group.Text = "Báo cáo";
+            // 
+            // BangCanDoiSoPhatSinh_Item
+            // 
+            this.BangCanDoiSoPhatSinh_Item.Name = "BangCanDoiSoPhatSinh_Item";
+            this.BangCanDoiSoPhatSinh_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.BangCanDoiSoPhatSinh_Item.Text = "Bảng cân đối số phát sinh tài khoản";
+            this.BangCanDoiSoPhatSinh_Item.Click += new System.EventHandler(this.BangCanDoiSoPhatSinh_Item_Click);
+            // 
+            // SoCaiChiTiet_Item
+            // 
+            this.SoCaiChiTiet_Item.Name = "SoCaiChiTiet_Item";
+            this.SoCaiChiTiet_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.SoCaiChiTiet_Item.Text = "Sổ cái chi tiết";
+            this.SoCaiChiTiet_Item.Click += new System.EventHandler(this.SoCaiChiTiet_Item_Click);
+            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -203,7 +217,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ACE_Voucher;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
         private DevExpress.XtraBars.Navigation.AccordionControlElement AccountList_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ItemList_Button;
@@ -211,5 +224,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Company_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement Report_Group;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement BangCanDoiSoPhatSinh_Item;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement SoCaiChiTiet_Item;
     }
 }

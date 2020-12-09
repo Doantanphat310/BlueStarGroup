@@ -62,5 +62,17 @@ namespace BSClient
             this.ShowControl(company, Content);
             this.SetTitle("Thông tin công ty đang được quản lý");
         }
+
+        private void SoCaiChiTiet_Item_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)
+        {
+            BangCanDoiPhatSinhTK form = new BangCanDoiPhatSinhTK();
+            this.ShowControl(form, Content);
+            this.SetTitle("Báo cáo bảng cân đối số phát sinh tài khoản");
+        }
     }
 }
