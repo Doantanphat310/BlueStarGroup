@@ -1008,7 +1008,7 @@ namespace BSClient
             this.Invoice_gridView.AddColumn("SerialNo", "Kí hiệu", 80, true);
             this.Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
             this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "c2");
-            this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "{0}%");
+            this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
             this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 120, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true, "c2");
             this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120, true, "c2");
@@ -1063,51 +1063,59 @@ namespace BSClient
 
         Boolean CheckInvoiceCondition()
         {
-             //Trong một ngày, cùng xuất hóa đơn cho 1 công ty không được lớn hơn 20 triệu
-            List<Invoice> groupedList = InvoiceData
-                            .GroupBy(c => new
-                            {
-                                c.InvoiceDate,
-                                c.CustomerID
-                            })
-                            .Select(i =>
-                                new Invoice()
-                                {
-                                    InvoiceDate = i.First().InvoiceDate,
-                                    CustomerID = i.First().CustomerID,
-                                    Amount = i.Sum(k => k.Amount)
-                                }
-                            ).ToList();
+            //Get list invoice 
+            InvoiceController controller = new InvoiceController();
+            List<Invoice> DataInvoice = controller.GetInvoiceSameDaySamCustomer(GlobalVarient.CompanyIDChoice);
+            List<Invoice> initialList = new List<Invoice>();
+            initialList = DataInvoice.Where(f => !InvoiceData.Any(t => t.InvoiceID == f.InvoiceID)).ToList();
+            initialList.AddRange(InvoiceData.ToList());
+            //Trong một ngày, cùng xuất hóa đơn cho 1 công ty không được lớn hơn 20 triệu  
+            List<Invoice> groupedList = initialList
+                .Where(a => InvoiceData.Any(t => t.InvoiceDate.ToString("YYYY-MM-dd") == a.InvoiceDate.ToString("YYYY-MM-dd") && t.CustomerID == a.CustomerID && t.InvoiceType == a.InvoiceType))
+                .GroupBy(c => new
+                    {
+                    c.InvoiceDate,
+                    c.InvoiceType,
+                    c.CustomerID
+                    })
+                .Select(i => new Invoice()
+                    {
+                    InvoiceDate = i.First().InvoiceDate,
+                    InvoiceType = i.First().InvoiceType,
+                    CustomerID = i.First().CustomerID,
+                    Amount = i.Sum(k => k.TotalAmount)
+                    }
+                ).ToList();
             for(int i =0; i<groupedList.Count;i++)
             {
                 if(groupedList[i].Amount > 20000000)
                 {
-                    //check tồn tại tk ngân hàng
-                    List<VoucherDetail> groupedListVoucherDetail = VoucherDetailData
-                        .GroupBy(c => new
-                        {
-                            c.NV,
-                            c.AccountID,
-                            c.Amount
-                        })
-                        .Select(j =>
-                            new VoucherDetail()
-                            {
-                                NV = j.First().NV,
-                                AccountID = j.First().AccountID,
-                                Amount = j.Sum(k => k.Amount)
-                            }
-                        ).ToList();
-                    for(int ij =0; ij< groupedListVoucherDetail.Count; ij++)
+                //check tồn tại tk ngân hàng
+                List<VoucherDetail> groupedListVoucherDetail = VoucherDetailData
+                .GroupBy(c => new
                     {
-                        //Tiền hóa đơn trong 1 ngày của cùng 1 khách hàng lớn hơn 20 triệu thì phải được thanh toán bằng tiền ngân hàng.
-                        if(groupedListVoucherDetail[ij].AccountID.Substring(0,3) == "112" && groupedListVoucherDetail[ij].Amount >= groupedList[i].Amount)
-                        {
-                            return true;
-                        }
+                    c.NV,
+                    c.AccountID,
+                    c.Amount
+                    })
+                .Select(j =>
+                    new VoucherDetail()
+                    {
+                    NV = j.First().NV,
+                    AccountID = j.First().AccountID,
+                    Amount = j.Sum(k => k.Amount)
                     }
-                    ///Không tồn tại tk ngân hàng mà có tiền của hóa đơn cùng 1 công ty cùng 1 ngày lớn hơn 20 triệu.
-                    return false;
+                    ).ToList();
+                for(int ij =0; ij< groupedListVoucherDetail.Count; ij++)
+                {
+                //Tiền hóa đơn trong 1 ngày của cùng 1 khách hàng lớn hơn 20 triệu thì phải được thanh toán bằng tiền ngân hàng.
+                    if(groupedListVoucherDetail[ij].AccountID.Substring(0,3) == "112" && groupedListVoucherDetail[ij].Amount >= groupedList[i].Amount)
+                    {
+                    return true;
+                    }
+                }
+                ///Không tồn tại tk ngân hàng mà có tiền của hóa đơn cùng 1 công ty cùng 1 ngày lớn hơn 20 triệu.
+                return false;
                 }
             }
             return true;
@@ -1927,32 +1935,32 @@ namespace BSClient
 
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
-                new ColumnInfo("InvoiceDate", "Ngày HĐ"),
-                new ColumnInfo("CustomerID", "Mã KH" ),
-                new ColumnInfo("InvoiceFormNo", "Mã số" ),
-                new ColumnInfo("FormNo", "Mẫu số" ),
-                new ColumnInfo("SerialNo", "Ký hiệu" ),
-                new ColumnInfo("InvoiceNo", "Số HĐ" ),
-                new ColumnInfo("Amount", "Tiền" ),
-                new ColumnInfo("VAT", "% GTGT" ),
-                new ColumnInfo("VATAmount", "Tiền VAT" ),
-                new ColumnInfo("Discounts", "CK" ),
-                new ColumnInfo("TotalAmount", "Tổng tiền" ),
-                new ColumnInfo("InvoiceType", "Loại HĐ" ),
-                new ColumnInfo("Description", "Mô tả" ),
-                new ColumnInfo("CreateUser", "Người tạo" )
+                new ColumnInfo("InvoiceID", "Invoice ID",140),
+                new ColumnInfo("InvoiceDate", "Ngày HĐ",80),
+                new ColumnInfo("CustomerID", "Mã KH",110 ),
+                //new ColumnInfo("InvoiceFormNo", "Mã số",80 ),
+                new ColumnInfo("FormNo", "Mẫu số",80 ),
+                new ColumnInfo("SerialNo", "Ký hiệu",80 ),
+                new ColumnInfo("InvoiceNo", "Số HĐ",80 ),
+                new ColumnInfo("Amount", "Tiền",120),
+                new ColumnInfo("VAT", "% GTGT",60),
+                new ColumnInfo("VATAmount", "Tiền VAT",120 ),
+                new ColumnInfo("Discounts", "CK",80 ),
+                new ColumnInfo("TotalAmount", "Tổng tiền",120),
+                new ColumnInfo("InvoiceType", "Loại HĐ",60 ),
+                new ColumnInfo("Description", "Nội dung",150 ),
+                new ColumnInfo("CreateUser", "Người tạo",60 )
             };
 
-            this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", isAllowEdit: true, columns: columns);
-
-            this.WareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
-            this.WareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
-            this.WareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", isAllowEdit: true, columns: columns,popupFormWidth:1200,enterChoiceFirstRow:true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
             this.WareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
+            this.WareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
+            this.WareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
+            this.WareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
             this.WareHouse_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
 
@@ -1986,7 +1994,7 @@ namespace BSClient
         {
             this.WareHouseDetail_gridView.Columns.Clear();
             this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "{0.00}", DevExpress.Data.SummaryItemType.Sum, "{0.00}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum,"###,###,###.##");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
             this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);

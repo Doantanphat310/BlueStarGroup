@@ -31,6 +31,12 @@ namespace BSServer.Controllers
             return this.InvoiceDAO.GetInvoiceSelectVoucherID(voucherID, companyID);
         }
 
+        
+        public List<Invoice> GetInvoiceSameDaySamCustomer(string companyID)
+        {
+            return this.InvoiceDAO.GetInvoiceSameDaySamCustomer(companyID);
+        }
+
 
         public bool InsertInvoice(Invoice Invoice)
         {
