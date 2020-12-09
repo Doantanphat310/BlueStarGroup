@@ -289,6 +289,7 @@ namespace BSClient.Utility
             }
 
             gridView.OptionsNavigation.AutoFocusNewRow = true;
+            gridView.OptionsNavigation.AutoMoveRowFocus = true;
             gridView.OptionsView.ColumnAutoWidth = columnAutoWidth;
             gridView.OptionsView.EnableAppearanceEvenRow = true;
             gridView.OptionsView.ShowGroupPanel = false;

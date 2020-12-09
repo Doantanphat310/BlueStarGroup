@@ -114,17 +114,12 @@ namespace BSClient.Views
 
         private void SetupGridView()
         {
-            this.Users_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
-
-            this.Users_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
-            this.Users_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.Users_GridView.SetupGridView();
         }
 
         private void SetupDetailGridView()
         {
             UserRole_GridView.SetupGridView();
-
-            UserRole_GridView.OptionsView.ShowFilterPanelMode = ShowFilterPanelMode.Never;
         }
 
         private void LoadGridView()
@@ -247,8 +242,9 @@ namespace BSClient.Views
         {
             string col = Users_GridView.FocusedColumn.FieldName;
             int rowIndex = Users_GridView.FocusedRowHandle;
+            var selected = Users_GridView.GetFocusedRow().CastTo<UserInfo>();
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
-            if (col == "UserID" && !isNewRow)
+            if (col == "UserID" && !(isNewRow || selected?.Status == ModifyMode.Insert))
             {
                 e.Cancel = true;
             }
@@ -259,11 +255,11 @@ namespace BSClient.Views
             Users_GridView.ClearColumnErrors();
             int rowIndex = Users_GridView.FocusedRowHandle;
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
-            if (isNewRow)
+            UserInfo row = e.Row.CastTo<UserInfo>();
+            GridView view = sender as GridView;
+            GridColumn column;
+            if (isNewRow || row.Status == ModifyMode.Insert)
             {
-                GridView view = sender as GridView;
-                GridColumn column;
-                UserInfo row = e.Row.CastTo<UserInfo>();
                 string userID = row.UserID;
 
                 // Kiểm tra user empty
@@ -292,6 +288,15 @@ namespace BSClient.Views
                     column = view.Columns[nameof(row.PasswordDisplay)];
                     view.SetColumnError(column, "Mật khẩu không được trống.");
                 }
+            }
+
+            // Kiểm tra UserName empty
+            if (string.IsNullOrEmpty(row.UserName))
+            {
+                e.Valid = false;
+                //Set errors with specific descriptions for the columns
+                column = view.Columns[nameof(row.UserName)];
+                view.SetColumnError(column, "Tên người dùng không được trống.");
             }
         }
 

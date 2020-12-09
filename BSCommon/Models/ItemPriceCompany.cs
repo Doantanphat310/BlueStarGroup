@@ -13,33 +13,26 @@ namespace BSCommon.Models
         /// <summary>
         /// ItemID
         /// </summary>
-        [Key]
-        [Column("ItemID", Order = 1)]
         public string ItemID { get; set; }
 
         /// <summary>
         /// CompanyID
         /// </summary>
-        [Key]
-        [Column("CompanyID", Order = 2)]
         public string CompanyID { get; set; }
 
         /// <summary>
         /// ItemPrice
         /// </summary>
-        [Column("ItemPrice")]
         public decimal? ItemPrice { get; set; }
 
         /// <summary>
         /// ItemName
         /// </summary>
-        [Column("ItemName")]
         public string ItemName { get; set; }
 
         /// <summary>
         /// CompanyName
         /// </summary>
-        [Column("CompanyName")]
         public string CompanyName { get; set; }
     }
 }

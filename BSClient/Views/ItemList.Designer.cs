@@ -49,20 +49,20 @@
             this.ItemsCompany_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ItemPrice_Panel = new DevExpress.XtraEditors.PanelControl();
             this.ItemPrice_LayoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.ItemName_TextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemPrice_Number = new DevExpress.XtraEditors.SpinEdit();
             this.CompanyID_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.CompanyID_SearchLookUpEditView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.Company_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemPrice_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemName_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemConpany_Button_Panel = new System.Windows.Forms.Panel();
             this.ItemCompany_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemCompany_Save_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemCompany_AddNew_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemCompany_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Main_TablePanel = new DevExpress.Utils.Layout.TablePanel();
-            this.ItemName_TextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ItemName_Label = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GroupControl)).BeginInit();
             this.ItemType_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GridControl)).BeginInit();
@@ -83,17 +83,17 @@
             this.ItemPrice_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_LayoutControl)).BeginInit();
             this.ItemPrice_LayoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemName_TextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_Number.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_Label)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemName_Label)).BeginInit();
             this.ItemConpany_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).BeginInit();
             this.Main_TablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemName_TextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemName_Label)).BeginInit();
             this.SuspendLayout();
             // 
             // ItemType_GroupControl
@@ -278,7 +278,7 @@
             this.Main_TablePanel.SetRow(this.ItemCompany_GroupControl, 1);
             this.ItemCompany_GroupControl.Size = new System.Drawing.Size(821, 214);
             this.ItemCompany_GroupControl.TabIndex = 2;
-            this.ItemCompany_GroupControl.Text = "Sản phẩm cho công ty";
+            this.ItemCompany_GroupControl.Text = "Thông Tin Giá Sản Phẩm";
             // 
             // ItemsCompany_GridControl
             // 
@@ -322,6 +322,15 @@
             this.ItemPrice_LayoutControl.Size = new System.Drawing.Size(387, 140);
             this.ItemPrice_LayoutControl.TabIndex = 0;
             this.ItemPrice_LayoutControl.Text = "layoutControl1";
+            // 
+            // ItemName_TextEdit
+            // 
+            this.ItemName_TextEdit.Location = new System.Drawing.Point(62, 12);
+            this.ItemName_TextEdit.Name = "ItemName_TextEdit";
+            this.ItemName_TextEdit.Properties.ReadOnly = true;
+            this.ItemName_TextEdit.Size = new System.Drawing.Size(313, 20);
+            this.ItemName_TextEdit.StyleController = this.ItemPrice_LayoutControl;
+            this.ItemName_TextEdit.TabIndex = 4;
             // 
             // ItemPrice_Number
             // 
@@ -396,6 +405,15 @@
             this.ItemPrice_Label.Text = "Giá SP";
             this.ItemPrice_Label.TextSize = new System.Drawing.Size(47, 13);
             // 
+            // ItemName_Label
+            // 
+            this.ItemName_Label.Control = this.ItemName_TextEdit;
+            this.ItemName_Label.Location = new System.Drawing.Point(0, 0);
+            this.ItemName_Label.Name = "ItemName_Label";
+            this.ItemName_Label.Size = new System.Drawing.Size(367, 24);
+            this.ItemName_Label.Text = "Sản phẩm";
+            this.ItemName_Label.TextSize = new System.Drawing.Size(47, 13);
+            // 
             // ItemConpany_Button_Panel
             // 
             this.ItemConpany_Button_Panel.Controls.Add(this.ItemCompany_Cancel_Button);
@@ -469,24 +487,6 @@
             this.Main_TablePanel.Size = new System.Drawing.Size(827, 467);
             this.Main_TablePanel.TabIndex = 0;
             // 
-            // ItemName_TextEdit
-            // 
-            this.ItemName_TextEdit.Location = new System.Drawing.Point(62, 12);
-            this.ItemName_TextEdit.Name = "ItemName_TextEdit";
-            this.ItemName_TextEdit.Properties.ReadOnly = true;
-            this.ItemName_TextEdit.Size = new System.Drawing.Size(313, 20);
-            this.ItemName_TextEdit.StyleController = this.ItemPrice_LayoutControl;
-            this.ItemName_TextEdit.TabIndex = 4;
-            // 
-            // ItemName_Label
-            // 
-            this.ItemName_Label.Control = this.ItemName_TextEdit;
-            this.ItemName_Label.Location = new System.Drawing.Point(0, 0);
-            this.ItemName_Label.Name = "ItemName_Label";
-            this.ItemName_Label.Size = new System.Drawing.Size(367, 24);
-            this.ItemName_Label.Text = "Sản phẩm";
-            this.ItemName_Label.TextSize = new System.Drawing.Size(47, 13);
-            // 
             // ItemList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,17 +514,17 @@
             this.ItemPrice_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_LayoutControl)).EndInit();
             this.ItemPrice_LayoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ItemName_TextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_Number.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_Label)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemName_Label)).EndInit();
             this.ItemConpany_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).EndInit();
             this.Main_TablePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ItemName_TextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemName_Label)).EndInit();
             this.ResumeLayout(false);
 
         }

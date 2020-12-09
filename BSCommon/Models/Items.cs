@@ -48,6 +48,30 @@ namespace BSCommon.Models
         public string ItemSpecification { get; set; }
 
         /// <summary>
+        /// CreateDate
+        /// </summary>
+        [Column("CreateDate")]
+        public DateTime? CreateDate { get; set; }
+
+        /// <summary>
+        /// UpdateDate
+        /// </summary>
+        [Column("UpdateDate")]
+        public DateTime? UpdateDate { get; set; }
+
+        /// <summary>
+        /// CreateUser
+        /// </summary>
+        [Column("CreateUser")]
+        public string CreateUser { get; set; }
+
+        /// <summary>
+        /// UpdateUser
+        /// </summary>
+        [Column("UpdateUser")]
+        public string UpdateUser { get; set; }
+
+        /// <summary>
         /// IsDelete
         /// </summary>
         [Column("IsDelete")]

@@ -30,5 +30,6 @@
         public const string BSM000025 = "Vui lòng nhập Tên Sổ cái.";
         public const string BSM000026 = "Vui lòng chọn 1 dòng trên lưới.";
         public const string BSM000027 = "Xóa dữ liệu thành công.";
+        public const string BSM000028 = "Lấy {0} thất bại!";
     }
 }

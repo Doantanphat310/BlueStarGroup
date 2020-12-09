@@ -20,10 +20,6 @@ namespace SQLAuto
 
         private static readonly HashSet<string> IgnoreModelColumn = new HashSet<string>
         {
-            "CreateDate",
-            "UpdateDate",
-            "CreateUser",
-            "UpdateUser"
         };
 
         private static readonly Dictionary<string, string> TypeMapping = new Dictionary<string, string>()
