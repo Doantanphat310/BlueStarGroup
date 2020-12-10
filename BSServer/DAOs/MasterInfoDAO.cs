@@ -16,8 +16,7 @@ namespace BSServer.DAOs
 
         public List<MasterInfo> GetMasterInfos(string key)
         {
-            return this.Context.Database
-              .SqlQuery<MasterInfo>("MasterInfoSelect")
+            return this.Context.MasterInfo
               .Where(o => o.Key == key)
               .ToList();
         }

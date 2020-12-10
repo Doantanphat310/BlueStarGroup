@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
+    <Compile Include="Exception.cs" />
+    <Compile Include="Models\BangCanDoiPhatSinhTK.cs" />
     <Compile Include="Models\Depreciation.cs" />
     <Compile Include="Models\DepreciationDetail.cs" />
     <Compile Include="Models\ColumnInfo.cs" />
@@ -137,6 +139,10 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\APIModels\" />
+    <Folder Include="Models\TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

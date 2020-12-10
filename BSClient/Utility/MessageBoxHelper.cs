@@ -9,6 +9,11 @@ namespace BSClient.Utility
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void ShowErrorMessage(string message, params string[] param)
+        {
+            MessageBox.Show(string.Format(message, param), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public static void ShowConfirmMessage(string message, MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo, MessageBoxDefaultButton messageBoxDefaultButton = MessageBoxDefaultButton.Button2)
         {
             MessageBox.Show(message, "Confirm", messageBoxButtons, MessageBoxIcon.Question, messageBoxDefaultButton);

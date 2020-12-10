@@ -54,15 +54,22 @@ namespace BSClient.Views
         private void SetupGridView()
         {
             this.Customer_GridView.SetupGridView();
-            this.Customer_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-            this.Customer_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void LoadGridView()
         {
-            CustomerController controller = new CustomerController();
-            CustommersData = new BindingList<Customer>(controller.GetCustomers());
-            Customer_GridControl.DataSource = CustommersData;
+            using (CustomerController controller = new CustomerController())
+            {
+                try
+                {
+                    CustommersData = new BindingList<Customer>(controller.GetCustomers());
+                    Customer_GridControl.DataSource = CustommersData;
+                }
+                catch
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Khách Hàng>");
+                }
+            }
         }
 
         private void Customer_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)

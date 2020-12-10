@@ -149,23 +149,50 @@ namespace BSClient.Views
 
         private void LoadItemTypeGridView()
         {
-            ItemsController controller = new ItemsController();
-            ItemTypeData = new BindingList<ItemType>(controller.GetItemType());
-            ItemType_GridControl.DataSource = ItemTypeData;
+            using (ItemsController controller = new ItemsController())
+            {
+                try
+                {
+                    ItemTypeData = new BindingList<ItemType>(controller.GetItemType());
+                    ItemType_GridControl.DataSource = ItemTypeData;
+                }
+                catch
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Loại Sản Phẩm>");
+                }
+            }
         }
 
         private void LoadItemsGridView()
         {
-            ItemsController controller = new ItemsController();
-            ItemsData = new BindingList<Items>(controller.GetItems());
-            Items_GridControl.DataSource = ItemsData;
+            using (ItemsController controller = new ItemsController())
+            {
+                try
+                {
+                    ItemsData = new BindingList<Items>(controller.GetItems());
+                    Items_GridControl.DataSource = ItemsData;
+                }
+                catch
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Sản Phẩm>");
+                }
+            }
         }
 
         private void LoadItemsCompanyGridView()
         {
-            ItemsController controller = new ItemsController();
-            ItemCompanyData = new BindingList<ItemPriceCompany>(controller.GetItemsCompany());
-            ItemsCompany_GridControl.DataSource = ItemCompanyData;
+            using (ItemsController controller = new ItemsController())
+            {
+                try
+                {
+                    ItemCompanyData = new BindingList<ItemPriceCompany>(controller.GetItemsCompany());
+                    ItemsCompany_GridControl.DataSource = ItemCompanyData;
+                }
+                catch
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Thông Tin Giá Sản Phẩm>");
+                }
+            }
         }
 
         private void ItemType_Delete_Button_Click(object sender, EventArgs e)
@@ -252,18 +279,21 @@ namespace BSClient.Views
             if (string.IsNullOrEmpty(company.CompanyID))
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
+                CompanyID_SearchLookUpEdit.Focus();
                 return;
             }
 
             if (ItemCompanyData.ToList().Find(o => o.ItemID == item.ItemID && o.CompanyID == company.CompanyID) != null)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000008);
+                CompanyID_SearchLookUpEdit.Focus();
                 return;
             }
 
             if (ItemPrice_Number.Value <= 0)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000014);
+                ItemPrice_Number.Focus();
                 return;
             }
 
@@ -441,7 +471,7 @@ namespace BSClient.Views
             {
                 e.Valid = false;
                 //Set errors with specific descriptions for the columns
-                GridColumn column = view.Columns[nameof(row.ItemName)];
+                GridColumn column = view.Columns[nameof(row.ItemSName)];
                 view.SetColumnError(column, BSMessage.BSM000012);
             }
 

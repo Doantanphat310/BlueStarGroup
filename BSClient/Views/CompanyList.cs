@@ -76,6 +76,7 @@ namespace BSClient.Views
                 try
                 {
                     controller.DeleteCompany(company);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000027);
 
                     CompanyData = new BindingList<Company>(controller.GetCompanys());
                     Company_GridControl.DataSource = CompanyData;

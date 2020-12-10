@@ -12,28 +12,16 @@ namespace BSCommon.Models
         [NotMapped]
         public ModifyMode Status { get; set; }
 
-        /// <summary>
-        /// ItemName
-        /// </summary>
-        [Column("CreateDate")]
-        public DateTime? CreateDate { get; set; }
+        public T Clone<T>() where T : BaseModel
+        {
+            T clone = default;
 
-        /// <summary>
-        /// ItemName
-        /// </summary>
-        [Column("UpdateDate")]
-        public DateTime? UpdateDate { get; set; }
+            if (typeof(T) == this.GetType())
+            {
+                clone = (T)this.MemberwiseClone();
+            }
 
-        /// <summary>
-        /// ItemName
-        /// </summary>
-        [Column("CreateUser")]
-        public string CreateUser { get; set; }
-
-        /// <summary>
-        /// ItemName
-        /// </summary>
-        [Column("UpdateUser")]
-        public string UpdateUser { get; set; }
+            return clone;
+        }
     }
 }
