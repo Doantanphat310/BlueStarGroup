@@ -965,7 +965,7 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.Columns.Clear();
             this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", isAllowEdit: true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
             this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: true);
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "#0.00");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
         }
@@ -2040,9 +2040,9 @@ namespace BSClient
         {
             this.WareHouseDepreciation_gridView.Columns.Clear();
             this.WareHouseDepreciation_gridView.AddColumn("StartDate", "Ngày BĐSD", 80, true);
-            this.WareHouseDepreciation_gridView.AddColumn("UseMonth", "Số tháng SD", 70, true);
-            this.WareHouseDepreciation_gridView.AddColumn("DepreciationMonth", "Số tháng KH", 70, true);
-            this.WareHouseDepreciation_gridView.AddColumn("CurrentMonth", "Tháng HT", 60, true);
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("UseMonth", "Số tháng SD", 70, true,"###");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationMonth", "Số tháng KH", 70, true, "###");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("CurrentMonth", "Tháng HT", 60, true, "###");
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false, "C2");
         }
