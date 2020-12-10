@@ -127,11 +127,17 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVarient.cs" />
-    <Compile Include="Report\BangCanDoiSoPhatSinhTKViewer.cs">
+    <Compile Include="Views\Report\SoCaiChiTietReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\BangCanDoiSoPhatSinhTKViewer.Designer.cs">
-      <DependentUpon>BangCanDoiSoPhatSinhTKViewer.cs</DependentUpon>
+    <Compile Include="Views\Report\SoCaiChiTietReport.Designer.cs">
+      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DataBindingHelper.cs" />
     <Compile Include="Utility\TreeListHelper.cs" />
@@ -169,17 +175,17 @@
     <Compile Include="Views\NewUserRole.Designer.cs">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\BangCanDoiPhatSinhTK.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Report\BangCanDoiPhatSinhTK.Designer.cs">
-      <DependentUpon>BangCanDoiPhatSinhTK.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Report\SoCaiChiTiet.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Report\SoCaiChiTiet.Designer.cs">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Test.cs">
       <SubType>Form</SubType>
@@ -242,8 +248,11 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Report\BangCanDoiSoPhatSinhTKViewer.resx">
-      <DependentUpon>BangCanDoiSoPhatSinhTKViewer.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Report\SoCaiChiTietReport.resx">
+      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BlueStarGroup.resx">
       <DependentUpon>BlueStarGroup.cs</DependentUpon>
@@ -260,11 +269,11 @@
     <EmbeddedResource Include="Views\NewUserRole.resx">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\BangCanDoiPhatSinhTK.resx">
-      <DependentUpon>BangCanDoiPhatSinhTK.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\SoCaiChiTiet.resx">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.resx">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
@@ -316,6 +325,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\BackGroup.png" />
   </ItemGroup>
   <ItemGroup>

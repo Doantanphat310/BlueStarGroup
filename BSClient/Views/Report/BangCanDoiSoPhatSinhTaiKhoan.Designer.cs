@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTKReport));
             this.Main_GridControl = new DevExpress.XtraGrid.GridControl();
-            this.Company_GroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.Main_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Main_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.UserButton_Panel = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.To_DateEdit = new DevExpress.XtraEditors.DateEdit();
@@ -39,17 +40,16 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.Print_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.Main_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Company_GroupControl)).BeginInit();
-            this.Company_GroupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_GroupControl)).BeginInit();
+            this.Main_GroupControl.SuspendLayout();
             this.UserButton_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Main_GridControl
@@ -63,16 +63,21 @@
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_GridView});
             // 
-            // Company_GroupControl
+            // Main_GridView
             // 
-            this.Company_GroupControl.Controls.Add(this.Main_GridControl);
-            this.Company_GroupControl.Controls.Add(this.UserButton_Panel);
-            this.Company_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Company_GroupControl.Location = new System.Drawing.Point(0, 0);
-            this.Company_GroupControl.Name = "Company_GroupControl";
-            this.Company_GroupControl.Size = new System.Drawing.Size(838, 468);
-            this.Company_GroupControl.TabIndex = 0;
-            this.Company_GroupControl.Text = "Báo cáo Bảng cân đối phát sinh";
+            this.Main_GridView.GridControl = this.Main_GridControl;
+            this.Main_GridView.Name = "Main_GridView";
+            // 
+            // Main_GroupControl
+            // 
+            this.Main_GroupControl.Controls.Add(this.Main_GridControl);
+            this.Main_GroupControl.Controls.Add(this.UserButton_Panel);
+            this.Main_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Main_GroupControl.Location = new System.Drawing.Point(0, 0);
+            this.Main_GroupControl.Name = "Main_GroupControl";
+            this.Main_GroupControl.Size = new System.Drawing.Size(838, 468);
+            this.Main_GroupControl.TabIndex = 0;
+            this.Main_GroupControl.Text = "Báo cáo Bảng cân đối phát sinh";
             // 
             // UserButton_Panel
             // 
@@ -157,21 +162,17 @@
             this.Print_Button.Text = "Xuất Báo cáo";
             this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
-            // Main_GridView
-            // 
-            this.Main_GridView.GridControl = this.Main_GridControl;
-            this.Main_GridView.Name = "Main_GridView";
-            // 
-            // BangCanDoiPhatSinhTK
+            // BangCanDoiSoPhatSinhTKReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Company_GroupControl);
-            this.Name = "BangCanDoiPhatSinhTK";
+            this.Controls.Add(this.Main_GroupControl);
+            this.Name = "BangCanDoiSoPhatSinhTKReport";
             this.Size = new System.Drawing.Size(838, 468);
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Company_GroupControl)).EndInit();
-            this.Company_GroupControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_GroupControl)).EndInit();
+            this.Main_GroupControl.ResumeLayout(false);
             this.UserButton_Panel.ResumeLayout(false);
             this.UserButton_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -179,14 +180,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private DevExpress.XtraGrid.GridControl Main_GridControl;
-        private DevExpress.XtraEditors.GroupControl Company_GroupControl;
+        private DevExpress.XtraEditors.GroupControl Main_GroupControl;
         private System.Windows.Forms.Panel UserButton_Panel;
         private DevExpress.XtraEditors.SimpleButton Print_Button;
         private DevExpress.XtraEditors.LabelControl labelControl1;

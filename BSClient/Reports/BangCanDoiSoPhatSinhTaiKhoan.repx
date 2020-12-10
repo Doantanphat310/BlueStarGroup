@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="BangCanDoiSoPhatSinhTaiKhoan" Margins="65, 75, 65, 28" PaperKind="A4Rotated" PageWidth="1169" PageHeight="827" Version="19.1" RequestParameters="false" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="3" Description="Từ ngày" ValueInfo="2020-01-01" Name="FromDate" Type="#Ref-2" />
+    <Item2 Ref="4" Description="Đến ngày" ValueInfo="2020-12-31" Name="ToDate" Type="#Ref-2" />
+    <Item3 Ref="6" Description="Tên công ty" ValueInfo="CÔNG TY TNHH TM THUỐC THÚ Y NGUYỄN KHOA" Name="CompanyName" />
+    <Item4 Ref="7" Description="Địa chỉ" ValueInfo="237B, Nguyễn Văn Tư, KP12, Phưởng 7, TP. Bến Tre" Name="CompanyAddress" />
+    <Item5 Ref="8" Description="Đơn vị tiền tệ" ValueInfo="Đồng" Name="CurrencyUnit" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="9" ControlType="TopMarginBand" Name="TopMargin" HeightF="65" />
+    <Item2 Ref="10" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="27.70498" />
+    <Item3 Ref="11" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="191.8338">
+      <Controls>
+        <Item1 Ref="12" ControlType="XRLabel" Name="xrLabel7" Multiline="true" Text="ĐVT: Đồng" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="913.9999, 161.4585" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100" Borders="None">
+          <ExpressionBindings>
+            <Item1 Ref="13" Expression="'ĐVT: ' + ?CurrencyUnit" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="14" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="15" ControlType="XRLabel" Name="xrLabel6" Text="Từ ngày [NgayPSFrom] đến ngày 31/12/2020" TextAlignment="MiddleCenter" SizeF="310.4166,25" LocationFloat="370.5835, 129.0695" StyleName="Title" Font="Times New Roman, 12pt, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="16" Expression="'Từ ngày ' + FormatString('{0:dd/MM/yyyy}', ?FromDate) + ' đến ngày ' + FormatString('{0:dd/MM/yyyy}', ?ToDate)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="17" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="18" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="BẢNG CÂN ĐỐI SỐ PHÁT SINH TÀI KHOẢN" TextAlignment="MiddleCenter" SizeF="1029,32.52767" LocationFloat="0, 95.54179" StyleName="Title" Font="Times New Roman, 14.25pt, style=Bold, charSet=0">
+          <StylePriority Ref="19" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="20" ControlType="XRLabel" Name="xrLabel1" Text="Địa chỉ:" TextAlignment="MiddleLeft" SizeF="71.22841,24.19433" LocationFloat="0, 25.80566" StyleName="Title" Font="Times New Roman, 12pt">
+          <StylePriority Ref="21" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="22" ControlType="XRLabel" Name="xrLabel2" Multiline="true" TextAlignment="MiddleLeft" SizeF="955.7717,24.19433" LocationFloat="73.22839, 25.80566" StyleName="Title" Font="Times New Roman, 12pt">
+          <ExpressionBindings>
+            <Item1 Ref="23" Expression="?CompanyAddress" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="24" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="25" ControlType="XRLabel" Name="Company_Label" Text="ĐƠN VỊ:" TextAlignment="MiddleLeft" SizeF="71.22841,24.19433" LocationFloat="0, 0" StyleName="Title" Font="Times New Roman, 12pt, style=Bold">
+          <StylePriority Ref="26" UseFont="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="27" ControlType="XRLabel" Name="CompanyName_TextBox" TextAlignment="MiddleLeft" SizeF="955.7717,24.19433" LocationFloat="73.22839, 0" StyleName="Title" Font="Times New Roman, 12pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="28" Expression="?CompanyName" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="29" UseFont="false" UseTextAlignment="false" />
+        </Item7>
+      </Controls>
+    </Item3>
+    <Item4 Ref="30" ControlType="DetailBand" Name="Detail" DrillDownExpanded="false" HeightF="25">
+      <Controls>
+        <Item1 Ref="31" ControlType="XRTable" Name="xrTable1" TextAlignment="MiddleLeft" SizeF="1029.00012,25" LocationFloat="0, 0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="32" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="33" ControlType="XRTableCell" Name="xrTableCell1" Weight="1.8542236114182762" Multiline="true" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="34" Expression="[AccountID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="35" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="36" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.1125414133141336" Multiline="true" TextAlignment="MiddleCenter" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" Expression="[ThongKe]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="38" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="39" ControlType="XRTableCell" Name="xrTableCell5" Weight="9.6048907009807643" Multiline="true" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="40" Expression="[AccountName]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="41" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="42" ControlType="XRTableCell" Name="xrTableCell6" Weight="4.2647349634834821" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="43" Expression="[DKNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="44" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="45" ControlType="XRTableCell" Name="xrTableCell4" Weight="4.264722514446829" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="46" Expression="[DKCo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="47" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="48" ControlType="XRTableCell" Name="xrTableCell3" Weight="4.2647229197922556" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" Expression="[PSNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="50" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="51" ControlType="XRTableCell" Name="xrTableCell7" Weight="4.2647206563310434" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="52" Expression="[PSCo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="53" UseBorders="false" UseTextAlignment="false" />
+                </Item7>
+                <Item8 Ref="54" ControlType="XRTableCell" Name="xrTableCell8" Weight="4.2647229197922538" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="55" Expression="[CKNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="56" UseBorders="false" UseTextAlignment="false" />
+                </Item8>
+                <Item9 Ref="57" ControlType="XRTableCell" Name="xrTableCell9" Weight="4.2647251832534625" Multiline="true" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="58" Expression="[CKCo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="59" UseBorders="false" UseTextAlignment="false" />
+                </Item9>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="60" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item4>
+    <Item5 Ref="61" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="239.0872">
+      <Controls>
+        <Item1 Ref="62" ControlType="XRLabel" Name="xrLabel34" Multiline="true" Text="Phải thu khách hàng ngắn hạn &lt;= 12T" TextAlignment="MiddleLeft" SizeF="259,23" LocationFloat="79.99989, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="63" Expression="[AccountName]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="64" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="65" ControlType="XRLabel" Name="xrLabel24" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="338.999847, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="66" Expression="[DKNo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="67" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="68" ControlType="XRLabel" Name="xrLabel23" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="453.999878, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="69" Expression="[DKCo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="70" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="71" ControlType="XRLabel" Name="xrLabel22" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="568.9999, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="72" Expression="[PSNo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="73" UseBorders="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="74" ControlType="XRLabel" Name="xrLabel20" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="683.9999, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="75" Expression="[PSCo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="76" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="77" ControlType="XRLabel" Name="xrLabel17" Multiline="true" CanGrow="false" Text="1111" TextAlignment="MiddleLeft" SizeF="50,23" LocationFloat="0, 22.9999866" Padding="2,2,0,0,100" Borders="Left, Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="78" Expression="[AccountID]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="79" UseBorders="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="80" ControlType="XRLabel" Name="xrLabel19" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="798.999939, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="81" Expression="[CKNo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="82" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="83" ControlType="XRLabel" Name="xrLabel18" Multiline="true" Text="01" TextAlignment="MiddleCenter" SizeF="30,22.99999" LocationFloat="49.9999046, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <StylePriority Ref="84" UseBorders="false" UseTextAlignment="false" />
+        </Item8>
+        <Item9 Ref="85" ControlType="XRLabel" Name="xrLabel21" TextFormatString="{0:#,##0}" Multiline="true" Text="9,999,999,999" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="913.999939, 22.9999866" Padding="2,2,0,0,100" Borders="Right, Bottom" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="86" Expression="[CKCo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="87" UseBorders="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="88" ControlType="XRLabel" Name="xrLabel50" Multiline="true" TextAlignment="MiddleCenter" SizeF="339,109.5872" LocationFloat="0, 104.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="89" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item10>
+        <Item11 Ref="90" ControlType="XRLabel" Name="xrLabel51" Multiline="true" TextAlignment="MiddleCenter" SizeF="345,109.5872" LocationFloat="338.9999, 104.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="91" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item11>
+        <Item12 Ref="92" ControlType="XRLabel" Name="xrLabel52" Multiline="true" TextAlignment="MiddleCenter" SizeF="344.9999,109.5872" LocationFloat="684.0001, 104.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="93" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item12>
+        <Item13 Ref="94" ControlType="XRLabel" Name="xrLabel47" Multiline="true" Text="Phan T Châu Thanh" TextAlignment="MiddleCenter" SizeF="339,25" LocationFloat="0, 214.0872" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="95" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item13>
+        <Item14 Ref="96" ControlType="XRLabel" Name="xrLabel48" Multiline="true" Text="Phan T Châu Thanh" TextAlignment="MiddleCenter" SizeF="345,25" LocationFloat="338.9999, 214.0872" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="97" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item14>
+        <Item15 Ref="98" ControlType="XRLabel" Name="xrLabel49" Multiline="true" Text="Nguyễn Ngô Đăng Khoa" TextAlignment="MiddleCenter" SizeF="345,25" LocationFloat="684.0001, 214.0872" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="99" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item15>
+        <Item16 Ref="100" ControlType="XRLabel" Name="xrLabel46" Multiline="true" Text="Ngày 31 tháng 03 năm 2020" TextAlignment="MiddleCenter" SizeF="345,25" LocationFloat="684.0001, 54.5" StyleName="Title" Font="Times New Roman, 12pt">
+          <StylePriority Ref="101" UseFont="false" UseTextAlignment="false" />
+        </Item16>
+        <Item17 Ref="102" ControlType="XRLabel" Name="xrLabel45" Multiline="true" Text="GIÁM ĐỐC" TextAlignment="MiddleCenter" SizeF="345,25" LocationFloat="684.0001, 79.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="103" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item17>
+        <Item18 Ref="104" ControlType="XRLabel" Name="xrLabel26" Multiline="true" Text="KẾ TOÁN TRƯỞNG" TextAlignment="MiddleCenter" SizeF="345,25" LocationFloat="339, 79.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="105" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item18>
+        <Item19 Ref="106" ControlType="XRLabel" Name="xrLabel16" Multiline="true" Text="LẬP BIỂU" TextAlignment="MiddleCenter" SizeF="339,25" LocationFloat="0, 79.5" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="107" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item19>
+        <Item20 Ref="108" ControlType="XRLabel" Name="xrLabel8" Multiline="true" Text="Cộng/Total" TextAlignment="MiddleCenter" SizeF="339,23" LocationFloat="0, 0" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
+          <StylePriority Ref="109" UseBorders="false" UseTextAlignment="false" />
+        </Item20>
+        <Item21 Ref="110" ControlType="XRLabel" Name="xrLabel9" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="339.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="111" Running="Report" />
+          <ExpressionBindings>
+            <Item1 Ref="112" Expression="sumSum([DKNo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="113" UseBorders="false" UseTextAlignment="false" />
+        </Item21>
+        <Item22 Ref="114" ControlType="XRLabel" Name="xrLabel10" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="454.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="115" Running="Report" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="116" Expression="sumSum([DKCo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="117" UseBorders="false" UseTextAlignment="false" />
+        </Item22>
+        <Item23 Ref="118" ControlType="XRLabel" Name="xrLabel11" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="569.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="119" Running="Report" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="120" Expression="sumSum([PSNo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="121" UseBorders="false" UseTextAlignment="false" />
+        </Item23>
+        <Item24 Ref="122" ControlType="XRLabel" Name="xrLabel12" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="684.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="123" Running="Report" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="124" Expression="sumSum([PSCo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="125" UseBorders="false" UseTextAlignment="false" />
+        </Item24>
+        <Item25 Ref="126" ControlType="XRLabel" Name="xrLabel13" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="799.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="127" Running="Report" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="128" Expression="sumSum([CKNo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="129" UseBorders="false" UseTextAlignment="false" />
+        </Item25>
+        <Item26 Ref="130" ControlType="XRLabel" Name="xrLabel14" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" SizeF="115,23" LocationFloat="914.0001, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <Summary Ref="131" Running="Report" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="132" Expression="sumSum([CKCo])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="133" UseBorders="false" UseTextAlignment="false" />
+        </Item26>
+      </Controls>
+    </Item5>
+    <Item6 Ref="134" ControlType="PageHeaderBand" Name="PageHeader" HeightF="69">
+      <Controls>
+        <Item1 Ref="135" ControlType="XRLabel" Name="xrLabel44" Multiline="true" Text="Số dư cuối kỳ" TextAlignment="MiddleCenter" SizeF="230,23" LocationFloat="799.0001, 0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="136" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="137" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Phát sinh trong kỳ" TextAlignment="MiddleCenter" SizeF="230,23" LocationFloat="569.0001, 0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="138" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="139" ControlType="XRLabel" Name="xrLabel42" Multiline="true" Text="Số dư đầu kỳ" TextAlignment="MiddleCenter" SizeF="230,23" LocationFloat="339.0001, 0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="140" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="141" ControlType="XRLabel" Name="xrLabel40" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="799.0001, 22.99999" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="142" UseBorders="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="143" ControlType="XRLabel" Name="xrLabel41" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="914, 22.99999" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="144" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="145" ControlType="XRLabel" Name="xrLabel38" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="569.0001, 23.00002" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="146" UseBorders="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="147" ControlType="XRLabel" Name="xrLabel39" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="684, 23.00002" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="148" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="149" ControlType="XRLabel" Name="xrLabel36" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="339.0001, 22.99999" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="150" UseBorders="false" UseTextAlignment="false" />
+        </Item8>
+        <Item9 Ref="151" ControlType="XRLabel" Name="xrLabel37" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="454, 22.99999" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="152" UseBorders="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="153" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="TK" TextAlignment="MiddleCenter" SizeF="30,46" LocationFloat="50, 0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="154" UseBorders="false" UseTextAlignment="false" />
+        </Item10>
+        <Item11 Ref="155" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Tên tài khoản" TextAlignment="MiddleCenter" SizeF="259,46" LocationFloat="80.00002, 0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="156" UseBorders="false" UseTextAlignment="false" />
+        </Item11>
+        <Item12 Ref="157" ControlType="XRLabel" Name="xrLabel25" Multiline="true" TextAlignment="MiddleCenter" SizeF="30,22.99999" LocationFloat="50.00006, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="158" UseBorders="false" UseTextAlignment="false" />
+        </Item12>
+        <Item13 Ref="159" ControlType="XRLabel" Name="xrLabel27" Multiline="true" Text="5" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="799.0001, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="160" UseBorders="false" UseTextAlignment="false" />
+        </Item13>
+        <Item14 Ref="161" ControlType="XRLabel" Name="xrLabel28" Multiline="true" Text="4" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="684.0001, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="162" UseBorders="false" UseTextAlignment="false" />
+        </Item14>
+        <Item15 Ref="163" ControlType="XRLabel" Name="xrLabel29" Multiline="true" Text="3" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="569.0001, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="164" UseBorders="false" UseTextAlignment="false" />
+        </Item15>
+        <Item16 Ref="165" ControlType="XRLabel" Name="xrLabel30" Multiline="true" Text="2" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="454.0001, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="166" UseBorders="false" UseTextAlignment="false" />
+        </Item16>
+        <Item17 Ref="167" ControlType="XRLabel" Name="xrLabel31" Multiline="true" Text="1" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="339.0001, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="168" UseBorders="false" UseTextAlignment="false" />
+        </Item17>
+        <Item18 Ref="169" ControlType="XRLabel" Name="xrLabel33" Multiline="true" Text="B" TextAlignment="MiddleCenter" SizeF="259,23" LocationFloat="80.00002, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="170" UseBorders="false" UseTextAlignment="false" />
+        </Item18>
+        <Item19 Ref="171" ControlType="XRLabel" Name="xrLabel15" TextFormatString="{0:#,##0}" Multiline="true" Text="6" TextAlignment="MiddleCenter" SizeF="115,23" LocationFloat="914, 46" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="172" UseBorders="false" UseTextAlignment="false" />
+        </Item19>
+        <Item20 Ref="173" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Mã TK" TextAlignment="MiddleCenter" SizeF="50,46" LocationFloat="0, 0" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="174" UseBorders="false" UseTextAlignment="false" />
+        </Item20>
+        <Item21 Ref="175" ControlType="XRLabel" Name="xrLabel32" Multiline="true" Text="A" TextAlignment="MiddleCenter" SizeF="50,23" LocationFloat="0, 46" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
+          <StylePriority Ref="176" UseBorders="false" UseTextAlignment="false" />
+        </Item21>
+      </Controls>
+    </Item6>
+    <Item7 Ref="177" ControlType="PageFooterBand" Name="PageFooter" HeightF="25">
+      <Controls>
+        <Item1 Ref="178" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="P: {0}" TextAlignment="MiddleCenter" SizeF="100,24.99998" LocationFloat="451.9573, 0" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="179" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="180" ControlType="XRLabel" Name="xrLabel53" Multiline="true" Text="B01-KTNB(Thông tư 200/2014/TT-BTC 22-12-2014)" TextAlignment="MiddleLeft" SizeF="451.9573,25" LocationFloat="0, 0" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="181" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item7>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="182" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="183" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="184" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="185" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="186" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource2" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTIiPjxEYXRhU291cmNlIFR5cGU9IkJTQ29tbW9uLk1vZGVscy5CYW5nQ2FuRG9pU29QaGF0U2luaFRLLCBCU0NvbW1vbiwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PC9PYmplY3REYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="2" Content="System.DateTime" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>
