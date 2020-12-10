@@ -48,5 +48,10 @@ namespace BSServer.Controllers
         {
             return this.AccountsLogic.SaveGeneralLedger(dataList);
         }
+
+        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK()
+        {
+            return this.AccountsDAO.GetBangCanDoiSoPhatSinhTK();
+        }
     }
 }

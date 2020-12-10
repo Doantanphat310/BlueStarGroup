@@ -1,6 +1,6 @@
 ﻿namespace BSClient.Views
 {
-    partial class BangCanDoiPhatSinhTK
+    partial class BangCanDoiSoPhatSinhTKReport
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiPhatSinhTK));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTKReport));
             this.Main_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Company_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.UserButton_Panel = new System.Windows.Forms.Panel();

@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace BSClient.Report
 {
-    public partial class BangCanDoiSoPhatSinhTK : DevExpress.XtraReports.UI.XtraReport
+    public partial class BangCanDoiSoPhatSinhTKViewer : DevExpress.XtraReports.UI.XtraReport
     {
-        public BangCanDoiSoPhatSinhTK()
+        public BangCanDoiSoPhatSinhTKViewer()
         {
             InitializeComponent();
         }

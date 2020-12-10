@@ -191,5 +191,10 @@ namespace BSServer.DAOs
 
             return true;
         }
+
+        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK()
+        {
+            return this.Context.GetDataFromProcedure<BangCanDoiSoPhatSinhTK>("BangCanDoiSoPhatSinhTKSelect");
+        }
     }
 }
