@@ -4,6 +4,7 @@ using BSServer._Core.Context;
 using BSServer._Core.Utility;
 using BSServer.DAOs;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BSServer.Controllers
 {
@@ -19,6 +20,13 @@ namespace BSServer.Controllers
         public List<Company> GetCompanys()
         {
             return this.CompanyDAO.GetCompanys();
+        }
+
+        public Company GetCompanyInfo(string companyID = "")
+        {
+            return this.CompanyDAO.GetCompanys()
+                    .Where(o => o.CompanyID == companyID)
+                    .FirstOrDefault();
         }
 
         public bool InsertCompany(Company data)

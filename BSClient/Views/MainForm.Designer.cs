@@ -40,10 +40,10 @@
             this.ItemList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.Report_Group = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.SoCaiChiTiet_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -125,7 +125,7 @@
             // 
             this.AccountList_Button.Name = "AccountList_Button";
             this.AccountList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
+            this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán";
             this.AccountList_Button.Click += new System.EventHandler(this.AccountList_Button_Click);
             // 
             // ItemList_Button
@@ -147,16 +147,6 @@
             this.accordionControlElement10.Name = "accordionControlElement10";
             this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement10.Text = "Nhập số dư";
-            // 
-            // fluentDesignFormControl1
-            // 
-            this.fluentDesignFormControl1.FluentDesignForm = this;
-            this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
-            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1014, 27);
-            this.fluentDesignFormControl1.TabIndex = 2;
-            this.fluentDesignFormControl1.TabStop = false;
             // 
             // Report_Group
             // 
@@ -180,6 +170,16 @@
             this.SoCaiChiTiet_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.SoCaiChiTiet_Item.Text = "Sổ cái chi tiết";
             this.SoCaiChiTiet_Item.Click += new System.EventHandler(this.SoCaiChiTiet_Item_Click);
+            // 
+            // fluentDesignFormControl1
+            // 
+            this.fluentDesignFormControl1.FluentDesignForm = this;
+            this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1014, 27);
+            this.fluentDesignFormControl1.TabIndex = 2;
+            this.fluentDesignFormControl1.TabStop = false;
             // 
             // MainForm
             // 

@@ -29,9 +29,9 @@ namespace BSServer.Controllers
             return this.UserDAO.GetUsers();
         }
 
-        public List<UserRoleCompany> GetUserRoleCompany()
+        public List<UserRoleCompany> GetUserRoleCompany(string userID = "")
         {
-            return this.UserDAO.GetUserRoleCompany();
+            return this.UserDAO.GetUserRoleCompany(userID);
         }
 
         public bool SaveUser(List<UserInfo> dataList)
