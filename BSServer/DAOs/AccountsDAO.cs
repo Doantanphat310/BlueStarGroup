@@ -38,7 +38,6 @@ namespace BSServer.DAOs
         {
             return this.Context.AccountDetail
                 .Where(o => o.CompanyID == companyId || string.IsNullOrEmpty(companyId))
-                .OrderBy(o => o.AccountDetailID)
                 .ToList();
         }
 

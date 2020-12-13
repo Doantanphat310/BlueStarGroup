@@ -11,10 +11,24 @@ namespace BSCommon.Models
     public class AccountDetail : BaseModel
     {
         /// <summary>
+        /// CompanyID
+        /// </summary>
+        [Key]
+        [Column("CompanyID", Order = 1)]
+        public string CompanyID { get; set; }
+
+        /// <summary>
+        /// AccountID
+        /// </summary>
+        [Key]
+        [Column("AccountID", Order = 2)]
+        public string AccountID { get; set; }
+
+        /// <summary>
         /// AccountDetailID
         /// </summary>
         [Key]
-        [Column("AccountDetailID", Order = 1)]
+        [Column("AccountDetailID", Order = 3)]
         public string AccountDetailID { get; set; }
 
         /// <summary>
@@ -22,18 +36,6 @@ namespace BSCommon.Models
         /// </summary>
         [Column("AccountDetailName")]
         public string AccountDetailName { get; set; }
-
-        /// <summary>
-        /// AccountID
-        /// </summary>
-        [Column("AccountID")]
-        public string AccountID { get; set; }
-
-        /// <summary>
-        /// CompanyID
-        /// </summary>
-        [Column("CompanyID")]
-        public string CompanyID { get; set; }
 
         /// <summary>
         /// CreateDate
