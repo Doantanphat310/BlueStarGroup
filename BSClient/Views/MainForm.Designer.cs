@@ -39,7 +39,7 @@
             this.AccountList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ItemList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.NhapSoDuaccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Report_Group = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.SoCaiChiTiet_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -102,7 +102,7 @@
             this.AccountList_Button,
             this.ItemList_Button,
             this.UserList_Button,
-            this.accordionControlElement10});
+            this.NhapSoDuaccordionControlElement});
             this.accordionControlElement4.Expanded = true;
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Text = "Quản trị hệ thống";
@@ -142,11 +142,12 @@
             this.UserList_Button.Text = "Người dùng";
             this.UserList_Button.Click += new System.EventHandler(this.UserList_Button_Click);
             // 
-            // accordionControlElement10
+            // NhapSoDuaccordionControlElement
             // 
-            this.accordionControlElement10.Name = "accordionControlElement10";
-            this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement10.Text = "Nhập số dư";
+            this.NhapSoDuaccordionControlElement.Name = "NhapSoDuaccordionControlElement";
+            this.NhapSoDuaccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.NhapSoDuaccordionControlElement.Text = "Nhập số dư";
+            this.NhapSoDuaccordionControlElement.Click += new System.EventHandler(this.NhapSoDuaccordionControlElement_Click);
             // 
             // Report_Group
             // 
@@ -223,7 +224,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement UserList_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Custommers_Button;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Company_Button;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement NhapSoDuaccordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Report_Group;
         private DevExpress.XtraBars.Navigation.AccordionControlElement BangCanDoiSoPhatSinh_Item;
         private DevExpress.XtraBars.Navigation.AccordionControlElement SoCaiChiTiet_Item;
