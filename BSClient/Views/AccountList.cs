@@ -155,7 +155,7 @@ namespace BSClient.Views
         {
             this.AccountDetail_GridView.Columns.Clear();
 
-            this.AccountDetail_GridView.AddColumn("CompanyID", "Công ty", 100, false);
+            this.AccountDetail_GridView.AddColumn("CompanyID", "Công ty", 120, false);
             this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 100, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailID", "Thống kê", 80, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailName", "Mô tả", 250, true, fixedWidth: false);

@@ -88,7 +88,6 @@ namespace BSClient.Views
                         ckNo = -1 * ck;
                     }
 
-                    item.ThongKe = "01";
                     item.DKNo = dkNo;
                     item.DKCo = dkCo;
                     item.PSNo = psNo;
