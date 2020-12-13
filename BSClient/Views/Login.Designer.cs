@@ -110,7 +110,7 @@
             this.Company_LookUpEdit.Properties.Appearance.Options.UseFont = true;
             this.Company_LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.Company_LookUpEdit.Properties.NullText = "Chọn công ty";
+            this.Company_LookUpEdit.Properties.NullText = "";
             this.Company_LookUpEdit.Size = new System.Drawing.Size(354, 24);
             this.Company_LookUpEdit.StyleController = this.Main_LayoutControl;
             this.Company_LookUpEdit.TabIndex = 2;
@@ -200,7 +200,6 @@
             this.ClientSize = new System.Drawing.Size(439, 203);
             this.Controls.Add(this.Main_LayoutControl);
             this.Controls.Add(this.Bottom_Panel);
-            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
