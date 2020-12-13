@@ -168,9 +168,9 @@ namespace BSClient.Views
 
         private void UserRoleAddNew_Button_Click(object sender, EventArgs e)
         {
-            string userID = Role_UserName_TextBox.Text;
-            string companyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID;
-            string userRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id;
+            string userID = Role_UserID_TextBox.Text;
+            Company company = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>();
+            MasterInfo userRole = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>();
 
             if (string.IsNullOrEmpty(userID))
             {
@@ -178,19 +178,19 @@ namespace BSClient.Views
                 return;
             }
 
-            if (string.IsNullOrEmpty(companyID))
+            if (string.IsNullOrEmpty(company.CompanyID))
             {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
                 return;
             }
 
-            if (string.IsNullOrEmpty(userRoleID))
+            if (string.IsNullOrEmpty(userRole.Id))
             {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000006);
                 return;
             }
 
-            if (DetailData.ToList().Find(o => o.UserID == userID && o.CompanyID == companyID && o.UserRoleID == userRoleID) != null)
+            if (DetailData.ToList().Find(o => o.UserID == userID && o.CompanyID == company.CompanyID && o.UserRoleID == userRole.Id) != null)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000004);
                 return;
@@ -198,11 +198,11 @@ namespace BSClient.Views
 
             DetailData.Add(new UserRoleCompany
             {
-                UserID = Role_UserName_TextBox.Text,
-                CompanyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID,
-                CompanyName = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyName,
-                UserRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id,
-                UserRoleName = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Value,
+                UserID = Role_UserID_TextBox.Text,
+                CompanyID = company.CompanyID,
+                CompanyName = company.CompanyName,
+                UserRoleID = userRole.Id,
+                UserRoleName = userRole.Value,
                 Status = ModifyMode.Insert
             });
         }
@@ -232,7 +232,7 @@ namespace BSClient.Views
                 return;
             }
 
-            Role_UserName_TextBox.Text = selectedRow.UserID;
+            Role_UserID_TextBox.Text = selectedRow.UserID;
 
             // filter grid
             UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";

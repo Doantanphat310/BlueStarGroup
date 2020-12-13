@@ -28,7 +28,7 @@ namespace BSServer._Core.Context
 
         public DbSet<Accounts> Accounts { get; set; }
 
-        public DbSet<GeneralLedger> GeneralLedger { get; set; }
+        public DbSet<AccountDetail> AccountDetail { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

@@ -77,17 +77,7 @@ namespace BSServer.Logics
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                seq++;
-                                GeneralLedger generalLedger = new GeneralLedger
-                                {
-                                    GeneralLedgerID = GenerateID.GeneralLedgerID(seq),
-                                    AccountID = data.AccountID,
-                                    GeneralLedgerName = $"{data.AccountID} - {data.AccountName}"
-                                };
-
                                 this.AccountsDAO.InsertAccounts(data);
-
-                                this.AccountsDAO.InsertGeneralLedger(generalLedger);
 
                                 break;
 
@@ -116,35 +106,29 @@ namespace BSServer.Logics
             }
         }
 
-        public bool SaveGeneralLedger(List<GeneralLedger> saveData)
+        public bool SaveAccountDetail(List<AccountDetail> saveData)
         {
             using (DbContextTransaction transaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    long seq = this.AccountsDAO.GetGeneralLedgerSEQ();
-
-                    foreach (GeneralLedger data in saveData)
+                    foreach (AccountDetail data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                seq++;
-                                data.GeneralLedgerID = GenerateID.GeneralLedgerID(seq);
-
-                                this.AccountsDAO.InsertGeneralLedger(data);
-
+                                this.AccountsDAO.InsertAccountDetail(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.AccountsDAO.UpdateGeneralLedger(data);
+                                this.AccountsDAO.UpdateAccountDetail(data);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.AccountsDAO.DeleteGeneralLedger(data);
+                                this.AccountsDAO.DeleteAccountDetail(data);
                                 break;
                         }
                     }

@@ -43,7 +43,7 @@
             this.Account_TreeList = new DevExpress.XtraTreeList.TreeList();
             this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddAccount_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddChildAccount_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddDetailAccount_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.AccountSpecialGroup_Panel = new System.Windows.Forms.Panel();
             this.VatTu_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -64,31 +64,33 @@
             this.Add_ChildAccount_Item = new DevExpress.XtraBars.BarButtonItem();
             this.HachToan_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.Accounts_Button_Panel = new DevExpress.XtraEditors.PanelControl();
-            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
+            this.AddAccount_DownButton = new DevExpress.XtraEditors.DropDownButton();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.Accounts_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Accounts_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Accounts_Save_Button = new DevExpress.XtraEditors.SimpleButton();
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.GeneralLedgerInfo_GroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.GeneralLedger_GridControl = new DevExpress.XtraGrid.GridControl();
-            this.GeneralLedger_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.GeneralLedgerInfo_Panel = new DevExpress.XtraEditors.PanelControl();
+            this.AccountDetailInfo_GroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.AccountDetail_GridControl = new DevExpress.XtraGrid.GridControl();
+            this.AccountDetail_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.AccountDetailInfo_Panel = new DevExpress.XtraEditors.PanelControl();
             this.ItemPrice_LayoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.GeneralLedgerDetailName_TextBox = new DevExpress.XtraEditors.TextEdit();
-            this.GeneralLedger_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.AccountDetailID_TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.AccountDetailName_TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.AccountID_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyID_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.CompanyID_SearchLookUpEditView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.Company_Label = new DevExpress.XtraLayout.LayoutControlItem();
-            this.GeneralLedgerDetailName_Label = new DevExpress.XtraLayout.LayoutControlItem();
-            this.GeneralLedger_Label = new DevExpress.XtraLayout.LayoutControlItem();
-            this.GeneralLedgerInfo_Button_Panel = new System.Windows.Forms.Panel();
-            this.GeneralLedger_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.GeneralLedger_Save_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.GeneralLedger_AddNew_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.GeneralLedger_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountDetailName_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.AccountID_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.AccountDetailID_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.AccountDetailInfo_Button_Panel = new System.Windows.Forms.Panel();
+            this.AccountDetail_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountDetail_Save_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountDetail_AddNew_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountDetail_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Main_TablePanel = new DevExpress.Utils.Layout.TablePanel();
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GroupControl)).BeginInit();
             this.AccountGroup_GroupControl.SuspendLayout();
@@ -118,24 +120,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_Button_Panel)).BeginInit();
             this.Accounts_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerInfo_GroupControl)).BeginInit();
-            this.GeneralLedgerInfo_GroupControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_GridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_GridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerInfo_Panel)).BeginInit();
-            this.GeneralLedgerInfo_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_GroupControl)).BeginInit();
+            this.AccountDetailInfo_GroupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_Panel)).BeginInit();
+            this.AccountDetailInfo_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_LayoutControl)).BeginInit();
             this.ItemPrice_LayoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerDetailName_TextBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_SearchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountID_SearchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerDetailName_Label)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_Label)).BeginInit();
-            this.GeneralLedgerInfo_Button_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_Label)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountID_Label)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_Label)).BeginInit();
+            this.AccountDetailInfo_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).BeginInit();
             this.Main_TablePanel.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +153,7 @@
             this.AccountGroup_GroupControl.Location = new System.Drawing.Point(3, 3);
             this.AccountGroup_GroupControl.Name = "AccountGroup_GroupControl";
             this.Main_TablePanel.SetRow(this.AccountGroup_GroupControl, 0);
-            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(339, 294);
+            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(339, 383);
             this.AccountGroup_GroupControl.TabIndex = 0;
             this.AccountGroup_GroupControl.Text = "Danh Mục Nhóm Tài Khoản";
             // 
@@ -161,7 +165,7 @@
             this.AccountGroup_GridControl.Name = "AccountGroup_GridControl";
             this.AccountGroup_GridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit1});
-            this.AccountGroup_GridControl.Size = new System.Drawing.Size(335, 227);
+            this.AccountGroup_GridControl.Size = new System.Drawing.Size(335, 316);
             this.AccountGroup_GridControl.TabIndex = 1;
             this.AccountGroup_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountGroup_GridView});
@@ -198,7 +202,7 @@
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Cancel_Button);
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Save_Button);
             this.AccountGroup_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 247);
+            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 336);
             this.AccountGroup_Button_Panel.Name = "AccountGroup_Button_Panel";
             this.AccountGroup_Button_Panel.Size = new System.Drawing.Size(335, 45);
             this.AccountGroup_Button_Panel.TabIndex = 0;
@@ -246,7 +250,7 @@
             this.Accounts_GroupControl.Location = new System.Drawing.Point(348, 3);
             this.Accounts_GroupControl.Name = "Accounts_GroupControl";
             this.Main_TablePanel.SetRow(this.Accounts_GroupControl, 0);
-            this.Accounts_GroupControl.Size = new System.Drawing.Size(530, 294);
+            this.Accounts_GroupControl.Size = new System.Drawing.Size(530, 383);
             this.Accounts_GroupControl.TabIndex = 1;
             this.Accounts_GroupControl.Text = "Danh Mục Tài Khoản";
             // 
@@ -258,8 +262,10 @@
             this.Account_TreeList.Name = "Account_TreeList";
             this.Account_TreeList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.Account_TreeList.Size = new System.Drawing.Size(412, 227);
+            this.Account_TreeList.Size = new System.Drawing.Size(412, 316);
             this.Account_TreeList.TabIndex = 2;
+            this.Account_TreeList.NodeChanged += new DevExpress.XtraTreeList.NodeChangedEventHandler(this.Account_TreeList_NodeChanged);
+            this.Account_TreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.Account_TreeList_FocusedNodeChanged);
             this.Account_TreeList.InvalidNodeException += new DevExpress.XtraTreeList.InvalidNodeExceptionEventHandler(this.Account_TreeList_InvalidNodeException);
             this.Account_TreeList.ValidateNode += new DevExpress.XtraTreeList.ValidateNodeEventHandler(this.Account_TreeList_ValidateNode);
             this.Account_TreeList.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.Account_TreeList_ShowingEditor);
@@ -269,21 +275,23 @@
             this.ContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddAccount_MenuItem,
-            this.AddChildAccount_MenuItem});
+            this.AddDetailAccount_MenuItem});
             this.ContextMenuStrip.Name = "contextMenuStrip1";
-            this.ContextMenuStrip.Size = new System.Drawing.Size(144, 48);
+            this.ContextMenuStrip.Size = new System.Drawing.Size(196, 48);
             // 
             // AddAccount_MenuItem
             // 
             this.AddAccount_MenuItem.Name = "AddAccount_MenuItem";
-            this.AddAccount_MenuItem.Size = new System.Drawing.Size(143, 22);
-            this.AddAccount_MenuItem.Text = "Thêm TK con";
+            this.AddAccount_MenuItem.Size = new System.Drawing.Size(195, 22);
+            this.AddAccount_MenuItem.Text = "Thêm tài khoản";
+            this.AddAccount_MenuItem.Click += new System.EventHandler(this.AddAccount_MenuItem_Click);
             // 
-            // AddChildAccount_MenuItem
+            // AddDetailAccount_MenuItem
             // 
-            this.AddChildAccount_MenuItem.Name = "AddChildAccount_MenuItem";
-            this.AddChildAccount_MenuItem.Size = new System.Drawing.Size(143, 22);
-            this.AddChildAccount_MenuItem.Text = "Thêm TK";
+            this.AddDetailAccount_MenuItem.Name = "AddDetailAccount_MenuItem";
+            this.AddDetailAccount_MenuItem.Size = new System.Drawing.Size(195, 22);
+            this.AddDetailAccount_MenuItem.Text = "Thêm tài khoản chi tiết";
+            this.AddDetailAccount_MenuItem.Click += new System.EventHandler(this.AddDetailAccount_MenuItem_Click);
             // 
             // repositoryItemCheckEdit1
             // 
@@ -306,7 +314,7 @@
             this.AccountSpecialGroup_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.AccountSpecialGroup_Panel.Location = new System.Drawing.Point(414, 20);
             this.AccountSpecialGroup_Panel.Name = "AccountSpecialGroup_Panel";
-            this.AccountSpecialGroup_Panel.Size = new System.Drawing.Size(114, 227);
+            this.AccountSpecialGroup_Panel.Size = new System.Drawing.Size(114, 316);
             this.AccountSpecialGroup_Panel.TabIndex = 3;
             // 
             // VatTu_CheckEdit
@@ -472,27 +480,27 @@
             // 
             this.Accounts_Button_Panel.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.Accounts_Button_Panel.Appearance.Options.UseBackColor = true;
-            this.Accounts_Button_Panel.Controls.Add(this.dropDownButton1);
+            this.Accounts_Button_Panel.Controls.Add(this.AddAccount_DownButton);
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Delete_Button);
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Cancel_Button);
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Save_Button);
             this.Accounts_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 247);
+            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 336);
             this.Accounts_Button_Panel.Name = "Accounts_Button_Panel";
             this.Accounts_Button_Panel.Size = new System.Drawing.Size(526, 45);
             this.Accounts_Button_Panel.TabIndex = 0;
             // 
-            // dropDownButton1
+            // AddAccount_DownButton
             // 
-            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dropDownButton1.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
-            this.dropDownButton1.DropDownControl = this.popupMenu;
-            this.dropDownButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton1.ImageOptions.Image")));
-            this.dropDownButton1.Location = new System.Drawing.Point(177, 8);
-            this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.Size = new System.Drawing.Size(88, 32);
-            this.dropDownButton1.TabIndex = 4;
-            this.dropDownButton1.Text = "Thêm";
+            this.AddAccount_DownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddAccount_DownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
+            this.AddAccount_DownButton.DropDownControl = this.popupMenu;
+            this.AddAccount_DownButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton1.ImageOptions.Image")));
+            this.AddAccount_DownButton.Location = new System.Drawing.Point(177, 8);
+            this.AddAccount_DownButton.Name = "AddAccount_DownButton";
+            this.AddAccount_DownButton.Size = new System.Drawing.Size(88, 32);
+            this.AddAccount_DownButton.TabIndex = 4;
+            this.AddAccount_DownButton.Text = "Thêm";
             // 
             // popupMenu
             // 
@@ -547,85 +555,94 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
             // 
-            // GeneralLedgerInfo_GroupControl
+            // AccountDetailInfo_GroupControl
             // 
-            this.Main_TablePanel.SetColumn(this.GeneralLedgerInfo_GroupControl, 0);
-            this.Main_TablePanel.SetColumnSpan(this.GeneralLedgerInfo_GroupControl, 2);
-            this.GeneralLedgerInfo_GroupControl.Controls.Add(this.GeneralLedger_GridControl);
-            this.GeneralLedgerInfo_GroupControl.Controls.Add(this.GeneralLedgerInfo_Panel);
-            this.GeneralLedgerInfo_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GeneralLedgerInfo_GroupControl.Location = new System.Drawing.Point(3, 303);
-            this.GeneralLedgerInfo_GroupControl.Name = "GeneralLedgerInfo_GroupControl";
-            this.Main_TablePanel.SetRow(this.GeneralLedgerInfo_GroupControl, 1);
-            this.GeneralLedgerInfo_GroupControl.Size = new System.Drawing.Size(875, 294);
-            this.GeneralLedgerInfo_GroupControl.TabIndex = 2;
-            this.GeneralLedgerInfo_GroupControl.Text = "Thông Tin Sổ Cái";
+            this.Main_TablePanel.SetColumn(this.AccountDetailInfo_GroupControl, 0);
+            this.Main_TablePanel.SetColumnSpan(this.AccountDetailInfo_GroupControl, 2);
+            this.AccountDetailInfo_GroupControl.Controls.Add(this.AccountDetail_GridControl);
+            this.AccountDetailInfo_GroupControl.Controls.Add(this.AccountDetailInfo_Panel);
+            this.AccountDetailInfo_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AccountDetailInfo_GroupControl.Location = new System.Drawing.Point(3, 392);
+            this.AccountDetailInfo_GroupControl.Name = "AccountDetailInfo_GroupControl";
+            this.Main_TablePanel.SetRow(this.AccountDetailInfo_GroupControl, 1);
+            this.AccountDetailInfo_GroupControl.Size = new System.Drawing.Size(875, 205);
+            this.AccountDetailInfo_GroupControl.TabIndex = 2;
+            this.AccountDetailInfo_GroupControl.Text = "Thông Tin Sổ Cái";
             // 
-            // GeneralLedger_GridControl
+            // AccountDetail_GridControl
             // 
-            this.GeneralLedger_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GeneralLedger_GridControl.Location = new System.Drawing.Point(356, 20);
-            this.GeneralLedger_GridControl.MainView = this.GeneralLedger_GridView;
-            this.GeneralLedger_GridControl.Name = "GeneralLedger_GridControl";
-            this.GeneralLedger_GridControl.Size = new System.Drawing.Size(517, 272);
-            this.GeneralLedger_GridControl.TabIndex = 1;
-            this.GeneralLedger_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.GeneralLedger_GridView});
+            this.AccountDetail_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AccountDetail_GridControl.Location = new System.Drawing.Point(356, 20);
+            this.AccountDetail_GridControl.MainView = this.AccountDetail_GridView;
+            this.AccountDetail_GridControl.Name = "AccountDetail_GridControl";
+            this.AccountDetail_GridControl.Size = new System.Drawing.Size(517, 183);
+            this.AccountDetail_GridControl.TabIndex = 1;
+            this.AccountDetail_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.AccountDetail_GridView});
             // 
-            // GeneralLedger_GridView
+            // AccountDetail_GridView
             // 
-            this.GeneralLedger_GridView.GridControl = this.GeneralLedger_GridControl;
-            this.GeneralLedger_GridView.Name = "GeneralLedger_GridView";
-            this.GeneralLedger_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.GeneralLedger_GridView_InvalidRowException);
-            this.GeneralLedger_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.GeneralLedger_GridView_RowDeleted);
-            this.GeneralLedger_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GeneralLedger_GridView_ValidateRow);
-            this.GeneralLedger_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.GeneralLedger_GridView_RowUpdated);
-            this.GeneralLedger_GridView.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.GeneralLedger_GridView_ValidatingEditor);
-            this.GeneralLedger_GridView.InvalidValueException += new DevExpress.XtraEditors.Controls.InvalidValueExceptionEventHandler(this.GeneralLedger_GridView_InvalidValueException);
+            this.AccountDetail_GridView.GridControl = this.AccountDetail_GridControl;
+            this.AccountDetail_GridView.Name = "AccountDetail_GridView";
+            this.AccountDetail_GridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.AccountDetail_GridView_InvalidRowException);
+            this.AccountDetail_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.AccountDetail_GridView_RowDeleted);
+            this.AccountDetail_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.AccountDetail_GridView_ValidateRow);
+            this.AccountDetail_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.AccountDetail_GridView_RowUpdated);
+            this.AccountDetail_GridView.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.AccountDetail_GridView_ValidatingEditor);
+            this.AccountDetail_GridView.InvalidValueException += new DevExpress.XtraEditors.Controls.InvalidValueExceptionEventHandler(this.AccountDetail_GridView_InvalidValueException);
             // 
-            // GeneralLedgerInfo_Panel
+            // AccountDetailInfo_Panel
             // 
-            this.GeneralLedgerInfo_Panel.Controls.Add(this.ItemPrice_LayoutControl);
-            this.GeneralLedgerInfo_Panel.Controls.Add(this.GeneralLedgerInfo_Button_Panel);
-            this.GeneralLedgerInfo_Panel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.GeneralLedgerInfo_Panel.Location = new System.Drawing.Point(2, 20);
-            this.GeneralLedgerInfo_Panel.Name = "GeneralLedgerInfo_Panel";
-            this.GeneralLedgerInfo_Panel.Size = new System.Drawing.Size(354, 272);
-            this.GeneralLedgerInfo_Panel.TabIndex = 0;
+            this.AccountDetailInfo_Panel.Controls.Add(this.ItemPrice_LayoutControl);
+            this.AccountDetailInfo_Panel.Controls.Add(this.AccountDetailInfo_Button_Panel);
+            this.AccountDetailInfo_Panel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AccountDetailInfo_Panel.Location = new System.Drawing.Point(2, 20);
+            this.AccountDetailInfo_Panel.Name = "AccountDetailInfo_Panel";
+            this.AccountDetailInfo_Panel.Size = new System.Drawing.Size(354, 183);
+            this.AccountDetailInfo_Panel.TabIndex = 0;
             // 
             // ItemPrice_LayoutControl
             // 
-            this.ItemPrice_LayoutControl.Controls.Add(this.GeneralLedgerDetailName_TextBox);
-            this.ItemPrice_LayoutControl.Controls.Add(this.GeneralLedger_SearchLookUpEdit);
+            this.ItemPrice_LayoutControl.Controls.Add(this.AccountDetailID_TextEdit);
+            this.ItemPrice_LayoutControl.Controls.Add(this.AccountDetailName_TextEdit);
+            this.ItemPrice_LayoutControl.Controls.Add(this.AccountID_SearchLookUpEdit);
             this.ItemPrice_LayoutControl.Controls.Add(this.CompanyID_SearchLookUpEdit);
             this.ItemPrice_LayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemPrice_LayoutControl.Location = new System.Drawing.Point(2, 2);
             this.ItemPrice_LayoutControl.Name = "ItemPrice_LayoutControl";
             this.ItemPrice_LayoutControl.Root = this.Root;
-            this.ItemPrice_LayoutControl.Size = new System.Drawing.Size(350, 227);
+            this.ItemPrice_LayoutControl.Size = new System.Drawing.Size(350, 138);
             this.ItemPrice_LayoutControl.TabIndex = 0;
             this.ItemPrice_LayoutControl.Text = "layoutControl1";
             // 
-            // GeneralLedgerDetailName_TextBox
+            // AccountDetailID_TextEdit
             // 
-            this.GeneralLedgerDetailName_TextBox.Location = new System.Drawing.Point(98, 60);
-            this.GeneralLedgerDetailName_TextBox.Name = "GeneralLedgerDetailName_TextBox";
-            this.GeneralLedgerDetailName_TextBox.Size = new System.Drawing.Size(240, 20);
-            this.GeneralLedgerDetailName_TextBox.StyleController = this.ItemPrice_LayoutControl;
-            this.GeneralLedgerDetailName_TextBox.TabIndex = 9;
+            this.AccountDetailID_TextEdit.Location = new System.Drawing.Point(61, 60);
+            this.AccountDetailID_TextEdit.Name = "AccountDetailID_TextEdit";
+            this.AccountDetailID_TextEdit.Size = new System.Drawing.Size(277, 20);
+            this.AccountDetailID_TextEdit.StyleController = this.ItemPrice_LayoutControl;
+            this.AccountDetailID_TextEdit.TabIndex = 9;
             // 
-            // GeneralLedger_SearchLookUpEdit
+            // AccountDetailName_TextEdit
             // 
-            this.GeneralLedger_SearchLookUpEdit.Location = new System.Drawing.Point(98, 36);
-            this.GeneralLedger_SearchLookUpEdit.Name = "GeneralLedger_SearchLookUpEdit";
-            this.GeneralLedger_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.AccountDetailName_TextEdit.Location = new System.Drawing.Point(61, 84);
+            this.AccountDetailName_TextEdit.Name = "AccountDetailName_TextEdit";
+            this.AccountDetailName_TextEdit.Size = new System.Drawing.Size(277, 20);
+            this.AccountDetailName_TextEdit.StyleController = this.ItemPrice_LayoutControl;
+            this.AccountDetailName_TextEdit.TabIndex = 9;
+            // 
+            // AccountID_SearchLookUpEdit
+            // 
+            this.AccountID_SearchLookUpEdit.Location = new System.Drawing.Point(61, 36);
+            this.AccountID_SearchLookUpEdit.Name = "AccountID_SearchLookUpEdit";
+            this.AccountID_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GeneralLedger_SearchLookUpEdit.Properties.NullText = "";
-            this.GeneralLedger_SearchLookUpEdit.Properties.PopupView = this.gridView3;
-            this.GeneralLedger_SearchLookUpEdit.Size = new System.Drawing.Size(240, 20);
-            this.GeneralLedger_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
-            this.GeneralLedger_SearchLookUpEdit.TabIndex = 8;
-            this.GeneralLedger_SearchLookUpEdit.EditValueChanged += new System.EventHandler(this.GeneralLedger_SearchLookUpEdit_EditValueChanged);
+            this.AccountID_SearchLookUpEdit.Properties.NullText = "";
+            this.AccountID_SearchLookUpEdit.Properties.PopupView = this.gridView3;
+            this.AccountID_SearchLookUpEdit.Size = new System.Drawing.Size(277, 20);
+            this.AccountID_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
+            this.AccountID_SearchLookUpEdit.TabIndex = 8;
+            this.AccountID_SearchLookUpEdit.EditValueChanged += new System.EventHandler(this.AccountDetail_SearchLookUpEdit_EditValueChanged);
             // 
             // gridView3
             // 
@@ -637,13 +654,13 @@
             // CompanyID_SearchLookUpEdit
             // 
             this.CompanyID_SearchLookUpEdit.EditValue = "";
-            this.CompanyID_SearchLookUpEdit.Location = new System.Drawing.Point(98, 12);
+            this.CompanyID_SearchLookUpEdit.Location = new System.Drawing.Point(61, 12);
             this.CompanyID_SearchLookUpEdit.Name = "CompanyID_SearchLookUpEdit";
             this.CompanyID_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.CompanyID_SearchLookUpEdit.Properties.NullText = "";
             this.CompanyID_SearchLookUpEdit.Properties.PopupView = this.CompanyID_SearchLookUpEditView;
-            this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(240, 20);
+            this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(277, 20);
             this.CompanyID_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
             this.CompanyID_SearchLookUpEdit.TabIndex = 1;
             this.CompanyID_SearchLookUpEdit.Popup += new System.EventHandler(this.CompanyID_SearchLookUpEdit_Popup);
@@ -663,10 +680,11 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.Company_Label,
-            this.GeneralLedgerDetailName_Label,
-            this.GeneralLedger_Label});
+            this.AccountDetailName_Label,
+            this.AccountID_Label,
+            this.AccountDetailID_Label});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(350, 227);
+            this.Root.Size = new System.Drawing.Size(350, 138);
             this.Root.TextVisible = false;
             // 
             // Company_Label
@@ -676,81 +694,90 @@
             this.Company_Label.Name = "Company_Label";
             this.Company_Label.Size = new System.Drawing.Size(330, 24);
             this.Company_Label.Text = "Công ty";
-            this.Company_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.Company_Label.TextSize = new System.Drawing.Size(46, 13);
             // 
-            // GeneralLedgerDetailName_Label
+            // AccountDetailName_Label
             // 
-            this.GeneralLedgerDetailName_Label.Control = this.GeneralLedgerDetailName_TextBox;
-            this.GeneralLedgerDetailName_Label.Location = new System.Drawing.Point(0, 48);
-            this.GeneralLedgerDetailName_Label.Name = "GeneralLedgerDetailName_Label";
-            this.GeneralLedgerDetailName_Label.Size = new System.Drawing.Size(330, 159);
-            this.GeneralLedgerDetailName_Label.Text = "Tên sổ cái chi tiết";
-            this.GeneralLedgerDetailName_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.AccountDetailName_Label.Control = this.AccountDetailName_TextEdit;
+            this.AccountDetailName_Label.Location = new System.Drawing.Point(0, 72);
+            this.AccountDetailName_Label.Name = "AccountDetailName_Label";
+            this.AccountDetailName_Label.Size = new System.Drawing.Size(330, 46);
+            this.AccountDetailName_Label.Text = "Mô tả";
+            this.AccountDetailName_Label.TextSize = new System.Drawing.Size(46, 13);
             // 
-            // GeneralLedger_Label
+            // AccountID_Label
             // 
-            this.GeneralLedger_Label.Control = this.GeneralLedger_SearchLookUpEdit;
-            this.GeneralLedger_Label.Location = new System.Drawing.Point(0, 24);
-            this.GeneralLedger_Label.Name = "GeneralLedger_Label";
-            this.GeneralLedger_Label.Size = new System.Drawing.Size(330, 24);
-            this.GeneralLedger_Label.Text = "Sổ cái";
-            this.GeneralLedger_Label.TextSize = new System.Drawing.Size(83, 13);
+            this.AccountID_Label.Control = this.AccountID_SearchLookUpEdit;
+            this.AccountID_Label.Location = new System.Drawing.Point(0, 24);
+            this.AccountID_Label.Name = "AccountID_Label";
+            this.AccountID_Label.Size = new System.Drawing.Size(330, 24);
+            this.AccountID_Label.Text = "Tài khoản";
+            this.AccountID_Label.TextSize = new System.Drawing.Size(46, 13);
             // 
-            // GeneralLedgerInfo_Button_Panel
+            // AccountDetailID_Label
             // 
-            this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_Cancel_Button);
-            this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_Save_Button);
-            this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_AddNew_Button);
-            this.GeneralLedgerInfo_Button_Panel.Controls.Add(this.GeneralLedger_Delete_Button);
-            this.GeneralLedgerInfo_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GeneralLedgerInfo_Button_Panel.Location = new System.Drawing.Point(2, 229);
-            this.GeneralLedgerInfo_Button_Panel.Name = "GeneralLedgerInfo_Button_Panel";
-            this.GeneralLedgerInfo_Button_Panel.Size = new System.Drawing.Size(350, 41);
-            this.GeneralLedgerInfo_Button_Panel.TabIndex = 1;
+            this.AccountDetailID_Label.Control = this.AccountDetailID_TextEdit;
+            this.AccountDetailID_Label.Location = new System.Drawing.Point(0, 48);
+            this.AccountDetailID_Label.Name = "AccountDetailID_Label";
+            this.AccountDetailID_Label.Size = new System.Drawing.Size(330, 24);
+            this.AccountDetailID_Label.Text = "Thống kê";
+            this.AccountDetailID_Label.TextSize = new System.Drawing.Size(46, 13);
             // 
-            // GeneralLedger_Cancel_Button
+            // AccountDetailInfo_Button_Panel
             // 
-            this.GeneralLedger_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GeneralLedger_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Cancel_Button.ImageOptions.Image")));
-            this.GeneralLedger_Cancel_Button.Location = new System.Drawing.Point(266, 5);
-            this.GeneralLedger_Cancel_Button.Name = "GeneralLedger_Cancel_Button";
-            this.GeneralLedger_Cancel_Button.Size = new System.Drawing.Size(80, 33);
-            this.GeneralLedger_Cancel_Button.TabIndex = 3;
-            this.GeneralLedger_Cancel_Button.Text = "Hủy";
-            this.GeneralLedger_Cancel_Button.Click += new System.EventHandler(this.GeneralLedger_Cancel_Button_Click);
+            this.AccountDetailInfo_Button_Panel.Controls.Add(this.AccountDetail_Cancel_Button);
+            this.AccountDetailInfo_Button_Panel.Controls.Add(this.AccountDetail_Save_Button);
+            this.AccountDetailInfo_Button_Panel.Controls.Add(this.AccountDetail_AddNew_Button);
+            this.AccountDetailInfo_Button_Panel.Controls.Add(this.AccountDetail_Delete_Button);
+            this.AccountDetailInfo_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AccountDetailInfo_Button_Panel.Location = new System.Drawing.Point(2, 140);
+            this.AccountDetailInfo_Button_Panel.Name = "AccountDetailInfo_Button_Panel";
+            this.AccountDetailInfo_Button_Panel.Size = new System.Drawing.Size(350, 41);
+            this.AccountDetailInfo_Button_Panel.TabIndex = 1;
             // 
-            // GeneralLedger_Save_Button
+            // AccountDetail_Cancel_Button
             // 
-            this.GeneralLedger_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GeneralLedger_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Save_Button.ImageOptions.Image")));
-            this.GeneralLedger_Save_Button.Location = new System.Drawing.Point(180, 5);
-            this.GeneralLedger_Save_Button.Name = "GeneralLedger_Save_Button";
-            this.GeneralLedger_Save_Button.Size = new System.Drawing.Size(80, 33);
-            this.GeneralLedger_Save_Button.TabIndex = 2;
-            this.GeneralLedger_Save_Button.Text = "Lưu";
-            this.GeneralLedger_Save_Button.Click += new System.EventHandler(this.GeneralLedger_Save_Button_Click);
+            this.AccountDetail_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountDetail_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountDetail_Cancel_Button.ImageOptions.Image")));
+            this.AccountDetail_Cancel_Button.Location = new System.Drawing.Point(266, 5);
+            this.AccountDetail_Cancel_Button.Name = "AccountDetail_Cancel_Button";
+            this.AccountDetail_Cancel_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountDetail_Cancel_Button.TabIndex = 3;
+            this.AccountDetail_Cancel_Button.Text = "Hủy";
+            this.AccountDetail_Cancel_Button.Click += new System.EventHandler(this.AccountDetail_Cancel_Button_Click);
             // 
-            // GeneralLedger_AddNew_Button
+            // AccountDetail_Save_Button
             // 
-            this.GeneralLedger_AddNew_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GeneralLedger_AddNew_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_AddNew_Button.ImageOptions.Image")));
-            this.GeneralLedger_AddNew_Button.Location = new System.Drawing.Point(8, 5);
-            this.GeneralLedger_AddNew_Button.Name = "GeneralLedger_AddNew_Button";
-            this.GeneralLedger_AddNew_Button.Size = new System.Drawing.Size(80, 33);
-            this.GeneralLedger_AddNew_Button.TabIndex = 0;
-            this.GeneralLedger_AddNew_Button.Text = "Thêm";
-            this.GeneralLedger_AddNew_Button.Click += new System.EventHandler(this.GeneralLedger_AddNew_Button_Click);
+            this.AccountDetail_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountDetail_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountDetail_Save_Button.ImageOptions.Image")));
+            this.AccountDetail_Save_Button.Location = new System.Drawing.Point(180, 5);
+            this.AccountDetail_Save_Button.Name = "AccountDetail_Save_Button";
+            this.AccountDetail_Save_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountDetail_Save_Button.TabIndex = 2;
+            this.AccountDetail_Save_Button.Text = "Lưu";
+            this.AccountDetail_Save_Button.Click += new System.EventHandler(this.AccountDetail_Save_Button_Click);
             // 
-            // GeneralLedger_Delete_Button
+            // AccountDetail_AddNew_Button
             // 
-            this.GeneralLedger_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GeneralLedger_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GeneralLedger_Delete_Button.ImageOptions.Image")));
-            this.GeneralLedger_Delete_Button.Location = new System.Drawing.Point(94, 5);
-            this.GeneralLedger_Delete_Button.Name = "GeneralLedger_Delete_Button";
-            this.GeneralLedger_Delete_Button.Size = new System.Drawing.Size(80, 33);
-            this.GeneralLedger_Delete_Button.TabIndex = 1;
-            this.GeneralLedger_Delete_Button.Text = "Xóa";
-            this.GeneralLedger_Delete_Button.Click += new System.EventHandler(this.GeneralLedger_Delete_Button_Click);
+            this.AccountDetail_AddNew_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountDetail_AddNew_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountDetail_AddNew_Button.ImageOptions.Image")));
+            this.AccountDetail_AddNew_Button.Location = new System.Drawing.Point(8, 5);
+            this.AccountDetail_AddNew_Button.Name = "AccountDetail_AddNew_Button";
+            this.AccountDetail_AddNew_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountDetail_AddNew_Button.TabIndex = 0;
+            this.AccountDetail_AddNew_Button.Text = "Thêm";
+            this.AccountDetail_AddNew_Button.Click += new System.EventHandler(this.AccountDetail_AddNew_Button_Click);
+            // 
+            // AccountDetail_Delete_Button
+            // 
+            this.AccountDetail_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountDetail_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AccountDetail_Delete_Button.ImageOptions.Image")));
+            this.AccountDetail_Delete_Button.Location = new System.Drawing.Point(94, 5);
+            this.AccountDetail_Delete_Button.Name = "AccountDetail_Delete_Button";
+            this.AccountDetail_Delete_Button.Size = new System.Drawing.Size(80, 33);
+            this.AccountDetail_Delete_Button.TabIndex = 1;
+            this.AccountDetail_Delete_Button.Text = "Xóa";
+            this.AccountDetail_Delete_Button.Click += new System.EventHandler(this.AccountDetail_Delete_Button_Click);
             // 
             // Main_TablePanel
             // 
@@ -758,14 +785,14 @@
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 345F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 100F)});
             this.Main_TablePanel.Controls.Add(this.Accounts_GroupControl);
-            this.Main_TablePanel.Controls.Add(this.GeneralLedgerInfo_GroupControl);
+            this.Main_TablePanel.Controls.Add(this.AccountDetailInfo_GroupControl);
             this.Main_TablePanel.Controls.Add(this.AccountGroup_GroupControl);
             this.Main_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main_TablePanel.Location = new System.Drawing.Point(0, 0);
             this.Main_TablePanel.Name = "Main_TablePanel";
             this.Main_TablePanel.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 100F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 300F)});
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 211F)});
             this.Main_TablePanel.Size = new System.Drawing.Size(881, 600);
             this.Main_TablePanel.TabIndex = 0;
             // 
@@ -808,24 +835,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_Button_Panel)).EndInit();
             this.Accounts_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerInfo_GroupControl)).EndInit();
-            this.GeneralLedgerInfo_GroupControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_GridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_GridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerInfo_Panel)).EndInit();
-            this.GeneralLedgerInfo_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_GroupControl)).EndInit();
+            this.AccountDetailInfo_GroupControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_Panel)).EndInit();
+            this.AccountDetailInfo_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemPrice_LayoutControl)).EndInit();
             this.ItemPrice_LayoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerDetailName_TextBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_SearchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountID_SearchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedgerDetailName_Label)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneralLedger_Label)).EndInit();
-            this.GeneralLedgerInfo_Button_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_Label)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountID_Label)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_Label)).EndInit();
+            this.AccountDetailInfo_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).EndInit();
             this.Main_TablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -841,16 +870,16 @@
         private DevExpress.XtraGrid.Views.Grid.GridView AccountGroup_GridView;
         private DevExpress.XtraEditors.GroupControl Accounts_GroupControl;
         private DevExpress.XtraEditors.PanelControl Accounts_Button_Panel;
-        private DevExpress.XtraEditors.GroupControl GeneralLedgerInfo_GroupControl;
-        private DevExpress.XtraGrid.GridControl GeneralLedger_GridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView GeneralLedger_GridView;
-        private DevExpress.XtraEditors.PanelControl GeneralLedgerInfo_Panel;
+        private DevExpress.XtraEditors.GroupControl AccountDetailInfo_GroupControl;
+        private DevExpress.XtraGrid.GridControl AccountDetail_GridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView AccountDetail_GridView;
+        private DevExpress.XtraEditors.PanelControl AccountDetailInfo_Panel;
         private DevExpress.Utils.Layout.TablePanel Main_TablePanel;
-        private System.Windows.Forms.Panel GeneralLedgerInfo_Button_Panel;
-        private DevExpress.XtraEditors.SimpleButton GeneralLedger_Cancel_Button;
-        private DevExpress.XtraEditors.SimpleButton GeneralLedger_Save_Button;
-        private DevExpress.XtraEditors.SimpleButton GeneralLedger_AddNew_Button;
-        private DevExpress.XtraEditors.SimpleButton GeneralLedger_Delete_Button;
+        private System.Windows.Forms.Panel AccountDetailInfo_Button_Panel;
+        private DevExpress.XtraEditors.SimpleButton AccountDetail_Cancel_Button;
+        private DevExpress.XtraEditors.SimpleButton AccountDetail_Save_Button;
+        private DevExpress.XtraEditors.SimpleButton AccountDetail_AddNew_Button;
+        private DevExpress.XtraEditors.SimpleButton AccountDetail_Delete_Button;
         private DevExpress.XtraEditors.SimpleButton Accounts_Delete_Button;
         private DevExpress.XtraEditors.SimpleButton Accounts_Cancel_Button;
         private DevExpress.XtraEditors.SimpleButton Accounts_Save_Button;
@@ -862,13 +891,13 @@
         private DevExpress.XtraEditors.SearchLookUpEdit CompanyID_SearchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView CompanyID_SearchLookUpEditView;
         private DevExpress.XtraLayout.LayoutControlItem Company_Label;
-        private DevExpress.XtraEditors.SearchLookUpEdit GeneralLedger_SearchLookUpEdit;
+        private DevExpress.XtraEditors.SearchLookUpEdit AccountID_SearchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraLayout.LayoutControlItem GeneralLedger_Label;
-        private DevExpress.XtraEditors.TextEdit GeneralLedgerDetailName_TextBox;
-        private DevExpress.XtraLayout.LayoutControlItem GeneralLedgerDetailName_Label;
+        private DevExpress.XtraLayout.LayoutControlItem AccountID_Label;
+        private DevExpress.XtraEditors.TextEdit AccountDetailName_TextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem AccountDetailName_Label;
         private DevExpress.XtraTreeList.TreeList Account_TreeList;
-        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
+        private DevExpress.XtraEditors.DropDownButton AddAccount_DownButton;
         private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.XtraBars.BarButtonItem AddAccount_Item;
         private DevExpress.XtraBars.BarButtonItem Add_ChildAccount_Item;
@@ -880,7 +909,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem AddAccount_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddChildAccount_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddDetailAccount_MenuItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
@@ -895,5 +924,7 @@
         private DevExpress.XtraEditors.CheckEdit DuNo_CheckEdit;
         private DevExpress.XtraEditors.CheckEdit HachToan_CheckEdit;
         private DevExpress.XtraEditors.CheckEdit VatTu_CheckEdit;
+        private DevExpress.XtraEditors.TextEdit AccountDetailID_TextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem AccountDetailID_Label;
     }
 }

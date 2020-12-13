@@ -52,5 +52,11 @@ namespace BSCommon.Models
         /// </summary>
         [NotMapped]
         public string PasswordDisplay { get; set; }
+
+        /// <summary>
+        /// UserRole
+        /// </summary>
+        [NotMapped]
+        public string UserRole { get; set; }
     }
 }

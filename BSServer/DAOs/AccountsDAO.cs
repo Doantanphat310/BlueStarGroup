@@ -34,9 +34,12 @@ namespace BSServer.DAOs
             return this.Context.Accounts.OrderBy(o => o.AccountGroupID).ThenBy(o => o.AccountID).ToList();
         }
 
-        public List<GeneralLedger> GetGeneralLedger()
+        public List<AccountDetail> GetAccountDetail(string companyId = "")
         {
-            return this.Context.GeneralLedger.Where(o => (o.IsDelete ?? false) == false).OrderBy(o => o.GeneralLedgerName).ToList();
+            return this.Context.AccountDetail
+                .Where(o => o.CompanyID == companyId || string.IsNullOrEmpty(companyId))
+                .OrderBy(o => o.AccountDetailID)
+                .ToList();
         }
 
         public bool InsertAccountGroup(AccountGroup data)
@@ -145,49 +148,46 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool InsertGeneralLedger(GeneralLedger data)
+        public bool InsertAccountDetail(AccountDetail data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+                new SqlParameter("@AccountDetailID", data.AccountDetailID),
+                new SqlParameter("@AccountDetailName", data.AccountDetailName),
                 new SqlParameter("@AccountID", data.AccountID),
                 new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@ParentID", data.ParentID),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            this.Context.ExecuteDataFromProcedure("GeneralLedgerInsert", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("AccountDetailInsert", sqlParameters);
 
             return true;
         }
 
-        public bool UpdateGeneralLedger(GeneralLedger data)
+        public bool UpdateAccountDetail(AccountDetail data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-                new SqlParameter("@GeneralLedgerName", data.GeneralLedgerName),
+                new SqlParameter("@AccountDetailID", data.AccountDetailID),
+                new SqlParameter("@AccountDetailName", data.AccountDetailName),
                 new SqlParameter("@AccountID", data.AccountID),
                 new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@ParentID", data.ParentID),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
-            this.Context.ExecuteDataFromProcedure("GeneralLedgerUpdate", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("AccountDetailUpdate", sqlParameters);
 
             return true;
         }
 
-        public bool DeleteGeneralLedger(GeneralLedger data)
+        public bool DeleteAccountDetail(AccountDetail data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@GeneralLedgerID", data.GeneralLedgerID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@AccountDetailID", data.AccountDetailID)
             };
 
-            this.Context.ExecuteDataFromProcedure("GeneralLedgerDelete", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("AccountDetailDelete", sqlParameters);
 
             return true;
         }

@@ -125,7 +125,7 @@
             // 
             this.AccountList_Button.Name = "AccountList_Button";
             this.AccountList_Button.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán - Sổ cái";
+            this.AccountList_Button.Text = "Hệ thống Tài Khoản Kế Toán";
             this.AccountList_Button.Click += new System.EventHandler(this.AccountList_Button_Click);
             // 
             // ItemList_Button
