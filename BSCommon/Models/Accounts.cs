@@ -42,12 +42,6 @@ namespace BSCommon.Models
         public string ParentID { get; set; }
 
         /// <summary>
-        /// ThongKeID
-        /// </summary>
-        [Column("ThongKeID")]
-        public string ThongKeID { get; set; }
-
-        /// <summary>
         /// HachToan
         /// </summary>
         [Column("HachToan")]
