@@ -38,10 +38,11 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public List<MaterialTK> GetMaterialTK()
+        public List<MaterialTK> GetMaterialTK(string companyID)
         {
+            SqlParameter param = new SqlParameter("@CompanyID", companyID);
             return this.Context.Database
-                .SqlQuery<MaterialTK>("SPSelectMaterialTK")
+                .SqlQuery<MaterialTK>("SPSelectMaterialTK @CompanyID", param)
                 .ToList();
         }
 
@@ -53,13 +54,6 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public List<MaterialGL> GetMaterialGL(string companyID)
-        {
-            SqlParameter param = new SqlParameter("@CompanyID", companyID);
-            return this.Context.Database
-                .SqlQuery<MaterialGL>("SPSelectMaterialGL @CompanyID", param)
-                .ToList();
-        }
 
         public List<MaterialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
         {

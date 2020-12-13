@@ -11,7 +11,7 @@ alter PROCEDURE [dbo].[VouchersDetailUpdate] (
 	@NV varchar(50),
 	@AccountID varchar(50),
 	@CustomerID varchar(50),
-	@GeneralLedgerID varchar(50),
+	@AccountDetailID varchar(50),
 	@Amount money,
 	@CompanyID varchar(50),
 	@CreateUser varchar(20),
@@ -26,7 +26,7 @@ AS
 			set
 			VouchersID =@VouchersID,
 			AccountID = @AccountID,
-			GeneralLedgerID = @GeneralLedgerID,
+			AccountDetailID = @AccountDetailID,
 			CustomerID =@CustomerID,
 			DebitAmount = @Amount,
 			CreditAmount = null,
@@ -43,7 +43,7 @@ AS
 			set
 			VouchersID =@VouchersID,
 			AccountID = @AccountID,
-			GeneralLedgerID = @GeneralLedgerID,
+			AccountDetailID = @AccountDetailID,
 			CustomerID =@CustomerID,
 			DebitAmount = null,
 			CreditAmount = @Amount,
