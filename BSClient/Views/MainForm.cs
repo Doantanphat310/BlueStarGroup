@@ -74,5 +74,10 @@ namespace BSClient
             this.ShowControl(form, Content);
             this.SetTitle("Báo cáo bảng cân đối số phát sinh tài khoản");
         }
+
+        private void NhapSoDuaccordionControlElement_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
