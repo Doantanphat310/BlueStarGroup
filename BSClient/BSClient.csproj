@@ -187,10 +187,10 @@
     <Compile Include="Views\Report\SoCaiChiTiet.Designer.cs">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Views\BangCanDoiSoPhatSinhTaiKhoan.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
+    <Compile Include="Views\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Test.cs">
@@ -281,7 +281,7 @@
     <EmbeddedResource Include="Views\Report\SoCaiChiTiet.resx">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoan.resx">
+    <EmbeddedResource Include="Views\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Test.resx">

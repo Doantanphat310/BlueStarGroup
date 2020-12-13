@@ -1,5 +1,4 @@
-﻿using BSClient.Report;
-using BSClient.Utility;
+﻿using BSClient.Utility;
 using BSCommon.Models;
 using BSServer.Controllers;
 using DevExpress.XtraEditors;
@@ -11,7 +10,7 @@ using System.IO;
 
 namespace BSClient.Views
 {
-    public partial class BangCanDoiSoPhatSinhTKReport : XtraUserControl
+    public partial class BangCanDoiSoPhatSinhTKReport : XtraForm
     {
         public BindingList<BangCanDoiSoPhatSinhTK> ReportData { get; set; }
 
