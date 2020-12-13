@@ -495,7 +495,7 @@
             this.AddAccount_DownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AddAccount_DownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
             this.AddAccount_DownButton.DropDownControl = this.popupMenu;
-            this.AddAccount_DownButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton1.ImageOptions.Image")));
+            this.AddAccount_DownButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddAccount_DownButton.ImageOptions.Image")));
             this.AddAccount_DownButton.Location = new System.Drawing.Point(177, 8);
             this.AddAccount_DownButton.Name = "AddAccount_DownButton";
             this.AddAccount_DownButton.Size = new System.Drawing.Size(88, 32);
@@ -567,7 +567,7 @@
             this.Main_TablePanel.SetRow(this.AccountDetailInfo_GroupControl, 1);
             this.AccountDetailInfo_GroupControl.Size = new System.Drawing.Size(875, 205);
             this.AccountDetailInfo_GroupControl.TabIndex = 2;
-            this.AccountDetailInfo_GroupControl.Text = "Thông Tin Sổ Cái";
+            this.AccountDetailInfo_GroupControl.Text = "Thông Tin Thống Kê";
             // 
             // AccountDetail_GridControl
             // 

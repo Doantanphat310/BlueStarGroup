@@ -48,7 +48,7 @@ namespace BSClient.Views
 
             SetBindingData();
 
-            CompanyID_SearchLookUpEdit.EditValue = CommonInfo.CompanyID;
+            CompanyID_SearchLookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
             if (CommonInfo.UserInfo.UserRole != "Full")
             {
                 CompanyID_SearchLookUpEdit.ReadOnly = true;
@@ -155,8 +155,7 @@ namespace BSClient.Views
         {
             this.AccountDetail_GridView.Columns.Clear();
 
-            this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 90, false);
-            this.AccountDetail_GridView.AddColumn("AccountDetailID", "Thống kê", 90, false);
+            this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 120, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailName", "Mô tả", 250, true, fixedWidth: false);
         }
 

@@ -64,7 +64,8 @@ namespace BSClient
         private void Login_Button_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Arrow;
-
+            this.Refresh();
+            Console.WriteLine("Login_Button_Click");
             // đã đăng nhập
             if (IsLogined)
             {
@@ -75,14 +76,6 @@ namespace BSClient
             {
                 if (this.IsLogin())
                 {
-                    //this.Company_Label.Enabled = true;
-                    //this.UserName_Label.Enabled = false;
-                    //this.Password_Label.Enabled = false;
-
-                    //Login_Button.Text = AccessCaption;
-
-                    //IsLogined = true;
-
                     SetEnable(true);
                 }
             }
