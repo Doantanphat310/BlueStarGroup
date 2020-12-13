@@ -155,7 +155,9 @@ namespace BSClient.Views
         {
             this.AccountDetail_GridView.Columns.Clear();
 
-            this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 120, false);
+            this.AccountDetail_GridView.AddColumn("CompanyID", "Công ty", 120, false);
+            this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 100, false);
+            this.AccountDetail_GridView.AddColumn("AccountDetailID", "Thống kê", 80, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailName", "Mô tả", 250, true, fixedWidth: false);
         }
 
@@ -302,7 +304,7 @@ namespace BSClient.Views
                 return;
             }
 
-            if (AccountDetailData.ToList().Find(o => o.AccountDetailID == accountDetailID) != null)
+            if (AccountDetailData.ToList().Find(o => o.CompanyID == company.CompanyID && o.AccountID == account.AccountID && o.AccountDetailID == accountDetailID) != null)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000030);
                 return;
@@ -315,17 +317,17 @@ namespace BSClient.Views
                 return;
             }
 
-            if (AccountDetailData.ToList().Find(o => o.AccountDetailName == accountDetailName) != null)
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000024);
-                return;
-            }
+            //if (AccountDetailData.ToList().Find(o => o.AccountDetailName == accountDetailName) != null)
+            //{
+            //    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000024);
+            //    return;
+            //}
 
             AccountDetailData.Add(new AccountDetail
             {
                 CompanyID = company.CompanyID,
                 AccountID = account.AccountID,
-                AccountDetailID = AccountDetailID_TextEdit.Text,
+                AccountDetailID = accountDetailID,
                 AccountDetailName = accountDetailName,
                 Status = ModifyMode.Insert
             });
@@ -551,23 +553,6 @@ namespace BSClient.Views
             });
         }
 
-        private void AccountDetail_GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
-        {
-            e.ExceptionMode = ExceptionMode.NoAction;
-        }
-
-        private void AccountDetail_GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
-        {
-            if (AccountDetail_GridView.FocusedColumn.FieldName == "AccountDetailName" && e.Valid)
-            {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridView view = sender as GridView;
-                GridColumn column = view.Columns["AccountDetailName"];
-                view.SetColumnError(column, BSMessage.BSM000024);
-            }
-        }
-
         private void CompanyID_SearchLookUpEdit_Popup(object sender, EventArgs e)
         {
             SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
@@ -684,24 +669,23 @@ namespace BSClient.Views
 
         private void AccountDetail_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
         {
-            this.AccountDetail_GridView.ClearColumnErrors();
-            var row = e.Row.CastTo<AccountDetail>();
-            if (this.AccountDetailData.Count(o => o.AccountDetailName == row.AccountDetailName) > 1)
-            {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridView view = sender as GridView;
-                GridColumn column = view.Columns["AccountDetailName"];
-                view.SetColumnError(column, BSMessage.BSM000024);
-            }
+            //this.AccountDetail_GridView.ClearColumnErrors();
+            //var row = e.Row.CastTo<AccountDetail>();
+            //if (this.AccountDetailData.Count(o => o.AccountDetailName == row.AccountDetailName) > 1)
+            //{
+            //    e.Valid = false;
+            //    //Set errors with specific descriptions for the columns
+            //    GridView view = sender as GridView;
+            //    GridColumn column = view.Columns["AccountDetailName"];
+            //    view.SetColumnError(column, BSMessage.BSM000024);
+            //}
         }
 
-        private void AccountDetail_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void AccountID_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
             // filter grid            
             FilterAccountDetail();
         }
-
 
         /// <summary>
         /// Thực hiện lọc tài khoản chi tiết
@@ -709,25 +693,33 @@ namespace BSClient.Views
         private void FilterAccountDetail()
         {
             this.AccountDetail_GridView.ClearColumnsFilter();
+            string filter = string.Empty;
 
-            Company company = CompanyID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Company>();
-            if (company == null)
+            string companyID = CompanyID_SearchLookUpEdit.EditValue.ToString();
+            if (!string.IsNullOrEmpty(companyID))
             {
-                return;
+                filter = $"[CompanyID] = '{companyID}'";
             }
 
             Accounts account = AccountID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Accounts>();
-            if (account == null)
+            if (account != null)
             {
-                return;
+                AccountDetailName_TextEdit.Text = account.AccountName;
+                if (string.IsNullOrEmpty(filter))
+                {
+                    filter += $"[AccountID] = '{account.AccountID}'";
+                }
+                else
+                {
+                    filter += $" AND [AccountID] = '{account.AccountID}'";
+                }
             }
 
-            AccountDetailName_TextEdit.Text = account.AccountName;
-
-            // filter grid
-            this.AccountDetail_GridView.ClearColumnsFilter();
-            string filter = $"[CompanyID] = '{company.CompanyID}' AND [AccountID] = '{account.AccountID}'";
-            AccountDetail_GridView.ActiveFilterString = filter;
+            // filter grid            
+            if (!string.IsNullOrEmpty(filter))
+            {
+                AccountDetail_GridView.ActiveFilterString = filter;
+            }
         }
 
         private void Account_CheckEdit_CheckedChanged(object sender, EventArgs e)
@@ -756,9 +748,9 @@ namespace BSClient.Views
             AccountID_SearchLookUpEdit.EditValue = selected.AccountID;
         }
 
-        private void Account_TreeList_NodeChanged(object sender, NodeChangedEventArgs e)
+        private void AllCompanies_CheckEdit_CheckedChanged(object sender, EventArgs e)
         {
-            Accounts selected = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
+            Company_Label.Enabled = !AllCompanies_CheckEdit.Checked;
         }
     }
 }
