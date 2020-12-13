@@ -198,7 +198,6 @@ namespace BSClient
             VoucherDetail_gridControl.DataSource = VoucherDetailData;
             VoucherDetailDelete = new List<VoucherDetail>();
         }
-
         #endregion init design
 
 

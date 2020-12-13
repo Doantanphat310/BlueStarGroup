@@ -1,4 +1,4 @@
-﻿SP_SoCaiTaiKhoan '2019-01-13','2019-10-20'
+﻿SP_SoCaiTaiKhoan '2019-01-1','2019-12-31'
 
 alter proc SP_SoCaiTaiKhoan
 @StartDate datetime, @EndDate datetime
