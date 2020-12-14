@@ -69,8 +69,7 @@ namespace BSClient
         private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)
         {
             BangCanDoiSoPhatSinhTKReport form = new BangCanDoiSoPhatSinhTKReport();
-            this.ShowControl(form, Content);
-            this.SetTitle("Báo cáo bảng cân đối số phát sinh tài khoản");
+            form.ShowDialog();
         }
 
         private void NhapSoDuaccordionControlElement_Click(object sender, EventArgs e)

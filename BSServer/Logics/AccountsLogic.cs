@@ -145,5 +145,75 @@ namespace BSServer.Logics
                 }
             }
         }
+
+        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhByThongKe(DateTime fromDate, DateTime toDate)
+        {
+            List<BangCanDoiSoPhatSinhTK> psData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(fromDate, toDate);
+
+            List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate, toDate);
+            DateTime balanceDate;
+            List<BangCanDoiSoPhatSinhTK> psDKData = null;
+
+            if (dkData != null && dkData.Count > 0)
+            {
+                balanceDate = dkData[0].BalanceDate;
+                psDKData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(balanceDate, fromDate);
+            }
+
+            // tính lại đầu kỳ
+            if (psDKData != null)
+            {
+                foreach (var item in dkData)
+                {
+                    BangCanDoiSoPhatSinhTK psdk = psDKData.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                    decimal dk;
+                    if (psdk != null)
+                    {
+                        dk = item.DebitBalance - item.CreditBalance + psdk.PSNo - psdk.PSCo;
+                    }
+                    else
+                    {
+                        dk = item.DebitBalance - item.CreditBalance;
+                    }
+
+                    if (dk > 0)
+                    {
+                        item.DebitBalance = dk;
+                        item.CreditBalance = 0;
+                    }
+                    else
+                    {
+                        item.DebitBalance = 0;
+                        item.CreditBalance = (-1) * dk;
+                    }
+                }
+            }
+
+            // Thêm DK vào phát sinh
+            foreach(var item in psData)
+            {
+                var dk = dkData.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                if(dk != null)
+                {
+                    item.DKNo = dk.DebitBalance;
+                    item.DKCo = dk.CreditBalance;
+                }
+
+                decimal ck = item.DKNo + item.PSNo - item.DKCo - item.PSCo;
+                if (ck > 0)
+                {
+                    item.CKNo = ck;
+                    item.CKCo = 0;
+                }
+                else
+                {
+                    item.CKNo = 0;
+                    item.CKCo = -1 * ck;
+                }
+            }
+
+            return psData;
+        }
     }
+
 }

@@ -3,9 +3,9 @@ using System;
 namespace BSCommon.Models
 {
     /// <summary>
-    /// Accounts infomation
+    /// BangCanDoiSoPhatSinhTK infomation
     /// </summary>        
-    public class BangCanDoiSoPhatSinhTK : BaseModel
+    public class BangCanDoiSoPhatSinhTK
     {
         /// <summary>
         /// AccountID
@@ -13,19 +13,19 @@ namespace BSCommon.Models
         public string AccountID { get; set; }
 
         /// <summary>
-        /// ThongKe
-        /// </summary>
-        public string AccountDetailID { get; set; }
-
-        /// <summary>
         /// AccountName
         /// </summary>
         public string AccountName { get; set; }
 
         /// <summary>
-        /// AccountGroupID
+        /// AccountDetailID
         /// </summary>
-        public DateTime NgayPS { get; set; }
+        public string AccountDetailID { get; set; }
+
+        /// <summary>
+        /// CustomerID
+        /// </summary>
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// DKNo

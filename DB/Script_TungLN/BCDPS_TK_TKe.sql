@@ -1,20 +1,22 @@
-SELECT 
-	PS.AccountID
+INSERT Balance(BalanceDate, CompanyID, AccountID, AccountDetailID,  DebitAmount, CreditAmount, CreateDate, CreateUser, UpdateDate, UpdateUser)
+
+SELECT
+	'2020/10/31'
+	,'CTY0000000060'
+	,PS.AccountID
 	,PS.AccountDetailID
-	,PS.AccountName
-	--,(
-	--		SELECT DebitBalance FROM PriodBalance 
-	--		WHERE AccountID = PS.AccountID 
-	--			AND (PS.AccountDetailID IS NULL OR (PS.AccountDetailID IS NOT NULL AND AccountDetailID = PS.AccountDetailID))
-	--	) AS DKNo
-	--,MAX(ISNULL(D.Descriptions, L.Description)) Descriptions
-	--,MAX(D.CustomerID) CustomerID
-	,BL.DebitBalance DKNo
-	,BL.CreditBalance DKCo
-	,PS.PSNo PSNo
-	,PS.PSCo PSCo
-	--,SUM(PS.CKNo) CKNo
-	--,SUM(PS.CKCo) CKCo
+	,CASE WHEN (PS.PSNo > PSCo) THEN PS.PSNo - PSCo 
+		WHEN (PS.PSNo = PSCo AND EXISTS (SELECT AccountID FROM Accounts WHERE AccountID = PS.AccountID AND DuNo = 1)) THEN 10000
+		ELSE 0
+	END DKNo
+	,CASE WHEN (PS.PSCo > PSNo) THEN PS.PSCo - PSNo
+		WHEN (PS.PSNo = PSCo AND EXISTS (SELECT AccountID FROM Accounts WHERE AccountID = PS.AccountID AND DuCo = 1)) THEN 15000
+		ELSE 0
+	END DKCo
+	,GETDATE()
+	,'admin'
+	,GETDATE()
+	,'admin'
 FROM (
 	SELECT 
 		PS.AccountID
@@ -75,18 +77,18 @@ FROM (
 		AccountID,
 		AccountDetailID
 	) PS
-	LEFT JOIN 
-		(
-			SELECT
-				BL.AccountID
-				,ISNULL(BL.AccountDetailID, '') AccountDetailID
-				,BL.DebitBalance
-				,BL.CreditBalance
-			FROM PriodBalance BL 
-			WHERE BL.PriodDate >= '2020/10/31' AND BL.PriodDate <= '2020/12/31'
-		) BL
-		ON BL.AccountID = PS.AccountID 
-		AND BL.AccountDetailID = PS.AccountDetailID
+	--LEFT JOIN 
+	--	(
+	--		SELECT
+	--			BL.AccountID
+	--			,ISNULL(BL.AccountDetailID, '') AccountDetailID
+	--			,BL.DebitBalance
+	--			,BL.CreditBalance
+	--		FROM PriodBalance BL 
+	--		WHERE BL.PriodDate = (SELECT TOP 1 PriodDate FROM PriodBalance Where PriodDate <= '2020/11/30' ORDER BY PriodDate DESC)
+	--	) BL
+	--	ON BL.AccountID = PS.AccountID 
+	--	AND BL.AccountDetailID = PS.AccountDetailID
 ORDER BY 
 		AccountID,
 		AccountDetailID

@@ -40,7 +40,7 @@ namespace BSClient.Utility
 
             if (summaryType != SummaryItemType.None)
             {
-                summaryFormat = string.IsNullOrEmpty(summaryFormat) ? formatString : summaryFormat;
+                summaryFormat = string.IsNullOrEmpty(summaryFormat) ? "{0: " + formatString + "}" : summaryFormat;
                 summaryItem = new GridColumnSummaryItem(summaryType, fieldName, summaryFormat);
             }
 

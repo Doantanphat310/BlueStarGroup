@@ -54,52 +54,52 @@ namespace BSClient.Views
 
         private void LoadDataGridView()
         {
-            using (AccountsController controller = new AccountsController())
-            {
-                ReportData = new BindingList<BangCanDoiSoPhatSinhTK>(controller.GetBangCanDoiSoPhatSinhTK());
+            //using (AccountsController controller = new AccountsController())
+            //{
+            //    ReportData = new BindingList<BangCanDoiSoPhatSinhTK>(controller.GetBangCanDoiSoPhatSinhTK());
 
-                decimal dkNo, dkCo, psNo, psCo, ckNo, ckCo, ck;
-                Random random = new Random();
-                foreach (var item in ReportData)
-                {
-                    dkNo = dkCo = psCo = ckNo = ckCo = 0;
-                    int isDk = random.Next(0, 1);
-                    double dk = random.NextDouble();
-                    if (isDk > 0)
-                    {
-                        dkCo = RoundToNextDime(Math.Round(dk * 100000));
-                    }
-                    else
-                    {
-                        dkNo = RoundToNextDime(Math.Round(dk * 100000));
-                    }
+            //    decimal dkNo, dkCo, psNo, psCo, ckNo, ckCo, ck;
+            //    Random random = new Random();
+            //    foreach (var item in ReportData)
+            //    {
+            //        dkNo = dkCo = psCo = ckNo = ckCo = 0;
+            //        int isDk = random.Next(0, 1);
+            //        double dk = random.NextDouble();
+            //        if (isDk > 0)
+            //        {
+            //            dkCo = RoundToNextDime(Math.Round(dk * 100000));
+            //        }
+            //        else
+            //        {
+            //            dkNo = RoundToNextDime(Math.Round(dk * 100000));
+            //        }
 
-                    dk = random.NextDouble();
-                    psNo = RoundToNextDime(Math.Round(dk * 100000));
+            //        dk = random.NextDouble();
+            //        psNo = RoundToNextDime(Math.Round(dk * 100000));
 
-                    dk = random.NextDouble();
-                    psCo = RoundToNextDime(Math.Round(dk * 100000));
+            //        dk = random.NextDouble();
+            //        psCo = RoundToNextDime(Math.Round(dk * 100000));
 
-                    ck = dkCo + psCo + dkNo * (-1) + psNo * (-1);
-                    if (ck > 0)
-                    {
-                        ckCo = ck;
-                    }
-                    else
-                    {
-                        ckNo = -1 * ck;
-                    }
+            //        ck = dkCo + psCo + dkNo * (-1) + psNo * (-1);
+            //        if (ck > 0)
+            //        {
+            //            ckCo = ck;
+            //        }
+            //        else
+            //        {
+            //            ckNo = -1 * ck;
+            //        }
 
-                    item.DKNo = dkNo;
-                    item.DKCo = dkCo;
-                    item.PSNo = psNo;
-                    item.PSCo = psCo;
-                    item.CKNo = ckNo;
-                    item.CKCo = ckCo;
-                }
+            //        item.DKNo = dkNo;
+            //        item.DKCo = dkCo;
+            //        item.PSNo = psNo;
+            //        item.PSCo = psCo;
+            //        item.CKNo = ckNo;
+            //        item.CKCo = ckCo;
+            //    }
 
-                Main_GridControl.DataSource = ReportData;
-            }
+            //    Main_GridControl.DataSource = ReportData;
+            //}
         }
 
         private decimal RoundToNextDime(double d, int degit = 3)
