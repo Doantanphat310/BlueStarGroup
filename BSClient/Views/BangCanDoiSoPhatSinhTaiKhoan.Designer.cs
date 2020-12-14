@@ -38,10 +38,10 @@
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.UserButton_Panel = new System.Windows.Forms.Panel();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -58,7 +58,7 @@
             this.Main_GridControl.Location = new System.Drawing.Point(0, 34);
             this.Main_GridControl.MainView = this.Main_GridView;
             this.Main_GridControl.Name = "Main_GridControl";
-            this.Main_GridControl.Size = new System.Drawing.Size(862, 402);
+            this.Main_GridControl.Size = new System.Drawing.Size(928, 475);
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_GridView});
@@ -72,7 +72,7 @@
             // 
             this.Print_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Print_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Print_Button.ImageOptions.Image")));
-            this.Print_Button.Location = new System.Drawing.Point(490, 4);
+            this.Print_Button.Location = new System.Drawing.Point(556, 4);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.Size = new System.Drawing.Size(90, 25);
             this.Print_Button.TabIndex = 0;
@@ -148,34 +148,14 @@
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UserButton_Panel.Location = new System.Drawing.Point(0, 0);
             this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(862, 34);
+            this.UserButton_Panel.Size = new System.Drawing.Size(928, 34);
             this.UserButton_Panel.TabIndex = 1;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(799, 4);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(60, 25);
-            this.simpleButton2.TabIndex = 8;
-            this.simpleButton2.Text = "Thoát";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(586, 4);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(56, 25);
-            this.simpleButton3.TabIndex = 9;
-            this.simpleButton3.Text = "Sổ cái";
             // 
             // simpleButton4
             // 
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(715, 4);
+            this.simpleButton4.Location = new System.Drawing.Point(781, 4);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(78, 25);
             this.simpleButton4.TabIndex = 10;
@@ -185,20 +165,41 @@
             // 
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(648, 3);
+            this.simpleButton5.Location = new System.Drawing.Point(714, 3);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(61, 25);
             this.simpleButton5.TabIndex = 9;
             this.simpleButton5.Text = "Excel";
             // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(652, 4);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(56, 25);
+            this.simpleButton3.TabIndex = 9;
+            this.simpleButton3.Text = "Sổ cái";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(865, 4);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(60, 25);
+            this.simpleButton2.TabIndex = 8;
+            this.simpleButton2.Text = "Thoát";
+            // 
             // BangCanDoiSoPhatSinhTKReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 436);
+            this.ClientSize = new System.Drawing.Size(928, 509);
             this.Controls.Add(this.Main_GridControl);
             this.Controls.Add(this.UserButton_Panel);
             this.Name = "BangCanDoiSoPhatSinhTKReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bảng cân đối phát sinh số tài khoản";
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).EndInit();

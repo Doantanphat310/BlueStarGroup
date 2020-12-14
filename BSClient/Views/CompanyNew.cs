@@ -320,10 +320,5 @@ namespace BSClient
                 return ClientCommon.Base64ToImage(ChuKyLanhDao);
             }
         }
-
-        public void SetLogo()
-        {
-
-        }
     }
 }
