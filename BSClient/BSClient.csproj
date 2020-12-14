@@ -181,10 +181,10 @@
     <Compile Include="Views\NewUserRole.Designer.cs">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\SoCaiChiTiet.cs">
+    <Compile Include="Views\SoCaiChiTiet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Report\SoCaiChiTiet.Designer.cs">
+    <Compile Include="Views\SoCaiChiTiet.Designer.cs">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\BangCanDoiSoPhatSinhTaiKhoan.cs">
@@ -278,7 +278,7 @@
     <EmbeddedResource Include="Views\NewUserRole.resx">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\SoCaiChiTiet.resx">
+    <EmbeddedResource Include="Views\SoCaiChiTiet.resx">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BangCanDoiSoPhatSinhTaiKhoan.resx">

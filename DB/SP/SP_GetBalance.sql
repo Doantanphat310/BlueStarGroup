@@ -14,7 +14,7 @@ AS
 	WHERE CompanyID = @CompanyID
 		AND BL.BalanceDate = (
 			SELECT TOP 1 BalanceDate 
-			FROM PriodBalance 
+			FROM Balance 
 			Where CompanyID = @CompanyID 
 				AND BalanceDate <= @FromDate 
 			ORDER BY BalanceDate DESC)

@@ -62,11 +62,13 @@
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_GridView});
+            this.Main_GridControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Main_GridControl_MouseDoubleClick);
             // 
             // Main_GridView
             // 
             this.Main_GridView.GridControl = this.Main_GridControl;
             this.Main_GridView.Name = "Main_GridView";
+            this.Main_GridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Main_GridView_RowClick);
             // 
             // Print_Button
             // 
@@ -162,7 +164,7 @@
             // KetChuyen_Button
             // 
             this.KetChuyen_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.KetChuyen_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.KetChuyen_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KetChuyen_Button.ImageOptions.Image")));
             this.KetChuyen_Button.Location = new System.Drawing.Point(943, 4);
             this.KetChuyen_Button.Name = "KetChuyen_Button";
             this.KetChuyen_Button.Size = new System.Drawing.Size(78, 25);
@@ -172,7 +174,7 @@
             // ExportExcel_Button
             // 
             this.ExportExcel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.ExportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ExportExcel_Button.ImageOptions.Image")));
             this.ExportExcel_Button.Location = new System.Drawing.Point(876, 3);
             this.ExportExcel_Button.Name = "ExportExcel_Button";
             this.ExportExcel_Button.Size = new System.Drawing.Size(61, 25);
@@ -183,7 +185,7 @@
             // SoCai_Button
             // 
             this.SoCai_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SoCai_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.SoCai_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SoCai_Button.ImageOptions.Image")));
             this.SoCai_Button.Location = new System.Drawing.Point(814, 4);
             this.SoCai_Button.Name = "SoCai_Button";
             this.SoCai_Button.Size = new System.Drawing.Size(56, 25);
@@ -193,7 +195,7 @@
             // Exit_Button
             // 
             this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.Exit_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Exit_Button.ImageOptions.Image")));
             this.Exit_Button.Location = new System.Drawing.Point(1027, 4);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.Size = new System.Drawing.Size(60, 25);
