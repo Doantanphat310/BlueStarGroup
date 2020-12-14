@@ -49,7 +49,7 @@
             this.Company_GridControl.Location = new System.Drawing.Point(2, 20);
             this.Company_GridControl.MainView = this.Company_GridView;
             this.Company_GridControl.Name = "Company_GridControl";
-            this.Company_GridControl.Size = new System.Drawing.Size(834, 473);
+            this.Company_GridControl.Size = new System.Drawing.Size(834, 344);
             this.Company_GridControl.TabIndex = 0;
             this.Company_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Company_GridView});
@@ -67,7 +67,7 @@
             this.Company_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Company_GroupControl.Location = new System.Drawing.Point(0, 0);
             this.Company_GroupControl.Name = "Company_GroupControl";
-            this.Company_GroupControl.Size = new System.Drawing.Size(838, 540);
+            this.Company_GroupControl.Size = new System.Drawing.Size(838, 411);
             this.Company_GroupControl.TabIndex = 0;
             this.Company_GroupControl.Text = "Danh mục Công ty";
             // 
@@ -77,7 +77,7 @@
             this.UserButton_Panel.Controls.Add(this.AddNew_Button);
             this.UserButton_Panel.Controls.Add(this.Delete_Button);
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 493);
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 364);
             this.UserButton_Panel.Name = "UserButton_Panel";
             this.UserButton_Panel.Size = new System.Drawing.Size(834, 45);
             this.UserButton_Panel.TabIndex = 1;
@@ -121,7 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Company_GroupControl);
             this.Name = "CompanyList";
-            this.Size = new System.Drawing.Size(838, 540);
+            this.Size = new System.Drawing.Size(838, 411);
             ((System.ComponentModel.ISupportInitialize)(this.Company_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_GroupControl)).EndInit();

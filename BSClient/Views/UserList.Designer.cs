@@ -43,12 +43,12 @@
             this.UserRole_Panel = new System.Windows.Forms.Panel();
             this.UserRole_LayoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.UserRole_ComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.Role_UserName_TextBox = new DevExpress.XtraEditors.TextEdit();
-            this.CompanyID_ComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.UserID_TextBox = new DevExpress.XtraEditors.TextEdit();
+            this.CompanyID_LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.UserRole_LayoutGroup = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.CompanyID_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.Role_UserName_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.UserRole_Label = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CompanyID_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.UserRole_Button_Panel = new System.Windows.Forms.Panel();
             this.UserRoleCancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.UserRoleSave_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -68,22 +68,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_LayoutControl)).BeginInit();
             this.UserRole_LayoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_ComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Role_UserName_TextBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_ComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserID_TextBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_LookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_LayoutGroup)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Role_UserName_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_Label)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_Label)).BeginInit();
             this.UserRole_Button_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // UserRole_GridControl
             // 
             this.UserRole_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserRole_GridControl.Location = new System.Drawing.Point(389, 20);
+            this.UserRole_GridControl.Location = new System.Drawing.Point(389, 39);
             this.UserRole_GridControl.MainView = this.UserRole_GridView;
             this.UserRole_GridControl.Name = "UserRole_GridControl";
-            this.UserRole_GridControl.Size = new System.Drawing.Size(430, 185);
+            this.UserRole_GridControl.Size = new System.Drawing.Size(430, 151);
             this.UserRole_GridControl.TabIndex = 1;
             this.UserRole_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserRole_GridView});
@@ -107,8 +107,8 @@
             this.Main_Table.Name = "Main_Table";
             this.Main_Table.RowCount = 2;
             this.Main_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Main_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 213F));
-            this.Main_Table.Size = new System.Drawing.Size(827, 491);
+            this.Main_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.Main_Table.Size = new System.Drawing.Size(827, 452);
             this.Main_Table.TabIndex = 2;
             // 
             // User_Group
@@ -119,7 +119,7 @@
             this.User_Group.Dock = System.Windows.Forms.DockStyle.Fill;
             this.User_Group.Location = new System.Drawing.Point(3, 3);
             this.User_Group.Name = "User_Group";
-            this.User_Group.Size = new System.Drawing.Size(821, 272);
+            this.User_Group.Size = new System.Drawing.Size(821, 248);
             this.User_Group.TabIndex = 6;
             this.User_Group.Text = "Danh mục người dùng";
             // 
@@ -129,7 +129,7 @@
             this.Users_GridControl.Location = new System.Drawing.Point(2, 39);
             this.Users_GridControl.MainView = this.Users_GridView;
             this.Users_GridControl.Name = "Users_GridControl";
-            this.Users_GridControl.Size = new System.Drawing.Size(817, 185);
+            this.Users_GridControl.Size = new System.Drawing.Size(817, 161);
             this.Users_GridControl.TabIndex = 2;
             this.Users_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Users_GridView});
@@ -155,7 +155,7 @@
             this.UserButton_Panel.Controls.Add(this.UserCancel_Button);
             this.UserButton_Panel.Controls.Add(this.UserSave_Button);
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 224);
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 200);
             this.UserButton_Panel.Name = "UserButton_Panel";
             this.UserButton_Panel.Size = new System.Drawing.Size(817, 46);
             this.UserButton_Panel.TabIndex = 5;
@@ -199,9 +199,9 @@
             this.UserRole_GroupControl.Controls.Add(this.UserRole_GridControl);
             this.UserRole_GroupControl.Controls.Add(this.UserRole_Panel);
             this.UserRole_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserRole_GroupControl.Location = new System.Drawing.Point(3, 281);
+            this.UserRole_GroupControl.Location = new System.Drawing.Point(3, 257);
             this.UserRole_GroupControl.Name = "UserRole_GroupControl";
-            this.UserRole_GroupControl.Size = new System.Drawing.Size(821, 207);
+            this.UserRole_GroupControl.Size = new System.Drawing.Size(821, 192);
             this.UserRole_GroupControl.TabIndex = 7;
             this.UserRole_GroupControl.Text = "Phân quyền Người dùng theo Công ty";
             // 
@@ -210,22 +210,22 @@
             this.UserRole_Panel.Controls.Add(this.UserRole_LayoutControl);
             this.UserRole_Panel.Controls.Add(this.UserRole_Button_Panel);
             this.UserRole_Panel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.UserRole_Panel.Location = new System.Drawing.Point(2, 20);
+            this.UserRole_Panel.Location = new System.Drawing.Point(2, 39);
             this.UserRole_Panel.Name = "UserRole_Panel";
-            this.UserRole_Panel.Size = new System.Drawing.Size(387, 185);
+            this.UserRole_Panel.Size = new System.Drawing.Size(387, 151);
             this.UserRole_Panel.TabIndex = 5;
             // 
             // UserRole_LayoutControl
             // 
             this.UserRole_LayoutControl.Controls.Add(this.UserRole_ComboBox);
-            this.UserRole_LayoutControl.Controls.Add(this.Role_UserName_TextBox);
-            this.UserRole_LayoutControl.Controls.Add(this.CompanyID_ComboBox);
+            this.UserRole_LayoutControl.Controls.Add(this.UserID_TextBox);
+            this.UserRole_LayoutControl.Controls.Add(this.CompanyID_LookUpEdit);
             this.UserRole_LayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserRole_LayoutControl.Location = new System.Drawing.Point(0, 0);
             this.UserRole_LayoutControl.Name = "UserRole_LayoutControl";
             this.UserRole_LayoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(653, 0, 650, 400);
             this.UserRole_LayoutControl.Root = this.UserRole_LayoutGroup;
-            this.UserRole_LayoutControl.Size = new System.Drawing.Size(387, 139);
+            this.UserRole_LayoutControl.Size = new System.Drawing.Size(387, 105);
             this.UserRole_LayoutControl.TabIndex = 3;
             this.UserRole_LayoutControl.Text = "Role";
             // 
@@ -239,48 +239,40 @@
             this.UserRole_ComboBox.StyleController = this.UserRole_LayoutControl;
             this.UserRole_ComboBox.TabIndex = 6;
             // 
-            // Role_UserName_TextBox
+            // Role_UserID_TextBox
             // 
-            this.Role_UserName_TextBox.Location = new System.Drawing.Point(87, 12);
-            this.Role_UserName_TextBox.Name = "Role_UserName_TextBox";
-            this.Role_UserName_TextBox.Properties.ReadOnly = true;
-            this.Role_UserName_TextBox.Size = new System.Drawing.Size(288, 20);
-            this.Role_UserName_TextBox.StyleController = this.UserRole_LayoutControl;
-            this.Role_UserName_TextBox.TabIndex = 5;
+            this.UserID_TextBox.Location = new System.Drawing.Point(87, 36);
+            this.UserID_TextBox.Name = "Role_UserID_TextBox";
+            this.UserID_TextBox.Properties.ReadOnly = true;
+            this.UserID_TextBox.Size = new System.Drawing.Size(288, 20);
+            this.UserID_TextBox.StyleController = this.UserRole_LayoutControl;
+            this.UserID_TextBox.TabIndex = 5;
             // 
-            // CompanyID_ComboBox
+            // CompanyID_LookUpEdit
             // 
-            this.CompanyID_ComboBox.Location = new System.Drawing.Point(87, 36);
-            this.CompanyID_ComboBox.Name = "CompanyID_ComboBox";
-            this.CompanyID_ComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.CompanyID_LookUpEdit.Location = new System.Drawing.Point(87, 12);
+            this.CompanyID_LookUpEdit.Name = "CompanyID_LookUpEdit";
+            this.CompanyID_LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CompanyID_ComboBox.Size = new System.Drawing.Size(288, 20);
-            this.CompanyID_ComboBox.StyleController = this.UserRole_LayoutControl;
-            this.CompanyID_ComboBox.TabIndex = 5;
+            this.CompanyID_LookUpEdit.Size = new System.Drawing.Size(288, 20);
+            this.CompanyID_LookUpEdit.StyleController = this.UserRole_LayoutControl;
+            this.CompanyID_LookUpEdit.TabIndex = 5;
+            this.CompanyID_LookUpEdit.EditValueChanged += new System.EventHandler(this.CompanyID_LookUpEdit_EditValueChanged);
             // 
             // UserRole_LayoutGroup
             // 
             this.UserRole_LayoutGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.CompanyID_Label,
             this.Role_UserName_Label,
-            this.UserRole_Label});
+            this.UserRole_Label,
+            this.CompanyID_Label});
             this.UserRole_LayoutGroup.Name = "Root";
-            this.UserRole_LayoutGroup.Size = new System.Drawing.Size(387, 139);
+            this.UserRole_LayoutGroup.Size = new System.Drawing.Size(387, 105);
             this.UserRole_LayoutGroup.TextVisible = false;
-            // 
-            // CompanyID_Label
-            // 
-            this.CompanyID_Label.Control = this.CompanyID_ComboBox;
-            this.CompanyID_Label.Location = new System.Drawing.Point(0, 24);
-            this.CompanyID_Label.Name = "CompanyID_Label";
-            this.CompanyID_Label.Size = new System.Drawing.Size(367, 24);
-            this.CompanyID_Label.Text = "Công ty";
-            this.CompanyID_Label.TextSize = new System.Drawing.Size(72, 13);
             // 
             // Role_UserName_Label
             // 
-            this.Role_UserName_Label.Control = this.Role_UserName_TextBox;
-            this.Role_UserName_Label.Location = new System.Drawing.Point(0, 0);
+            this.Role_UserName_Label.Control = this.UserID_TextBox;
+            this.Role_UserName_Label.Location = new System.Drawing.Point(0, 24);
             this.Role_UserName_Label.Name = "Role_UserName_Label";
             this.Role_UserName_Label.Size = new System.Drawing.Size(367, 24);
             this.Role_UserName_Label.Text = "Tên đăng nhập";
@@ -291,9 +283,18 @@
             this.UserRole_Label.Control = this.UserRole_ComboBox;
             this.UserRole_Label.Location = new System.Drawing.Point(0, 48);
             this.UserRole_Label.Name = "UserRole_Label";
-            this.UserRole_Label.Size = new System.Drawing.Size(367, 71);
+            this.UserRole_Label.Size = new System.Drawing.Size(367, 37);
             this.UserRole_Label.Text = "Phân quyền";
             this.UserRole_Label.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // CompanyID_Label
+            // 
+            this.CompanyID_Label.Control = this.CompanyID_LookUpEdit;
+            this.CompanyID_Label.Location = new System.Drawing.Point(0, 0);
+            this.CompanyID_Label.Name = "CompanyID_Label";
+            this.CompanyID_Label.Size = new System.Drawing.Size(367, 24);
+            this.CompanyID_Label.Text = "Công ty";
+            this.CompanyID_Label.TextSize = new System.Drawing.Size(72, 13);
             // 
             // UserRole_Button_Panel
             // 
@@ -302,7 +303,7 @@
             this.UserRole_Button_Panel.Controls.Add(this.UserRoleAddNew_Button);
             this.UserRole_Button_Panel.Controls.Add(this.UserRoleDelete_Button);
             this.UserRole_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserRole_Button_Panel.Location = new System.Drawing.Point(0, 139);
+            this.UserRole_Button_Panel.Location = new System.Drawing.Point(0, 105);
             this.UserRole_Button_Panel.Name = "UserRole_Button_Panel";
             this.UserRole_Button_Panel.Size = new System.Drawing.Size(387, 46);
             this.UserRole_Button_Panel.TabIndex = 4;
@@ -357,7 +358,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Main_Table);
             this.Name = "UserList";
-            this.Size = new System.Drawing.Size(827, 491);
+            this.Size = new System.Drawing.Size(827, 452);
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_GridView)).EndInit();
             this.Main_Table.ResumeLayout(false);
@@ -372,12 +373,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_LayoutControl)).EndInit();
             this.UserRole_LayoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_ComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Role_UserName_TextBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_ComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserID_TextBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_LookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_LayoutGroup)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Role_UserName_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_Label)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_Label)).EndInit();
             this.UserRole_Button_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -391,9 +392,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView Users_GridView;
         private DevExpress.XtraLayout.LayoutControl UserRole_LayoutControl;
         private DevExpress.XtraLayout.LayoutControlGroup UserRole_LayoutGroup;
-        private DevExpress.XtraEditors.LookUpEdit CompanyID_ComboBox;
+        private DevExpress.XtraEditors.LookUpEdit CompanyID_LookUpEdit;
         private DevExpress.XtraLayout.LayoutControlItem CompanyID_Label;
-        private DevExpress.XtraEditors.TextEdit Role_UserName_TextBox;
+        private DevExpress.XtraEditors.TextEdit UserID_TextBox;
         private DevExpress.XtraLayout.LayoutControlItem Role_UserName_Label;
         private System.Windows.Forms.Panel UserRole_Button_Panel;
         private DevExpress.XtraEditors.SimpleButton UserRoleAddNew_Button;

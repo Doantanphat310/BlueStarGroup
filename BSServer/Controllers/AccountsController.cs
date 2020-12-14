@@ -29,9 +29,9 @@ namespace BSServer.Controllers
             return this.AccountsDAO.GetAccounts();
         }
 
-        public List<GeneralLedger> GetGeneralLedger()
+        public List<AccountDetail> GetAccountDetail(string companyID = "")
         {
-            return this.AccountsDAO.GetGeneralLedger();
+            return this.AccountsDAO.GetAccountDetail(companyID);
         }
 
         public bool SaveAccountGroup(List<AccountGroup> dataList)
@@ -44,9 +44,9 @@ namespace BSServer.Controllers
             return this.AccountsLogic.SaveAccounts(dataList);
         }
 
-        public bool SaveGeneralLedger(List<GeneralLedger> dataList)
+        public bool SaveAccountDetail(List<AccountDetail> dataList)
         {
-            return this.AccountsLogic.SaveGeneralLedger(dataList);
+            return this.AccountsLogic.SaveAccountDetail(dataList);
         }
 
         public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK()

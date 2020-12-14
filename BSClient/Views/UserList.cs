@@ -33,30 +33,21 @@ namespace BSClient.Views
             InitComboBox();
 
             LoadGrid();
+
+            if (CommonInfo.UserInfo.UserRole != "Full")
+            {
+                CompanyID_LookUpEdit.ReadOnly = true;
+            }
+            CompanyID_LookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
         }
 
         private void InitComboBox()
         {
             List<Company> companys = GetCompanyList();
-            CompanyID_ComboBox.Properties.DataSource = companys;
-            CompanyID_ComboBox.Properties.ValueMember = "CompanyID";
-            CompanyID_ComboBox.Properties.DisplayMember = "CompanyName";
-            CompanyID_ComboBox.Properties.ShowHeader = false;
-            CompanyID_ComboBox.Properties.NullText = "Chọn Công ty";
-            CompanyID_ComboBox.Properties.PopupFilterMode = PopupFilterMode.Contains;
-
-            CompanyID_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("CompanyID", 50));
-            CompanyID_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("CompanyName", 100));
+            CompanyID_LookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", companys);
 
             List<MasterInfo> userRoles = MasterInfoManager.GetUserRoles();
-            UserRole_ComboBox.Properties.DataSource = userRoles;
-            UserRole_ComboBox.Properties.ValueMember = "Id";
-            UserRole_ComboBox.Properties.DisplayMember = "Value";
-            UserRole_ComboBox.Properties.ShowHeader = false;
-            UserRole_ComboBox.Properties.NullText = "Chọn quyền";
-
-            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Id", 50));
-            UserRole_ComboBox.Properties.Columns.Add(new LookUpColumnInfo("Value", 100));
+            UserRole_ComboBox.SetupLookUpEdit("Id", "Value", userRoles);
         }
 
         private List<Company> GetCompanyList()
@@ -168,9 +159,9 @@ namespace BSClient.Views
 
         private void UserRoleAddNew_Button_Click(object sender, EventArgs e)
         {
-            string userID = Role_UserName_TextBox.Text;
-            string companyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID;
-            string userRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id;
+            string userID = UserID_TextBox.Text;
+            Company company = CompanyID_LookUpEdit.GetSelectedDataRow().CastTo<Company>();
+            MasterInfo userRole = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>();
 
             if (string.IsNullOrEmpty(userID))
             {
@@ -178,19 +169,19 @@ namespace BSClient.Views
                 return;
             }
 
-            if (string.IsNullOrEmpty(companyID))
+            if (string.IsNullOrEmpty(company.CompanyID))
             {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
                 return;
             }
 
-            if (string.IsNullOrEmpty(userRoleID))
+            if (string.IsNullOrEmpty(userRole.Id))
             {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000003);
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000006);
                 return;
             }
 
-            if (DetailData.ToList().Find(o => o.UserID == userID && o.CompanyID == companyID && o.UserRoleID == userRoleID) != null)
+            if (DetailData.ToList().Find(o => o.UserID == userID && o.CompanyID == company.CompanyID) != null)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000004);
                 return;
@@ -198,11 +189,11 @@ namespace BSClient.Views
 
             DetailData.Add(new UserRoleCompany
             {
-                UserID = Role_UserName_TextBox.Text,
-                CompanyID = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyID,
-                CompanyName = CompanyID_ComboBox.GetSelectedDataRow().CastTo<Company>().CompanyName,
-                UserRoleID = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Id,
-                UserRoleName = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>().Value,
+                UserID = UserID_TextBox.Text,
+                CompanyID = company.CompanyID,
+                CompanyName = company.CompanyName,
+                UserRoleID = userRole.Id,
+                UserRoleName = userRole.Value,
                 Status = ModifyMode.Insert
             });
         }
@@ -219,23 +210,8 @@ namespace BSClient.Views
 
         private void Users_GridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            int index = e.FocusedRowHandle;
-
-            if (Users_GridView.IsNewItemRow(index))
-            {
-                return;
-            }
-
-            UserInfo selectedRow = Users_GridView.GetRow(index).CastTo<UserInfo>();
-            if (selectedRow == null)
-            {
-                return;
-            }
-
-            Role_UserName_TextBox.Text = selectedRow.UserID;
-
             // filter grid
-            UserRole_GridView.ActiveFilterString = $"[UserID] = '{selectedRow.UserID}'";
+            FilterUserRole();
         }
 
         private void Users_GridView_ShowingEditor(object sender, CancelEventArgs e)
@@ -383,6 +359,43 @@ namespace BSClient.Views
 
             delete.Status = ModifyMode.Delete;
             DetailDataDelete.Add(delete);
+        }
+
+        private void CompanyID_LookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            FilterUserRole();
+        }
+
+        private void FilterUserRole()
+        {
+            string filter = string.Empty;
+
+            string company = CompanyID_LookUpEdit.EditValue?.ToString();
+            if (!string.IsNullOrEmpty(company))
+            {
+                filter = $"[CompanyID] = '{company}'";
+            }
+
+            UserInfo user = Users_GridView.GetFocusedRow().CastTo<UserInfo>();
+            if (user != null)
+            {
+                UserID_TextBox.Text = user.UserID;
+                if (string.IsNullOrEmpty(filter))
+                {
+                    filter += $"[UserID] = '{user.UserID}'";
+                }
+                else
+                {
+                    filter += $" AND [UserID] = '{user.UserID}'";
+                }
+            }
+
+            // filter grid
+            this.UserRole_GridView.ClearColumnsFilter();
+            if (!string.IsNullOrEmpty(filter))
+            {
+                this.UserRole_GridView.ActiveFilterString = filter;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace BSServer.DAOs
 
         public UserInfo GetUserInfo(string userId)
         {
-            return this.GetUsers().Where(o => o.UserID == userId).FirstOrDefault();
+            return this.Context.Users.Where(o => o.IsDelete == null && o.UserID == userId).FirstOrDefault();
         }
 
         public List<UserInfo> GetUsers()
@@ -24,9 +24,12 @@ namespace BSServer.DAOs
             return this.Context.Users.Where(o => o.IsDelete == null).ToList();
         }
 
-        public List<UserRoleCompany> GetUserRoleCompany()
+        public List<UserRoleCompany> GetUserRoleCompany(string userID = "")
         {
-            return this.Context.GetDataFromProcedure<UserRoleCompany>("UserRoleCompanySelect");
+            return this.Context
+                .GetDataFromProcedure<UserRoleCompany>("UserRoleCompanySelect")
+                .Where(o => o.UserID == userID || string.IsNullOrEmpty(userID))
+                .ToList();
         }
 
         public bool InsertUserList(UserInfo data)

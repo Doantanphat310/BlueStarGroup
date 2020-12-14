@@ -101,7 +101,7 @@
     <Compile Include="Models\ColumnInfo.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\AccountGroup.cs" />
-    <Compile Include="Models\GeneralLedger.cs" />
+    <Compile Include="Models\AccountDetail.cs" />
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\ItemPriceCompany.cs" />
     <Compile Include="Models\ItemType.cs" />
@@ -142,9 +142,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\APIModels\" />
-    <Folder Include="Models\TableModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

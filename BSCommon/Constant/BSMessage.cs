@@ -6,7 +6,7 @@
         public const string BSM000001 = "Lưu dữ liệu thành công.";
         public const string BSM000002 = "Lưu dữ liệu thất bại.";
         public const string BSM000003 = "Vui lòng chọn Người dùng.";
-        public const string BSM000004 = "Quyền người dùng đã tồn tại.";
+        public const string BSM000004 = "Người dùng đã tồn tại.";
         public const string BSM000005 = "Vui lòng chọn Công ty.";
         public const string BSM000006 = "Vui lòng chọn Quyền người dùng.";
         public const string BSM000007 = "Vui lòng chọn Sản phẩm.";
@@ -25,11 +25,13 @@
         public const string BSM000020 = "Tên tài khoản không được để trống.";
         public const string BSM000021 = "Mã tài khoản đã tồn tại.";
         public const string BSM000022 = "<Nhóm TK> chưa được chọn.";
-        public const string BSM000023 = "Vui lòng chọn Sổ cái.";
-        public const string BSM000024 = "Tên Sổ cái đã tồn tại.";
-        public const string BSM000025 = "Vui lòng nhập Tên Sổ cái.";
+        public const string BSM000023 = "Vui lòng chọn <Tài khoản>.";
+        public const string BSM000024 = "<Mô tả> đã tồn tại.";
+        public const string BSM000025 = "Vui lòng nhập <Mô tả>.";
         public const string BSM000026 = "Vui lòng chọn 1 dòng trên lưới.";
         public const string BSM000027 = "Xóa dữ liệu thành công.";
         public const string BSM000028 = "Lấy {0} thất bại!";
+        public const string BSM000029 = "Vui lòng nhập <Thống kê>.";
+        public const string BSM000030 = "<Thống kê> đã tồn tại.";
     }
 }

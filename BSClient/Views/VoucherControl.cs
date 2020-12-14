@@ -66,15 +66,15 @@ namespace BSClient
         public List<DepreciationDetail> DepreciationDetailDelete { get; set; }
 
         public static MaterialNVController MaterialGL = new MaterialNVController();
-        List<MaterialGL> materialGL = MaterialGL.GetMaterialGL(GlobalVarient.CompanyIDChoice);
+        List<MaterialGL> materialGL = MaterialGL.GetMaterialGL(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialNV = new MaterialNVController();
         List<MaterialNV> materialNV = MaterialNV.GetMaterialNV();
         public static MaterialNVController MaterialTK = new MaterialNVController();
         List<MaterialTK> materialTK = MaterialTK.GetMaterialTK();
         public static MaterialNVController MaterialDT = new MaterialNVController();
-        List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(GlobalVarient.CompanyIDChoice);
+        List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialCustomerInvoice = new MaterialNVController();
-        List<MaterialCustomerInvoice> materialCustomerInvoice = MaterialCustomerInvoice.GetMaterialCustomerInvoice(GlobalVarient.CompanyIDChoice);
+        List<MaterialCustomerInvoice> materialCustomerInvoice = MaterialCustomerInvoice.GetMaterialCustomerInvoice(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialInvoiceType = new MaterialNVController();
         List<MaterialInvoiceType> materialInvoiceType = MaterialInvoiceType.GetMaterialInvoiceType();
         public static MaterialNVController MaterialWareHouseType = new MaterialNVController();
@@ -154,7 +154,7 @@ namespace BSClient
         private void LoadGridView()
         {
             VoucherController controller = new VoucherController();
-            VoucherData = new BindingList<Voucher>(controller.GetVouchersCompany(GlobalVarient.CompanyIDChoice));
+            VoucherData = new BindingList<Voucher>(controller.GetVouchersCompany(CommonInfo.CompanyInfo.CompanyID));
             Voucher_gridControl.DataSource = VoucherData;
         }
 
@@ -191,14 +191,13 @@ namespace BSClient
             tabNavigationPageLKVAT.PageVisible = false;
             VoucherDetailController controller = new VoucherDetailController();
             GlobalVarient.voucherDetailChoice = new List<VoucherDetail>();
-            GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice);
-            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
+            GlobalVarient.voucherDetailChoice = controller.GetVouchersDetailSelectVoucherID(voucherID, CommonInfo.CompanyInfo.CompanyID);
+            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, CommonInfo.CompanyInfo.CompanyID));
             VoucherDetailData = null;
             VoucherDetailData = new BindingList<VoucherDetail>(GlobalVarient.voucherDetailChoice);
             VoucherDetail_gridControl.DataSource = VoucherDetailData;
             VoucherDetailDelete = new List<VoucherDetail>();
         }
-
         #endregion init design
 
 
@@ -229,7 +228,7 @@ namespace BSClient
             #endregion check value parameter
             #region search voucher
             VoucherController controller = new VoucherController();
-            VoucherData = new BindingList<Voucher>(controller.GetVouchersCondition(GlobalVarient.CompanyIDChoice, (DateTime)dateEditBDKT.EditValue, (DateTime)dateEditNgayKT.EditValue, vouchertype));
+            VoucherData = new BindingList<Voucher>(controller.GetVouchersCondition(CommonInfo.CompanyInfo.CompanyID, (DateTime)dateEditBDKT.EditValue, (DateTime)dateEditNgayKT.EditValue, vouchertype));
             Voucher_gridControl.DataSource = VoucherData;
             #endregion search voucher
 
@@ -437,13 +436,13 @@ namespace BSClient
             voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
             voucher.VouchersTypeID = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
             voucher.Date = (DateTime)dateEditNgayNhapChungTu.EditValue;
-            voucher.CompanyID = GlobalVarient.CompanyIDChoice;
+            voucher.CompanyID = CommonInfo.CompanyInfo.CompanyID;
             voucher.Status = ModifyMode.Insert;
             #endregion set value to Insert Voucher
             VoucherDetailController voucherDetailController = new VoucherDetailController();
             for (int i = 0; i < VoucherDetailData.Count; i++)
             {
-                VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                VoucherDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 VoucherDetailData[i].Status = ModifyMode.Insert;
             }
             List<VoucherDetail> saveData = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert).ToList();
@@ -676,7 +675,7 @@ namespace BSClient
                     VoucherDetailData[i].VouchersID = GlobalVarient.VoucherIDChoice;
                     GlobalVarient.VoucherDetailID++;
                     // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
-                    VoucherDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    VoucherDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 }
             }
             #endregion set VoucherDetailID
@@ -849,11 +848,11 @@ namespace BSClient
             WareHouseController controller = new WareHouseController();
             if (GlobalVarient.invoiceChoice == null || GlobalVarient.invoiceChoice.InvoiceID == null)
             {
-                GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID(GlobalVarient.invoiceChoice.InvoiceID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseInvoice = controller.GetWareHouseSelectInvoiceID(GlobalVarient.invoiceChoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             InvoiceWarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouseInvoice);
@@ -894,11 +893,11 @@ namespace BSClient
             DepreciationController controller = new DepreciationController();
             if (GlobalVarient.warehouseDetailInvoiceChoice == null || GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID == null)
             {
-                GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.InvoiceDepreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             InvoiceDepreciationData = new BindingList<Depreciation>(GlobalVarient.InvoiceDepreciations);
@@ -938,11 +937,11 @@ namespace BSClient
             DepreciationDetailController controller = new DepreciationDetailController();
             if (GlobalVarient.InvoiceDepreciationsChoice == null || GlobalVarient.InvoiceDepreciationsChoice.DepreciationID == null)
             {
-                GlobalVarient.InvoiceDepreciationsDetail = controller.GetDepreciationDetailSelect("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.InvoiceDepreciationsDetail = controller.GetDepreciationDetailSelect("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.InvoiceDepreciationsDetail = controller.GetDepreciationDetailSelect(GlobalVarient.InvoiceDepreciationsChoice.DepreciationID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.InvoiceDepreciationsDetail = controller.GetDepreciationDetailSelect(GlobalVarient.InvoiceDepreciationsChoice.DepreciationID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             InvoiceDepreciationDetailData = new BindingList<DepreciationDetail>(GlobalVarient.InvoiceDepreciationsDetail);
@@ -983,11 +982,11 @@ namespace BSClient
             WareHouseDetailController controller = new WareHouseDetailController();
             if (GlobalVarient.warehouseInvoiceChoice == null || GlobalVarient.warehouseInvoiceChoice.WarehouseID == null)
             {
-                GlobalVarient.warehouseDetailInvoice = controller.GetWareHouseDetailSelectWahouseID("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseDetailInvoice = controller.GetWareHouseDetailSelectWahouseID("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.warehouseDetailInvoice = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseInvoiceChoice.WarehouseID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseDetailInvoice = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseInvoiceChoice.WarehouseID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             InvoiceWarehouseDetailData = new BindingList<WareHouseDetail>(GlobalVarient.warehouseDetailInvoice);
@@ -1031,8 +1030,8 @@ namespace BSClient
         private void Load_Invoice_GridView()
         {
             InvoiceController controller = new InvoiceController();
-            GlobalVarient.invoices = controller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
-            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, GlobalVarient.CompanyIDChoice));
+            GlobalVarient.invoices = controller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, CommonInfo.CompanyInfo.CompanyID);
+            //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, CommonInfo.CompanyInfo.CompanyID));
             InvoiceData = new BindingList<Invoice>(GlobalVarient.invoices);
             Invoice_gridControl.DataSource = InvoiceData;
             InvoiceDelete = new List<Invoice>();
@@ -1065,7 +1064,7 @@ namespace BSClient
         {
             //Get list invoice 
             InvoiceController controller = new InvoiceController();
-            List<Invoice> DataInvoice = controller.GetInvoiceSameDaySamCustomer(GlobalVarient.CompanyIDChoice);
+            List<Invoice> DataInvoice = controller.GetInvoiceSameDaySamCustomer(CommonInfo.CompanyInfo.CompanyID);
             List<Invoice> initialList = new List<Invoice>();
             initialList = DataInvoice.Where(f => !InvoiceData.Any(t => t.InvoiceID == f.InvoiceID)).ToList();
             initialList.AddRange(InvoiceData.ToList());
@@ -1137,7 +1136,7 @@ namespace BSClient
             InvoiceController invoiceController = new InvoiceController();
             for (int i = 0; i < InvoiceData.Count; i++)
             {
-                InvoiceData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                InvoiceData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                 InvoiceData[i].Status = ModifyMode.Insert;
             }
@@ -1176,7 +1175,7 @@ namespace BSClient
                 {
                     InvoiceData[i].Status = ModifyMode.Insert;
                     InvoiceData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
-                    InvoiceData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    InvoiceData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 }
             }
             #endregion set invoice
@@ -1254,7 +1253,7 @@ namespace BSClient
             #region set InvoiceID to WareHouse
             for (int i = 0; i < InvoiceWarehouseData.Count; i++)
             {
-                InvoiceWarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                InvoiceWarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceWarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                 InvoiceWarehouseData[i].InvoiceID = GlobalVarient.invoiceChoice.InvoiceID;
                 InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
@@ -1308,7 +1307,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(InvoiceWarehouseData[i].WarehouseID))
                 {
-                    InvoiceWarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    InvoiceWarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     InvoiceWarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                     InvoiceWarehouseData[i].InvoiceID = GlobalVarient.invoiceChoice.InvoiceID;
                     InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
@@ -1449,7 +1448,7 @@ namespace BSClient
             #region set warehouseID to WareHouseDetail
             for (int i = 0; i < InvoiceWarehouseDetailData.Count; i++)
             {
-                InvoiceWarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                InvoiceWarehouseDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceWarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseInvoiceChoice.WarehouseID;
                 InvoiceWarehouseDetailData[i].Status = ModifyMode.Insert;
             }
@@ -1482,7 +1481,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(InvoiceWarehouseDetailData[i].WareHouseDetailID))
                 {
-                    InvoiceWarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    InvoiceWarehouseDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     InvoiceWarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseInvoiceChoice.WarehouseID;
                     InvoiceWarehouseDetailData[i].Status = ModifyMode.Insert;
                 }
@@ -1580,7 +1579,7 @@ namespace BSClient
             #region set warehouseDetailID to Depreciation
             for (int i = 0; i < InvoiceDepreciationData.Count; i++)
             {
-                InvoiceDepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                InvoiceDepreciationData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceDepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID;
                 InvoiceDepreciationData[i].StatusA = ModifyMode.Insert;
             }
@@ -1612,7 +1611,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(InvoiceDepreciationData[i].WareHouseDetailID))
                 {
-                    InvoiceDepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    InvoiceDepreciationData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     InvoiceDepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailInvoiceChoice.WareHouseDetailID;
                     InvoiceDepreciationData[i].StatusA = ModifyMode.Insert;
                 }
@@ -1725,7 +1724,7 @@ namespace BSClient
             #region set DepreciationID to DepreciationDetail
             for (int i = 0; i < InvoiceDepreciationDetailData.Count; i++)
             {
-                InvoiceDepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                InvoiceDepreciationDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceDepreciationDetailData[i].DepreciationID = GlobalVarient.InvoiceDepreciationsChoice.DepreciationID;
                 InvoiceDepreciationDetailData[i].StatusA = ModifyMode.Insert;
             }
@@ -1766,7 +1765,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(InvoiceDepreciationDetailData[i].DepreciationDetailID))
                 {
-                    InvoiceDepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    InvoiceDepreciationDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     InvoiceDepreciationDetailData[i].DepreciationID = GlobalVarient.InvoiceDepreciationsChoice.DepreciationID;
                     InvoiceDepreciationDetailData[i].StatusA = ModifyMode.Insert;
                 }
@@ -1922,7 +1921,7 @@ namespace BSClient
         void LoadWareHouseGridviewFull()
         {
             InvoiceController invoicecontroller = new InvoiceController();
-            GlobalVarient.invoices = invoicecontroller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
+            GlobalVarient.invoices = invoicecontroller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, CommonInfo.CompanyInfo.CompanyID);
             Init_WareHouse_GridView();
             Setup_WareHouse_GridView();
             Load_WareHouse_GridView();
@@ -1976,7 +1975,7 @@ namespace BSClient
         {
 
             WareHouseController controller = new WareHouseController();
-            GlobalVarient.warehouse = controller.GetWareHouseSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, GlobalVarient.CompanyIDChoice);
+            GlobalVarient.warehouse = controller.GetWareHouseSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, CommonInfo.CompanyInfo.CompanyID);
             WarehouseData = new BindingList<WareHouse>(GlobalVarient.warehouse);
             WareHouse_gridControl.DataSource = WarehouseData;
             WareHouseDelete = new List<WareHouse>();
@@ -2010,11 +2009,11 @@ namespace BSClient
             WareHouseDetailController controller = new WareHouseDetailController();
             if (GlobalVarient.warehouseChoice == null || GlobalVarient.warehouseChoice.WarehouseID == null)
             {
-                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseChoice.WarehouseID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseChoice.WarehouseID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             WarehouseDetailData = new BindingList<WareHouseDetail>(GlobalVarient.warehouseDetail);
@@ -2061,11 +2060,11 @@ namespace BSClient
             DepreciationController controller = new DepreciationController();
             if (GlobalVarient.warehouseDetailChoice == null || GlobalVarient.warehouseDetailChoice.WareHouseDetailID == null)
             {
-                GlobalVarient.Depreciations = controller.GetDepreciationSelect("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.Depreciations = controller.GetDepreciationSelect("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.Depreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailChoice.WareHouseDetailID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.Depreciations = controller.GetDepreciationSelect(GlobalVarient.warehouseDetailChoice.WareHouseDetailID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             DepreciationData = new BindingList<Depreciation>(GlobalVarient.Depreciations);
@@ -2105,11 +2104,11 @@ namespace BSClient
             DepreciationDetailController controller = new DepreciationDetailController();
             if (GlobalVarient.DepreciationsChoice == null || GlobalVarient.DepreciationsChoice.DepreciationID == null)
             {
-                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect("00000", GlobalVarient.CompanyIDChoice);
+                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect("00000", CommonInfo.CompanyInfo.CompanyID);
             }
             else
             {
-                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect(GlobalVarient.DepreciationsChoice.DepreciationID, GlobalVarient.CompanyIDChoice);
+                GlobalVarient.DepreciationsDetail = controller.GetDepreciationDetailSelect(GlobalVarient.DepreciationsChoice.DepreciationID, CommonInfo.CompanyInfo.CompanyID);
             }
 
             DepreciationDetailData = new BindingList<DepreciationDetail>(GlobalVarient.DepreciationsDetail);
@@ -2167,7 +2166,7 @@ namespace BSClient
             #region set VoucherID to WareHouse
             for (int i = 0; i < WarehouseData.Count; i++)
             {
-                WarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                WarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                 WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
 
@@ -2201,7 +2200,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(WarehouseData[i].WarehouseID))
                 {
-                    WarehouseData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    WarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                     WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
                     WarehouseData[i].Status = ModifyMode.Insert;
@@ -2324,7 +2323,7 @@ namespace BSClient
             #region set warehouseID to WareHouseDetail
             for (int i = 0; i < WarehouseDetailData.Count; i++)
             {
-                WarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                WarehouseDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 WarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseChoice.WarehouseID;
                 WarehouseDetailData[i].Status = ModifyMode.Insert;
             }
@@ -2357,7 +2356,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(WarehouseDetailData[i].WareHouseDetailID))
                 {
-                    WarehouseDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    WarehouseDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     WarehouseDetailData[i].WarehouseID = GlobalVarient.warehouseChoice.WarehouseID;
                     WarehouseDetailData[i].Status = ModifyMode.Insert;
                 }
@@ -2481,7 +2480,7 @@ namespace BSClient
             #region set warehouseDetailID to Depreciation
             for (int i = 0; i < DepreciationData.Count; i++)
             {
-                DepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                DepreciationData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 DepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailChoice.WareHouseDetailID;
                 DepreciationData[i].StatusA = ModifyMode.Insert;
             }
@@ -2513,7 +2512,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(DepreciationData[i].WareHouseDetailID))
                 {
-                    DepreciationData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    DepreciationData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     DepreciationData[i].WareHouseDetailID = GlobalVarient.warehouseDetailChoice.WareHouseDetailID;
                     DepreciationData[i].StatusA = ModifyMode.Insert;
                 }
@@ -2587,7 +2586,7 @@ namespace BSClient
             #region set DepreciationID to DepreciationDetail
             for (int i = 0; i < DepreciationDetailData.Count; i++)
             {
-                DepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                DepreciationDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 DepreciationDetailData[i].DepreciationID = GlobalVarient.DepreciationsChoice.DepreciationID;
                 DepreciationDetailData[i].StatusA = ModifyMode.Insert;
             }
@@ -2627,7 +2626,7 @@ namespace BSClient
             {
                 if (string.IsNullOrEmpty(DepreciationDetailData[i].DepreciationDetailID))
                 {
-                    DepreciationDetailData[i].CompanyID = GlobalVarient.CompanyIDChoice;
+                    DepreciationDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     DepreciationDetailData[i].DepreciationID = GlobalVarient.DepreciationsChoice.DepreciationID;
                     DepreciationDetailData[i].StatusA = ModifyMode.Insert;
                 }

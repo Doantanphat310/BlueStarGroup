@@ -45,7 +45,5 @@ namespace BSClient
 
         public static List<DepreciationDetail> DepreciationsDetail = new List<DepreciationDetail>();
         public static DepreciationDetail DepreciationsDetailChoice = new DepreciationDetail();
-
-
     }
 }

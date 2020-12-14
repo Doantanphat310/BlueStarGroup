@@ -1,6 +1,7 @@
 ﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
@@ -27,13 +28,13 @@ namespace BSClient.Views
 
         public BindingList<Accounts> AccountsData { get; set; }
 
-        public BindingList<GeneralLedger> GeneralLedgerData { get; set; }
+        public BindingList<AccountDetail> AccountDetailData { get; set; }
 
         public List<AccountGroup> AccountGroupDeleteData { get; set; } = new List<AccountGroup>();
 
         public List<Accounts> AccountsDeleteData { get; set; } = new List<Accounts>();
 
-        public List<GeneralLedger> GeneralLedgerDeleteData { get; set; } = new List<GeneralLedger>();
+        public List<AccountDetail> AccountDetailDeleteData { get; set; } = new List<AccountDetail>();
 
         private BindingSource AccountBinSource { get; set; } = new BindingSource();
 
@@ -46,6 +47,12 @@ namespace BSClient.Views
             InitComboBox();
 
             SetBindingData();
+
+            CompanyID_SearchLookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
+            if (CommonInfo.UserInfo.UserRole != "Full")
+            {
+                CompanyID_SearchLookUpEdit.ReadOnly = true;
+            }
         }
 
         private void SetBindingData()
@@ -75,17 +82,11 @@ namespace BSClient.Views
 
             columns = new List<ColumnInfo>
             {
-                new ColumnInfo ("GeneralLedgerID", "Mã Sổ cái", 90),
-                new ColumnInfo ("GeneralLedgerName", "Tên Sổ cái", 250),
-                new ColumnInfo ("AccountID", "Tài khoản", 90)
+                new ColumnInfo ("AccountID", "Mã TK", 90),
+                new ColumnInfo ("AccountName", "Tên TK", 250)
             };
 
-            this.GeneralLedger_SearchLookUpEdit.SetupLookUpEdit("GeneralLedgerID", "GeneralLedgerName", GetGeneralLedgerDataComboBox(), columns);
-        }
-
-        private List<GeneralLedger> GetGeneralLedgerDataComboBox()
-        {
-            return GeneralLedgerData.Where(o => string.IsNullOrEmpty(o.ParentID)).ToList();
+            this.AccountID_SearchLookUpEdit.SetupLookUpEdit("AccountID", "AccountName", AccountsData, columns);
         }
 
         private List<Company> GetCompanyList()
@@ -102,7 +103,7 @@ namespace BSClient.Views
 
             LoadAccountsGrid();
 
-            LoadGeneralLedgerGrid();
+            LoadAccountDetailGrid();
         }
 
         private void LoadAccountsGrid()
@@ -112,13 +113,13 @@ namespace BSClient.Views
             LoadAccountsGridView();
         }
 
-        private void LoadGeneralLedgerGrid()
+        private void LoadAccountDetailGrid()
         {
-            InitGeneralLedgerGridView();
+            InitAccountDetailGridView();
 
-            SetupGeneralLedgerGridView();
+            SetupAccountDetailGridView();
 
-            LoadGeneralLedgerGridView();
+            LoadAccountDetailGridView();
         }
 
         private void LoadAccountGroupGrid()
@@ -143,21 +144,21 @@ namespace BSClient.Views
             this.Account_TreeList.Columns.Clear();
             Account_TreeList.KeyFieldName = "AccountID";
             Account_TreeList.ParentFieldName = "ParentID";
-            this.Account_TreeList.AddColumn("AccountID", "Mã TK", 90, true);
+            this.Account_TreeList.AddColumn("AccountID", "Mã TK", 100, true);
+            this.Account_TreeList.AddColumn("ThongKeID", "Thống kê", 80, true);
             this.Account_TreeList.AddColumn("AccountName", "Tên TK", 250, true, fixedWidth: false);
-            this.Account_TreeList.AddLookupEditColumn("AccountGroupID", "Loại TK", 220,
+            this.Account_TreeList.AddLookupEditColumn("AccountGroupID", "Loại TK", 120,
                 AccountGroupData, "AccountGroupID", "AccountGroupName");
         }
 
-        private void InitGeneralLedgerGridView()
+        private void InitAccountDetailGridView()
         {
-            this.GeneralLedger_GridView.Columns.Clear();
+            this.AccountDetail_GridView.Columns.Clear();
 
-            this.GeneralLedger_GridView.AddColumn("GeneralLedgerID", "Mã Sổ cái", 90, false);
-            this.GeneralLedger_GridView.AddColumn("GeneralLedgerName", "Tên Sổ cái", 250, true, fixedWidth: false);
-            this.GeneralLedger_GridView.AddColumn("AccountID", "Tài khoản", 90, false);
-            this.GeneralLedger_GridView.AddColumn("CompanyID", "Công ty", 90, false);
-            this.GeneralLedger_GridView.AddColumn("ParentID", "Sổ cái chính", 90, false);
+            this.AccountDetail_GridView.AddColumn("CompanyID", "Công ty", 120, false);
+            this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 100, false);
+            this.AccountDetail_GridView.AddColumn("AccountDetailID", "Thống kê", 80, false);
+            this.AccountDetail_GridView.AddColumn("AccountDetailName", "Mô tả", 250, true, fixedWidth: false);
         }
 
         private void SetupAccountGroupGridView()
@@ -170,9 +171,9 @@ namespace BSClient.Views
             Account_TreeList.SetupTreeList();
         }
 
-        private void SetupGeneralLedgerGridView()
+        private void SetupAccountDetailGridView()
         {
-            GeneralLedger_GridView.SetupGridView(newItemRow: NewItemRowPosition.None, columnAutoWidth: true);
+            AccountDetail_GridView.SetupGridView(newItemRow: NewItemRowPosition.None, columnAutoWidth: true);
         }
 
         private void LoadAccountGroupGridView()
@@ -195,15 +196,18 @@ namespace BSClient.Views
             AccountBinSource.DataSource = AccountsData;
             Account_TreeList.DataSource = AccountBinSource;
             Account_TreeList.ExpandAll();
+
+            if (AccountID_SearchLookUpEdit != null)
+            {
+                AccountID_SearchLookUpEdit.Properties.DataSource = AccountsData;
+            }
         }
 
-        private void LoadGeneralLedgerGridView()
+        private void LoadAccountDetailGridView()
         {
             AccountsController controller = new AccountsController();
-            GeneralLedgerData = new BindingList<GeneralLedger>(controller.GetGeneralLedger());
-            GeneralLedger_GridControl.DataSource = GeneralLedgerData;
-
-            this.GeneralLedger_SearchLookUpEdit.Properties.DataSource = GetGeneralLedgerDataComboBox();
+            AccountDetailData = new BindingList<AccountDetail>(controller.GetAccountDetail());
+            AccountDetail_GridControl.DataSource = AccountDetailData;
         }
 
         private void AccountGroup_Delete_Button_Click(object sender, EventArgs e)
@@ -263,7 +267,6 @@ namespace BSClient.Views
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     AccountsDeleteData = new List<Accounts>();
                     this.LoadAccountsGridView();
-                    this.LoadGeneralLedgerGridView();
                 }
                 else
                 {
@@ -277,9 +280,9 @@ namespace BSClient.Views
             LoadAccountsGridView();
         }
 
-        private void GeneralLedger_AddNew_Button_Click(object sender, EventArgs e)
+        private void AccountDetail_AddNew_Button_Click(object sender, EventArgs e)
         {
-            GeneralLedger generalLedger = GeneralLedger_SearchLookUpEdit.GetSelectedDataRow().CastTo<GeneralLedger>();
+            Accounts account = AccountID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Accounts>();
             Company company = CompanyID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Company>();
 
             if (string.IsNullOrEmpty(company.CompanyID))
@@ -288,57 +291,70 @@ namespace BSClient.Views
                 return;
             }
 
-            if (string.IsNullOrEmpty(generalLedger.GeneralLedgerID))
+            if (string.IsNullOrEmpty(account.AccountID))
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000023);
                 return;
             }
 
-            string generalLedgerName = GeneralLedgerDetailName_TextBox.Text;
-            if (string.IsNullOrWhiteSpace(generalLedgerName))
+            string accountDetailID = AccountDetailID_TextEdit.Text;
+            if (string.IsNullOrWhiteSpace(accountDetailID))
+            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000029);
+                return;
+            }
+
+            if (AccountDetailData.ToList().Find(o => o.CompanyID == company.CompanyID && o.AccountID == account.AccountID && o.AccountDetailID == accountDetailID) != null)
+            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000030);
+                return;
+            }
+
+            string accountDetailName = AccountDetailName_TextEdit.Text;
+            if (string.IsNullOrWhiteSpace(accountDetailName))
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000025);
                 return;
             }
 
-            if (GeneralLedgerData.ToList().Find(o => o.GeneralLedgerName == generalLedgerName) != null)
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000024);
-                return;
-            }
+            //if (AccountDetailData.ToList().Find(o => o.AccountDetailName == accountDetailName) != null)
+            //{
+            //    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000024);
+            //    return;
+            //}
 
-            GeneralLedgerData.Add(new GeneralLedger
+            AccountDetailData.Add(new AccountDetail
             {
-                GeneralLedgerName = generalLedgerName,
                 CompanyID = company.CompanyID,
-                ParentID = generalLedger.GeneralLedgerID,
-                AccountID = generalLedger.AccountID,
+                AccountID = account.AccountID,
+                AccountDetailID = accountDetailID,
+                AccountDetailName = accountDetailName,
                 Status = ModifyMode.Insert
             });
         }
 
-        private void GeneralLedger_Delete_Button_Click(object sender, EventArgs e)
+        private void AccountDetail_Delete_Button_Click(object sender, EventArgs e)
         {
-            GeneralLedger_GridView.DeleteSelectedRows();
+            AccountDetail_GridView.DeleteSelectedRows();
         }
 
-        private void GeneralLedger_Save_Button_Click(object sender, EventArgs e)
+        private void AccountDetail_Save_Button_Click(object sender, EventArgs e)
         {
-            List<GeneralLedger> saveData = this.GeneralLedgerData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+            List<AccountDetail> saveData = this.AccountDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-            if (GeneralLedgerDeleteData != null && GeneralLedgerDeleteData.Count > 0)
+            if (AccountDetailDeleteData != null && AccountDetailDeleteData.Count > 0)
             {
-                saveData?.AddRange(GeneralLedgerDeleteData);
+                saveData?.AddRange(AccountDetailDeleteData);
             }
 
             if (saveData?.Count > 0)
             {
                 AccountsController controller = new AccountsController();
-                if (controller.SaveGeneralLedger(saveData))
+                if (controller.SaveAccountDetail(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    GeneralLedgerDeleteData = new List<GeneralLedger>();
-                    this.LoadGeneralLedgerGridView();
+                    AccountDetailDeleteData = new List<AccountDetail>();
+                    this.LoadAccountDetailGridView();
                 }
                 else
                 {
@@ -347,9 +363,9 @@ namespace BSClient.Views
             }
         }
 
-        private void GeneralLedger_Cancel_Button_Click(object sender, EventArgs e)
+        private void AccountDetail_Cancel_Button_Click(object sender, EventArgs e)
         {
-            LoadGeneralLedgerGridView();
+            LoadAccountDetailGridView();
         }
 
         private void AccountGroup_GridView_RowUpdated(object sender, RowObjectEventArgs e)
@@ -394,9 +410,9 @@ namespace BSClient.Views
             AccountsDeleteData.Add(delete);
         }
 
-        private void GeneralLedger_GridView_RowUpdated(object sender, RowObjectEventArgs e)
+        private void AccountDetail_GridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
-            GeneralLedger row = e.Row.CastTo<GeneralLedger>();
+            AccountDetail row = e.Row.CastTo<AccountDetail>();
             if (row.Status == ModifyMode.Insert)
             {
                 return;
@@ -405,16 +421,16 @@ namespace BSClient.Views
             row.Status = ModifyMode.Update;
         }
 
-        private void GeneralLedger_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        private void AccountDetail_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            GeneralLedger delete = e.Row.CastTo<GeneralLedger>();
+            AccountDetail delete = e.Row.CastTo<AccountDetail>();
             if (delete.Status == ModifyMode.Insert)
             {
                 return;
             }
 
             delete.Status = ModifyMode.Delete;
-            GeneralLedgerDeleteData.Add(delete);
+            AccountDetailDeleteData.Add(delete);
         }
 
         private void AccountGroup_GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -537,23 +553,6 @@ namespace BSClient.Views
             });
         }
 
-        private void GeneralLedger_GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
-        {
-            e.ExceptionMode = ExceptionMode.NoAction;
-        }
-
-        private void GeneralLedger_GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
-        {
-            if (GeneralLedger_GridView.FocusedColumn.FieldName == "GeneralLedgerName" && e.Valid)
-            {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridView view = sender as GridView;
-                GridColumn column = view.Columns["GeneralLedgerName"];
-                view.SetColumnError(column, BSMessage.BSM000024);
-            }
-        }
-
         private void CompanyID_SearchLookUpEdit_Popup(object sender, EventArgs e)
         {
             SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
@@ -588,7 +587,7 @@ namespace BSClient.Views
         {
             string colName = Account_TreeList.FocusedColumn.FieldName;
             var row = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
-            if (colName == "AccountID" && !string.IsNullOrEmpty(row.AccountID))
+            if (colName == "AccountID" && !(string.IsNullOrEmpty(row.AccountID) || row.Status == ModifyMode.Insert))
             {
                 e.Cancel = true;
             }
@@ -659,45 +658,68 @@ namespace BSClient.Views
 
         private void CompanyID_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            Company selectedRow = CompanyID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Company>();
-            if (selectedRow == null)
-            {
-                return;
-            }
-
-            // filter grid
-            this.GeneralLedger_GridView.ClearColumnsFilter();
-            GeneralLedger_GridView.ActiveFilterString = $"[CompanyID] = '{selectedRow.CompanyID}' OR IsNullOrEmpty([CompanyID])";
+            // filter grid            
+            FilterAccountDetail();
         }
 
-        private void GeneralLedger_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
+        private void AccountDetail_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
         {
             e.ExceptionMode = ExceptionMode.NoAction;
         }
 
-        private void GeneralLedger_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
+        private void AccountDetail_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
         {
-            this.GeneralLedger_GridView.ClearColumnErrors();
-            var row = e.Row.CastTo<GeneralLedger>();
-            if (this.GeneralLedgerData.Count(o => o.GeneralLedgerName == row.GeneralLedgerName) > 1)
-            {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridView view = sender as GridView;
-                GridColumn column = view.Columns["GeneralLedgerName"];
-                view.SetColumnError(column, BSMessage.BSM000024);
-            }
+            //this.AccountDetail_GridView.ClearColumnErrors();
+            //var row = e.Row.CastTo<AccountDetail>();
+            //if (this.AccountDetailData.Count(o => o.AccountDetailName == row.AccountDetailName) > 1)
+            //{
+            //    e.Valid = false;
+            //    //Set errors with specific descriptions for the columns
+            //    GridView view = sender as GridView;
+            //    GridColumn column = view.Columns["AccountDetailName"];
+            //    view.SetColumnError(column, BSMessage.BSM000024);
+            //}
         }
 
-        private void GeneralLedger_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void AccountID_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GeneralLedger selectedRow = GeneralLedger_SearchLookUpEdit.GetSelectedDataRow().CastTo<GeneralLedger>();
-            if (selectedRow == null)
+            // filter grid            
+            FilterAccountDetail();
+        }
+
+        /// <summary>
+        /// Thực hiện lọc tài khoản chi tiết
+        /// </summary>
+        private void FilterAccountDetail()
+        {
+            this.AccountDetail_GridView.ClearColumnsFilter();
+            string filter = string.Empty;
+
+            string companyID = CompanyID_SearchLookUpEdit.EditValue.ToString();
+            if (!string.IsNullOrEmpty(companyID))
             {
-                return;
+                filter = $"[CompanyID] = '{companyID}'";
             }
 
-            GeneralLedgerDetailName_TextBox.Text = selectedRow.GeneralLedgerName;
+            Accounts account = AccountID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Accounts>();
+            if (account != null)
+            {
+                AccountDetailName_TextEdit.Text = account.AccountName;
+                if (string.IsNullOrEmpty(filter))
+                {
+                    filter += $"[AccountID] = '{account.AccountID}'";
+                }
+                else
+                {
+                    filter += $" AND [AccountID] = '{account.AccountID}'";
+                }
+            }
+
+            // filter grid            
+            if (!string.IsNullOrEmpty(filter))
+            {
+                AccountDetail_GridView.ActiveFilterString = filter;
+            }
         }
 
         private void Account_CheckEdit_CheckedChanged(object sender, EventArgs e)
@@ -708,6 +730,27 @@ namespace BSClient.Views
             {
                 selected.Status = ModifyMode.Update;
             }
+        }
+
+        private void AddAccount_MenuItem_Click(object sender, EventArgs e)
+        {
+            AddAccount();
+        }
+
+        private void AddDetailAccount_MenuItem_Click(object sender, EventArgs e)
+        {
+            AddAccount(false);
+        }
+
+        private void Account_TreeList_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
+        {
+            Accounts selected = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
+            AccountID_SearchLookUpEdit.EditValue = selected.AccountID;
+        }
+
+        private void AllCompanies_CheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            Company_Label.Enabled = !AllCompanies_CheckEdit.Checked;
         }
     }
 }

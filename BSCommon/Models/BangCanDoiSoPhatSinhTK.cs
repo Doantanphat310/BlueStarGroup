@@ -15,7 +15,7 @@ namespace BSCommon.Models
         /// <summary>
         /// ThongKe
         /// </summary>
-        public string ThongKe { get; set; }
+        public string AccountDetailID { get; set; }
 
         /// <summary>
         /// AccountName
