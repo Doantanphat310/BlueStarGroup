@@ -14,14 +14,13 @@ namespace BSCommon.Models
         public string VouchersDetailID { get; set; }
         public string VouchersID { get; set; }
         public string AccountID { get; set; }
+        public string AccountDetailID { get; set; }
         public string CustomerID { get; set; }
-        public string GeneralLedgerID { get; set; }
         public string CompanyID { get; set; }
         public string Descriptions { get; set; }
         #endregion VoucherDetail table Sql
         public string NV { get; set; }
         public string CustomerName { get; set; }
-        public string GeneralLedgerName { get; set; }
         public decimal Amount { get; set; }
         public ModifyMode Status { get; set; }
     }

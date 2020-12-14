@@ -86,11 +86,26 @@ Select CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo from 
 end
 
 
+SPSelectMaterialTK 'COM000000060'
+
+select * from AccountDetail
 
 alter proc SPSelectMaterialTK
+@CompanyID varchar(50)
 as
 begin
-Select AccountID, AccountName from Accounts
+select A.AccountID,B.AccountDetailID,
+case
+when B.AccountDetailName is null then A.AccountName
+else B.AccountDetailName
+end 'Name',A.DuNo,A.DuCo,A.HachToan,A.ThongKe,A.NgoaiTe,A.TK152_156,A.VatTu,A.ThueVAT,A.HopDong,A.CongNo 
+from
+(select * from Accounts) as A
+left join
+(Select * from AccountDetail 
+where CompanyID = @CompanyID) as B
+on A.AccountID = B.AccountID
+order by AccountID,AccountDetailID
 end
 
 Create proc SPSelectMaterialGL
@@ -181,5 +196,17 @@ begin
 end
 else Select '1' as msgCode, 'Correct' as msgName
 end
+
+Create proc SPSelectAccountAccountDetail
+@CompanyID varchar(50)
+as
+begin
+select A.AccountID,A.AccountName,B.AccountDetailID,B.AccountDetailName,A.DuNo,A.DuCo,A.HachToan,A.ThongKe,A.NgoaiTe,A.TK152_156,A.VatTu,A.ThueVAT,A.HopDong,A.CongNo from Accounts as A left join AccountDetail as B
+on A.AccountID = B.AccountID
+where CompanyID = @CompanyID
+order by A.AccountID,B.AccountDetailID
+end
+
+SPSelectAccountAccountDetail '000'
 
 

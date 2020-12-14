@@ -34,9 +34,9 @@ namespace BSServer.Controllers
             return this.MaterialNVDAO.GetMaterialWareHouseType();
         }
 
-        public List<MaterialTK> GetMaterialTK()
+        public List<MaterialTK> GetMaterialTK(string companyID)
         {
-            return this.MaterialNVDAO.GetMaterialTK();
+            return this.MaterialNVDAO.GetMaterialTK(companyID);
         }
 
         public List<MaterialDT> GetMaterialDT( string companyID)
@@ -44,10 +44,6 @@ namespace BSServer.Controllers
             return this.MaterialNVDAO.GetMaterialDT(companyID);
         }
 
-        public List<MaterialGL> GetMaterialGL(string companyID)
-        {
-            return this.MaterialNVDAO.GetMaterialGL(companyID);
-        }
 
         public List<MaterialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)
         {

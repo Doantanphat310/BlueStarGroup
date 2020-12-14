@@ -64,13 +64,10 @@ namespace BSClient
 
         public List<Depreciation> DepreciationDelete { get; set; }
         public List<DepreciationDetail> DepreciationDetailDelete { get; set; }
-
-        public static MaterialNVController MaterialGL = new MaterialNVController();
-        List<MaterialGL> materialGL = MaterialGL.GetMaterialGL(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialNV = new MaterialNVController();
         List<MaterialNV> materialNV = MaterialNV.GetMaterialNV();
         public static MaterialNVController MaterialTK = new MaterialNVController();
-        List<MaterialTK> materialTK = MaterialTK.GetMaterialTK();
+        List<MaterialTK> materialTK = MaterialTK.GetMaterialTK(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialDT = new MaterialNVController();
         List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialCustomerInvoice = new MaterialNVController();
@@ -163,18 +160,28 @@ namespace BSClient
             this.VoucherDetail_gridView.Columns.Clear();
    
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 140, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true, editValueChanged: GeneralLedger_EditValueChanged);
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", isAllowEdit: true);
+
+            List<ColumnInfo> columns = new List<ColumnInfo>
+            {
+                new ColumnInfo("AccountID", "Tài khoản",140),
+                new ColumnInfo("AccountDetailID", "Mã TK",80),
+                new ColumnInfo("Name", "Tên",180 ),
+            
+            };
+
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", 
+                isAllowEdit: true,columns: columns, editValueChanged: Accounts_EditValueChanged);
+            this.VoucherDetail_gridView.AddColumn("AccountDetailID", "Mã TK", 60, false);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "C2");
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "C2");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
 
-        public void GeneralLedger_EditValueChanged(object sender, EventArgs e)
+        public void Accounts_EditValueChanged(object sender, EventArgs e)
         {
-            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialGL>();
-            VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
+            VoucherDetail_gridView.SetFocusedRowCellValue("AccountDetailID", selectRow.AccountDetailID);
         }
 
         private void SetupVoucherDetailGridView()
@@ -504,7 +511,6 @@ namespace BSClient
             bool isNewRow = VoucherDetail_gridView.IsNewItemRow(rowIndex);
             GridView view = sender as GridView;
             GridColumn columnAccountID = view.Columns["AccountID"];
-            GridColumn columnGeneralLedgerID = view.Columns["GeneralLedgerID"];
             GridColumn columnNV = view.Columns["NV"];
             GridColumn columnAmount = view.Columns["Amount"];
             VoucherDetail row = (e.Row as VoucherDetail);
@@ -522,12 +528,7 @@ namespace BSClient
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnAccountID, "Tài khoản không được để trống!");
                 }
-                if (string.IsNullOrEmpty(row.GeneralLedgerID))
-                {
-                    e.Valid = false;
-                    //Set errors with specific descriptions for the columns
-                    view.SetColumnError(columnGeneralLedgerID, "Sổ cái không được để trống!");
-                }
+              
                 if (string.IsNullOrEmpty(row.NV))
                 {
                     e.Valid = false;
@@ -542,6 +543,8 @@ namespace BSClient
                 }
             }
             
+            /*
+             //Check Số tiền theo tài khoản phải luôn thỏa điều kiện cuối kỳ nợ có
             if (!string.IsNullOrEmpty(row.AccountID) && !string.IsNullOrEmpty(row.GeneralLedgerID) && !string.IsNullOrEmpty(row.NV) && (CompareAmount))
             {
                 //Tất cả dữ liệu đều có giá trị
@@ -558,6 +561,7 @@ namespace BSClient
                 }
                
             }
+            */
 
         }
 
@@ -760,8 +764,10 @@ namespace BSClient
                     int checkLKVAT = 0;
                     foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
                     {
-                        string checkAccountID = voucherDetail.AccountID.ToString().Substring(0, 3);
-                        if (checkAccountID == "133" || checkAccountID == "333")
+                        string checkAccountID = voucherDetail.AccountID.ToString();
+                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                        //if (checkAccountID == "133" || checkAccountID == "333")
+                        if (count > 0)
                         {
                             tabNavigationPageLKVAT.PageVisible = true;
                             tabPaneVouchers.SelectedPageIndex = 1;
@@ -774,8 +780,6 @@ namespace BSClient
                     {
                         tabNavigationPageLKVAT.PageVisible = false;
                         tabPaneVouchers.SelectedPageIndex = 0;
-
-
                     }
                     break;
                 #endregion check TK
@@ -784,8 +788,10 @@ namespace BSClient
                     int checkLKkho = 0;
                     foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
                     {
-                        string checkAccountID = voucherDetail.AccountID.ToString().Substring(0, 3);
-                        if (checkAccountID == "152" || checkAccountID == "156")
+                        string checkAccountID = voucherDetail.AccountID.ToString();
+                        int count =  materialTK.Where(q => q.TK152_156 == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                      //  if (checkAccountID == "152" || checkAccountID == "156")
+                       if (count > 0)
                         {
                             tabNavigationPageLKKho.PageVisible = true;
                             tabPaneVouchers.SelectedPageIndex = 2;
@@ -827,7 +833,7 @@ namespace BSClient
             this.InvoiceWareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
             this.InvoiceWareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
             this.InvoiceWareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
-            this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
+           // this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
@@ -1952,7 +1958,7 @@ namespace BSClient
             };
 
             this.WareHouse_gridView.AddSearchLookupEditColumn("InvoiceID", "Hóa Đơn ID", 120, GlobalVarient.invoices, "InvoiceID", "InvoiceID", isAllowEdit: true, columns: columns,popupFormWidth:1200,enterChoiceFirstRow:true);
-            this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
+          //  this.WareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
             this.WareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.WareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
