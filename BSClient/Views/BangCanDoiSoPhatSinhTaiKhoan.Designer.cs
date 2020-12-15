@@ -1,6 +1,6 @@
 ﻿namespace BSClient.Views
 {
-    partial class BangCanDoiSoPhatSinhTKReport
+    partial class BangCanDoiSoPhatSinhTaiKhoan
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTKReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTaiKhoan));
             this.Main_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Main_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Print_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -62,7 +62,6 @@
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_GridView});
-            this.Main_GridControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Main_GridControl_MouseDoubleClick);
             // 
             // Main_GridView
             // 
@@ -203,14 +202,14 @@
             this.Exit_Button.Text = "Thoát";
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
-            // BangCanDoiSoPhatSinhTKReport
+            // BangCanDoiSoPhatSinhTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 568);
             this.Controls.Add(this.Main_GridControl);
             this.Controls.Add(this.UserButton_Panel);
-            this.Name = "BangCanDoiSoPhatSinhTKReport";
+            this.Name = "BangCanDoiSoPhatSinhTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bảng cân đối phát sinh số tài khoản";
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();

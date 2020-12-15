@@ -73,10 +73,10 @@ AS
 			WHERE 
 				L.CompanyID = @CompanyID
 				AND (@FromDate IS NULL
-					OR @FromDate IS NOT NULL AND L.Date >= @FromDate)
+					OR @FromDate IS NOT NULL AND L.VoucherDate >= @FromDate)
 
 				AND (@ToDate IS NULL
-					OR @ToDate IS NOT NULL AND L.Date <= @ToDate)
+					OR @ToDate IS NOT NULL AND L.VoucherDate <= @ToDate)
 		) PS
 		GROUP BY 
 			AccountID,

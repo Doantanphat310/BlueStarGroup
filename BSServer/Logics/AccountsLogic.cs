@@ -150,7 +150,7 @@ namespace BSServer.Logics
         {
             List<BangCanDoiSoPhatSinhTK> psData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(fromDate, toDate);
 
-            List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate, toDate);
+            List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate);
             DateTime balanceDate;
             List<BangCanDoiSoPhatSinhTK> psDKData = null;
 

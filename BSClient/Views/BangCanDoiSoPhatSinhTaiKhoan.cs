@@ -1,8 +1,10 @@
 ﻿using BSClient.Report;
 using BSClient.Utility;
+using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
+using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
@@ -13,7 +15,7 @@ using System.Windows.Forms;
 
 namespace BSClient.Views
 {
-    public partial class BangCanDoiSoPhatSinhTKReport : XtraForm
+    public partial class BangCanDoiSoPhatSinhTaiKhoan : XtraForm
     {
         public BindingList<BangCanDoiSoPhatSinhTK> ReportData { get; set; }
 
@@ -21,7 +23,7 @@ namespace BSClient.Views
 
         private DateTime ToDate { get; set; }
 
-        public BangCanDoiSoPhatSinhTKReport()
+        public BangCanDoiSoPhatSinhTaiKhoan()
         {
             InitializeComponent();
 
@@ -38,6 +40,7 @@ namespace BSClient.Views
         private void InitComboBox()
         {
             TypeSearch_LookUpEdit.Properties.DataSource = new string[] { "Tài khoản", "Tài khoản - Thống kê" };
+            TypeSearch_LookUpEdit.ItemIndex = 0;
         }
 
         private void LoadGrid()
@@ -52,16 +55,16 @@ namespace BSClient.Views
         private void InitGridView()
         {
             Main_GridView.Columns.Clear();
-            this.Main_GridView.AddColumn("AccountID", "Mã Tài Khoản", 90, false);
+            this.Main_GridView.AddColumn("AccountID", "Mã TK", 70, false);
             this.Main_GridView.AddColumn("AccountName", "Tên Tài Khoản", 300, false, fixedWidth: false);
             this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
             this.Main_GridView.AddColumn("CustomerID", "Mã KH", 90, false);
-            this.Main_GridView.AddSpinEditColumn("DKNo", "Nợ", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("DKCo", "Có", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("PSNo", "Nợ", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("PSCo", "Có", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("CKNo", "Nợ", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("CKCo", "Có", 120, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("DKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("DKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("PSNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("PSCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("CKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_GridView.AddSpinEditColumn("CKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
         }
 
         private void SetupGridView()
@@ -110,9 +113,11 @@ namespace BSClient.Views
         {
             this.Cursor = Cursors.WaitCursor;
             this.Refresh();
+
             FromDate = From_DateEdit.DateTime;
             ToDate = To_DateEdit.DateTime;
             LoadDataGridView();
+
             this.Cursor = Cursors.Default;
         }
 
@@ -137,16 +142,26 @@ namespace BSClient.Views
             Main_GridControl.ExportToXlsx(path);
         }
 
-        private void Main_GridControl_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("Main_GridControl_MouseDoubleClick");
-        }
-
         private void Main_GridView_RowClick(object sender, RowClickEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2)
             {
-                Console.WriteLine("Main_GridView_RowClick");
+                var selected = Main_GridView.GetFocusedRow().CastTo<BangCanDoiSoPhatSinhTK>();
+
+                if (selected == null)
+                {
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000026);
+                    return;
+                }
+
+                ChiTietTaiKhoan.ChiTietTaiKhoanInput input = new ChiTietTaiKhoan.ChiTietTaiKhoanInput
+                {
+                    FromDate = this.FromDate,
+                    ToDate = this.ToDate,
+                    SelectedData = selected
+                };
+                ChiTietTaiKhoan chiTietTaiKhoan = new ChiTietTaiKhoan(input);
+                chiTietTaiKhoan.ShowDialog();
             }
         }
     }

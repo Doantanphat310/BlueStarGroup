@@ -204,7 +204,7 @@ namespace BSServer.DAOs
             return this.Context.GetDataFromProcedure<BangCanDoiSoPhatSinhTK>("BangCanDoiSoPhatSinhTKSelect", sqlParameters);
         }
 
-        public List<GetBalance> GetSoDuDauKy(DateTime fromDate, DateTime toDate)
+        public List<GetBalance> GetSoDuDauKy(DateTime fromDate)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
@@ -213,6 +213,20 @@ namespace BSServer.DAOs
             };
 
             return this.Context.GetDataFromProcedure<GetBalance>("SP_GetBalance", sqlParameters);
+        }
+
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@AccountID", accountID),
+                new SqlParameter("@AccountDetailID", accountDetailID),
+                new SqlParameter("@FromDate", fromDate.Date),
+                new SqlParameter("@ToDate", toDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<GetChiTietTaiKhoan>("SP_GetChiTietTaiKhoan", sqlParameters);
         }
     }
 }

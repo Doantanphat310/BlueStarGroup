@@ -54,5 +54,10 @@ namespace BSServer.Controllers
         {
             return this.AccountsLogic.GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
         }
+
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        {
+            return this.AccountsDAO.GetChiTietTaiKhoan(accountID, accountDetailID, fromDate, toDate);
+        }
     }
 }

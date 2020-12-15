@@ -1,8 +1,6 @@
 ﻿using BSClient.Base;
 using BSClient.Views;
 using BSCommon.Constant;
-using BSCommon.Utility;
-using BSServer.Controllers;
 using System;
 
 namespace BSClient
@@ -70,7 +68,7 @@ namespace BSClient
 
         private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)
         {
-            BangCanDoiSoPhatSinhTKReport form = new BangCanDoiSoPhatSinhTKReport();
+            BangCanDoiSoPhatSinhTaiKhoan form = new BangCanDoiSoPhatSinhTaiKhoan();
             form.ShowDialog();
         }
 

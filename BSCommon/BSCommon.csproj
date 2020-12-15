@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
     <Compile Include="Exception.cs" />
+    <Compile Include="Models\GetChiTietTaiKhoan.cs" />
     <Compile Include="Models\GetBalance.cs" />
     <Compile Include="Models\BangCanDoiSoPhatSinhTK.cs" />
     <Compile Include="Models\Depreciation.cs" />
