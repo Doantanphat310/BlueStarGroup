@@ -37,10 +37,10 @@
             this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Bottom_Panel = new System.Windows.Forms.Panel();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
+            this.DKNo_SpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.DKNo_SpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.DKCo_SpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.PSNo_SpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.PSCo_SpinEdit = new DevExpress.XtraEditors.SpinEdit();
@@ -145,14 +145,33 @@
             this.tablePanel1.Controls.Add(this.CKNo_SpinEdit);
             this.tablePanel1.Controls.Add(this.CKCo_SpinEdit);
             this.tablePanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tablePanel1.Location = new System.Drawing.Point(433, 0);
+            this.tablePanel1.Location = new System.Drawing.Point(503, 0);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F)});
-            this.tablePanel1.Size = new System.Drawing.Size(448, 84);
+            this.tablePanel1.Size = new System.Drawing.Size(378, 84);
             this.tablePanel1.TabIndex = 0;
+            // 
+            // DKNo_SpinEdit
+            // 
+            this.tablePanel1.SetColumn(this.DKNo_SpinEdit, 1);
+            this.DKNo_SpinEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DKNo_SpinEdit.Location = new System.Drawing.Point(63, 4);
+            this.DKNo_SpinEdit.Name = "DKNo_SpinEdit";
+            this.DKNo_SpinEdit.Properties.DisplayFormat.FormatString = "#,##0";
+            this.DKNo_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.DKNo_SpinEdit.Properties.EditFormat.FormatString = "#,##0";
+            this.DKNo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.DKNo_SpinEdit.Properties.ReadOnly = true;
+            this.tablePanel1.SetRow(this.DKNo_SpinEdit, 0);
+            this.DKNo_SpinEdit.Size = new System.Drawing.Size(153, 20);
+            this.DKNo_SpinEdit.TabIndex = 2;
             // 
             // label1
             // 
@@ -187,34 +206,15 @@
             this.label3.Text = "Cuối kỳ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DKNo_SpinEdit
-            // 
-            this.tablePanel1.SetColumn(this.DKNo_SpinEdit, 1);
-            this.DKNo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.DKNo_SpinEdit.Location = new System.Drawing.Point(63, 4);
-            this.DKNo_SpinEdit.Name = "DKNo_SpinEdit";
-            this.DKNo_SpinEdit.Properties.DisplayFormat.FormatString = "#,##0";
-            this.DKNo_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.DKNo_SpinEdit.Properties.EditFormat.FormatString = "#,##0";
-            this.DKNo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.DKNo_SpinEdit.Properties.ReadOnly = true;
-            this.tablePanel1.SetRow(this.DKNo_SpinEdit, 0);
-            this.DKNo_SpinEdit.Size = new System.Drawing.Size(188, 20);
-            this.DKNo_SpinEdit.TabIndex = 2;
-            // 
             // DKCo_SpinEdit
             // 
             this.tablePanel1.SetColumn(this.DKCo_SpinEdit, 2);
             this.DKCo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
+            0,
             0,
             0,
             0});
-            this.DKCo_SpinEdit.Location = new System.Drawing.Point(257, 4);
+            this.DKCo_SpinEdit.Location = new System.Drawing.Point(222, 4);
             this.DKCo_SpinEdit.Name = "DKCo_SpinEdit";
             this.DKCo_SpinEdit.Properties.DisplayFormat.FormatString = "#,##0";
             this.DKCo_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -222,14 +222,14 @@
             this.DKCo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.DKCo_SpinEdit.Properties.ReadOnly = true;
             this.tablePanel1.SetRow(this.DKCo_SpinEdit, 0);
-            this.DKCo_SpinEdit.Size = new System.Drawing.Size(188, 20);
+            this.DKCo_SpinEdit.Size = new System.Drawing.Size(153, 20);
             this.DKCo_SpinEdit.TabIndex = 2;
             // 
             // PSNo_SpinEdit
             // 
             this.tablePanel1.SetColumn(this.PSNo_SpinEdit, 1);
             this.PSNo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
+            0,
             0,
             0,
             0});
@@ -241,18 +241,18 @@
             this.PSNo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.PSNo_SpinEdit.Properties.ReadOnly = true;
             this.tablePanel1.SetRow(this.PSNo_SpinEdit, 1);
-            this.PSNo_SpinEdit.Size = new System.Drawing.Size(188, 20);
+            this.PSNo_SpinEdit.Size = new System.Drawing.Size(153, 20);
             this.PSNo_SpinEdit.TabIndex = 2;
             // 
             // PSCo_SpinEdit
             // 
             this.tablePanel1.SetColumn(this.PSCo_SpinEdit, 2);
             this.PSCo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
+            0,
             0,
             0,
             0});
-            this.PSCo_SpinEdit.Location = new System.Drawing.Point(257, 32);
+            this.PSCo_SpinEdit.Location = new System.Drawing.Point(222, 32);
             this.PSCo_SpinEdit.Name = "PSCo_SpinEdit";
             this.PSCo_SpinEdit.Properties.DisplayFormat.FormatString = "#,##0";
             this.PSCo_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -260,14 +260,14 @@
             this.PSCo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.PSCo_SpinEdit.Properties.ReadOnly = true;
             this.tablePanel1.SetRow(this.PSCo_SpinEdit, 1);
-            this.PSCo_SpinEdit.Size = new System.Drawing.Size(188, 20);
+            this.PSCo_SpinEdit.Size = new System.Drawing.Size(153, 20);
             this.PSCo_SpinEdit.TabIndex = 2;
             // 
             // CKNo_SpinEdit
             // 
             this.tablePanel1.SetColumn(this.CKNo_SpinEdit, 1);
             this.CKNo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
+            0,
             0,
             0,
             0});
@@ -279,18 +279,18 @@
             this.CKNo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.CKNo_SpinEdit.Properties.ReadOnly = true;
             this.tablePanel1.SetRow(this.CKNo_SpinEdit, 2);
-            this.CKNo_SpinEdit.Size = new System.Drawing.Size(188, 20);
+            this.CKNo_SpinEdit.Size = new System.Drawing.Size(153, 20);
             this.CKNo_SpinEdit.TabIndex = 2;
             // 
             // CKCo_SpinEdit
             // 
             this.tablePanel1.SetColumn(this.CKCo_SpinEdit, 2);
             this.CKCo_SpinEdit.EditValue = new decimal(new int[] {
-            100000000,
+            0,
             0,
             0,
             0});
-            this.CKCo_SpinEdit.Location = new System.Drawing.Point(257, 60);
+            this.CKCo_SpinEdit.Location = new System.Drawing.Point(222, 60);
             this.CKCo_SpinEdit.Name = "CKCo_SpinEdit";
             this.CKCo_SpinEdit.Properties.DisplayFormat.FormatString = "#,##0";
             this.CKCo_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -298,7 +298,7 @@
             this.CKCo_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.CKCo_SpinEdit.Properties.ReadOnly = true;
             this.tablePanel1.SetRow(this.CKCo_SpinEdit, 2);
-            this.CKCo_SpinEdit.Size = new System.Drawing.Size(188, 20);
+            this.CKCo_SpinEdit.Size = new System.Drawing.Size(153, 20);
             this.CKCo_SpinEdit.TabIndex = 2;
             // 
             // ChiTietTaiKhoan

@@ -63,7 +63,8 @@ namespace BSClient
 
         private void SoCaiChiTiet_Item_Click(object sender, EventArgs e)
         {
-
+            ChiTietSoCai form = new ChiTietSoCai();
+            form.ShowDialog();
         }
 
         private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)

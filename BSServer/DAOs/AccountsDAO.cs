@@ -227,6 +227,18 @@ namespace BSServer.DAOs
             };
 
             return this.Context.GetDataFromProcedure<GetChiTietTaiKhoan>("SP_GetChiTietTaiKhoan", sqlParameters);
+        } 
+        
+        public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@FromDate", fromDate.Date),
+                new SqlParameter("@ToDate", toDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<GetChiTietSoCai>("SP_ChiTietSoCai", sqlParameters);
         }
     }
 }

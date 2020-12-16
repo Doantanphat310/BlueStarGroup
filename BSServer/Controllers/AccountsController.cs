@@ -59,5 +59,10 @@ namespace BSServer.Controllers
         {
             return this.AccountsDAO.GetChiTietTaiKhoan(accountID, accountDetailID, fromDate, toDate);
         }
+
+        public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
+        {
+            return this.AccountsLogic.GetChiTietSoCai(fromDate, toDate);
+        }
     }
 }

@@ -66,12 +66,12 @@ namespace BSClient.Views
 
         private void LoadDataGridView()
         {
-            //using (AccountsController controller = new AccountsController())
-            //{
-            //    MainData = new BindingList<GetChiTietTaiKhoan>(controller.GetChiTietTaiKhoan(InputData.SelectedData.AccountID, InputData.FromDate, InputData.ToDate));
+            using (AccountsController controller = new AccountsController())
+            {
+                MainData = new BindingList<GetChiTietTaiKhoan>(controller.GetChiTietTaiKhoan(InputData.SelectedData.AccountID, InputData.SelectedData.AccountDetailID, InputData.FromDate, InputData.ToDate));
 
-            //    Main_GridControl.DataSource = MainData;
-            //}
+                Main_GridControl.DataSource = MainData;
+            }
         }
 
         private void Print_Button_Click(object sender, EventArgs e)

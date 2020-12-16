@@ -214,6 +214,33 @@ namespace BSServer.Logics
 
             return psData;
         }
+
+        public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
+        {
+            List<BangCanDoiSoPhatSinhTK> psdata = this.GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
+
+            List<GetChiTietSoCai> chitiet = this.AccountsDAO.GetChiTietSoCai(fromDate, toDate);
+
+            // gán đầu kỳ và cuối kỳ
+            if (psdata != null && chitiet != null)
+            {
+                foreach (var item in psdata)
+                {
+                    GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                    if(itemFind != null)
+                    {
+                        itemFind.DKNo = item.DKNo;
+                        itemFind.DKCo = item.DKCo;
+                        itemFind.PSNo = item.PSNo;
+                        itemFind.PSCo = item.PSCo;
+                        itemFind.CKNo = item.CKNo;
+                        itemFind.CKCo = item.CKCo;
+                    } 
+                }
+            }
+
+            return chitiet;
+        }
     }
 
 }

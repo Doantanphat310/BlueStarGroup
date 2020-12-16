@@ -1,11 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
+﻿using BSClient.Utility;
 using DevExpress.XtraReports.UI;
-using BSClient.Utility;
-using BSCommon.Utility;
-using System.IO;
 
 namespace BSClient.Report
 {
