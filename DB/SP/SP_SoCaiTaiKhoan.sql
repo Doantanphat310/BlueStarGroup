@@ -1,6 +1,4 @@
-﻿SP_SoCaiTaiKhoan '2019-01-1','2019-12-31'
-
-alter proc SP_SoCaiTaiKhoan
+﻿CREATE proc SP_SoCaiTaiKhoan
 @StartDate datetime, @EndDate datetime
 as
 begin
