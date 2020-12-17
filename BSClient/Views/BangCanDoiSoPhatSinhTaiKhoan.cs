@@ -116,6 +116,7 @@ namespace BSClient.Views
 
             FromDate = From_DateEdit.DateTime;
             ToDate = To_DateEdit.DateTime;
+
             LoadDataGridView();
 
             this.Cursor = Cursors.Default;
