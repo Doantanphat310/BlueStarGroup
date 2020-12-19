@@ -40,7 +40,7 @@ namespace BSServer.Controllers
             return this.VoucherDAO.InsertVouchers(voucherInfo);
         }
 
-        public bool UpdateVoucherDetail(Voucher voucherInfo)
+        public bool UpdateVoucher(Voucher voucherInfo)
         {
             return this.VoucherDAO.UpdateVoucher(voucherInfo);
         }

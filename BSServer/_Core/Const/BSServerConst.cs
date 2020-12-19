@@ -17,5 +17,6 @@
         public const string DepreciationDetailSymbol = "DED";
         public const string AccountGroupSymbol = "LTK";
         public const string GeneralLedgerSymbol = "SC";
+        public const string BalanceSymbol = "BAL";
     }
 }

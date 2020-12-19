@@ -1,7 +1,7 @@
 USE [BlueStarGroup]
 GO
 
-/****** Object:  Table [dbo].[Balance]    Script Date: 14/12/2020 11:57:24 AM ******/
+/****** Object:  Table [dbo].[Balance]    Script Date: 14/12/2020 4:21:52 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,7 +33,8 @@ CREATE TABLE [dbo].[Balance](
 	[AccountID] ASC,
 	[AccountDetailID] ASC,
 	[CompanyID] ASC,
-	[BalanceDate] ASC
+	[BalanceDate] ASC,
+	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 

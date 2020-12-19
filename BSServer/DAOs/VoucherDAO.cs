@@ -49,10 +49,10 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
                     new SqlParameter("@VouchersID", voucherInfo.VouchersID),
-                    new SqlParameter("@Amount", voucherInfo.Amount),
-                    new SqlParameter("@Description", voucherInfo.Description),
+                    new SqlParameter("@Amount", voucherInfo.VoucherAmount),
+                    new SqlParameter("@Description", voucherInfo.VoucherDescription),
                     new SqlParameter("@VouchersTypeID", voucherInfo.VouchersTypeID),
-                    new SqlParameter("@Date", voucherInfo.Date),
+                    new SqlParameter("@Date", voucherInfo.VoucherDate),
                     new SqlParameter("@CompanyID", voucherInfo.CompanyID),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
                 };
@@ -94,8 +94,8 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
                     new SqlParameter("@VouchersID", voucherInfo.VouchersID),
-                    new SqlParameter("@Amount", voucherInfo.Amount),
-                    new SqlParameter("@Description", voucherInfo.Description),
+                    new SqlParameter("@Amount", voucherInfo.VoucherAmount),
+                    new SqlParameter("@Description", voucherInfo.VoucherDescription),
                     new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
                 };
 

@@ -1,4 +1,4 @@
-alter proc WareHouseUpdate
+create proc WareHouseUpdate
 	@WarehouseID varchar(50),
 	@DebitAccountID varchar(50),
 	@CreditAccountID varchar(50),

@@ -25,31 +25,23 @@ SPSelectMaterialInvoiceType
 alter proc SPSelectMaterialInvoiceType
 as
 begin
-	CREATE TABLE #MaterialInvoiceType
-	(
-	InvoiceTypeSummary varchar(1),
-	InvoiceTypeName Nvarchar(50),
-	)
-INSERT INTO #MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
+	Declare @MaterialInvoiceType table (InvoiceTypeSummary varchar(1),	InvoiceTypeName Nvarchar(50))
+INSERT INTO @MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
 Values('R', N'Ra')
-INSERT INTO #MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
+INSERT INTO @MaterialInvoiceType (InvoiceTypeSummary,InvoiceTypeName)
 Values('V', N'Vào')
-select * from #MaterialInvoiceType
+select * from @MaterialInvoiceType
 end
 
-create proc SPSelectMaterialWareHouseType
+alter proc SPSelectMaterialWareHouseType
 as
 begin
-	CREATE TABLE #MaterialWareHouseType
-	(
-	WareHouseTypeSummary varchar(1),
-	WareHouseTypeName Nvarchar(50),
-	)
-INSERT INTO #MaterialInvoiceType (WareHouseTypeSummary,WareHouseTypeName)
+	Declare  @MaterialWareHouseType TABLE (WareHouseTypeSummary varchar(1),WareHouseTypeName Nvarchar(50))
+INSERT INTO @MaterialWareHouseType (WareHouseTypeSummary,WareHouseTypeName)
 Values('X', N'Xuất')
-INSERT INTO #MaterialInvoiceType (WareHouseTypeSummary,WareHouseTypeName)
+INSERT INTO @MaterialWareHouseType (WareHouseTypeSummary,WareHouseTypeName)
 Values('N', N'Nhập')
-select * from #MaterialInvoiceType
+select * from @MaterialWareHouseType
 end
 
 

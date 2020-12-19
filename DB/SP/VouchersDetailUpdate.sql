@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter PROCEDURE [dbo].[VouchersDetailUpdate] (
+create PROCEDURE [dbo].[VouchersDetailUpdate] (
 	@VouchersID varchar(50),
 	@VouchersDetailID varchar(50),
 	@NV varchar(50),

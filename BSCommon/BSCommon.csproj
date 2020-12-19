@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
     <Compile Include="Exception.cs" />
+    <Compile Include="Models\Balance.cs" />
     <Compile Include="Models\BangCanDoiSoPhatSinhTK.cs" />
     <Compile Include="Models\Depreciation.cs" />
     <Compile Include="Models\DepreciationDetail.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Models\MaterialInvoiceType.cs" />
     <Compile Include="Models\MaterialNV.cs" />
     <Compile Include="Models\MaterialDT.cs" />
+    <Compile Include="Models\MaterialSoDuCuoiKyTK.cs" />
     <Compile Include="Models\MaterialTK.cs" />
     <Compile Include="Models\MaterialWareHouseType.cs" />
     <Compile Include="Models\MaterialCustomerInvoice.cs" />

@@ -10,7 +10,6 @@ namespace BSCommon.Models
     [Table("VouchersType")]
     public class VouchersType
     {
-        public string RowID { get; set; }
         public string VouchersTypeName { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }

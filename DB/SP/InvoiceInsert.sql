@@ -1,12 +1,5 @@
 
-InvoiceInsert 'test','test','test','test','test','test','test','test','t','2020-11-22',10,10.00,20,'Phat','Test'
-
-select * from Invoice
-
-alter table Invoice
-alter column VAT decimal
-
-alter proc InvoiceInsert
+Create proc InvoiceInsert
 	@InvoiceID varchar(50),
 	@VouchersID varchar(50) ,
 	@CustomerID varchar(50) ,
@@ -59,5 +52,3 @@ INSERT INTO Invoice(
 	@CreateUser,
 	@CompanyID)
 end
-
-select * from invoice

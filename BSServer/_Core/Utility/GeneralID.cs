@@ -72,6 +72,11 @@ namespace BSServer._Core.Utility
             return GetGeneralIDWithDate(BSServerConst.DepreciationDetailSymbol, seq);
         }
 
+        public static string BalanceID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.BalanceSymbol, seq);
+        }
+
         /// <summary>
         /// Mã nhóm tài khoản
         /// </summary>

@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter proc [dbo].[WareHouseDetailSelectWahouseID]
+create proc [dbo].[WareHouseDetailSelectWahouseID]
 @WareHouseID varchar(50), @CompanyID varchar(50), @CreateUser varchar(50)
 as
 begin

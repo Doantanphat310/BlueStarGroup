@@ -1,4 +1,4 @@
-alter PROCEDURE [dbo].[VouchersDetailDelete] (
+create PROCEDURE [dbo].[VouchersDetailDelete] (
 	@VouchersDetailID varchar(50),
 	@CompanyID varchar(50),
 	@CreateUser varchar(20)
@@ -6,7 +6,7 @@ alter PROCEDURE [dbo].[VouchersDetailDelete] (
 AS	
 	begin
 		update VouchersDetail
-		set IsDelete = 0
+		set IsDelete = 1
 		where VouchersDetailID = @VouchersDetailID and CompanyID = @CompanyID and CreateUser = @CreateUser
 
 		declare @VoucherID varchar(50)
@@ -16,7 +16,7 @@ AS
 		if(@Counter < 1)
 		begin
 			update Vouchers
-			set IsDelete = 0
+			set IsDelete = 1
 			where VouchersID = @VoucherID
 		end
 	end

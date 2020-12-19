@@ -1,21 +1,18 @@
-﻿SP_SoCaiTaiKhoan '2019-01-1','2019-12-31'
-
-alter proc SP_SoCaiTaiKhoan
+﻿Create proc SP_SoCaiTaiKhoan
 @StartDate datetime, @EndDate datetime
 as
 begin
-
 DECLARE @KC911TempTKDU TABLE(VouchersTypeID varchar(50), VouchersID varchar(50), AccountID varchar(50) ,CompanyID varchar(50),Description nvarchar(max),Date datetime,DebitAmount money,CreditAmount money,NV varchar(50),TKDU varchar(50),DebitAmountDU money, CreditAmountDU money)
 DECLARE @KC911Temp01 TABLE(RowID bigint,VouchersTypeID varchar(50), VouchersID varchar(50), AccountID varchar(50) ,CompanyID varchar(50),Description nvarchar(max),Date datetime,DebitAmount money,CreditAmount money,NV varchar(50))
 DECLARE @KC911Temp TABLE(VouchersTypeID varchar(50), VouchersID varchar(50), AccountID varchar(50) ,CompanyID varchar(50),Description nvarchar(max),Date datetime,DebitAmount money,CreditAmount money)
 INSERT INTO @KC911Temp
-select B.VouchersTypeID,A.VouchersID, A.AccountID,A.CompanyID,B.Description,B.Date,Sum(ISNULL(DebitAmount, 0 )) as 'DebitAmount',Sum(ISNULL(CreditAmount, 0 )) as 'CreditAmount'
+select B.VouchersTypeID,A.VouchersID, A.AccountID,A.CompanyID,B.VoucherDescription,B.VoucherDate,Sum(ISNULL(DebitAmount, 0 )) as 'DebitAmount',Sum(ISNULL(CreditAmount, 0 )) as 'CreditAmount'
  from VouchersDetail as A
 inner join Vouchers as B
 on A.VouchersID = B.VouchersID
-where B.Date>= @StartDate and B.Date <= @EndDate
-group by B.VouchersTypeID,A.VouchersID, A.AccountID,A.CompanyID,B.Description,B.Date
-order by A.VouchersID,A.AccountID,b.Date
+where B.VoucherDate>= @StartDate and B.VoucherDate <= @EndDate
+group by B.VouchersTypeID,A.VouchersID, A.AccountID,A.CompanyID,B.VoucherDescription,B.VoucherDate
+order by A.VouchersID,A.AccountID,b.VoucherDate
 
 insert into @KC911Temp01
 select ROW_NUMBER() OVER (Order by AccountID) AS RowID,*,case
@@ -82,3 +79,5 @@ end
 select VouchersTypeID, VouchersID , AccountID ,CompanyID ,Description ,Date  ,TKDU,DebitAmountDU , CreditAmountDU from @KC911TempTKDU 
 order by VouchersID, AccountID
 End
+
+

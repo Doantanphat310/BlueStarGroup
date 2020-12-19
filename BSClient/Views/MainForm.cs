@@ -75,7 +75,8 @@ namespace BSClient
 
         private void NhapSoDuaccordionControlElement_Click(object sender, EventArgs e)
         {
-
+             InputBalance BalanceForm = new InputBalance();
+             BalanceForm.Show();
         }
     }
 }

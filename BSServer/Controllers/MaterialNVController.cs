@@ -59,6 +59,11 @@ namespace BSServer.Controllers
         {
             return this.MaterialNVDAO.GetMaterialCheckInvoiceNo(InvoiceID,CustomerID, InvoiceFormNo,FormNo,SerialNo,InvoiceNo);
         }
+        //GetMaterialGetSoDuCuoiKyTK
+        public List<MaterialSoDuCuoiKyTK> GetMaterialGetSoDuCuoiKyTK(string accountID, string AccountDetailID, string CustomerID, string CompanyID, DateTime VoucherDate, string VoucherDetailID)
+        {
+            return this.MaterialNVDAO.GetMaterialGetSoDuCuoiKyTK(accountID, AccountDetailID, CustomerID, CompanyID, VoucherDate, VoucherDetailID);
+        }
 
         public void Dispose()
         {

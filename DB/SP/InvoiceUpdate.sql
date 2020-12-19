@@ -19,9 +19,9 @@ update Invoice
 set 
 	CustomerID=@CustomerID,
 	Description=@Description,
-	MaSo=@MaSo,
-	MauSo=@MauSo,
-	KyHieu=@KyHieu,
+	InvoiceFormNo=@MaSo,
+	FormNo=@MauSo,
+	SerialNo=@KyHieu,
 	InvoiceNo=@InvoiceNo,
 	InvoiceType=@InvoiceType,
 	InvoiceDate=@InvoiceDate,

@@ -132,12 +132,13 @@ namespace BSClient
         private void InitGridView()
         {
             this.Voucher_gridView.Columns.Clear();
+            this.Voucher_gridView.AddColumn("VoucherDate", "Ngày", 70, false);            
             this.Voucher_gridView.AddColumn("VouchersTypeID", "Loại", 30, false);
-            this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 110, false);
-            this.Voucher_gridView.AddColumn("Date", "Ngày", 70, false);
-            this.Voucher_gridView.AddSpinEditColumn("Amount", "Tiền", 120, false, "c2");
-            this.Voucher_gridView.AddColumn("Description", "Nội dung", 180, false);
+            this.Voucher_gridView.AddColumn("VoucherNo", "Số CT", 110, false);
+            this.Voucher_gridView.AddSpinEditColumn("VoucherAmount", "Tiền", 120, false, "c2");
+            this.Voucher_gridView.AddColumn("VoucherDescription", "Nội dung", 180, false);
             this.Voucher_gridView.AddColumn("CreateUser", "Người tạo", 100, false);
+            this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 1, false);
         }
 
         private void SetupGridView()
@@ -439,10 +440,10 @@ namespace BSClient
             VoucherController voucherController = new VoucherController();
             GlobalVarient.VoucherID++;
             Voucher voucher = new Voucher();
-            voucher.Amount = Debit;
-            voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
+            voucher.VoucherAmount = Debit;
+            voucher.VoucherDescription = richTextBoxVoucherContent.Text.ToString().Trim();
             voucher.VouchersTypeID = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
-            voucher.Date = (DateTime)dateEditNgayNhapChungTu.EditValue;
+            voucher.VoucherDate = (DateTime)dateEditNgayNhapChungTu.EditValue;
             voucher.CompanyID = CommonInfo.CompanyInfo.CompanyID;
             voucher.Status = ModifyMode.Insert;
             #endregion set value to Insert Voucher
@@ -473,7 +474,6 @@ namespace BSClient
         private void Delete_VoucherDetailsimpleButton_Click(object sender, EventArgs e)
         {
             int[] selectIndex = VoucherDetail_gridView.GetSelectedRows();
-
             foreach (int index in selectIndex)
             {
                 VoucherDetail delete = VoucherDetail_gridView.GetRow(index) as VoucherDetail;
@@ -483,9 +483,7 @@ namespace BSClient
                     VoucherDetailDelete.Add(delete);
                 }
             }
-
             VoucherDetail_gridView.DeleteSelectedRows();
-
         }
 
         private void VoucherDetail_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -520,21 +518,25 @@ namespace BSClient
             number2 = Decimal.Round(number2, 2);
             Boolean CompareAmount = number1 > number2;
 
-            if (isNewRow)
-            {
+            Boolean DuNo = false;
+            Boolean DuCo = false;
+
+
+            if (string.IsNullOrEmpty(row.AccountID) || string.IsNullOrEmpty(row.NV) || (!CompareAmount))
+                {
                 if (string.IsNullOrEmpty(row.AccountID))
                 {
                     e.Valid = false;
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnAccountID, "Tài khoản không được để trống!");
                 }
-              
                 if (string.IsNullOrEmpty(row.NV))
                 {
                     e.Valid = false;
                     //Set errors with specific descriptions for the columns
                     view.SetColumnError(columnNV, "NV không được để trống!");
                 }
+
                 if (!CompareAmount)
                 {
                     e.Valid = false;
@@ -542,27 +544,66 @@ namespace BSClient
                     view.SetColumnError(columnAmount, "Tiền phải lớn hơn 0!");
                 }
             }
-            
-            /*
-             //Check Số tiền theo tài khoản phải luôn thỏa điều kiện cuối kỳ nợ có
-            if (!string.IsNullOrEmpty(row.AccountID) && !string.IsNullOrEmpty(row.GeneralLedgerID) && !string.IsNullOrEmpty(row.NV) && (CompareAmount))
+            else
             {
-                //Tất cả dữ liệu đều có giá trị
-                // so khớp sổ cái và tài khoản
-                MaterialNVController controller = new MaterialNVController();
-                List<MaterialCheck> MaterialCheckData = controller.GetMaterialCheck(row.AccountID.ToString(), row.GeneralLedgerID.ToString());
-                bool msgCode = MaterialCheckData.Exists(s => s.msgCode == "0");
-                if (msgCode)
+                if (VoucherDetail_gridView.GetFocusedRowCellValue("NV").ToString().Contains("N"))
                 {
-                    // view.Appearance.Row.BackColor = Color.Red;
-                    e.Valid = false;
-                    //Set errors with specific descriptions for the columns
-                    view.SetColumnError(columnGeneralLedgerID, "Sổ cái không phù hợp với tài khoản!");
+                    DuNo = true;
+                    //Cho phép nhập bên N không cần kiểm tra
                 }
-               
-            }
-            */
+                else DuCo = true; //Cho phép nhập bên có không cần kiểm tra
 
+                List<MaterialTK> TKCheck = materialTK.Where(tk => tk.AccountID.ToString() == VoucherDetail_gridView.GetFocusedRowCellValue("AccountID").ToString()).ToList();
+                MaterialNVController materialSoDuCuoiKyTK = new MaterialNVController();
+                string AccountID = VoucherDetail_gridView.GetFocusedRowCellValue("AccountID").ToString();
+                string VoucherID = GlobalVarient.voucherChoice.VouchersID;
+                string VoucherDetailID = VoucherDetail_gridView.GetFocusedRowCellValue("VouchersDetailID")?.ToString()??"";
+                string AccountDetailID = VoucherDetail_gridView.GetFocusedRowCellValue("AccountDetailID")?.ToString()??"";
+                string CustomerID = VoucherDetail_gridView.GetFocusedRowCellValue("CustomerID")?.ToString()??"";
+                DateTime voucherDate = dateEditNgayNhapChungTu.DateTime.Date;
+                List<MaterialSoDuCuoiKyTK> SoDuCuoiKy = materialSoDuCuoiKyTK.GetMaterialGetSoDuCuoiKyTK(AccountID, AccountDetailID, CustomerID, CommonInfo.CompanyInfo.CompanyID, voucherDate, VoucherDetailID);
+
+                if (TKCheck.Count > 0)
+                {
+                    if ((TKCheck[0].DuNo == true && DuNo == true) || (TKCheck[0].DuCo == true && DuCo == true))
+                    {
+                        //Cho phép nhập Nợ, Có không cần kiểm tra
+                    }
+                    else if (TKCheck[0].DuNo == false && DuNo) // Kiểm tra nợ <= có
+                    {
+                        //Kiểm tra Nợ nhập tk có nhỏ hơn DuCo
+                        if (CompareAmount)
+                        {
+                            number2 = Decimal.Round(SoDuCuoiKy[0].CreditAmount - SoDuCuoiKy[0].DebitAmount, 2);
+                            Boolean CompareAmountSoDu = number1 > number2;
+                            if (CompareAmountSoDu)
+                            {
+                                //Tiền nhập đang lớn hơn số dư
+                                e.Valid = false;
+                                //Set errors with specific descriptions for the columns
+                                view.SetColumnError(columnAmount, "Dư có hiện tại: " + number2.ToString("C2"));
+                            }
+                        }
+                    }
+                    else if (TKCheck[0].DuCo == false && DuCo) //Kiểm tra có <=N
+                    {
+                        //Kiểm tra Có nhập tk có nhỏ hơn DuNo'
+                        if (CompareAmount)
+                        {
+                            number2 = Decimal.Round(SoDuCuoiKy[0].DebitAmount - SoDuCuoiKy[0].CreditAmount, 2);
+                            Boolean CompareAmountSoDu = number1 > number2;
+                            if (CompareAmountSoDu)
+                            {
+                                //Tiền nhập đang lớn hơn số dư
+                                e.Valid = false;
+                                //Set errors with specific descriptions for the columns
+                                view.SetColumnError(columnAmount, "Dư nợ hiện tại: " + number2.ToString("C2"));
+                            }
+                        }
+                    }
+                }
+            }
+            //Kiem tra loai tk du No hay du CO
         }
 
         private void VoucherDetail_gridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
@@ -611,8 +652,8 @@ namespace BSClient
             VoucherDetail_groupControl.Enabled = true;
             Voucher voucher = Voucher_gridView.GetRow(e.RowHandle).CastTo<Voucher>();
             LoadVoucherDetailGridView(voucher.VouchersID);
-            richTextBoxVoucherContent.Text = voucher.Description;
-            dateEditNgayNhapChungTu.EditValue = voucher.Date;
+            richTextBoxVoucherContent.Text = voucher.VoucherDescription;
+            dateEditNgayNhapChungTu.EditValue = voucher.VoucherDate;
             VoucherTypeDK_searchLookUpEdit.EditValue = voucher.VouchersTypeID;
             GlobalVarient.VoucherIDChoice = voucher.VouchersID;
             GlobalVarient.voucherChoice = voucher;
@@ -631,11 +672,7 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng chọn loại chứng từ!");
                 return;
             }
-            //if (!checkBoxThemDuLieu.Checked)
-            //{
-            //    MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chứng từ trước khi lưu mới!");
-            //    return;
-            //}
+
             decimal Debit = 0;
             decimal credit = 0;
             var result = VoucherDetailData.GroupBy(o => o.NV)
@@ -660,13 +697,12 @@ namespace BSClient
 
             #region update Voucher
             VoucherController voucherController = new VoucherController();
-            //GlobalVarient.VoucherID++;
             Voucher voucher = new Voucher();
             voucher.VouchersID = GlobalVarient.VoucherIDChoice;
-            voucher.Amount = Debit;
-            voucher.Description = richTextBoxVoucherContent.Text.ToString().Trim();
-            voucherController.UpdateVoucherDetail(voucher);
-            LoadGridView();
+            voucher.VoucherAmount = Debit;
+            voucher.VoucherDescription = richTextBoxVoucherContent.Text.ToString().Trim();
+            voucherController.UpdateVoucher(voucher);
+            
             #endregion update Voucher
 
             #region set VoucherDetailID
@@ -677,24 +713,19 @@ namespace BSClient
                 {
                     VoucherDetailData[i].Status = ModifyMode.Insert;
                     VoucherDetailData[i].VouchersID = GlobalVarient.VoucherIDChoice;
-                    GlobalVarient.VoucherDetailID++;
-                    // VoucherDetailData[i].VouchersDetailID = "VOD" + DateTime.Now.ToString("yyyyMMddhhmmssff") + GlobalVarient.VoucherDetailID.ToString();
                     VoucherDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 }
             }
             #endregion set VoucherDetailID
 
             int checkAction = 0;
-
             List<VoucherDetail> saveData = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
             if (saveData?.Count > 0)
             {
                 VoucherDetailController controller = new VoucherDetailController();
                 if (controller.SaveVoucherDetail(saveData))
                 {
-                    // MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     checkAction++;
-                    // VoucherDetailDelete = new List<VoucherDetail>();
                 }
                 else
                 {
@@ -710,7 +741,6 @@ namespace BSClient
                 if (controller.SaveVoucherDetail(VoucherDetailDelete))
                 {
                     checkAction++;
-                    // MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                 }
                 else
                 {
@@ -1054,16 +1084,11 @@ namespace BSClient
             Invoice_gridView.SetFocusedRowCellValue("SerialNo", selectRow.SerialNo);
             // Muon lay gi ra thif dung selectRow.
         }
-
-
         public void invoiceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
             InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnit);
         }
-
-
-
         #endregion init Invoice TabPane
 
         Boolean CheckInvoiceCondition()
@@ -1262,7 +1287,7 @@ namespace BSClient
                 InvoiceWarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 InvoiceWarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                 InvoiceWarehouseData[i].InvoiceID = GlobalVarient.invoiceChoice.InvoiceID;
-                InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+                InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.VoucherDate;
 
                 InvoiceWarehouseData[i].Status = ModifyMode.Insert;
             }
@@ -1316,7 +1341,7 @@ namespace BSClient
                     InvoiceWarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     InvoiceWarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
                     InvoiceWarehouseData[i].InvoiceID = GlobalVarient.invoiceChoice.InvoiceID;
-                    InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+                    InvoiceWarehouseData[i].Date = GlobalVarient.voucherChoice.VoucherDate;
                     InvoiceWarehouseData[i].Status = ModifyMode.Insert;
                 }
             }
@@ -1847,7 +1872,7 @@ namespace BSClient
                 InvoiceWareHouse_gridView.SetFocusedRowCellValue("Type", "X");
             }
 
-            InvoiceWareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.Date);
+            InvoiceWareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.VoucherDate);
 
         }
 
@@ -2174,7 +2199,7 @@ namespace BSClient
             {
                 WarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
-                WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+                WarehouseData[i].Date = GlobalVarient.voucherChoice.VoucherDate;
 
                 WarehouseData[i].Status = ModifyMode.Insert;
             }
@@ -2208,7 +2233,7 @@ namespace BSClient
                 {
                     WarehouseData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
                     WarehouseData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
-                    WarehouseData[i].Date = GlobalVarient.voucherChoice.Date;
+                    WarehouseData[i].Date = GlobalVarient.voucherChoice.VoucherDate;
                     WarehouseData[i].Status = ModifyMode.Insert;
                 }
             }
@@ -2793,8 +2818,8 @@ namespace BSClient
                 return;
             }
             LoadVoucherDetailGridView(voucher.VouchersID);
-            richTextBoxVoucherContent.Text = voucher.Description;
-            dateEditNgayNhapChungTu.EditValue = voucher.Date;
+            richTextBoxVoucherContent.Text = voucher.VoucherDescription;
+            dateEditNgayNhapChungTu.EditValue = voucher.VoucherDate;
             VoucherTypeDK_searchLookUpEdit.EditValue = voucher.VouchersTypeID;
             GlobalVarient.VoucherIDChoice = voucher.VouchersID;
             GlobalVarient.voucherChoice = voucher;

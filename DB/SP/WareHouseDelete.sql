@@ -21,7 +21,3 @@ set IsDelete = 0
 where DepreciationID in (select DepreciationID from Depreciation where WareHouseDetailID in (select WareHouseDetailID from WareHouseDetail where  WarehouseID = @WarehouseID and CreateUser = @CreateUser and CompanyID = @CompanyID) and CreateUser = @CreateUser and CompanyID =@CompanyID )
 and CreateUser = @CreateUser and CompanyID =@CompanyID
 end
-
-WareHouseDelete 'WH20201125000001','admin','COM0001'
-
-select * from WareHouseDetail

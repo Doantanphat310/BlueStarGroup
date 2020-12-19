@@ -87,7 +87,22 @@ namespace BSServer.DAOs
             new SqlParameter("@InvoiceNo", InvoiceNo)
             ).ToList();
         }
+        /*
+         @AccountID varchar(50),@AccountDetailID varchar(50),@CustomerID varchar(50),@CompanyID varchar(50),
+@VoucherDate datetime,@VoucherDetailID varchar(50)
+             */
 
-
+        public List<MaterialSoDuCuoiKyTK> GetMaterialGetSoDuCuoiKyTK(string accountID, string AccountDetailID,string CustomerID, string CompanyID, DateTime VoucherDate, string VoucherDetailID)
+        {
+            return this.Context.Database.SqlQuery<MaterialSoDuCuoiKyTK>(
+            "SP_SoDuCuoiKyHienTaiTK @AccountID, @AccountDetailID, @CustomerID, @CompanyID, @VoucherDate, @VoucherDetailID",
+            new SqlParameter("@AccountID", accountID),
+            new SqlParameter("@AccountDetailID", AccountDetailID ?? (object)DBNull.Value),
+            new SqlParameter("@CustomerID", CustomerID ?? (object)DBNull.Value),
+            new SqlParameter("@CompanyID", CompanyID),
+            new SqlParameter("@VoucherDate", VoucherDate),
+            new SqlParameter("@VoucherDetailID", VoucherDetailID ?? (object)DBNull.Value)
+            ).ToList();
+        }
     }
 }

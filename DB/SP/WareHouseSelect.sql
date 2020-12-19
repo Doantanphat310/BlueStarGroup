@@ -1,5 +1,5 @@
 
-alter proc WareHouseSelectInvoiceID
+create proc WareHouseSelectInvoiceID
 @InvoiceID varchar(50), @CompanyID varchar(50), @CreateUser varchar(50)
 as
 begin
@@ -8,7 +8,7 @@ where InvoiceID = @InvoiceID and CompanyID = @CompanyID and CreateUser = @Create
 end
 
 
-alter proc WareHouseSelectVoucherID
+create proc WareHouseSelectVoucherID
 @VoucherID varchar(50), @CompanyID varchar(50), @CreateUser varchar(50)
 as
 begin

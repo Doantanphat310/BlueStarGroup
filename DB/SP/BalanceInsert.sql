@@ -1,5 +1,5 @@
 
-create proc BalanceInsert
+alter proc BalanceInsert
 			@BalanceID varchar(50),
 			@AccountID varchar(50),
 			@AccountDetailID varchar(50),
@@ -8,7 +8,10 @@ create proc BalanceInsert
 			@BalanceDate datetime,
 			@DebitAmount money,
 			@CreditAmount money,
-			@CreateUser varchar(50)
+			@CreateUser varchar(50),
+			@ItemID varchar(50),
+			@BalanceQuatity decimal,
+			@BalancePrice money
 as
 begin
 INSERT INTO [dbo].[Balance]
@@ -21,18 +24,26 @@ INSERT INTO [dbo].[Balance]
            ,DebitAmount
            ,CreditAmount
            ,CreateDate
-           ,CreateUser)
+           ,CreateUser
+		   ,ItemID
+		   ,BalanceQuatity
+			,BalancePrice
+		   )
      VALUES
            (@BalanceID,
 			@AccountID,
 			@AccountDetailID,
 			@CustomerID,
 			@CompanyID,
-			@BalanceDate,
+			DATEADD(yy, DATEDIFF(yy, 0, @BalanceDate), 0),
 			@DebitAmount,
 			@CreditAmount,
 			getdate(),
-			@CreateUser)
+			@CreateUser,
+			@ItemID,
+		    @BalanceQuatity,
+			@BalancePrice
+			)
 end
 
 

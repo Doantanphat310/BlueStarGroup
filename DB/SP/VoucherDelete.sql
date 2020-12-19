@@ -1,4 +1,4 @@
-alter PROCEDURE VoucherDelete (
+Create PROCEDURE VoucherDelete (
 	@VoucherID varchar(50),
 	@CompanyID varchar(50),
 	@UserId varchar(20)
@@ -18,23 +18,23 @@ begin
 		UpdateUser = @UserId,
 		IsDelete = 1
 		where VouchersID = @VoucherID
+		--Delete wareHouse
+		update WareHouse
+		set UpdateDate = getdate(),
+		UpdateUser = @UserId,
+		Isdelete = 1
+		where VouchersID = @VoucherID
 		--delete WareHouseDetail voucherIDDetail
 		update WareHouseDetail
 		set UpdateDate = GETDATE(),
 		UpdateUser = @UserId,
 		Isdelete = 1
-		where VouchersDetailID in (select VouchersDetailID from VouchersDetail where VouchersID = @VoucherID)
-		--delete inVoiceDetail invoice ID
-		update InvoiceDetail
-		set UpdateDate = GETDATE(),
-		UpdateUser = @UserId,
-		Isdelete = 1
-		where InvoiceID in (select InvoiceID from Invoice where VouchersIDetailD in (select VouchersIDetailD from VouchersDetail where VouchersID = @VoucherID))
+		where WarehouseID in (select WarehouseID from WareHouse where VouchersID = @VoucherID)
 		--delete invoice
 		update Invoice
 		set UpdateDate = GETDATE(),
 		UpdateUser = @UserId,
 		Isdelete = 1
-		where VouchersIDetailD in (select VouchersDetailID from VouchersDetail where VouchersID = @VoucherID)
+		where VouchersID = @VoucherID
 end
 

@@ -1,4 +1,4 @@
-ALTER proc [dbo].[WareHouseInsert]
+create proc [dbo].[WareHouseInsert]
 	@WarehouseID varchar(50),
 	@VouchersID varchar(50),
 	@InvoiceID varchar(50),
