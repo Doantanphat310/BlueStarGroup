@@ -142,7 +142,7 @@ namespace BSClient.Views
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2)
             {
-                var selected = Main_GridView.GetFocusedRow().CastTo<BangCanDoiSoPhatSinhTK>();
+                var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
 
                 if (selected == null)
                 {

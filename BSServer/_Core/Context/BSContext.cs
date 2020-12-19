@@ -30,6 +30,10 @@ namespace BSServer._Core.Context
 
         public DbSet<AccountDetail> AccountDetail { get; set; }
 
+        public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<Company> Company { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             builder.Entity<MasterInfo>().HasKey(model => new { model.Key, model.Id });

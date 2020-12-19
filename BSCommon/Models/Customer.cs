@@ -30,16 +30,22 @@ namespace BSCommon.Models
         public string CustomerSName { get; set; }
 
         /// <summary>
-        /// Address
+        /// CustomerTIN
         /// </summary>
-        [Column("Address")]
-        public string Address { get; set; }
+        [Column("CustomerTIN")]
+        public string CustomerTIN { get; set; }
 
         /// <summary>
-        /// Phone
+        /// CustomerAddress
         /// </summary>
-        [Column("Phone")]
-        public string Phone { get; set; }
+        [Column("CustomerAddress")]
+        public string CustomerAddress { get; set; }
+
+        /// <summary>
+        /// CustomerPhone
+        /// </summary>
+        [Column("CustomerPhone")]
+        public string CustomerPhone { get; set; }
 
         /// <summary>
         /// ParentID
@@ -66,9 +72,33 @@ namespace BSCommon.Models
         public string SerialNo { get; set; }
 
         /// <summary>
-        /// IsDelete
+        /// CreateDate
         /// </summary>
-        [Column("IsDelete")]
-        public bool? IsDelete { get; set; }
+        [Column("CreateDate")]
+        public DateTime? CreateDate { get; set; }
+
+        /// <summary>
+        /// UpdateDate
+        /// </summary>
+        [Column("UpdateDate")]
+        public DateTime? UpdateDate { get; set; }
+
+        /// <summary>
+        /// CreateUser
+        /// </summary>
+        [Column("CreateUser")]
+        public string CreateUser { get; set; }
+
+        /// <summary>
+        /// UpdateUser
+        /// </summary>
+        [Column("UpdateUser")]
+        public string UpdateUser { get; set; }
+
+        /// <summary>
+        /// OldCustomerID
+        /// </summary>
+        [Column("OldCustomerID")]
+        public string OldCustomerID { get; set; }
     }
 }

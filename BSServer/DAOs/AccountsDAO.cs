@@ -192,16 +192,16 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK(DateTime fromDate, DateTime toDate)
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhTK(DateTime fromDate, DateTime toDate)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
                 new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
-                new SqlParameter("@FromDate", fromDate.Date),
-                new SqlParameter("@ToDate", toDate.Date)
+                new SqlParameter("@FromDate", fromDate.ToString("yyyy/MM/dd 00:00:00")),
+                new SqlParameter("@ToDate", toDate.Date.ToString("yyyy/MM/dd 23:59:59"))
             };
 
-            return this.Context.GetDataFromProcedure<BangCanDoiSoPhatSinhTK>("BangCanDoiSoPhatSinhTKSelect", sqlParameters);
+            return this.Context.GetDataFromProcedure<GetCanDoiSoPhatSinhTaiKhoan>("BangCanDoiSoPhatSinhTKSelect", sqlParameters);
         }
 
         public List<GetBalance> GetSoDuDauKy(DateTime fromDate)

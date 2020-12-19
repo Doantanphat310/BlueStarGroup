@@ -145,16 +145,16 @@
     <Compile Include="Views\InputBalance.Designer.cs">
       <DependentUpon>InputBalance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\SoCaiChiTietReport.cs">
+    <Compile Include="Reports\SoCaiChiTietReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Report\SoCaiChiTietReport.Designer.cs">
+    <Compile Include="Reports\SoCaiChiTietReport.Designer.cs">
       <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DataBindingHelper.cs" />
@@ -263,10 +263,10 @@
     <EmbeddedResource Include="Views\InputBalance.resx">
       <DependentUpon>InputBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\SoCaiChiTietReport.resx">
+    <EmbeddedResource Include="Reports\SoCaiChiTietReport.resx">
       <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
+    <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BlueStarGroup.resx">
@@ -334,9 +334,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.repx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\BackGroup.png" />
   </ItemGroup>
   <ItemGroup>

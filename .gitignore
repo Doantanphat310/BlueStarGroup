@@ -380,3 +380,4 @@ BSServer\config\**
 .vs/
 
 Properties\licenses.licx
+/BSClient/App.config

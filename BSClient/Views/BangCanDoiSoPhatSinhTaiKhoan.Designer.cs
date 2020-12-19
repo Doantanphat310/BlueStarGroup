@@ -190,6 +190,7 @@
             this.SoCai_Button.Size = new System.Drawing.Size(56, 25);
             this.SoCai_Button.TabIndex = 9;
             this.SoCai_Button.Text = "Sổ cái";
+            this.SoCai_Button.Click += new System.EventHandler(this.SoCai_Button_Click);
             // 
             // Exit_Button
             // 
@@ -212,6 +213,7 @@
             this.Name = "BangCanDoiSoPhatSinhTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bảng cân đối phát sinh số tài khoản";
+            this.Load += new System.EventHandler(this.BangCanDoiSoPhatSinhTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).EndInit();

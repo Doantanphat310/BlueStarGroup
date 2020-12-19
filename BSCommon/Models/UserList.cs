@@ -42,12 +42,6 @@ namespace BSCommon.Models
         public string Address { get; set; }
 
         /// <summary>
-        /// IsDelete
-        /// </summary>
-        [Column("IsDelete")]
-        public bool? IsDelete { get; set; }
-
-        /// <summary>
         /// Password
         /// </summary>
         [NotMapped]

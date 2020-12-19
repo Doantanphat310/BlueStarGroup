@@ -128,7 +128,7 @@ namespace BSClient.Views
 
             public DateTime ToDate { get; set; }
 
-            public BangCanDoiSoPhatSinhTK SelectedData { get; set; }
+            public GetCanDoiSoPhatSinhTaiKhoan SelectedData { get; set; }
         }
     }
 }

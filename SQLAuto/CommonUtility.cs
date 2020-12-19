@@ -213,10 +213,11 @@ namespace SQLAuto
         {
             string result;
             string namespaceStr = "BSServer.DAOs";
-            string insertStr;
+            string selectStr, insertStr;
             string updateStr;
             string deleteStr;
 
+            selectStr = string.Format(DAOFormat.ClassGet_Format, tableName, "Get");
             insertStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos), "Insert");
             updateStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos), "Update");
 
@@ -229,7 +230,13 @@ namespace SQLAuto
                 deleteStr = string.Format(DAOFormat.Class_Format, tableName, GetDAOParam(columnInfos, true, false), "Delete");
             }
 
-            result = string.Format(DAOFormat.File_Format, namespaceStr, tableName, insertStr, updateStr, deleteStr);
+            StringBuilder methods = new StringBuilder();
+            methods.AppendLine(selectStr);
+            methods.AppendLine(insertStr);
+            methods.AppendLine(updateStr);
+            methods.AppendLine(deleteStr);
+
+            result = string.Format(DAOFormat.File_Format, namespaceStr, tableName, methods.ToString());
 
             return result;
         }

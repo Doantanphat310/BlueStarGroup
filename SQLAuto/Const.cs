@@ -125,14 +125,23 @@ namespace {0}
         {{
         }}        
 {2}
-{3}
-{4}
     }}
 }}
 ";
 
         /// <summary>
-        /// 
+        /// Insert/Update/Delete
+        /// </summary>
+        public const string ClassGet_Format = @"
+        public List<{0}> {1}{0}s()
+        {{
+            return this.Context.{0}
+                .OrderBy(o => o.{0}Name)
+                .ToList();
+        }}";
+
+        /// <summary>
+        /// Insert/Update/Delete
         /// </summary>
         public const string Class_Format = @"
         public bool {2}{0}({0} data)
