@@ -22,11 +22,9 @@ namespace BSServer.Controllers
             return this.CompanyDAO.GetCompanys();
         }
 
-        public Company GetCompanyInfo(string companyID = "")
+        public Company GetCompanyInfo(string companyID)
         {
-            return this.CompanyDAO.GetCompanys()
-                    .Where(o => o.CompanyID == companyID)
-                    .FirstOrDefault();
+            return this.CompanyDAO.GetCompanyInfo(companyID);
         }
 
         public bool InsertCompany(Company data)

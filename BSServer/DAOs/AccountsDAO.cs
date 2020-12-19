@@ -3,6 +3,7 @@ using BSCommon.Utility;
 using BSServer._Core.Base;
 using BSServer._Core.Const;
 using BSServer._Core.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -191,9 +192,53 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK()
+        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK(DateTime fromDate, DateTime toDate)
         {
-            return this.Context.GetDataFromProcedure<BangCanDoiSoPhatSinhTK>("BangCanDoiSoPhatSinhTKSelect");
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@FromDate", fromDate.Date),
+                new SqlParameter("@ToDate", toDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<BangCanDoiSoPhatSinhTK>("BangCanDoiSoPhatSinhTKSelect", sqlParameters);
+        }
+
+        public List<GetBalance> GetSoDuDauKy(DateTime fromDate)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@FromDate", fromDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<GetBalance>("SP_GetBalance", sqlParameters);
+        }
+
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@AccountID", accountID),
+                new SqlParameter("@AccountDetailID", accountDetailID),
+                new SqlParameter("@FromDate", fromDate.Date),
+                new SqlParameter("@ToDate", toDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<GetChiTietTaiKhoan>("SP_GetChiTietTaiKhoan", sqlParameters);
+        } 
+        
+        public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
+                new SqlParameter("@FromDate", fromDate.Date),
+                new SqlParameter("@ToDate", toDate.Date)
+            };
+
+            return this.Context.GetDataFromProcedure<GetChiTietSoCai>("SP_ChiTietSoCai", sqlParameters);
         }
     }
 }

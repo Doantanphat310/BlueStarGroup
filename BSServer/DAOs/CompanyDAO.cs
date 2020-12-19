@@ -17,10 +17,15 @@ namespace BSServer.DAOs
 
         public List<Company> GetCompanys()
         {
-            var dataList = this.Context.Database
+            return this.Context.Database
                 .SqlQuery<Company>("CompanySelect").ToList();
+        }
 
-            return dataList;
+        public Company GetCompanyInfo(string companyID)
+        {
+            return this.Context.Database
+                .SqlQuery<Company>("CompanySelect")
+                .Where(o => o.CompanyID == companyID).FirstOrDefault();
         }
 
         public long GetCompanySEQ()

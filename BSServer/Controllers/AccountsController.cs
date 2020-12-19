@@ -2,11 +2,12 @@
 using BSServer._Core.Base;
 using BSServer.DAOs;
 using BSServer.Logics;
+using System;
 using System.Collections.Generic;
 
 namespace BSServer.Controllers
 {
-    public class AccountsController: BaseController
+    public class AccountsController : BaseController
     {
 
         private AccountsDAO AccountsDAO { get; set; }
@@ -49,9 +50,19 @@ namespace BSServer.Controllers
             return this.AccountsLogic.SaveAccountDetail(dataList);
         }
 
-        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhTK()
+        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhByThongKe(DateTime fromDate, DateTime toDate)
         {
-            return this.AccountsDAO.GetBangCanDoiSoPhatSinhTK();
+            return this.AccountsLogic.GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
+        }
+
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        {
+            return this.AccountsDAO.GetChiTietTaiKhoan(accountID, accountDetailID, fromDate, toDate);
+        }
+
+        public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
+        {
+            return this.AccountsLogic.GetChiTietSoCai(fromDate, toDate);
         }
     }
 }

@@ -10,11 +10,11 @@ CREATE TABLE AccountDetail(
 	[UpdateDate] [datetime] NULL,
 	[CreateUser] [varchar](20) NULL,
 	[UpdateUser] [varchar](20) NULL,
-	CONSTRAINT [PK_GeneralLedger] PRIMARY KEY  
+	CONSTRAINT [PK_AccountDetail] PRIMARY KEY  
 	(
-		[AccountDetailID] ASC,
+		[CompanyID] ASC,
 		[AccountID] ASC,
-		[CompanyID] ASC
+		[AccountDetailID] ASC
 	))
 
 GO

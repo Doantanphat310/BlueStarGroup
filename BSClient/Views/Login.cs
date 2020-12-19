@@ -120,11 +120,10 @@ namespace BSClient
                 return;
             }
 
-            CommonInfo.CompanyInfo = new Company
+            using (CompanyController controller = new CompanyController())
             {
-                CompanyID = selected.CompanyID,
-                CompanyName = selected.CompanyName
-            };
+                CommonInfo.CompanyInfo = controller.GetCompanyInfo(selected.CompanyID);
+            }
             CommonInfo.UserInfo.UserRole = selected.UserRoleName;
 
             this.DialogResult = DialogResult.OK;
