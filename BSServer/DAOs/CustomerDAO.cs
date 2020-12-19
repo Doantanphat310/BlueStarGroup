@@ -22,8 +22,8 @@ namespace BSServer.DAOs
 
         public List<Customer> GetCustommers()
         {
-            return this.Context.Database
-                .SqlQuery<Customer>("CustomerSelect")
+            return this.Context.Customer
+                .OrderBy(o => o.CustomerName)
                 .ToList();
         }
 
@@ -34,12 +34,14 @@ namespace BSServer.DAOs
                 new SqlParameter("@CustomerID", data.CustomerID),
                 new SqlParameter("@CustomerName", data.CustomerName),
                 new SqlParameter("@CustomerSName", data.CustomerSName),
-                new SqlParameter("@Address", data.Address),
-                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@CustomerTIN", data.CustomerTIN),
+                new SqlParameter("@CustomerAddress", data.CustomerAddress),
+                new SqlParameter("@CustomerPhone", data.CustomerPhone),
                 new SqlParameter("@ParentID", data.ParentID),
                 new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
                 new SqlParameter("@FormNo", data.FormNo),
                 new SqlParameter("@SerialNo", data.SerialNo),
+                new SqlParameter("@OldCustomerID", data.OldCustomerID),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
@@ -55,12 +57,14 @@ namespace BSServer.DAOs
                 new SqlParameter("@CustomerID", data.CustomerID),
                 new SqlParameter("@CustomerName", data.CustomerName),
                 new SqlParameter("@CustomerSName", data.CustomerSName),
-                new SqlParameter("@Address", data.Address),
-                new SqlParameter("@Phone", data.Phone),
+                new SqlParameter("@CustomerTIN", data.CustomerTIN),
+                new SqlParameter("@CustomerAddress", data.CustomerAddress),
+                new SqlParameter("@CustomerPhone", data.CustomerPhone),
                 new SqlParameter("@ParentID", data.ParentID),
                 new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
                 new SqlParameter("@FormNo", data.FormNo),
                 new SqlParameter("@SerialNo", data.SerialNo),
+                new SqlParameter("@OldCustomerID", data.OldCustomerID),
                 new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
             };
 
@@ -73,8 +77,7 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@CustomerID", data.CustomerID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@CustomerID", data.CustomerID)
             };
 
             this.Context.ExecuteDataFromProcedure("CustomerDelete", sqlParameters);

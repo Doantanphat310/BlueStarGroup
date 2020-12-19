@@ -42,13 +42,14 @@ namespace BSClient.Views
         {
             Customer_GridView.Columns.Clear();
             this.Customer_GridView.AddColumn("CustomerID", "Mã Khách hàng", 100, false);
-            this.Customer_GridView.AddColumn("CustomerName", "Tên Khách hàng", 250);
-            this.Customer_GridView.AddColumn("CustomerSName", "Tên viết tắt", 100);
+            this.Customer_GridView.AddColumn("CustomerName", "Tên Khách hàng", 300);
+            this.Customer_GridView.AddColumn("CustomerSName", "Tên viết tắt", 120);
+            this.Customer_GridView.AddColumn("CustomerTIN", "MST", 100);
             this.Customer_GridView.AddColumn("InvoiceFormNo", "Mã số", 100);
             this.Customer_GridView.AddColumn("FormNo", "Mẫu số", 100);
             this.Customer_GridView.AddColumn("SerialNo", "Ký hiệu", 100);
-            this.Customer_GridView.AddColumn("Phone", "Điện thoại", 80);
-            this.Customer_GridView.AddColumn("Address", "Địa chỉ", 350);
+            this.Customer_GridView.AddColumn("CustomerPhone", "Điện thoại", 80);
+            this.Customer_GridView.AddColumn("CustomerAddress", "Địa chỉ", 350);
         }
 
         private void SetupGridView()

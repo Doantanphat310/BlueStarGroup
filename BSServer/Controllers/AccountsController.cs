@@ -4,6 +4,7 @@ using BSServer.DAOs;
 using BSServer.Logics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BSServer.Controllers
 {
@@ -50,9 +51,9 @@ namespace BSServer.Controllers
             return this.AccountsLogic.SaveAccountDetail(dataList);
         }
 
-        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhByThongKe(DateTime fromDate, DateTime toDate)
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhChiTiet(DateTime fromDate, DateTime toDate)
         {
-            return this.AccountsLogic.GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
+            return this.AccountsLogic.GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
         }
 
         public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)

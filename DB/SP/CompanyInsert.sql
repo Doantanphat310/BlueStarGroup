@@ -11,6 +11,7 @@ CREATE PROCEDURE CompanyInsert (
 	,@Phone varchar(20)
 	,@Fax varchar(20)
 	,@Email varchar(50)
+	,@CurrencyUnit nvarchar(50)
 	,@BankAccount varchar(50)
 	,@BankName nvarchar(250)
 	,@BankBranch nvarchar(250)
@@ -45,6 +46,7 @@ AS
 		,Phone
 		,Fax
 		,Email
+		,CurrencyUnit
 		,BankAccount
 		,BankName
 		,BankBranch
@@ -80,6 +82,7 @@ AS
 		,@Phone
 		,@Fax
 		,@Email
+		,@CurrencyUnit
 		,@BankAccount
 		,@BankName
 		,@BankBranch

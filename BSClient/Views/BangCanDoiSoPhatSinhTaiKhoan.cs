@@ -9,15 +9,16 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BSClient.Views
 {
     public partial class BangCanDoiSoPhatSinhTaiKhoan : XtraForm
     {
-        public BindingList<BangCanDoiSoPhatSinhTK> ReportData { get; set; }
+        public BindingList<GetCanDoiSoPhatSinhTaiKhoan> ReportData { get; set; }
 
         private DateTime FromDate { get; set; }
 
@@ -27,19 +28,21 @@ namespace BSClient.Views
         {
             InitializeComponent();
 
-            FromDate = new DateTime(DateTime.Now.Year, 01, 01);
-            ToDate = new DateTime(DateTime.Now.Year, 12, 31);
+            FromDate = new DateTime(2019, 01, 01);
+            ToDate = new DateTime(2019, 12, 31);
             From_DateEdit.DateTime = FromDate;
-            To_DateEdit.DateTime = ToDate;
-
-            LoadGrid();
-
-            InitComboBox();
+            To_DateEdit.DateTime = ToDate;           
         }
 
         private void InitComboBox()
         {
-            TypeSearch_LookUpEdit.Properties.DataSource = new string[] { "Tài khoản", "Tài khoản - Thống kê" };
+            List<string> typeSource = new List<string> 
+            {
+                "Tài khoản", 
+                "Tài khoản - Thống kê", 
+                "Tài khoản - Thống kê - Khách hàng"
+            };
+            TypeSearch_LookUpEdit.Properties.DataSource = typeSource;
             TypeSearch_LookUpEdit.ItemIndex = 0;
         }
 
@@ -57,8 +60,20 @@ namespace BSClient.Views
             Main_GridView.Columns.Clear();
             this.Main_GridView.AddColumn("AccountID", "Mã TK", 70, false);
             this.Main_GridView.AddColumn("AccountName", "Tên Tài Khoản", 300, false, fixedWidth: false);
-            this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
-            this.Main_GridView.AddColumn("CustomerID", "Mã KH", 90, false);
+
+            if (TypeSearch_LookUpEdit.ItemIndex == 0)
+            {
+            }
+            else if (TypeSearch_LookUpEdit.ItemIndex == 1)
+            {
+                this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
+            }
+            else
+            {
+                this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
+                this.Main_GridView.AddColumn("CustomerID", "Mã KH", 90, false);
+            }
+
             this.Main_GridView.AddSpinEditColumn("DKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
             this.Main_GridView.AddSpinEditColumn("DKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
             this.Main_GridView.AddSpinEditColumn("PSNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
@@ -69,30 +84,84 @@ namespace BSClient.Views
 
         private void SetupGridView()
         {
-            this.Main_GridView.SetupGridView(multiSelect: false, checkBoxSelectorColumnWidth: 0, showAutoFilterRow: false, newItemRow: NewItemRowPosition.None, showFooter: true);
+            this.Main_GridView.SetupGridView(multiSelect: false, checkBoxSelectorColumnWidth: 0, showAutoFilterRow: false, newItemRow: NewItemRowPosition.None, showFooter: true, columnAutoWidth: true);
         }
 
         private void LoadDataGridView()
         {
             using (AccountsController controller = new AccountsController())
             {
-                ReportData = new BindingList<BangCanDoiSoPhatSinhTK>(controller.GetBangCanDoiSoPhatSinhByThongKe(FromDate, ToDate));
+                List<GetCanDoiSoPhatSinhTaiKhoan> data = controller.GetBangCanDoiSoPhatSinhChiTiet(FromDate, ToDate); ;
+                ReportData = new BindingList<GetCanDoiSoPhatSinhTaiKhoan>();
+
+                if (TypeSearch_LookUpEdit.ItemIndex == 0)
+                {
+                    data = GetBangCanDoiSoPhatSinhTKByTK(data);
+                }
+                else if (TypeSearch_LookUpEdit.ItemIndex == 1)
+                {
+                    data = GetBangCanDoiSoPhatSinhTKByThongKe(data);
+                }
+                else
+                {
+                }
+
+                ReportData = new BindingList<GetCanDoiSoPhatSinhTaiKhoan>(data);
 
                 Main_GridControl.DataSource = ReportData;
             }
         }
 
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhTKByTK(List<GetCanDoiSoPhatSinhTaiKhoan> data)
+        {
+            data = data.GroupBy(o => o.AccountID)
+                .Select(o => new GetCanDoiSoPhatSinhTaiKhoan
+                {
+                    AccountID = o.Key,
+                    AccountName = o.Max(s => s.AccountName),
+                    DKNo = o.Sum(s => s.DKNo),
+                    DKCo = o.Sum(s => s.DKCo),
+                    PSNo = o.Sum(s => s.PSNo),
+                    PSCo = o.Sum(s => s.PSCo),
+                    CKNo = o.Sum(s => s.CKNo),
+                    CKCo = o.Sum(s => s.CKCo)
+                }).ToList();
+
+            return data;
+        }
+
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhTKByThongKe(List<GetCanDoiSoPhatSinhTaiKhoan> data)
+        {
+            data = data
+                .GroupBy(o => new
+                {
+                    o.AccountID,
+                    o.AccountDetailID
+                })
+                .Select(o => new GetCanDoiSoPhatSinhTaiKhoan
+                {
+                    AccountID = o.Key.AccountID,
+                    AccountDetailID = o.Key.AccountDetailID,
+                    AccountName = o.Max(s => s.AccountName),
+                    DKNo = o.Sum(s => s.DKNo),
+                    DKCo = o.Sum(s => s.DKCo),
+                    PSNo = o.Sum(s => s.PSNo),
+                    PSCo = o.Sum(s => s.PSCo),
+                    CKNo = o.Sum(s => s.CKNo),
+                    CKCo = o.Sum(s => s.CKCo)
+                }).ToList();
+
+            return data;
+        }
+
         private void Print_Button_Click(object sender, EventArgs e)
         {
-            //string path = Path.Combine(Directory.GetCurrentDirectory(), "Reports", "BangCanDoiSoPhatSinhTaiKhoan.repx");
-            //XtraReport report = new XtraReport();
-            //report.LoadLayout(path);
+            BangCanDoiSoPhatSinhTaiKhoanReport report = new BangCanDoiSoPhatSinhTaiKhoanReport
+            {
+                DataSource = ReportData,
+                RequestParameters = false
+            };
 
-            BangCanDoiSoPhatSinhTaiKhoanReport report = new BangCanDoiSoPhatSinhTaiKhoanReport();
-
-            report.DataSource = ReportData;
-
-            report.RequestParameters = false;
             report.Parameters["CurrencyUnit"].Value = "Đồng";
             report.Parameters["FromDate"].Value = FromDate;
             report.Parameters["ToDate"].Value = ToDate;
@@ -104,8 +173,11 @@ namespace BSClient.Views
             report.Parameters["ChiefaAcountant"].Value = CommonInfo.CompanyInfo.KTTruong;
             report.Parameters["ChiefaAcountantSignture"].Value = CommonInfo.CompanyInfo.ChuKyKTTruong;
             report.Parameters["Director"].Value = CommonInfo.CompanyInfo.LanhDao;
-            ReportPrintTool reportPrintTool = new ReportPrintTool(report);
-            reportPrintTool.AutoShowParametersPanel = false;
+
+            ReportPrintTool reportPrintTool = new ReportPrintTool(report)
+            {
+                AutoShowParametersPanel = false
+            };
             reportPrintTool.ShowPreview();
         }
 
@@ -114,10 +186,10 @@ namespace BSClient.Views
             this.Cursor = Cursors.WaitCursor;
             this.Refresh();
 
-            FromDate = From_DateEdit.DateTime;
-            ToDate = To_DateEdit.DateTime;
+            FromDate = From_DateEdit.DateTime.Date;
+            ToDate = To_DateEdit.DateTime.Date;
 
-            LoadDataGridView();
+            LoadGrid();
 
             this.Cursor = Cursors.Default;
         }
@@ -147,7 +219,7 @@ namespace BSClient.Views
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2)
             {
-                var selected = Main_GridView.GetFocusedRow().CastTo<BangCanDoiSoPhatSinhTK>();
+                var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
 
                 if (selected == null)
                 {
@@ -164,6 +236,48 @@ namespace BSClient.Views
                 ChiTietTaiKhoan chiTietTaiKhoan = new ChiTietTaiKhoan(input);
                 chiTietTaiKhoan.ShowDialog();
             }
+        }
+
+        private void SoCai_Button_Click(object sender, EventArgs e)
+        {
+            SoCaiChiTietReport report = new SoCaiChiTietReport
+            {
+                DataSource = this.GetChiTietSoCais(),
+                RequestParameters = false
+            };
+
+            report.Parameters["CurrencyUnit"].Value = "Đồng";
+            report.Parameters["FromDate"].Value = FromDate;
+            report.Parameters["ToDate"].Value = ToDate;
+            report.Parameters["PrintDate"].Value = DateTime.Now.Date;
+            report.Parameters["CompanyName"].Value = CommonInfo.CompanyInfo.CompanyName;
+            report.Parameters["CompanyAddress"].Value = CommonInfo.CompanyInfo.Address;
+            report.Parameters["Scheduler"].Value = CommonInfo.CompanyInfo.LapBieu;
+            report.Parameters["SchedulerSignature"].Value = CommonInfo.CompanyInfo.ChuKyLapBieu;
+            report.Parameters["ChiefaAcountant"].Value = CommonInfo.CompanyInfo.KTTruong;
+            report.Parameters["ChiefaAcountantSignture"].Value = CommonInfo.CompanyInfo.ChuKyKTTruong;
+            report.Parameters["Director"].Value = CommonInfo.CompanyInfo.LanhDao;
+
+            ReportPrintTool reportPrintTool = new ReportPrintTool(report)
+            {
+                AutoShowParametersPanel = false
+            };
+            reportPrintTool.ShowPreview();
+        }
+
+        private List<GetChiTietSoCai> GetChiTietSoCais()
+        {
+            using (AccountsController controller = new AccountsController())
+            {
+                return controller.GetChiTietSoCai(FromDate, ToDate);
+            }
+        }
+
+        private void BangCanDoiSoPhatSinhTaiKhoan_Load(object sender, EventArgs e)
+        {
+            InitComboBox();
+
+            LoadGrid();
         }
     }
 }

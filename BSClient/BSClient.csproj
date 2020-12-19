@@ -127,6 +127,18 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVarient.cs" />
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoCaiChiTietReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoCaiChiTietReport.Designer.cs">
+      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTietSoCai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,18 +156,6 @@
     </Compile>
     <Compile Include="Views\InputBalance.Designer.cs">
       <DependentUpon>InputBalance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Report\SoCaiChiTietReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Views\Report\SoCaiChiTietReport.Designer.cs">
-      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DataBindingHelper.cs" />
     <Compile Include="Utility\TreeListHelper.cs" />
@@ -254,6 +254,12 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoCaiChiTietReport.resx">
+      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChiTietSoCai.resx">
       <DependentUpon>ChiTietSoCai.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,12 +268,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\InputBalance.resx">
       <DependentUpon>InputBalance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\SoCaiChiTietReport.resx">
-      <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BlueStarGroup.resx">
       <DependentUpon>BlueStarGroup.cs</DependentUpon>
@@ -334,9 +334,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.repx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\BackGroup.png" />
   </ItemGroup>
   <ItemGroup>

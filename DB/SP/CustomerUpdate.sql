@@ -4,12 +4,14 @@ CREATE PROCEDURE CustomerUpdate (
 	@CustomerID varchar(20)
 	,@CustomerName nvarchar(250)
 	,@CustomerSName varchar(50)
-	,@Address nvarchar(250)
-	,@Phone varchar(10)
+	,@CustomerTIN varchar(20)
+	,@CustomerAddress nvarchar(250)
+	,@CustomerPhone varchar(10)
 	,@ParentID varchar(20)
 	,@InvoiceFormNo varchar(20)
 	,@FormNo varchar(20)
 	,@SerialNo varchar(20)
+	,@OldCustomerID varchar(50)
     ,@UpdateUser varchar(20)
 )
 AS
@@ -17,12 +19,14 @@ AS
 	SET
 		CustomerName = @CustomerName
 		,CustomerSName = @CustomerSName
-		,Address = @Address
-		,Phone = @Phone
+		,CustomerTIN = @CustomerTIN
+		,CustomerAddress = @CustomerAddress
+		,CustomerPhone = @CustomerPhone
 		,ParentID = @ParentID
 		,InvoiceFormNo = @InvoiceFormNo
 		,FormNo = @FormNo
 		,SerialNo = @SerialNo
+		,OldCustomerID = @OldCustomerID
         ,UpdateDate = GETDATE()
         ,UpdateUser = @UpdateUser
 	WHERE 

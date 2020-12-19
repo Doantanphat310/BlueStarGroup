@@ -16,12 +16,13 @@ namespace BSServer.DAOs
 
         public UserInfo GetUserInfo(string userId)
         {
-            return this.Context.Users.Where(o => o.IsDelete == null && o.UserID == userId).FirstOrDefault();
+            return this.Context.Users
+                .FirstOrDefault(o => o.UserID == userId);
         }
 
         public List<UserInfo> GetUsers()
         {
-            return this.Context.Users.Where(o => o.IsDelete == null).ToList();
+            return this.Context.Users.ToList();
         }
 
         public List<UserRoleCompany> GetUserRoleCompany(string userID = "")
@@ -70,8 +71,7 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", data.UserID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UserID", data.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserListDelete", sqlParameters);

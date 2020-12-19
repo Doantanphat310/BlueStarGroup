@@ -7,6 +7,7 @@ using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace BSServer.Logics
 {
@@ -146,18 +147,21 @@ namespace BSServer.Logics
             }
         }
 
-        public List<BangCanDoiSoPhatSinhTK> GetBangCanDoiSoPhatSinhByThongKe(DateTime fromDate, DateTime toDate)
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhChiTiet(DateTime fromDate, DateTime toDate)
         {
-            List<BangCanDoiSoPhatSinhTK> psData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(fromDate, toDate);
+            List<GetCanDoiSoPhatSinhTaiKhoan> psData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(fromDate, toDate);
 
             List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate);
             DateTime balanceDate;
-            List<BangCanDoiSoPhatSinhTK> psDKData = null;
+            List<GetCanDoiSoPhatSinhTaiKhoan> psDKData = null;
 
             if (dkData != null && dkData.Count > 0)
             {
                 balanceDate = dkData[0].BalanceDate;
-                psDKData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(balanceDate, fromDate);
+                if (balanceDate.Date < fromDate.Date)
+                {
+                    psDKData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(balanceDate, fromDate.AddDays(-1));
+                }
             }
 
             // tính lại đầu kỳ
@@ -165,7 +169,11 @@ namespace BSServer.Logics
             {
                 foreach (var item in dkData)
                 {
-                    BangCanDoiSoPhatSinhTK psdk = psDKData.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                    GetCanDoiSoPhatSinhTaiKhoan psdk = psDKData.Find(o =>
+                        o.AccountID == item.AccountID &&
+                        o.AccountDetailID == item.AccountDetailID &&
+                        o.CustomerID == item.CustomerID);
+
                     decimal dk;
                     if (psdk != null)
                     {
@@ -190,10 +198,13 @@ namespace BSServer.Logics
             }
 
             // Thêm DK vào phát sinh
-            foreach(var item in psData)
+            foreach (var item in psData)
             {
-                var dk = dkData.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
-                if(dk != null)
+                var dk = dkData.Find(o =>
+                    o.AccountID == item.AccountID &&
+                    o.AccountDetailID == item.AccountDetailID &&
+                    o.CustomerID == item.CustomerID);
+                if (dk != null)
                 {
                     item.DKNo = dk.DebitBalance;
                     item.DKCo = dk.CreditBalance;
@@ -212,12 +223,36 @@ namespace BSServer.Logics
                 }
             }
 
-            return psData;
+            var pss = new List<GetCanDoiSoPhatSinhTaiKhoan>();
+            foreach (var item in dkData)
+            {
+                var ps = psData.Find(o =>
+                    o.AccountID == item.AccountID &&
+                    o.AccountDetailID == item.AccountDetailID &&
+                    o.CustomerID == item.CustomerID);
+
+                if (ps == null)
+                {
+                    pss.Add(new GetCanDoiSoPhatSinhTaiKhoan
+                    {
+                        AccountID = item.AccountID,
+                        //AccountName = item.AccountName,
+                        AccountDetailID = item.AccountDetailID,
+                        CustomerID = item.CustomerID,
+                        DKNo = item.DebitBalance,
+                        DKCo = item.CreditBalance
+                    });
+                }
+            }
+
+            psData.AddRange(pss);
+
+            return psData.OrderBy(o => o.AccountID).ToList();
         }
 
         public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
         {
-            List<BangCanDoiSoPhatSinhTK> psdata = this.GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
+            List<GetCanDoiSoPhatSinhTaiKhoan> psdata = this.GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
 
             List<GetChiTietSoCai> chitiet = this.AccountsDAO.GetChiTietSoCai(fromDate, toDate);
 
@@ -227,7 +262,7 @@ namespace BSServer.Logics
                 foreach (var item in psdata)
                 {
                     GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
-                    if(itemFind != null)
+                    if (itemFind != null)
                     {
                         itemFind.DKNo = item.DKNo;
                         itemFind.DKCo = item.DKCo;
@@ -235,7 +270,7 @@ namespace BSServer.Logics
                         itemFind.PSCo = item.PSCo;
                         itemFind.CKNo = item.CKNo;
                         itemFind.CKCo = item.CKCo;
-                    } 
+                    }
                 }
             }
 

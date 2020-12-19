@@ -18,6 +18,11 @@ namespace BSCommon.Models
         public string AccountDetailID { get; set; }
 
         /// <summary>
+        /// CustomerID
+        /// </summary>
+        public string CustomerID { get; set; }
+
+        /// <summary>
         /// BalanceDate
         /// </summary>
         public DateTime BalanceDate { get; set; }

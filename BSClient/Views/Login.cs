@@ -18,9 +18,16 @@ namespace BSClient
         private readonly string ExitCaption = "Thoát";
         private bool IsLogined = false;
 
+        List<UserInfo> UserInfos { get; set; }
+
         public Login()
         {
             InitializeComponent();
+
+            using (UserController controller = new UserController())
+            {
+                UserInfos = controller.GetUsers();
+            }
         }
 
         private bool IsLogin()
@@ -42,7 +49,7 @@ namespace BSClient
 
             using (UserController controller = new UserController())
             {
-                UserInfo user = controller.GetUserInfo(userID);
+                UserInfo user = UserInfos?.Find(o => o.UserID == userID);
 
                 if (user != null && ClientCommon.IsCheckPass(Password_TextBox.Text, user.Password))
                 {

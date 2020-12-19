@@ -72,6 +72,12 @@ namespace BSCommon.Models
         public string Email { get; set; }
 
         /// <summary>
+        /// CurrencyUnit
+        /// </summary>
+        [Column("CurrencyUnit")]
+        public string CurrencyUnit { get; set; }
+
+        /// <summary>
         /// BankAccount
         /// </summary>
         [Column("BankAccount")]
@@ -192,9 +198,27 @@ namespace BSCommon.Models
         public string ChuKyThuQuy { get; set; }
 
         /// <summary>
-        /// IsDelete
+        /// CreateDate
         /// </summary>
-        [Column("IsDelete")]
-        public bool? IsDelete { get; set; }
+        [Column("CreateDate")]
+        public DateTime? CreateDate { get; set; }
+
+        /// <summary>
+        /// UpdateDate
+        /// </summary>
+        [Column("UpdateDate")]
+        public DateTime? UpdateDate { get; set; }
+
+        /// <summary>
+        /// CreateUser
+        /// </summary>
+        [Column("CreateUser")]
+        public string CreateUser { get; set; }
+
+        /// <summary>
+        /// UpdateUser
+        /// </summary>
+        [Column("UpdateUser")]
+        public string UpdateUser { get; set; }
     }
 }
