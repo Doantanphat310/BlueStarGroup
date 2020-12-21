@@ -10,7 +10,7 @@ SELECT
 	,D.AccountDetailID
 	,TK.AccountName
 	,CONVERT(Date, L.VoucherDate) VoucherDate
-	,D.VouchersID
+	,D.OldVoucherID
 	,L.VouchersTypeID
 	,L.VoucherNo
 	,ISNULL(D.Descriptions, L.VoucherDescription) VoucherDescription
@@ -22,7 +22,7 @@ SELECT
 	--,D2.CreditAmount
 FROM VouchersDetail D
 	INNER JOIN VouchersDetail D2
-		ON D.VouchersID = D2.VouchersID 
+		ON D.OldVoucherID = D2.OldVoucherID 
 		AND D.AccountID != D2.AccountID 
 		AND (D.DebitAmount = D2.CreditAmount AND D.CreditAmount = D2.DebitAmount)
 	INNER JOIN Vouchers L

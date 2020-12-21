@@ -123,4 +123,19 @@
   <metadata name="objectDataSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
+  <data name="$this.ScriptsSource" xml:space="preserve">
+    <value>private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+	XRPictureBox xrBox = sender as XRPictureBox;  
+	string base64String = this.Parameters["SchedulerSignature"].Value.ToString();
+	xrBox.Image = BSClient.Utility.ClientCommon.Base64ToImage(base64String); 
+}
+
+private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+	XRPictureBox xrBox = sender as XRPictureBox;  
+	string base64String = this.Parameters["ChiefaAcountantSignture"].Value.ToString();
+	xrBox.Image = BSClient.Utility.ClientCommon.Base64ToImage(base64String); 
+}
+
+</value>
+  </data>
 </root>

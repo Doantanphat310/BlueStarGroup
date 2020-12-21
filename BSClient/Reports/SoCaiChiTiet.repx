@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="SoCaiChiTietReport" ScriptsSource="private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;SchedulerSignature&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = BSClient.Utility.ClientCommon.Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;ChiefaAcountantSignture&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = BSClient.Utility.ClientCommon.Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;" Margins="40, 58, 25, 30" PaperKind="A4" PageWidth="827" PageHeight="1169" Version="19.1" RequestParameters="false" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="3" Description="Từ ngày" ValueInfo="2020-01-01" Name="FromDate" Type="#Ref-2" />
+    <Item2 Ref="4" Description="Đến ngày" ValueInfo="2020-12-31" Name="ToDate" Type="#Ref-2" />
+    <Item3 Ref="6" Description="Tên công ty" ValueInfo="CÔNG TY TNHH TM THUỐC THÚ Y NGUYỄN KHOA" Name="CompanyName" />
+    <Item4 Ref="7" Description="Địa chỉ" ValueInfo="237B, Nguyễn Văn Tư, KP12, Phưởng 7, TP. Bến Tre" Name="CompanyAddress" />
+    <Item5 Ref="8" Description="Đơn vị tiền tệ" ValueInfo="Đồng" Name="CurrencyUnit" />
+    <Item6 Ref="9" Description="Ngày in" ValueInfo="2020-12-14" Name="PrintDate" Type="#Ref-2" />
+    <Item7 Ref="10" Description="Chữ ký lập biểu" ValueInfo="Qk0aKwAAAAAAADYAAAAoAAAAUQAAAC0AAAABABgAAAAAAOQqAAAAAAAAAAAAAAAAAAAAAAAA/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39+/v7/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/fz8/P39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f38/fz9/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/fz9/vv+/vv+/fz9/f38/f36/f39/P39+v3+/Pz+/v39/v76/fz3/fv7/fb959vo7eft/f39/v77/P76+vz6/fz8/fz6/fz2/f30/P74+P389vv8+/z7+/v7+fv8+v38+f35+f33/P33/v34/v77+/38+vz7+/z8/fz9/fz9/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f77/v38/f7++f7+9P399v39/P37/f39/P39+v7++f3+/P3+/f7+/fz4+vv0/MW5xKWYo+ng5/z5/P78/v39+fz9+vz2/enb79jH4frt/P73/vv7/Pv7/Prz+uTX5drL2uzf7Pzy+v32+/73/v75/v78/v39+v7+9v39+P39/P39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/P79/fz+/vX9+/f69Pzs3/DdzuD07Pb9+f3+/Pv9/vv9/v3+/P789f2ekaWJfYTa0NG+tr97cX/v6fH++v789/ynnbJAMlFBM1JfTHHSwtn9+P338PaOfpVGMVNKNFdUPmBjTW+Re5vGts/u4vL78/z9+P3++f39/Pz9/fn9/fv9/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v76/f37/fr+5tzucmOMSDhXWktfbF9xzsfS+/X9/Pv8/f38/vv+7eXuXlVgtrCv9+/vXlNhST5PzsjS/ff+5NroSkBRZWJmubywcXBvUUdWuay6vK+/PTFHgIKAxs65xs66p7CcdoFuYWNkYFVsbWF3tam96t7w/PX8/Pn9+vj7/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7++v37/fHp9mhidEJCQqKmk+Hi0cPEu3t+funq7/r8/P39/f77/r+4vpqVkuzn4s3FyltOYEY6TL25vf35/JCEkkU7Sby5vfn79ury4nyCd1BFVWlbdDk3RNDU0Pv78/v79fLz7vX18fH359njzJeckmRfaVtOaIh8ltjR4Pn0/P37/f39/f7+/f7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/fv28fqPh502Mzy6u7n7+vj9/fX4+fWWkKTc2uT7/fn8+/338vh7cIKtpK799fycjp5JOk5XR11sXXHz5/ZVSlp0cXH09/L5/f35/frv8uiEh3w6Ojg1MT3g3eb9/P39/P39/P38+v37+vz7/Pz8/vry9erZ28yepZVydnGQjZjX0t78+P39+/z+/P39/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/fv919DhOTJHg4OE+fn3/Pr9/f389vT2Vk9k2tfg+/34/fz95+HqXFFjdWl549jsTENWVFFTcnBwNS86k4mdNS06mJiU/P33+v38/P39/f366ezhbXBnPj1B19Xa/f39/f39/f39/f399vT3+fj7/f38+/z5+/32+/317fLsycjNnpqjq6in5+Xh/fr7/fz9/fz9/fz9/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/fTx9zkySTErPNrb1fz99/z8/fz7/evn7jUxPbu5vvv9/Pz8/Obj51JKVVVKWlVMZT09S6y1peLr2GZsaDQzPFpXXeTk4v39+f39/Pv6/f78/vz9+NHUyn2AeOTk4/39/f39/f39/f39/f79/vz7/f38/v37/f77/vv8/Pn8+/v7/Pf39d3d07u5sMbBwvj19v37/P38/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3v7PMgGi1TUFnz9ez8/Pj7/Pv69v2clqVeXl/z8vL8/P79/v329fRsZmpRRlQ4Mj9na23y+O/4/fLe5dyus7HZ3dz6+/n9/fv9/fz9/f3+/f79/f38/ff7/fX7/Pj8/Pz9/f39/f39/f3+/v7+/f7+/f79/P3+/P78/P36/f39/f39/fv9/fj7+vby7/Dg29zd2dr7+Pn9/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/Pz8/Pz82tnbJSEsp6ao/P30+/r6+/r75d/sNzBGsLGs+vv3/Pz+/f79/v75sKusUklVbm1q2NrS+vj7/Pr9/P73+P309/34+v37/f39/f38/f37/v78/f39/f38/P35/f37/f39/f39/f39/f39/v3+/v3+/v3+/f39/v79/P39+/39/f39/f39/fz9/vv9/fr7/Pr6+PX26+fo8O7uAP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/vv9/fv++/z9+v39+v38/LCssismK83Mx/7++P38/Prz/ZuUqDEtOeTk4vv8+P38/f79/v7+/Pj489bXz+bn4f39/P38/f39/f7+/f3+/Pz9/f39/f39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/fb29gD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v78/f38/v39/f39+/39+v2SiZY2LTnn4+f++/39+f3g2+NHRE1/fn/7/Pn8/fv9/P3+/P7+/v39/fj9/fb9/fn9/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/Pz7/f3+/fr9/fb9/PT8ZVltPDBI8Ob0+vL8x77MWVVaaWtl7vDn/f34/Pz7/fz+/v3+/v3+/v78/f36/f38/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39+/v4/N3S4sq70tbG2kQ2Ti0fO6aYs4ByjJaKn3Ftcunq5fv89P39+f79/f79/v79/v79/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/fv07/ZIOlUTBCQiECwNAxUOAxoiFTM6LkhcUmPJw8769/v7+/j9/fr+/v3+/f7+/f7+/f7+/f79/P39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/fv9u7e/ODM8TUhTfneGGxMjHhYgQUA8XGJVTlVLV1FmsaS9+PD2/fr2/v75/v79/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39+9nb0oCFdl5jVFxfVyYgKWxmbN3e1Pf77Nzj16KpmWVeYHtmhsy41/v1/f39/f7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/fv7+/j4+P39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/fv8/vb5++7x9Ofd39csKDKNiZH7/PX8/vT6+/j7+vXY1NZnXW5dUGjVzNv8+f3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f38/Pz9/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/fz9/v3+/f39/fz86+ntMi8/lJWe+vv4/f35/fr918rgcmt809nLkZiGY15m7enu/Pz8/Pz8/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/f39+vz9+erq6kFBTYqLlfr8/P37++3m74V/gMXGvvT89evx7XJwcaKeoPz8/Pr6+v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v39/fz8/fvp6uhHSEyIioz8/Pz89/ynmquqrKD4/e35+fz79v20rLaTj5L9/f38/Pz+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3v7+/7+/v9/f39/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f397OzsTUtSjIqR/fv85+LleG944dXh/ez9++n90cHQiX17z8vG/f39/Pz8/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/f39/f39/Pz8/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/e/v71lTYIqDkP37/PDv7Ht4dY9/kk43V1JBWlBJUqiroPj78/39/fz8/P7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/fz8/P39/f7+/v39/f39/f39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f37+/v09PRgWGR5b3v8+vr7/PXs7uetsqh1fnOFjobW4dvw/fj5/v3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f34+Pj+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f398vLyWVFYbGNp+Pbz/P34+v369/v4+Pv2+vz2+/z2/f37/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/fz8/Pf3915ZYkVASurn6/7+/f39+v39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f37+/v6+vpcWmEqJzHh3+P+/v39/fv9/fz9/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/Pz8/Pz8aWdrUU9U8vLz/v79/f37/f38/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/fv7+4yMi3t8e/v7+/7+/f39/P39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f38/Pz8/Pzs7ert7un7/Pj+/vz9/fz9/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+/v7+/////////////////v7+/v7+/v7+/v7+/v7+/////////////v7+/////v7+/f39/f39/v79/f38/v79///+/v79/v7+/v7+/v7+/v7+/////////////////////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+/v7+/////v7+/////////////v7+/v7+/v7+/v7+/////////////v7+/////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39+fn59PT0/Pz8/f39+/v7/Pz8/Pz8/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/fv7++jo6P39/f39/fv7++rq6vz8/P39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f39/f37+/v8/Pz8/Pz+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A" Name="SchedulerSignature" />
+    <Item8 Ref="11" Description="Lập biểu" Name="Scheduler" />
+    <Item9 Ref="12" Description="Kế toán trưởng" Name="ChiefaAcountant" />
+    <Item10 Ref="13" Description="Giám đốc" Name="Director" />
+    <Item11 Ref="14" Description="Chữ ký kế toán trưởng" ValueInfo="Qk0aKwAAAAAAADYAAAAoAAAAUQAAAC0AAAABABgAAAAAAOQqAAAAAAAAAAAAAAAAAAAAAAAA/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39+/v7/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/fz8/P39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f38/fz9/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/fz9/vv+/vv+/fz9/f38/f36/f39/P39+v3+/Pz+/v39/v76/fz3/fv7/fb959vo7eft/f39/v77/P76+vz6/fz8/fz6/fz2/f30/P74+P389vv8+/z7+/v7+fv8+v38+f35+f33/P33/v34/v77+/38+vz7+/z8/fz9/fz9/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f77/v38/f7++f7+9P399v39/P37/f39/P39+v7++f3+/P3+/f7+/fz4+vv0/MW5xKWYo+ng5/z5/P78/v39+fz9+vz2/enb79jH4frt/P73/vv7/Pv7/Prz+uTX5drL2uzf7Pzy+v32+/73/v75/v78/v39+v7+9v39+P39/P39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/P79/fz+/vX9+/f69Pzs3/DdzuD07Pb9+f3+/Pv9/vv9/v3+/P789f2ekaWJfYTa0NG+tr97cX/v6fH++v789/ynnbJAMlFBM1JfTHHSwtn9+P338PaOfpVGMVNKNFdUPmBjTW+Re5vGts/u4vL78/z9+P3++f39/Pz9/fn9/fv9/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v76/f37/fr+5tzucmOMSDhXWktfbF9xzsfS+/X9/Pv8/f38/vv+7eXuXlVgtrCv9+/vXlNhST5PzsjS/ff+5NroSkBRZWJmubywcXBvUUdWuay6vK+/PTFHgIKAxs65xs66p7CcdoFuYWNkYFVsbWF3tam96t7w/PX8/Pn9+vj7/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7++v37/fHp9mhidEJCQqKmk+Hi0cPEu3t+funq7/r8/P39/f77/r+4vpqVkuzn4s3FyltOYEY6TL25vf35/JCEkkU7Sby5vfn79ury4nyCd1BFVWlbdDk3RNDU0Pv78/v79fLz7vX18fH359njzJeckmRfaVtOaIh8ltjR4Pn0/P37/f39/f7+/f7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/fv28fqPh502Mzy6u7n7+vj9/fX4+fWWkKTc2uT7/fn8+/338vh7cIKtpK799fycjp5JOk5XR11sXXHz5/ZVSlp0cXH09/L5/f35/frv8uiEh3w6Ojg1MT3g3eb9/P39/P39/P38+v37+vz7/Pz8/vry9erZ28yepZVydnGQjZjX0t78+P39+/z+/P39/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/fv919DhOTJHg4OE+fn3/Pr9/f389vT2Vk9k2tfg+/34/fz95+HqXFFjdWl549jsTENWVFFTcnBwNS86k4mdNS06mJiU/P33+v38/P39/f366ezhbXBnPj1B19Xa/f39/f39/f39/f399vT3+fj7/f38+/z5+/32+/317fLsycjNnpqjq6in5+Xh/fr7/fz9/fz9/fz9/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/fTx9zkySTErPNrb1fz99/z8/fz7/evn7jUxPbu5vvv9/Pz8/Obj51JKVVVKWlVMZT09S6y1peLr2GZsaDQzPFpXXeTk4v39+f39/Pv6/f78/vz9+NHUyn2AeOTk4/39/f39/f39/f39/f79/vz7/f38/v37/f77/vv8/Pn8+/v7/Pf39d3d07u5sMbBwvj19v37/P38/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3v7PMgGi1TUFnz9ez8/Pj7/Pv69v2clqVeXl/z8vL8/P79/v329fRsZmpRRlQ4Mj9na23y+O/4/fLe5dyus7HZ3dz6+/n9/fv9/fz9/f3+/f79/f38/ff7/fX7/Pj8/Pz9/f39/f39/f3+/v7+/f7+/f79/P3+/P78/P36/f39/f39/fv9/fj7+vby7/Dg29zd2dr7+Pn9/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/Pz8/Pz82tnbJSEsp6ao/P30+/r6+/r75d/sNzBGsLGs+vv3/Pz+/f79/v75sKusUklVbm1q2NrS+vj7/Pr9/P73+P309/34+v37/f39/f38/f37/v78/f39/f38/P35/f37/f39/f39/f39/f39/v3+/v3+/v3+/f39/v79/P39+/39/f39/f39/fz9/vv9/fr7/Pr6+PX26+fo8O7uAP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/vv9/fv++/z9+v39+v38/LCssismK83Mx/7++P38/Prz/ZuUqDEtOeTk4vv8+P38/f79/v7+/Pj489bXz+bn4f39/P38/f39/f7+/f3+/Pz9/f39/f39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/fb29gD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v78/f38/v39/f39+/39+v2SiZY2LTnn4+f++/39+f3g2+NHRE1/fn/7/Pn8/fv9/P3+/P7+/v39/fj9/fb9/fn9/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/Pz7/f3+/fr9/fb9/PT8ZVltPDBI8Ob0+vL8x77MWVVaaWtl7vDn/f34/Pz7/fz+/v3+/v3+/v78/f36/f38/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39+/v4/N3S4sq70tbG2kQ2Ti0fO6aYs4ByjJaKn3Ftcunq5fv89P39+f79/f79/v79/v79/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/fv07/ZIOlUTBCQiECwNAxUOAxoiFTM6LkhcUmPJw8769/v7+/j9/fr+/v3+/f7+/f7+/f7+/f79/P39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/fv9u7e/ODM8TUhTfneGGxMjHhYgQUA8XGJVTlVLV1FmsaS9+PD2/fr2/v75/v79/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39+9nb0oCFdl5jVFxfVyYgKWxmbN3e1Pf77Nzj16KpmWVeYHtmhsy41/v1/f39/f7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/fv7+/j4+P39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/fv8/vb5++7x9Ofd39csKDKNiZH7/PX8/vT6+/j7+vXY1NZnXW5dUGjVzNv8+f3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f38/Pz9/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/fz9/v3+/f39/fz86+ntMi8/lJWe+vv4/f35/fr918rgcmt809nLkZiGY15m7enu/Pz8/Pz8/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/f39+vz9+erq6kFBTYqLlfr8/P37++3m74V/gMXGvvT89evx7XJwcaKeoPz8/Pr6+v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v39/fz8/fvp6uhHSEyIioz8/Pz89/ynmquqrKD4/e35+fz79v20rLaTj5L9/f38/Pz+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3v7+/7+/v9/f39/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f397OzsTUtSjIqR/fv85+LleG944dXh/ez9++n90cHQiX17z8vG/f39/Pz8/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/f39/f39/Pz8/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/e/v71lTYIqDkP37/PDv7Ht4dY9/kk43V1JBWlBJUqiroPj78/39/fz8/P7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/fz8/P39/f7+/v39/f39/f39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f37+/v09PRgWGR5b3v8+vr7/PXs7uetsqh1fnOFjobW4dvw/fj5/v3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f34+Pj+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f398vLyWVFYbGNp+Pbz/P34+v369/v4+Pv2+vz2+/z2/f37/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/fz8/Pf3915ZYkVASurn6/7+/f39+v39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f37+/v6+vpcWmEqJzHh3+P+/v39/fv9/fz9/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/Pz8/Pz8aWdrUU9U8vLz/v79/f37/f38/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/fv7+4yMi3t8e/v7+/7+/f39/P39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f38/Pz8/Pzs7ert7un7/Pj+/vz9/fz9/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+/v7+/////////////////v7+/v7+/v7+/v7+/v7+/////////////v7+/////v7+/f39/f39/v79/f38/v79///+/v79/v7+/v7+/v7+/v7+/////////////////////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+/v7+/////v7+/////////////v7+/v7+/v7+/v7+/////////////v7+/////v7+/v7+/v7+/v7+/v7+/////////v7+/v7+/v7+/v7+AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f3+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/f39/v7+/f39/f39/f39/v7+/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/v7+/v7+/v7+/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39/f39/v7+/f39/v7+/v7+/v7+/f39/f39+fn59PT0/Pz8/f39+/v7/Pz8/Pz8/f39/f39/f39/f39/f39/v7+/v7+/f39/f39/f39/f39AP7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v39/f7+/v39/f39/f39/f7+/v39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v7+/v7+/v7+/v39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/f39/f7+/v39/f7+/v7+/v7+/v39/f39/fv7++jo6P39/f39/fv7++rq6vz8/P39/f39/f39/f39/f39/f7+/v7+/v39/f39/f39/f39/QD+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v79/f3+/v79/f39/f39/f3+/v79/f3+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f39/f3+/v79/f3+/v7+/v7+/v79/f39/f39/f39/f39/f37+/v8/Pz8/Pz+/v79/f39/f39/f39/f39/f3+/v7+/v79/f39/f39/f39/f0A" Name="ChiefaAcountantSignture" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="15" ControlType="TopMarginBand" Name="TopMargin" HeightF="25" />
+    <Item2 Ref="16" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="30" />
+    <Item3 Ref="17" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="165">
+      <Controls>
+        <Item1 Ref="18" ControlType="XRLabel" Name="xrLabel6" Text="Từ ngày [NgayPSFrom] đến ngày 31/12/2020" TextAlignment="MiddleCenter" SizeF="310,23" LocationFloat="209.5, 116" StyleName="Title" Font="Times New Roman, 11.25pt, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="19" Expression="'Từ ngày ' + FormatString('{0:dd/MM/yyyy}', ?FromDate) + ' đến ngày ' + FormatString('{0:dd/MM/yyyy}', ?ToDate)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="20" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="21" ControlType="XRLabel" Name="xrLabel3" Text="SỔ CÁI" TextAlignment="BottomCenter" SizeF="729,28" LocationFloat="0, 88" StyleName="Title" Font="Times New Roman, 18pt, style=Bold, charSet=0" ForeColor="Blue">
+          <StylePriority Ref="22" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="23" ControlType="XRLabel" Name="xrLabel1" Text="Địa chỉ:" TextAlignment="MiddleLeft" SizeF="55,16" LocationFloat="0, 45" StyleName="Title" Font="Times New Roman, 9.75pt, style=Bold, charSet=0">
+          <StylePriority Ref="24" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="25" ControlType="XRLabel" Name="xrLabel2" Multiline="true" TextAlignment="MiddleLeft" SizeF="673.9998,16.00002" LocationFloat="55, 44.99998" StyleName="Title" Font="Times New Roman, 9.75pt, style=Bold, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="26" Expression="?CompanyAddress" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="27" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="28" ControlType="XRLabel" Name="Company_Label" Text="ĐƠN VỊ:" TextAlignment="MiddleLeft" SizeF="55,16" LocationFloat="0, 29" StyleName="Title" Font="Times New Roman, 9.75pt, style=Bold, charSet=0">
+          <StylePriority Ref="29" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="30" ControlType="XRLabel" Name="CompanyName_TextBox" TextAlignment="MiddleLeft" SizeF="673.9998,15.99998" LocationFloat="55, 29" StyleName="Title" Font="Times New Roman, 9.75pt, style=Bold, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="31" Expression="?CompanyName" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="32" UseFont="false" UseTextAlignment="false" />
+        </Item6>
+      </Controls>
+    </Item3>
+    <Item4 Ref="33" ControlType="DetailBand" Name="Detail" DrillDownExpanded="false" Expanded="false" HeightF="25">
+      <Controls>
+        <Item1 Ref="34" ControlType="XRTable" Name="xrTable1" TextAlignment="MiddleLeft" SizeF="729.0003,25" LocationFloat="0, 0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="35" ControlType="XRTableRow" Name="xrTableRow1" Weight="1" Visible="false">
+              <Cells>
+                <Item1 Ref="36" ControlType="XRTableCell" Name="xrTableCell1" Weight="2.7442567804947147" Text="12/10/1990" Font="Arial, 9.75pt, charSet=0" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="37" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="38" ControlType="XRTableCell" Name="xrTableCell2" Weight="2.0396495130140742" Multiline="true" TextAlignment="MiddleCenter" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="39" Expression="[VouchersTypeID] + ':' + [VoucherNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="40" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="41" ControlType="XRTableCell" Name="xrTableCell5" Weight="11.273705651592575" Multiline="true" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="42" Expression="[VoucherDescription]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="43" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="44" ControlType="XRTableCell" Name="xrTableCell6" Weight="2.2250702827731814" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="45" Expression="[CorrespondingAccountID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="46" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="47" ControlType="XRTableCell" Name="xrTableCell4" Weight="1.2979508657680938" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="48" Expression="[CorrespondingAccountDetailID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="49" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="50" ControlType="XRTableCell" Name="xrTableCell3" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="51" Expression="[PSNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="52" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="53" ControlType="XRTableCell" Name="xrTableCell7" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="54" Expression="[PSCo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="55" UseBorders="false" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="56" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item4>
+    <Item5 Ref="57" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="154" KeepTogether="true">
+      <Scripts Ref="58" OnBeforePrint="ReportFooter_BeforePrint" />
+      <Controls>
+        <Item1 Ref="59" ControlType="XRPictureBox" Name="ChiefaAcountantSignture_PictureBox" ImageAlignment="MiddleCenter" SizeF="240,80" LocationFloat="240, 51">
+          <Scripts Ref="60" OnBeforePrint="ChiefaAcountantSignture_PictureBox_BeforePrint" />
+        </Item1>
+        <Item2 Ref="61" ControlType="XRPictureBox" Name="SchedulerSignture_PictureBox" ImageAlignment="MiddleCenter" SizeF="240,80" LocationFloat="0, 51">
+          <Scripts Ref="62" OnBeforePrint="SchedulerSignature_PictureBox_BeforePrint" />
+        </Item2>
+        <Item3 Ref="63" ControlType="XRLabel" Name="xrLabel47" Multiline="true" Text="Phan T Châu Thanh" TextAlignment="MiddleCenter" SizeF="240,23" LocationFloat="0, 131" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="64" Expression="?Scheduler" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="65" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="66" ControlType="XRLabel" Name="xrLabel48" Multiline="true" Text="Phan T Châu Thanh" TextAlignment="MiddleCenter" SizeF="240,23" LocationFloat="240, 131" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="67" Expression="?ChiefaAcountant" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="68" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="69" ControlType="XRLabel" Name="xrLabel49" Multiline="true" Text="Nguyễn Ngô Đăng Khoa" TextAlignment="MiddleCenter" SizeF="249.0002,23" LocationFloat="480, 131" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="70" Expression="?Director" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="71" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="72" ControlType="XRLabel" Name="xrLabel46" TextFormatString="Ngày {0:dd} Tháng {0:MM} Năm {0:yyyy}" Multiline="true" Text="Ngày 31 tháng 03 năm 2020" TextAlignment="MiddleCenter" SizeF="249,23" LocationFloat="480, 5" StyleName="Title" Font="Times New Roman, 12pt">
+          <ExpressionBindings>
+            <Item1 Ref="73" Expression="?PrintDate" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="74" UseFont="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="75" ControlType="XRLabel" Name="xrLabel45" Multiline="true" Text="GIÁM ĐỐC" TextAlignment="MiddleCenter" SizeF="249.0002,23" LocationFloat="480, 28" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="76" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="77" ControlType="XRLabel" Name="xrLabel26" Multiline="true" Text="KẾ TOÁN TRƯỞNG" TextAlignment="MiddleCenter" SizeF="240,23" LocationFloat="240, 28" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="78" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item8>
+        <Item9 Ref="79" ControlType="XRLabel" Name="xrLabel16" Multiline="true" Text="LẬP BIỂU" TextAlignment="MiddleCenter" SizeF="240,23" LocationFloat="0, 28" StyleName="Title" Font="Times New Roman, 12pt" BorderDashStyle="Solid">
+          <StylePriority Ref="80" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item9>
+      </Controls>
+    </Item5>
+    <Item6 Ref="81" ControlType="PageHeaderBand" Name="PageHeader" Expanded="false" HeightF="0">
+      <Scripts Ref="82" OnBeforePrint="PageHeader_BeforePrint" />
+    </Item6>
+    <Item7 Ref="83" ControlType="PageFooterBand" Name="PageFooter" HeightF="22">
+      <Controls>
+        <Item1 Ref="84" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="Number" TextFormatString="P: {0}" TextAlignment="BottomCenter" SizeF="100,22" LocationFloat="312, 0" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="85" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item7>
+    <Item8 Ref="86" ControlType="GroupHeaderBand" Name="Account_GroupHeader" Level="1" HeightF="47">
+      <GroupFields>
+        <Item1 Ref="87" FieldName="AccountID" />
+        <Item2 Ref="88" FieldName="AccountDetailID" />
+      </GroupFields>
+      <Controls>
+        <Item1 Ref="89" ControlType="XRTable" Name="xrTable3" TextAlignment="MiddleLeft" SizeF="729,22" LocationFloat="6.357829E-05, 25" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="90" ControlType="XRTableRow" Name="xrTableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="91" ControlType="XRTableCell" Name="xrTableCell9" Weight="2.7442545170333905" Multiline="true" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="92" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="93" ControlType="XRTableCell" Name="xrTableCell10" Weight="2.0396517764753983" Multiline="true" Text="DK:" TextAlignment="MiddleLeft" Borders="Right, Bottom">
+                  <StylePriority Ref="94" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="95" ControlType="XRTableCell" Name="xrTableCell11" Weight="11.273705651592575" Multiline="true" Text="Begining/Số dư đầu kỳ" Borders="Right, Bottom">
+                  <StylePriority Ref="96" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="97" ControlType="XRTableCell" Name="xrTableCell12" Weight="2.2250702827731814" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <StylePriority Ref="98" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="99" ControlType="XRTableCell" Name="xrTableCell13" Weight="1.2979508657680938" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <StylePriority Ref="100" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="101" ControlType="XRTableCell" Name="xrTableCell15" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <Summary Ref="102" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="103" Expression="Iif(sumSum([DKNo]) = 0, '', sumSum([DKNo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="104" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="105" ControlType="XRTableCell" Name="xrTableCell16" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
+                  <Summary Ref="106" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="107" Expression="Iif(sumSum([DKCo]) = 0, '', sumSum([DKCo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="108" UseBorders="false" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="109" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="110" ControlType="XRTable" Name="xrTable2" TextAlignment="MiddleLeft" SizeF="729.0004,25" LocationFloat="0, 0" BackColor="Yellow" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="111" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="112" ControlType="XRTableCell" Name="xrTableCell8" Weight="2.7442567839508234" Multiline="true" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Left, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="113" Expression="[AccountID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="114" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="115" ControlType="XRTableCell" Name="xrTableCell14" Weight="24.290397513616423" TextFormatString="{0:#,##0}" TextAlignment="MiddleLeft" Font="Arial, 9.75pt, style=Bold, charSet=0" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="116" Expression="[AccountName]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="117" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="118" UseBackColor="false" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item8>
+    <Item9 Ref="119" ControlType="GroupFooterBand" Name="Account_GroupFooter" Level="1" HeightF="66">
+      <Controls>
+        <Item1 Ref="120" ControlType="XRTable" Name="xrTable4" TextAlignment="MiddleLeft" SizeF="729,66" LocationFloat="0, 0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="121" ControlType="XRTableRow" Name="xrTableRow5" Weight="0.88">
+              <Cells>
+                <Item1 Ref="122" ControlType="XRTableCell" Name="xrTableCell17" Weight="19.580637834391521" Multiline="true" Text="Đầu kỳ" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="123" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="124" ControlType="XRTableCell" Name="xrTableCell18" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="125" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="126" Expression="Iif(sumSum([DKNo]) = 0, '', sumSum([DKNo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="127" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="128" ControlType="XRTableCell" Name="xrTableCell19" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="129" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="130" Expression="Iif(sumSum([DKCo]) = 0, '', sumSum([DKCo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="131" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item1>
+            <Item2 Ref="132" ControlType="XRTableRow" Name="xrTableRow4" Weight="0.88000000000000012">
+              <Cells>
+                <Item1 Ref="133" ControlType="XRTableCell" Name="xrTableCell21" Weight="19.580637834391521" TextFormatString="{0:#,##0}" Text="Phát sinh" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="134" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="135" ControlType="XRTableCell" Name="xrTableCell22" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="136" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="137" Expression="Iif(sumSum([PSNo]) = 0, '', sumSum([PSNo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="138" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="139" ControlType="XRTableCell" Name="xrTableCell23" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="140" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="141" Expression="Iif(sumSum([PSCo]) = 0, '', sumSum([PSCo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="142" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item2>
+            <Item3 Ref="143" ControlType="XRTableRow" Name="xrTableRow6" Weight="0.87999999999999989">
+              <Cells>
+                <Item1 Ref="144" ControlType="XRTableCell" Name="xrTableCell20" Weight="19.580637834391521" Multiline="true" Text="Cuối kỳ" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="145" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="146" ControlType="XRTableCell" Name="xrTableCell24" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="147" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="148" Expression="Iif(sumSum([CKNo]) = 0, '', sumSum([CKNo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="149" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="150" ControlType="XRTableCell" Name="xrTableCell25" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="151" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="152" Expression="Iif(sumSum([CKCo]) = 0, '', sumSum([CKCo]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="153" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item3>
+          </Rows>
+          <StylePriority Ref="154" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item9>
+    <Item10 Ref="155" ControlType="GroupHeaderBand" Name="Voucher_GroupHeader" GroupUnion="WithFirstDetail" HeightF="18">
+      <GroupFields>
+        <Item1 Ref="156" FieldName="VoucherDate" />
+        <Item2 Ref="157" FieldName="VouchersTypeID" />
+        <Item3 Ref="158" FieldName="VoucherNo" />
+        <Item4 Ref="159" FieldName="CorrespondingAccountID" />
+        <Item5 Ref="160" FieldName="CorrespondingAccountDetailID" />
+      </GroupFields>
+      <Controls>
+        <Item1 Ref="161" ControlType="XRTable" Name="xrTable5" TextAlignment="MiddleLeft" SizeF="729,18" LocationFloat="0.0001033147, 0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="162" ControlType="XRTableRow" Name="xrTableRow7" Weight="0.9">
+              <Cells>
+                <Item1 Ref="163" ControlType="XRTableCell" Name="xrTableCell26" Weight="2.7442528194373974" TextFormatString="{0:dd/MM/yyyy}" Multiline="true" ProcessDuplicatesMode="Merge" TextAlignment="TopCenter" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="164" Expression="[VoucherDate]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="165" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="166" ControlType="XRTableCell" Name="xrTableCell27" Weight="2.0396534740713914" Multiline="true" ProcessDuplicatesMode="Merge" TextAlignment="TopLeft" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="167" Expression="[VouchersTypeID] + ':' + [VoucherNo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="168" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="169" ControlType="XRTableCell" Name="xrTableCell28" Weight="11.273705651592575" Multiline="true" ProcessDuplicatesMode="Merge" TextAlignment="TopLeft" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="170" Expression="[VoucherDescription]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="171" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="172" ControlType="XRTableCell" Name="xrTableCell29" Weight="2.2250702827731814" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="173" Expression="[CorrespondingAccountID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="174" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="175" ControlType="XRTableCell" Name="xrTableCell30" Weight="1.2979508657680938" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="176" Expression="[CorrespondingAccountDetailID]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="177" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="178" ControlType="XRTableCell" Name="xrTableCell31" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Borders="Right, Bottom">
+                  <Summary Ref="179" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="180" Expression="Iif(sumSum([DebitAmount]) = 0, '', sumSum([DebitAmount]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="181" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="182" ControlType="XRTableCell" Name="xrTableCell32" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Borders="Right, Bottom">
+                  <Summary Ref="183" Running="Group" />
+                  <ExpressionBindings>
+                    <Item1 Ref="184" Expression="Iif(sumSum([CreditAmount]) = 0, '', sumSum([CreditAmount]))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="185" UseBorders="false" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="186" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item10>
+    <Item11 Ref="187" ControlType="GroupHeaderBand" Name="GroupHeader1" GroupUnion="WithFirstDetail" Level="2" RepeatEveryPage="true" HeightF="52.0000153" KeepTogether="true">
+      <Controls>
+        <Item1 Ref="188" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Số tiền" TextAlignment="MiddleCenter" SizeF="201.0002,26" LocationFloat="527.999756, 0" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="189" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="190" ControlType="XRLabel" Name="xrLabel42" Multiline="true" Text="TK đối ứng" TextAlignment="MiddleCenter" SizeF="95.00009,26" LocationFloat="432.9999, 0" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="191" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="192" ControlType="XRLabel" Name="xrLabel32" Multiline="true" Text="Ngày GS" TextAlignment="MiddleCenter" SizeF="74,26" LocationFloat="0, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
+          <StylePriority Ref="193" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="194" ControlType="XRLabel" Name="xrLabel39" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="101,26" LocationFloat="628.0001, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="195" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="196" ControlType="XRLabel" Name="xrLabel38" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="100,26" LocationFloat="528, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="197" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="198" ControlType="XRLabel" Name="xrLabel37" Multiline="true" Text="T.Kê" TextAlignment="MiddleCenter" SizeF="35,26" LocationFloat="492.999939, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="199" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="200" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Nội dung" TextAlignment="MiddleCenter" SizeF="304,52.0000153" LocationFloat="128.999924, 0" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="201" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="202" ControlType="XRLabel" Name="xrLabel25" Multiline="true" Text="Số CT" TextAlignment="MiddleCenter" SizeF="54.99998,26" LocationFloat="73.99994, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="203" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item8>
+        <Item9 Ref="204" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Chứng từ ghi sổ" TextAlignment="MiddleCenter" SizeF="129,26" LocationFloat="0, 0" BackColor="Cyan" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="205" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="206" ControlType="XRLabel" Name="xrLabel36" Multiline="true" Text="T.Khoản" TextAlignment="MiddleCenter" SizeF="60,26" LocationFloat="432.9999, 25.9999924" BackColor="Cyan" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <StylePriority Ref="207" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item10>
+      </Controls>
+    </Item11>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="208" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="209" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="210" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="211" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="212" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource3" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTMiPjxEYXRhU291cmNlIFR5cGU9IkJTQ29tbW9uLk1vZGVscy5HZXRDaGlUaWV0U29DYWksIEJTQ29tbW9uLCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbCIgLz48L09iamVjdERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="2" Content="System.DateTime" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

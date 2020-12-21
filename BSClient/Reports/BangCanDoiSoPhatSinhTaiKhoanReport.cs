@@ -10,18 +10,18 @@ namespace BSClient.Report
             InitializeComponent();
         }
 
-        private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            string schedulerSignature = this.Parameters["SchedulerSignature"].Value.ToString();
+        //private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        //{
+        //    string schedulerSignature = this.Parameters["SchedulerSignature"].Value.ToString();
 
-            (sender as XRPictureBox).Image = ClientCommon.Base64ToImage(schedulerSignature);
-        }
+        //    (sender as XRPictureBox).Image = ClientCommon.Base64ToImage(schedulerSignature);
+        //}
 
-        private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            string schedulerSignature = this.Parameters["ChiefaAcountantSignture"].Value.ToString();
+        //private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        //{
+        //    string schedulerSignature = this.Parameters["ChiefaAcountantSignture"].Value.ToString();
 
-            (sender as XRPictureBox).Image = ClientCommon.Base64ToImage(schedulerSignature);
-        }
+        //    (sender as XRPictureBox).Image = ClientCommon.Base64ToImage(schedulerSignature);
+        //}
     }
 }

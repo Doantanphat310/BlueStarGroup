@@ -10,7 +10,7 @@ AS
 		,PS.AccountDetailID
 		,PS.CustomerID
 		,MAX(PS.AccountName) AccountName
-		,SUM(PS.CreditAmount) PSNo
+		,SUM(PS.DebitAmount) PSNo
 		,SUM(PS.CreditAmount) PSCo
 	FROM (
 		SELECT
@@ -18,12 +18,12 @@ AS
 			,ISNULL(D.AccountDetailID, '') AccountDetailID
 			,ISNULL(TKD.AccountDetailName, TK.AccountName) AccountName
 			,ISNULL(CustomerID, '') CustomerID
-			,D.DebitAmount DebitAmount
-			,D.CreditAmount CreditAmount
+			,ISNULL(D.DebitAmount, 0) DebitAmount
+			,ISNULL(D.CreditAmount, 0) CreditAmount
 		FROM 
 			Vouchers L
 			INNER JOIN VouchersDetail D
-				ON L.VouchersID = D.VouchersID
+				ON L.OldVoucherID = D.OldVoucherID
 			INNER JOIN Accounts TK
 				ON D.AccountID = TK.AccountID
 			LEFT JOIN AccountDetail TKD

@@ -120,6 +120,7 @@
     <Compile Include="Base\BaseFormList.Designer.cs">
       <DependentUpon>BaseFormList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants\ReportConst.cs" />
     <Compile Include="Controls\ButtonGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +140,7 @@
     <Compile Include="Reports\SoCaiChiTietReport.Designer.cs">
       <DependentUpon>SoCaiChiTietReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility\ReportHelper.cs" />
     <Compile Include="Views\ChiTietSoCai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +336,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.repx" />
+    <None Include="Reports\SoCaiChiTiet.repx" />
     <None Include="Resources\BackGroup.png" />
   </ItemGroup>
   <ItemGroup>

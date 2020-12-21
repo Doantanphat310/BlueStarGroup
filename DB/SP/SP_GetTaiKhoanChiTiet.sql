@@ -4,6 +4,7 @@ CREATE PROC SP_GetChiTietTaiKhoan
 	@CompanyID			varchar(50)
 	,@AccountID			varchar(50)
 	,@AccountDetailID	varchar(50)
+	,@CustomerID		varchar(50)
 	,@FromDate			Datetime
 	,@ToDate			Datetime
 AS
@@ -18,7 +19,7 @@ SELECT
 FROM 
 	Vouchers L
 	INNER JOIN VouchersDetail D
-		ON L.VouchersID = D.VouchersID
+		ON L.OldVoucherID = D.OldVoucherID
 WHERE 
 	L.CompanyID = @CompanyID
 	AND AccountID = @AccountID
@@ -26,11 +27,12 @@ WHERE
 	AND (@AccountDetailID IS NULL
 		OR @AccountDetailID IS NOT NULL AND D.AccountDetailID >= @AccountDetailID)
 
-	AND (@FromDate IS NULL
-		OR @FromDate IS NOT NULL AND L.VoucherDate >= @FromDate)
+	AND (@CustomerID IS NULL
+		OR @CustomerID IS NOT NULL AND D.AccountDetailID >= @CustomerID)
 
-	AND (@ToDate IS NULL
-		OR @ToDate IS NOT NULL AND L.VoucherDate <= @ToDate)
+	AND L.VoucherDate >= @FromDate
+
+	AND L.VoucherDate <= @ToDate
 ORDER BY
 	VoucherDate
 	,VouchersTypeID

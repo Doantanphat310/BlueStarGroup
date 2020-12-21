@@ -43,7 +43,7 @@ namespace BSClient.Views
                 "Tài khoản - Thống kê - Khách hàng"
             };
             TypeSearch_LookUpEdit.Properties.DataSource = typeSource;
-            TypeSearch_LookUpEdit.ItemIndex = 0;
+            TypeSearch_LookUpEdit.ItemIndex = 1;
         }
 
         private void LoadGrid()
@@ -240,6 +240,11 @@ namespace BSClient.Views
 
         private void SoCai_Button_Click(object sender, EventArgs e)
         {
+            //XtraReport report = new XtraReport();
+            //report.LoadLayout(ClientCommon.GetReportDirectory());
+
+            //ReportHelper.ShowPreview()
+
             SoCaiChiTietReport report = new SoCaiChiTietReport
             {
                 DataSource = this.GetChiTietSoCais(),
