@@ -16,13 +16,13 @@ namespace BSServer.DAOs
         {
         }
 
-        public List<Voucher> GetVouchersCompany(string companyID)
+        public List<Voucher> GetVouchersCompany(DateTime VoucherDate,string companyID)
         {
-            SqlParameter param = new SqlParameter("@CompanyID", companyID);
-
-            return this.Context.Database
-                .SqlQuery<Voucher>("VoucherCompanySelect @CompanyID", param)
-                .ToList();
+            return this.Context.Database.SqlQuery<Voucher>(
+            "VoucherCompanySelect @VoucherDate, @CompanyID",
+            new SqlParameter("@VoucherDate", VoucherDate),
+            new SqlParameter("@CompanyID", companyID)
+            ).ToList();
         }
 
         public long GetVoucherSEQ()

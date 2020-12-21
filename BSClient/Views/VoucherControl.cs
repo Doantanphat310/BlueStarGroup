@@ -68,6 +68,8 @@ namespace BSClient
         List<MaterialNV> materialNV = MaterialNV.GetMaterialNV();
         public static MaterialNVController MaterialTK = new MaterialNVController();
         List<MaterialTK> materialTK = MaterialTK.GetMaterialTK(CommonInfo.CompanyInfo.CompanyID);
+        List<MaterialTK> materialTKDetail = new List<MaterialTK>();
+
         public static MaterialNVController MaterialDT = new MaterialNVController();
         List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(CommonInfo.CompanyInfo.CompanyID);
         public static MaterialNVController MaterialCustomerInvoice = new MaterialNVController();
@@ -85,6 +87,7 @@ namespace BSClient
             InitComboBox();
             LoadGrid();
             VoucherDetailDelete = new List<VoucherDetail>();
+            CompanyNameVoucher_labelControl.Text = CommonInfo.CompanyInfo.CompanyName + " | " + CommonInfo.CompanyInfo.CompanySName;
         }
 
         private void LoadGrid()
@@ -100,15 +103,14 @@ namespace BSClient
 
             SetupGridView();
 
-            LoadGridView();
+            LoadGridView(DateTime.Now);
         }
 
         private void LoadVoucherDetailGrid()
         {
+           // materialTKDetail = materialTK;
             InitVoucherDetailGridView();
-
             SetupVoucherDetailGridView();
-
             LoadVoucherDetailGridView("00000000000000000LoadDefaulttoadnew");
         }
 
@@ -143,48 +145,47 @@ namespace BSClient
 
         private void SetupGridView()
         {
-            this.Voucher_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
-            this.Voucher_gridView.SetupGridView(columnAutoWidth: false);
-            this.Voucher_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
-            this.Voucher_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.Voucher_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30,columnAutoWidth:false, newItemRow:NewItemRowPosition.None);           
         }
 
-        private void LoadGridView()
+        private void LoadGridView(DateTime VoucherDate)
         {
             VoucherController controller = new VoucherController();
-            VoucherData = new BindingList<Voucher>(controller.GetVouchersCompany(CommonInfo.CompanyInfo.CompanyID));
+            VoucherData = new BindingList<Voucher>(controller.GetVouchersCompany(VoucherDate,CommonInfo.CompanyInfo.CompanyID));
             Voucher_gridControl.DataSource = VoucherData;
         }
 
         private void InitVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.Columns.Clear();
-   
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
-
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
                 new ColumnInfo("AccountID", "Tài khoản",140),
                 new ColumnInfo("AccountDetailID", "Mã TK",80),
                 new ColumnInfo("Name", "Tên",180 ),
-            
             };
 
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID", 
                 isAllowEdit: true,columns: columns, editValueChanged: Accounts_EditValueChanged);
-            this.VoucherDetail_gridView.AddColumn("AccountDetailID", "Mã TK", 60, false);
+
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountDetailID", "Mã TK", 60, materialTK, "AccountDetailID","AccountDetailID", isAllowEdit:true, columns: columns, editValueChanged: AccountsDetail_EditValueChanged);
+
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "C2");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
         }
-
         public void Accounts_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
             VoucherDetail_gridView.SetFocusedRowCellValue("AccountDetailID", selectRow.AccountDetailID);
         }
-
+        public void AccountsDetail_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
+            VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
+        }
         private void SetupVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
@@ -462,7 +463,7 @@ namespace BSClient
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     VoucherDetailDelete = new List<VoucherDetail>();
                     this.LoadVoucherDetailGridView(voucher.VouchersID);
-                    this.LoadGridView();
+                    this.LoadGridView(dateEditNgayNhapChungTu.DateTime);
                 }
                 else
                 {
@@ -756,7 +757,7 @@ namespace BSClient
             #endregion delete VoucherDetail
 
             this.LoadVoucherDetailGridView(GlobalVarient.VoucherIDChoice);
-            LoadGridView();
+            LoadGridView(dateEditNgayNhapChungTu.DateTime);
         }
 
         private void checkBoxThemDuLieu_CheckedChanged(object sender, EventArgs e)
@@ -862,12 +863,14 @@ namespace BSClient
             this.InvoiceWareHouse_gridView.AddColumn("Date", "Ngày", 80, false);
             this.InvoiceWareHouse_gridView.AddColumn("DeliverReceiver", "Người giao nhận", 80, true);
             this.InvoiceWareHouse_gridView.AddColumn("Description", "Nội dung", 100, true);
-            this.InvoiceWareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
            // this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("GeneralLedgerID", "Sổ cái", 120, materialGL, "GeneralLedgerID", "GeneralLedgerName", isAllowEdit: true);
+           //TKKho So - Ma Thong Ke
+
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("DebitAccountID", "TK Nợ", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CreditAccountID", "TK Có", 80, materialTK, "AccountID", "AccountID", isAllowEdit: true);
             this.InvoiceWareHouse_gridView.AddSearchLookupEditColumn("CustomerID", "KH", 80, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
+            this.InvoiceWareHouse_gridView.AddColumn("Attachfile", "File đính kèm", 60, true);
             this.InvoiceWareHouse_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
 
@@ -3022,6 +3025,21 @@ namespace BSClient
                     view.SetColumnError(columnInvoiceNo,"Trùng số hóa đơn!");
                 }
             }
+        }
+
+        string checkaccount = "";
+        private void VoucherDetail_gridView_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            //if (e.Column.FieldName == "AccountDetailID")
+            //{
+            //    if(checkaccount != VoucherDetail_gridView.GetFocusedRowCellValue("AccountID").ToString())
+            //    {
+            //        materialTKDetail = materialTK.Where(item => item.AccountID == VoucherDetail_gridView.GetFocusedRowCellValue("AccountID").ToString() && item.AccountDetailID != null).ToList();
+            //        InitVoucherDetailGridView();
+            //        checkaccount = VoucherDetail_gridView.GetFocusedRowCellValue("AccountID").ToString();
+            //    }
+
+            //}
         }
     }
 }

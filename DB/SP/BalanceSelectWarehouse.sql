@@ -6,10 +6,17 @@ alter proc BalanceSelectWarehouse
 			@CustomerID varchar(50)
 as
 begin
-Select BalanceID,BalanceDate,AccountID,AccountDetailID,CustomerID,CompanyID,DebitAmount,CreditAmount from Balance
+Select BalanceID,BalanceDate,AccountID,AccountDetailID,CustomerID,CompanyID,DebitAmount,CreditAmount,
+Balance.ItemID,BalanceQuatity, BalancePrice,Items.ItemUnit,
+case
+when IsNull(DebitAmount,0) > 0 then DebitAmount
+when IsNull(CreditAmount,0) > 0 then CreditAmount
+end 'Amount'
+ from Balance inner join Items
+ on Balance.ItemID = Items.ItemID
 where CompanyID = @CompanyID 
 and year(BalanceDate) = YEAR (@BalanceDate)
 and AccountID =@AccountID
-and AccountDetailID =@AccountDetailID
-and CustomerID = @CustomerID
+and IsNull(AccountDetailID,'') =@AccountDetailID
+and IsNull(CustomerID,'')  = @CustomerID
 end

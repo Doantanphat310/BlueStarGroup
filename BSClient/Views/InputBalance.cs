@@ -24,6 +24,7 @@ namespace BSClient.Views
             InitializeComponent();
             LoadVoucherGrid();
             LoadSearchEditlookup();
+            InitLoadBalanceWarehouse();
         }
 
         #region Init gridview
@@ -44,6 +45,8 @@ namespace BSClient.Views
             initsearcheditlookupAccountDetail();
 
             initsearcheditlookupCustomer();
+
+            initsearcheditlookupItem();
         }
 
 
@@ -128,14 +131,14 @@ namespace BSClient.Views
 
         void initsearcheditlookupItem()
         {
-
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
                 new ColumnInfo("ItemID", "ID Hàng hóa",140),
                 new ColumnInfo("ItemSName", "Mã hàng hóa",140),
                 new ColumnInfo("ItemName", "Tên hàng hóa",300),
+                new ColumnInfo("ItemUnit", "ĐVT",140),
             };
-            this.BalanceCustomer_searchLookUpEdit.SetupLookUpEdit("ItemID", "ItemSName", Items, columns, nullText: "", enterChoiceFirstRow: true);
+            this.BalanceHangHoa_searchLookUpEdit.SetupLookUpEdit("ItemID", "ItemSName", items, columns, nullText: "", enterChoiceFirstRow: true);
         }
 
         #endregion init search editlookup
@@ -158,9 +161,9 @@ namespace BSClient.Views
             this.BalanceWareHouse_gridView.Columns.Clear();
             this.BalanceWareHouse_gridView.AddSearchLookupEditColumn("ItemID", "Hàng hóa", 80, items, "ItemID", "ItemSName", isAllowEdit: false, editValueChanged: BalanceWareHouseDetail_EditValueChanged);
             this.BalanceWareHouse_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: false);
-            this.BalanceWareHouse_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, false, "###,###,###.##");
-            this.BalanceWareHouse_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, false, "c2");
-            this.BalanceWareHouse_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false, "c2");
+            this.BalanceWareHouse_gridView.AddSpinEditColumn("BalanceQuatity", "Số lượng", 60, false, "###,###,###.##");
+            this.BalanceWareHouse_gridView.AddSpinEditColumn("BalancePrice", "Đơn giá", 120, false, "c2");
+            this.BalanceWareHouse_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false, "c2",DevExpress.Data.SummaryItemType.Sum, "{0:C}");
         }
 
         public void BalanceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
@@ -171,7 +174,7 @@ namespace BSClient.Views
 
         private void SetupBalanceWareHouse_gridView()
         {
-            this.BalanceWareHouse_gridView.SetupGridView(columnAutoWidth: false, multiSelect: false, checkBoxSelectorColumnWidth: 30, showAutoFilterRow: true, newItemRow: DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None, editable: false);
+            this.BalanceWareHouse_gridView.SetupGridView(columnAutoWidth: false,showFooter: true, multiSelect: false, checkBoxSelectorColumnWidth: 30, showAutoFilterRow: true, newItemRow: DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None, editable: false);
         }
 
         private void Load_BalanceWareHouseDetail_GridView(List<Balance> data, string AccountID, string AccountDetailID)
@@ -184,7 +187,7 @@ namespace BSClient.Views
         {
             BalanceController controller = new BalanceController();
             BalanceDataWareHouse = new BindingList<Balance>(controller.GetBalance(balanceDate, companyID, AccountID, AccountDetailID, CustomerID));
-            InputBalance_gridControl.DataSource = BalanceDataWareHouse;
+            BalanceWareHouse_gridControl.DataSource = BalanceDataWareHouse;
             BalanceDataList = BalanceDataWareHouse.ToList();
         }
 
@@ -198,14 +201,14 @@ namespace BSClient.Views
                 BalanceWarehouse_panel.Enabled = true;
                 Balance BalanceDataInsert = new Balance();
                 BalanceDataInsert.AccountID = this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString();
-                BalanceDataInsert.AccountDetailID = this.InputBalanceAccountDetail_searchLookUpEdit.EditValue.ToString();
+                BalanceDataInsert.AccountDetailID = this.InputBalanceAccountDetail_searchLookUpEdit.EditValue?.ToString() ?? "";
                 BalanceDataInsert.BalanceDate = this.Balance_dateEdit.DateTime.Date;
                 BalanceDataInsert.DebitAmount = decimal.Parse(this.BalanceDebitAmount_textEdit.EditValue.ToString());
                 BalanceDataInsert.CreditAmount = decimal.Parse(this.BalanceCreditAmount_textEdit.EditValue.ToString());
-                BalanceDataInsert.CustomerID = this.BalanceCustomer_searchLookUpEdit.EditValue.ToString();
+                BalanceDataInsert.CustomerID = this.BalanceCustomer_searchLookUpEdit.EditValue?.ToString() ?? "";
                 BalanceDataInsert.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 BalanceDataInsert.Status = ModifyMode.Insert;
-                BalanceDataInsert.ItemID = BalanceHangHoa_searchLookUpEdit.EditValue.ToString();
+                BalanceDataInsert.ItemID = BalanceHangHoa_searchLookUpEdit.EditValue?.ToString() ?? "";
                 BalanceDataInsert.BalanceQuatity = decimal.Parse(BalanceQuantity_textEdit.EditValue.ToString());
                 BalanceDataInsert.BalancePrice = decimal.Parse(BalancePrice_textEdit.EditValue.ToString());
                 List<Balance> ListBalance = new List<Balance>();
@@ -216,7 +219,7 @@ namespace BSClient.Views
                     if (controller.SaveBalance(ListBalance))
                     {
                         MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                        LoadBalanceWareHouseGridView(this.Balance_dateEdit.DateTime.Date,CommonInfo.CompanyInfo.CompanyID, this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), this.InputBalanceAccountDetail_searchLookUpEdit.EditValue.ToString(), this.BalanceCustomer_searchLookUpEdit.EditValue.ToString());
+                        LoadBalanceWareHouseGridView(this.Balance_dateEdit.DateTime.Date,CommonInfo.CompanyInfo.CompanyID, this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), this.InputBalanceAccountDetail_searchLookUpEdit.EditValue?.ToString()??"", this.BalanceCustomer_searchLookUpEdit.EditValue?.ToString()??"");
                     }
                     else
                     {
@@ -229,11 +232,11 @@ namespace BSClient.Views
                 BalanceWarehouse_panel.Enabled = false;
                 Balance BalanceDataInsert = new Balance();
                 BalanceDataInsert.AccountID = this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString();
-                BalanceDataInsert.AccountDetailID = this.InputBalanceAccountDetail_searchLookUpEdit.EditValue.ToString();
+                BalanceDataInsert.AccountDetailID = this.InputBalanceAccountDetail_searchLookUpEdit.EditValue?.ToString() ?? "";
                 BalanceDataInsert.BalanceDate = this.Balance_dateEdit.DateTime.Date;
                 BalanceDataInsert.DebitAmount = decimal.Parse(this.BalanceDebitAmount_textEdit.EditValue.ToString());
                 BalanceDataInsert.CreditAmount = decimal.Parse(this.BalanceCreditAmount_textEdit.EditValue.ToString());
-                BalanceDataInsert.CustomerID = this.BalanceCustomer_searchLookUpEdit.EditValue.ToString();
+                BalanceDataInsert.CustomerID = this.BalanceCustomer_searchLookUpEdit.EditValue?.ToString() ?? "";
                 BalanceDataInsert.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 BalanceDataInsert.Status = ModifyMode.Insert;
                 List<Balance> ListBalance = new List<Balance>();
@@ -269,7 +272,8 @@ namespace BSClient.Views
                 if(count > 0)
                 {
                     BalanceWarehouse_panel.Enabled = true;
-                    Load_BalanceWareHouseDetail_GridView(BalanceDataList, InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), selectRow.AccountDetailID);
+                   // Load_BalanceWareHouseDetail_GridView(BalanceDataList, InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), selectRow.AccountDetailID);
+                    LoadBalanceWareHouseGridView(this.Balance_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID, this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), this.InputBalanceAccountDetail_searchLookUpEdit.EditValue?.ToString() ?? "", this.BalanceCustomer_searchLookUpEdit.EditValue?.ToString() ?? "");
                 }
                 else{
                     BalanceWarehouse_panel.Enabled = false;
@@ -301,6 +305,7 @@ namespace BSClient.Views
             {
                 MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000027);
                 this.LoadGridView();
+                this.LoadBalanceWareHouseGridView(this.Balance_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID, this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString(), this.InputBalanceAccountDetail_searchLookUpEdit.EditValue?.ToString() ?? "", this.BalanceCustomer_searchLookUpEdit.EditValue?.ToString() ?? "");
             }
             else
             {
@@ -363,26 +368,101 @@ namespace BSClient.Views
 
         private void InputBalance_gridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            Balance balance = InputBalance_gridView.GetRow(e.RowHandle).CastTo<Balance>();
-            this.InputBalanceAccount_searchLookUpEdit.EditValue = balance.AccountID;
-            this.InputBalanceAccountDetail_searchLookUpEdit.EditValue = balance.AccountDetailID;
-            this.Balance_dateEdit.DateTime = balance.BalanceDate;
-            this.BalanceDebitAmount_textEdit.EditValue = balance.DebitAmount;
-            this.BalanceCreditAmount_textEdit.EditValue = balance.CreditAmount;
-            this.BalanceCustomer_searchLookUpEdit.EditValue = balance.CustomerID;
-            this.BalanceID_textBox.Text = balance.BalanceID;
-            List<MaterialTK> onoff = new List<MaterialTK>();
-            onoff = materialTK.Where(item => item.AccountID == balance.AccountID).ToList();
-            if (onoff.Count > 0)
+            try {
+                Balance balance = InputBalance_gridView.GetRow(e.RowHandle).CastTo<Balance>();
+                this.InputBalanceAccount_searchLookUpEdit.EditValue = balance.AccountID;
+                this.InputBalanceAccountDetail_searchLookUpEdit.EditValue = balance.AccountDetailID;
+                this.Balance_dateEdit.DateTime = balance.BalanceDate;
+                this.BalanceDebitAmount_textEdit.EditValue = balance.DebitAmount;
+                this.BalanceCreditAmount_textEdit.EditValue = balance.CreditAmount;
+                this.BalanceCustomer_searchLookUpEdit.EditValue = balance.CustomerID;
+                this.BalanceID_textBox.Text = balance.BalanceID;
+                List<MaterialTK> onoff = new List<MaterialTK>();
+                onoff = materialTK.Where(item => item.AccountID == balance.AccountID).ToList();
+                if (onoff.Count > 0)
+                {
+                    OnOffControl(onoff[0].DuNo, onoff[0].DuCo, onoff[0].ThongKe);
+                }
+            } catch
             {
-                OnOffControl(onoff[0].DuNo, onoff[0].DuCo, onoff[0].ThongKe);
+
             }
+            
         }
 
         private void BalanceGetDate_simpleButton_Click(object sender, EventArgs e)
         {
             this.LoadGridView();
         }
-        
+
+        private void BalanceHangHoa_searchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
+            if (selectRow != null)
+            {
+                BalanceDVT_label.Text = selectRow.ItemUnit;
+            }
+        }
+
+        private void BalanceWareHouse_gridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                Balance balance = BalanceWareHouse_gridView.GetRow(e.RowHandle).CastTo<Balance>();
+                this.InputBalanceAccount_searchLookUpEdit.EditValue = balance.AccountID;
+                this.InputBalanceAccountDetail_searchLookUpEdit.EditValue = balance.AccountDetailID;
+                this.Balance_dateEdit.DateTime = balance.BalanceDate;
+                this.BalanceDebitAmount_textEdit.EditValue = balance.DebitAmount;
+                this.BalanceCreditAmount_textEdit.EditValue = balance.CreditAmount;
+                this.BalanceCustomer_searchLookUpEdit.EditValue = balance.CustomerID;
+                this.BalanceID_textBox.Text = balance.BalanceID;
+                this.BalanceHangHoa_searchLookUpEdit.EditValue = balance.ItemID;
+                this.BalancePrice_textEdit.EditValue = balance.BalancePrice;
+                this.BalanceQuantity_textEdit.EditValue = balance.BalanceQuatity;
+                List<MaterialTK> onoff = new List<MaterialTK>();
+                onoff = materialTK.Where(item => item.AccountID == balance.AccountID).ToList();
+                if (onoff.Count > 0)
+                {
+                    OnOffControl(onoff[0].DuNo, onoff[0].DuCo, onoff[0].ThongKe);
+                }
+            }
+            catch { }
+        }
+
+       
+
+        private void BalancePrice_textEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                decimal Amount = 0;
+                Amount = decimal.Parse(BalanceQuantity_textEdit.EditValue.ToString()) * decimal.Parse(BalancePrice_textEdit.EditValue.ToString());
+                if (BalanceCreditAmount_textEdit.Enabled)
+                {
+                    BalanceCreditAmount_textEdit.EditValue = Amount;
+                }
+                if (BalanceDebitAmount_textEdit.Enabled)
+                {
+                    BalanceDebitAmount_textEdit.EditValue = Amount;
+                }
+            }
+        }
+
+        private void BalanceQuantity_textEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                decimal Amount = 0;
+                Amount = decimal.Parse(BalanceQuantity_textEdit.EditValue.ToString()) * decimal.Parse(BalancePrice_textEdit.EditValue.ToString());
+                if (BalanceCreditAmount_textEdit.Enabled)
+                {
+                    BalanceCreditAmount_textEdit.EditValue = Amount;
+                }
+                if (BalanceDebitAmount_textEdit.Enabled)
+                {
+                    BalanceDebitAmount_textEdit.EditValue = Amount;
+                }
+            }
+        }
     }
 }

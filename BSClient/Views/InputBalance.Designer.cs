@@ -30,6 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputBalance));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.BalanceWarehouse_panel = new System.Windows.Forms.Panel();
+            this.BalanceDVT_label = new System.Windows.Forms.Label();
+            this.BalanceWareHouse_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.BalanceWareHouse_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.BalanceQuantity_textEdit = new DevExpress.XtraEditors.TextEdit();
+            this.BalancePrice_textEdit = new DevExpress.XtraEditors.TextEdit();
+            this.label7 = new System.Windows.Forms.Label();
+            this.BalanceHangHoa_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.BalanceGetDate_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.BalanceID_textBox = new System.Windows.Forms.TextBox();
             this.InputBalanceSua_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -52,19 +63,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.InputBalanceAccount_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.BalanceWareHouse_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.BalanceWareHouse_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.BalanceWarehouse_panel = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.BalanceHangHoa_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.BalancePrice_textEdit = new DevExpress.XtraEditors.TextEdit();
-            this.BalanceQuantity_textEdit = new DevExpress.XtraEditors.TextEdit();
-            this.BalanceDVT_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            this.BalanceWarehouse_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceQuantity_textEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalancePrice_textEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceHangHoa_searchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BalanceCreditAmount_textEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BalanceCustomer_searchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -77,24 +84,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Balance_dateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputBalanceAccount_searchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridView)).BeginInit();
-            this.BalanceWarehouse_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceHangHoa_searchLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalancePrice_textEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceQuantity_textEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.BalanceDVT_label);
-            this.panelControl1.Controls.Add(this.BalanceQuantity_textEdit);
-            this.panelControl1.Controls.Add(this.BalancePrice_textEdit);
-            this.panelControl1.Controls.Add(this.BalanceHangHoa_searchLookUpEdit);
-            this.panelControl1.Controls.Add(this.label9);
-            this.panelControl1.Controls.Add(this.label8);
-            this.panelControl1.Controls.Add(this.label7);
             this.panelControl1.Controls.Add(this.BalanceWarehouse_panel);
             this.panelControl1.Controls.Add(this.BalanceGetDate_simpleButton);
             this.panelControl1.Controls.Add(this.BalanceID_textBox);
@@ -119,6 +112,139 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1314, 697);
             this.panelControl1.TabIndex = 0;
+            // 
+            // BalanceWarehouse_panel
+            // 
+            this.BalanceWarehouse_panel.Controls.Add(this.BalanceDVT_label);
+            this.BalanceWarehouse_panel.Controls.Add(this.BalanceWareHouse_gridControl);
+            this.BalanceWarehouse_panel.Controls.Add(this.BalanceQuantity_textEdit);
+            this.BalanceWarehouse_panel.Controls.Add(this.BalancePrice_textEdit);
+            this.BalanceWarehouse_panel.Controls.Add(this.label7);
+            this.BalanceWarehouse_panel.Controls.Add(this.BalanceHangHoa_searchLookUpEdit);
+            this.BalanceWarehouse_panel.Controls.Add(this.label8);
+            this.BalanceWarehouse_panel.Controls.Add(this.label9);
+            this.BalanceWarehouse_panel.Enabled = false;
+            this.BalanceWarehouse_panel.Location = new System.Drawing.Point(5, 216);
+            this.BalanceWarehouse_panel.Name = "BalanceWarehouse_panel";
+            this.BalanceWarehouse_panel.Size = new System.Drawing.Size(469, 476);
+            this.BalanceWarehouse_panel.TabIndex = 17;
+            // 
+            // BalanceDVT_label
+            // 
+            this.BalanceDVT_label.AutoSize = true;
+            this.BalanceDVT_label.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BalanceDVT_label.Location = new System.Drawing.Point(177, 43);
+            this.BalanceDVT_label.Name = "BalanceDVT_label";
+            this.BalanceDVT_label.Size = new System.Drawing.Size(0, 19);
+            this.BalanceDVT_label.TabIndex = 24;
+            // 
+            // BalanceWareHouse_gridControl
+            // 
+            this.BalanceWareHouse_gridControl.Location = new System.Drawing.Point(6, 72);
+            this.BalanceWareHouse_gridControl.MainView = this.BalanceWareHouse_gridView;
+            this.BalanceWareHouse_gridControl.Name = "BalanceWareHouse_gridControl";
+            this.BalanceWareHouse_gridControl.Size = new System.Drawing.Size(456, 397);
+            this.BalanceWareHouse_gridControl.TabIndex = 13;
+            this.BalanceWareHouse_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.BalanceWareHouse_gridView});
+            // 
+            // BalanceWareHouse_gridView
+            // 
+            this.BalanceWareHouse_gridView.GridControl = this.BalanceWareHouse_gridControl;
+            this.BalanceWareHouse_gridView.Name = "BalanceWareHouse_gridView";
+            this.BalanceWareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.BalanceWareHouse_gridView_RowClick);
+            // 
+            // BalanceQuantity_textEdit
+            // 
+            this.BalanceQuantity_textEdit.EditValue = "0.00";
+            this.BalanceQuantity_textEdit.Location = new System.Drawing.Point(80, 40);
+            this.BalanceQuantity_textEdit.Name = "BalanceQuantity_textEdit";
+            this.BalanceQuantity_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BalanceQuantity_textEdit.Properties.Appearance.Options.UseFont = true;
+            this.BalanceQuantity_textEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.BalanceQuantity_textEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BalanceQuantity_textEdit.Properties.DisplayFormat.FormatString = "c2";
+            this.BalanceQuantity_textEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BalanceQuantity_textEdit.Properties.EditFormat.FormatString = "c2";
+            this.BalanceQuantity_textEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BalanceQuantity_textEdit.Properties.Mask.EditMask = "n";
+            this.BalanceQuantity_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.BalanceQuantity_textEdit.Size = new System.Drawing.Size(91, 26);
+            this.BalanceQuantity_textEdit.TabIndex = 8;
+            this.BalanceQuantity_textEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BalanceQuantity_textEdit_KeyDown);
+            // 
+            // BalancePrice_textEdit
+            // 
+            this.BalancePrice_textEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BalancePrice_textEdit.Location = new System.Drawing.Point(303, 40);
+            this.BalancePrice_textEdit.Name = "BalancePrice_textEdit";
+            this.BalancePrice_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BalancePrice_textEdit.Properties.Appearance.Options.UseFont = true;
+            this.BalancePrice_textEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.BalancePrice_textEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BalancePrice_textEdit.Properties.DisplayFormat.FormatString = "c2";
+            this.BalancePrice_textEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BalancePrice_textEdit.Properties.EditFormat.FormatString = "c2";
+            this.BalancePrice_textEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BalancePrice_textEdit.Properties.Mask.EditMask = "c";
+            this.BalancePrice_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.BalancePrice_textEdit.Size = new System.Drawing.Size(157, 26);
+            this.BalancePrice_textEdit.TabIndex = 9;
+            this.BalancePrice_textEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BalancePrice_textEdit_KeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label7.Location = new System.Drawing.Point(1, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 19);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Số lượng";
+            // 
+            // BalanceHangHoa_searchLookUpEdit
+            // 
+            this.BalanceHangHoa_searchLookUpEdit.Location = new System.Drawing.Point(126, 8);
+            this.BalanceHangHoa_searchLookUpEdit.Name = "BalanceHangHoa_searchLookUpEdit";
+            this.BalanceHangHoa_searchLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BalanceHangHoa_searchLookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.BalanceHangHoa_searchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.BalanceHangHoa_searchLookUpEdit.Properties.PopupView = this.gridView3;
+            this.BalanceHangHoa_searchLookUpEdit.Size = new System.Drawing.Size(214, 26);
+            this.BalanceHangHoa_searchLookUpEdit.TabIndex = 7;
+            this.BalanceHangHoa_searchLookUpEdit.EditValueChanged += new System.EventHandler(this.BalanceHangHoa_searchLookUpEdit_EditValueChanged);
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label8.Location = new System.Drawing.Point(233, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 19);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Đơn giá";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label9.Location = new System.Drawing.Point(1, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 19);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Hàng hóa";
             // 
             // BalanceGetDate_simpleButton
             // 
@@ -216,7 +342,7 @@
             this.BalanceCreditAmount_textEdit.Properties.Mask.EditMask = "c";
             this.BalanceCreditAmount_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.BalanceCreditAmount_textEdit.Size = new System.Drawing.Size(214, 26);
-            this.BalanceCreditAmount_textEdit.TabIndex = 7;
+            this.BalanceCreditAmount_textEdit.TabIndex = 6;
             // 
             // label6
             // 
@@ -248,7 +374,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.BalanceCustomer_searchLookUpEdit.Properties.PopupView = this.gridView1;
             this.BalanceCustomer_searchLookUpEdit.Size = new System.Drawing.Size(214, 26);
-            this.BalanceCustomer_searchLookUpEdit.TabIndex = 5;
+            this.BalanceCustomer_searchLookUpEdit.TabIndex = 4;
             // 
             // gridView1
             // 
@@ -267,7 +393,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.InputBalanceAccountDetail_searchLookUpEdit.Properties.PopupView = this.gridView2;
             this.InputBalanceAccountDetail_searchLookUpEdit.Size = new System.Drawing.Size(214, 26);
-            this.InputBalanceAccountDetail_searchLookUpEdit.TabIndex = 5;
+            this.InputBalanceAccountDetail_searchLookUpEdit.TabIndex = 3;
             // 
             // gridView2
             // 
@@ -313,7 +439,7 @@
             this.BalanceDebitAmount_textEdit.Properties.Mask.EditMask = "c";
             this.BalanceDebitAmount_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.BalanceDebitAmount_textEdit.Size = new System.Drawing.Size(214, 26);
-            this.BalanceDebitAmount_textEdit.TabIndex = 3;
+            this.BalanceDebitAmount_textEdit.TabIndex = 5;
             // 
             // Balance_dateEdit
             // 
@@ -332,7 +458,7 @@
             this.Balance_dateEdit.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearsGroupView;
             this.Balance_dateEdit.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearsGroupView;
             this.Balance_dateEdit.Size = new System.Drawing.Size(91, 26);
-            this.Balance_dateEdit.TabIndex = 2;
+            this.Balance_dateEdit.TabIndex = 1;
             // 
             // label2
             // 
@@ -365,7 +491,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.InputBalanceAccount_searchLookUpEdit.Properties.PopupView = this.searchLookUpEdit1View;
             this.InputBalanceAccount_searchLookUpEdit.Size = new System.Drawing.Size(214, 26);
-            this.InputBalanceAccount_searchLookUpEdit.TabIndex = 0;
+            this.InputBalanceAccount_searchLookUpEdit.TabIndex = 2;
             this.InputBalanceAccount_searchLookUpEdit.EditValueChanged += new System.EventHandler(this.InputBalanceAccount_searchLookUpEdit_EditValueChanged);
             // 
             // searchLookUpEdit1View
@@ -374,128 +500,6 @@
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // BalanceWareHouse_gridControl
-            // 
-            this.BalanceWareHouse_gridControl.Location = new System.Drawing.Point(3, 3);
-            this.BalanceWareHouse_gridControl.MainView = this.BalanceWareHouse_gridView;
-            this.BalanceWareHouse_gridControl.Name = "BalanceWareHouse_gridControl";
-            this.BalanceWareHouse_gridControl.Size = new System.Drawing.Size(456, 381);
-            this.BalanceWareHouse_gridControl.TabIndex = 13;
-            this.BalanceWareHouse_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.BalanceWareHouse_gridView});
-            // 
-            // BalanceWareHouse_gridView
-            // 
-            this.BalanceWareHouse_gridView.GridControl = this.BalanceWareHouse_gridControl;
-            this.BalanceWareHouse_gridView.Name = "BalanceWareHouse_gridView";
-            // 
-            // BalanceWarehouse_panel
-            // 
-            this.BalanceWarehouse_panel.Controls.Add(this.BalanceWareHouse_gridControl);
-            this.BalanceWarehouse_panel.Enabled = false;
-            this.BalanceWarehouse_panel.Location = new System.Drawing.Point(12, 305);
-            this.BalanceWarehouse_panel.Name = "BalanceWarehouse_panel";
-            this.BalanceWarehouse_panel.Size = new System.Drawing.Size(462, 387);
-            this.BalanceWarehouse_panel.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label7.Location = new System.Drawing.Point(12, 251);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 19);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Số lượng";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label8.Location = new System.Drawing.Point(244, 251);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 19);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Đơn giá";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label9.Location = new System.Drawing.Point(12, 219);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 19);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Hàng hóa";
-            // 
-            // BalanceHangHoa_searchLookUpEdit
-            // 
-            this.BalanceHangHoa_searchLookUpEdit.Location = new System.Drawing.Point(137, 216);
-            this.BalanceHangHoa_searchLookUpEdit.Name = "BalanceHangHoa_searchLookUpEdit";
-            this.BalanceHangHoa_searchLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BalanceHangHoa_searchLookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.BalanceHangHoa_searchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.BalanceHangHoa_searchLookUpEdit.Properties.PopupView = this.gridView3;
-            this.BalanceHangHoa_searchLookUpEdit.Size = new System.Drawing.Size(214, 26);
-            this.BalanceHangHoa_searchLookUpEdit.TabIndex = 21;
-            // 
-            // gridView3
-            // 
-            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            // 
-            // BalancePrice_textEdit
-            // 
-            this.BalancePrice_textEdit.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.BalancePrice_textEdit.Location = new System.Drawing.Point(314, 248);
-            this.BalancePrice_textEdit.Name = "BalancePrice_textEdit";
-            this.BalancePrice_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BalancePrice_textEdit.Properties.Appearance.Options.UseFont = true;
-            this.BalancePrice_textEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.BalancePrice_textEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.BalancePrice_textEdit.Properties.DisplayFormat.FormatString = "c2";
-            this.BalancePrice_textEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BalancePrice_textEdit.Properties.EditFormat.FormatString = "c2";
-            this.BalancePrice_textEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BalancePrice_textEdit.Properties.Mask.EditMask = "c";
-            this.BalancePrice_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.BalancePrice_textEdit.Size = new System.Drawing.Size(157, 26);
-            this.BalancePrice_textEdit.TabIndex = 22;
-            // 
-            // BalanceQuantity_textEdit
-            // 
-            this.BalanceQuantity_textEdit.EditValue = "0.00";
-            this.BalanceQuantity_textEdit.Location = new System.Drawing.Point(91, 248);
-            this.BalanceQuantity_textEdit.Name = "BalanceQuantity_textEdit";
-            this.BalanceQuantity_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BalanceQuantity_textEdit.Properties.Appearance.Options.UseFont = true;
-            this.BalanceQuantity_textEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.BalanceQuantity_textEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.BalanceQuantity_textEdit.Properties.DisplayFormat.FormatString = "c2";
-            this.BalanceQuantity_textEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BalanceQuantity_textEdit.Properties.EditFormat.FormatString = "c2";
-            this.BalanceQuantity_textEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BalanceQuantity_textEdit.Properties.Mask.EditMask = "n";
-            this.BalanceQuantity_textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.BalanceQuantity_textEdit.Size = new System.Drawing.Size(91, 26);
-            this.BalanceQuantity_textEdit.TabIndex = 23;
-            // 
-            // BalanceDVT_label
-            // 
-            this.BalanceDVT_label.AutoSize = true;
-            this.BalanceDVT_label.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BalanceDVT_label.Location = new System.Drawing.Point(188, 251);
-            this.BalanceDVT_label.Name = "BalanceDVT_label";
-            this.BalanceDVT_label.Size = new System.Drawing.Size(0, 19);
-            this.BalanceDVT_label.TabIndex = 24;
             // 
             // InputBalance
             // 
@@ -508,6 +512,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            this.BalanceWarehouse_panel.ResumeLayout(false);
+            this.BalanceWarehouse_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceQuantity_textEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalancePrice_textEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BalanceHangHoa_searchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BalanceCreditAmount_textEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BalanceCustomer_searchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -520,13 +532,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Balance_dateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputBalanceAccount_searchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceWareHouse_gridView)).EndInit();
-            this.BalanceWarehouse_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceHangHoa_searchLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalancePrice_textEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BalanceQuantity_textEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
