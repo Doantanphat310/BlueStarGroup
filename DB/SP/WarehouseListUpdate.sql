@@ -1,7 +1,7 @@
 USE [BlueStarGroup]
 GO
 
-create proc WarehouseListUpdate
+alter proc WarehouseListUpdate
 @WarehouseListID varchar(50)
 ,@WarehouseListName nvarchar(250)
 ,@WarehouseListDebitAccountID varchar(50)
@@ -13,7 +13,6 @@ create proc WarehouseListUpdate
 ,@WarehouseListAddress nvarchar(max)
 ,@WarehouseListNote nvarchar(max)
 ,@CreateUser varchar(50)
-,@CreateDate datetime
 ,@CompanyID varchar(50)
 as
 begin
@@ -31,7 +30,7 @@ WarehouseListAddress = @WarehouseListAddress,
 WarehouseListNote = @WarehouseListNote,
 CompanyID = @CompanyID,
 UpdateUser = @CreateUser,
-UpdateDate = @CreateDate
+UpdateDate = getdate()
 where  companyID = @CompanyID and CreateUser = @CreateUser and WarehouseListID = @WarehouseListID
 end
 

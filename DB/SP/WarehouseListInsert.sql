@@ -1,7 +1,7 @@
 USE [BlueStarGroup]
 GO
 
-create proc WarehouseListInsert
+alter proc WarehouseListInsert
 @WarehouseListID varchar(50)
 ,@WarehouseListName nvarchar(250)
 ,@WarehouseListDebitAccountID varchar(50)
@@ -13,7 +13,6 @@ create proc WarehouseListInsert
 ,@WarehouseListAddress nvarchar(max)
 ,@WarehouseListNote nvarchar(max)
 ,@CreateUser varchar(50)
-,@CreateDate datetime
 ,@CompanyID varchar(50)
 as
 begin
@@ -44,7 +43,7 @@ INSERT INTO [dbo].[WarehouseList]
 			,@WarehouseListNote
 			,@CompanyID
 			,@CreateUser
-			,@CreateDate
+			,getdate()
 			)
 end
 

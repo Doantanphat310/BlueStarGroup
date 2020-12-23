@@ -78,5 +78,11 @@ namespace BSClient
              InputBalance BalanceForm = new InputBalance();
              BalanceForm.Show();
         }
+
+        private void WarehouseList_accordionControlElement_Click(object sender, EventArgs e)
+        {
+            WareHouseList WareHouseListForm = new WareHouseList();
+            WareHouseListForm.Show();
+        }
     }
 }
