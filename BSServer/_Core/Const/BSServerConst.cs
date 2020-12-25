@@ -18,5 +18,7 @@
         public const string AccountGroupSymbol = "LTK";
         public const string GeneralLedgerSymbol = "SC";
         public const string BalanceSymbol = "BAL";
+        public const string WareHouseListSymbol = "WHL";
+        
     }
 }

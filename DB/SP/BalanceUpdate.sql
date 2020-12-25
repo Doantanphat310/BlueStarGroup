@@ -15,18 +15,18 @@ as
 begin
 UPDATE [dbo].[Balance]
    SET 
-      [AccountID] = @AccountID,
-      [AccountDetailID] = @AccountDetailID,
-      [CustomerID] = @CustomerID,
-      [CompanyID] = @CompanyID,
-      [BalanceDate] = @BalanceDate,
-      [DebitAmount] = @DebitAmount,
-      [CreditAmount] = @CreditAmount,
-      [UpdateDate] = getdate(),
-      [UpdateUser] = @CreateUser,
-		[ItemID] = @ItemID,
-		[BalanceQuatity] = @BalanceQuatity,
-		[BalancePrice] = @BalancePrice
+			[AccountID] = @AccountID,
+			[AccountDetailID] = @AccountDetailID,
+			[CustomerID] = @CustomerID,
+			[CompanyID] = @CompanyID,
+			[BalanceDate] = @BalanceDate,
+			[DebitAmount] = @DebitAmount,
+			[CreditAmount] = @CreditAmount,
+			[UpdateDate] = getdate(),
+			[UpdateUser] = @CreateUser,
+			[ItemID] = @ItemID,
+			[BalanceQuatity] = @BalanceQuatity,
+			[BalancePrice] = @BalancePrice
  WHERE BalanceID = @BalanceID and CompanyID = @CompanyID and CreateUser = @CreateUser
 end
 

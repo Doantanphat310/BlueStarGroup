@@ -44,6 +44,7 @@
             this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.SoCaiChiTiet_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.WarehouseList_accordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +103,8 @@
             this.AccountList_Button,
             this.ItemList_Button,
             this.UserList_Button,
-            this.NhapSoDuaccordionControlElement});
+            this.NhapSoDuaccordionControlElement,
+            this.WarehouseList_accordionControlElement});
             this.accordionControlElement4.Expanded = true;
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Text = "Quản trị hệ thống";
@@ -182,6 +184,13 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
+            // WarehouseList_accordionControlElement
+            // 
+            this.WarehouseList_accordionControlElement.Name = "WarehouseList_accordionControlElement";
+            this.WarehouseList_accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.WarehouseList_accordionControlElement.Text = "Danh mục kho";
+            this.WarehouseList_accordionControlElement.Click += new System.EventHandler(this.WarehouseList_accordionControlElement_Click);
+            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -228,5 +237,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement Report_Group;
         private DevExpress.XtraBars.Navigation.AccordionControlElement BangCanDoiSoPhatSinh_Item;
         private DevExpress.XtraBars.Navigation.AccordionControlElement SoCaiChiTiet_Item;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement WarehouseList_accordionControlElement;
     }
 }

@@ -54,7 +54,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@VouchersID", wareHouse.VouchersID),
                     new SqlParameter("@InvoiceID", wareHouse.InvoiceID),
                     new SqlParameter("@CustomerID", wareHouse.CustomerID),
-                    new SqlParameter("@GeneralLedgerID",wareHouse.GeneralLedgerID?? (object)DBNull.Value),
+                    new SqlParameter("@GeneralLedgerID",wareHouse.WarehouseListID?? (object)DBNull.Value),
                     new SqlParameter("@Date", wareHouse.Date),
                     new SqlParameter("@DebitAccountID", wareHouse.DebitAccountID),
                     new SqlParameter("@CreditAccountID", wareHouse.CreditAccountID),

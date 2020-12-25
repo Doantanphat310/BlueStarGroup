@@ -1,4 +1,4 @@
-create proc [dbo].[WareHouseInsert]
+alter proc [dbo].[WareHouseInsert]
 	@WarehouseID varchar(50),
 	@VouchersID varchar(50),
 	@InvoiceID varchar(50),
@@ -21,7 +21,7 @@ INSERT INTO WareHouse(
 	VouchersID,
 	InvoiceID,
 	CustomerID,
-	GeneralLedgerID,
+	WarehouseListID,
 	Date,
 	DebitAccountID,
 	CreditAccountID,

@@ -254,6 +254,12 @@
     <Compile Include="Views\VoucherControl.Designer.cs">
       <DependentUpon>VoucherControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WareHouseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WareHouseList.Designer.cs">
+      <DependentUpon>WareHouseList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Base\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,6 +334,9 @@
     <EmbeddedResource Include="Views\VoucherControl.resx">
       <DependentUpon>VoucherControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WareHouseList.resx">
+      <DependentUpon>WareHouseList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

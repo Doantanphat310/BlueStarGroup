@@ -25,9 +25,9 @@ namespace BSServer.Controllers
             this.VoucherLogic = new VoucherLogic(this.Context);
         }
 
-        public List<Voucher> GetVouchersCompany( string companyID)
+        public List<Voucher> GetVouchersCompany(DateTime VoucherDate, string companyID)
         {
-            return this.VoucherDAO.GetVouchersCompany(companyID);
+            return this.VoucherDAO.GetVouchersCompany(VoucherDate,companyID);
         }
         //GetVouchersCondition
         public List<Voucher> GetVouchersCondition(string companyID, DateTime NgayBD, DateTime NgayKT, string voucherType)

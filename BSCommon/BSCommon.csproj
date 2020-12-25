@@ -144,6 +144,7 @@
     <Compile Include="Models\MasterInfo.cs" />
     <Compile Include="Models\WareHouse.cs" />
     <Compile Include="Models\WareHouseDetail.cs" />
+    <Compile Include="Models\WarehouseList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Constant\BSMessage.cs" />
     <Compile Include="Constant\BSTitle.cs" />

@@ -152,7 +152,7 @@
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -212,7 +212,7 @@
             // 
             this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl1.Controls.Add(this.tabPaneVouchers);
-            this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Controls.Add(this.CompanyNameVoucher_labelControl);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
@@ -378,6 +378,7 @@
             this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.VoucherDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.VoucherDetail_gridView_RowClick);
+            this.VoucherDetail_gridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.VoucherDetail_gridView_RowCellClick);
             this.VoucherDetail_gridView.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.VoucherDetail_gridView_ShowingEditor);
             this.VoucherDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.VoucherDetail_gridView_FocusedRowChanged);
             this.VoucherDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.VoucherDetail_gridView_CellValueChanged);
@@ -1403,6 +1404,7 @@
             this.WareHouse_gridView.GridControl = this.WareHouse_gridControl;
             this.WareHouse_gridView.Name = "WareHouse_gridView";
             this.WareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouse_gridView_RowClick);
+            this.WareHouse_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.WareHouse_gridView_InitNewRow);
             this.WareHouse_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouse_gridView_FocusedRowChanged);
             this.WareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouse_gridView_RowUpdated);
             // 
@@ -1481,16 +1483,16 @@
             this.WareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouseDetail_gridView_FocusedRowChanged);
             this.WareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouseDetail_gridView_RowUpdated);
             // 
-            // labelControl1
+            // CompanyNameVoucher_labelControl
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl1.Location = new System.Drawing.Point(2, 2);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(261, 23);
-            this.labelControl1.TabIndex = 6;
-            this.labelControl1.Text = "Tên công ty đang thực hiện";
+            this.CompanyNameVoucher_labelControl.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.CompanyNameVoucher_labelControl.Appearance.Options.UseFont = true;
+            this.CompanyNameVoucher_labelControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompanyNameVoucher_labelControl.Location = new System.Drawing.Point(2, 2);
+            this.CompanyNameVoucher_labelControl.Name = "CompanyNameVoucher_labelControl";
+            this.CompanyNameVoucher_labelControl.Size = new System.Drawing.Size(261, 23);
+            this.CompanyNameVoucher_labelControl.TabIndex = 6;
+            this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
             // 
             // VoucherControl
             // 
@@ -1567,7 +1569,7 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl CompanyNameVoucher_labelControl;
         private DevExpress.XtraEditors.GroupControl VoucherDetail_groupControl;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.GroupControl Voucher_groupControl;

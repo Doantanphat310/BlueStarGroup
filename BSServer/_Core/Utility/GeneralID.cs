@@ -57,6 +57,12 @@ namespace BSServer._Core.Utility
             return GetGeneralIDWithDate(BSServerConst.WareHouseSymbol, seq);
         }
 
+        public static string WareHouseListID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.WareHouseListSymbol, seq);
+        }
+        
+
         public static string WareHouseDetailID(long seq)
         {
             return GetGeneralIDWithDate(BSServerConst.WareHouseDetailSymbol, seq);

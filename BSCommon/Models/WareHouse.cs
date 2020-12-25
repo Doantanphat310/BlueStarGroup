@@ -18,8 +18,8 @@ namespace BSCommon.Models
         // [Range(0, 999.99, ErrorMessage = "Thuế GTGT phải >= 0 và <= 999.99")]
         public string CustomerID { get; set; }
         [DisplayName("Mã sổ cái")]
-        [Required(ErrorMessage = "Sổ cái không được để trống!")]
-        public string GeneralLedgerID { get; set; }
+        [Required(ErrorMessage = "Sổ kho không được để trống!")]
+        public string WarehouseListID { get; set; }
         [DisplayName("Ngày")]
         [Required(ErrorMessage = "Ngày không được để trống!")]
         public Nullable<System.DateTime> Date { get; set; }
