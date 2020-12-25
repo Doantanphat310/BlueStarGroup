@@ -48,7 +48,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@WarehouseListTitle", wareHouseList.WarehouseListTitle?? (object)DBNull.Value),
                     new SqlParameter("@WarehouseListAddress", wareHouseList.WarehouseListAddress?? (object)DBNull.Value),
                     new SqlParameter("@WarehouseListNote", wareHouseList.WarehouseListNote?? (object)DBNull.Value),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("WarehouseListInsert", sqlParameters);
@@ -68,7 +68,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@WarehouseListID", WareHouseListID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CompanyID)
                     
                };
@@ -100,7 +100,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@WarehouseListTitle", wareHouseList.WarehouseListTitle?? (object)DBNull.Value),
                     new SqlParameter("@WarehouseListAddress", wareHouseList.WarehouseListAddress?? (object)DBNull.Value),
                     new SqlParameter("@WarehouseListNote", wareHouseList.WarehouseListNote?? (object)DBNull.Value),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("WarehouseListUpdate", sqlParameters);

@@ -38,7 +38,7 @@ namespace BSClient.Utility
             string template = ReportTemplate.GetTemplate(reportID);
             string filePath = Path.Combine(dir, template);
 
-            if (File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 MessageBoxHelper.ShowErrorMessage($"Mẫu báo cáo không tồn tại!\r\n{filePath}");
                 return;
@@ -46,10 +46,10 @@ namespace BSClient.Utility
 
             XtraReport report = new XtraReport()
             {
-                DataSource = dataSource,
                 RequestParameters = false
             };
             report.LoadLayout(filePath);
+            report.DataSource = dataSource;
 
             foreach (var param in reportParams)
             {
