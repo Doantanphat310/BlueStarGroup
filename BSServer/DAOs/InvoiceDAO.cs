@@ -24,7 +24,7 @@ namespace BSServer.DAOs
           "InvoiceSelectVoucherID @VouchersID, @CompanyID, @CreateUser",
           new SqlParameter("@VouchersID", voucherID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -61,7 +61,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Amount", invoice.Amount),
                     new SqlParameter("@VAT",  invoice.VAT.ToString("000.00")),
                     new SqlParameter("@Discounts", invoice.Discounts),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", invoice.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("InvoiceInsert", sqlParameters);
@@ -81,7 +81,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@InvoiceID", InvoiceID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CompanyID)
                     
                };
@@ -115,7 +115,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Amount", invoice.Amount),
                     new SqlParameter("@VAT", invoice.VAT),
                     new SqlParameter("@Discounts", invoice.Discounts),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", invoice.CompanyID)
                 };
 

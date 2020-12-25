@@ -49,7 +49,7 @@ namespace BSClient.Views
             SetBindingData();
 
             CompanyID_SearchLookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
-            if (CommonInfo.UserInfo.UserRole != "Full")
+            if (UserInfo.UserRole != "Full")
             {
                 CompanyID_SearchLookUpEdit.ReadOnly = true;
             }
@@ -145,10 +145,8 @@ namespace BSClient.Views
             Account_TreeList.KeyFieldName = "AccountID";
             Account_TreeList.ParentFieldName = "ParentID";
             this.Account_TreeList.AddColumn("AccountID", "Mã TK", 100, true);
-            this.Account_TreeList.AddColumn("ThongKeID", "Thống kê", 80, true);
             this.Account_TreeList.AddColumn("AccountName", "Tên TK", 250, true, fixedWidth: false);
-            this.Account_TreeList.AddLookupEditColumn("AccountGroupID", "Loại TK", 120,
-                AccountGroupData, "AccountGroupID", "AccountGroupName");
+            this.Account_TreeList.AddLookupEditColumn("AccountGroupID", "Loại TK", 150, AccountGroupData, "AccountGroupID", "AccountGroupName");
         }
 
         private void InitAccountDetailGridView()
@@ -316,12 +314,6 @@ namespace BSClient.Views
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000025);
                 return;
             }
-
-            //if (AccountDetailData.ToList().Find(o => o.AccountDetailName == accountDetailName) != null)
-            //{
-            //    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000024);
-            //    return;
-            //}
 
             AccountDetailData.Add(new AccountDetail
             {

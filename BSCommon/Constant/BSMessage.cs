@@ -33,5 +33,6 @@
         public const string BSM000028 = "Lấy {0} thất bại!";
         public const string BSM000029 = "Vui lòng nhập <Thống kê>.";
         public const string BSM000030 = "<Thống kê> đã tồn tại.";
+        public const string BSM000031 = "Xóa dữ liệu thất bại.";
     }
 }

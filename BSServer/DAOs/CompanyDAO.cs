@@ -69,7 +69,7 @@ namespace BSServer.DAOs
 				new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
 				new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
 				new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
-				new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+				new SqlParameter("@UpdateUser", UserInfo.UserID)
 			};
 
 			this.Context.ExecuteDataFromProcedure("CompanyInsert", sqlParameters);
@@ -112,7 +112,7 @@ namespace BSServer.DAOs
 				new SqlParameter("@ChuKyKeToanVien", data.ChuKyKeToanVien),
 				new SqlParameter("@ChuKyLanhDao", data.ChuKyLanhDao),
 				new SqlParameter("@ChuKyThuQuy", data.ChuKyThuQuy),
-				new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+				new SqlParameter("@UpdateUser", UserInfo.UserID)
 			};
 
 			this.Context.ExecuteDataFromProcedure("CompanyUpdate", sqlParameters);

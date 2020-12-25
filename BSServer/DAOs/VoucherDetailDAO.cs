@@ -24,7 +24,7 @@ namespace BSServer.DAOs
           "VouchersDetailSelectVoucherID @VouchersID, @CompanyID, @CreateUser",
           new SqlParameter("@VouchersID", voucherID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -47,7 +47,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@AccountDetailID", voucherDetailInfo.AccountDetailID),
                     new SqlParameter("@Amount", voucherDetailInfo.Amount),
                     new SqlParameter("@CompanyID", voucherDetailInfo.CompanyID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@Descriptions", voucherDetailInfo.Descriptions),
                 };
                 this.Context.ExecuteDataFromProcedure("VouchersDetailInsert", sqlParameters);
@@ -68,7 +68,7 @@ namespace BSServer.DAOs
                {
                     new SqlParameter("@VouchersDetailID", VouchersDetailID),
                     new SqlParameter("@CompanyID", CompanyID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@CreateUser", UserInfo.UserID)
                };
 
                 this.Context.ExecuteDataFromProcedure("VouchersDetailDelete", sqlParameters);
@@ -96,7 +96,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@AccountDetailID", voucherDetailInfo.AccountDetailID),
                     new SqlParameter("@Amount", voucherDetailInfo.Amount),
                     new SqlParameter("@CompanyID", voucherDetailInfo.CompanyID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@Descriptions", voucherDetailInfo.Descriptions)
                 };
 

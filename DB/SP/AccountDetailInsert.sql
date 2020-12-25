@@ -1,27 +1,27 @@
 DROP PROCEDURE IF EXISTS AccountDetailInsert;
 GO
 CREATE PROCEDURE AccountDetailInsert (
-	@AccountDetailID varchar(50)
-	,@AccountDetailName nvarchar(250)
+	@CompanyID varchar(50)
 	,@AccountID varchar(50)
-	,@CompanyID varchar(50)
+	,@AccountDetailID varchar(50)
+	,@AccountDetailName nvarchar(250)
     ,@UpdateUser varchar(20)
 )
 AS
 	INSERT INTO AccountDetail(
-		AccountDetailID
-		,AccountDetailName
+		CompanyID
 		,AccountID
-		,CompanyID
+		,AccountDetailID
+		,AccountDetailName
         ,CreateDate
         ,UpdateDate
         ,CreateUser
         ,UpdateUser)
 	VALUES(
-		@AccountDetailID
-		,@AccountDetailName
+		@CompanyID
 		,@AccountID
-		,@CompanyID
+		,@AccountDetailID
+		,@AccountDetailName
         ,GETDATE()
         ,GETDATE()
         ,@UpdateUser

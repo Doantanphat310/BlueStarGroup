@@ -16,7 +16,7 @@ namespace BSServer._Core.Context
 
         public DbSet<VouchersType> VoucherTypes { get; set; }
 
-        public DbSet<UserInfo> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
 
         public DbSet<MasterInfo> MasterInfo { get; set; }
 

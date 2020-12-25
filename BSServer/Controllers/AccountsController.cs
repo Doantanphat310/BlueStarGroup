@@ -51,14 +51,14 @@ namespace BSServer.Controllers
             return this.AccountsLogic.SaveAccountDetail(dataList);
         }
 
-        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhChiTiet(DateTime fromDate, DateTime toDate)
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinh(DateTime fromDate, DateTime toDate, int type)
         {
-            return this.AccountsLogic.GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
+            return this.AccountsLogic.GetBangCanDoiSoPhatSinh(fromDate, toDate, type);
         }
 
-        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, string CustomerID, DateTime fromDate, DateTime toDate)
         {
-            return this.AccountsDAO.GetChiTietTaiKhoan(accountID, accountDetailID, fromDate, toDate);
+            return this.AccountsDAO.GetChiTietTaiKhoan(accountID, accountDetailID, CustomerID, fromDate, toDate);
         }
 
         public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)

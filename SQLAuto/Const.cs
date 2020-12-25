@@ -161,6 +161,6 @@ namespace {0}
         /// </summary>
         public const string Param_Format = @"new SqlParameter(""@{0}"", data.{0}),";
 
-        public const string User_Format = @"new SqlParameter(""@UpdateUser"", CommonInfo.UserInfo.UserID)";
+        public const string User_Format = @"new SqlParameter(""@UpdateUser"", UserInfo.UserID)";
     }
 }

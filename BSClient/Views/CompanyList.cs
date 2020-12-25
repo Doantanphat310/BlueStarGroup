@@ -1,6 +1,7 @@
 ﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
@@ -76,15 +77,14 @@ namespace BSClient.Views
                 try
                 {
                     controller.DeleteCompany(company);
-                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000027);
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000027);
 
                     CompanyData = new BindingList<Company>(controller.GetCompanys());
                     Company_GridControl.DataSource = CompanyData;
                 }
-                catch(Exception ex)
+                catch
                 {
-                    Console.WriteLine(ex.Message);
-                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000031);
                     return;
                 }
             }

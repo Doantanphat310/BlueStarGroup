@@ -19,12 +19,12 @@ namespace BSServer.Controllers
             this.UserLogic = new UserLogic(this.Context);
         }
 
-        public UserInfo GetUserInfo(string userId)
+        public Users GetUserInfo(string userId)
         {
             return this.UserDAO.GetUserInfo(userId);
         }
 
-        public List<UserInfo> GetUsers()
+        public List<Users> GetUsers()
         {
             return this.UserDAO.GetUsers();
         }
@@ -34,7 +34,7 @@ namespace BSServer.Controllers
             return this.UserDAO.GetUserRoleCompany(userID);
         }
 
-        public bool SaveUser(List<UserInfo> dataList)
+        public bool SaveUser(List<Users> dataList)
         {
             return this.UserLogic.SaveUser(dataList);
         }

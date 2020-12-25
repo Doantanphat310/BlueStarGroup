@@ -149,7 +149,7 @@ namespace BSServer.Logics
 
         public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhChiTiet(DateTime fromDate, DateTime toDate)
         {
-            List<GetCanDoiSoPhatSinhTaiKhoan> psData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(fromDate, toDate);
+            List<GetCanDoiSoPhatSinhTaiKhoan> psData = this.AccountsDAO.GetCanDoiSoPhatSinhTaiKhoanByKH(fromDate, toDate);
 
             List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate);
             DateTime balanceDate;
@@ -160,7 +160,7 @@ namespace BSServer.Logics
                 balanceDate = dkData[0].BalanceDate;
                 if (balanceDate.Date < fromDate.Date)
                 {
-                    psDKData = this.AccountsDAO.GetBangCanDoiSoPhatSinhTK(balanceDate, fromDate.AddDays(-1));
+                    psDKData = this.AccountsDAO.GetCanDoiSoPhatSinhTaiKhoanByKH(balanceDate, fromDate.AddDays(-1));
                 }
             }
 
@@ -174,80 +174,88 @@ namespace BSServer.Logics
                         o.AccountDetailID == item.AccountDetailID &&
                         o.CustomerID == item.CustomerID);
 
-                    decimal dk;
+                    decimal dk = 0;
                     if (psdk != null)
                     {
                         dk = item.DebitBalance - item.CreditBalance + psdk.PSNo - psdk.PSCo;
-                    }
-                    else
-                    {
-                        dk = item.DebitBalance - item.CreditBalance;
-                    }
 
-                    if (dk > 0)
-                    {
-                        item.DebitBalance = dk;
-                        item.CreditBalance = 0;
-                    }
-                    else
-                    {
-                        item.DebitBalance = 0;
-                        item.CreditBalance = (-1) * dk;
+                        if (dk > 0)
+                        {
+                            item.DebitBalance = dk;
+                            item.CreditBalance = 0;
+                        }
+                        else
+                        {
+                            item.DebitBalance = 0;
+                            item.CreditBalance = (-1) * dk;
+                        }
                     }
                 }
             }
 
-            // Thêm DK vào phát sinh
-            foreach (var item in psData)
-            {
-                var dk = dkData.Find(o =>
-                    o.AccountID == item.AccountID &&
-                    o.AccountDetailID == item.AccountDetailID &&
-                    o.CustomerID == item.CustomerID);
-                if (dk != null)
-                {
-                    item.DKNo = dk.DebitBalance;
-                    item.DKCo = dk.CreditBalance;
-                }
+            // Thêm DK và tính CK
 
-                decimal ck = item.DKNo + item.PSNo - item.DKCo - item.PSCo;
-                if (ck > 0)
+            // Có ĐK nhưng không có PS
+            var dkNotPS = new List<GetCanDoiSoPhatSinhTaiKhoan>();
+            foreach (GetBalance item in dkData)
+            {
+                var psFind = psData.Find(o =>
+                   o.AccountID == item.AccountID &&
+                   o.AccountDetailID == item.AccountDetailID &&
+                   o.CustomerID == item.CustomerID);
+                // có ps
+                if (psFind != null)
                 {
-                    item.CKNo = ck;
-                    item.CKCo = 0;
+                    psFind.DKNo = item.DebitBalance;
+                    psFind.DKCo = item.CreditBalance;
+
+                    //decimal ckNo = psFind.DKNo + psFind.PSNo - psFind.DKCo - psFind.PSCo;
+                    //if (ckNo > 0)
+                    //{
+                    //    psFind.CKNo = ckNo;
+                    //}
+                    //else
+                    //{
+                    //    psFind.CKCo = Math.Abs(ckNo);
+                    //}
                 }
+                // không có ps
                 else
                 {
-                    item.CKNo = 0;
-                    item.CKCo = -1 * ck;
-                }
-            }
-
-            var pss = new List<GetCanDoiSoPhatSinhTaiKhoan>();
-            foreach (var item in dkData)
-            {
-                var ps = psData.Find(o =>
-                    o.AccountID == item.AccountID &&
-                    o.AccountDetailID == item.AccountDetailID &&
-                    o.CustomerID == item.CustomerID);
-
-                if (ps == null)
-                {
-                    pss.Add(new GetCanDoiSoPhatSinhTaiKhoan
+                    dkNotPS.Add(new GetCanDoiSoPhatSinhTaiKhoan
                     {
                         AccountID = item.AccountID,
-                        //AccountName = item.AccountName,
+                        AccountName = item.AccountName,
                         AccountDetailID = item.AccountDetailID,
                         CustomerID = item.CustomerID,
                         DKNo = item.DebitBalance,
-                        DKCo = item.CreditBalance
-                    });
+                        DKCo = item.CreditBalance,
+                        PSNo = 0,
+                        PSCo = 0,
+                        //CKNo = item.DebitBalance,
+                        //CKCo = item.CreditBalance
+                    }); ;
                 }
             }
 
-            psData.AddRange(pss);
+            // Thêm danh sách có đầu kỳ nhưng không có phát sinh
+            psData.AddRange(dkNotPS);
 
-            return psData.OrderBy(o => o.AccountID).ToList();
+            // Tính cuối kỳ
+            foreach(var ps in psData)
+            {
+                decimal ckNo = ps.DKNo + ps.PSNo - ps.DKCo - ps.PSCo;
+                if (ckNo > 0)
+                {
+                    ps.CKNo = ckNo;
+                }
+                else
+                {
+                    ps.CKCo = Math.Abs(ckNo);
+                }
+            }
+
+            return psData;
         }
 
         public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
@@ -276,6 +284,83 @@ namespace BSServer.Logics
 
             return chitiet;
         }
-    }
 
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinh(DateTime fromDate, DateTime toDate, int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    return GetBangCanDoiSoPhatSinhByTaiKhoan(fromDate, toDate);
+
+                case 1:
+                    return GetBangCanDoiSoPhatSinhByThongKe(fromDate, toDate);
+
+                case 2:
+                    return GetBangCanDoiSoPhatSinhByKH(fromDate, toDate);
+            }
+
+            return null;
+        }
+
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhByTaiKhoan(DateTime fromDate, DateTime toDate)
+        {
+            List<GetCanDoiSoPhatSinhTaiKhoan> data = GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
+
+            data = data
+                .GroupBy(o => o.AccountID)
+                .OrderBy(o => o.Key)
+                .Select(o => new GetCanDoiSoPhatSinhTaiKhoan
+                {
+                    AccountID = o.Key,
+                    AccountName = o.Max(s => s.AccountName),
+                    DKNo = o.Sum(s => s.DKNo),
+                    DKCo = o.Sum(s => s.DKCo),
+                    PSNo = o.Sum(s => s.PSNo),
+                    PSCo = o.Sum(s => s.PSCo),
+                    CKNo = o.Sum(s => s.CKNo),
+                    CKCo = o.Sum(s => s.CKCo)
+                })
+                .ToList();
+
+            return data;
+        }
+
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhByThongKe(DateTime fromDate, DateTime toDate)
+        {
+            List<GetCanDoiSoPhatSinhTaiKhoan> data = GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
+
+            data = data
+                .GroupBy(o => new { o.AccountID, o.AccountDetailID })
+                .OrderBy(o => o.Key.AccountID)
+                .ThenBy(o => o.Key.AccountDetailID)
+                .Select(o => new GetCanDoiSoPhatSinhTaiKhoan
+                {
+                    AccountID = o.Key.AccountID,
+                    AccountDetailID = o.Key.AccountDetailID,
+                    AccountName = o.Max(s => s.AccountName),
+                    DKNo = o.Sum(s => s.DKNo),
+                    DKCo = o.Sum(s => s.DKCo),
+                    PSNo = o.Sum(s => s.PSNo),
+                    PSCo = o.Sum(s => s.PSCo),
+                    CKNo = o.Sum(s => s.CKNo),
+                    CKCo = o.Sum(s => s.CKCo)
+                })
+                .ToList();
+
+            return data;
+        }
+
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhByKH(DateTime fromDate, DateTime toDate)
+        {
+            List<GetCanDoiSoPhatSinhTaiKhoan> data = GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
+
+            data = data
+                .OrderBy(o => o.AccountID)
+                .ThenBy(o => o.AccountDetailID)
+                .ThenBy(o => o.CustomerID)
+                .ToList();
+
+            return data;
+        }
+    }
 }

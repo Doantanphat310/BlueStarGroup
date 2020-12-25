@@ -1,9 +1,13 @@
 DROP PROCEDURE IF EXISTS AccountDetailDelete;
 GO
 CREATE PROCEDURE AccountDetailDelete (
-	@AccountDetailID varchar(50)
+	@CompanyID varchar(50)
+	,@AccountID varchar(50)
+	,@AccountDetailID varchar(50)
 )
 AS
 	DELETE AccountDetail
 	WHERE 
-		AccountDetailID = @AccountDetailID
+		CompanyID = @CompanyID
+		AND AccountID = @AccountID
+		AND AccountDetailID = @AccountDetailID

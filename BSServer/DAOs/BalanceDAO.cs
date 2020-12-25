@@ -54,7 +54,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@BalanceDate", data.BalanceDate),
                 new SqlParameter("@DebitAmount", data.DebitAmount),
                 new SqlParameter("@CreditAmount", data.CreditAmount),
-                new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@CreateUser", UserInfo.UserID),
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@BalanceQuatity", data.BalanceQuatity),
                 new SqlParameter("@BalancePrice", data.BalancePrice)
@@ -83,7 +83,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@BalanceDate", data.BalanceDate),
                 new SqlParameter("@DebitAmount", data.DebitAmount),
                 new SqlParameter("@CreditAmount", data.CreditAmount),
-                new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                new SqlParameter("@CreateUser", UserInfo.UserID),
                 new SqlParameter("@ItemID", data.ItemID),
                 new SqlParameter("@BalanceQuatity", data.BalanceQuatity),
                 new SqlParameter("@BalancePrice", data.BalancePrice)
@@ -105,7 +105,7 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@BalanceID", data.BalanceID),
                  new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@CreateUser", UserInfo.UserID)
             };
             this.Context.ExecuteDataFromProcedure("BalanceDelete", sqlParameters);
             return true;

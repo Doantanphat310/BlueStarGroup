@@ -1,5 +1,6 @@
 ﻿using BSClient.Constants;
 using BSCommon.Utility;
+using NLog;
 using System;
 using System.Drawing;
 using System.IO;
@@ -26,8 +27,9 @@ namespace BSClient.Utility
 
                 return image;
             }
-            catch
+            catch(Exception ex)
             {
+                BSLog.Logger.Debug("Base64ToImage: " + ex.Message);
                 return null;
             }
         }
@@ -43,9 +45,10 @@ namespace BSClient.Utility
 
                 return base64String;
             }
-            catch
+            catch (Exception ex)
             {
-                return string.Empty;
+                BSLog.Logger.Debug("GetBase64StringFormImage: " + ex.Message);
+                return null;
             }
         }
 
@@ -61,9 +64,10 @@ namespace BSClient.Utility
 
                 return ImageBase64;
             }
-            catch
+            catch (Exception ex)
             {
-                return string.Empty;
+                BSLog.Logger.Debug("ImageToBase64: " + ex.Message);
+                return null;
             }
         }
     }

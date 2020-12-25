@@ -1,11 +1,14 @@
 ﻿using BSClient.Utility;
-using DevExpress.CodeParser.Diagnostics;
+using BSCommon.Utility;
+//using DevExpress.CodeParser.Diagnostics;
+using NLog;
 using System;
+using System.Net;
 using System.Windows.Forms;
 
 namespace BSClient
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -28,14 +31,13 @@ namespace BSClient
             {
                 Application.Exit();
             }
-
-
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            Console.WriteLine("SS Aplication Error:  " + e.Exception.Message);
+            BSLog.Logger.Error(e.Exception.Message);
             MessageBoxHelper.ShowErrorMessage("Đã có lỗi xảy ra. Vui lòng liên hệ với người quản trị hoặc nhà phát triển ứng dụng.");
+            Application.Exit();
         }
     }
 }

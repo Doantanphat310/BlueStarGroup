@@ -68,7 +68,7 @@ namespace BSClient.Views
         {
             using (AccountsController controller = new AccountsController())
             {
-                MainData = new BindingList<GetChiTietTaiKhoan>(controller.GetChiTietTaiKhoan(InputData.SelectedData.AccountID, InputData.SelectedData.AccountDetailID, InputData.FromDate, InputData.ToDate));
+                MainData = new BindingList<GetChiTietTaiKhoan>(controller.GetChiTietTaiKhoan(InputData.SelectedData.AccountID, InputData.SelectedData.AccountDetailID, InputData.SelectedData.CustomerID, InputData.FromDate, InputData.ToDate));
 
                 Main_GridControl.DataSource = MainData;
             }

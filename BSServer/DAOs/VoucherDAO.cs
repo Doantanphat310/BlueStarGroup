@@ -38,7 +38,7 @@ namespace BSServer.DAOs
             new SqlParameter("@NgayBD", NgayBD),
             new SqlParameter("@NgayKT", NgayKT),
             new SqlParameter("@VouchersTypeID", voucherType),
-            new SqlParameter("@UserName", CommonInfo.UserInfo.UserID)
+            new SqlParameter("@UserName", UserInfo.UserID)
             ).ToList();
         }
         
@@ -54,7 +54,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@VouchersTypeID", voucherInfo.VouchersTypeID),
                     new SqlParameter("@Date", voucherInfo.VoucherDate),
                     new SqlParameter("@CompanyID", voucherInfo.CompanyID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                 };
                 this.Context.ExecuteDataFromProcedure("VouchersInsert", sqlParameters);
                 return true;
@@ -74,7 +74,7 @@ namespace BSServer.DAOs
                {
                     new SqlParameter("@VoucherID", VoucherID),
                     new SqlParameter("@CompanyID", CompanyID),
-                    new SqlParameter("@UserId", CommonInfo.UserInfo.UserID)
+                    new SqlParameter("@UserId", UserInfo.UserID)
                };
 
                 this.Context.ExecuteDataFromProcedure("VoucherDelete", sqlParameters);
@@ -96,7 +96,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@VouchersID", voucherInfo.VouchersID),
                     new SqlParameter("@Amount", voucherInfo.VoucherAmount),
                     new SqlParameter("@Description", voucherInfo.VoucherDescription),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                 };
 
                 this.Context.ExecuteDataFromProcedure("VoucherUpdate", sqlParameters);

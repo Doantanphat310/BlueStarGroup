@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using BSCommon.Utility;
+using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace BSClient.Utility
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi BindingCheckEdit: " + ex.Message);
+                BSLog.Logger.Debug("Lỗi BindingCheckEdit: " + ex.Message);
             }
         }
 
@@ -30,7 +31,7 @@ namespace BSClient.Utility
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi BindingTextEdit: " + ex.Message);
+                BSLog.Logger.Debug("Lỗi BindingTextEdit: " + ex.Message);
             }
         }
 
@@ -44,7 +45,7 @@ namespace BSClient.Utility
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi BindingPictureEdit: " + ex.Message);
+                BSLog.Logger.Debug("Lỗi BindingPictureEdit: " + ex.Message);
             }
         }
     }

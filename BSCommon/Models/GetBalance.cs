@@ -13,6 +13,11 @@ namespace BSCommon.Models
         public string AccountID { get; set; }
 
         /// <summary>
+        /// AccountName
+        /// </summary>
+        public string AccountName { get; set; }
+
+        /// <summary>
         /// AccountDetailID
         /// </summary>
         public string AccountDetailID { get; set; }

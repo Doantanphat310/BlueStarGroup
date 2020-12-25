@@ -25,7 +25,7 @@ namespace BSServer.DAOs
           "WareHouseSelectVoucherID @VouchersID, @CompanyID, @CreateUser",
           new SqlParameter("@VouchersID", voucherID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -35,7 +35,7 @@ namespace BSServer.DAOs
           "WareHouseSelectInvoiceID @InvoiceID, @CompanyID, @CreateUser",
           new SqlParameter("@InvoiceID", invoiceID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -63,7 +63,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Description", wareHouse.Description),
                     new SqlParameter("@Attachfile",  wareHouse.Attachfile),
                     new SqlParameter("@Discount", wareHouse.Discount),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouse.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("WareHouseInsert", sqlParameters);
@@ -83,7 +83,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@WarehouseID", WareHouseID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CompanyID)
                     
                };
@@ -112,7 +112,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@DeliverReceiver", wareHouse.DeliverReceiver),
                     new SqlParameter("@Description", wareHouse.Description),
                     new SqlParameter("@Attachfile",  wareHouse.Attachfile??(object)DBNull.Value),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouse.CompanyID),
                 };
 

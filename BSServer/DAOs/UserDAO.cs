@@ -14,13 +14,13 @@ namespace BSServer.DAOs
         {
         }
 
-        public UserInfo GetUserInfo(string userId)
+        public Users GetUserInfo(string userId)
         {
             return this.Context.Users
                 .FirstOrDefault(o => o.UserID == userId);
         }
 
-        public List<UserInfo> GetUsers()
+        public List<Users> GetUsers()
         {
             return this.Context.Users.ToList();
         }
@@ -33,7 +33,7 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
-        public bool InsertUserList(UserInfo data)
+        public bool InsertUserList(Users data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
@@ -42,7 +42,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserName", data.UserName),
                 new SqlParameter("@Phone", data.Phone),
                 new SqlParameter("@Address", data.Address),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserListInsert", sqlParameters);
@@ -50,7 +50,7 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool UpdateUserList(UserInfo data)
+        public bool UpdateUserList(Users data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
@@ -59,7 +59,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserName", data.UserName),
                 new SqlParameter("@Phone", data.Phone),
                 new SqlParameter("@Address", data.Address),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserListUpdate", sqlParameters);
@@ -67,7 +67,7 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool DeleteUserList(UserInfo data)
+        public bool DeleteUserList(Users data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
@@ -86,7 +86,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserID", data.UserID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@RoleID", data.UserRoleID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserRoleCompanyInsert", sqlParameters);
@@ -101,7 +101,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserID", data.UserID),
                 new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@RoleID", data.UserRoleID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("UserRoleCompanyUpdate", sqlParameters);

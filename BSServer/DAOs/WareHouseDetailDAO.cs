@@ -24,7 +24,7 @@ namespace BSServer.DAOs
           "WareHouseDetailSelect @warehouseDetailID, @CompanyID, @CreateUser",
           new SqlParameter("@WareHouseID", warehouseDetailID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -35,7 +35,7 @@ namespace BSServer.DAOs
           "WareHouseDetailSelectWahouseID @WareHouseID, @CompanyID, @CreateUser",
           new SqlParameter("@WareHouseID", warehouseID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
 
@@ -57,7 +57,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Quantity", wareHouseDetail.Quantity),
                     new SqlParameter("@Price",wareHouseDetail.Price),
                     new SqlParameter("@Amount", wareHouseDetail.Amount),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouseDetail.CompanyID)
                 };
                 this.Context.ExecuteDataFromProcedure("WareHouseDetailInsert", sqlParameters);
@@ -78,7 +78,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@WareHouseDetailID", warehousedetailID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", CompanyID)
 
                };
@@ -106,7 +106,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@Quantity", wareHouseDetail.Quantity),
                     new SqlParameter("@Price", wareHouseDetail.Price),
                     new SqlParameter("@Amount", wareHouseDetail.Amount),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouseDetail.CompanyID),
                 };
 

@@ -23,7 +23,7 @@ namespace BSServer.DAOs
             return this.Context.Database.SqlQuery<DepreciationDetail>(
           "DepreciationDetailSelect @DepreciationID, @CreateUser, @CompanyID",
           new SqlParameter("@DepreciationID", DepreciationID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName),
+          new SqlParameter("@CreateUser", UserInfo.UserID),
           new SqlParameter("@CompanyID", CompanyID)
           ).ToList();
         }
@@ -46,7 +46,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@QuantityPeriod", depreciationdetail.QuantityPeriod),
                     new SqlParameter("@Amount", depreciationdetail.Amount),
                     new SqlParameter("@Descriptions", depreciationdetail.Descriptions?? (object)DBNull.Value),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", depreciationdetail.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("DepreciationDetailInsert", sqlParameters);
@@ -66,7 +66,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@DepreciationDetailID", DepreciationDetailID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID ),
+                    new SqlParameter("@CreateUser", UserInfo.UserID ),
                     new SqlParameter("@CompanyID", CompanyID)
                };
 
@@ -93,7 +93,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@QuantityPeriod", depreciationdetail.QuantityPeriod),
                     new SqlParameter("@Amount", depreciationdetail.Amount),
                     new SqlParameter("@Descriptions", depreciationdetail.Descriptions?? (object)DBNull.Value),
-                    new SqlParameter("@CreateUser",  CommonInfo.UserInfo.UserID ),
+                    new SqlParameter("@CreateUser",  UserInfo.UserID ),
                     new SqlParameter("@CompanyID", depreciationdetail.CompanyID),
                 };
 

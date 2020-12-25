@@ -145,9 +145,8 @@ namespace BSClient
                 {
                     controller.UpdateCompany(CompanyInfo);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Console.WriteLine(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                     return;
                 }
@@ -178,9 +177,8 @@ namespace BSClient
                 {
                     controller.InsertCompany(CompanyInfo);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Console.WriteLine(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                     return;
                 }

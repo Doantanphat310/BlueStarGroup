@@ -18,11 +18,11 @@ namespace BSClient.Views
 {
     public partial class UserList : XtraUserControl
     {
-        public BindingList<UserInfo> MasterData { get; set; }
+        public BindingList<Users> MasterData { get; set; }
 
         public BindingList<UserRoleCompany> DetailData { get; set; }
 
-        public List<UserInfo> MasterDataDelete { get; set; } = new List<UserInfo>();
+        public List<Users> MasterDataDelete { get; set; } = new List<Users>();
 
         public List<UserRoleCompany> DetailDataDelete { get; set; } = new List<UserRoleCompany>();
 
@@ -34,7 +34,7 @@ namespace BSClient.Views
 
             LoadGrid();
 
-            if (CommonInfo.UserInfo.UserRole != "Full")
+            if (UserInfo.UserRole != "Full")
             {
                 CompanyID_LookUpEdit.ReadOnly = true;
             }
@@ -116,7 +116,7 @@ namespace BSClient.Views
         private void LoadGridView()
         {
             UserController controller = new UserController();
-            MasterData = new BindingList<UserInfo>(controller.GetUsers());
+            MasterData = new BindingList<Users>(controller.GetUsers());
             Users_GridControl.DataSource = MasterData;
         }
 
@@ -134,7 +134,7 @@ namespace BSClient.Views
 
         private void UserSave_Button_Click(object sender, EventArgs e)
         {
-            List<UserInfo> saveData = this.MasterData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
+            List<Users> saveData = this.MasterData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
             if (MasterDataDelete != null && MasterDataDelete.Count > 0)
             {
@@ -147,7 +147,7 @@ namespace BSClient.Views
                 if (controller.SaveUser(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    MasterDataDelete = new List<UserInfo>();
+                    MasterDataDelete = new List<Users>();
                     this.LoadGridView();
                 }
                 else
@@ -218,7 +218,7 @@ namespace BSClient.Views
         {
             string col = Users_GridView.FocusedColumn.FieldName;
             int rowIndex = Users_GridView.FocusedRowHandle;
-            var selected = Users_GridView.GetFocusedRow().CastTo<UserInfo>();
+            var selected = Users_GridView.GetFocusedRow().CastTo<Users>();
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
             if (col == "UserID" && !(isNewRow || selected?.Status == ModifyMode.Insert))
             {
@@ -231,7 +231,7 @@ namespace BSClient.Views
             Users_GridView.ClearColumnErrors();
             int rowIndex = Users_GridView.FocusedRowHandle;
             bool isNewRow = Users_GridView.IsNewItemRow(rowIndex);
-            UserInfo row = e.Row.CastTo<UserInfo>();
+            Users row = e.Row.CastTo<Users>();
             GridView view = sender as GridView;
             GridColumn column;
             if (isNewRow || row.Status == ModifyMode.Insert)
@@ -284,7 +284,7 @@ namespace BSClient.Views
 
         private void Users_GridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
-            UserInfo row = e.Row.CastTo<UserInfo>();
+            Users row = e.Row.CastTo<Users>();
             if (!string.IsNullOrEmpty(row.PasswordDisplay))
             {
                 row.Password = SHA1Helper.GetHash(row.PasswordDisplay);
@@ -307,7 +307,7 @@ namespace BSClient.Views
 
         private void Users_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            var delete = e.Row.CastTo<UserInfo>();
+            var delete = e.Row.CastTo<Users>();
             Console.WriteLine(delete.UserID);
 
             if (delete.Status == ModifyMode.Insert)
@@ -376,7 +376,7 @@ namespace BSClient.Views
                 filter = $"[CompanyID] = '{company}'";
             }
 
-            UserInfo user = Users_GridView.GetFocusedRow().CastTo<UserInfo>();
+            Users user = Users_GridView.GetFocusedRow().CastTo<Users>();
             if (user != null)
             {
                 UserID_TextBox.Text = user.UserID;

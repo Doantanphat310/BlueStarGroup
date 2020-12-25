@@ -1,5 +1,6 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer._Core.Context;
 using BSServer.DAOs;
 using System;
@@ -20,13 +21,13 @@ namespace BSServer.Logics
 
         private UserDAO UserDAO { get; set; }
 
-        public bool SaveUser(List<UserInfo> saveData)
+        public bool SaveUser(List<Users> saveData)
         {
             using (DbContextTransaction transaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    foreach (UserInfo data in saveData)
+                    foreach (Users data in saveData)
                     {
                         switch (data.Status)
                         {
@@ -51,10 +52,9 @@ namespace BSServer.Logics
 
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
                     return false;
                 }
             }
@@ -91,10 +91,9 @@ namespace BSServer.Logics
 
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
                     return false;
                 }
             }

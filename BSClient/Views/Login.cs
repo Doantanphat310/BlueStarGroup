@@ -18,7 +18,7 @@ namespace BSClient
         private readonly string ExitCaption = "Thoát";
         private bool IsLogined = false;
 
-        List<UserInfo> UserInfos { get; set; }
+        List<Users> Users { get; set; }
 
         public Login()
         {
@@ -26,7 +26,7 @@ namespace BSClient
 
             using (UserController controller = new UserController())
             {
-                UserInfos = controller.GetUsers();
+                Users = controller.GetUsers();
             }
         }
 
@@ -49,13 +49,18 @@ namespace BSClient
 
             using (UserController controller = new UserController())
             {
-                UserInfo user = UserInfos?.Find(o => o.UserID == userID);
+                Users user = Users?.Find(o => o.UserID == userID);
 
                 if (user != null && ClientCommon.IsCheckPass(Password_TextBox.Text, user.Password))
                 {
-                    CommonInfo.UserInfo = user;
+                    UserInfo.UserID = user.UserID;
+                    UserInfo.UserName = user.UserName;
+                    UserInfo.UserRole = user.UserRole;
+                    UserInfo.Password = user.Password;
+                    UserInfo.Address = user.Address;
+                    UserInfo.Phone = user.Phone;
 
-                    List<UserRoleCompany> companys = controller.GetUserRoleCompany(user.UserID);
+                    List<UserRoleCompany> companys = controller.GetUserRoleCompany(UserInfo.UserID);
 
                     this.Company_LookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", companys);
                     this.Company_LookUpEdit.ItemIndex = 0;
@@ -107,7 +112,7 @@ namespace BSClient
             {
                 SetEnable(false);
                 CommonInfo.CompanyInfo = null;
-                CommonInfo.UserInfo = null;
+                SetUserInfo();
                 Company_LookUpEdit.Properties.DataSource = null;
             }
             else
@@ -115,6 +120,21 @@ namespace BSClient
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
+        }
+
+        private void SetUserInfo(Users user = null)
+        {
+            if (user == null)
+            {
+                user = new Users();
+            }
+
+            UserInfo.UserID = user.UserID;
+            UserInfo.UserName = user.UserName;
+            UserInfo.UserRole = user.UserRole;
+            UserInfo.Password = user.Password;
+            UserInfo.Address = user.Address;
+            UserInfo.Phone = user.Phone;
         }
 
         private void ExecuteAccess()
@@ -131,7 +151,7 @@ namespace BSClient
             {
                 CommonInfo.CompanyInfo = controller.GetCompanyInfo(selected.CompanyID);
             }
-            CommonInfo.UserInfo.UserRole = selected.UserRoleName;
+            UserInfo.UserRole = selected.UserRoleName;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

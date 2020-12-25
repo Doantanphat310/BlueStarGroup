@@ -4,7 +4,6 @@ using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer._Core.Utility;
 using BSServer.DAOs;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -55,10 +54,9 @@ namespace BSServer.Logics
 
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
                     return false;
                 }
             }
@@ -99,10 +97,9 @@ namespace BSServer.Logics
 
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
                     return false;
                 }
             }
@@ -139,10 +136,9 @@ namespace BSServer.Logics
 
                     return true;
                 }
-                catch (Exception e)
+                catch
                 {
                     transaction.Rollback();
-                    Console.WriteLine("Update data fail.\r\n" + e.Message);
                     return false;
                 }
             }

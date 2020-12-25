@@ -48,7 +48,7 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@AccountGroupID", data.AccountGroupID),
                 new SqlParameter("@AccountGroupName", data.AccountGroupName),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountGroupInsert", sqlParameters);
@@ -62,7 +62,7 @@ namespace BSServer.DAOs
             {
                 new SqlParameter("@AccountGroupID", data.AccountGroupID),
                 new SqlParameter("@AccountGroupName", data.AccountGroupName),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountGroupUpdate", sqlParameters);
@@ -101,7 +101,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ThueVAT", data.ThueVAT),
                 new SqlParameter("@HopDong", data.HopDong),
                 new SqlParameter("@CongNo", data.CongNo),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountsInsert", sqlParameters);
@@ -128,7 +128,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ThueVAT", data.ThueVAT),
                 new SqlParameter("@HopDong", data.HopDong),
                 new SqlParameter("@CongNo", data.CongNo),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountsUpdate", sqlParameters);
@@ -152,11 +152,11 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@AccountID", data.AccountID),
                 new SqlParameter("@AccountDetailID", data.AccountDetailID),
                 new SqlParameter("@AccountDetailName", data.AccountDetailName),
-                new SqlParameter("@AccountID", data.AccountID),
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountDetailInsert", sqlParameters);
@@ -168,11 +168,11 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@AccountID", data.AccountID),
                 new SqlParameter("@AccountDetailID", data.AccountDetailID),
                 new SqlParameter("@AccountDetailName", data.AccountDetailName),
-                new SqlParameter("@AccountID", data.AccountID),
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@UpdateUser", CommonInfo.UserInfo.UserID)
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
             this.Context.ExecuteDataFromProcedure("AccountDetailUpdate", sqlParameters);
@@ -184,6 +184,8 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@AccountID", data.AccountID),
                 new SqlParameter("@AccountDetailID", data.AccountDetailID)
             };
 
@@ -192,16 +194,17 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhTK(DateTime fromDate, DateTime toDate)
+        public List<GetCanDoiSoPhatSinhTaiKhoan> GetCanDoiSoPhatSinhTaiKhoanByKH(DateTime fromDate, DateTime toDate)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
                 new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
                 new SqlParameter("@FromDate", fromDate.ToString("yyyy/MM/dd 00:00:00")),
-                new SqlParameter("@ToDate", toDate.Date.ToString("yyyy/MM/dd 23:59:59"))
+                new SqlParameter("@ToDate", toDate.ToString("yyyy/MM/dd 23:59:59"))
             };
 
-            return this.Context.GetDataFromProcedure<GetCanDoiSoPhatSinhTaiKhoan>("BangCanDoiSoPhatSinhTKSelect", sqlParameters);
+            return this.Context
+                .GetDataFromProcedure<GetCanDoiSoPhatSinhTaiKhoan>("SP_BangCanDoiSoPhatSinhTK", sqlParameters);
         }
 
         public List<GetBalance> GetSoDuDauKy(DateTime fromDate)
@@ -215,13 +218,14 @@ namespace BSServer.DAOs
             return this.Context.GetDataFromProcedure<GetBalance>("SP_GetBalance", sqlParameters);
         }
 
-        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, DateTime fromDate, DateTime toDate)
+        public List<GetChiTietTaiKhoan> GetChiTietTaiKhoan(string accountID, string accountDetailID, string customerID, DateTime fromDate, DateTime toDate)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
                 new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID),
                 new SqlParameter("@AccountID", accountID),
                 new SqlParameter("@AccountDetailID", accountDetailID),
+                new SqlParameter("@CustomerID", customerID),
                 new SqlParameter("@FromDate", fromDate.Date),
                 new SqlParameter("@ToDate", toDate.Date)
             };

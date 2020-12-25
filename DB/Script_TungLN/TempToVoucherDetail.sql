@@ -1,6 +1,8 @@
 USE [BlueStarGroup]
 GO
-INSERT INTO [dbo].[VouchersDetail]
+DELETE VouchersDetail Where CompanyID = 'CTY0000000060'
+GO
+INSERT INTO VouchersDetail
            (OldVoucherID
            ,AccountID
            ,AccountDetailID

@@ -23,7 +23,7 @@ namespace BSServer.DAOs
             return this.Context.Database.SqlQuery<Depreciation>(
           "DepreciationSelect @WareHouseDetailID, @CreateUser, @CompanyID",
           new SqlParameter("@WareHouseDetailID", WareHouseDetailID),
-          new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserName),
+          new SqlParameter("@CreateUser", UserInfo.UserID),
           new SqlParameter("@CompanyID", CompanyID)
           ).ToList();
         }
@@ -48,7 +48,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@DepreciationAmount", depreciation.DepreciationAmount),
                     new SqlParameter("@DepreciationAmountPerMonth", depreciation.DepreciationAmountPerMonth),
                     new SqlParameter("@Status", depreciation.Status),
-                    new SqlParameter("@CreateUser",  CommonInfo.UserInfo.UserID),
+                    new SqlParameter("@CreateUser",  UserInfo.UserID),
                     new SqlParameter("@CompanyID", depreciation.CompanyID),
                 };
                 this.Context.ExecuteDataFromProcedure("DepreciationInsert", sqlParameters);
@@ -68,7 +68,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                {
                     new SqlParameter("@DepreciationID", DepreciationID),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID ),
+                    new SqlParameter("@CreateUser", UserInfo.UserID ),
                     new SqlParameter("@CompanyID", CompanyID)
                };
 
@@ -97,7 +97,7 @@ namespace BSServer.DAOs
                     new SqlParameter("@DepreciationAmount", depreciation.DepreciationMonth),
                     new SqlParameter("@DepreciationAmountPerMonth", depreciation.DepreciationAmountPerMonth),
                     new SqlParameter("@Status", depreciation.Status),
-                    new SqlParameter("@CreateUser", CommonInfo.UserInfo.UserID ),
+                    new SqlParameter("@CreateUser", UserInfo.UserID ),
                     new SqlParameter("@CompanyID", depreciation.CompanyID),
                 };
 

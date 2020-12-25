@@ -1,5 +1,7 @@
 USE [BlueStarGroup]
 GO
+DELETE Vouchers Where CompanyID = 'CTY0000000060';
+GO
 INSERT INTO Vouchers
            (VouchersID
 		   ,OldVoucherID	
