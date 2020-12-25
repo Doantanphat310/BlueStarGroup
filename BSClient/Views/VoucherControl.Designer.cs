@@ -1404,6 +1404,7 @@
             this.WareHouse_gridView.GridControl = this.WareHouse_gridControl;
             this.WareHouse_gridView.Name = "WareHouse_gridView";
             this.WareHouse_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouse_gridView_RowClick);
+            this.WareHouse_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.WareHouse_gridView_InitNewRow);
             this.WareHouse_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouse_gridView_FocusedRowChanged);
             this.WareHouse_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouse_gridView_RowUpdated);
             // 
