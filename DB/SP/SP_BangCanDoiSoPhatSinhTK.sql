@@ -7,17 +7,18 @@ CREATE PROC SP_BangCanDoiSoPhatSinhTK
 AS
 	SELECT 
 		PS.AccountID
-		,PS.AccountDetailID
-		,PS.CustomerID
+		,ISNULL(PS.AccountDetailID, '') AccountDetailID
+		--,(SELECT CustomerSName FROM Customer WHERE CustomerID = PS.CustomerID) CustomerID
+		,ISNULL(PS.CustomerID, '') CustomerID
 		,MAX(PS.AccountName) AccountName
 		,SUM(PS.DebitAmount) PSNo
 		,SUM(PS.CreditAmount) PSCo
 	FROM (
 		SELECT
 			D.AccountID
-			,ISNULL(D.AccountDetailID, '') AccountDetailID
+			,D.AccountDetailID
 			,TK.AccountName
-			,ISNULL(CustomerID, '') CustomerID
+			,D.CustomerID
 			,ISNULL(D.DebitAmount, 0) DebitAmount
 			,ISNULL(D.CreditAmount, 0) CreditAmount
 		FROM 
@@ -28,28 +29,27 @@ AS
 			LEFT JOIN (
 				SELECT
 					TK.AccountID
-					,'CTY0000000060' CompanyID
-					,ISNULL(TKD.AccountDetailID,'') AccountDetailID
+					,@CompanyID CompanyID
+					,TKD.AccountDetailID
 					,ISNULL(TKD.AccountDetailName, TK.AccountName) AccountName
 				FROM Accounts TK
 				LEFT JOIN AccountDetail TKD 
 					ON TK.AccountID = TKD.AccountID
-						AND TKD.CompanyID = 'CTY0000000060'
+						AND TKD.CompanyID = @CompanyID
 			) AS TK
 				ON TK.AccountID = D.AccountID
-				AND TK.AccountDetailID = ISNULL(D.AccountDetailID, '')	
+				AND ISNULL(TK.AccountDetailID, '') = ISNULL(D.AccountDetailID, '')	
 				AND TK.CompanyID = D.CompanyID
 		WHERE 
-			L.CompanyID = 'CTY0000000060'
-			--L.CompanyID = @CompanyID
+			L.CompanyID = @CompanyID
 			AND L.VoucherDate >= @FromDate
 			AND L.VoucherDate <= @ToDate
 		) PS
 	GROUP BY 
 		AccountID,
-		AccountDetailID,
-		CustomerID
+		PS.AccountDetailID,
+		PS.CustomerID
 	ORDER BY 
 		AccountID,
-		AccountDetailID,
-		CustomerID
+		PS.AccountDetailID,
+		PS.CustomerID

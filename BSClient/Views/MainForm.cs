@@ -1,5 +1,6 @@
 ﻿using BSClient.Base;
 using BSClient.Views;
+using BSClient.Views.Reports;
 using BSCommon.Constant;
 using System;
 
@@ -61,15 +62,9 @@ namespace BSClient
             this.SetTitle("Thông tin công ty đang được quản lý");
         }
 
-        private void SoCaiChiTiet_Item_Click(object sender, EventArgs e)
-        {
-            ChiTietSoCai form = new ChiTietSoCai();
-            form.ShowDialog();
-        }
-
         private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)
         {
-            BangCanDoiSoPhatSinhTaiKhoan form = new BangCanDoiSoPhatSinhTaiKhoan();
+            BangCanDoiSoPhatSinhTaiKhoanReport form = new BangCanDoiSoPhatSinhTaiKhoanReport();
             form.ShowDialog();
         }
 

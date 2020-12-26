@@ -172,14 +172,15 @@ namespace BSClient.Utility
             string caption,
             int width,
             bool isAllowEdit = true,
+            HorzAlignment textAlignment = HorzAlignment.Center,
             string formatString = "dd/MM/yyyy")
         {
             RepositoryItemDateEdit itemCtrl = new RepositoryItemDateEdit();
 
             itemCtrl.DisplayFormat.FormatString = formatString;
-            itemCtrl.DisplayFormat.FormatType = FormatType.DateTime;
+            itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
 
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit: isAllowEdit, itemCtrl: itemCtrl, textAlignment: textAlignment);
         }
 
         public static void AddColumn(
@@ -189,6 +190,7 @@ namespace BSClient.Utility
             int width,
             bool? isAllowEdit = null,
             bool fixedWidth = true,
+            HorzAlignment textAlignment = HorzAlignment.Default,
             RepositoryItem itemCtrl = null,
             GridColumnSummaryItem summaryItem = null)
         {
@@ -214,6 +216,9 @@ namespace BSClient.Utility
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.OptionsColumn.FixedWidth = fixedWidth;
             col.OptionsColumn.AllowSize = false;
+
+            col.AppearanceCell.TextOptions.HAlignment = textAlignment;
+            col.AppearanceCell.Options.UseTextOptions = true;
 
             if (itemCtrl != null)
             {

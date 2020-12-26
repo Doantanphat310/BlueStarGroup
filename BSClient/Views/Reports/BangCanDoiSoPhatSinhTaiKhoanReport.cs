@@ -1,5 +1,4 @@
 ﻿using BSClient.Constants;
-using BSClient.Report;
 using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
@@ -8,16 +7,15 @@ using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 
-namespace BSClient.Views
+namespace BSClient.Views.Reports
 {
-    public partial class BangCanDoiSoPhatSinhTaiKhoan : XtraForm
+    public partial class BangCanDoiSoPhatSinhTaiKhoanReport : XtraForm
     {
         public BindingList<GetCanDoiSoPhatSinhTaiKhoan> ReportData { get; set; }
 
@@ -25,7 +23,7 @@ namespace BSClient.Views
 
         private DateTime ToDate { get; set; }
 
-        public BangCanDoiSoPhatSinhTaiKhoan()
+        public BangCanDoiSoPhatSinhTaiKhoanReport()
         {
             InitializeComponent();
 
@@ -143,7 +141,8 @@ namespace BSClient.Views
         {
             SaveFileDialog openFileDialog = new SaveFileDialog
             {
-                Filter = "Excel file(*.xlsx)|*.xlsx"
+                Filter = "Excel file(*.xlsx)|*.xlsx",
+                FileName = ReportTemplate.GetTemplate(ReportTemplate.RPT000001)
             };
 
             string path = "";
@@ -152,7 +151,16 @@ namespace BSClient.Views
                 path = openFileDialog.FileName;
             }
 
-            Main_GridControl.ExportToXlsx(path);
+            try
+            {
+                Main_GridControl.ExportToXlsx(path);
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Warn(ex.Message);
+                MessageBoxHelper.ShowErrorMessage($"Xuất excel thất bại!\r\n{ex.Message}");
+            }
         }
 
         private void Main_GridView_RowClick(object sender, RowClickEventArgs e)
@@ -180,6 +188,8 @@ namespace BSClient.Views
 
         private void SoCai_Button_Click(object sender, EventArgs e)
         {
+            List<GetChiTietSoCai> reportData = GetChiTietSoCais();
+
             List<ReportParam> param = new List<ReportParam>
             {
                 new ReportParam { ParamID = "CurrencyUnit", ParamValue = CommonInfo.CompanyInfo.CurrencyUnit },
@@ -195,7 +205,7 @@ namespace BSClient.Views
                 new ReportParam { ParamID = "Director", ParamValue = CommonInfo.CompanyInfo.LanhDao }
             };
 
-            ReportHelper.ShowPreview(ReportTemplate.RPT000001, ReportData, param);
+            ReportHelper.ShowPreview(ReportTemplate.RPT000002, reportData, param);
         }
 
         private List<GetChiTietSoCai> GetChiTietSoCais()

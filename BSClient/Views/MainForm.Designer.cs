@@ -172,7 +172,6 @@
             this.SoCaiChiTiet_Item.Name = "SoCaiChiTiet_Item";
             this.SoCaiChiTiet_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.SoCaiChiTiet_Item.Text = "Sổ cái chi tiết";
-            this.SoCaiChiTiet_Item.Click += new System.EventHandler(this.SoCaiChiTiet_Item_Click);
             // 
             // fluentDesignFormControl1
             // 

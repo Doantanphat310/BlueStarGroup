@@ -10,6 +10,8 @@ CREATE PROC SP_GetChiTietTaiKhoan
 AS
 SELECT
 	D.AccountID
+	,D.AccountDetailID
+	,D.CustomerID
 	,L.VoucherDate
 	,L.VouchersTypeID
 	,L.VoucherNo
@@ -19,20 +21,17 @@ SELECT
 FROM 
 	Vouchers L
 	INNER JOIN VouchersDetail D
-		ON L.OldVoucherID = D.OldVoucherID
+		ON	L.OldVoucherID = D.OldVoucherID
+			AND L.CompanyID = D.CompanyID
 WHERE 
 	L.CompanyID = @CompanyID
 	AND AccountID = @AccountID
-
-	AND (@AccountDetailID IS NULL
-		OR @AccountDetailID IS NOT NULL AND D.AccountDetailID >= @AccountDetailID)
-
-	AND (@CustomerID IS NULL
-		OR @CustomerID IS NOT NULL AND D.AccountDetailID >= @CustomerID)
-
 	AND L.VoucherDate >= @FromDate
-
 	AND L.VoucherDate <= @ToDate
+	AND (ISNULL(@AccountDetailID, '') = '' OR 
+		(ISNULL(@AccountDetailID, '') != '' AND @AccountDetailID = D.AccountDetailID))
+	AND (ISNULL(@CustomerID, '') = '' OR 
+		(ISNULL(@CustomerID, '') != '' AND @CustomerID = D.CustomerID))
 ORDER BY
 	VoucherDate
 	,VouchersTypeID

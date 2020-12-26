@@ -67,7 +67,7 @@
             // 
             // UserID_TextBox
             // 
-            this.UserID_TextBox.EditValue = "admin";
+            this.UserID_TextBox.EditValue = "";
             this.UserID_TextBox.Location = new System.Drawing.Point(60, 25);
             this.UserID_TextBox.Name = "UserID_TextBox";
             this.UserID_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,7 +92,7 @@
             // 
             // Password_TextBox
             // 
-            this.Password_TextBox.EditValue = "Ab123456";
+            this.Password_TextBox.EditValue = "";
             this.Password_TextBox.Location = new System.Drawing.Point(60, 61);
             this.Password_TextBox.Name = "Password_TextBox";
             this.Password_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,12 +106,12 @@
             // 
             this.Company_LookUpEdit.Location = new System.Drawing.Point(60, 97);
             this.Company_LookUpEdit.Name = "Company_LookUpEdit";
-            this.Company_LookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Company_LookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Company_LookUpEdit.Properties.Appearance.Options.UseFont = true;
             this.Company_LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Company_LookUpEdit.Properties.NullText = "";
-            this.Company_LookUpEdit.Size = new System.Drawing.Size(354, 24);
+            this.Company_LookUpEdit.Size = new System.Drawing.Size(354, 22);
             this.Company_LookUpEdit.StyleController = this.Main_LayoutControl;
             this.Company_LookUpEdit.TabIndex = 2;
             // 

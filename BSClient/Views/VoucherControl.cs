@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Grid;
-using System.IO;
-using BSServer.Controllers;
+﻿using BSClient.Utility;
+using BSClient.Views;
+using BSCommon.Constant;
 using BSCommon.Models;
-using BSClient.Utility;
-using System.ComponentModel;
+using BSCommon.Utility;
+using BSServer.Controllers;
+using DevExpress.Utils.Extensions;
+using DevExpress.Utils.Win;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraEditors.Repository;
-using System.Drawing;
-using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraEditors.Popup;
-using DevExpress.Utils.Win;
-using DevExpress.XtraGrid.Editors;
-using DevExpress.XtraGrid;
-using System.Linq;
-using BSCommon.Constant;
-using BSCommon.Utility;
-using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
-using System.Collections;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using BSClient.Views;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace BSClient
 {
@@ -3148,11 +3145,16 @@ namespace BSClient
             }
             WareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.VoucherDate);
         }
-
+        
         private void VoucherKetChuyen_simpleButton_Click(object sender, EventArgs e)
         {
             KetChuyen KetChuyenForm = new KetChuyen();
             KetChuyenForm.Show();
+        }
+        private void CDPSTK_Button_Click(object sender, EventArgs e)
+        {
+            BangCanDoiSoPhatSinhTaiKhoan form = new BangCanDoiSoPhatSinhTaiKhoan();
+            form.Show();
         }
     }
 }

@@ -1,0 +1,12 @@
+string path = "output.xlsx";
+
+//Customize export options
+(gridControl1.MainView as GridView).OptionsPrint.PrintHeader = false;
+XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
+advOptions.AllowGrouping = DevExpress.Utils.DefaultBoolean.False;
+advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;
+advOptions.SheetName = "Exported from Data Grid";
+
+gridControl1.ExportToXlsx(path, advOptions);
+// Open the created XLSX file with the default application.
+Process.Start(path);
