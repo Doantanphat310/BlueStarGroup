@@ -136,25 +136,7 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVarient.cs" />
-    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\SoCaiChiTiet.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\SoCaiChiTiet.Designer.cs">
-      <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utility\ReportHelper.cs" />
-    <Compile Include="Views\ChiTietSoCai.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ChiTietSoCai.Designer.cs">
-      <DependentUpon>ChiTietSoCai.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ChiTietTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,10 +185,16 @@
     <Compile Include="Views\NewUserRole.Designer.cs">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
+    <Compile Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoanReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
+    <Compile Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserList.cs">
@@ -270,15 +258,6 @@
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\SoCaiChiTiet.resx">
-      <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ChiTietSoCai.resx">
-      <DependentUpon>ChiTietSoCai.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChiTietTaiKhoan.resx">
       <DependentUpon>ChiTietTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,7 +279,10 @@
     <EmbeddedResource Include="Views\NewUserRole.resx">
       <DependentUpon>NewUserRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
+    <EmbeddedResource Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserList.resx">
@@ -381,7 +363,7 @@
     <Content Include="star_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Screens\" />
+    <Folder Include="Template\Excels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

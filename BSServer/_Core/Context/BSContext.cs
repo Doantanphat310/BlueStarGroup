@@ -10,8 +10,6 @@ namespace BSServer._Core.Context
         {
         }
 
-        //public static readonly ILoggerFactory _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-
         #region DbSet
 
         public DbSet<VouchersType> VoucherTypes { get; set; }

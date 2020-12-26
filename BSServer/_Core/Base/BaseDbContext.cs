@@ -18,7 +18,7 @@ namespace BSServer._Core.Base
         /// <param name="options"></param>
         public BaseDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
-            this.Database.Log = message => BSLog.Logger.Debug(message);
+            this.Database.Log = message => BSLog.Logger.Trace(message);
         }
 
         public long ExecuteScalar(string procedureName, params SqlParameter[] sqlParameter)
@@ -88,8 +88,13 @@ namespace BSServer._Core.Base
 
         private void WriteQueryLog(string sql, params SqlParameter[] sqlParameter)
         {
-            string parram = string.Join(", ", sqlParameter.Select(o => $"{o.ParameterName}: {o.Value}"));
-            BSLog.Logger.Trace($"{sql}|{parram}");
+            string parram = string.Join(", ", sqlParameter.Select(o => $"{o.ParameterName} = {GetValue(o.Value)}"));
+            BSLog.Logger.Debug($"{sql} {parram}");
+        }
+
+        private string GetValue(object value)
+        {
+            return value == DBNull.Value ? "NULL" : $"'{value}'";
         }
     }
 }

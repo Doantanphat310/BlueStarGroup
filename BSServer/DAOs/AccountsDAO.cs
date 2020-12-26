@@ -226,8 +226,8 @@ namespace BSServer.DAOs
                 new SqlParameter("@AccountID", accountID),
                 new SqlParameter("@AccountDetailID", accountDetailID),
                 new SqlParameter("@CustomerID", customerID),
-                new SqlParameter("@FromDate", fromDate.Date),
-                new SqlParameter("@ToDate", toDate.Date)
+                new SqlParameter("@FromDate", fromDate.ToString("yyyy/MM/dd 00:00:00")),
+                new SqlParameter("@ToDate", toDate.ToString("yyyy/MM/dd 23:59:59"))
             };
 
             return this.Context.GetDataFromProcedure<GetChiTietTaiKhoan>("SP_GetChiTietTaiKhoan", sqlParameters);

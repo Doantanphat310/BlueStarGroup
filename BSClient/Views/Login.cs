@@ -24,6 +24,11 @@ namespace BSClient
         {
             InitializeComponent();
 
+#if DEBUG
+            UserID_TextBox.Text = "admin";
+            Password_TextBox.Text = "Ab123456";
+#endif
+
             using (UserController controller = new UserController())
             {
                 Users = controller.GetUsers();

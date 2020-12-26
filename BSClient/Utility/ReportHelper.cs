@@ -1,12 +1,8 @@
 ﻿using BSClient.Constants;
 using BSCommon.Models;
 using DevExpress.XtraReports.UI;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BSClient.Utility
 {
@@ -19,24 +15,31 @@ namespace BSClient.Utility
             return Path.Combine(Directory.GetCurrentDirectory(), ReportDir);
         }
 
-        //public static void ShowPreview(this XtraReport xtraReport, string reportID, object dataSource)
-        //{
-        //    xtraReport.DataSource = dataSource;
-        //    xtraReport.RequestParameters = false;
+        public static void ShowPreview(this XtraReport xtraReport, string reportID, object dataSource)
+        {
+            string filePath = GetReportPath(reportID);
 
-        //    ReportPrintTool reportPrintTool = new ReportPrintTool(xtraReport)
-        //    {
-        //        AutoShowParametersPanel = false
-        //    };
+            if (!File.Exists(filePath))
+            {
+                MessageBoxHelper.ShowErrorMessage($"Mẫu báo cáo không tồn tại!\r\n{filePath}");
+                return;
+            }
 
-        //    reportPrintTool.ShowPreview();
-        //}
+            xtraReport.LoadLayout(filePath);
+            xtraReport.DataSource = dataSource;
+            xtraReport.RequestParameters = false;
+
+            ReportPrintTool reportPrintTool = new ReportPrintTool(xtraReport)
+            {
+                AutoShowParametersPanel = false
+            };
+
+            reportPrintTool.ShowPreview();
+        }
 
         public static void ShowPreview(string reportID, object dataSource, List<ReportParam> reportParams)
         {
-            string dir = GetReportDirectory();
-            string template = ReportTemplate.GetTemplate(reportID);
-            string filePath = Path.Combine(dir, template);
+            string filePath = GetReportPath(reportID);
 
             if (!File.Exists(filePath))
             {
@@ -67,7 +70,7 @@ namespace BSClient.Utility
         private static string GetReportPath(string reportID)
         {
             string dir = GetReportDirectory();
-            string reportPath = Path.Combine(dir, ReportTemplate.GetTemplate(reportID));
+            string reportPath = Path.Combine(dir, $"{ReportTemplate.GetTemplate(reportID)}.repx");
 
             return reportPath;
         }

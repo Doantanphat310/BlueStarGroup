@@ -66,7 +66,7 @@
             this.Voucher_gridControl = new DevExpress.XtraGrid.GridControl();
             this.Voucher_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
@@ -246,7 +246,7 @@
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton7);
             this.tabNavigationPageChungTu.Controls.Add(this.Voucher_groupControl);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton15);
-            this.tabNavigationPageChungTu.Controls.Add(this.simpleButton8);
+            this.tabNavigationPageChungTu.Controls.Add(this.CDPSTK_Button);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton11);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton6);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton16);
@@ -608,13 +608,14 @@
             this.simpleButton15.TabIndex = 31;
             this.simpleButton15.Text = "Sổ S35";
             // 
-            // simpleButton8
+            // CDPSTK_Button
             // 
-            this.simpleButton8.Location = new System.Drawing.Point(116, 490);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton8.TabIndex = 24;
-            this.simpleButton8.Text = "Cân đối TK";
+            this.CDPSTK_Button.Location = new System.Drawing.Point(116, 490);
+            this.CDPSTK_Button.Name = "CDPSTK_Button";
+            this.CDPSTK_Button.Size = new System.Drawing.Size(98, 37);
+            this.CDPSTK_Button.TabIndex = 24;
+            this.CDPSTK_Button.Text = "Cân đối TK";
+            this.CDPSTK_Button.Click += new System.EventHandler(this.CDPSTK_Button_Click);
             // 
             // simpleButton11
             // 
@@ -1583,7 +1584,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.SimpleButton simpleButton12;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton CDPSTK_Button;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCapNhat;

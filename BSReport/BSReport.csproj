@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63770073-DC5A-484D-B645-5376D8A18FA4}</ProjectGuid>
+    <ProjectGuid>{D26B3677-5CCB-4C00-BD33-0441D941256D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BSReport</RootNamespace>
     <AssemblyName>BSReport</AssemblyName>
@@ -65,6 +65,18 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoCaiChiTiet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoCaiChiTiet.Designer.cs">
+      <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -74,7 +86,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
+      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoCaiChiTiet.resx">
+      <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -87,6 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSCommon\BSCommon.csproj">
+      <Project>{76805c24-47fb-47d1-9cdc-f860d6d671cd}</Project>
+      <Name>BSCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

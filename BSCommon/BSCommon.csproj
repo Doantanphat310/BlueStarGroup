@@ -76,6 +76,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -102,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
-    <Compile Include="Exception.cs" />
     <Compile Include="Models\Balance.cs" />
     <Compile Include="Models\GetChiTietSoCai.cs" />
     <Compile Include="Models\GetChiTietTaiKhoan.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Constant\BSConst.cs" />
     <Compile Include="Utility\BSLog.cs" />
     <Compile Include="Utility\CommonInfo.cs" />
+    <Compile Include="Utility\CommonUtility.cs" />
     <Compile Include="Utility\ModelHelper.cs" />
     <Compile Include="Utility\SHA1Helper.cs" />
     <Compile Include="Utility\UserInfo.cs" />

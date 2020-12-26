@@ -706,6 +706,10 @@ namespace BSClient.Views
                     filter += $" AND [AccountID] = '{account.AccountID}'";
                 }
             }
+            else
+            {
+                AccountDetailName_TextEdit.Text = string.Empty;
+            }
 
             // filter grid            
             if (!string.IsNullOrEmpty(filter))
@@ -737,7 +741,14 @@ namespace BSClient.Views
         private void Account_TreeList_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             Accounts selected = Account_TreeList.GetFocusedRow().CastTo<Accounts>();
-            AccountID_SearchLookUpEdit.EditValue = selected.AccountID;
+            if (selected == null)
+            {
+                AccountID_SearchLookUpEdit.EditValue = null;
+            }
+            else
+            {
+                AccountID_SearchLookUpEdit.EditValue = selected.AccountID;
+            }
         }
 
         private void AllCompanies_CheckEdit_CheckedChanged(object sender, EventArgs e)
