@@ -117,6 +117,8 @@
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\ItemPriceCompany.cs" />
     <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\KetChuyenValue.cs" />
+    <Compile Include="Models\KichBanKetChuyentable.cs" />
     <Compile Include="Models\MaterialCheck.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Items.cs" />

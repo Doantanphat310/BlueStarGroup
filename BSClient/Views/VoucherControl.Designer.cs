@@ -71,6 +71,7 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.VoucherKetChuyen_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageLKVAT = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
@@ -251,6 +252,7 @@
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton6);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton16);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton5);
+            this.tabNavigationPageChungTu.Controls.Add(this.VoucherKetChuyen_simpleButton);
             this.tabNavigationPageChungTu.Controls.Add(this.simpleButton10);
             this.tabNavigationPageChungTu.Name = "tabNavigationPageChungTu";
             this.tabNavigationPageChungTu.Size = new System.Drawing.Size(1326, 663);
@@ -650,6 +652,16 @@
             this.simpleButton5.Size = new System.Drawing.Size(98, 37);
             this.simpleButton5.TabIndex = 22;
             this.simpleButton5.Text = "Khóa sổ";
+            // 
+            // VoucherKetChuyen_simpleButton
+            // 
+            this.VoucherKetChuyen_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("VoucherKetChuyen_simpleButton.ImageOptions.Image")));
+            this.VoucherKetChuyen_simpleButton.Location = new System.Drawing.Point(343, 533);
+            this.VoucherKetChuyen_simpleButton.Name = "VoucherKetChuyen_simpleButton";
+            this.VoucherKetChuyen_simpleButton.Size = new System.Drawing.Size(98, 37);
+            this.VoucherKetChuyen_simpleButton.TabIndex = 28;
+            this.VoucherKetChuyen_simpleButton.Text = "Kết chuyển";
+            this.VoucherKetChuyen_simpleButton.Click += new System.EventHandler(this.VoucherKetChuyen_simpleButton_Click);
             // 
             // simpleButton10
             // 
@@ -1692,5 +1704,6 @@
         private System.Windows.Forms.CheckBox DepreciationDetailAddNew_checkBox;
         private System.Windows.Forms.CheckBox DepreciationAddNew_checkBox;
         private System.Windows.Forms.CheckBox WareHouse_checkBox;
+        private DevExpress.XtraEditors.SimpleButton VoucherKetChuyen_simpleButton;
     }
 }

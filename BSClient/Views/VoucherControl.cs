@@ -24,6 +24,7 @@ using DevExpress.XtraGrid.Columns;
 using System.Collections;
 using System.Data;
 using DevExpress.XtraGrid.Views.BandedGrid;
+using BSClient.Views;
 
 namespace BSClient
 {
@@ -3146,6 +3147,12 @@ namespace BSClient
                 }
             }
             WareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.VoucherDate);
+        }
+
+        private void VoucherKetChuyen_simpleButton_Click(object sender, EventArgs e)
+        {
+            KetChuyen KetChuyenForm = new KetChuyen();
+            KetChuyenForm.Show();
         }
     }
 }
