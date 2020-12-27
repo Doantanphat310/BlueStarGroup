@@ -17,7 +17,9 @@ namespace BSClient.Views.Reports
 {
     public partial class BangCanDoiSoPhatSinhTaiKhoanReport : XtraForm
     {
-        public BindingList<GetCanDoiSoPhatSinhTaiKhoan> ReportData { get; set; }
+        public bool IsScreenShow { get; set; } = true;
+
+        private BindingList<GetCanDoiSoPhatSinhTaiKhoan> ReportData { get; set; }
 
         private DateTime FromDate { get; set; }
 
@@ -83,7 +85,14 @@ namespace BSClient.Views.Reports
 
         private void SetupGridView()
         {
-            this.Main_GridView.SetupGridView(multiSelect: false, checkBoxSelectorColumnWidth: 0, showAutoFilterRow: false, newItemRow: NewItemRowPosition.None, showFooter: true, columnAutoWidth: true);
+            this.Main_GridView.SetupGridView(
+                multiSelect: false,
+                checkBoxSelectorColumnWidth: 0,
+                showAutoFilterRow: false,
+                newItemRow: NewItemRowPosition.None,
+                showFooter: true,
+                columnAutoWidth: true,
+                hasShowRowHeader: true);
         }
 
         private void LoadDataGridView()
@@ -139,54 +148,51 @@ namespace BSClient.Views.Reports
 
         private void ExportExcel_Button_Click(object sender, EventArgs e)
         {
-            SaveFileDialog openFileDialog = new SaveFileDialog
-            {
-                Filter = "Excel file(*.xlsx)|*.xlsx",
-                FileName = ReportTemplate.GetTemplate(ReportTemplate.RPT000001)
-            };
+            Main_GridControl.ExportExcel(ReportTemplate.GetTemplate(ReportTemplate.RPT000001));
 
-            string path = "";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                path = openFileDialog.FileName;
-            }
-
-            try
-            {
-                Main_GridControl.ExportToXlsx(path);
-                System.Diagnostics.Process.Start(path);
-            }
-            catch (Exception ex)
-            {
-                BSLog.Logger.Warn(ex.Message);
-                MessageBoxHelper.ShowErrorMessage($"Xuất excel thất bại!\r\n{ex.Message}");
-            }
         }
 
         private void Main_GridView_RowClick(object sender, RowClickEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2)
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2 && this.IsScreenShow)
             {
-                var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
-
-                if (selected == null)
-                {
-                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000026);
-                    return;
-                }
-
-                ChiTietTaiKhoan.ChiTietTaiKhoanInput input = new ChiTietTaiKhoan.ChiTietTaiKhoanInput
-                {
-                    FromDate = this.FromDate,
-                    ToDate = this.ToDate,
-                    SelectedData = selected
-                };
-                ChiTietTaiKhoan chiTietTaiKhoan = new ChiTietTaiKhoan(input);
-                chiTietTaiKhoan.ShowDialog();
+                ShowChiTietTaiKhoan();
             }
         }
 
+        private void ShowChiTietTaiKhoan()
+        {
+            var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
+
+            if (selected == null)
+            {
+                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000026);
+                return;
+            }
+
+            ChiTietTaiKhoan.ChiTietTaiKhoanInput input = new ChiTietTaiKhoan.ChiTietTaiKhoanInput
+            {
+                FromDate = this.FromDate,
+                ToDate = this.ToDate,
+                SelectedData = selected
+            };
+            ChiTietTaiKhoan chiTietTaiKhoan = new ChiTietTaiKhoan(input);
+            chiTietTaiKhoan.ShowDialog();
+        }
+
         private void SoCai_Button_Click(object sender, EventArgs e)
+        {
+            if (this.IsScreenShow)
+            {
+                ShowChiTietTaiKhoan();
+            }
+            else
+            {
+                ExportSoCaiReport();
+            }
+        }
+
+        private void ExportSoCaiReport()
         {
             List<GetChiTietSoCai> reportData = GetChiTietSoCais();
 
@@ -221,12 +227,18 @@ namespace BSClient.Views.Reports
             InitComboBox();
 
             LoadGrid();
+
+            SetVisibleControl();
         }
 
-        private void Main_GridView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        private void SetVisibleControl()
         {
-            if (e.RowHandle >= 0)
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            KetChuyen_Button.Visible = this.IsScreenShow;
+        }
+
+        private void KetChuyen_Button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

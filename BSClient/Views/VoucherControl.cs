@@ -22,6 +22,7 @@ using BSClient.Views;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BSClient.Views.Reports;
 
 namespace BSClient
 {
@@ -3153,7 +3154,7 @@ namespace BSClient
         }
         private void CDPSTK_Button_Click(object sender, EventArgs e)
         {
-            BangCanDoiSoPhatSinhTaiKhoan form = new BangCanDoiSoPhatSinhTaiKhoan();
+            BangCanDoiSoPhatSinhTaiKhoanReport form = new BangCanDoiSoPhatSinhTaiKhoanReport();
             form.Show();
         }
     }

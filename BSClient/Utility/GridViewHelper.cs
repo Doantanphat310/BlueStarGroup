@@ -1,4 +1,6 @@
-﻿using BSCommon.Models;
+﻿using BSClient.Constants;
+using BSCommon.Models;
+using BSCommon.Utility;
 using DevExpress.Data;
 using DevExpress.Utils;
 using DevExpress.Utils.Extensions;
@@ -280,7 +282,8 @@ namespace BSClient.Utility
             bool showAutoFilterRow = true,
             bool showFooter = false,
             NewItemRowPosition newItemRow = NewItemRowPosition.Top,
-            bool editable = true)
+            bool editable = true,
+            bool hasShowRowHeader = false)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
@@ -314,6 +317,17 @@ namespace BSClient.Utility
             gridView.FocusRectStyle = DrawFocusRectStyle.RowFocus;
 
             gridView.RowStyle += GridView_RowStyle;
+
+            if (hasShowRowHeader)
+            {
+                gridView.CustomDrawRowIndicator += GridView_CustomDrawRowIndicator;
+            }
+        }
+
+        private static void GridView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
         private static void GridView_RowStyle(object sender, RowStyleEventArgs e)
@@ -323,6 +337,43 @@ namespace BSClient.Utility
             {
                 e.Appearance.BackColor = gridView.Appearance.FocusedRow.BackColor;
                 e.HighPriority = true;
+            }
+        }
+
+        public static void ExportExcel(
+            this GridControl gridControl,
+            string fileName = "",
+            bool hasOpened = true)
+        {
+            SaveFileDialog openFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel file(*.xlsx)|*.xlsx",
+                FileName = fileName
+            };
+
+            string path;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = openFileDialog.FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            try
+            {
+                gridControl.ExportToXlsx(path);
+
+                if (hasOpened)
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Warn(ex.Message);
+                MessageBoxHelper.ShowErrorMessage($"Xuất excel thất bại!\r\n{ex.Message}");
             }
         }
     }

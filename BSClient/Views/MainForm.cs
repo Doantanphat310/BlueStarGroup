@@ -64,14 +64,14 @@ namespace BSClient
 
         private void BangCanDoiSoPhatSinh_Item_Click(object sender, EventArgs e)
         {
-            BangCanDoiSoPhatSinhTaiKhoanReport form = new BangCanDoiSoPhatSinhTaiKhoanReport();
+            BangCanDoiSoPhatSinhTaiKhoanReport form = new BangCanDoiSoPhatSinhTaiKhoanReport() { IsScreenShow = false };
             form.ShowDialog();
         }
 
         private void NhapSoDuaccordionControlElement_Click(object sender, EventArgs e)
         {
-             InputBalance BalanceForm = new InputBalance();
-             BalanceForm.Show();
+            InputBalance BalanceForm = new InputBalance();
+            BalanceForm.Show();
         }
 
         private void WarehouseList_accordionControlElement_Click(object sender, EventArgs e)

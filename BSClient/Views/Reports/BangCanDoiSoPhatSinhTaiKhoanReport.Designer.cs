@@ -37,10 +37,12 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.TypeSearch_LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.SearchData_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.UserButton_Panel = new System.Windows.Forms.Panel();
+            this.Button_Panel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ExportExcel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.SoCai_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.KetChuyen_Button = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -48,16 +50,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TypeSearch_LookUpEdit.Properties)).BeginInit();
-            this.UserButton_Panel.SuspendLayout();
+            this.Button_Panel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Main_GridControl
             // 
             this.Main_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Main_GridControl.Location = new System.Drawing.Point(0, 34);
+            this.Main_GridControl.Location = new System.Drawing.Point(0, 32);
             this.Main_GridControl.MainView = this.Main_GridView;
             this.Main_GridControl.Name = "Main_GridControl";
-            this.Main_GridControl.Size = new System.Drawing.Size(1014, 584);
+            this.Main_GridControl.Size = new System.Drawing.Size(1014, 586);
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_GridView});
@@ -68,13 +71,12 @@
             this.Main_GridView.IndicatorWidth = 30;
             this.Main_GridView.Name = "Main_GridView";
             this.Main_GridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Main_GridView_RowClick);
-            this.Main_GridView.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.Main_GridView_CustomDrawRowIndicator);
             // 
             // Print_Button
             // 
-            this.Print_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Print_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Print_Button.ImageOptions.Image")));
-            this.Print_Button.Location = new System.Drawing.Point(726, 5);
+            this.Print_Button.Location = new System.Drawing.Point(617, 3);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.Size = new System.Drawing.Size(90, 25);
             this.Print_Button.TabIndex = 0;
@@ -83,8 +85,9 @@
             // 
             // From_DateEdit
             // 
+            this.From_DateEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.From_DateEdit.EditValue = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.From_DateEdit.Location = new System.Drawing.Point(10, 6);
+            this.From_DateEdit.Location = new System.Drawing.Point(3, 6);
             this.From_DateEdit.Name = "From_DateEdit";
             this.From_DateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -100,8 +103,9 @@
             // 
             // To_DateEdit
             // 
+            this.To_DateEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.To_DateEdit.EditValue = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.To_DateEdit.Location = new System.Drawing.Point(116, 6);
+            this.To_DateEdit.Location = new System.Drawing.Point(108, 6);
             this.To_DateEdit.Name = "To_DateEdit";
             this.To_DateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -117,7 +121,8 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(102, 10);
+            this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelControl2.Location = new System.Drawing.Point(94, 9);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(8, 13);
             this.labelControl2.TabIndex = 5;
@@ -125,46 +130,72 @@
             // 
             // TypeSearch_LookUpEdit
             // 
-            this.TypeSearch_LookUpEdit.Location = new System.Drawing.Point(208, 6);
+            this.TypeSearch_LookUpEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TypeSearch_LookUpEdit.Location = new System.Drawing.Point(199, 6);
             this.TypeSearch_LookUpEdit.Name = "TypeSearch_LookUpEdit";
             this.TypeSearch_LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TypeSearch_LookUpEdit.Properties.NullText = "";
-            this.TypeSearch_LookUpEdit.Size = new System.Drawing.Size(249, 20);
+            this.TypeSearch_LookUpEdit.Size = new System.Drawing.Size(212, 20);
             this.TypeSearch_LookUpEdit.TabIndex = 6;
             // 
             // SearchData_Button
             // 
+            this.SearchData_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SearchData_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SearchData_Button.ImageOptions.Image")));
-            this.SearchData_Button.Location = new System.Drawing.Point(463, 4);
+            this.SearchData_Button.Location = new System.Drawing.Point(417, 3);
             this.SearchData_Button.Name = "SearchData_Button";
             this.SearchData_Button.Size = new System.Drawing.Size(87, 25);
             this.SearchData_Button.TabIndex = 7;
             this.SearchData_Button.Text = "Lấy số liệu";
             this.SearchData_Button.Click += new System.EventHandler(this.SearchData_Button_Click);
             // 
-            // UserButton_Panel
+            // Button_Panel
             // 
-            this.UserButton_Panel.Controls.Add(this.ExportExcel_Button);
-            this.UserButton_Panel.Controls.Add(this.SoCai_Button);
-            this.UserButton_Panel.Controls.Add(this.Exit_Button);
-            this.UserButton_Panel.Controls.Add(this.SearchData_Button);
-            this.UserButton_Panel.Controls.Add(this.TypeSearch_LookUpEdit);
-            this.UserButton_Panel.Controls.Add(this.labelControl2);
-            this.UserButton_Panel.Controls.Add(this.To_DateEdit);
-            this.UserButton_Panel.Controls.Add(this.From_DateEdit);
-            this.UserButton_Panel.Controls.Add(this.Print_Button);
-            this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UserButton_Panel.Location = new System.Drawing.Point(0, 0);
-            this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(1014, 34);
-            this.UserButton_Panel.TabIndex = 1;
+            this.Button_Panel.Controls.Add(this.tableLayoutPanel1);
+            this.Button_Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Button_Panel.Location = new System.Drawing.Point(0, 0);
+            this.Button_Panel.Name = "Button_Panel";
+            this.Button_Panel.Size = new System.Drawing.Size(1014, 32);
+            this.Button_Panel.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 11;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.Print_Button, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TypeSearch_LookUpEdit, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.To_DateEdit, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SearchData_Button, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ExportExcel_Button, 8, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SoCai_Button, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Exit_Button, 10, 0);
+            this.tableLayoutPanel1.Controls.Add(this.KetChuyen_Button, 9, 0);
+            this.tableLayoutPanel1.Controls.Add(this.From_DateEdit, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 32);
+            this.tableLayoutPanel1.TabIndex = 10;
             // 
             // ExportExcel_Button
             // 
-            this.ExportExcel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExportExcel_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ExportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ExportExcel_Button.ImageOptions.Image")));
-            this.ExportExcel_Button.Location = new System.Drawing.Point(884, 4);
+            this.ExportExcel_Button.Location = new System.Drawing.Point(775, 3);
             this.ExportExcel_Button.Name = "ExportExcel_Button";
             this.ExportExcel_Button.Size = new System.Drawing.Size(61, 25);
             this.ExportExcel_Button.TabIndex = 9;
@@ -173,9 +204,9 @@
             // 
             // SoCai_Button
             // 
-            this.SoCai_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SoCai_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SoCai_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SoCai_Button.ImageOptions.Image")));
-            this.SoCai_Button.Location = new System.Drawing.Point(822, 5);
+            this.SoCai_Button.Location = new System.Drawing.Point(713, 3);
             this.SoCai_Button.Name = "SoCai_Button";
             this.SoCai_Button.Size = new System.Drawing.Size(56, 25);
             this.SoCai_Button.TabIndex = 9;
@@ -184,14 +215,25 @@
             // 
             // Exit_Button
             // 
-            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Exit_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Exit_Button.ImageOptions.Image")));
-            this.Exit_Button.Location = new System.Drawing.Point(951, 4);
+            this.Exit_Button.Location = new System.Drawing.Point(926, 3);
             this.Exit_Button.Name = "Exit_Button";
-            this.Exit_Button.Size = new System.Drawing.Size(60, 25);
+            this.Exit_Button.Size = new System.Drawing.Size(85, 25);
             this.Exit_Button.TabIndex = 8;
             this.Exit_Button.Text = "Thoát";
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
+            // 
+            // KetChuyen_Button
+            // 
+            this.KetChuyen_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.KetChuyen_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KetChuyen_Button.ImageOptions.Image")));
+            this.KetChuyen_Button.Location = new System.Drawing.Point(842, 3);
+            this.KetChuyen_Button.Name = "KetChuyen_Button";
+            this.KetChuyen_Button.Size = new System.Drawing.Size(78, 25);
+            this.KetChuyen_Button.TabIndex = 11;
+            this.KetChuyen_Button.Text = "KC Nhanh";
+            this.KetChuyen_Button.Click += new System.EventHandler(this.KetChuyen_Button_Click);
             // 
             // BangCanDoiSoPhatSinhTaiKhoanReport
             // 
@@ -199,7 +241,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 618);
             this.Controls.Add(this.Main_GridControl);
-            this.Controls.Add(this.UserButton_Panel);
+            this.Controls.Add(this.Button_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BangCanDoiSoPhatSinhTaiKhoanReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -212,8 +254,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TypeSearch_LookUpEdit.Properties)).EndInit();
-            this.UserButton_Panel.ResumeLayout(false);
-            this.UserButton_Panel.PerformLayout();
+            this.Button_Panel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -227,9 +270,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LookUpEdit TypeSearch_LookUpEdit;
         private DevExpress.XtraEditors.SimpleButton SearchData_Button;
-        private System.Windows.Forms.Panel UserButton_Panel;
+        private System.Windows.Forms.Panel Button_Panel;
         private DevExpress.XtraEditors.SimpleButton ExportExcel_Button;
         private DevExpress.XtraEditors.SimpleButton SoCai_Button;
         private DevExpress.XtraEditors.SimpleButton Exit_Button;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.SimpleButton KetChuyen_Button;
     }
 }
