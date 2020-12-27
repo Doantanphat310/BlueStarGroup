@@ -1,37 +1,37 @@
-DROP PROC IF EXISTS SP_ChiTietSoCai
-GO
-CREATE PROC SP_ChiTietSoCai2
-	@CompanyID	VARCHAR(50),
+DECLARE @CompanyID	VARCHAR(50),
 	@FromDate	DateTime,
 	@ToDate		DateTime
-AS
+
+SET @CompanyID = 'CTY0000000060';
+BEGIN
 SELECT
-	FORMAT(L.VoucherDate, 'dd/MM/yyyy') VoucherDate
+	CONVERT(Date, L.VoucherDate) VoucherDate
 	,L.VouchersTypeID
 	,L.VoucherNo
 	,TK.AccountName
 	,D.VouchersID 	
 	,D.OldVoucherID	
 	,ISNULL(D.Descriptions, L.VoucherDescription) VoucherDescription
+
 	,D.AccountID
 	,D.AccountDetailID
 	,D2.AccountID CorrespondingAccountID
 	,D2.AccountDetailID CorrespondingAccountDetailID
-		
-	,(CASE 
-		WHEN D.DebitAmount != 0 THEN 0 
-		ELSE 
-			CASE WHEN D.CreditAmount < D2.DebitAmount THEN D.CreditAmount 
-			ELSE D2.DebitAmount 
-			END
-	END) AS DebitAmount--PSNo
+	
 	,(CASE 
 		WHEN D.CreditAmount != 0 THEN 0 
 		ELSE 
 			CASE WHEN D.DebitAmount < D2.CreditAmount THEN D.DebitAmount 
 			ELSE D2.CreditAmount 
 			END
-	END) AS CreditAmount--PSCo
+	END) AS DebitAmount--PSNo	
+	,(CASE 
+		WHEN D.DebitAmount != 0 THEN 0 
+		ELSE 
+			CASE WHEN D.CreditAmount < D2.DebitAmount THEN D.CreditAmount 
+			ELSE D2.DebitAmount 
+			END
+	END) AS CreditAmount--PSCo	
 FROM VouchersDetail D
 	INNER JOIN VouchersDetail D2
 		ON D.OldVoucherID = D2.OldVoucherID 
@@ -56,11 +56,14 @@ FROM VouchersDetail D
 			AND TK.CompanyID = @CompanyID
 WHERE 1 = 1
 	AND D.CompanyID = @CompanyID
-	AND L.VoucherDate >= @FromDate
-	AND L.VoucherDate <= @ToDate
+	--AND D.OldVoucherID = 'KC/37'
+	AND D.AccountID = '8211'
+	--AND L.VoucherDate >= @FromDate
+	--AND L.VoucherDate <= @ToDate
 ORDER BY
 	L.VoucherDate
 	,L.VouchersTypeID
 	,L.VoucherNo
 	,D.AccountID
-	,D2.VouchersDetailID	
+	,D2.VouchersDetailID
+END	

@@ -61,7 +61,7 @@
             this.panel1.Controls.Add(this.Process_Label);
             this.panel1.Controls.Add(this.Convert_Button);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 548);
+            this.panel1.Location = new System.Drawing.Point(0, 494);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(939, 39);
             this.panel1.TabIndex = 2;
@@ -107,9 +107,9 @@
             this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
             this.Main_TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Main_TableLayoutPanel.Size = new System.Drawing.Size(939, 548);
+            this.Main_TableLayoutPanel.Size = new System.Drawing.Size(939, 494);
             this.Main_TableLayoutPanel.TabIndex = 1;
             // 
             // panel3
@@ -175,7 +175,7 @@
             // 
             this.Error_Label.AutoSize = true;
             this.Error_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Error_Label.Location = new System.Drawing.Point(3, 410);
+            this.Error_Label.Location = new System.Drawing.Point(3, 365);
             this.Error_Label.Name = "Error_Label";
             this.Error_Label.Size = new System.Drawing.Size(94, 13);
             this.Error_Label.TabIndex = 2;
@@ -185,10 +185,10 @@
             // 
             this.Error_TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Error_TextBox.ForeColor = System.Drawing.Color.Red;
-            this.Error_TextBox.Location = new System.Drawing.Point(103, 413);
+            this.Error_TextBox.Location = new System.Drawing.Point(103, 368);
             this.Error_TextBox.Multiline = true;
             this.Error_TextBox.Name = "Error_TextBox";
-            this.Error_TextBox.Size = new System.Drawing.Size(833, 132);
+            this.Error_TextBox.Size = new System.Drawing.Size(833, 123);
             this.Error_TextBox.TabIndex = 3;
             // 
             // panel2
@@ -251,7 +251,7 @@
             this.FileName_DataGridView.Location = new System.Drawing.Point(103, 113);
             this.FileName_DataGridView.Name = "FileName_DataGridView";
             this.FileName_DataGridView.ReadOnly = true;
-            this.FileName_DataGridView.Size = new System.Drawing.Size(833, 294);
+            this.FileName_DataGridView.Size = new System.Drawing.Size(833, 249);
             this.FileName_DataGridView.TabIndex = 6;
             // 
             // AccountID
@@ -291,7 +291,7 @@
             this.Controls.Add(this.Main_TableLayoutPanel);
             this.Controls.Add(this.panel1);
             this.Name = "ExcelUC";
-            this.Size = new System.Drawing.Size(939, 587);
+            this.Size = new System.Drawing.Size(939, 533);
             this.panel1.ResumeLayout(false);
             this.Main_TableLayoutPanel.ResumeLayout(false);
             this.Main_TableLayoutPanel.PerformLayout();

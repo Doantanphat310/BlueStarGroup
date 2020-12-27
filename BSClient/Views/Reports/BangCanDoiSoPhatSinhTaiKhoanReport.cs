@@ -149,7 +149,6 @@ namespace BSClient.Views.Reports
         private void ExportExcel_Button_Click(object sender, EventArgs e)
         {
             Main_GridControl.ExportExcel(ReportTemplate.GetTemplate(ReportTemplate.RPT000001));
-
         }
 
         private void Main_GridView_RowClick(object sender, RowClickEventArgs e)

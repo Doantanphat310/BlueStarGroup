@@ -12,5 +12,3 @@ Update VouchersDetail SET VouchersID = CustomerID WHERE CompanyID = 'CTY00000000
 Update VouchersTemp SET OldCustomerID = CustomerID 
 
 SELECT * FROM VouchersDetail  WHERE CompanyID = 'CTY0000000060';
-
-SELECT VouchersDetail

@@ -16,7 +16,7 @@ INSERT INTO Vouchers
 		   ,CompanyID
 		   ,VoucherAmount)
 SELECT 
-	FORMAT(ROW_NUMBER () OVER (ORDER BY CT.OldVoucherID), 'CT00000000000') VouchersID
+	'CT' + FORMAT(VoucherDate, 'yyyyMMdd') + FORMAT(ROW_NUMBER () OVER (PARTITION BY VoucherDate ORDER BY VoucherDate, VoucherType, CAST(VoucherNo as bigint)), '000') VouchersID
 	,CT.OldVoucherID
 	,CT.VoucherType
 	,CT.VoucherNo
@@ -27,31 +27,30 @@ SELECT
 	,'admin' CreateUser
 	,'admin' UpdateUser
 	,'CTY0000000060' CompanyID
-	,0 VoucherAmount
+	,VoucherAmount
 FROM (
 	SELECT
 		VoucherType + '/' + VoucherNo AS OldVoucherID
 		,VoucherType
 		,VoucherNo
 		,VoucherDate
-		,Descriptions		
+		,Descriptions
+		,SUM(DebitAmount) VoucherAmount	 	
 	FROM VouchersTemp
 	GROUP BY VoucherDate,VoucherType,VoucherNo,Descriptions
-) CT
-ORDER BY 
-	VoucherDate
-	,VoucherType
-	,CAST(VoucherNo as bigint);
+) CT;
 
 GO
 ----------------------
 DELETE VouchersDetail Where CompanyID = 'CTY0000000060'
 GO
 INSERT INTO VouchersDetail
-           (OldVoucherID
+           (VouchersDetailID
+		   ,VouchersID
+		   ,OldVoucherID
            ,AccountID
            ,AccountDetailID
-           ,CustomerID
+           ,OldCustomerID
 		   ,Descriptions
            ,[DebitAmount]
            ,[CreditAmount]
@@ -59,13 +58,15 @@ INSERT INTO VouchersDetail
            ,[UpdateDate]
            ,[CreateUser]
            ,[UpdateUser]
-		   ,CompanyID)
+		   ,CompanyID
+		   ,CustomerID)
 SELECT
-	(SELECT VoucherID FROM Vouchers WHERE VouchersTypeID =  VT.VoucherType AND VoucherNo = VT.VoucherNo) AS VoucherID
+	'CTD' + FORMAT(GETDATE(), 'yyyyMMdd') + FORMAT(ROW_NUMBER() OVER(PARTITION BY VoucherDate ORDER BY VoucherDate, VoucherType, VoucherNo), '0000')
+	,(SELECT VouchersID FROM Vouchers WHERE CompanyID = 'CTY0000000060' AND VouchersTypeID =  VT.VoucherType AND VoucherNo = VT.VoucherNo) AS VoucherID
 	,VoucherType + '/' + VoucherNo AS OldVoucherID
 	,AccountID
 	,AccountDetailID
-	,CustomerID
+	,OldCustomerID
 	,Descriptions
 	,DebitAmount
 	,CreditAmount
@@ -74,6 +75,7 @@ SELECT
 	,'admin' [CreateUser]
 	,'admin' [UpdateUser]
 	,'CTY0000000060' CompanyID
-FROM VouchersTemp VT
+	,(SELECT CustomerID FROM Customer WHERE OldCustomerID = VT.OldCustomerID) CustomerID
+FROM VouchersTemp VT;
 
 
