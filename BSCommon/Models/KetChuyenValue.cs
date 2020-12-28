@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSCommon.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,18 @@ namespace BSCommon.Models
 {
    public class KetChuyenValue
     {
-        string AccountID { get; set; }
-        string CustomerID { get; set; }
-        string AccountDetailID { get; set; }
-        Decimal DebitAmount { get; set; }
-        Decimal CreditAmount { get; set; }
-        Decimal Amount { get; set; }
-        Boolean DuNo { get; set; }
-        Boolean DuCo { get; set; }
-        string KetChuyenDebitAccountID { get; set; }
-        string KetChuyenCreditAccountID { get; set; }
-        string KetChuyenDebitAccountDetailID { get; set; }
-        string KetChuyenCreditAccountDetailID { get; set; }
+        public string AccountID { get; set; }
+        public string CustomerID { get; set; }
+        public string AccountDetailID { get; set; }
+        public Decimal DebitAmount { get; set; }
+        public Decimal CreditAmount { get; set; }
+        public Decimal Amount { get; set; }
+        public Boolean DuNo { get; set; }
+        public Boolean DuCo { get; set; }
+        public string KetChuyenDebitAccountID { get; set; }
+        public string KetChuyenCreditAccountID { get; set; }
+        public string KetChuyenDebitAccountDetailID { get; set; }
+        public string KetChuyenCreditAccountDetailID { get; set; }
+        public ModifyMode Status { get; set; }
     }
 }

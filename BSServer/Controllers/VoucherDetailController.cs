@@ -1,20 +1,14 @@
 ﻿using BSCommon.Models;
+using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer.DAOs;
 using BSServer.Logics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BSServer.Controllers
 {
-   public  class VoucherDetailController
+    public class VoucherDetailController : BaseController
     {
-
-        private BSContext Context { get; set; }
-
         private VoucherDetailLogic VoucherDetailLogic { get; set; }
 
         private VoucherDetailDAO VoucherDetailDAO { get; set; }
@@ -26,11 +20,10 @@ namespace BSServer.Controllers
             this.VoucherDetailLogic = new VoucherDetailLogic(this.Context);
         }
 
-        public List<VoucherDetail> GetVouchersDetailSelectVoucherID(string voucherID,string companyID)
+        public List<VoucherDetail> GetVouchersDetailSelectVoucherID(string voucherID, string companyID)
         {
             return this.VoucherDetailDAO.GetVouchersDetailSelectVoucherID(voucherID, companyID);
         }
-        
 
         public bool InsertVouchersDetail(VoucherDetail voucherDetailInfo)
         {
@@ -44,7 +37,7 @@ namespace BSServer.Controllers
 
         public bool DeleteVoucherDetail(string voucherDetailID, string companyID)
         {
-            return this.VoucherDetailDAO.DeleteVoucherDetail(voucherDetailID,companyID);
+            return this.VoucherDetailDAO.DeleteVoucherDetail(voucherDetailID, companyID);
         }
 
         public bool SaveVoucherDetail(List<VoucherDetail> dataList)

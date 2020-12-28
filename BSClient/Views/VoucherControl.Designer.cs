@@ -489,7 +489,7 @@
             this.simpleButtonLoadVoucher.Size = new System.Drawing.Size(68, 23);
             this.simpleButtonLoadVoucher.TabIndex = 4;
             this.simpleButtonLoadVoucher.Text = "Tìm kiếm";
-            this.simpleButtonLoadVoucher.Click += new System.EventHandler(this.simpleButtonLoadVoucher_Click);
+            this.simpleButtonLoadVoucher.Click += new System.EventHandler(this.LoadVoucher_Button_Click);
             this.simpleButtonLoadVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.simpleButtonLoadVoucher_KeyDown);
             this.simpleButtonLoadVoucher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.simpleButtonLoadVoucher_KeyPress);
             // 

@@ -1,16 +1,12 @@
 ﻿using BSCommon.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BSClient
 {
     public class GlobalVarient
     {
-        public static string CompanyIDChoice = "COM0001";
-        public static Company CompanyChoice = new Company();
+        //public static string CompanyIDChoice = "COM0001";
+        //public static Company CompanyChoice = new Company();
 
         public static string VoucherIDChoice = "";
         public static int VoucherID = 0;

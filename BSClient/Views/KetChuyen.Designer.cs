@@ -82,7 +82,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1314, 38);
+            this.panelControl1.Size = new System.Drawing.Size(1314, 73);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl4
@@ -132,7 +132,7 @@
             this.KetChuyenDiagram_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KetChuyenDiagram_simpleButton.ImageOptions.Image")));
             this.KetChuyenDiagram_simpleButton.Location = new System.Drawing.Point(1200, 4);
             this.KetChuyenDiagram_simpleButton.Name = "KetChuyenDiagram_simpleButton";
-            this.KetChuyenDiagram_simpleButton.Size = new System.Drawing.Size(105, 23);
+            this.KetChuyenDiagram_simpleButton.Size = new System.Drawing.Size(105, 28);
             this.KetChuyenDiagram_simpleButton.TabIndex = 7;
             this.KetChuyenDiagram_simpleButton.Text = "Sơ đồ";
             // 
@@ -143,9 +143,10 @@
             this.KetChuyenSumit_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KetChuyenSumit_simpleButton.ImageOptions.Image")));
             this.KetChuyenSumit_simpleButton.Location = new System.Drawing.Point(1089, 4);
             this.KetChuyenSumit_simpleButton.Name = "KetChuyenSumit_simpleButton";
-            this.KetChuyenSumit_simpleButton.Size = new System.Drawing.Size(105, 23);
+            this.KetChuyenSumit_simpleButton.Size = new System.Drawing.Size(105, 28);
             this.KetChuyenSumit_simpleButton.TabIndex = 6;
             this.KetChuyenSumit_simpleButton.Text = "Kết chuyển";
+            this.KetChuyenSumit_simpleButton.Click += new System.EventHandler(this.KetChuyenSumit_simpleButton_Click);
             // 
             // KetChuyenGetdata_simpleButton
             // 
@@ -154,7 +155,7 @@
             this.KetChuyenGetdata_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KetChuyenGetdata_simpleButton.ImageOptions.Image")));
             this.KetChuyenGetdata_simpleButton.Location = new System.Drawing.Point(978, 4);
             this.KetChuyenGetdata_simpleButton.Name = "KetChuyenGetdata_simpleButton";
-            this.KetChuyenGetdata_simpleButton.Size = new System.Drawing.Size(105, 23);
+            this.KetChuyenGetdata_simpleButton.Size = new System.Drawing.Size(105, 28);
             this.KetChuyenGetdata_simpleButton.TabIndex = 5;
             this.KetChuyenGetdata_simpleButton.Text = "Lấy số liệu";
             this.KetChuyenGetdata_simpleButton.Click += new System.EventHandler(this.KetChuyenGetdata_simpleButton_Click);
@@ -214,18 +215,19 @@
             this.panelControl2.Controls.Add(this.KetChuyenKichBan_GridControl);
             this.panelControl2.Controls.Add(this.labelControl5);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(0, 38);
+            this.panelControl2.Location = new System.Drawing.Point(0, 73);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(321, 659);
+            this.panelControl2.Size = new System.Drawing.Size(321, 624);
             this.panelControl2.TabIndex = 1;
             // 
             // KetChuyenKichBan_GridControl
             // 
+            this.KetChuyenKichBan_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KetChuyenKichBan_GridControl.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KetChuyenKichBan_GridControl.Location = new System.Drawing.Point(2, 21);
             this.KetChuyenKichBan_GridControl.MainView = this.KetChuyenKichBan_GridView;
             this.KetChuyenKichBan_GridControl.Name = "KetChuyenKichBan_GridControl";
-            this.KetChuyenKichBan_GridControl.Size = new System.Drawing.Size(317, 636);
+            this.KetChuyenKichBan_GridControl.Size = new System.Drawing.Size(317, 601);
             this.KetChuyenKichBan_GridControl.TabIndex = 0;
             this.KetChuyenKichBan_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KetChuyenKichBan_GridView});
@@ -250,9 +252,9 @@
             // 
             this.panelControl3.Controls.Add(this.KetChuyenListData_gridControl);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(321, 38);
+            this.panelControl3.Location = new System.Drawing.Point(321, 73);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(993, 659);
+            this.panelControl3.Size = new System.Drawing.Size(993, 624);
             this.panelControl3.TabIndex = 1;
             // 
             // KetChuyenListData_gridControl
@@ -262,7 +264,7 @@
             this.KetChuyenListData_gridControl.Location = new System.Drawing.Point(2, 2);
             this.KetChuyenListData_gridControl.MainView = this.KetChuyenListData_gridView;
             this.KetChuyenListData_gridControl.Name = "KetChuyenListData_gridControl";
-            this.KetChuyenListData_gridControl.Size = new System.Drawing.Size(989, 655);
+            this.KetChuyenListData_gridControl.Size = new System.Drawing.Size(989, 620);
             this.KetChuyenListData_gridControl.TabIndex = 0;
             this.KetChuyenListData_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KetChuyenListData_gridView});
