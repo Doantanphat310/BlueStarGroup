@@ -1,7 +1,7 @@
-Create proc KichBanKetChuyentableSelect
+alter proc KichBanKetChuyentableSelect
 @CompanyID varchar(50)
 as
 begin
-	select * from KichBanketChuyentable
+	select GroupCode,KetChuyenDebitAccountID,KetChuyenCreditAccountID,CompanyID from KichBanketChuyentable
 	where CompanyID = @CompanyID
 end
