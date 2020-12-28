@@ -42,8 +42,8 @@
             this.KetChuyenEnd_dateEdit = new DevExpress.XtraEditors.DateEdit();
             this.ketChuyenStart_dateEdit = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.KetChuyenKichBan_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.KetChuyenKichBan_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.KetChuyenKichBan_GridControl = new DevExpress.XtraGrid.GridControl();
+            this.KetChuyenKichBan_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.KetChuyenListData_gridControl = new DevExpress.XtraGrid.GridControl();
@@ -58,8 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ketChuyenStart_dateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridControl)).BeginInit();
@@ -211,7 +211,7 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.KetChuyenKichBan_gridControl);
+            this.panelControl2.Controls.Add(this.KetChuyenKichBan_GridControl);
             this.panelControl2.Controls.Add(this.labelControl5);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl2.Location = new System.Drawing.Point(0, 38);
@@ -219,22 +219,21 @@
             this.panelControl2.Size = new System.Drawing.Size(321, 659);
             this.panelControl2.TabIndex = 1;
             // 
-            // KetChuyenKichBan_gridControl
+            // KetChuyenKichBan_GridControl
             // 
-            this.KetChuyenKichBan_gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KetChuyenKichBan_gridControl.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KetChuyenKichBan_gridControl.Location = new System.Drawing.Point(2, 21);
-            this.KetChuyenKichBan_gridControl.MainView = this.KetChuyenKichBan_gridView;
-            this.KetChuyenKichBan_gridControl.Name = "KetChuyenKichBan_gridControl";
-            this.KetChuyenKichBan_gridControl.Size = new System.Drawing.Size(317, 636);
-            this.KetChuyenKichBan_gridControl.TabIndex = 0;
-            this.KetChuyenKichBan_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.KetChuyenKichBan_gridView});
+            this.KetChuyenKichBan_GridControl.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KetChuyenKichBan_GridControl.Location = new System.Drawing.Point(2, 21);
+            this.KetChuyenKichBan_GridControl.MainView = this.KetChuyenKichBan_GridView;
+            this.KetChuyenKichBan_GridControl.Name = "KetChuyenKichBan_GridControl";
+            this.KetChuyenKichBan_GridControl.Size = new System.Drawing.Size(317, 636);
+            this.KetChuyenKichBan_GridControl.TabIndex = 0;
+            this.KetChuyenKichBan_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.KetChuyenKichBan_GridView});
             // 
-            // KetChuyenKichBan_gridView
+            // KetChuyenKichBan_GridView
             // 
-            this.KetChuyenKichBan_gridView.GridControl = this.KetChuyenKichBan_gridControl;
-            this.KetChuyenKichBan_gridView.Name = "KetChuyenKichBan_gridView";
+            this.KetChuyenKichBan_GridView.GridControl = this.KetChuyenKichBan_GridControl;
+            this.KetChuyenKichBan_GridView.Name = "KetChuyenKichBan_GridView";
             // 
             // labelControl5
             // 
@@ -285,6 +284,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KetChuyen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.KetChuyen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -297,8 +297,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridControl)).EndInit();
@@ -322,8 +322,8 @@
         private DevExpress.XtraEditors.DateEdit KetChuyenEnd_dateEdit;
         private DevExpress.XtraEditors.DateEdit ketChuyenStart_dateEdit;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraGrid.GridControl KetChuyenKichBan_gridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView KetChuyenKichBan_gridView;
+        private DevExpress.XtraGrid.GridControl KetChuyenKichBan_GridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView KetChuyenKichBan_GridView;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraGrid.GridControl KetChuyenListData_gridControl;
