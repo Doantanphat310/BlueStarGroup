@@ -22,9 +22,12 @@ namespace BSServer.DAOs
 
         public List<Customer> GetCustommers()
         {
-            return this.Context.Customer
-                .OrderBy(o => o.CustomerName)
-                .ToList();
+            return this.Context.GetDataFromProcedure<Customer>(
+                "SP_GetCustomers",
+                new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID));
+            //return this.Context.Customer
+            //    .OrderBy(o => o.CustomerName)
+            //    .ToList();
         }
 
         public bool InsertCustomer(Customer data)
@@ -41,7 +44,6 @@ namespace BSServer.DAOs
                 new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
                 new SqlParameter("@FormNo", data.FormNo),
                 new SqlParameter("@SerialNo", data.SerialNo),
-                new SqlParameter("@OldCustomerID", data.OldCustomerID),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
@@ -64,7 +66,6 @@ namespace BSServer.DAOs
                 new SqlParameter("@InvoiceFormNo", data.InvoiceFormNo),
                 new SqlParameter("@FormNo", data.FormNo),
                 new SqlParameter("@SerialNo", data.SerialNo),
-                new SqlParameter("@OldCustomerID", data.OldCustomerID),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
@@ -81,6 +82,33 @@ namespace BSServer.DAOs
             };
 
             this.Context.ExecuteDataFromProcedure("CustomerDelete", sqlParameters);
+
+            return true;
+        }
+
+        public bool InsertCustomerCompany(CustomerCompany data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@CustomerID", data.CustomerID),
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("CustomerCompanyInsert", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteCustomerCompany(CustomerCompany data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@CompanyID", data.CompanyID),
+                new SqlParameter("@CustomerID", data.CustomerID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("CustomerCompanyDelete", sqlParameters);
 
             return true;
         }

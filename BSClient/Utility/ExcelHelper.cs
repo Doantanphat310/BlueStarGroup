@@ -42,8 +42,8 @@ namespace BSClient.Utility
                 wkb = OpenBook(excel, path);
                 excel.DisplayAlerts = false;
                 Excel.Range xlRange = null;
-
-                if (wkb.Sheets[ExcelTemplate.GetTemplate(ExcelTemplate.EXL000001)] is Excel.Worksheet sheet)
+                Excel.Worksheet sheet = wkb.Sheets[ExcelTemplate.GetTemplate(ExcelTemplate.EXL000001)];
+                if (sheet != null)
                 {
                     xlRange = sheet.UsedRange;
                 }
@@ -57,16 +57,20 @@ namespace BSClient.Utility
                     {
                         try
                         {
-                            a = values[i, 1].ToString();
+                            a = values[i, 1]?.ToString();
+                            if (string.IsNullOrWhiteSpace(a))
+                            {
+                                continue;
+                            }
                             a = FontHelper.TCVN3ToUnicode(a);
-                            b = values[i, 2].ToString();
-                            c = values[i, 3].ToString();
-                            d = values[i, 4].ToString();
+                            b = values[i, 2]?.ToString();
+                            c = values[i, 3]?.ToString();
+                            d = values[i, 4]?.ToString();
                             d = FontHelper.TCVN3ToUnicode(d);
-                            e = values[i, 5].ToString();
-                            f = values[i, 6].ToString();
-                            g = values[i, 7].ToString();
-                            h = values[i, 8].ToString();
+                            e = values[i, 5]?.ToString();
+                            f = values[i, 6]?.ToString();
+                            g = values[i, 7]?.ToString();
+                            h = values[i, 8]?.ToString();
 
                             customers.Add(new Customer
                             {
@@ -113,5 +117,10 @@ namespace BSClient.Utility
                 Type.Missing, Type.Missing);
             return book;
         }
+
+        //private List<T> LoadXLSX(int column)
+        //{
+
+        //}
     }
 }

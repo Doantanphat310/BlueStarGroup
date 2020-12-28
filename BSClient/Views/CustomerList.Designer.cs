@@ -33,10 +33,10 @@
             this.Customer_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Customer_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.UserButton_Panel = new System.Windows.Forms.Panel();
+            this.ImportExcel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Save_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.ImportExcel_Button = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).BeginInit();
@@ -50,7 +50,7 @@
             this.Customer_GridControl.Location = new System.Drawing.Point(2, 39);
             this.Customer_GridControl.MainView = this.Customer_GridView;
             this.Customer_GridControl.Name = "Customer_GridControl";
-            this.Customer_GridControl.Size = new System.Drawing.Size(906, 507);
+            this.Customer_GridControl.Size = new System.Drawing.Size(906, 365);
             this.Customer_GridControl.TabIndex = 0;
             this.Customer_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Customer_GridView});
@@ -73,7 +73,7 @@
             this.Customer_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Customer_GroupControl.Location = new System.Drawing.Point(0, 0);
             this.Customer_GroupControl.Name = "Customer_GroupControl";
-            this.Customer_GroupControl.Size = new System.Drawing.Size(910, 593);
+            this.Customer_GroupControl.Size = new System.Drawing.Size(910, 451);
             this.Customer_GroupControl.TabIndex = 0;
             this.Customer_GroupControl.Text = "Danh mục Khách hàng";
             // 
@@ -84,10 +84,21 @@
             this.UserButton_Panel.Controls.Add(this.Cancel_Button);
             this.UserButton_Panel.Controls.Add(this.Save_Button);
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 546);
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 404);
             this.UserButton_Panel.Name = "UserButton_Panel";
             this.UserButton_Panel.Size = new System.Drawing.Size(906, 45);
             this.UserButton_Panel.TabIndex = 1;
+            // 
+            // ImportExcel_Button
+            // 
+            this.ImportExcel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ImportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ImportExcel_Button.ImageOptions.Image")));
+            this.ImportExcel_Button.Location = new System.Drawing.Point(3, 6);
+            this.ImportExcel_Button.Name = "ImportExcel_Button";
+            this.ImportExcel_Button.Size = new System.Drawing.Size(119, 35);
+            this.ImportExcel_Button.TabIndex = 3;
+            this.ImportExcel_Button.Text = "Nhập từ Exel";
+            this.ImportExcel_Button.Click += new System.EventHandler(this.ImportExcel_Button_Click);
             // 
             // Delete_Button
             // 
@@ -122,24 +133,13 @@
             this.Save_Button.Text = "Lưu";
             this.Save_Button.Click += new System.EventHandler(this.Save_Button_Click);
             // 
-            // ImportExcel_Button
-            // 
-            this.ImportExcel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.ImportExcel_Button.Location = new System.Drawing.Point(3, 6);
-            this.ImportExcel_Button.Name = "ImportExcel_Button";
-            this.ImportExcel_Button.Size = new System.Drawing.Size(119, 35);
-            this.ImportExcel_Button.TabIndex = 3;
-            this.ImportExcel_Button.Text = "Nhập từ Exel";
-            this.ImportExcel_Button.Click += new System.EventHandler(this.ImportExcel_Button_Click);
-            // 
             // CustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Customer_GroupControl);
             this.Name = "CustomerList";
-            this.Size = new System.Drawing.Size(910, 593);
+            this.Size = new System.Drawing.Size(910, 451);
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).EndInit();

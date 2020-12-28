@@ -1,6 +1,7 @@
 ﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
@@ -65,8 +66,9 @@ namespace BSClient.Views
                     CustommersData = new BindingList<Customer>(controller.GetCustomers());
                     Customer_GridControl.DataSource = CustommersData;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    BSLog.Logger.Error(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Khách Hàng>");
                 }
             }
@@ -177,7 +179,13 @@ namespace BSClient.Views
 
         private void ImportExcel_Button_Click(object sender, EventArgs e)
         {
-            ExcelHelper.LoadCustomer(out StringBuilder error);
+            List<Customer> customers = ExcelHelper.LoadCustomer(out StringBuilder error);
+            foreach(var item in customers)
+            {
+                item.Status = ModifyMode.Insert;
+                CustommersData.Add(item);
+            }
+
             if (error != null && error.Length > 0)
             {
                 ClientCommon.ShowErrorBox(error.ToString());

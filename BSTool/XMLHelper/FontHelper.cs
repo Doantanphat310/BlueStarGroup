@@ -85,6 +85,11 @@ namespace SSSuporter
 
         public static string RemoveVN(string str)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+
             //Thay thế và lọc dấu từng char      
             for (int i = 1; i < VietNamChar.Length; i++)
             {

@@ -72,6 +72,12 @@ namespace BSCommon.Models
         public string SerialNo { get; set; }
 
         /// <summary>
+        /// CompanyID
+        /// </summary>
+        [Column("CompanyID")]
+        public string CompanyID { get; set; }
+
+        /// <summary>
         /// CreateDate
         /// </summary>
         [Column("CreateDate")]
