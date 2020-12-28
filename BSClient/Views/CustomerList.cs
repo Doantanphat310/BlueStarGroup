@@ -1,8 +1,6 @@
-﻿using BSClient.Base;
-using BSClient.Utility;
+﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
-using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
@@ -13,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 
 namespace BSClient.Views
 {
@@ -173,6 +172,15 @@ namespace BSClient.Views
                 //Set errors with specific descriptions for the columns
                 GridColumn column = view.Columns[nameof(row.CustomerSName)];
                 view.SetColumnError(column, BSMessage.BSM000010);
+            }
+        }
+
+        private void ImportExcel_Button_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.LoadCustomer(out StringBuilder error);
+            if (error != null && error.Length > 0)
+            {
+                ClientCommon.ShowErrorBox(error.ToString());
             }
         }
     }

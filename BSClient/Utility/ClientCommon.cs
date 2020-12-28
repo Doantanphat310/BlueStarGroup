@@ -1,4 +1,5 @@
-﻿using BSCommon.Utility;
+﻿using BSClient.Controls;
+using BSCommon.Utility;
 using System;
 using System.Drawing;
 using System.IO;
@@ -25,7 +26,7 @@ namespace BSClient.Utility
 
                 return image;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 BSLog.Logger.Debug("Base64ToImage: " + ex.Message);
                 return null;
@@ -67,6 +68,12 @@ namespace BSClient.Utility
                 BSLog.Logger.Debug("ImageToBase64: " + ex.Message);
                 return null;
             }
+        }
+
+        public static void ShowErrorBox(string error)
+        {
+            ErrorBox errorBox = new ErrorBox(error);
+            errorBox.ShowDialog();
         }
     }
 }

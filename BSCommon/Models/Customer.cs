@@ -94,11 +94,5 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
-
-        /// <summary>
-        /// OldCustomerID
-        /// </summary>
-        [Column("OldCustomerID")]
-        public string OldCustomerID { get; set; }
     }
 }
