@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLAuto", "SQLAuto\SQLAuto.csproj", "{11A8370D-9A12-4D78-89A6-10934C7CE2ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSSuporter", "XMLHelper\SSSuporter.csproj", "{5E6FC623-6132-4B31-8246-9F7935A0C309}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSSuporter", "SSSuporter\SSSuporter.csproj", "{5E6FC623-6132-4B31-8246-9F7935A0C309}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -73,6 +73,16 @@ namespace BSClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excelimport {
+            get {
+                object obj = ResourceManager.GetObject("excelimport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap KTBT__2_1 {
             get {
                 object obj = ResourceManager.GetObject("KTBT__2_1", resourceCulture);
