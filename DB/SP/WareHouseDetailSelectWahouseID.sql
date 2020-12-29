@@ -5,11 +5,11 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create proc [dbo].[WareHouseDetailSelectWahouseID]
+alter proc [dbo].[WareHouseDetailSelectWahouseID]
 @WareHouseID varchar(50), @CompanyID varchar(50), @CreateUser varchar(50)
 as
 begin
-select A.*,B.ItemUnit from WareHouseDetail as A inner join Items as B
+select A.*,B.ItemUnitID from WareHouseDetail as A inner join Items as B
 on A.ItemID = B.ItemID
 where A.WarehouseID = @WareHouseID and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser
 end
