@@ -5,7 +5,7 @@ CREATE PROCEDURE ItemsInsert (
 	,@ItemName nvarchar(250)
 	,@ItemSName varchar(20)
 	,@ItemTypeID varchar(50)
-	,@ItemUnit varchar(3)
+	,@ItemUnitID varchar(20)
 	,@ItemSpecification nvarchar(250)
     ,@UpdateUser varchar(20)
 )
@@ -15,7 +15,7 @@ AS
 		,ItemName
 		,ItemSName
 		,ItemTypeID
-		,ItemUnit
+		,ItemUnitID
 		,ItemSpecification
         ,CreateDate
         ,UpdateDate
@@ -26,7 +26,7 @@ AS
 		,@ItemName
 		,@ItemSName
 		,@ItemTypeID
-		,@ItemUnit
+		,@ItemUnitID
 		,@ItemSpecification
         ,GETDATE()
         ,GETDATE()

@@ -29,9 +29,9 @@ namespace BSServer.Controllers
             return this.ItemsDAO.GetItems();
         }
 
-        public List<ItemPriceCompany> GetItemsCompany()
+        public List<ItemUnit> GetItemUnit()
         {
-            return this.ItemsDAO.GetItemsCompany();
+            return this.ItemsDAO.GetItemUnit();
         }
 
         public bool SaveItemType(List<ItemType> dataList)
@@ -44,9 +44,9 @@ namespace BSServer.Controllers
             return this.ItemsLogic.SaveItems(dataList);
         }
 
-        public bool SaveItemsCompany(List<ItemPriceCompany> dataList)
+        public bool SaveItemUnit(List<ItemUnit> dataList)
         {
-            return this.ItemsLogic.SaveItemsCompany(dataList);
+            return this.ItemsLogic.SaveItemUnit(dataList);
         }
     }
 }

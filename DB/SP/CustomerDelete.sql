@@ -4,6 +4,11 @@ CREATE PROCEDURE CustomerDelete (
 	@CustomerID varchar(20)
 )
 AS
-	DELETE Customer
-	WHERE 
-		CustomerID = @CustomerID
+	DECLARE @RecordCount int;
+
+	SET @RecordCount = (SELECT COUNT(CustomerID) FROM CustomerCompany WHERE CustomerID = @CustomerID);
+	IF @RecordCount <= 1 
+		DELETE Customer
+		WHERE 
+			CustomerID = @CustomerID
+	

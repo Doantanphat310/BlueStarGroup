@@ -72,6 +72,12 @@ namespace BSCommon.Models
         public string SerialNo { get; set; }
 
         /// <summary>
+        /// CompanyID
+        /// </summary>
+        [Column("CompanyID")]
+        public string CompanyID { get; set; }
+
+        /// <summary>
         /// CreateDate
         /// </summary>
         [Column("CreateDate")]
@@ -94,11 +100,5 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
-
-        /// <summary>
-        /// OldCustomerID
-        /// </summary>
-        [Column("OldCustomerID")]
-        public string OldCustomerID { get; set; }
     }
 }

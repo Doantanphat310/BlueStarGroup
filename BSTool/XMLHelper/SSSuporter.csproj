@@ -7,8 +7,8 @@
     <ProjectGuid>{5E6FC623-6132-4B31-8246-9F7935A0C309}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMLHelper</RootNamespace>
-    <AssemblyName>XMLHelper</AssemblyName>
+    <RootNamespace>SSSuporter</RootNamespace>
+    <AssemblyName>SSSuporter</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FontHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLHelpper.cs" />
   </ItemGroup>

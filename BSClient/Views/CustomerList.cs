@@ -1,5 +1,4 @@
-﻿using BSClient.Base;
-using BSClient.Utility;
+﻿using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -13,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 
 namespace BSClient.Views
 {
@@ -66,8 +66,9 @@ namespace BSClient.Views
                     CustommersData = new BindingList<Customer>(controller.GetCustomers());
                     Customer_GridControl.DataSource = CustommersData;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    BSLog.Logger.Error(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Khách Hàng>");
                 }
             }
@@ -173,6 +174,21 @@ namespace BSClient.Views
                 //Set errors with specific descriptions for the columns
                 GridColumn column = view.Columns[nameof(row.CustomerSName)];
                 view.SetColumnError(column, BSMessage.BSM000010);
+            }
+        }
+
+        private void ImportExcel_Button_Click(object sender, EventArgs e)
+        {
+            List<Customer> customers = ExcelHelper.LoadCustomer(out StringBuilder error);
+            foreach(var item in customers)
+            {
+                item.Status = ModifyMode.Insert;
+                CustommersData.Add(item);
+            }
+
+            if (error != null && error.Length > 0)
+            {
+                ClientCommon.ShowErrorBox(error.ToString());
             }
         }
     }

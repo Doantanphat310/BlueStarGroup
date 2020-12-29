@@ -90,8 +90,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.7.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="SSSuporter">
+      <HintPath>..\Lib\SSSuporter.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
@@ -128,6 +135,7 @@
     <Compile Include="Base\BaseFormList.Designer.cs">
       <DependentUpon>BaseFormList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants\ExcelTemplate.cs" />
     <Compile Include="Constants\ReportTemplate.cs" />
     <Compile Include="Controls\ButtonGroup.cs">
       <SubType>UserControl</SubType>
@@ -135,7 +143,14 @@
     <Compile Include="Controls\ButtonGroup.Designer.cs">
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ErrorBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ErrorBox.Designer.cs">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalVarient.cs" />
+    <Compile Include="Utility\ExcelHelper.cs" />
     <Compile Include="Utility\ReportHelper.cs" />
     <Compile Include="Views\ChiTietTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -263,6 +278,9 @@
     <EmbeddedResource Include="Controls\ButtonGroup.resx">
       <DependentUpon>ButtonGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ErrorBox.resx">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\ChiTietTaiKhoan.resx">
       <DependentUpon>ChiTietTaiKhoan.cs</DependentUpon>
@@ -344,6 +362,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Template\Excels\SanPham.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\Excels\KhachHang.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Template\Reports\BangCanDoiSoPhatSinhTaiKhoan.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -371,9 +395,7 @@
   <ItemGroup>
     <Content Include="star_icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Template\Excels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

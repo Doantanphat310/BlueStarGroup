@@ -81,8 +81,15 @@ namespace BSClient.Utility
                 DisplayMember = displayMember,
                 ValueMember = valueMember,
                 NullText = nullText,
-                ShowHeader = showHearder
+                ShowHeader = showHearder,
+                TextEditStyle = TextEditStyles.Standard,
+                AllowNullInput = DefaultBoolean.True
             };
+
+            EditorButton button = new EditorButton();
+            button.Kind = ButtonPredefines.Clear;
+            button.Click += LookUpEdit_Clear_Button_Click;
+            itemCtrl.Buttons.Add(button);
 
             if (editValueChanged != null)
             {
@@ -114,6 +121,11 @@ namespace BSClient.Utility
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
+        }
+
+        private static void LookUpEdit_Clear_Button_Click(object sender, EventArgs e)
+        {
+            //((EditorButton)sender). = null;
         }
 
         public static void AddSearchLookupEditColumn(

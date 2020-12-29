@@ -4,9 +4,7 @@ using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
-using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -25,50 +23,28 @@ namespace BSClient.Views
 
         public BindingList<Items> ItemsData { get; set; }
 
-        public BindingList<ItemPriceCompany> ItemCompanyData { get; set; }
+        public BindingList<ItemUnit> ItemUnitData { get; set; }
 
         public List<ItemType> ItemTypeDeleteData { get; set; } = new List<ItemType>();
 
         public List<Items> ItemsDeleteData { get; set; } = new List<Items>();
 
-        public List<ItemPriceCompany> ItemsCompanyDeleteData { get; set; } = new List<ItemPriceCompany>();
+        public List<ItemUnit> ItemUnitDeleteData { get; set; } = new List<ItemUnit>();
 
         public ItemList()
         {
             InitializeComponent();
 
             LoadGrid();
-
-            InitComboBox();
-        }
-
-        private void InitComboBox()
-        {
-            List<Company> companys = GetCompanyList();
-            CompanyID_SearchLookUpEdit.Properties.DataSource = companys;
-            CompanyID_SearchLookUpEdit.Properties.ValueMember = "CompanyID";
-            CompanyID_SearchLookUpEdit.Properties.DisplayMember = "CompanyName";
-            CompanyID_SearchLookUpEdit.Properties.NullText = "Chọn Công ty";
-
-            CompanyID_SearchLookUpEdit.Properties.View.AddColumn("CompanyID", "Mã Công ty", 100, false);
-            CompanyID_SearchLookUpEdit.Properties.View.AddColumn("CompanyName", "Tên Công ty", 250, false);
-        }
-
-        private List<Company> GetCompanyList()
-        {
-            using (CompanyController controller = new CompanyController())
-            {
-                return controller.GetCompanys();
-            }
         }
 
         private void LoadGrid()
         {
             LoadItemTypeGrid();
 
-            LoadItemsGrid();
+            LoadItemUnitGrid();
 
-            LoadItemsCompanyGrid();
+            LoadItemsGrid();
         }
 
         private void LoadItemsGrid()
@@ -80,13 +56,13 @@ namespace BSClient.Views
             LoadItemsGridView();
         }
 
-        private void LoadItemsCompanyGrid()
+        private void LoadItemUnitGrid()
         {
-            InitItemsCompanyGridView();
+            InitItemUnitGridView();
 
-            SetupItemsCompanyGridView();
+            SetupItemUnitGridView();
 
-            LoadItemsCompanyGridView();
+            LoadItemUnitGridView();
         }
 
         private void LoadItemTypeGrid()
@@ -112,25 +88,34 @@ namespace BSClient.Views
             this.Items_GridView.Columns.Clear();
 
             this.Items_GridView.AddColumn("ItemID", "Mã SP", 90, false);
-            this.Items_GridView.AddColumn("ItemName", "Tên SP", 500, true);
+            this.Items_GridView.AddColumn("ItemName", "Tên SP", 500, true, fixedWidth: false);
             this.Items_GridView.AddColumn("ItemSName", "Tên viết tắt", 80, true);
             this.Items_GridView.AddColumn("ItemSpecification", "Quy cách", 80, true);
-            this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, false);
+            //this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, true);
+            List<ColumnInfo> columns = new List<ColumnInfo>
+            {
+                new ColumnInfo("ItemTypeName", "Tên Loại SP", 160),
+                new ColumnInfo("ItemTypeSName", "Tên Viết Tắt", 90),
+            };
+            this.Items_GridView.AddLookupEditColumn(
+                "ItemTypeID", "Loại SP", 90, 
+                ItemTypeData, 
+                "ItemTypeID", "ItemTypeSName", 
+                columns: columns, 
+                isAllowEdit: true,
+                showHearder: true);
+            //this.Items_GridView.AddSpinEditColumn("ItemPrice", "Giá SP", 90, false);
+            this.Items_GridView.AddSpinEditColumn("ItemPrice", "Giá SP", 120, true, "#,#######0.00");
 
-            List<MasterInfo> itemSource = MasterInfoManager.GetItemUnit();
-
-            this.Items_GridView.AddLookupEditColumn("ItemUnit", "ĐVT", 80, itemSource, "Id", "Value");
+            this.Items_GridView.AddLookupEditColumn("ItemUnitID", "ĐVT", 80, ItemUnitData, "ItemUnitID", "ItemUnitName");
         }
 
-        private void InitItemsCompanyGridView()
+        private void InitItemUnitGridView()
         {
-            this.ItemsCompany_GridView.Columns.Clear();
+            this.ItemUnit_GridView.Columns.Clear();
 
-            this.ItemsCompany_GridView.AddColumn("ItemID", "Mã SP", 90, false);
-            this.ItemsCompany_GridView.AddColumn("ItemName", "Tên SP", 160, false, fixedWidth: false);
-            this.ItemsCompany_GridView.AddColumn("CompanyID", "Mã Công ty", 90, false);
-            this.ItemsCompany_GridView.AddColumn("CompanyName", "Tên Công ty", 160, false, fixedWidth: false);
-            this.ItemsCompany_GridView.AddSpinEditColumn("ItemPrice", "Giá", 120, true, "#,#######0.00");
+            this.ItemUnit_GridView.AddColumn("ItemUnitID", "Mã ĐVT", 90, false);
+            this.ItemUnit_GridView.AddColumn("ItemUnitName", "Tên ĐVT", 160, true, fixedWidth: false);
         }
 
         private void SetupItemTypeGridView()
@@ -143,9 +128,9 @@ namespace BSClient.Views
             this.Items_GridView.SetupGridView(columnAutoWidth: false, newItemRow: NewItemRowPosition.None);
         }
 
-        private void SetupItemsCompanyGridView()
+        private void SetupItemUnitGridView()
         {
-            ItemsCompany_GridView.SetupGridView();
+            ItemUnit_GridView.SetupGridView();
         }
 
         private void LoadItemTypeGridView()
@@ -157,8 +142,9 @@ namespace BSClient.Views
                     ItemTypeData = new BindingList<ItemType>(controller.GetItemType());
                     ItemType_GridControl.DataSource = ItemTypeData;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    BSLog.Logger.Error(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Loại Sản Phẩm>");
                 }
             }
@@ -173,25 +159,27 @@ namespace BSClient.Views
                     ItemsData = new BindingList<Items>(controller.GetItems());
                     Items_GridControl.DataSource = ItemsData;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    BSLog.Logger.Error(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Sản Phẩm>");
                 }
             }
         }
 
-        private void LoadItemsCompanyGridView()
+        private void LoadItemUnitGridView()
         {
             using (ItemsController controller = new ItemsController())
             {
                 try
                 {
-                    ItemCompanyData = new BindingList<ItemPriceCompany>(controller.GetItemsCompany());
-                    ItemsCompany_GridControl.DataSource = ItemCompanyData;
+                    ItemUnitData = new BindingList<ItemUnit>(controller.GetItemUnit());
+                    ItemUnit_GridControl.DataSource = ItemUnitData;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Thông Tin Giá Sản Phẩm>");
+                    BSLog.Logger.Error(ex.Message);
+                    MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh mục Đơn vị tính>");
                 }
             }
         }
@@ -266,71 +254,28 @@ namespace BSClient.Views
             LoadItemsGridView();
         }
 
-        private void ItemCompany_AddNew_Button_Click(object sender, EventArgs e)
+        private void ItemUnit_Delete_Button_Click(object sender, EventArgs e)
         {
-            Items item = Items_GridView.GetFocusedRow().CastTo<Items>();
-            Company company = CompanyID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Company>();
-
-            if (string.IsNullOrEmpty(item.ItemID))
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000007);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(company.CompanyID))
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
-                CompanyID_SearchLookUpEdit.Focus();
-                return;
-            }
-
-            if (ItemCompanyData.ToList().Find(o => o.ItemID == item.ItemID && o.CompanyID == company.CompanyID) != null)
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000008);
-                CompanyID_SearchLookUpEdit.Focus();
-                return;
-            }
-
-            if (ItemPrice_Number.Value <= 0)
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000014);
-                ItemPrice_Number.Focus();
-                return;
-            }
-
-            ItemCompanyData.Add(new ItemPriceCompany
-            {
-                ItemID = item.ItemID,
-                ItemName = item.ItemName,
-                CompanyID = company.CompanyID,
-                CompanyName = company.CompanyName,
-                ItemPrice = ItemPrice_Number.Value,
-                Status = ModifyMode.Insert
-            });
+            ItemUnit_GridView.DeleteSelectedRows();
         }
 
-        private void ItemCompany_Delete_Button_Click(object sender, EventArgs e)
+        private void ItemUnit_Save_Button_Click(object sender, EventArgs e)
         {
-            ItemsCompany_GridView.DeleteSelectedRows();
-        }
+            List<ItemUnit> saveData = this.ItemUnitData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
-        private void ItemCompany_Save_Button_Click(object sender, EventArgs e)
-        {
-            List<ItemPriceCompany> saveData = this.ItemCompanyData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
-
-            if (ItemsCompanyDeleteData != null)
+            if (ItemUnitDeleteData != null && ItemUnitDeleteData.Count > 0)
             {
-                saveData?.AddRange(ItemsCompanyDeleteData);
+                saveData?.AddRange(ItemUnitDeleteData);
             }
 
             if (saveData?.Count > 0)
             {
                 ItemsController controller = new ItemsController();
-                if (controller.SaveItemsCompany(saveData))
+                if (controller.SaveItemUnit(saveData))
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    ItemsCompanyDeleteData = new List<ItemPriceCompany>();
-                    this.LoadItemsCompanyGridView();
+                    ItemUnitDeleteData = new List<ItemUnit>();
+                    this.LoadItemUnitGridView();
                 }
                 else
                 {
@@ -341,7 +286,7 @@ namespace BSClient.Views
 
         private void ItemCompany_Cancel_Button_Click(object sender, EventArgs e)
         {
-            LoadItemsCompanyGridView();
+            LoadItemUnitGridView();
         }
 
         private void ItemType_GridView_RowUpdated(object sender, RowObjectEventArgs e)
@@ -404,10 +349,10 @@ namespace BSClient.Views
             ItemsDeleteData.Add(delete);
         }
 
-        private void ItemsCompany_GridView_RowUpdated(object sender, RowObjectEventArgs e)
+        private void ItemUnit_GridView_RowUpdated(object sender, RowObjectEventArgs e)
         {
-            ItemPriceCompany row = e.Row.CastTo<ItemPriceCompany>();
-            bool isNewRow = ItemsCompany_GridView.IsNewItemRow(e.RowHandle);
+            ItemUnit row = e.Row.CastTo<ItemUnit>();
+            bool isNewRow = ItemUnit_GridView.IsNewItemRow(e.RowHandle);
             if (isNewRow)
             {
                 row.Status = ModifyMode.Insert;
@@ -422,30 +367,16 @@ namespace BSClient.Views
             row.Status = ModifyMode.Update;
         }
 
-        private void ItemsCompany_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        private void ItemUnit_GridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            ItemPriceCompany delete = e.Row.CastTo<ItemPriceCompany>();
+            ItemUnit delete = e.Row.CastTo<ItemUnit>();
             if (delete.Status == ModifyMode.Insert)
             {
                 return;
             }
 
             delete.Status = ModifyMode.Delete;
-            ItemsCompanyDeleteData.Add(delete);
-        }
-
-        private void Items_GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
-        {
-            Items selectedRow = Items_GridView.GetFocusedRow().CastTo<Items>();
-            if (selectedRow == null)
-            {
-                return;
-            }
-
-            ItemName_TextEdit.EditValue = selectedRow.ItemName;
-
-            // filter grid
-            ItemsCompany_GridView.ActiveFilterString = $"[ItemID] = '{selectedRow.ItemID}'";
+            ItemUnitDeleteData.Add(delete);
         }
 
         private void Items_GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
@@ -488,6 +419,7 @@ namespace BSClient.Views
 
         private void ItemType_GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
+            Items_GridView.ClearColumnsFilter();
             ItemType selectedRow = ItemType_GridView.GetFocusedRow().CastTo<ItemType>();
             if (selectedRow == null)
             {
@@ -496,8 +428,6 @@ namespace BSClient.Views
 
             // filter grid
             Items_GridView.ActiveFilterString = $"[ItemTypeID] = '{selectedRow.ItemTypeID}'";
-
-            Items_GridView_FocusedRowChanged(sender, e);
         }
 
         private void ItemType_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
@@ -554,14 +484,14 @@ namespace BSClient.Views
             });
         }
 
-        private void ItemsCompany_GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
+        private void ItemUnit_GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
         {
             e.ExceptionMode = ExceptionMode.NoAction;
         }
 
-        private void ItemsCompany_GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
+        private void ItemUnit_GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {
-            if (ItemsCompany_GridView.FocusedColumn.FieldName == "ItemPrice" && Convert.ToDecimal(e.Value) <= 0)
+            if (ItemUnit_GridView.FocusedColumn.FieldName == "ItemPrice" && Convert.ToDecimal(e.Value) <= 0)
             {
                 e.Valid = false;
                 //Set errors with specific descriptions for the columns
@@ -571,23 +501,9 @@ namespace BSClient.Views
             }
         }
 
-        private void CompanyID_SearchLookUpEdit_Popup(object sender, EventArgs e)
+        private void ItemUnit_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
-            var popupForm = edit.GetPopupEditForm();
-            popupForm.KeyPreview = true;
-            popupForm.KeyPress += PopupForm_KeyPress;
-        }
-
-        private void PopupForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                PopupSearchLookUpEditForm popupForm = sender as PopupSearchLookUpEditForm;
-                var view = popupForm.OwnerEdit.Properties.View;
-                view.FocusedRowHandle = 0;
-                popupForm.OwnerEdit.ClosePopup();
-            }
+           
         }
     }
 }

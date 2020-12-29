@@ -65,7 +65,7 @@ SELECT
 	,(SELECT VouchersID FROM Vouchers WHERE CompanyID = 'CTY0000000060' AND VouchersTypeID =  VT.VoucherType AND VoucherNo = VT.VoucherNo) AS VoucherID
 	,VoucherType + '/' + VoucherNo AS OldVoucherID
 	,AccountID
-	,AccountDetailID
+	,CASE WHEN TRIM(AccountDetailID) = '' THEN NULL ELSE AccountDetailID END
 	,OldCustomerID
 	,Descriptions
 	,DebitAmount
@@ -75,7 +75,7 @@ SELECT
 	,'admin' [CreateUser]
 	,'admin' [UpdateUser]
 	,'CTY0000000060' CompanyID
-	,(SELECT CustomerID FROM Customer WHERE OldCustomerID = VT.OldCustomerID) CustomerID
+	,(SELECT CustomerID FROM Customer WHERE CustomerSName = VT.OldCustomerID) CustomerID
 FROM VouchersTemp VT;
 
 

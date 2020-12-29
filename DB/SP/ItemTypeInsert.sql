@@ -4,6 +4,7 @@ CREATE PROCEDURE ItemTypeInsert (
 	@ItemTypeID varchar(50)
 	,@ItemTypeName nvarchar(250)
 	,@ItemTypeSName varchar(20)
+	,@CompanyID varchar(50)
     ,@UpdateUser varchar(20)
 )
 AS
@@ -11,6 +12,7 @@ AS
 		ItemTypeID
 		,ItemTypeName
 		,ItemTypeSName
+		,CompanyID
         ,CreateDate
         ,UpdateDate
         ,CreateUser
@@ -19,6 +21,7 @@ AS
 		@ItemTypeID
 		,@ItemTypeName
 		,@ItemTypeSName
+		,@CompanyID
         ,GETDATE()
         ,GETDATE()
         ,@UpdateUser
