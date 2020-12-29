@@ -1030,10 +1030,10 @@ namespace BSClient
             {
                 new ColumnInfo("ItemID", "ItemID",140),
                 new ColumnInfo("ItemSName", "Tên Hàng Hóa",140),
-                new ColumnInfo("ItemUnit", "Đơn vị tính",180 ),
+                new ColumnInfo("ItemUnitID", "Đơn vị tính",180 ),
             };
             this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
-            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: true);
+            this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, isAllowEdit: true);
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
@@ -1121,7 +1121,7 @@ namespace BSClient
         public void invoiceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
+            InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnitID", selectRow.ItemUnitID);
         }
         #endregion init Invoice TabPane
 
@@ -2084,10 +2084,10 @@ namespace BSClient
             {
                 new ColumnInfo("ItemID", "ItemID",140),
                 new ColumnInfo("ItemSName", "Tên Hàng Hóa",140),
-                new ColumnInfo("ItemUnit", "Đơn vị tính",180 ),
+                new ColumnInfo("ItemUnitID", "Đơn vị tính",180 ),
             };
             this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
-            this.WareHouseDetail_gridView.AddColumn("ItemUnit", "ĐVT", 35, true);
+            this.WareHouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
             this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "###,###,###.##");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
@@ -2119,7 +2119,7 @@ namespace BSClient
         public void WareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            WareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
+            WareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnitID", selectRow.ItemUnitID);
         }
 
         void Load_DepreciationGridviewFull()

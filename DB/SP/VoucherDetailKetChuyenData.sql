@@ -1,3 +1,4 @@
+
 alter proc VoucherDetailKetChuyenData
 @StartDate datetime, @EndDate datetime, @CompanyID varchar(50)
 as
@@ -22,7 +23,7 @@ from (
 				Select A.AccountID,A.AccountDetailID,A.CustomerID, sum(DebitAmount) as 'DebitAmount', sum(CreditAmount) as 'CreditAmount' from VouchersDetail as A
 				inner join Vouchers as B
 				on A.VouchersID = B.VouchersID
-				where B.VoucherDate >= @StartDate and B.VoucherDate <= @EndDate and B.CompanyID = @CompanyID and B.IsDelete is null and A.IsDelete is Null
+				where B.VoucherDate >= @StartDate and B.VoucherDate <= @EndDate and B.CompanyID = @CompanyID and A.CompanyID = @CompanyID and B.IsDelete is null and A.IsDelete is Null
 				and A.AccountID in (select 
 				case
 				when KetChuyenDebitAccountID = '911' then KetChuyenCreditAccountID
@@ -36,6 +37,7 @@ from (
 ) as E
 inner join KichBanKetChuyentable as F
 on E.AccountID = F.KetChuyenDebitAccountID or E.AccountID = F.KetChuyenCreditAccountID
+where F.CompanyID = @CompanyID and F.GroupCode = '1' or F.GroupCode = '2'
 order by GroupCode
 end
 
