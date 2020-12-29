@@ -5,30 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BSCommon.Models
 {
     /// <summary>
-    /// ItemPriceCompany infomation
+    /// ItemUnit infomation
     /// </summary>        
-    [Table("ItemPriceCompany")]
-    public class ItemPriceCompany : BaseModel
+    [Table("ItemUnit")]
+    public class ItemUnit : BaseModel
     {
         /// <summary>
-        /// ItemID
+        /// ItemUnitID
         /// </summary>
         [Key]
-        [Column("ItemID", Order = 1)]
-        public string ItemID { get; set; }
+        [Column("ItemUnitID", Order = 1)]
+        public string ItemUnitID { get; set; }
 
         /// <summary>
-        /// CompanyID
+        /// ItemUnitName
         /// </summary>
-        [Key]
-        [Column("CompanyID", Order = 2)]
-        public string CompanyID { get; set; }
-
-        /// <summary>
-        /// ItemPrice
-        /// </summary>
-        [Column("ItemPrice")]
-        public decimal? ItemPrice { get; set; }
+        [Column("ItemUnitName")]
+        public string ItemUnitName { get; set; }
 
         /// <summary>
         /// CreateDate

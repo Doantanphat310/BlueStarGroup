@@ -5,7 +5,7 @@ CREATE PROCEDURE ItemsUpdate (
 	,@ItemName nvarchar(250)
 	,@ItemSName varchar(20)
 	,@ItemTypeID varchar(50)
-	,@ItemUnit varchar(3)
+	,@ItemUnitID varchar(20)
 	,@ItemSpecification nvarchar(250)
     ,@UpdateUser varchar(20)
 )
@@ -15,7 +15,7 @@ AS
 		ItemName = @ItemName
 		,ItemSName = @ItemSName
 		,ItemTypeID = @ItemTypeID
-		,ItemUnit = @ItemUnit
+		,ItemUnitID = @ItemUnitID
 		,ItemSpecification = @ItemSpecification
         ,UpdateDate = GETDATE()
         ,UpdateUser = @UpdateUser

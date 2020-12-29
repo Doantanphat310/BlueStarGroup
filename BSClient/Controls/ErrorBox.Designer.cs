@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorBox));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Error_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.Error_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Error_MemoEdit.Properties)).BeginInit();
             this.SuspendLayout();
@@ -51,14 +51,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(690, 318);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // Error_MemoEdit
-            // 
-            this.Error_MemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Error_MemoEdit.Location = new System.Drawing.Point(3, 3);
-            this.Error_MemoEdit.Name = "Error_MemoEdit";
-            this.Error_MemoEdit.Size = new System.Drawing.Size(684, 269);
-            this.Error_MemoEdit.TabIndex = 0;
-            // 
             // Exit_Button
             // 
             this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -69,6 +61,16 @@
             this.Exit_Button.TabIndex = 9;
             this.Exit_Button.Text = "Thoát";
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
+            // 
+            // Error_MemoEdit
+            // 
+            this.Error_MemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Error_MemoEdit.Location = new System.Drawing.Point(3, 3);
+            this.Error_MemoEdit.Name = "Error_MemoEdit";
+            this.Error_MemoEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.Error_MemoEdit.Properties.Appearance.Options.UseForeColor = true;
+            this.Error_MemoEdit.Size = new System.Drawing.Size(684, 269);
+            this.Error_MemoEdit.TabIndex = 0;
             // 
             // ErrorBox
             // 

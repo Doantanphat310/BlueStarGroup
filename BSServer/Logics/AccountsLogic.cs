@@ -149,12 +149,14 @@ namespace BSServer.Logics
 
         public List<GetCanDoiSoPhatSinhTaiKhoan> GetBangCanDoiSoPhatSinhChiTiet(DateTime fromDate, DateTime toDate)
         {
+            var accounts = this.AccountsDAO.GetAccounts().ToDictionary(o => o.AccountID, o => o);
             List<GetCanDoiSoPhatSinhTaiKhoan> psData = this.AccountsDAO.GetCanDoiSoPhatSinhTaiKhoanByKH(fromDate, toDate);
 
             List<GetBalance> dkData = this.AccountsDAO.GetSoDuDauKy(fromDate);
             DateTime balanceDate;
             List<GetCanDoiSoPhatSinhTaiKhoan> psDKData = null;
 
+            // Lấy phát sinh từ ngày đầu kỳ đến thời điểm hiện tại
             if (dkData != null && dkData.Count > 0)
             {
                 balanceDate = dkData[0].BalanceDate;
@@ -164,7 +166,7 @@ namespace BSServer.Logics
                 }
             }
 
-            // tính lại đầu kỳ
+            // tính lại đầu kỳ ( đầu kỳ = đầu kỳ + phát sinh)
             if (psDKData != null)
             {
                 foreach (var item in dkData)
@@ -179,6 +181,29 @@ namespace BSServer.Logics
                     {
                         dk = item.DebitBalance - item.CreditBalance + psdk.PSNo - psdk.PSCo;
 
+                        // Với những TK tiền(bắt đầu bằng 11) thì cho phép âm, 
+                        // nên sẽ xử lý theo đánh dấu dư nợ hoặc có trong danh mục tài khoản
+                        if (item.AccountID.StartsWith("11"))
+                        {
+                            // dư nợ
+                            if (accounts[item.AccountID].DuNo && !accounts[item.AccountID].DuCo)
+                            {
+                                item.DebitBalance = dk;
+                                item.CreditBalance = 0;
+                                continue;
+                            }
+                            // dư có
+                            else if (accounts[item.AccountID].DuCo && !accounts[item.AccountID].DuNo)
+                            {
+                                item.DebitBalance = 0;
+                                item.CreditBalance = (-1) * dk;
+                                continue;
+                            }
+                            // dư nợ và dư có
+                            else { }
+                        }
+
+                        // Với các tài khoản khác thì xử lý bình thường
                         if (dk > 0)
                         {
                             item.DebitBalance = dk;
@@ -193,9 +218,7 @@ namespace BSServer.Logics
                 }
             }
 
-            // Thêm DK và tính CK
-
-            // Có ĐK nhưng không có PS
+            // Thêm DK
             var dkNotPS = new List<GetCanDoiSoPhatSinhTaiKhoan>();
             foreach (GetBalance item in dkData)
             {
@@ -208,16 +231,6 @@ namespace BSServer.Logics
                 {
                     psFind.DKNo = item.DebitBalance;
                     psFind.DKCo = item.CreditBalance;
-
-                    //decimal ckNo = psFind.DKNo + psFind.PSNo - psFind.DKCo - psFind.PSCo;
-                    //if (ckNo > 0)
-                    //{
-                    //    psFind.CKNo = ckNo;
-                    //}
-                    //else
-                    //{
-                    //    psFind.CKCo = Math.Abs(ckNo);
-                    //}
                 }
                 // không có ps
                 else
@@ -231,9 +244,7 @@ namespace BSServer.Logics
                         DKNo = item.DebitBalance,
                         DKCo = item.CreditBalance,
                         PSNo = 0,
-                        PSCo = 0,
-                        //CKNo = item.DebitBalance,
-                        //CKCo = item.CreditBalance
+                        PSCo = 0
                     }); ;
                 }
             }
@@ -242,7 +253,7 @@ namespace BSServer.Logics
             psData.AddRange(dkNotPS);
 
             // Tính cuối kỳ
-            foreach(var ps in psData)
+            foreach (var ps in psData)
             {
                 decimal ckNo = ps.DKNo + ps.PSNo - ps.DKCo - ps.PSCo;
                 if (ckNo > 0)

@@ -362,6 +362,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Template\Excels\SanPham.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Template\Excels\KhachHang.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

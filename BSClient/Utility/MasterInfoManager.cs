@@ -13,12 +13,5 @@ namespace BSClient.Utility
 
             return masterInfoController.GetMasterInfos(MasterType.USERROLE);
         }
-
-        public static List<MasterInfo> GetItemUnit()
-        {
-            MasterInfoController masterInfoController = new MasterInfoController();
-
-            return masterInfoController.GetMasterInfos(MasterType.ITEMUNIT);
-        }
     }
 }

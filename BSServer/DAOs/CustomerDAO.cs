@@ -25,9 +25,6 @@ namespace BSServer.DAOs
             return this.Context.GetDataFromProcedure<Customer>(
                 "SP_GetCustomers",
                 new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID));
-            //return this.Context.Customer
-            //    .OrderBy(o => o.CustomerName)
-            //    .ToList();
         }
 
         public bool InsertCustomer(Customer data)

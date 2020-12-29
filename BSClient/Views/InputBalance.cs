@@ -169,7 +169,7 @@ namespace BSClient.Views
         public void BalanceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            BalanceWareHouse_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnit);
+            BalanceWareHouse_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
         }
 
         private void SetupBalanceWareHouse_gridView()
@@ -400,7 +400,7 @@ namespace BSClient.Views
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
             if (selectRow != null)
             {
-                BalanceDVT_label.Text = selectRow.ItemUnit;
+                BalanceDVT_label.Text = selectRow.ItemUnitID;
             }
         }
 

@@ -52,5 +52,11 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
+
+        /// <summary>
+        /// CompanyID
+        /// </summary>
+        [Column("CompanyID")]
+        public string CompanyID { get; set; }
     }
 }

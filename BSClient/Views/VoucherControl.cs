@@ -1123,7 +1123,7 @@ namespace BSClient
         public void invoiceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnit);
+            InvoiceWareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
         }
         #endregion init Invoice TabPane
 
@@ -2121,7 +2121,7 @@ namespace BSClient
         public void WareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            WareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnit);
+            WareHouseDetail_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
         }
 
         void Load_DepreciationGridviewFull()

@@ -32,6 +32,8 @@ namespace BSServer._Core.Context
 
         public DbSet<Company> Company { get; set; }
 
+        public DbSet<ItemUnit> ItemUnit { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             builder.Entity<MasterInfo>().HasKey(model => new { model.Key, model.Id });
