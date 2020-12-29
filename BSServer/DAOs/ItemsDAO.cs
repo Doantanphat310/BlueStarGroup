@@ -192,7 +192,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
-            this.Context.ExecuteDataFromProcedure("ItemPriceCompanyInsert", sqlParameters);
+            this.Context.ExecuteDataFromProcedure("ItemUnitInsert", sqlParameters);
 
             return true;
         }

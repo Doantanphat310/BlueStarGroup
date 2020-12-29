@@ -26,7 +26,6 @@ namespace BSClient.Utility
 
             string a, b, c, d, e, f, g, h;
             int row = values.GetLength(0);
-            Console.WriteLine(row);
             for (int i = 2; i <= row; i++)
             {
                 try
@@ -36,11 +35,12 @@ namespace BSClient.Utility
                     {
                         continue;
                     }
-                    a = FontHelper.TCVN3ToUnicode(a);
+
+                    //a = FontHelper.TCVN3ToUnicode(a);
                     b = values[i, 2]?.ToString();
                     c = values[i, 3]?.ToString();
                     d = values[i, 4]?.ToString();
-                    d = FontHelper.TCVN3ToUnicode(d);
+                    //d = FontHelper.TCVN3ToUnicode(d);
                     e = values[i, 5]?.ToString();
                     f = values[i, 6]?.ToString();
                     g = values[i, 7]?.ToString();
@@ -82,14 +82,13 @@ namespace BSClient.Utility
 
             string a, b;
             int row = values.GetLength(0);
-            Console.WriteLine(row);
             for (int i = 2; i <= row; i++)
             {
                 try
                 {
                     a = values[i, 1]?.ToString();
                     b = values[i, 2]?.ToString();
-                    b = FontHelper.TCVN3ToUnicode(b);
+                    //b = FontHelper.TCVN3ToUnicode(b);
 
                     if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b))
                     {
@@ -126,7 +125,6 @@ namespace BSClient.Utility
 
             string a, b;
             int row = values.GetLength(0);
-            Console.WriteLine(row);
             for (int i = 2; i <= row; i++)
             {
                 try
@@ -136,7 +134,8 @@ namespace BSClient.Utility
                     {
                         continue;
                     }
-                    a = FontHelper.TCVN3ToUnicode(a);
+
+                    //a = FontHelper.TCVN3ToUnicode(a);
                     b = values[i, 2]?.ToString();
 
                     if (string.IsNullOrWhiteSpace(b))
@@ -175,7 +174,6 @@ namespace BSClient.Utility
             string a, b, c, d, e;
             decimal f;
             int row = values.GetLength(0);
-            Console.WriteLine(row);
             for (int i = 2; i <= row; i++)
             {
                 try
@@ -185,13 +183,13 @@ namespace BSClient.Utility
                     {
                         continue;
                     }
-                    a = FontHelper.TCVN3ToUnicode(a);
+                    //a = FontHelper.TCVN3ToUnicode(a);
                     b = values[i, 2]?.ToString();
                     c = values[i, 3]?.ToString();
                     d = values[i, 4]?.ToString();
-                    d = FontHelper.TCVN3ToUnicode(d);
+                    //d = FontHelper.TCVN3ToUnicode(d);
                     e = values[i, 5]?.ToString();
-                    e = FontHelper.TCVN3ToUnicode(e);
+                    //e = FontHelper.TCVN3ToUnicode(e);
                     f = Convert.ToDecimal(values[i, 6] ?? 0);
 
                     resultData.Add(new Items

@@ -35,12 +35,14 @@ namespace BSServer.Logics
                             case ModifyMode.Insert:
                                 seq++;
                                 data.ItemTypeID = GenerateID.ItemTypeID(seq);
+                                data.CompanyID = CommonInfo.CompanyInfo.CompanyID;
 
                                 this.ItemsDAO.InsertItemType(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
+                                data.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                                 this.ItemsDAO.UpdateItemType(data);
                                 break;
 

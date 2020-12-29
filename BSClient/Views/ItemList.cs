@@ -1,4 +1,5 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Constants;
+using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace BSClient.Views
@@ -79,8 +81,8 @@ namespace BSClient.Views
             this.ItemType_GridView.Columns.Clear();
 
             this.ItemType_GridView.AddColumn("ItemTypeID", "Mã Loại SP", 90, false);
-            this.ItemType_GridView.AddColumn("ItemTypeName", "Tên Loại SP", 120, true, fixedWidth: false);
-            this.ItemType_GridView.AddColumn("ItemTypeSName", "Tên viết tắt", 60, true);
+            this.ItemType_GridView.AddColumn("ItemTypeName", "Tên Loại SP", 160, true, fixedWidth: false);
+            this.ItemType_GridView.AddColumn("ItemTypeSName", "Tên viết tắt", 100, true);
         }
 
         private void InitItemsGridView()
@@ -88,7 +90,7 @@ namespace BSClient.Views
             this.Items_GridView.Columns.Clear();
 
             this.Items_GridView.AddColumn("ItemID", "Mã SP", 90, false);
-            this.Items_GridView.AddColumn("ItemName", "Tên SP", 500, true, fixedWidth: false);
+            this.Items_GridView.AddColumn("ItemName", "Tên SP", 300, true, fixedWidth: false);
             this.Items_GridView.AddColumn("ItemSName", "Tên viết tắt", 80, true);
             this.Items_GridView.AddColumn("ItemSpecification", "Quy cách", 80, true);
             //this.Items_GridView.AddColumn("ItemTypeID", "Loại SP", 90, true);
@@ -98,10 +100,10 @@ namespace BSClient.Views
                 new ColumnInfo("ItemTypeSName", "Tên Viết Tắt", 90),
             };
             this.Items_GridView.AddLookupEditColumn(
-                "ItemTypeID", "Loại SP", 90, 
-                ItemTypeData, 
-                "ItemTypeID", "ItemTypeSName", 
-                columns: columns, 
+                "ItemTypeID", "Loại SP", 90,
+                ItemTypeData,
+                "ItemTypeID", "ItemTypeSName",
+                columns: columns,
                 isAllowEdit: true,
                 showHearder: true);
             //this.Items_GridView.AddSpinEditColumn("ItemPrice", "Giá SP", 90, false);
@@ -159,7 +161,7 @@ namespace BSClient.Views
                     ItemsData = new BindingList<Items>(controller.GetItems());
                     Items_GridControl.DataSource = ItemsData;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     BSLog.Logger.Error(ex.Message);
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000028, "<Danh Mục Sản Phẩm>");
@@ -191,6 +193,16 @@ namespace BSClient.Views
 
         private void ItemType_Save_Button_Click(object sender, EventArgs e)
         {
+            var group = this.ItemTypeData
+               .GroupBy(o => o.ItemTypeSName)
+               .Where(g => g.Count() > 1)
+               .Select(o => o.Key).ToList();
+            if (group.Count > 0)
+            {
+                MessageBoxHelper.ShowErrorMessage($"Tên viết tắt đã tồn tại!\r\n{string.Join(", ", group)}");
+                return;
+            }
+
             List<ItemType> saveData = this.ItemTypeData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
             if (ItemTypeDeleteData != null)
@@ -226,6 +238,16 @@ namespace BSClient.Views
 
         private void Items_Save_Button_Click(object sender, EventArgs e)
         {
+            var group = this.ItemsData
+               .GroupBy(o => o.ItemSName)
+               .Where(g => g.Count() > 1)
+               .Select(o => o.Key).ToList();
+            if (group.Count > 0)
+            {
+                MessageBoxHelper.ShowErrorMessage($"Tên viết tắt đã tồn tại!\r\n{string.Join(", ", group)}");
+                return;
+            }
+
             List<Items> saveData = this.ItemsData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
             if (ItemsDeleteData != null && ItemsDeleteData.Count > 0)
@@ -261,6 +283,16 @@ namespace BSClient.Views
 
         private void ItemUnit_Save_Button_Click(object sender, EventArgs e)
         {
+            var group = this.ItemUnitData
+                .GroupBy(o => o.ItemUnitID)
+                .Where(g => g.Count() > 1)
+                .Select(o => o.Key).ToList();
+            if(group.Count > 0)
+            {
+                MessageBoxHelper.ShowErrorMessage($"Mã ĐVT đã tồn tại!\r\n{string.Join(", ", group)}");
+                return;
+            }
+
             List<ItemUnit> saveData = this.ItemUnitData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
             if (ItemUnitDeleteData != null && ItemUnitDeleteData.Count > 0)
@@ -284,7 +316,7 @@ namespace BSClient.Views
             }
         }
 
-        private void ItemCompany_Cancel_Button_Click(object sender, EventArgs e)
+        private void ItemUnit_Cancel_Button_Click(object sender, EventArgs e)
         {
             LoadItemUnitGridView();
         }
@@ -484,26 +516,146 @@ namespace BSClient.Views
             });
         }
 
-        private void ItemUnit_GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
+        private void ItemUnit_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            e.ExceptionMode = ExceptionMode.NoAction;
-        }
-
-        private void ItemUnit_GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
-        {
-            if (ItemUnit_GridView.FocusedColumn.FieldName == "ItemPrice" && Convert.ToDecimal(e.Value) <= 0)
+            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
             {
-                e.Valid = false;
-                //Set errors with specific descriptions for the columns
-                GridView view = sender as GridView;
-                GridColumn column = view.Columns["ItemPrice"];
-                view.SetColumnError(column, BSMessage.BSM000014);
+                ImportData(2);
+            }
+            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            {
+                ExportData(2);
             }
         }
 
-        private void ItemUnit_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        private void ItemType_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-           
+            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            {
+                ImportData(1);
+            }
+            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            {
+                ExportData(1);
+            }
+        }
+
+        private void Items_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            {
+                ImportData(3);
+            }
+            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            {
+                ExportData(3);
+            }
+        }
+
+        private void ImportData(int type)
+        {
+            StringBuilder error = null;
+
+            switch (type)
+            {
+                case 1:
+                    List<ItemType> itemType = ExcelHelper.LoadItemType(out error);
+                    foreach (var item2 in itemType)
+                    {
+                        item2.Status = ModifyMode.Insert;
+                        ItemTypeData.Add(item2);
+                    }
+                    break;
+                case 2:
+                    List<ItemUnit> itemUnit = ExcelHelper.LoadItemUnit(out error);
+                    foreach (var item3 in itemUnit)
+                    {
+                        item3.Status = ModifyMode.Insert;
+                        ItemUnitData.Add(item3);
+                    }
+                    break;
+                case 3:
+                    List<Items> customers = ExcelHelper.LoadItems(out error);
+                    foreach (var item in customers)
+                    {
+                        item.Status = ModifyMode.Insert;
+                        ItemsData.Add(item);
+                    }
+                    break;
+            }
+
+            if (error != null && error.Length > 0)
+            {
+                ClientCommon.ShowErrorBox(error.ToString());
+            }
+        }
+
+        private void ExportData(int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    ItemType_GridControl.ExportExcel(ExcelTemplate.EXL000003);
+                    break;
+                case 2:
+                    ItemUnit_GridControl.ExportExcel(ExcelTemplate.EXL000004);
+                    break;
+                case 3:
+                    Items_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+                    break;
+            }            
+        }
+
+        private void ItemUnit_GridView_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            string col = ItemUnit_GridView.FocusedColumn.FieldName;
+            int rowIndex = ItemUnit_GridView.FocusedRowHandle;
+            var selected = ItemUnit_GridView.GetFocusedRow().CastTo<ItemUnit>();
+            bool isNewRow = ItemUnit_GridView.IsNewItemRow(rowIndex);
+            if (col == "ItemUnitID" && !(isNewRow || selected?.Status == ModifyMode.Insert))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void ItemUnit_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            ItemUnit_GridView.ClearColumnErrors();
+            int rowIndex = ItemUnit_GridView.FocusedRowHandle;
+            bool isNewRow = ItemUnit_GridView.IsNewItemRow(rowIndex);
+            ItemUnit row = e.Row.CastTo<ItemUnit>();
+            GridView view = sender as GridView;
+            GridColumn column;
+
+            if (isNewRow || row.Status == ModifyMode.Insert)
+            {
+                // Kiểm tra mã empty
+                if (string.IsNullOrEmpty(row.ItemUnitID))
+                {
+                    e.Valid = false;
+                    //Set errors with specific descriptions for the columns
+                    column = view.Columns[nameof(row.ItemUnitID)];
+                    view.SetColumnError(column, "Mã ĐVT không được trống.");
+                }
+
+                // Kiểm tra tồn tại trong grid
+                if (ItemUnitData.ToList().Count(o => o.ItemUnitID == row.ItemUnitID) > 1)
+                {
+                    e.Valid = false;
+                    //Set errors with specific descriptions for the columns
+                    column = view.Columns[nameof(row.ItemUnitID)];
+                    view.SetColumnError(column, "Mã ĐVT đã tồn tại!");
+                }
+            }
+
+            // Kiểm tra têm empty
+            if (string.IsNullOrEmpty(row.ItemUnitName))
+            {
+                e.Valid = false;
+                //Set errors with specific descriptions for the columns
+                column = view.Columns[nameof(row.ItemUnitName)];
+                view.SetColumnError(column, "Tên ĐVT không được trống.");
+            }
         }
     }
 }

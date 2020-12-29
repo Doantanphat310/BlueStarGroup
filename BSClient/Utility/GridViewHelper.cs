@@ -11,6 +11,7 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -86,11 +87,6 @@ namespace BSClient.Utility
                 AllowNullInput = DefaultBoolean.True
             };
 
-            EditorButton button = new EditorButton();
-            button.Kind = ButtonPredefines.Clear;
-            button.Click += LookUpEdit_Clear_Button_Click;
-            itemCtrl.Buttons.Add(button);
-
             if (editValueChanged != null)
             {
                 itemCtrl.EditValueChanged += editValueChanged;
@@ -121,11 +117,6 @@ namespace BSClient.Utility
             }
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
-        }
-
-        private static void LookUpEdit_Clear_Button_Click(object sender, EventArgs e)
-        {
-            //((EditorButton)sender). = null;
         }
 
         public static void AddSearchLookupEditColumn(
@@ -334,6 +325,21 @@ namespace BSClient.Utility
             {
                 gridView.CustomDrawRowIndicator += GridView_CustomDrawRowIndicator;
             }
+
+            gridView.InvalidRowException += GridView_InvalidRowException;
+            gridView.InvalidValueException += GridView_InvalidValueException;
+        }
+
+        private static void GridView_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
+        {
+            // Suppress displaying the error message box
+            e.ExceptionMode = ExceptionMode.NoAction;
+        }
+
+        private static void GridView_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        {
+            // Suppress displaying the error message box
+            e.ExceptionMode = ExceptionMode.NoAction;
         }
 
         private static void GridView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -354,13 +360,14 @@ namespace BSClient.Utility
 
         public static void ExportExcel(
             this GridControl gridControl,
-            string fileName = "",
+            string templateID,
             bool hasOpened = true)
         {
+            string sheetName = ExcelTemplate.GetTemplate(templateID);
             SaveFileDialog openFileDialog = new SaveFileDialog
             {
                 Filter = "Excel file(*.xlsx)|*.xlsx",
-                FileName = fileName
+                FileName = sheetName
             };
 
             string path;
@@ -375,7 +382,11 @@ namespace BSClient.Utility
 
             try
             {
-                gridControl.ExportToXlsx(path);
+                XlsxExportOptions xlsxExportOptions = new XlsxExportOptions
+                {
+                    SheetName = sheetName
+                };
+                gridControl.ExportToXlsx(path, xlsxExportOptions);
 
                 if (hasOpened)
                 {

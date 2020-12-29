@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerList));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.Customer_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Customer_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Customer_GroupControl = new DevExpress.XtraEditors.GroupControl();
@@ -47,10 +49,10 @@
             // Customer_GridControl
             // 
             this.Customer_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Customer_GridControl.Location = new System.Drawing.Point(2, 39);
+            this.Customer_GridControl.Location = new System.Drawing.Point(2, 45);
             this.Customer_GridControl.MainView = this.Customer_GridView;
             this.Customer_GridControl.Name = "Customer_GridControl";
-            this.Customer_GridControl.Size = new System.Drawing.Size(906, 365);
+            this.Customer_GridControl.Size = new System.Drawing.Size(981, 487);
             this.Customer_GridControl.TabIndex = 0;
             this.Customer_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Customer_GridView});
@@ -70,12 +72,19 @@
             this.Customer_GroupControl.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Customer_GroupControl.CaptionImageOptions.Image")));
             this.Customer_GroupControl.Controls.Add(this.Customer_GridControl);
             this.Customer_GroupControl.Controls.Add(this.UserButton_Panel);
+            buttonImageOptions1.Image = global::BSClient.Properties.Resources.excelimport;
+            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
+            this.Customer_GroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Import", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Nhập dữ liệu từ excel", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Export", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Xuất dữ liệu ra excel", -1, true, null, true, false, true, null, -1)});
+            this.Customer_GroupControl.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.Customer_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Customer_GroupControl.Location = new System.Drawing.Point(0, 0);
             this.Customer_GroupControl.Name = "Customer_GroupControl";
-            this.Customer_GroupControl.Size = new System.Drawing.Size(910, 451);
+            this.Customer_GroupControl.Size = new System.Drawing.Size(985, 579);
             this.Customer_GroupControl.TabIndex = 0;
             this.Customer_GroupControl.Text = "Danh mục Khách hàng";
+            this.Customer_GroupControl.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.Customer_GroupControl_CustomButtonClick);
             // 
             // UserButton_Panel
             // 
@@ -84,9 +93,9 @@
             this.UserButton_Panel.Controls.Add(this.Cancel_Button);
             this.UserButton_Panel.Controls.Add(this.Save_Button);
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 404);
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 532);
             this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(906, 45);
+            this.UserButton_Panel.Size = new System.Drawing.Size(981, 45);
             this.UserButton_Panel.TabIndex = 1;
             // 
             // ImportExcel_Button
@@ -95,16 +104,15 @@
             this.ImportExcel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ImportExcel_Button.ImageOptions.Image")));
             this.ImportExcel_Button.Location = new System.Drawing.Point(3, 6);
             this.ImportExcel_Button.Name = "ImportExcel_Button";
-            this.ImportExcel_Button.Size = new System.Drawing.Size(119, 35);
+            this.ImportExcel_Button.Size = new System.Drawing.Size(142, 35);
             this.ImportExcel_Button.TabIndex = 3;
-            this.ImportExcel_Button.Text = "Nhập từ Exel";
-            this.ImportExcel_Button.Click += new System.EventHandler(this.ImportExcel_Button_Click);
+            this.ImportExcel_Button.Text = "Chọn khách hàng";
             // 
             // Delete_Button
             // 
             this.Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Delete_Button.ImageOptions.Image")));
-            this.Delete_Button.Location = new System.Drawing.Point(619, 6);
+            this.Delete_Button.Location = new System.Drawing.Point(694, 6);
             this.Delete_Button.Name = "Delete_Button";
             this.Delete_Button.Size = new System.Drawing.Size(90, 35);
             this.Delete_Button.TabIndex = 0;
@@ -115,7 +123,7 @@
             // 
             this.Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Cancel_Button.ImageOptions.Image")));
-            this.Cancel_Button.Location = new System.Drawing.Point(811, 6);
+            this.Cancel_Button.Location = new System.Drawing.Point(886, 6);
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(90, 35);
             this.Cancel_Button.TabIndex = 2;
@@ -126,7 +134,7 @@
             // 
             this.Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Save_Button.ImageOptions.Image")));
-            this.Save_Button.Location = new System.Drawing.Point(715, 6);
+            this.Save_Button.Location = new System.Drawing.Point(790, 6);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.Size = new System.Drawing.Size(90, 35);
             this.Save_Button.TabIndex = 1;
@@ -139,7 +147,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Customer_GroupControl);
             this.Name = "CustomerList";
-            this.Size = new System.Drawing.Size(910, 451);
+            this.Size = new System.Drawing.Size(985, 579);
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).EndInit();

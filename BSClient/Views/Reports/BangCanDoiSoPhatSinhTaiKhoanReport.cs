@@ -154,11 +154,11 @@ namespace BSClient.Views.Reports
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left && e.Clicks == 2 && this.IsScreenShow)
             {
-                ShowChiTietTaiKhoan();
+                ShowChiTietTaiKhoanForm();
             }
         }
 
-        private void ShowChiTietTaiKhoan()
+        private void ShowChiTietTaiKhoanForm()
         {
             var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
 
@@ -182,15 +182,15 @@ namespace BSClient.Views.Reports
         {
             if (this.IsScreenShow)
             {
-                ShowChiTietTaiKhoan();
+                ShowChiTietTaiKhoanForm();
             }
             else
             {
-                ExportSoCaiReport();
+                ShowSoCaiReport();
             }
         }
 
-        private void ExportSoCaiReport()
+        private void ShowSoCaiReport()
         {
             List<GetChiTietSoCai> reportData = GetChiTietSoCais();
 
