@@ -37,7 +37,10 @@ namespace BSClient
         {
             BSLog.Logger.Error(e.Exception.Message);
             MessageBoxHelper.ShowErrorMessage("Đã có lỗi xảy ra. Vui lòng liên hệ với người quản trị hoặc nhà phát triển ứng dụng.");
+
+#if DEBUG == false
             Application.Exit();
+#endif
         }
     }
 }

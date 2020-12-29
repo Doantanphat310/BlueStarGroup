@@ -11,7 +11,6 @@ CREATE PROCEDURE CustomerInsert (
 	,@InvoiceFormNo varchar(20)
 	,@FormNo varchar(20)
 	,@SerialNo varchar(20)
-	,@OldCustomerID varchar(50)
     ,@UpdateUser varchar(20)
 )
 AS
@@ -26,7 +25,6 @@ AS
 		,InvoiceFormNo
 		,FormNo
 		,SerialNo
-		,OldCustomerID
         ,CreateDate
         ,UpdateDate
         ,CreateUser
@@ -42,7 +40,6 @@ AS
 		,@InvoiceFormNo
 		,@FormNo
 		,@SerialNo
-		,@OldCustomerID
         ,GETDATE()
         ,GETDATE()
         ,@UpdateUser

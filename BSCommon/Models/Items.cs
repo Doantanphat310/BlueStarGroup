@@ -36,16 +36,28 @@ namespace BSCommon.Models
         public string ItemTypeID { get; set; }
 
         /// <summary>
-        /// ItemUnit
+        /// ItemUnitID
         /// </summary>
-        [Column("ItemUnit")]
-        public string ItemUnit { get; set; }
+        [Column("ItemUnitID")]
+        public string ItemUnitID { get; set; }
 
         /// <summary>
         /// ItemSpecification
         /// </summary>
         [Column("ItemSpecification")]
         public string ItemSpecification { get; set; }
+
+        /// <summary>
+        /// ItemPrice
+        /// </summary>
+        [Column("ItemPrice")]
+        public decimal? ItemPrice { get; set; }
+
+        /// <summary>
+        /// CompanyID
+        /// </summary>
+        [Column("CompanyID")]
+        public string CompanyID { get; set; }
 
         /// <summary>
         /// CreateDate
@@ -70,11 +82,5 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
-
-        /// <summary>
-        /// IsDelete
-        /// </summary>
-        [Column("IsDelete")]
-        public bool? IsDelete { get; set; }
     }
 }

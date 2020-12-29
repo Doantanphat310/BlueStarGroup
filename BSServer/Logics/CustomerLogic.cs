@@ -29,6 +29,8 @@ namespace BSServer.Logics
                     long seq = this.CustomerDAO.GetCustomerSEQ();
                     foreach (Customer customer in customers)
                     {
+                        CustomerCompany customerCompany;
+
                         switch (customer.Status)
                         {
                             // Add new
@@ -37,6 +39,15 @@ namespace BSServer.Logics
                                 customer.CustomerID = GenerateID.CustomerID(seq); ;
 
                                 this.CustomerDAO.InsertCustomer(customer);
+
+                                customerCompany = new CustomerCompany
+                                {
+                                    CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                                    CustomerID = customer.CustomerID
+                                };
+
+                                this.CustomerDAO.InsertCustomerCompany(customerCompany);
+
                                 break;
 
                             // Update
@@ -47,6 +58,15 @@ namespace BSServer.Logics
                             // Delete
                             case ModifyMode.Delete:
                                 this.CustomerDAO.DeleteCustomer(customer);
+
+                                customerCompany = new CustomerCompany
+                                {
+                                    CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                                    CustomerID = customer.CustomerID
+                                };
+
+                                this.CustomerDAO.DeleteCustomerCompany(customerCompany);
+
                                 break;
                         }
                     }

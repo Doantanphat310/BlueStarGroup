@@ -1,5 +1,6 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer._Core.Base;
 using BSServer._Core.Context;
 using BSServer._Core.Utility;
@@ -79,16 +80,40 @@ namespace BSServer.Logics
                                 data.ItemID = GenerateID.ItemID(seq);
 
                                 this.ItemsDAO.InsertItems(data);
+
+                                this.ItemsDAO.InsertItemPriceCompany(new ItemPriceCompany
+                                {
+                                    CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                                    ItemID = data.ItemID,
+                                    ItemPrice = data.ItemPrice
+                                });
+
                                 break;
 
                             // Update
                             case ModifyMode.Update:
                                 this.ItemsDAO.UpdateItems(data);
+
+                                this.ItemsDAO.UpdateItemPriceCompany(new ItemPriceCompany
+                                {
+                                    CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                                    ItemID = data.ItemID,
+                                    ItemPrice = data.ItemPrice
+                                });
+
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
                                 this.ItemsDAO.DeleteItems(data);
+
+                                this.ItemsDAO.DeleteItemPriceCompany(new ItemPriceCompany
+                                {
+                                    CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                                    ItemID = data.ItemID,
+                                    ItemPrice = data.ItemPrice
+                                });
+
                                 break;
                         }
                     }
@@ -105,29 +130,29 @@ namespace BSServer.Logics
             }
         }
 
-        public bool SaveItemsCompany(List<ItemPriceCompany> saveData)
+        public bool SaveItemUnit(List<ItemUnit> saveData)
         {
             using (DbContextTransaction transaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    foreach (ItemPriceCompany data in saveData)
+                    foreach (ItemUnit data in saveData)
                     {
                         switch (data.Status)
                         {
                             // Add new
                             case ModifyMode.Insert:
-                                this.ItemsDAO.InsertItemPriceCompany(data);
+                                this.ItemsDAO.InsertItemUnit(data);
                                 break;
 
                             // Update
                             case ModifyMode.Update:
-                                this.ItemsDAO.UpdateItemPriceCompany(data);
+                                this.ItemsDAO.UpdateItemUnit(data);
                                 break;
 
                             // Delete
                             case ModifyMode.Delete:
-                                this.ItemsDAO.DeleteItemPriceCompany(data);
+                                this.ItemsDAO.DeleteItemUnit(data);
                                 break;
                         }
                     }

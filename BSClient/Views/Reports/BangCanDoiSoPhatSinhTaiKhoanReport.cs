@@ -131,7 +131,6 @@ namespace BSClient.Views.Reports
         private void SearchData_Button_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            this.Refresh();
 
             FromDate = From_DateEdit.DateTime.Date;
             ToDate = To_DateEdit.DateTime.Date;

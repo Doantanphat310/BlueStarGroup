@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
     <Compile Include="Models\Balance.cs" />
+    <Compile Include="Models\CustomerCompany.cs" />
     <Compile Include="Models\GetChiTietSoCai.cs" />
     <Compile Include="Models\GetChiTietTaiKhoan.cs" />
     <Compile Include="Models\GetBalance.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Models\AccountDetail.cs" />
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\ItemPriceCompany.cs" />
+    <Compile Include="Models\ItemUnit.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\KetChuyenValue.cs" />
     <Compile Include="Models\KichBanKetChuyentable.cs" />

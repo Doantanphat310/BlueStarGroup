@@ -27,17 +27,25 @@ namespace BSServer.DAOs
 
         public List<ItemType> GetItemType()
         {
-            return this.Context.ItemType.ToList();
+            return this.Context.ItemType
+                .Where(o => o.CompanyID == CommonInfo.CompanyInfo.CompanyID)
+                .OrderBy(o => o.ItemTypeName)
+                .ToList();
         }
 
         public List<Items> GetItems()
         {
-            return this.Context.Items.Where(o => o.IsDelete == null).ToList();
+            return this.Context
+                .GetDataFromProcedure<Items>(
+                    "SP_GetItems",
+                    new SqlParameter("@CompanyID", CommonInfo.CompanyInfo.CompanyID));
         }
 
-        public List<ItemPriceCompany> GetItemsCompany()
+        public List<ItemUnit> GetItemUnit()
         {
-            return this.Context.GetDataFromProcedure<ItemPriceCompany>("ItemPriceCompanySelect");
+            return this.Context.ItemUnit
+                .OrderBy(o => o.ItemUnitName)
+                .ToList();
         }
 
         public bool InsertItemType(ItemType data)
@@ -47,6 +55,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemTypeName", data.ItemTypeName),
                 new SqlParameter("@ItemTypeSName", data.ItemTypeSName),
+                new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
@@ -62,6 +71,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
                 new SqlParameter("@ItemTypeName", data.ItemTypeName),
                 new SqlParameter("@ItemTypeSName", data.ItemTypeSName),
+                new SqlParameter("@CompanyID", data.CompanyID),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
 
@@ -90,7 +100,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemName", data.ItemName),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
-                new SqlParameter("@ItemUnit", data.ItemUnit),
+                new SqlParameter("@ItemUnitID", data.ItemUnitID),
                 new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
@@ -108,7 +118,7 @@ namespace BSServer.DAOs
                 new SqlParameter("@ItemName", data.ItemName),
                 new SqlParameter("@ItemSName", data.ItemSName),
                 new SqlParameter("@ItemTypeID", data.ItemTypeID),
-                new SqlParameter("@ItemUnit", data.ItemUnit),
+                new SqlParameter("@ItemUnitID", data.ItemUnitID),
                 new SqlParameter("@ItemSpecification", data.ItemSpecification),
                 new SqlParameter("@UpdateUser", UserInfo.UserID)
             };
@@ -122,8 +132,7 @@ namespace BSServer.DAOs
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@ItemID", data.ItemID),
-                new SqlParameter("@UpdateUser", UserInfo.UserID)
+                new SqlParameter("@ItemID", data.ItemID)
             };
 
             this.Context.ExecuteDataFromProcedure("ItemsDelete", sqlParameters);
@@ -170,6 +179,46 @@ namespace BSServer.DAOs
             };
 
             this.Context.ExecuteDataFromProcedure("ItemPriceCompanyDelete", sqlParameters);
+
+            return true;
+        }
+
+        public bool InsertItemUnit(ItemUnit data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@ItemUnitID", data.ItemUnitID),
+                new SqlParameter("@ItemUnitName", data.ItemUnitName),
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("ItemPriceCompanyInsert", sqlParameters);
+
+            return true;
+        }
+
+        public bool UpdateItemUnit(ItemUnit data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@ItemUnitID", data.ItemUnitID),
+                new SqlParameter("@ItemUnitName", data.ItemUnitName),
+                new SqlParameter("@UpdateUser", UserInfo.UserID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("ItemUnitUpdate", sqlParameters);
+
+            return true;
+        }
+
+        public bool DeleteItemUnit(ItemUnit data)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@ItemUnitID", data.ItemUnitID)
+            };
+
+            this.Context.ExecuteDataFromProcedure("ItemUnitDelete", sqlParameters);
 
             return true;
         }
