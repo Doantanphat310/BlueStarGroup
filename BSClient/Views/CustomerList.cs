@@ -1,4 +1,5 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Constants;
+using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -177,10 +178,22 @@ namespace BSClient.Views
             }
         }
 
-        private void ImportExcel_Button_Click(object sender, EventArgs e)
+        private void Customer_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            {
+                ImportData();
+            }
+            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            {
+                ExportData();
+            }
+        }
+
+        private void ImportData()
         {
             List<Customer> customers = ExcelHelper.LoadCustomer(out StringBuilder error);
-            foreach(var item in customers)
+            foreach (var item in customers)
             {
                 item.Status = ModifyMode.Insert;
                 CustommersData.Add(item);
@@ -190,6 +203,11 @@ namespace BSClient.Views
             {
                 ClientCommon.ShowErrorBox(error.ToString());
             }
+        }
+
+        private void ExportData()
+        {
+            Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
         }
     }
 }

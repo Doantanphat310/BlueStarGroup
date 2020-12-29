@@ -40,30 +40,6 @@ namespace SSSuporter
 
         private static char[] convertTable;
 
-        private static void InitFontHelper()
-        {
-            convertTable = new char[256];
-            for (int i = 0; i < 256; i++)
-                convertTable[i] = (char)i;
-            for (int i = 0; i < tcvnchars.Length; i++)
-                convertTable[tcvnchars[i]] = unichars[i];
-        }
-
-        public static string TCVN3ToUnicode(string value)
-        {
-            if(convertTable == null ||  convertTable.Length == 0)
-            {
-                InitFontHelper();
-            }
-
-            char[] chars = value.ToCharArray();
-            for (int i = 0; i < chars.Length; i++)
-                if (chars[i] < (char)256)
-                    chars[i] = convertTable[chars[i]];
-
-            return new string(chars);
-        }
-
         private static readonly string[] VietNamChar = new string[]
         {
             "aAeEoOuUiIdDyY",
@@ -83,6 +59,44 @@ namespace SSSuporter
             "ÝỲỴỶỸ"
         };
 
+        private static void InitFontHelper()
+        {
+            convertTable = new char[256];
+            for (int i = 0; i < 256; i++)
+                convertTable[i] = (char)i;
+            for (int i = 0; i < tcvnchars.Length; i++)
+                convertTable[tcvnchars[i]] = unichars[i];
+        }
+
+        public static string TCVN3ToUnicode(string value)
+        {
+            if (convertTable == null || convertTable.Length == 0)
+            {
+                InitFontHelper();
+            }
+
+            char[] chars = value.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+                if (chars[i] < (char)256)
+                    chars[i] = convertTable[chars[i]];
+
+            return new string(chars);
+        }
+
+        public static bool IsTCVN3(string value)
+        {
+            char[] chars = value.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (!tcvnchars.Contains(chars[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public static string RemoveVN(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -98,6 +112,32 @@ namespace SSSuporter
             }
 
             return str;
+        }
+
+        public static bool IsVietNam(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return false;
+            }
+
+            string vnStr = "";
+            for (int i = 1; i < VietNamChar.Length; i++)
+            {
+                vnStr += VietNamChar[i];
+            }
+
+            var vnChar = vnStr.ToCharArray().ToHashSet();
+            char[] values = str.ToCharArray();
+            foreach (char c in values)
+            {
+                if (vnChar.Contains(c))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

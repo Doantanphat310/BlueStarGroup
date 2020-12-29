@@ -135,6 +135,7 @@
     <Compile Include="Base\BaseFormList.Designer.cs">
       <DependentUpon>BaseFormList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants\ClientConst.cs" />
     <Compile Include="Constants\ExcelTemplate.cs" />
     <Compile Include="Constants\ReportTemplate.cs" />
     <Compile Include="Controls\ButtonGroup.cs">
@@ -393,6 +394,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\excelimport.png" />
     <Content Include="star_icon.ico" />
   </ItemGroup>
   <ItemGroup />
