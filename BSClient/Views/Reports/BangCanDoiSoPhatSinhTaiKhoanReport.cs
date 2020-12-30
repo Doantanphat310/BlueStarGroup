@@ -21,6 +21,8 @@ namespace BSClient.Views.Reports
 
         private BindingList<GetCanDoiSoPhatSinhTaiKhoan> ReportData { get; set; }
 
+        private List<Customer> Customers { get; set; }
+
         private DateTime FromDate { get; set; }
 
         private DateTime ToDate { get; set; }
@@ -33,6 +35,16 @@ namespace BSClient.Views.Reports
             ToDate = new DateTime(2019, 12, 31);
             From_DateEdit.DateTime = FromDate;
             To_DateEdit.DateTime = ToDate;
+
+            Customers = GetCustomers();
+        }
+
+        private List<Customer> GetCustomers()
+        {
+            using (CustomerController controller = new CustomerController())
+            {
+                return controller.GetCustomers();
+            };
         }
 
         private void InitComboBox()
@@ -72,7 +84,7 @@ namespace BSClient.Views.Reports
             else
             {
                 this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
-                this.Main_GridView.AddColumn("CustomerID", "Mã KH", 90, false);
+                this.Main_GridView.AddLookupEditColumn("CustomerID", "Mã KH", 90, Customers, "CustomerID", "CustomerSName", isAllowEdit: false);
             }
 
             this.Main_GridView.AddSpinEditColumn("DKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
