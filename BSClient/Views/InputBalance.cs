@@ -136,7 +136,7 @@ namespace BSClient.Views
                 new ColumnInfo("ItemID", "ID Hàng hóa",140),
                 new ColumnInfo("ItemSName", "Mã hàng hóa",140),
                 new ColumnInfo("ItemName", "Tên hàng hóa",300),
-                new ColumnInfo("ItemUnit", "ĐVT",140),
+                new ColumnInfo("ItemUnitID", "ĐVT",140),
             };
             this.BalanceHangHoa_searchLookUpEdit.SetupLookUpEdit("ItemID", "ItemSName", items, columns, nullText: "", enterChoiceFirstRow: true);
         }
@@ -160,7 +160,7 @@ namespace BSClient.Views
             // Đơn vị tính
             this.BalanceWareHouse_gridView.Columns.Clear();
             this.BalanceWareHouse_gridView.AddSearchLookupEditColumn("ItemID", "Hàng hóa", 80, items, "ItemID", "ItemSName", isAllowEdit: false, editValueChanged: BalanceWareHouseDetail_EditValueChanged);
-            this.BalanceWareHouse_gridView.AddColumn("ItemUnit", "ĐVT", 35, isAllowEdit: false);
+            this.BalanceWareHouse_gridView.AddColumn("ItemUnitID", "ĐVT", 35, isAllowEdit: false);
             this.BalanceWareHouse_gridView.AddSpinEditColumn("BalanceQuatity", "Số lượng", 60, false, "###,###,###.##");
             this.BalanceWareHouse_gridView.AddSpinEditColumn("BalancePrice", "Đơn giá", 120, false, "c2");
             this.BalanceWareHouse_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, false, "c2",DevExpress.Data.SummaryItemType.Sum, "{0:C}");
@@ -169,7 +169,7 @@ namespace BSClient.Views
         public void BalanceWareHouseDetail_EditValueChanged(object sender, EventArgs e)
         {
             var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
-            BalanceWareHouse_gridView.SetFocusedRowCellValue("ItemUnit", selectRow.ItemUnitID);
+            BalanceWareHouse_gridView.SetFocusedRowCellValue("ItemUnitID", selectRow.ItemUnitID);
         }
 
         private void SetupBalanceWareHouse_gridView()
