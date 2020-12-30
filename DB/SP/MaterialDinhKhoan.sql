@@ -74,11 +74,20 @@ alter proc SPSelectMaterialDoiTuong
 @CompanyID varchar(50)
 as
 begin
-Select CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo from Customer
+Select A.CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo from Customer as A
+inner join CustomerCompany as B
+on A.CustomerID = B.CustomerID
+where CompanyID = @CompanyID
 end
 
+select * from
 
-SPSelectMaterialTK 'COM000000060'
+
+
+
+SPSelectMaterialTK 'CTY0000000003'
+
+
 
 select * from AccountDetail
 
@@ -86,7 +95,11 @@ alter proc SPSelectMaterialTK
 @CompanyID varchar(50)
 as
 begin
-select A.AccountID,B.AccountDetailID,
+select 
+case
+when  B.AccountDetailID is null then A.AccountID
+else  (A.AccountID + '/' + B.AccountDetailID)
+end  'AccountIDFULL',  A.AccountID,B.AccountDetailID,
 case
 when B.AccountDetailName is null then A.AccountName
 else B.AccountDetailName
@@ -99,6 +112,8 @@ where CompanyID = @CompanyID) as B
 on A.AccountID = B.AccountID
 order by AccountID,AccountDetailID
 end
+
+
 
 Create proc SPSelectMaterialGL
 @CompanyID varchar(50)
