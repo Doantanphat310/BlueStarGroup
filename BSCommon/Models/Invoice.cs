@@ -43,7 +43,6 @@ namespace BSCommon.Models
                    ? this.dateCreated.Value
                    : DateTime.Now.Date;
             }
-
             set { this.dateCreated = value; }
         }
        

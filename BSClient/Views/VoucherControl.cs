@@ -162,40 +162,36 @@ namespace BSClient
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
+                
+                new ColumnInfo("AccountIDFULL", "Tài khoản | Thống kê",140),
                 new ColumnInfo("AccountID", "Tài khoản",140),
                 new ColumnInfo("AccountDetailID", "Mã TK",80),
                 new ColumnInfo("Name", "Tên",180 ),
             };
 
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountID", "Tài khoản", 60, materialTK, "AccountID", "AccountID",
-                isAllowEdit: true, columns: columns, editValueChanged: Accounts_EditValueChanged);
-
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountDetailID", "Mã TK", 60, materialTK, "AccountDetailID", "AccountDetailID", isAllowEdit: true, columns: columns, editValueChanged: AccountsDetail_EditValueChanged);
-
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountIDFULL", "Tài khoản | T.Kê", 140, 
+                                                                materialTK, "AccountIDFULL", "AccountIDFULL",
+                                                                isAllowEdit: true, columns: columns, 
+                                                                editValueChanged: AccountsFULL_EditValueChanged);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "C2");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
-            this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 120, false);
+            this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 1, false);
         }
+        
 
-        public void Accounts_EditValueChanged(object sender, EventArgs e)
+        public void AccountsFULL_EditValueChanged(object sender, EventArgs e)
         {
-            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
-            VoucherDetail_gridView.SetFocusedRowCellValue("AccountDetailID", selectRow.AccountDetailID);
+            //var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
+            //VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
+            //VoucherDetail_gridView.SetFocusedRowCellValue("AccountDetailID", selectRow.AccountDetailID);
         }
-
-        public void AccountsDetail_EditValueChanged(object sender, EventArgs e)
-        {
-            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
-            VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
-        }
+        
 
         private void SetupVoucherDetailGridView()
         {
-            this.VoucherDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30);
-            this.VoucherDetail_gridView.SetupGridView(columnAutoWidth: false);
-            this.VoucherDetail_gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
-            this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.VoucherDetail_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30,newItemRow:NewItemRowPosition.Bottom);
+           // this.VoucherDetail_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void LoadVoucherDetailGridView(string voucherID = "")
