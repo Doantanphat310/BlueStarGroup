@@ -1,9 +1,7 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
-using BSCommon.Utility;
 using BSServer._Core.Context;
 using BSServer.DAOs;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -34,6 +32,7 @@ namespace BSServer.Logics
                             // Add new
                             case ModifyMode.Insert:
                                 this.UserDAO.InsertUserList(data);
+
                                 break;
 
                             // Update
@@ -74,11 +73,6 @@ namespace BSServer.Logics
                             case ModifyMode.Insert:
                                 this.UserDAO.InsertUserRoleCompany(data);
                                 break;
-
-                            //// Update
-                            //case 2:
-                            //    this.UserDAO.UpdateCustommersCompany(customer);
-                            //    break;
 
                             // Delete
                             case ModifyMode.Delete:

@@ -104,7 +104,7 @@ namespace BSClient.Views
 
             if (this.CustomersDeleteData != null)
             {
-                saveData?.AddRange(this.CustomersDeleteData);
+                saveData?.InsertRange(0, this.CustomersDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -208,6 +208,11 @@ namespace BSClient.Views
         private void ExportData()
         {
             Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+        }
+
+        private void SelectCustomer_Button_Click(object sender, EventArgs e)
+        {
+            MessageBoxHelper.ShowInfoMessage("Coming soon!");
         }
     }
 }

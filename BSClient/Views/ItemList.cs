@@ -207,7 +207,7 @@ namespace BSClient.Views
 
             if (ItemTypeDeleteData != null)
             {
-                saveData?.AddRange(ItemTypeDeleteData);
+                saveData?.InsertRange(0, ItemTypeDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -252,7 +252,7 @@ namespace BSClient.Views
 
             if (ItemsDeleteData != null && ItemsDeleteData.Count > 0)
             {
-                saveData?.AddRange(ItemsDeleteData);
+                saveData?.InsertRange(0, ItemsDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -287,7 +287,7 @@ namespace BSClient.Views
                 .GroupBy(o => o.ItemUnitID)
                 .Where(g => g.Count() > 1)
                 .Select(o => o.Key).ToList();
-            if(group.Count > 0)
+            if (group.Count > 0)
             {
                 MessageBoxHelper.ShowErrorMessage($"Mã ĐVT đã tồn tại!\r\n{string.Join(", ", group)}");
                 return;
@@ -297,7 +297,7 @@ namespace BSClient.Views
 
             if (ItemUnitDeleteData != null && ItemUnitDeleteData.Count > 0)
             {
-                saveData?.AddRange(ItemUnitDeleteData);
+                saveData?.InsertRange(0, ItemUnitDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -603,7 +603,7 @@ namespace BSClient.Views
                 case 3:
                     Items_GridControl.ExportExcel(ExcelTemplate.EXL000001);
                     break;
-            }            
+            }
         }
 
         private void ItemUnit_GridView_ShowingEditor(object sender, CancelEventArgs e)

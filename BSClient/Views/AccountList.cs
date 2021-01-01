@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -47,12 +48,6 @@ namespace BSClient.Views
             InitComboBox();
 
             SetBindingData();
-
-            CompanyID_SearchLookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
-            if (UserInfo.UserRole != "Full")
-            {
-                CompanyID_SearchLookUpEdit.ReadOnly = true;
-            }
         }
 
         private void SetBindingData()
@@ -71,30 +66,13 @@ namespace BSClient.Views
 
         private void InitComboBox()
         {
-            List<Company> companys = GetCompanyList();
             List<ColumnInfo> columns = new List<ColumnInfo>
-            {
-                new ColumnInfo ("CompanyID", "Mã Công ty", 100),
-                new ColumnInfo ("CompanyName", "Tên Công ty", 250)
-            };
-
-            this.CompanyID_SearchLookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", companys, columns);
-
-            columns = new List<ColumnInfo>
             {
                 new ColumnInfo ("AccountID", "Mã TK", 90),
                 new ColumnInfo ("AccountName", "Tên TK", 250)
             };
 
             this.AccountID_SearchLookUpEdit.SetupLookUpEdit("AccountID", "AccountName", AccountsData, columns);
-        }
-
-        private List<Company> GetCompanyList()
-        {
-            using (CompanyController controller = new CompanyController())
-            {
-                return controller.GetCompanys();
-            }
         }
 
         private void LoadGrid()
@@ -153,7 +131,6 @@ namespace BSClient.Views
         {
             this.AccountDetail_GridView.Columns.Clear();
 
-            this.AccountDetail_GridView.AddColumn("CompanyID", "Công ty", 120, false);
             this.AccountDetail_GridView.AddColumn("AccountID", "Tài khoản", 100, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailID", "Thống kê", 80, false);
             this.AccountDetail_GridView.AddColumn("AccountDetailName", "Mô tả", 250, true, fixedWidth: false);
@@ -219,7 +196,7 @@ namespace BSClient.Views
 
             if (AccountGroupDeleteData != null && AccountGroupDeleteData.Count > 0)
             {
-                saveData?.AddRange(AccountGroupDeleteData);
+                saveData?.InsertRange(0, AccountGroupDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -254,7 +231,7 @@ namespace BSClient.Views
 
             if (AccountsDeleteData != null && AccountsDeleteData.Count > 0)
             {
-                saveData?.AddRange(AccountsDeleteData);
+                saveData?.InsertRange(0, AccountsDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -281,13 +258,6 @@ namespace BSClient.Views
         private void AccountDetail_AddNew_Button_Click(object sender, EventArgs e)
         {
             Accounts account = AccountID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Accounts>();
-            Company company = CompanyID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Company>();
-
-            if (string.IsNullOrEmpty(company.CompanyID))
-            {
-                MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
-                return;
-            }
 
             if (string.IsNullOrEmpty(account.AccountID))
             {
@@ -302,7 +272,7 @@ namespace BSClient.Views
                 return;
             }
 
-            if (AccountDetailData.ToList().Find(o => o.CompanyID == company.CompanyID && o.AccountID == account.AccountID && o.AccountDetailID == accountDetailID) != null)
+            if (AccountDetailData.ToList().Find(o => o.AccountID == account.AccountID && o.AccountDetailID == accountDetailID) != null)
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000030);
                 return;
@@ -317,7 +287,7 @@ namespace BSClient.Views
 
             AccountDetailData.Add(new AccountDetail
             {
-                CompanyID = company.CompanyID,
+                CompanyID = CommonInfo.CompanyInfo.CompanyID,
                 AccountID = account.AccountID,
                 AccountDetailID = accountDetailID,
                 AccountDetailName = accountDetailName,
@@ -336,7 +306,7 @@ namespace BSClient.Views
 
             if (AccountDetailDeleteData != null && AccountDetailDeleteData.Count > 0)
             {
-                saveData?.AddRange(AccountDetailDeleteData);
+                saveData?.InsertRange(0, AccountDetailDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -427,6 +397,7 @@ namespace BSClient.Views
 
         private void AccountGroup_GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
+            Account_TreeList.ClearColumnsFilter();
             AccountGroup selectedRow = AccountGroup_GridView.GetFocusedRow().CastTo<AccountGroup>();
             if (selectedRow == null)
             {
@@ -434,8 +405,9 @@ namespace BSClient.Views
             }
 
             // filter grid
-            this.Account_TreeList.ClearColumnsFilter();
             Account_TreeList.ActiveFilterString = $"[AccountGroupID] = '{selectedRow.AccountGroupID}'";
+            DevExpress.XtraTreeList.Nodes.TreeListNode node = this.Account_TreeList.GetNodeByVisibleIndex(0);
+            this.Account_TreeList.SetFocusedNode(this.Account_TreeList.GetNodeByVisibleIndex(0));
         }
 
         private void AccountGroup_GridView_ValidateRow(object sender, ValidateRowEventArgs e)
@@ -687,24 +659,11 @@ namespace BSClient.Views
             this.AccountDetail_GridView.ClearColumnsFilter();
             string filter = string.Empty;
 
-            string companyID = CompanyID_SearchLookUpEdit.EditValue.ToString();
-            if (!string.IsNullOrEmpty(companyID))
-            {
-                filter = $"[CompanyID] = '{companyID}'";
-            }
-
             Accounts account = AccountID_SearchLookUpEdit.GetSelectedDataRow().CastTo<Accounts>();
             if (account != null)
             {
                 AccountDetailName_TextEdit.Text = account.AccountName;
-                if (string.IsNullOrEmpty(filter))
-                {
-                    filter += $"[AccountID] = '{account.AccountID}'";
-                }
-                else
-                {
-                    filter += $" AND [AccountID] = '{account.AccountID}'";
-                }
+                filter += $"[AccountID] = '{account.AccountID}'";
             }
             else
             {
@@ -753,7 +712,21 @@ namespace BSClient.Views
 
         private void AllCompanies_CheckEdit_CheckedChanged(object sender, EventArgs e)
         {
-            Company_Label.Enabled = !AllCompanies_CheckEdit.Checked;
+            //Company_Label.Enabled = !AllCompanies_CheckEdit.Checked;
+        }
+
+        private void Account_TreeList_RowClick(object sender, DevExpress.XtraTreeList.RowClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                TreeList tl = (TreeList)sender;
+                TreeListHitInfo hitInfo = tl.CalcHitInfo(e.Location);
+                if (hitInfo.Node != null)
+                    tl.FocusedNode = hitInfo.Node;
+
+                Point point = Cursor.Position;
+                popupMenu.ShowPopup(point);
+            }
         }
     }
 }

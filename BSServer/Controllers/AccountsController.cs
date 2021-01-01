@@ -31,9 +31,9 @@ namespace BSServer.Controllers
             return this.AccountsDAO.GetAccounts();
         }
 
-        public List<AccountDetail> GetAccountDetail(string companyID = "")
+        public List<AccountDetail> GetAccountDetail()
         {
-            return this.AccountsDAO.GetAccountDetail(companyID);
+            return this.AccountsDAO.GetAccountDetail();
         }
 
         public bool SaveAccountGroup(List<AccountGroup> dataList)

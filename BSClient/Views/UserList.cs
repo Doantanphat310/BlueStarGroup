@@ -138,7 +138,7 @@ namespace BSClient.Views
 
             if (MasterDataDelete != null && MasterDataDelete.Count > 0)
             {
-                saveData?.AddRange(MasterDataDelete);
+                saveData?.InsertRange(0, MasterDataDelete);
             }
 
             if (saveData?.Count > 0)
@@ -330,7 +330,7 @@ namespace BSClient.Views
 
             if (DetailDataDelete != null && DetailDataDelete.Count > 0)
             {
-                saveData?.AddRange(DetailDataDelete);
+                saveData?.InsertRange(0, DetailDataDelete);
             }
 
             if (saveData?.Count > 0)

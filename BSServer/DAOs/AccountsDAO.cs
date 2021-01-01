@@ -35,10 +35,11 @@ namespace BSServer.DAOs
             return this.Context.Accounts.OrderBy(o => o.AccountGroupID).ThenBy(o => o.AccountID).ToList();
         }
 
-        public List<AccountDetail> GetAccountDetail(string companyId = "")
+        public List<AccountDetail> GetAccountDetail()
         {
             return this.Context.AccountDetail
-                .Where(o => o.CompanyID == companyId || string.IsNullOrEmpty(companyId))
+                .Where(o => o.CompanyID == CommonInfo.CompanyInfo.CompanyID)
+                .OrderBy(o => o.AccountDetailID)
                 .ToList();
         }
 
@@ -231,8 +232,8 @@ namespace BSServer.DAOs
             };
 
             return this.Context.GetDataFromProcedure<GetChiTietTaiKhoan>("SP_GetChiTietTaiKhoan", sqlParameters);
-        } 
-        
+        }
+
         public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]

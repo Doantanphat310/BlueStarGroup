@@ -94,21 +94,6 @@ namespace BSServer.DAOs
             return true;
         }
 
-        public bool UpdateUserRoleCompany(UserRoleCompany data)
-        {
-            SqlParameter[] sqlParameters = new SqlParameter[]
-            {
-                new SqlParameter("@UserID", data.UserID),
-                new SqlParameter("@CompanyID", data.CompanyID),
-                new SqlParameter("@RoleID", data.UserRoleID),
-                new SqlParameter("@UpdateUser", UserInfo.UserID)
-            };
-
-            this.Context.ExecuteDataFromProcedure("UserRoleCompanyUpdate", sqlParameters);
-
-            return true;
-        }
-
         public bool DeleteUserRoleCompany(UserRoleCompany data)
         {
             SqlParameter[] sqlParameters = new SqlParameter[]
