@@ -32,47 +32,53 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.tabPaneVouchers = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageChungTu = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.VoucherDetail_groupControl = new DevExpress.XtraEditors.GroupControl();
-            this.Delete_VoucherDetailsimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.checkBoxThemDuLieu = new System.Windows.Forms.CheckBox();
-            this.simpleButtonCapNhat = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonNewSave = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.LKVATsimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.LKKhosimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.richTextBoxVoucherContent = new System.Windows.Forms.RichTextBox();
+            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.VoucherDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.VoucherDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditNgayNhapChungTu = new DevExpress.XtraEditors.DateEdit();
+            this.checkBoxThemDuLieu = new System.Windows.Forms.CheckBox();
             this.VoucherTypeDK_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.VouchersTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VouchersTypeSName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.dateEditNgayNhapChungTu = new DevExpress.XtraEditors.DateEdit();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.richTextBoxVoucherContent = new System.Windows.Forms.RichTextBox();
+            this.Delete_VoucherDetailsimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.LKKhosimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.LKVATsimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonCapNhat = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButtonNewSave = new DevExpress.XtraEditors.SimpleButton();
             this.Voucher_groupControl = new DevExpress.XtraEditors.GroupControl();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.Voucher_gridControl = new DevExpress.XtraGrid.GridControl();
+            this.Voucher_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.dateEditNgayKT = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditBDKT = new DevExpress.XtraEditors.DateEdit();
             this.simpleButtonLoadVoucher = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.VoucherTypeXemChungTU_searchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VouchersTypeID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEditNgayKT = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEditBDKT = new DevExpress.XtraEditors.DateEdit();
-            this.Voucher_gridControl = new DevExpress.XtraGrid.GridControl();
-            this.Voucher_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
-            this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.VoucherKetChuyen_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
+            this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageLKVAT = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
             this.InvoiceCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -154,12 +160,6 @@
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -167,22 +167,34 @@
             this.tabNavigationPageChungTu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_groupControl)).BeginInit();
             this.VoucherDetail_groupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
+            this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_groupControl)).BeginInit();
             this.Voucher_groupControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.tabNavigationPageLKVAT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationgroupControl)).BeginInit();
             this.InvoiceDepreciationgroupControl.SuspendLayout();
@@ -213,18 +225,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetailDiscount_textEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
-            this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
-            this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
-            this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -265,14 +265,6 @@
             this.tabNavigationPageChungTu.Name = "tabNavigationPageChungTu";
             this.tabNavigationPageChungTu.Size = new System.Drawing.Size(1326, 663);
             // 
-            // simpleButton12
-            // 
-            this.simpleButton12.Location = new System.Drawing.Point(239, 5);
-            this.simpleButton12.Name = "simpleButton12";
-            this.simpleButton12.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton12.TabIndex = 26;
-            this.simpleButton12.Text = "TK đối ứng";
-            // 
             // VoucherDetail_groupControl
             // 
             this.VoucherDetail_groupControl.Controls.Add(this.panelControl7);
@@ -285,82 +277,14 @@
             this.VoucherDetail_groupControl.TabIndex = 13;
             this.VoucherDetail_groupControl.Text = "Thông tin định khoản của chứng từ";
             // 
-            // Delete_VoucherDetailsimpleButton
+            // panelControl7
             // 
-            this.Delete_VoucherDetailsimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Delete_VoucherDetailsimpleButton.ImageOptions.Image")));
-            this.Delete_VoucherDetailsimpleButton.Location = new System.Drawing.Point(213, 89);
-            this.Delete_VoucherDetailsimpleButton.Name = "Delete_VoucherDetailsimpleButton";
-            this.Delete_VoucherDetailsimpleButton.Size = new System.Drawing.Size(98, 37);
-            this.Delete_VoucherDetailsimpleButton.TabIndex = 23;
-            this.Delete_VoucherDetailsimpleButton.Text = "Xóa";
-            this.Delete_VoucherDetailsimpleButton.Click += new System.EventHandler(this.Delete_VoucherDetailsimpleButton_Click);
-            // 
-            // checkBoxThemDuLieu
-            // 
-            this.checkBoxThemDuLieu.AutoSize = true;
-            this.checkBoxThemDuLieu.Location = new System.Drawing.Point(545, 3);
-            this.checkBoxThemDuLieu.Name = "checkBoxThemDuLieu";
-            this.checkBoxThemDuLieu.Size = new System.Drawing.Size(118, 17);
-            this.checkBoxThemDuLieu.TabIndex = 22;
-            this.checkBoxThemDuLieu.Text = "Thêm mới chứng từ";
-            this.checkBoxThemDuLieu.UseVisualStyleBackColor = true;
-            this.checkBoxThemDuLieu.CheckedChanged += new System.EventHandler(this.checkBoxThemDuLieu_CheckedChanged);
-            // 
-            // simpleButtonCapNhat
-            // 
-            this.simpleButtonCapNhat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCapNhat.ImageOptions.Image")));
-            this.simpleButtonCapNhat.Location = new System.Drawing.Point(109, 90);
-            this.simpleButtonCapNhat.Name = "simpleButtonCapNhat";
-            this.simpleButtonCapNhat.Size = new System.Drawing.Size(98, 37);
-            this.simpleButtonCapNhat.TabIndex = 21;
-            this.simpleButtonCapNhat.Text = "Lưu";
-            this.simpleButtonCapNhat.Click += new System.EventHandler(this.simpleButtonCapNhat_Click);
-            // 
-            // simpleButtonNewSave
-            // 
-            this.simpleButtonNewSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonNewSave.ImageOptions.Image")));
-            this.simpleButtonNewSave.Location = new System.Drawing.Point(5, 90);
-            this.simpleButtonNewSave.Name = "simpleButtonNewSave";
-            this.simpleButtonNewSave.Size = new System.Drawing.Size(98, 37);
-            this.simpleButtonNewSave.TabIndex = 20;
-            this.simpleButtonNewSave.Text = "Lưu mới";
-            this.simpleButtonNewSave.Click += new System.EventHandler(this.simpleButtonNewSave_Click);
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(5, 4);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(89, 13);
-            this.labelControl6.TabIndex = 19;
-            this.labelControl6.Text = "Nội dung chứng từ";
-            // 
-            // LKVATsimpleButton
-            // 
-            this.LKVATsimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LKVATsimpleButton.ImageOptions.Image")));
-            this.LKVATsimpleButton.Location = new System.Drawing.Point(540, 47);
-            this.LKVATsimpleButton.Name = "LKVATsimpleButton";
-            this.LKVATsimpleButton.Size = new System.Drawing.Size(120, 37);
-            this.LKVATsimpleButton.TabIndex = 11;
-            this.LKVATsimpleButton.Text = "Liên kết VAT";
-            this.LKVATsimpleButton.Click += new System.EventHandler(this.LKVATsimpleButton_Click);
-            // 
-            // LKKhosimpleButton
-            // 
-            this.LKKhosimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LKKhosimpleButton.ImageOptions.Image")));
-            this.LKKhosimpleButton.Location = new System.Drawing.Point(540, 4);
-            this.LKKhosimpleButton.Name = "LKKhosimpleButton";
-            this.LKKhosimpleButton.Size = new System.Drawing.Size(120, 37);
-            this.LKKhosimpleButton.TabIndex = 10;
-            this.LKKhosimpleButton.Text = "Liên kết kho";
-            this.LKKhosimpleButton.Click += new System.EventHandler(this.LKKhosimpleButton_Click);
-            // 
-            // richTextBoxVoucherContent
-            // 
-            this.richTextBoxVoucherContent.Location = new System.Drawing.Point(5, 20);
-            this.richTextBoxVoucherContent.Name = "richTextBoxVoucherContent";
-            this.richTextBoxVoucherContent.Size = new System.Drawing.Size(529, 64);
-            this.richTextBoxVoucherContent.TabIndex = 9;
-            this.richTextBoxVoucherContent.Text = "";
+            this.panelControl7.Controls.Add(this.VoucherDetail_gridControl);
+            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl7.Location = new System.Drawing.Point(2, 46);
+            this.panelControl7.Name = "panelControl7";
+            this.panelControl7.Size = new System.Drawing.Size(686, 395);
+            this.panelControl7.TabIndex = 26;
             // 
             // VoucherDetail_gridControl
             // 
@@ -389,13 +313,18 @@
             this.VoucherDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.VoucherDetail_gridView_ValidateRow);
             this.VoucherDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.VoucherDetail_gridView_RowUpdated);
             // 
-            // labelControl4
+            // panelControl6
             // 
-            this.labelControl4.Location = new System.Drawing.Point(8, 4);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(52, 13);
-            this.labelControl4.TabIndex = 12;
-            this.labelControl4.Text = "Ngày nhập";
+            this.panelControl6.Controls.Add(this.labelControl5);
+            this.panelControl6.Controls.Add(this.dateEditNgayNhapChungTu);
+            this.panelControl6.Controls.Add(this.checkBoxThemDuLieu);
+            this.panelControl6.Controls.Add(this.VoucherTypeDK_searchLookUpEdit);
+            this.panelControl6.Controls.Add(this.labelControl4);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl6.Location = new System.Drawing.Point(2, 20);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(686, 26);
+            this.panelControl6.TabIndex = 25;
             // 
             // labelControl5
             // 
@@ -404,6 +333,30 @@
             this.labelControl5.Size = new System.Drawing.Size(66, 13);
             this.labelControl5.TabIndex = 14;
             this.labelControl5.Text = "Loại chứng từ";
+            // 
+            // dateEditNgayNhapChungTu
+            // 
+            this.dateEditNgayNhapChungTu.EditValue = null;
+            this.dateEditNgayNhapChungTu.Location = new System.Drawing.Point(75, 1);
+            this.dateEditNgayNhapChungTu.Name = "dateEditNgayNhapChungTu";
+            this.dateEditNgayNhapChungTu.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.dateEditNgayNhapChungTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(80, 20);
+            this.dateEditNgayNhapChungTu.TabIndex = 6;
+            // 
+            // checkBoxThemDuLieu
+            // 
+            this.checkBoxThemDuLieu.AutoSize = true;
+            this.checkBoxThemDuLieu.Location = new System.Drawing.Point(545, 3);
+            this.checkBoxThemDuLieu.Name = "checkBoxThemDuLieu";
+            this.checkBoxThemDuLieu.Size = new System.Drawing.Size(118, 17);
+            this.checkBoxThemDuLieu.TabIndex = 22;
+            this.checkBoxThemDuLieu.Text = "Thêm mới chứng từ";
+            this.checkBoxThemDuLieu.UseVisualStyleBackColor = true;
+            this.checkBoxThemDuLieu.CheckedChanged += new System.EventHandler(this.checkBoxThemDuLieu_CheckedChanged);
             // 
             // VoucherTypeDK_searchLookUpEdit
             // 
@@ -443,27 +396,94 @@
             this.VouchersTypeSName.Visible = true;
             this.VouchersTypeSName.VisibleIndex = 1;
             // 
-            // dateEditNgayNhapChungTu
+            // labelControl4
             // 
-            this.dateEditNgayNhapChungTu.EditValue = null;
-            this.dateEditNgayNhapChungTu.Location = new System.Drawing.Point(75, 1);
-            this.dateEditNgayNhapChungTu.Name = "dateEditNgayNhapChungTu";
-            this.dateEditNgayNhapChungTu.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.dateEditNgayNhapChungTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(80, 20);
-            this.dateEditNgayNhapChungTu.TabIndex = 6;
+            this.labelControl4.Location = new System.Drawing.Point(8, 4);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(52, 13);
+            this.labelControl4.TabIndex = 12;
+            this.labelControl4.Text = "Ngày nhập";
             // 
-            // simpleButton7
+            // panelControl5
             // 
-            this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(127, 48);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton7.TabIndex = 25;
-            this.simpleButton7.Text = "Tổng hợ nợ";
+            this.panelControl5.Controls.Add(this.richTextBoxVoucherContent);
+            this.panelControl5.Controls.Add(this.Delete_VoucherDetailsimpleButton);
+            this.panelControl5.Controls.Add(this.LKKhosimpleButton);
+            this.panelControl5.Controls.Add(this.LKVATsimpleButton);
+            this.panelControl5.Controls.Add(this.simpleButtonCapNhat);
+            this.panelControl5.Controls.Add(this.labelControl6);
+            this.panelControl5.Controls.Add(this.simpleButtonNewSave);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl5.Location = new System.Drawing.Point(2, 441);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(686, 220);
+            this.panelControl5.TabIndex = 24;
+            // 
+            // richTextBoxVoucherContent
+            // 
+            this.richTextBoxVoucherContent.Location = new System.Drawing.Point(5, 20);
+            this.richTextBoxVoucherContent.Name = "richTextBoxVoucherContent";
+            this.richTextBoxVoucherContent.Size = new System.Drawing.Size(529, 64);
+            this.richTextBoxVoucherContent.TabIndex = 9;
+            this.richTextBoxVoucherContent.Text = "";
+            // 
+            // Delete_VoucherDetailsimpleButton
+            // 
+            this.Delete_VoucherDetailsimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Delete_VoucherDetailsimpleButton.ImageOptions.Image")));
+            this.Delete_VoucherDetailsimpleButton.Location = new System.Drawing.Point(213, 89);
+            this.Delete_VoucherDetailsimpleButton.Name = "Delete_VoucherDetailsimpleButton";
+            this.Delete_VoucherDetailsimpleButton.Size = new System.Drawing.Size(98, 37);
+            this.Delete_VoucherDetailsimpleButton.TabIndex = 23;
+            this.Delete_VoucherDetailsimpleButton.Text = "Xóa";
+            this.Delete_VoucherDetailsimpleButton.Click += new System.EventHandler(this.Delete_VoucherDetailsimpleButton_Click);
+            // 
+            // LKKhosimpleButton
+            // 
+            this.LKKhosimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LKKhosimpleButton.ImageOptions.Image")));
+            this.LKKhosimpleButton.Location = new System.Drawing.Point(540, 4);
+            this.LKKhosimpleButton.Name = "LKKhosimpleButton";
+            this.LKKhosimpleButton.Size = new System.Drawing.Size(120, 37);
+            this.LKKhosimpleButton.TabIndex = 10;
+            this.LKKhosimpleButton.Text = "Liên kết kho";
+            this.LKKhosimpleButton.Click += new System.EventHandler(this.LKKhosimpleButton_Click);
+            // 
+            // LKVATsimpleButton
+            // 
+            this.LKVATsimpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LKVATsimpleButton.ImageOptions.Image")));
+            this.LKVATsimpleButton.Location = new System.Drawing.Point(540, 47);
+            this.LKVATsimpleButton.Name = "LKVATsimpleButton";
+            this.LKVATsimpleButton.Size = new System.Drawing.Size(120, 37);
+            this.LKVATsimpleButton.TabIndex = 11;
+            this.LKVATsimpleButton.Text = "Liên kết VAT";
+            this.LKVATsimpleButton.Click += new System.EventHandler(this.LKVATsimpleButton_Click);
+            // 
+            // simpleButtonCapNhat
+            // 
+            this.simpleButtonCapNhat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCapNhat.ImageOptions.Image")));
+            this.simpleButtonCapNhat.Location = new System.Drawing.Point(109, 90);
+            this.simpleButtonCapNhat.Name = "simpleButtonCapNhat";
+            this.simpleButtonCapNhat.Size = new System.Drawing.Size(98, 37);
+            this.simpleButtonCapNhat.TabIndex = 21;
+            this.simpleButtonCapNhat.Text = "Lưu";
+            this.simpleButtonCapNhat.Click += new System.EventHandler(this.simpleButtonCapNhat_Click);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(5, 4);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(89, 13);
+            this.labelControl6.TabIndex = 19;
+            this.labelControl6.Text = "Nội dung chứng từ";
+            // 
+            // simpleButtonNewSave
+            // 
+            this.simpleButtonNewSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonNewSave.ImageOptions.Image")));
+            this.simpleButtonNewSave.Location = new System.Drawing.Point(5, 90);
+            this.simpleButtonNewSave.Name = "simpleButtonNewSave";
+            this.simpleButtonNewSave.Size = new System.Drawing.Size(98, 37);
+            this.simpleButtonNewSave.TabIndex = 20;
+            this.simpleButtonNewSave.Text = "Lưu mới";
+            this.simpleButtonNewSave.Click += new System.EventHandler(this.simpleButtonNewSave_Click);
             // 
             // Voucher_groupControl
             // 
@@ -477,6 +497,76 @@
             this.Voucher_groupControl.TabIndex = 12;
             this.Voucher_groupControl.Text = "Danh sách chứng từ";
             // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.Voucher_gridControl);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(2, 54);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(628, 428);
+            this.panelControl4.TabIndex = 15;
+            // 
+            // Voucher_gridControl
+            // 
+            this.Voucher_gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Voucher_gridControl.Location = new System.Drawing.Point(2, 2);
+            this.Voucher_gridControl.MainView = this.Voucher_gridView;
+            this.Voucher_gridControl.Name = "Voucher_gridControl";
+            this.Voucher_gridControl.Size = new System.Drawing.Size(624, 424);
+            this.Voucher_gridControl.TabIndex = 5;
+            this.Voucher_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.Voucher_gridView});
+            // 
+            // Voucher_gridView
+            // 
+            this.Voucher_gridView.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.Control;
+            this.Voucher_gridView.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.Voucher_gridView.GridControl = this.Voucher_gridControl;
+            this.Voucher_gridView.Name = "Voucher_gridView";
+            this.Voucher_gridView.OptionsScrollAnnotations.ShowSelectedRows = DevExpress.Utils.DefaultBoolean.True;
+            this.Voucher_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Voucher_gridView_RowClick);
+            this.Voucher_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Voucher_gridView_FocusedRowChanged);
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.dateEditNgayKT);
+            this.panelControl3.Controls.Add(this.dateEditBDKT);
+            this.panelControl3.Controls.Add(this.simpleButtonLoadVoucher);
+            this.panelControl3.Controls.Add(this.labelControl3);
+            this.panelControl3.Controls.Add(this.VoucherTypeXemChungTU_searchLookUpEdit);
+            this.panelControl3.Controls.Add(this.labelControl2);
+            this.panelControl3.Controls.Add(this.labelControl22);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl3.Location = new System.Drawing.Point(2, 20);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(628, 34);
+            this.panelControl3.TabIndex = 14;
+            // 
+            // dateEditNgayKT
+            // 
+            this.dateEditNgayKT.EditValue = null;
+            this.dateEditNgayKT.Location = new System.Drawing.Point(202, 5);
+            this.dateEditNgayKT.Name = "dateEditNgayKT";
+            this.dateEditNgayKT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayKT.Size = new System.Drawing.Size(80, 20);
+            this.dateEditNgayKT.TabIndex = 2;
+            // 
+            // dateEditBDKT
+            // 
+            this.dateEditBDKT.EditValue = null;
+            this.dateEditBDKT.Location = new System.Drawing.Point(70, 5);
+            this.dateEditBDKT.Name = "dateEditBDKT";
+            this.dateEditBDKT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBDKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBDKT.Properties.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Multiple;
+            this.dateEditBDKT.Size = new System.Drawing.Size(80, 20);
+            this.dateEditBDKT.TabIndex = 1;
+            // 
             // simpleButtonLoadVoucher
             // 
             this.simpleButtonLoadVoucher.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonLoadVoucher.ImageOptions.Image")));
@@ -488,6 +578,14 @@
             this.simpleButtonLoadVoucher.Click += new System.EventHandler(this.LoadVoucher_Button_Click);
             this.simpleButtonLoadVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.simpleButtonLoadVoucher_KeyDown);
             this.simpleButtonLoadVoucher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.simpleButtonLoadVoucher_KeyPress);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(288, 8);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(66, 13);
+            this.labelControl3.TabIndex = 10;
+            this.labelControl3.Text = "Loại chứng từ";
             // 
             // VoucherTypeXemChungTU_searchLookUpEdit
             // 
@@ -528,26 +626,6 @@
             this.VouchersTypeID.Visible = true;
             this.VouchersTypeID.VisibleIndex = 1;
             // 
-            // labelControl22
-            // 
-            this.labelControl22.Location = new System.Drawing.Point(156, 8);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(40, 13);
-            this.labelControl22.TabIndex = 12;
-            this.labelControl22.Text = "Ngày KT";
-            // 
-            // dateEditNgayKT
-            // 
-            this.dateEditNgayKT.EditValue = null;
-            this.dateEditNgayKT.Location = new System.Drawing.Point(202, 5);
-            this.dateEditNgayKT.Name = "dateEditNgayKT";
-            this.dateEditNgayKT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayKT.Size = new System.Drawing.Size(80, 20);
-            this.dateEditNgayKT.TabIndex = 2;
-            // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(23, 8);
@@ -556,91 +634,39 @@
             this.labelControl2.TabIndex = 8;
             this.labelControl2.Text = "Ngày BD";
             // 
-            // labelControl3
+            // labelControl22
             // 
-            this.labelControl3.Location = new System.Drawing.Point(288, 8);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(66, 13);
-            this.labelControl3.TabIndex = 10;
-            this.labelControl3.Text = "Loại chứng từ";
+            this.labelControl22.Location = new System.Drawing.Point(156, 8);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(40, 13);
+            this.labelControl22.TabIndex = 12;
+            this.labelControl22.Text = "Ngày KT";
             // 
-            // dateEditBDKT
+            // panelControl2
             // 
-            this.dateEditBDKT.EditValue = null;
-            this.dateEditBDKT.Location = new System.Drawing.Point(70, 5);
-            this.dateEditBDKT.Name = "dateEditBDKT";
-            this.dateEditBDKT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBDKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBDKT.Properties.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Multiple;
-            this.dateEditBDKT.Size = new System.Drawing.Size(80, 20);
-            this.dateEditBDKT.TabIndex = 1;
+            this.panelControl2.Controls.Add(this.simpleButton12);
+            this.panelControl2.Controls.Add(this.simpleButton5);
+            this.panelControl2.Controls.Add(this.simpleButton6);
+            this.panelControl2.Controls.Add(this.VoucherKetChuyen_simpleButton);
+            this.panelControl2.Controls.Add(this.simpleButton16);
+            this.panelControl2.Controls.Add(this.simpleButton10);
+            this.panelControl2.Controls.Add(this.simpleButton7);
+            this.panelControl2.Controls.Add(this.simpleButton11);
+            this.panelControl2.Controls.Add(this.CDPSTK_Button);
+            this.panelControl2.Controls.Add(this.simpleButton15);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(2, 482);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(628, 179);
+            this.panelControl2.TabIndex = 13;
             // 
-            // Voucher_gridControl
+            // simpleButton12
             // 
-            this.Voucher_gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Voucher_gridControl.Location = new System.Drawing.Point(2, 2);
-            this.Voucher_gridControl.MainView = this.Voucher_gridView;
-            this.Voucher_gridControl.Name = "Voucher_gridControl";
-            this.Voucher_gridControl.Size = new System.Drawing.Size(624, 424);
-            this.Voucher_gridControl.TabIndex = 5;
-            this.Voucher_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.Voucher_gridView});
-            // 
-            // Voucher_gridView
-            // 
-            this.Voucher_gridView.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.Control;
-            this.Voucher_gridView.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.Voucher_gridView.GridControl = this.Voucher_gridControl;
-            this.Voucher_gridView.Name = "Voucher_gridView";
-            this.Voucher_gridView.OptionsScrollAnnotations.ShowSelectedRows = DevExpress.Utils.DefaultBoolean.True;
-            this.Voucher_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Voucher_gridView_RowClick);
-            this.Voucher_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.Voucher_gridView_FocusedRowChanged);
-            // 
-            // simpleButton15
-            // 
-            this.simpleButton15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton15.ImageOptions.Image")));
-            this.simpleButton15.Location = new System.Drawing.Point(472, 48);
-            this.simpleButton15.Name = "simpleButton15";
-            this.simpleButton15.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton15.TabIndex = 31;
-            this.simpleButton15.Text = "Sổ S35";
-            // 
-            // CDPSTK_Button
-            // 
-            this.CDPSTK_Button.Location = new System.Drawing.Point(126, 5);
-            this.CDPSTK_Button.Name = "CDPSTK_Button";
-            this.CDPSTK_Button.Size = new System.Drawing.Size(98, 37);
-            this.CDPSTK_Button.TabIndex = 24;
-            this.CDPSTK_Button.Text = "Cân đối TK";
-            this.CDPSTK_Button.Click += new System.EventHandler(this.CDPSTK_Button_Click);
-            // 
-            // simpleButton11
-            // 
-            this.simpleButton11.Location = new System.Drawing.Point(240, 48);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton11.TabIndex = 27;
-            this.simpleButton11.Text = "Tổng hợp kho";
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(13, 48);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton6.TabIndex = 23;
-            this.simpleButton6.Text = "Sổ cái TK";
-            // 
-            // simpleButton16
-            // 
-            this.simpleButton16.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton16.ImageOptions.Image")));
-            this.simpleButton16.Location = new System.Drawing.Point(471, 5);
-            this.simpleButton16.Name = "simpleButton16";
-            this.simpleButton16.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton16.TabIndex = 30;
-            this.simpleButton16.Text = "Sổ S21";
+            this.simpleButton12.Location = new System.Drawing.Point(239, 5);
+            this.simpleButton12.Name = "simpleButton12";
+            this.simpleButton12.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton12.TabIndex = 26;
+            this.simpleButton12.Text = "TK đối ứng";
             // 
             // simpleButton5
             // 
@@ -650,6 +676,15 @@
             this.simpleButton5.Size = new System.Drawing.Size(98, 37);
             this.simpleButton5.TabIndex = 22;
             this.simpleButton5.Text = "Khóa sổ";
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
+            this.simpleButton6.Location = new System.Drawing.Point(13, 48);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton6.TabIndex = 23;
+            this.simpleButton6.Text = "Sổ cái TK";
             // 
             // VoucherKetChuyen_simpleButton
             // 
@@ -661,6 +696,15 @@
             this.VoucherKetChuyen_simpleButton.Text = "Kết chuyển";
             this.VoucherKetChuyen_simpleButton.Click += new System.EventHandler(this.VoucherKetChuyen_simpleButton_Click);
             // 
+            // simpleButton16
+            // 
+            this.simpleButton16.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton16.ImageOptions.Image")));
+            this.simpleButton16.Location = new System.Drawing.Point(471, 5);
+            this.simpleButton16.Name = "simpleButton16";
+            this.simpleButton16.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton16.TabIndex = 30;
+            this.simpleButton16.Text = "Sổ S21";
+            // 
             // simpleButton10
             // 
             this.simpleButton10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
@@ -669,6 +713,41 @@
             this.simpleButton10.Size = new System.Drawing.Size(98, 37);
             this.simpleButton10.TabIndex = 28;
             this.simpleButton10.Text = "Tờ khai";
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
+            this.simpleButton7.Location = new System.Drawing.Point(127, 48);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton7.TabIndex = 25;
+            this.simpleButton7.Text = "Tổng hợ nợ";
+            // 
+            // simpleButton11
+            // 
+            this.simpleButton11.Location = new System.Drawing.Point(240, 48);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton11.TabIndex = 27;
+            this.simpleButton11.Text = "Tổng hợp kho";
+            // 
+            // CDPSTK_Button
+            // 
+            this.CDPSTK_Button.Location = new System.Drawing.Point(126, 5);
+            this.CDPSTK_Button.Name = "CDPSTK_Button";
+            this.CDPSTK_Button.Size = new System.Drawing.Size(98, 37);
+            this.CDPSTK_Button.TabIndex = 24;
+            this.CDPSTK_Button.Text = "Cân đối TK";
+            this.CDPSTK_Button.Click += new System.EventHandler(this.CDPSTK_Button_Click);
+            // 
+            // simpleButton15
+            // 
+            this.simpleButton15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton15.ImageOptions.Image")));
+            this.simpleButton15.Location = new System.Drawing.Point(472, 48);
+            this.simpleButton15.Name = "simpleButton15";
+            this.simpleButton15.Size = new System.Drawing.Size(98, 37);
+            this.simpleButton15.TabIndex = 31;
+            this.simpleButton15.Text = "Sổ S35";
             // 
             // tabNavigationPageLKVAT
             // 
@@ -1088,6 +1167,7 @@
             this.InvoiceWareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.InvoiceWareHouseDetail_gridView_RowClick);
             this.InvoiceWareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.InvoiceWareHouseDetail_gridView_FocusedRowChanged);
             this.InvoiceWareHouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InvoiceWareHouseDetail_gridView_CellValueChanged);
+            this.InvoiceWareHouseDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.InvoiceWareHouseDetail_gridView_ValidateRow);
             this.InvoiceWareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.InvoiceWareHouseDetail_gridView_RowUpdated);
             // 
             // Invoice_gridControl
@@ -1491,6 +1571,7 @@
             this.WareHouseDetail_gridView.Name = "WareHouseDetail_gridView";
             this.WareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouseDetail_gridView_RowClick);
             this.WareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouseDetail_gridView_FocusedRowChanged);
+            this.WareHouseDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.WareHouseDetail_gridView_ValidateRow);
             this.WareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouseDetail_gridView_RowUpdated);
             // 
             // CompanyNameVoucher_labelControl
@@ -1503,85 +1584,6 @@
             this.CompanyNameVoucher_labelControl.Size = new System.Drawing.Size(261, 23);
             this.CompanyNameVoucher_labelControl.TabIndex = 6;
             this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.simpleButton12);
-            this.panelControl2.Controls.Add(this.simpleButton5);
-            this.panelControl2.Controls.Add(this.simpleButton6);
-            this.panelControl2.Controls.Add(this.VoucherKetChuyen_simpleButton);
-            this.panelControl2.Controls.Add(this.simpleButton16);
-            this.panelControl2.Controls.Add(this.simpleButton10);
-            this.panelControl2.Controls.Add(this.simpleButton7);
-            this.panelControl2.Controls.Add(this.simpleButton11);
-            this.panelControl2.Controls.Add(this.CDPSTK_Button);
-            this.panelControl2.Controls.Add(this.simpleButton15);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(2, 482);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(628, 179);
-            this.panelControl2.TabIndex = 13;
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.dateEditNgayKT);
-            this.panelControl3.Controls.Add(this.dateEditBDKT);
-            this.panelControl3.Controls.Add(this.simpleButtonLoadVoucher);
-            this.panelControl3.Controls.Add(this.labelControl3);
-            this.panelControl3.Controls.Add(this.VoucherTypeXemChungTU_searchLookUpEdit);
-            this.panelControl3.Controls.Add(this.labelControl2);
-            this.panelControl3.Controls.Add(this.labelControl22);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(2, 20);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(628, 34);
-            this.panelControl3.TabIndex = 14;
-            // 
-            // panelControl4
-            // 
-            this.panelControl4.Controls.Add(this.Voucher_gridControl);
-            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(2, 54);
-            this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(628, 428);
-            this.panelControl4.TabIndex = 15;
-            // 
-            // panelControl5
-            // 
-            this.panelControl5.Controls.Add(this.richTextBoxVoucherContent);
-            this.panelControl5.Controls.Add(this.Delete_VoucherDetailsimpleButton);
-            this.panelControl5.Controls.Add(this.LKKhosimpleButton);
-            this.panelControl5.Controls.Add(this.LKVATsimpleButton);
-            this.panelControl5.Controls.Add(this.simpleButtonCapNhat);
-            this.panelControl5.Controls.Add(this.labelControl6);
-            this.panelControl5.Controls.Add(this.simpleButtonNewSave);
-            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl5.Location = new System.Drawing.Point(2, 441);
-            this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(686, 220);
-            this.panelControl5.TabIndex = 24;
-            // 
-            // panelControl6
-            // 
-            this.panelControl6.Controls.Add(this.labelControl5);
-            this.panelControl6.Controls.Add(this.dateEditNgayNhapChungTu);
-            this.panelControl6.Controls.Add(this.checkBoxThemDuLieu);
-            this.panelControl6.Controls.Add(this.VoucherTypeDK_searchLookUpEdit);
-            this.panelControl6.Controls.Add(this.labelControl4);
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl6.Location = new System.Drawing.Point(2, 20);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(686, 26);
-            this.panelControl6.TabIndex = 25;
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Controls.Add(this.VoucherDetail_gridControl);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl7.Location = new System.Drawing.Point(2, 46);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(686, 395);
-            this.panelControl7.TabIndex = 26;
             // 
             // VoucherControl
             // 
@@ -1598,22 +1600,37 @@
             this.tabNavigationPageChungTu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_groupControl)).EndInit();
             this.VoucherDetail_groupControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
+            this.panelControl7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VoucherDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
+            this.panelControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayNhapChungTu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeDK_searchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
+            this.panelControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Voucher_groupControl)).EndInit();
             this.Voucher_groupControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditBDKT.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Voucher_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoucherTypeXemChungTU_searchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.tabNavigationPageLKVAT.ResumeLayout(false);
             this.tabNavigationPageLKVAT.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDepreciationgroupControl)).EndInit();
@@ -1649,21 +1666,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetailDiscount_textEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WareHouseDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
-            this.panelControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
-            this.panelControl5.ResumeLayout(false);
-            this.panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
-            this.panelControl6.ResumeLayout(false);
-            this.panelControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

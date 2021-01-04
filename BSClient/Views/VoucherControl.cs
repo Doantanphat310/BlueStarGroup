@@ -567,35 +567,41 @@ namespace BSClient
                     {
                         //Cho phép nhập Nợ, Có không cần kiểm tra
                     }
-                    else if (TKCheck[0].DuNo == false && DuNo) // Kiểm tra nợ <= có
+                    else if (TKCheck[0].DuNo == false && DuNo) // Kiểm tra nợ <= có | Đang nhập dư nợ
                     {
                         //Kiểm tra Nợ nhập tk có nhỏ hơn DuCo
                         if (CompareAmount)
                         {
-                            number2 = Decimal.Round(SoDuCuoiKy[0].CreditAmount - SoDuCuoiKy[0].DebitAmount, 2);
-                            Boolean CompareAmountSoDu = number1 > number2;
-                            if (CompareAmountSoDu)
+                            if (SoDuCuoiKy.Count > 0)
                             {
-                                //Tiền nhập đang lớn hơn số dư
-                                e.Valid = false;
-                                //Set errors with specific descriptions for the columns
-                                view.SetColumnError(columnAmount, "Dư có hiện tại: " + number2.ToString("C2"));
+                                number2 = Decimal.Round(SoDuCuoiKy[0].CreditAmount - SoDuCuoiKy[0].DebitAmount, 2);
+                                Boolean CompareAmountSoDu = number1 > number2;
+                                if (CompareAmountSoDu)
+                                {
+                                    //Tiền nhập đang lớn hơn số dư
+                                    e.Valid = false;
+                                    //Set errors with specific descriptions for the columns
+                                    view.SetColumnError(columnAmount, "Dư có hiện tại: " + number2.ToString("C2"));
+                                }
                             }
                         }
                     }
-                    else if (TKCheck[0].DuCo == false && DuCo) //Kiểm tra có <=N
+                    else if (TKCheck[0].DuCo == false && DuCo) //Kiểm tra có <=N | Đang nhập dư có
                     {
                         //Kiểm tra Có nhập tk có nhỏ hơn DuNo'
                         if (CompareAmount)
                         {
-                            number2 = Decimal.Round(SoDuCuoiKy[0].DebitAmount - SoDuCuoiKy[0].CreditAmount, 2);
-                            Boolean CompareAmountSoDu = number1 > number2;
-                            if (CompareAmountSoDu)
+                            if (SoDuCuoiKy.Count > 0)
                             {
-                                //Tiền nhập đang lớn hơn số dư
-                                e.Valid = false;
-                                //Set errors with specific descriptions for the columns
-                                view.SetColumnError(columnAmount, "Dư nợ hiện tại: " + number2.ToString("C2"));
+                                number2 = Decimal.Round(SoDuCuoiKy[0].DebitAmount - SoDuCuoiKy[0].CreditAmount, 2);
+                                Boolean CompareAmountSoDu = number1 > number2;
+                                if (CompareAmountSoDu)
+                                {
+                                    //Tiền nhập đang lớn hơn số dư
+                                    e.Valid = false;
+                                    //Set errors with specific descriptions for the columns
+                                    view.SetColumnError(columnAmount, "Dư nợ hiện tại: " + number2.ToString("C2"));
+                                }
                             }
                         }
                     }
@@ -3150,6 +3156,125 @@ namespace BSClient
         {
             BangCanDoiSoPhatSinhTaiKhoanReport form = new BangCanDoiSoPhatSinhTaiKhoanReport();
             form.Show();
+        }
+
+        private void WareHouseDetail_gridView_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            //Get du no, du co cuoi ky cua kho
+            //GetMaterialTonKho
+            GridView view = sender as GridView;
+            GridColumn columnQuantity = view.Columns["Quantity"];
+            MaterialNVController controller = new MaterialNVController();
+            List<MaterialTonKho> tonKhos = controller.GetMaterialTonKho(GlobalVarient.voucherChoice.VoucherDate, WareHouseDetail_gridView.GetFocusedRowCellValue("ItemID").ToString(), CommonInfo.CompanyInfo.CompanyID);
+
+            Decimal Quanlity = Decimal.Parse(WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity").ToString());
+            if (Quanlity <= 0)
+            {
+                
+                e.Valid = false;
+                //Set errors with specific descriptions for the columns
+                view.SetColumnError(columnQuantity, "Số lượng phải hớn hơn 0!");
+            }
+            else
+            {
+                if (WareHouse_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
+                {
+                    //Check xuất kho phải nhỏ hơn hoặc bằng nhập kho và đầu kỳ
+                    if (tonKhos.Count < 0)
+                    {
+                        e.Valid = false;
+                        //Set errors with specific descriptions for the columns
+                        view.SetColumnError(columnQuantity, "Số lượng hàng hóa trong kho đang không có!");
+                    }
+                    else
+                    {
+                        decimal SLN = 0;
+                        decimal SLX = 0;
+                        decimal SLTon = 0;
+                        foreach(MaterialTonKho item in tonKhos)
+                        {
+                            if (item.Type.Contains("N"))
+                            {
+                                SLN += item.Quantity;
+                            }
+                            else
+                            {
+                                SLX += item.Quantity;
+                            }
+                        }
+                        SLTon = SLN - SLX;
+                        if(Quanlity > SLTon)
+                        {
+                            e.Valid = false;
+                            //Set errors with specific descriptions for the columns
+                            view.SetColumnError(columnQuantity, "Số lượng hàng hóa Xuất lớn hơn tồn kho! \n Tồn kho: "+ SLTon.ToString() +".");
+                        }
+                        
+                        /*
+                        List<MaterialTonKho> tonkhoNs = tonKhos.Where(items => items.Type == "N").ToList();
+                        var result = tonKhos.GroupBy(o => o.Type)
+                                    .Select(g => new { ItemID = g.Key, total = g.Sum(i => i.Quantity) });
+                        List<MaterialTonKho> tonkhoXs = tonKhos.Where(items => items.Type == "X").ToList();
+                        */
+                    }
+                }
+            }
+            //Luon cho phep nhap.
+            //Kiem tra khi xuat
+        }
+
+        private void InvoiceWareHouseDetail_gridView_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            //Get du no, du co cuoi ky cua kho
+            //GetMaterialTonKho
+            GridView view = sender as GridView;
+            GridColumn columnQuantity = view.Columns["Quantity"];
+            MaterialNVController controller = new MaterialNVController();
+            List<MaterialTonKho> tonKhos = controller.GetMaterialTonKho(GlobalVarient.voucherChoice.VoucherDate, WareHouseDetail_gridView.GetFocusedRowCellValue("ItemID").ToString(), CommonInfo.CompanyInfo.CompanyID);
+            Decimal Quanlity = Decimal.Parse(InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Quantity").ToString());
+            if (Quanlity <= 0)
+            {
+                e.Valid = false;
+                //Set errors with specific descriptions for the columns
+                view.SetColumnError(columnQuantity, "Số lượng phải hớn hơn 0!");
+            }
+            else
+            {
+                if (InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
+                {
+                    //Check xuất kho phải nhỏ hơn hoặc bằng nhập kho và đầu kỳ
+                    if (tonKhos.Count < 0)
+                    {
+                        e.Valid = false;
+                        //Set errors with specific descriptions for the columns
+                        view.SetColumnError(columnQuantity, "Số lượng hàng hóa trong kho đang không có!");
+                    }
+                    else
+                    {
+                        decimal SLN = 0;
+                        decimal SLX = 0;
+                        decimal SLTon = 0;
+                        foreach (MaterialTonKho item in tonKhos)
+                        {
+                            if (item.Type.Contains("N"))
+                            {
+                                SLN += item.Quantity;
+                            }
+                            else
+                            {
+                                SLX += item.Quantity;
+                            }
+                        }
+                        SLTon = SLN - SLX;
+                        if (Quanlity > SLTon)
+                        {
+                            e.Valid = false;
+                            //Set errors with specific descriptions for the columns
+                            view.SetColumnError(columnQuantity, "Số lượng hàng hóa Xuất lớn hơn tồn kho! \n Tồn kho: " + SLTon.ToString() + ".");
+                        }
+                    }
+                }
+            }
         }
     }
 }

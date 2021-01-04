@@ -130,6 +130,7 @@
     <Compile Include="Models\MaterialDT.cs" />
     <Compile Include="Models\MaterialSoDuCuoiKyTK.cs" />
     <Compile Include="Models\MaterialTK.cs" />
+    <Compile Include="Models\MaterialTonKho.cs" />
     <Compile Include="Models\MaterialWareHouseType.cs" />
     <Compile Include="Models\MaterialCustomerInvoice.cs" />
     <Compile Include="Models\ReportParam.cs" />

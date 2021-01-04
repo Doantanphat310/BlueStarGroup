@@ -113,5 +113,15 @@ namespace BSServer.DAOs
             //new SqlParameter("@VoucherDetailID", VoucherDetailID ?? (object)DBNull.Value)
             //).ToList();
         }
+
+        public List<MaterialTonKho> GetMaterialTonKho(DateTime VoucherDate,  string ItemID, string CompanyID)
+        {
+            return this.Context.Database.SqlQuery<MaterialTonKho>(
+            "SP_TonKhoItem @VoucherDate, @ItemID, @CompanyID",
+            new SqlParameter("@VoucherDate", VoucherDate),
+            new SqlParameter("@ItemID", ItemID),
+            new SqlParameter("@CompanyID", CompanyID)
+            ).ToList();
+        }
     }
 }

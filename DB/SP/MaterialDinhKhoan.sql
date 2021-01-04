@@ -214,6 +214,41 @@ where CompanyID = @CompanyID
 order by A.AccountID,B.AccountDetailID
 end
 
+SP_TonKhoItem '2021-01-04','SP000001','CTY0000003'
+
+alter proc SP_TonKhoItem
+@VoucherDate datetime, @ItemID varchar(50), @CompanyID varchar(50)
+as
+begin
+
+select ItemID, Type, Sum(Quantity) as Quantity from
+(
+--Xuất nhập tồn của năm nhập chứng từ
+select ItemID, Type, Sum(Quantity) as'Quantity' from WareHouseDetail as A 
+inner join WareHouse as B
+on A.WarehouseID = B.WarehouseID
+inner join WarehouseList as C
+on B.WarehouseListID = C.WarehouseListID
+inner join Vouchers as D
+on B.VouchersID = D.VouchersID
+where B.CompanyID = @CompanyID and A.ItemID = @ItemID and year(D.VoucherDate) = year(@VoucherDate)
+group by ItemID, Type
+
+union all
+-- Đầu kỳ của năm nhập chứng từ
+select ItemID,
+case
+when DebitAmount > 0 then 'N'
+when CreditAmount > 0 then 'X'
+end 'Type', BalanceQuatity as  'Quantity'
+ from Balance
+where CompanyID = @CompanyID and ItemID = @ItemID and year(BalanceDate) = year(@VoucherDate) 
+) as D
+Group by ItemID, Type
+end
+
 SPSelectAccountAccountDetail '000'
+
+select * from Balance
 
 
