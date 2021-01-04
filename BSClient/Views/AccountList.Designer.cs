@@ -41,9 +41,17 @@
             this.AccountGroup_Save_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Accounts_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.Account_TreeList = new DevExpress.XtraTreeList.TreeList();
-            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.AddAccount_Item = new DevExpress.XtraBars.BarButtonItem();
+            this.Add_ChildAccount_Item = new DevExpress.XtraBars.BarButtonItem();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddAccount_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddDetailAccount_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.AccountSpecialGroup_Panel = new System.Windows.Forms.Panel();
             this.VatTu_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -55,17 +63,9 @@
             this.ThongKe_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.DuCo_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.DuNo_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.barManager = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.AddAccount_Item = new DevExpress.XtraBars.BarButtonItem();
-            this.Add_ChildAccount_Item = new DevExpress.XtraBars.BarButtonItem();
             this.HachToan_CheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.Accounts_Button_Panel = new DevExpress.XtraEditors.PanelControl();
             this.AddAccount_DownButton = new DevExpress.XtraEditors.DropDownButton();
-            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.Accounts_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Accounts_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Accounts_Save_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -80,10 +80,7 @@
             this.AccountDetailName_TextEdit = new DevExpress.XtraEditors.TextEdit();
             this.AccountID_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.CompanyID_SearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.CompanyID_SearchLookUpEditView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.Company_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.AccountDetailName_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.AccountID_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.AccountDetailID_Label = new DevExpress.XtraLayout.LayoutControlItem();
@@ -105,7 +102,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_GroupControl)).BeginInit();
             this.Accounts_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Account_TreeList)).BeginInit();
-            this.ContextMenuStrip.SuspendLayout();
+            this.Account_TreeList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.AccountSpecialGroup_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VatTu_CheckEdit.Properties)).BeginInit();
@@ -117,11 +117,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ThongKe_CheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DuCo_CheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DuNo_CheckEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HachToan_CheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_Button_Panel)).BeginInit();
             this.Accounts_Button_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_GroupControl)).BeginInit();
             this.AccountDetailInfo_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridControl)).BeginInit();
@@ -135,10 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_TextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountID_SearchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountID_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_Label)).BeginInit();
@@ -157,7 +152,7 @@
             this.AccountGroup_GroupControl.Location = new System.Drawing.Point(3, 3);
             this.AccountGroup_GroupControl.Name = "AccountGroup_GroupControl";
             this.Main_TablePanel.SetRow(this.AccountGroup_GroupControl, 0);
-            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(339, 197);
+            this.AccountGroup_GroupControl.Size = new System.Drawing.Size(339, 275);
             this.AccountGroup_GroupControl.TabIndex = 0;
             this.AccountGroup_GroupControl.Text = "Danh Mục Nhóm Tài Khoản";
             // 
@@ -169,7 +164,7 @@
             this.AccountGroup_GridControl.Name = "AccountGroup_GridControl";
             this.AccountGroup_GridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEdit1});
-            this.AccountGroup_GridControl.Size = new System.Drawing.Size(335, 130);
+            this.AccountGroup_GridControl.Size = new System.Drawing.Size(335, 208);
             this.AccountGroup_GridControl.TabIndex = 1;
             this.AccountGroup_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountGroup_GridView});
@@ -206,7 +201,7 @@
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Cancel_Button);
             this.AccountGroup_Button_Panel.Controls.Add(this.AccountGroup_Save_Button);
             this.AccountGroup_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 150);
+            this.AccountGroup_Button_Panel.Location = new System.Drawing.Point(2, 228);
             this.AccountGroup_Button_Panel.Name = "AccountGroup_Button_Panel";
             this.AccountGroup_Button_Panel.Size = new System.Drawing.Size(335, 45);
             this.AccountGroup_Button_Panel.TabIndex = 0;
@@ -254,33 +249,96 @@
             this.Accounts_GroupControl.Location = new System.Drawing.Point(348, 3);
             this.Accounts_GroupControl.Name = "Accounts_GroupControl";
             this.Main_TablePanel.SetRow(this.Accounts_GroupControl, 0);
-            this.Accounts_GroupControl.Size = new System.Drawing.Size(530, 197);
+            this.Accounts_GroupControl.Size = new System.Drawing.Size(536, 275);
             this.Accounts_GroupControl.TabIndex = 1;
             this.Accounts_GroupControl.Text = "Danh Mục Tài Khoản";
             // 
             // Account_TreeList
             // 
             this.Account_TreeList.ContextMenuStrip = this.ContextMenuStrip;
+            this.Account_TreeList.Controls.Add(this.barDockControlLeft);
+            this.Account_TreeList.Controls.Add(this.barDockControlRight);
+            this.Account_TreeList.Controls.Add(this.barDockControlBottom);
+            this.Account_TreeList.Controls.Add(this.barDockControlTop);
             this.Account_TreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Account_TreeList.Location = new System.Drawing.Point(2, 20);
             this.Account_TreeList.Name = "Account_TreeList";
             this.Account_TreeList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.Account_TreeList.Size = new System.Drawing.Size(412, 130);
+            this.Account_TreeList.Size = new System.Drawing.Size(418, 208);
             this.Account_TreeList.TabIndex = 2;
+            this.Account_TreeList.RowClick += new DevExpress.XtraTreeList.RowClickEventHandler(this.Account_TreeList_RowClick);
             this.Account_TreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.Account_TreeList_FocusedNodeChanged);
             this.Account_TreeList.InvalidNodeException += new DevExpress.XtraTreeList.InvalidNodeExceptionEventHandler(this.Account_TreeList_InvalidNodeException);
             this.Account_TreeList.ValidateNode += new DevExpress.XtraTreeList.ValidateNodeEventHandler(this.Account_TreeList_ValidateNode);
             this.Account_TreeList.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.Account_TreeList_ShowingEditor);
             // 
-            // ContextMenuStrip
+            // barDockControlLeft
             // 
-            this.ContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 208);
+            // 
+            // barManager
+            // 
+            this.barManager.DockControls.Add(this.barDockControlTop);
+            this.barManager.DockControls.Add(this.barDockControlBottom);
+            this.barManager.DockControls.Add(this.barDockControlLeft);
+            this.barManager.DockControls.Add(this.barDockControlRight);
+            this.barManager.Form = this;
+            this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.AddAccount_Item,
+            this.Add_ChildAccount_Item});
+            this.barManager.MaxItemId = 3;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager;
+            this.barDockControlTop.Size = new System.Drawing.Size(418, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 208);
+            this.barDockControlBottom.Manager = this.barManager;
+            this.barDockControlBottom.Size = new System.Drawing.Size(418, 0);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(418, 0);
+            this.barDockControlRight.Manager = this.barManager;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 208);
+            // 
+            // AddAccount_Item
+            // 
+            this.AddAccount_Item.Caption = "Tài khoản";
+            this.AddAccount_Item.Id = 0;
+            this.AddAccount_Item.Name = "AddAccount_Item";
+            this.AddAccount_Item.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddAccount_Item_ItemClick);
+            // 
+            // Add_ChildAccount_Item
+            // 
+            this.Add_ChildAccount_Item.Caption = "Tài khoản chi tiết";
+            this.Add_ChildAccount_Item.Id = 1;
+            this.Add_ChildAccount_Item.Name = "Add_ChildAccount_Item";
+            this.Add_ChildAccount_Item.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Add_ChildAccount_Item_ItemClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddAccount_MenuItem,
             this.AddDetailAccount_MenuItem});
-            this.ContextMenuStrip.Name = "contextMenuStrip1";
-            this.ContextMenuStrip.Size = new System.Drawing.Size(196, 48);
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(196, 48);
             // 
             // AddAccount_MenuItem
             // 
@@ -295,6 +353,14 @@
             this.AddDetailAccount_MenuItem.Size = new System.Drawing.Size(195, 22);
             this.AddDetailAccount_MenuItem.Text = "Thêm tài khoản chi tiết";
             this.AddDetailAccount_MenuItem.Click += new System.EventHandler(this.AddDetailAccount_MenuItem_Click);
+            // 
+            // popupMenu
+            // 
+            this.popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddAccount_Item),
+            new DevExpress.XtraBars.LinkPersistInfo(this.Add_ChildAccount_Item)});
+            this.popupMenu.Manager = this.barManager;
+            this.popupMenu.Name = "popupMenu";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -315,9 +381,9 @@
             this.AccountSpecialGroup_Panel.Controls.Add(this.DuNo_CheckEdit);
             this.AccountSpecialGroup_Panel.Controls.Add(this.HachToan_CheckEdit);
             this.AccountSpecialGroup_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AccountSpecialGroup_Panel.Location = new System.Drawing.Point(414, 20);
+            this.AccountSpecialGroup_Panel.Location = new System.Drawing.Point(420, 20);
             this.AccountSpecialGroup_Panel.Name = "AccountSpecialGroup_Panel";
-            this.AccountSpecialGroup_Panel.Size = new System.Drawing.Size(114, 130);
+            this.AccountSpecialGroup_Panel.Size = new System.Drawing.Size(114, 208);
             this.AccountSpecialGroup_Panel.TabIndex = 3;
             // 
             // VatTu_CheckEdit
@@ -410,64 +476,6 @@
             this.DuNo_CheckEdit.Tag = "DuNo";
             this.DuNo_CheckEdit.CheckedChanged += new System.EventHandler(this.Account_CheckEdit_CheckedChanged);
             // 
-            // barManager
-            // 
-            this.barManager.DockControls.Add(this.barDockControlTop);
-            this.barManager.DockControls.Add(this.barDockControlBottom);
-            this.barManager.DockControls.Add(this.barDockControlLeft);
-            this.barManager.DockControls.Add(this.barDockControlRight);
-            this.barManager.Form = this;
-            this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.AddAccount_Item,
-            this.Add_ChildAccount_Item});
-            this.barManager.MaxItemId = 3;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(881, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 393);
-            this.barDockControlBottom.Manager = this.barManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(881, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 393);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(881, 0);
-            this.barDockControlRight.Manager = this.barManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 393);
-            // 
-            // AddAccount_Item
-            // 
-            this.AddAccount_Item.Caption = "TK cùng cấp";
-            this.AddAccount_Item.Id = 0;
-            this.AddAccount_Item.Name = "AddAccount_Item";
-            this.AddAccount_Item.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddAccount_Item_ItemClick);
-            // 
-            // Add_ChildAccount_Item
-            // 
-            this.Add_ChildAccount_Item.Caption = "TK chi tiết";
-            this.Add_ChildAccount_Item.Id = 1;
-            this.Add_ChildAccount_Item.Name = "Add_ChildAccount_Item";
-            this.Add_ChildAccount_Item.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Add_ChildAccount_Item_ItemClick);
-            // 
             // HachToan_CheckEdit
             // 
             this.HachToan_CheckEdit.Location = new System.Drawing.Point(4, 3);
@@ -488,9 +496,9 @@
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Cancel_Button);
             this.Accounts_Button_Panel.Controls.Add(this.Accounts_Save_Button);
             this.Accounts_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 150);
+            this.Accounts_Button_Panel.Location = new System.Drawing.Point(2, 228);
             this.Accounts_Button_Panel.Name = "Accounts_Button_Panel";
-            this.Accounts_Button_Panel.Size = new System.Drawing.Size(526, 45);
+            this.Accounts_Button_Panel.Size = new System.Drawing.Size(532, 45);
             this.Accounts_Button_Panel.TabIndex = 0;
             // 
             // AddAccount_DownButton
@@ -499,25 +507,17 @@
             this.AddAccount_DownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
             this.AddAccount_DownButton.DropDownControl = this.popupMenu;
             this.AddAccount_DownButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddAccount_DownButton.ImageOptions.Image")));
-            this.AddAccount_DownButton.Location = new System.Drawing.Point(177, 8);
+            this.AddAccount_DownButton.Location = new System.Drawing.Point(183, 8);
             this.AddAccount_DownButton.Name = "AddAccount_DownButton";
             this.AddAccount_DownButton.Size = new System.Drawing.Size(88, 32);
             this.AddAccount_DownButton.TabIndex = 4;
             this.AddAccount_DownButton.Text = "Thêm";
             // 
-            // popupMenu
-            // 
-            this.popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddAccount_Item),
-            new DevExpress.XtraBars.LinkPersistInfo(this.Add_ChildAccount_Item)});
-            this.popupMenu.Manager = this.barManager;
-            this.popupMenu.Name = "popupMenu";
-            // 
             // Accounts_Delete_Button
             // 
             this.Accounts_Delete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Delete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Delete_Button.ImageOptions.Image")));
-            this.Accounts_Delete_Button.Location = new System.Drawing.Point(270, 7);
+            this.Accounts_Delete_Button.Location = new System.Drawing.Point(276, 7);
             this.Accounts_Delete_Button.Name = "Accounts_Delete_Button";
             this.Accounts_Delete_Button.Size = new System.Drawing.Size(80, 33);
             this.Accounts_Delete_Button.TabIndex = 1;
@@ -528,7 +528,7 @@
             // 
             this.Accounts_Cancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Cancel_Button.ImageOptions.Image")));
-            this.Accounts_Cancel_Button.Location = new System.Drawing.Point(442, 7);
+            this.Accounts_Cancel_Button.Location = new System.Drawing.Point(448, 7);
             this.Accounts_Cancel_Button.Name = "Accounts_Cancel_Button";
             this.Accounts_Cancel_Button.Size = new System.Drawing.Size(80, 33);
             this.Accounts_Cancel_Button.TabIndex = 3;
@@ -539,7 +539,7 @@
             // 
             this.Accounts_Save_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Accounts_Save_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Accounts_Save_Button.ImageOptions.Image")));
-            this.Accounts_Save_Button.Location = new System.Drawing.Point(357, 7);
+            this.Accounts_Save_Button.Location = new System.Drawing.Point(363, 7);
             this.Accounts_Save_Button.Name = "Accounts_Save_Button";
             this.Accounts_Save_Button.Size = new System.Drawing.Size(80, 33);
             this.Accounts_Save_Button.TabIndex = 2;
@@ -565,10 +565,10 @@
             this.AccountDetailInfo_GroupControl.Controls.Add(this.AccountDetail_GridControl);
             this.AccountDetailInfo_GroupControl.Controls.Add(this.AccountDetailInfo_Panel);
             this.AccountDetailInfo_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AccountDetailInfo_GroupControl.Location = new System.Drawing.Point(3, 206);
+            this.AccountDetailInfo_GroupControl.Location = new System.Drawing.Point(3, 284);
             this.AccountDetailInfo_GroupControl.Name = "AccountDetailInfo_GroupControl";
             this.Main_TablePanel.SetRow(this.AccountDetailInfo_GroupControl, 1);
-            this.AccountDetailInfo_GroupControl.Size = new System.Drawing.Size(875, 184);
+            this.AccountDetailInfo_GroupControl.Size = new System.Drawing.Size(881, 184);
             this.AccountDetailInfo_GroupControl.TabIndex = 2;
             this.AccountDetailInfo_GroupControl.Text = "Thông Tin Thống Kê";
             // 
@@ -578,7 +578,7 @@
             this.AccountDetail_GridControl.Location = new System.Drawing.Point(356, 20);
             this.AccountDetail_GridControl.MainView = this.AccountDetail_GridView;
             this.AccountDetail_GridControl.Name = "AccountDetail_GridControl";
-            this.AccountDetail_GridControl.Size = new System.Drawing.Size(517, 162);
+            this.AccountDetail_GridControl.Size = new System.Drawing.Size(523, 162);
             this.AccountDetail_GridControl.TabIndex = 1;
             this.AccountDetail_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountDetail_GridView});
@@ -608,7 +608,6 @@
             this.ItemPrice_LayoutControl.Controls.Add(this.AccountDetailID_TextEdit);
             this.ItemPrice_LayoutControl.Controls.Add(this.AccountDetailName_TextEdit);
             this.ItemPrice_LayoutControl.Controls.Add(this.AccountID_SearchLookUpEdit);
-            this.ItemPrice_LayoutControl.Controls.Add(this.CompanyID_SearchLookUpEdit);
             this.ItemPrice_LayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemPrice_LayoutControl.Location = new System.Drawing.Point(2, 2);
             this.ItemPrice_LayoutControl.Name = "ItemPrice_LayoutControl";
@@ -620,18 +619,18 @@
             // AllCompanies_CheckEdit
             // 
             this.AllCompanies_CheckEdit.Enabled = false;
-            this.AllCompanies_CheckEdit.Location = new System.Drawing.Point(286, 12);
+            this.AllCompanies_CheckEdit.Location = new System.Drawing.Point(61, 12);
             this.AllCompanies_CheckEdit.MenuManager = this.barManager;
             this.AllCompanies_CheckEdit.Name = "AllCompanies_CheckEdit";
-            this.AllCompanies_CheckEdit.Properties.Caption = "Tất cả";
-            this.AllCompanies_CheckEdit.Size = new System.Drawing.Size(52, 19);
+            this.AllCompanies_CheckEdit.Properties.Caption = "Tất cả công ty";
+            this.AllCompanies_CheckEdit.Size = new System.Drawing.Size(277, 19);
             this.AllCompanies_CheckEdit.StyleController = this.ItemPrice_LayoutControl;
             this.AllCompanies_CheckEdit.TabIndex = 10;
             this.AllCompanies_CheckEdit.CheckedChanged += new System.EventHandler(this.AllCompanies_CheckEdit_CheckedChanged);
             // 
             // AccountDetailID_TextEdit
             // 
-            this.AccountDetailID_TextEdit.Location = new System.Drawing.Point(61, 60);
+            this.AccountDetailID_TextEdit.Location = new System.Drawing.Point(61, 59);
             this.AccountDetailID_TextEdit.Name = "AccountDetailID_TextEdit";
             this.AccountDetailID_TextEdit.Size = new System.Drawing.Size(277, 20);
             this.AccountDetailID_TextEdit.StyleController = this.ItemPrice_LayoutControl;
@@ -639,7 +638,7 @@
             // 
             // AccountDetailName_TextEdit
             // 
-            this.AccountDetailName_TextEdit.Location = new System.Drawing.Point(61, 84);
+            this.AccountDetailName_TextEdit.Location = new System.Drawing.Point(61, 83);
             this.AccountDetailName_TextEdit.Name = "AccountDetailName_TextEdit";
             this.AccountDetailName_TextEdit.Size = new System.Drawing.Size(277, 20);
             this.AccountDetailName_TextEdit.StyleController = this.ItemPrice_LayoutControl;
@@ -647,7 +646,7 @@
             // 
             // AccountID_SearchLookUpEdit
             // 
-            this.AccountID_SearchLookUpEdit.Location = new System.Drawing.Point(61, 36);
+            this.AccountID_SearchLookUpEdit.Location = new System.Drawing.Point(61, 35);
             this.AccountID_SearchLookUpEdit.Name = "AccountID_SearchLookUpEdit";
             this.AccountID_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -665,35 +664,11 @@
             this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
-            // CompanyID_SearchLookUpEdit
-            // 
-            this.CompanyID_SearchLookUpEdit.EditValue = "";
-            this.CompanyID_SearchLookUpEdit.Location = new System.Drawing.Point(61, 12);
-            this.CompanyID_SearchLookUpEdit.Name = "CompanyID_SearchLookUpEdit";
-            this.CompanyID_SearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CompanyID_SearchLookUpEdit.Properties.NullText = "";
-            this.CompanyID_SearchLookUpEdit.Properties.PopupView = this.CompanyID_SearchLookUpEditView;
-            this.CompanyID_SearchLookUpEdit.Size = new System.Drawing.Size(221, 20);
-            this.CompanyID_SearchLookUpEdit.StyleController = this.ItemPrice_LayoutControl;
-            this.CompanyID_SearchLookUpEdit.TabIndex = 1;
-            this.CompanyID_SearchLookUpEdit.Popup += new System.EventHandler(this.CompanyID_SearchLookUpEdit_Popup);
-            this.CompanyID_SearchLookUpEdit.EditValueChanged += new System.EventHandler(this.CompanyID_SearchLookUpEdit_EditValueChanged);
-            // 
-            // CompanyID_SearchLookUpEditView
-            // 
-            this.CompanyID_SearchLookUpEditView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.CompanyID_SearchLookUpEditView.Name = "CompanyID_SearchLookUpEditView";
-            this.CompanyID_SearchLookUpEditView.NewItemRowText = "Chọn Công ty";
-            this.CompanyID_SearchLookUpEditView.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.CompanyID_SearchLookUpEditView.OptionsView.ShowGroupPanel = false;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.Company_Label,
             this.AccountDetailName_Label,
             this.AccountID_Label,
             this.AccountDetailID_Label,
@@ -702,28 +677,19 @@
             this.Root.Size = new System.Drawing.Size(350, 117);
             this.Root.TextVisible = false;
             // 
-            // Company_Label
-            // 
-            this.Company_Label.Control = this.CompanyID_SearchLookUpEdit;
-            this.Company_Label.Location = new System.Drawing.Point(0, 0);
-            this.Company_Label.Name = "Company_Label";
-            this.Company_Label.Size = new System.Drawing.Size(274, 24);
-            this.Company_Label.Text = "Công ty";
-            this.Company_Label.TextSize = new System.Drawing.Size(46, 13);
-            // 
             // AccountDetailName_Label
             // 
             this.AccountDetailName_Label.Control = this.AccountDetailName_TextEdit;
-            this.AccountDetailName_Label.Location = new System.Drawing.Point(0, 72);
+            this.AccountDetailName_Label.Location = new System.Drawing.Point(0, 71);
             this.AccountDetailName_Label.Name = "AccountDetailName_Label";
-            this.AccountDetailName_Label.Size = new System.Drawing.Size(330, 25);
+            this.AccountDetailName_Label.Size = new System.Drawing.Size(330, 26);
             this.AccountDetailName_Label.Text = "Mô tả";
             this.AccountDetailName_Label.TextSize = new System.Drawing.Size(46, 13);
             // 
             // AccountID_Label
             // 
             this.AccountID_Label.Control = this.AccountID_SearchLookUpEdit;
-            this.AccountID_Label.Location = new System.Drawing.Point(0, 24);
+            this.AccountID_Label.Location = new System.Drawing.Point(0, 23);
             this.AccountID_Label.Name = "AccountID_Label";
             this.AccountID_Label.Size = new System.Drawing.Size(330, 24);
             this.AccountID_Label.Text = "Tài khoản";
@@ -732,7 +698,7 @@
             // AccountDetailID_Label
             // 
             this.AccountDetailID_Label.Control = this.AccountDetailID_TextEdit;
-            this.AccountDetailID_Label.Location = new System.Drawing.Point(0, 48);
+            this.AccountDetailID_Label.Location = new System.Drawing.Point(0, 47);
             this.AccountDetailID_Label.Name = "AccountDetailID_Label";
             this.AccountDetailID_Label.Size = new System.Drawing.Size(330, 24);
             this.AccountDetailID_Label.Text = "Thống kê";
@@ -741,12 +707,12 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.AllCompanies_CheckEdit;
-            this.layoutControlItem1.Location = new System.Drawing.Point(274, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(56, 24);
-            this.layoutControlItem1.Text = "Tất cả Công ty";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
+            this.layoutControlItem1.Size = new System.Drawing.Size(330, 23);
+            this.layoutControlItem1.Text = " ";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(46, 13);
+            this.layoutControlItem1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // AccountDetailInfo_Button_Panel
             // 
@@ -818,7 +784,7 @@
             this.Main_TablePanel.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 100F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 190F)});
-            this.Main_TablePanel.Size = new System.Drawing.Size(881, 393);
+            this.Main_TablePanel.Size = new System.Drawing.Size(887, 471);
             this.Main_TablePanel.TabIndex = 0;
             // 
             // AccountList
@@ -826,12 +792,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Main_TablePanel);
-            this.Controls.Add(this.barDockControlLeft);
-            this.Controls.Add(this.barDockControlRight);
-            this.Controls.Add(this.barDockControlBottom);
-            this.Controls.Add(this.barDockControlTop);
             this.Name = "AccountList";
-            this.Size = new System.Drawing.Size(881, 393);
+            this.Size = new System.Drawing.Size(887, 471);
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GroupControl)).EndInit();
             this.AccountGroup_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AccountGroup_GridControl)).EndInit();
@@ -843,7 +805,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_GroupControl)).EndInit();
             this.Accounts_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Account_TreeList)).EndInit();
-            this.ContextMenuStrip.ResumeLayout(false);
+            this.Account_TreeList.ResumeLayout(false);
+            this.Account_TreeList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.AccountSpecialGroup_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VatTu_CheckEdit.Properties)).EndInit();
@@ -855,11 +821,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ThongKe_CheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DuCo_CheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DuNo_CheckEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HachToan_CheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Accounts_Button_Panel)).EndInit();
             this.Accounts_Button_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailInfo_GroupControl)).EndInit();
             this.AccountDetailInfo_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetail_GridControl)).EndInit();
@@ -873,10 +837,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_TextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountID_SearchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID_SearchLookUpEditView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailName_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountID_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountDetailID_Label)).EndInit();
@@ -885,7 +846,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).EndInit();
             this.Main_TablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -915,9 +875,6 @@
         private DevExpress.XtraEditors.SimpleButton AccountGroup_Save_Button;
         private DevExpress.XtraLayout.LayoutControl ItemPrice_LayoutControl;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraEditors.SearchLookUpEdit CompanyID_SearchLookUpEdit;
-        private DevExpress.XtraGrid.Views.Grid.GridView CompanyID_SearchLookUpEditView;
-        private DevExpress.XtraLayout.LayoutControlItem Company_Label;
         private DevExpress.XtraEditors.SearchLookUpEdit AccountID_SearchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraLayout.LayoutControlItem AccountID_Label;
@@ -954,5 +911,6 @@
         private DevExpress.XtraLayout.LayoutControlItem AccountDetailID_Label;
         private DevExpress.XtraEditors.CheckEdit AllCompanies_CheckEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
     }
 }

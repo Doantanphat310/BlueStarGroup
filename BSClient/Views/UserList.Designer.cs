@@ -83,7 +83,7 @@
             this.UserRole_GridControl.Location = new System.Drawing.Point(389, 39);
             this.UserRole_GridControl.MainView = this.UserRole_GridView;
             this.UserRole_GridControl.Name = "UserRole_GridControl";
-            this.UserRole_GridControl.Size = new System.Drawing.Size(430, 151);
+            this.UserRole_GridControl.Size = new System.Drawing.Size(502, 151);
             this.UserRole_GridControl.TabIndex = 1;
             this.UserRole_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserRole_GridView});
@@ -108,7 +108,7 @@
             this.Main_Table.RowCount = 2;
             this.Main_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.Main_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 198F));
-            this.Main_Table.Size = new System.Drawing.Size(827, 452);
+            this.Main_Table.Size = new System.Drawing.Size(899, 523);
             this.Main_Table.TabIndex = 2;
             // 
             // User_Group
@@ -119,7 +119,7 @@
             this.User_Group.Dock = System.Windows.Forms.DockStyle.Fill;
             this.User_Group.Location = new System.Drawing.Point(3, 3);
             this.User_Group.Name = "User_Group";
-            this.User_Group.Size = new System.Drawing.Size(821, 248);
+            this.User_Group.Size = new System.Drawing.Size(893, 319);
             this.User_Group.TabIndex = 6;
             this.User_Group.Text = "Danh mục người dùng";
             // 
@@ -129,7 +129,7 @@
             this.Users_GridControl.Location = new System.Drawing.Point(2, 39);
             this.Users_GridControl.MainView = this.Users_GridView;
             this.Users_GridControl.Name = "Users_GridControl";
-            this.Users_GridControl.Size = new System.Drawing.Size(817, 161);
+            this.Users_GridControl.Size = new System.Drawing.Size(889, 232);
             this.Users_GridControl.TabIndex = 2;
             this.Users_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Users_GridView});
@@ -155,16 +155,16 @@
             this.UserButton_Panel.Controls.Add(this.UserCancel_Button);
             this.UserButton_Panel.Controls.Add(this.UserSave_Button);
             this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 200);
+            this.UserButton_Panel.Location = new System.Drawing.Point(2, 271);
             this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(817, 46);
+            this.UserButton_Panel.Size = new System.Drawing.Size(889, 46);
             this.UserButton_Panel.TabIndex = 5;
             // 
             // UserDelete_Button
             // 
             this.UserDelete_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UserDelete_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UserDelete_Button.ImageOptions.Image")));
-            this.UserDelete_Button.Location = new System.Drawing.Point(532, 6);
+            this.UserDelete_Button.Location = new System.Drawing.Point(604, 6);
             this.UserDelete_Button.Name = "UserDelete_Button";
             this.UserDelete_Button.Size = new System.Drawing.Size(90, 35);
             this.UserDelete_Button.TabIndex = 6;
@@ -175,7 +175,7 @@
             // 
             this.UserCancel_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UserCancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UserCancel_Button.ImageOptions.Image")));
-            this.UserCancel_Button.Location = new System.Drawing.Point(724, 6);
+            this.UserCancel_Button.Location = new System.Drawing.Point(796, 6);
             this.UserCancel_Button.Name = "UserCancel_Button";
             this.UserCancel_Button.Size = new System.Drawing.Size(90, 35);
             this.UserCancel_Button.TabIndex = 7;
@@ -186,7 +186,7 @@
             // 
             this.UserSave_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UserSave_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UserSave_Button.ImageOptions.Image")));
-            this.UserSave_Button.Location = new System.Drawing.Point(628, 6);
+            this.UserSave_Button.Location = new System.Drawing.Point(700, 6);
             this.UserSave_Button.Name = "UserSave_Button";
             this.UserSave_Button.Size = new System.Drawing.Size(90, 35);
             this.UserSave_Button.TabIndex = 7;
@@ -199,9 +199,9 @@
             this.UserRole_GroupControl.Controls.Add(this.UserRole_GridControl);
             this.UserRole_GroupControl.Controls.Add(this.UserRole_Panel);
             this.UserRole_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserRole_GroupControl.Location = new System.Drawing.Point(3, 257);
+            this.UserRole_GroupControl.Location = new System.Drawing.Point(3, 328);
             this.UserRole_GroupControl.Name = "UserRole_GroupControl";
-            this.UserRole_GroupControl.Size = new System.Drawing.Size(821, 192);
+            this.UserRole_GroupControl.Size = new System.Drawing.Size(893, 192);
             this.UserRole_GroupControl.TabIndex = 7;
             this.UserRole_GroupControl.Text = "Phân quyền Người dùng theo Công ty";
             // 
@@ -239,10 +239,10 @@
             this.UserRole_ComboBox.StyleController = this.UserRole_LayoutControl;
             this.UserRole_ComboBox.TabIndex = 6;
             // 
-            // Role_UserID_TextBox
+            // UserID_TextBox
             // 
             this.UserID_TextBox.Location = new System.Drawing.Point(87, 36);
-            this.UserID_TextBox.Name = "Role_UserID_TextBox";
+            this.UserID_TextBox.Name = "UserID_TextBox";
             this.UserID_TextBox.Properties.ReadOnly = true;
             this.UserID_TextBox.Size = new System.Drawing.Size(288, 20);
             this.UserID_TextBox.StyleController = this.UserRole_LayoutControl;
@@ -358,7 +358,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Main_Table);
             this.Name = "UserList";
-            this.Size = new System.Drawing.Size(827, 452);
+            this.Size = new System.Drawing.Size(899, 523);
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRole_GridView)).EndInit();
             this.Main_Table.ResumeLayout(false);

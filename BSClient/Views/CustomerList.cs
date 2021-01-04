@@ -28,6 +28,18 @@ namespace BSClient.Views
             InitializeComponent();
 
             LoadGrid();
+
+            CheckAuthorization();
+        }
+
+        private void CheckAuthorization()
+        {
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                Button_Panel.Enabled = false;
+                Customer_GridView.OptionsBehavior.Editable = false;
+                Customer_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+            }
         }
 
         private void LoadGrid()
@@ -104,7 +116,7 @@ namespace BSClient.Views
 
             if (this.CustomersDeleteData != null)
             {
-                saveData?.AddRange(this.CustomersDeleteData);
+                saveData?.InsertRange(0, this.CustomersDeleteData);
             }
 
             if (saveData?.Count > 0)
@@ -180,11 +192,11 @@ namespace BSClient.Views
 
         private void Customer_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            if (e.Button.Properties.Caption == ExcelOperator.ImportSymbol)
             {
                 ImportData();
             }
-            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            else if (e.Button.Properties.Caption == ExcelOperator.ExportSymbol)
             {
                 ExportData();
             }
@@ -208,6 +220,11 @@ namespace BSClient.Views
         private void ExportData()
         {
             Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+        }
+
+        private void SelectCustomer_Button_Click(object sender, EventArgs e)
+        {
+            MessageBoxHelper.ShowInfoMessage("Coming soon!");
         }
     }
 }
