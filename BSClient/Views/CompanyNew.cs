@@ -1,4 +1,5 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Constants;
+using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -49,6 +50,12 @@ namespace BSClient
 
             SetBindingData();
             SetEnable();
+
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                AddNew_Button.Enabled = false;
+                Update_Button.Enabled = true;
+            }
         }
 
         private void SetBindingData()
@@ -71,7 +78,7 @@ namespace BSClient
             DataBindingHelper.BindingTextEdit(this.MaSoHD_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.TKThuThue_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.BankBranch_TextEdit, BinSource);
-            
+
             //Thông tin chữ ký
             DataBindingHelper.BindingTextEdit(this.Scheduler_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.Stockkeeper_TextEdit, BinSource);

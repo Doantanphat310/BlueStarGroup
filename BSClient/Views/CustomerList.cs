@@ -28,6 +28,18 @@ namespace BSClient.Views
             InitializeComponent();
 
             LoadGrid();
+
+            CheckAuthorization();
+        }
+
+        private void CheckAuthorization()
+        {
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                Button_Panel.Enabled = false;
+                Customer_GridView.OptionsBehavior.Editable = false;
+                Customer_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+            }
         }
 
         private void LoadGrid()
@@ -180,11 +192,11 @@ namespace BSClient.Views
 
         private void Customer_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            if (e.Button.Properties.Caption == ExcelOperator.ImportSymbol)
             {
                 ImportData();
             }
-            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            else if (e.Button.Properties.Caption == ExcelOperator.ExportSymbol)
             {
                 ExportData();
             }

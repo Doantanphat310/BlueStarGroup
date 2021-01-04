@@ -17,8 +17,9 @@ namespace BSClient
         private readonly string CancelCaption = "Quay lại";
         private readonly string ExitCaption = "Thoát";
         private bool IsLogined = false;
+        private int LoginCount = 0;
 
-        List<Users> Users { get; set; }
+        private List<Users> Users { get; set; }
 
         public Login()
         {
@@ -74,6 +75,7 @@ namespace BSClient
                 }
                 else
                 {
+                    LoginCount++;
                     MessageBoxHelper.ShowInfoMessage("Tên đăng nhập hoặc mật khẩu không đúng!");
                     UserID_TextBox.Focus();
                     return false;
@@ -100,9 +102,19 @@ namespace BSClient
             // chưa đăng nhập
             else
             {
-                if (this.IsLogin())
+                if (LoginCount > 4)
                 {
-                    SetEnable(true);
+                    MessageBoxHelper.ShowInfoMessage("Bạn đã nhập sai liên tiếp.\r\nVui lòng đóng phần mềm và thử lại!");
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                }
+                else
+                {
+                    if (this.IsLogin())
+                    {
+                        LoginCount = 0;
+                        SetEnable(true);
+                    }
                 }
             }
 
@@ -156,7 +168,9 @@ namespace BSClient
             {
                 CommonInfo.CompanyInfo = controller.GetCompanyInfo(selected.CompanyID);
             }
-            UserInfo.UserRole = selected.UserRoleName;
+
+            UserInfo.UserRole = selected.UserRoleValue;
+            UserInfo.CompanyID = selected.CompanyID;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -173,21 +187,5 @@ namespace BSClient
 
             IsLogined = isLogin;
         }
-
-        //private void UserID_TextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (e.KeyChar == (char)Keys.Enter)
-        //    {
-        //        ExecuteLogin();
-        //    }
-        //}
-
-        //private void Password_TextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (e.KeyChar == (char)Keys.Enter)
-        //    {
-        //        ExecuteLogin();
-        //    }
-        //}
     }
 }

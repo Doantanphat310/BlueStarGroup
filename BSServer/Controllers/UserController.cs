@@ -29,7 +29,7 @@ namespace BSServer.Controllers
             return this.UserDAO.GetUsers();
         }
 
-        public List<UserRoleCompany> GetUserRoleCompany(string userID = "")
+        public List<UserRoleCompany> GetUserRoleCompany(string userID = null)
         {
             return this.UserDAO.GetUserRoleCompany(userID);
         }

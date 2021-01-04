@@ -34,7 +34,7 @@
             this.Customer_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Customer_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Customer_GroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.UserButton_Panel = new System.Windows.Forms.Panel();
+            this.Button_Panel = new System.Windows.Forms.Panel();
             this.SelectCustomer_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -43,7 +43,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).BeginInit();
             this.Customer_GroupControl.SuspendLayout();
-            this.UserButton_Panel.SuspendLayout();
+            this.Button_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Customer_GridControl
@@ -71,7 +71,7 @@
             // 
             this.Customer_GroupControl.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Customer_GroupControl.CaptionImageOptions.Image")));
             this.Customer_GroupControl.Controls.Add(this.Customer_GridControl);
-            this.Customer_GroupControl.Controls.Add(this.UserButton_Panel);
+            this.Customer_GroupControl.Controls.Add(this.Button_Panel);
             buttonImageOptions1.Image = global::BSClient.Properties.Resources.excelimport;
             buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
             this.Customer_GroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
@@ -86,17 +86,17 @@
             this.Customer_GroupControl.Text = "Danh mục Khách hàng";
             this.Customer_GroupControl.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.Customer_GroupControl_CustomButtonClick);
             // 
-            // UserButton_Panel
+            // Button_Panel
             // 
-            this.UserButton_Panel.Controls.Add(this.SelectCustomer_Button);
-            this.UserButton_Panel.Controls.Add(this.Delete_Button);
-            this.UserButton_Panel.Controls.Add(this.Cancel_Button);
-            this.UserButton_Panel.Controls.Add(this.Save_Button);
-            this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 469);
-            this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(928, 45);
-            this.UserButton_Panel.TabIndex = 1;
+            this.Button_Panel.Controls.Add(this.SelectCustomer_Button);
+            this.Button_Panel.Controls.Add(this.Delete_Button);
+            this.Button_Panel.Controls.Add(this.Cancel_Button);
+            this.Button_Panel.Controls.Add(this.Save_Button);
+            this.Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Button_Panel.Location = new System.Drawing.Point(2, 469);
+            this.Button_Panel.Name = "Button_Panel";
+            this.Button_Panel.Size = new System.Drawing.Size(928, 45);
+            this.Button_Panel.TabIndex = 1;
             // 
             // SelectCustomer_Button
             // 
@@ -155,7 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer_GroupControl)).EndInit();
             this.Customer_GroupControl.ResumeLayout(false);
-            this.UserButton_Panel.ResumeLayout(false);
+            this.Button_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -164,7 +164,7 @@
         private DevExpress.XtraGrid.GridControl Customer_GridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView Customer_GridView;
         private DevExpress.XtraEditors.GroupControl Customer_GroupControl;
-        private System.Windows.Forms.Panel UserButton_Panel;
+        private System.Windows.Forms.Panel Button_Panel;
         private DevExpress.XtraEditors.SimpleButton Delete_Button;
         private DevExpress.XtraEditors.SimpleButton Cancel_Button;
         private DevExpress.XtraEditors.SimpleButton Save_Button;

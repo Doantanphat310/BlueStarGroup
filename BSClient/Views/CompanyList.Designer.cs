@@ -32,7 +32,7 @@
             this.Company_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Company_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Company_GroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.UserButton_Panel = new System.Windows.Forms.Panel();
+            this.Button_Panel = new System.Windows.Forms.Panel();
             this.Edit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.AddNew_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Delete_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +40,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Company_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_GroupControl)).BeginInit();
             this.Company_GroupControl.SuspendLayout();
-            this.UserButton_Panel.SuspendLayout();
+            this.Button_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Company_GridControl
@@ -63,7 +63,7 @@
             // Company_GroupControl
             // 
             this.Company_GroupControl.Controls.Add(this.Company_GridControl);
-            this.Company_GroupControl.Controls.Add(this.UserButton_Panel);
+            this.Company_GroupControl.Controls.Add(this.Button_Panel);
             this.Company_GroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Company_GroupControl.Location = new System.Drawing.Point(0, 0);
             this.Company_GroupControl.Name = "Company_GroupControl";
@@ -71,16 +71,16 @@
             this.Company_GroupControl.TabIndex = 0;
             this.Company_GroupControl.Text = "Danh mục Công ty";
             // 
-            // UserButton_Panel
+            // Button_Panel
             // 
-            this.UserButton_Panel.Controls.Add(this.Edit_Button);
-            this.UserButton_Panel.Controls.Add(this.AddNew_Button);
-            this.UserButton_Panel.Controls.Add(this.Delete_Button);
-            this.UserButton_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UserButton_Panel.Location = new System.Drawing.Point(2, 364);
-            this.UserButton_Panel.Name = "UserButton_Panel";
-            this.UserButton_Panel.Size = new System.Drawing.Size(834, 45);
-            this.UserButton_Panel.TabIndex = 1;
+            this.Button_Panel.Controls.Add(this.Edit_Button);
+            this.Button_Panel.Controls.Add(this.AddNew_Button);
+            this.Button_Panel.Controls.Add(this.Delete_Button);
+            this.Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Button_Panel.Location = new System.Drawing.Point(2, 364);
+            this.Button_Panel.Name = "Button_Panel";
+            this.Button_Panel.Size = new System.Drawing.Size(834, 45);
+            this.Button_Panel.TabIndex = 1;
             // 
             // Edit_Button
             // 
@@ -126,7 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Company_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_GroupControl)).EndInit();
             this.Company_GroupControl.ResumeLayout(false);
-            this.UserButton_Panel.ResumeLayout(false);
+            this.Button_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,7 +135,7 @@
         private DevExpress.XtraGrid.GridControl Company_GridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView Company_GridView;
         private DevExpress.XtraEditors.GroupControl Company_GroupControl;
-        private System.Windows.Forms.Panel UserButton_Panel;
+        private System.Windows.Forms.Panel Button_Panel;
         private DevExpress.XtraEditors.SimpleButton Delete_Button;
         private DevExpress.XtraEditors.SimpleButton Edit_Button;
         private DevExpress.XtraEditors.SimpleButton AddNew_Button;

@@ -34,7 +34,7 @@ namespace BSClient.Views
 
             LoadGrid();
 
-            if (UserInfo.UserRole != "Full")
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, Constants.BSRole.Full))
             {
                 CompanyID_LookUpEdit.ReadOnly = true;
             }

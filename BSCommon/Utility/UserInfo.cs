@@ -31,5 +31,11 @@
         /// UserRole
         /// </summary>
         public static string UserRole { get; set; }
+
+        /// <summary>
+        /// CompanyID
+        /// </summary>
+        public static string CompanyID { get; set; }
+
     }
 }

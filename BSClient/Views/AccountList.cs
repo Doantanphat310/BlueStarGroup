@@ -1,4 +1,5 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Constants;
+using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -48,6 +49,28 @@ namespace BSClient.Views
             InitComboBox();
 
             SetBindingData();
+
+            CheckAuthorization();
+        }
+
+        private void CheckAuthorization()
+        {
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                // Danh mục nhóm tài khoản
+                AccountGroup_Button_Panel.Enabled = false;
+                AccountGroup_GridView.OptionsBehavior.Editable = false;
+                AccountGroup_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+
+                // Danh mục tài khoản
+                Accounts_Button_Panel.Enabled = false;
+                Account_TreeList.OptionsBehavior.Editable = false;
+                AccountSpecialGroup_Panel.Enabled = false;
+
+                // Thống kê
+                AccountDetailInfo_Panel.Enabled = false;
+                AccountDetail_GridView.OptionsBehavior.Editable = false;
+            }
         }
 
         private void SetBindingData()

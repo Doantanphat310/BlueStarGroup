@@ -1,4 +1,5 @@
-﻿using BSClient.Utility;
+﻿using BSClient.Constants;
+using BSClient.Utility;
 using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
@@ -21,6 +22,11 @@ namespace BSClient.Views
             InitializeComponent();
 
             LoadGrid();
+
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                Button_Panel.Enabled = false;
+            }
         }
 
         private void LoadGrid()

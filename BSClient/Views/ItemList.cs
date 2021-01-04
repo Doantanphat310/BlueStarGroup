@@ -518,11 +518,11 @@ namespace BSClient.Views
 
         private void ItemUnit_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            if (e.Button.Properties.Caption == ExcelOperator.ImportSymbol)
             {
                 ImportData(2);
             }
-            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            else if (e.Button.Properties.Caption == ExcelOperator.ExportSymbol)
             {
                 ExportData(2);
             }
@@ -530,11 +530,11 @@ namespace BSClient.Views
 
         private void ItemType_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            if (e.Button.Properties.Caption == ExcelOperator.ImportSymbol)
             {
                 ImportData(1);
             }
-            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            else if (e.Button.Properties.Caption == ExcelOperator.ExportSymbol)
             {
                 ExportData(1);
             }
@@ -542,11 +542,11 @@ namespace BSClient.Views
 
         private void Items_GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            if (e.Button.Properties.Caption == ClientConst.ImportSymbol)
+            if (e.Button.Properties.Caption == ExcelOperator.ImportSymbol)
             {
                 ImportData(3);
             }
-            else if (e.Button.Properties.Caption == ClientConst.ExportSymbol)
+            else if (e.Button.Properties.Caption == ExcelOperator.ExportSymbol)
             {
                 ExportData(3);
             }

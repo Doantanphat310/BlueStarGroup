@@ -25,12 +25,12 @@ namespace BSServer.DAOs
             return this.Context.Users.ToList();
         }
 
-        public List<UserRoleCompany> GetUserRoleCompany(string userID = "")
+        public List<UserRoleCompany> GetUserRoleCompany(string userID)
         {
             return this.Context
-                .GetDataFromProcedure<UserRoleCompany>("UserRoleCompanySelect")
-                .Where(o => o.UserID == userID || string.IsNullOrEmpty(userID))
-                .ToList();
+                .GetDataFromProcedure<UserRoleCompany>(
+                    "SP_GetCompanyRoleByUser", 
+                    new SqlParameter("@UserID", userID));
         }
 
         public bool InsertUserList(Users data)

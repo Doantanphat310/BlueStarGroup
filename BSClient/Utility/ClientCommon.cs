@@ -1,4 +1,5 @@
-﻿using BSClient.Controls;
+﻿using BSClient.Constants;
+using BSClient.Controls;
 using BSCommon.Utility;
 using System;
 using System.Drawing;
@@ -74,6 +75,38 @@ namespace BSClient.Utility
         {
             ErrorBox errorBox = new ErrorBox(error);
             errorBox.ShowDialog();
+        }
+
+        /// <summary>
+        /// Kiểm tra xem user có quyền không
+        /// </summary>
+        /// <param name="userRole">Role của user trên từng công ty</param>
+        /// <param name="role">role muốn kiểm tra</param>
+        /// <returns>Nếu có quyền thì TRUE, ngược lại FALSE</returns>
+        public static bool HasAuthority(string userRole, BSRole role)
+        {
+            // chuyển đổi role sang nhị phân
+            string roleStr = Convert.ToString((long)role, 2);
+            int roleLength = roleStr.Length;
+            int userLength = userRole.Length;
+
+            if (userLength >= roleLength)
+            {
+                // Trường hợp = 1 là có role
+                int index = userLength - roleLength;
+                if (userRole.Substring(index, 1) == "1")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
