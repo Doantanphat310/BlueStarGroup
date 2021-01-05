@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTaiKhoanReport));
             this.Main_GridControl = new DevExpress.XtraGrid.GridControl();
+            this.Main_BandedGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.Print_Button = new DevExpress.XtraEditors.SimpleButton();
             this.From_DateEdit = new DevExpress.XtraEditors.DateEdit();
             this.To_DateEdit = new DevExpress.XtraEditors.DateEdit();
@@ -43,18 +44,8 @@
             this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.KetChuyen_Button = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.Main_BandedGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -62,7 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TypeSearch_LookUpEdit.Properties)).BeginInit();
             this.Button_Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Main_GridControl
@@ -75,6 +65,13 @@
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.Main_BandedGridView});
+            // 
+            // Main_BandedGridView
+            // 
+            this.Main_BandedGridView.CustomizationFormBounds = new System.Drawing.Rectangle(876, 595, 266, 208);
+            this.Main_BandedGridView.GridControl = this.Main_GridControl;
+            this.Main_BandedGridView.IndicatorWidth = 30;
+            this.Main_BandedGridView.Name = "Main_BandedGridView";
             // 
             // Print_Button
             // 
@@ -251,89 +248,6 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Ngày";
             // 
-            // Main_BandedGridView
-            // 
-            this.Main_BandedGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1,
-            this.gridBand2});
-            this.Main_BandedGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
-            this.bandedGridColumn1,
-            this.bandedGridColumn2,
-            this.bandedGridColumn3,
-            this.bandedGridColumn4,
-            this.bandedGridColumn5,
-            this.bandedGridColumn6,
-            this.bandedGridColumn7,
-            this.bandedGridColumn8});
-            this.Main_BandedGridView.GridControl = this.Main_GridControl;
-            this.Main_BandedGridView.IndicatorWidth = 30;
-            this.Main_BandedGridView.Name = "Main_BandedGridView";
-            // 
-            // bandedGridColumn1
-            // 
-            this.bandedGridColumn1.Caption = "bandedGridColumn1";
-            this.bandedGridColumn1.Name = "bandedGridColumn1";
-            this.bandedGridColumn1.Visible = true;
-            // 
-            // bandedGridColumn2
-            // 
-            this.bandedGridColumn2.Caption = "bandedGridColumn2";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.Visible = true;
-            // 
-            // bandedGridColumn3
-            // 
-            this.bandedGridColumn3.Caption = "bandedGridColumn3";
-            this.bandedGridColumn3.Name = "bandedGridColumn3";
-            this.bandedGridColumn3.Visible = true;
-            // 
-            // bandedGridColumn4
-            // 
-            this.bandedGridColumn4.Caption = "bandedGridColumn4";
-            this.bandedGridColumn4.Name = "bandedGridColumn4";
-            this.bandedGridColumn4.Visible = true;
-            // 
-            // bandedGridColumn5
-            // 
-            this.bandedGridColumn5.Caption = "bandedGridColumn5";
-            this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.Visible = true;
-            // 
-            // bandedGridColumn6
-            // 
-            this.bandedGridColumn6.Caption = "bandedGridColumn6";
-            this.bandedGridColumn6.Name = "bandedGridColumn6";
-            this.bandedGridColumn6.Visible = true;
-            // 
-            // bandedGridColumn7
-            // 
-            this.bandedGridColumn7.Caption = "bandedGridColumn7";
-            this.bandedGridColumn7.Name = "bandedGridColumn7";
-            this.bandedGridColumn7.Visible = true;
-            // 
-            // bandedGridColumn8
-            // 
-            this.bandedGridColumn8.Caption = "bandedGridColumn8";
-            this.bandedGridColumn8.Name = "bandedGridColumn8";
-            this.bandedGridColumn8.Visible = true;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "gridBand1";
-            this.gridBand1.Columns.Add(this.bandedGridColumn1);
-            this.gridBand1.Columns.Add(this.bandedGridColumn2);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 150;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "gridBand2";
-            this.gridBand2.Columns.Add(this.bandedGridColumn3);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 75;
-            // 
             // BangCanDoiSoPhatSinhTaiKhoanReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +262,7 @@
             this.Text = "Bảng cân đối phát sinh số tài khoản";
             this.Load += new System.EventHandler(this.BangCanDoiSoPhatSinhTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -356,7 +271,6 @@
             this.Button_Panel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,15 +291,5 @@
         private DevExpress.XtraEditors.SimpleButton KetChuyen_Button;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView Main_BandedGridView;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn8;
     }
 }

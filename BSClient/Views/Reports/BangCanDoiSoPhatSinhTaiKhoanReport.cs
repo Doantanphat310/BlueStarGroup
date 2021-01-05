@@ -71,19 +71,8 @@ namespace BSClient.Views.Reports
 
         private void InitGridView()
         {
-            GridBand band;
-            BandedGridColumn col;
-
-            Main_BandedGridView.Columns.Clear();
-
-            col = new BandedGridColumn();
-            col.Width = 100;
-            col.Caption = "";
-            col.OptionsColumn.AllowEdit = false;
-            band = new GridBand();
-            band.Columns.Add(col);
-
-            Main_BandedGridView.Bands.Add(band);
+            this.Main_BandedGridView.Columns.Clear();
+            this.Main_BandedGridView.Bands.Clear();
 
             this.Main_BandedGridView.AddColumn("AccountID", "Mã TK", 70, false);
             this.Main_BandedGridView.AddColumn("AccountName", "Tên Tài Khoản", 300, false, fixedWidth: false);
@@ -107,18 +96,17 @@ namespace BSClient.Views.Reports
             this.Main_BandedGridView.AddSpinEditColumn("PSCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
             this.Main_BandedGridView.AddSpinEditColumn("CKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
             this.Main_BandedGridView.AddSpinEditColumn("CKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+
+            // add band
+            Main_BandedGridView.AddBand("", "AccountID", "AccountDetailID", "AccountName", "CustomerID");
+            Main_BandedGridView.AddBand("Số dư đầu kỳ", "DKNo", "DKCo");
+            Main_BandedGridView.AddBand("Phát sinh trong kỳ", "PSNo", "PSCo");
+            Main_BandedGridView.AddBand("Số dư cuối kỳ", "CKNo", "CKCo");
         }
 
         private void SetupGridView()
         {
-            //this.Main_BandedGridView.SetupGridView(
-            //    multiSelect: false,
-            //    checkBoxSelectorColumnWidth: 0,
-            //    showAutoFilterRow: false,
-            //    newItemRow: NewItemRowPosition.None,
-            //    showFooter: true,
-            //    columnAutoWidth: true,
-            //    hasShowRowHeader: true);
+            this.Main_BandedGridView.SetupGridView(showFooter: true, columnAutoWidth: true);
         }
 
         private void LoadDataGridView()

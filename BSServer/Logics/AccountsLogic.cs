@@ -300,7 +300,7 @@ namespace BSServer.Logics
             {
                 foreach (var item in psdata)
                 {
-                    GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                    GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && (o.AccountDetailID ?? string.Empty) == (item.AccountDetailID ?? string.Empty));
                     if (itemFind != null)
                     {
                         itemFind.DKNo = item.DKNo;
