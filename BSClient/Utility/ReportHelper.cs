@@ -67,12 +67,52 @@ namespace BSClient.Utility
             reportPrintTool.ShowPreview();
         }
 
-        private static string GetReportPath(string reportID)
+        public static string GetReportPath(string reportID)
         {
             string dir = GetReportDirectory();
             string reportPath = Path.Combine(dir, $"{ReportTemplate.GetTemplate(reportID)}.repx");
 
             return reportPath;
+        }
+
+        public static void ModifyDocument(XtraReport xtraReport, XtraReport xtraReport2)
+        {
+            // Add all pages of the second report to the end of the first report.
+            xtraReport.ModifyDocument(x =>
+            {
+                x.AddPages(xtraReport2.Pages);
+            });
+        }
+
+        public static XtraReport CreateDocument(string reportID, object dataSource, List<ReportParam> reportParams)
+        {
+            string filePath = GetReportPath(reportID);
+
+            if (!File.Exists(filePath))
+            {
+                MessageBoxHelper.ShowErrorMessage($"Mẫu báo cáo không tồn tại!\r\n{filePath}");
+                return null;
+            }
+
+            XtraReport report = new XtraReport()
+            {
+                RequestParameters = false
+            };
+            report.LoadLayout(filePath);
+            report.DataSource = dataSource;
+
+            foreach (var param in reportParams)
+            {
+                report.Parameters[param.ParamID].Value = param.ParamValue;
+            }
+
+            report.CreateDocument();
+            //ReportPrintTool reportPrintTool = new ReportPrintTool(report)
+            //{
+            //    AutoShowParametersPanel = false
+            //};
+
+            return report;
         }
     }
 }

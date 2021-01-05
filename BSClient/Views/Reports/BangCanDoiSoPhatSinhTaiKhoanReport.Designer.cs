@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangCanDoiSoPhatSinhTaiKhoanReport));
             this.Main_GridControl = new DevExpress.XtraGrid.GridControl();
-            this.Main_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Main_BandedGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.Print_Button = new DevExpress.XtraEditors.SimpleButton();
             this.From_DateEdit = new DevExpress.XtraEditors.DateEdit();
             this.To_DateEdit = new DevExpress.XtraEditors.DateEdit();
@@ -45,7 +45,7 @@
             this.KetChuyen_Button = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -59,19 +59,19 @@
             // 
             this.Main_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main_GridControl.Location = new System.Drawing.Point(0, 32);
-            this.Main_GridControl.MainView = this.Main_GridView;
+            this.Main_GridControl.MainView = this.Main_BandedGridView;
             this.Main_GridControl.Name = "Main_GridControl";
             this.Main_GridControl.Size = new System.Drawing.Size(1090, 573);
             this.Main_GridControl.TabIndex = 0;
             this.Main_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.Main_GridView});
+            this.Main_BandedGridView});
             // 
-            // Main_GridView
+            // Main_BandedGridView
             // 
-            this.Main_GridView.GridControl = this.Main_GridControl;
-            this.Main_GridView.IndicatorWidth = 30;
-            this.Main_GridView.Name = "Main_GridView";
-            this.Main_GridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.Main_GridView_RowClick);
+            this.Main_BandedGridView.CustomizationFormBounds = new System.Drawing.Rectangle(876, 595, 266, 208);
+            this.Main_BandedGridView.GridControl = this.Main_GridControl;
+            this.Main_BandedGridView.IndicatorWidth = 30;
+            this.Main_BandedGridView.Name = "Main_BandedGridView";
             // 
             // Print_Button
             // 
@@ -262,7 +262,7 @@
             this.Text = "Bảng cân đối phát sinh số tài khoản";
             this.Load += new System.EventHandler(this.BangCanDoiSoPhatSinhTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Main_GridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_GridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_BandedGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.From_DateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.To_DateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -277,7 +277,6 @@
 
         #endregion
         private DevExpress.XtraGrid.GridControl Main_GridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView Main_GridView;
         private DevExpress.XtraEditors.SimpleButton Print_Button;
         private DevExpress.XtraEditors.DateEdit From_DateEdit;
         private DevExpress.XtraEditors.DateEdit To_DateEdit;
@@ -291,5 +290,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton KetChuyen_Button;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView Main_BandedGridView;
     }
 }

@@ -29,9 +29,10 @@ namespace BSClient
             Scheduler
         }
 
-        public CompanyNew(Company input = null)
+        public CompanyNew(CM_Company input = null)
         {
             InitializeComponent();
+            Company companyInfo = null;
 
             if (input == null)
             {
@@ -40,9 +41,13 @@ namespace BSClient
             else
             {
                 EditMode = ModifyMode.Update;
+                using (CompanyController controller = new CompanyController())
+                {
+                    companyInfo = controller.GetCompanyInfo(input.CompanyID);
+                }
             }
 
-            CompanyInfo = ModelHelper.CopyToNew<Company, CompanyView>(input);
+            CompanyInfo = ModelHelper.CopyToNew<Company, CompanyView>(companyInfo);
             BinSource = new BindingSource
             {
                 DataSource = CompanyInfo

@@ -160,49 +160,6 @@ namespace BSClient.Utility
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
-        public static void AddCheckEditColumn(
-           this TreeList gridView,
-           string fieldName,
-           string caption,
-           int width,
-           bool isAllowEdit = true)
-        {
-            RepositoryItemCheckEdit itemCtrl = new RepositoryItemCheckEdit()
-            {
-                AutoHeight = false
-            };
-
-            //itemCtrl.SetupLookUpEdit(
-            //    valueMember,
-            //    displayMember,
-            //    itemSource,
-            //    columns,
-            //    nullText: nullText,
-            //    enterChoiceFirstRow: enterChoiceFirstRow,
-            //    popupFormWidth: popupFormWidth);
-
-            //if (editValueChanged != null)
-            //{
-            //    itemCtrl.EditValueChanged += editValueChanged;
-            //}
-
-            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
-
-            //this.treeListColumn1.Caption = "treeListColumn1";
-            //this.treeListColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
-            //this.treeListColumn1.FieldName = "treeListColumn1";
-            //this.treeListColumn1.Name = "treeListColumn1";
-            //this.treeListColumn1.Visible = true;
-            //this.treeListColumn1.VisibleIndex = 0;
-
-            //this.repositoryItemCheckEdit1.AutoHeight = false;
-            //this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
-
-
-            //this.Account_TreeList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            //this.repositoryItemCheckEdit1});
-        }
-
         public static void SetupTreeList(
             this TreeList treeList,
             bool multiSelect = true)
@@ -221,6 +178,17 @@ namespace BSClient.Utility
             treeList.Appearance.FocusedRow.BackColor = ColorTranslator.FromHtml("#80bfff"); ;
             treeList.Appearance.FocusedRow.Options.UseBackColor = true;
             treeList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFocus;
+
+            treeList.NodeCellStyle += TreeList_NodeCellStyle;
+        }
+
+        private static void TreeList_NodeCellStyle(object sender, GetCustomNodeCellStyleEventArgs e)
+        {
+            var gridView = sender as TreeList;
+            if (e.Node.Focused == true)
+            {
+                e.Appearance.BackColor = gridView.Appearance.FocusedRow.BackColor;
+            }
         }
     }
 }

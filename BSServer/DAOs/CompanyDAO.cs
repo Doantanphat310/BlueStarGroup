@@ -15,11 +15,9 @@ namespace BSServer.DAOs
         {
         }
 
-		public List<Company> GetCompanys()
+		public List<CM_Company> GetCompanys()
 		{
-			return this.Context.Company
-				.OrderBy(o => o.CompanyName)
-				.ToList();
+			return this.Context.GetDataFromProcedure<CM_Company>("SP_GetCompany");
 		}
 
 		public Company GetCompanyInfo(string companyID)
@@ -120,7 +118,7 @@ namespace BSServer.DAOs
 			return true;
 		}
 
-		public bool DeleteCompany(Company data)
+		public bool DeleteCompany(CM_Company data)
 		{
 			SqlParameter[] sqlParameters = new SqlParameter[]
 			{

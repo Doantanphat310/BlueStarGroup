@@ -58,7 +58,7 @@
             this.Login_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_Button.Appearance.Options.UseFont = true;
             this.Login_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Login_Button.ImageOptions.Image")));
-            this.Login_Button.Location = new System.Drawing.Point(204, 11);
+            this.Login_Button.Location = new System.Drawing.Point(255, 11);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.Size = new System.Drawing.Size(105, 35);
             this.Login_Button.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.UserID_TextBox.Name = "UserID_TextBox";
             this.UserID_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserID_TextBox.Properties.Appearance.Options.UseFont = true;
-            this.UserID_TextBox.Size = new System.Drawing.Size(354, 26);
+            this.UserID_TextBox.Size = new System.Drawing.Size(405, 26);
             this.UserID_TextBox.StyleController = this.Main_LayoutControl;
             this.UserID_TextBox.TabIndex = 0;
             // 
@@ -86,7 +86,7 @@
             this.Main_LayoutControl.Name = "Main_LayoutControl";
             this.Main_LayoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(342, 0, 650, 400);
             this.Main_LayoutControl.Root = this.Root;
-            this.Main_LayoutControl.Size = new System.Drawing.Size(439, 148);
+            this.Main_LayoutControl.Size = new System.Drawing.Size(490, 148);
             this.Main_LayoutControl.TabIndex = 0;
             this.Main_LayoutControl.Text = "layoutControl1";
             // 
@@ -98,7 +98,7 @@
             this.Password_TextBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password_TextBox.Properties.Appearance.Options.UseFont = true;
             this.Password_TextBox.Properties.PasswordChar = '*';
-            this.Password_TextBox.Size = new System.Drawing.Size(354, 26);
+            this.Password_TextBox.Size = new System.Drawing.Size(405, 26);
             this.Password_TextBox.StyleController = this.Main_LayoutControl;
             this.Password_TextBox.TabIndex = 1;
             // 
@@ -111,7 +111,7 @@
             this.Company_LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Company_LookUpEdit.Properties.NullText = "";
-            this.Company_LookUpEdit.Size = new System.Drawing.Size(354, 22);
+            this.Company_LookUpEdit.Size = new System.Drawing.Size(405, 22);
             this.Company_LookUpEdit.StyleController = this.Main_LayoutControl;
             this.Company_LookUpEdit.TabIndex = 2;
             // 
@@ -125,7 +125,7 @@
             this.Company_Label});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(20, 20, 20, 20);
-            this.Root.Size = new System.Drawing.Size(439, 148);
+            this.Root.Size = new System.Drawing.Size(490, 148);
             this.Root.TextVisible = false;
             // 
             // UserName_Label
@@ -136,7 +136,7 @@
             this.UserName_Label.Name = "UserName_Label";
             this.UserName_Label.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.UserName_Label.ShowInCustomizationForm = false;
-            this.UserName_Label.Size = new System.Drawing.Size(399, 36);
+            this.UserName_Label.Size = new System.Drawing.Size(450, 36);
             this.UserName_Label.Text = " ";
             this.UserName_Label.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.UserName_Label.TextSize = new System.Drawing.Size(30, 24);
@@ -149,7 +149,7 @@
             this.Password_Label.Location = new System.Drawing.Point(0, 36);
             this.Password_Label.Name = "Password_Label";
             this.Password_Label.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.Password_Label.Size = new System.Drawing.Size(399, 36);
+            this.Password_Label.Size = new System.Drawing.Size(450, 36);
             this.Password_Label.Text = " ";
             this.Password_Label.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.Password_Label.TextSize = new System.Drawing.Size(30, 24);
@@ -163,7 +163,7 @@
             this.Company_Label.Location = new System.Drawing.Point(0, 72);
             this.Company_Label.Name = "Company_Label";
             this.Company_Label.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.Company_Label.Size = new System.Drawing.Size(399, 36);
+            this.Company_Label.Size = new System.Drawing.Size(450, 36);
             this.Company_Label.Text = " ";
             this.Company_Label.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.Company_Label.TextSize = new System.Drawing.Size(30, 24);
@@ -175,7 +175,7 @@
             this.Exit_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit_Button.Appearance.Options.UseFont = true;
             this.Exit_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Exit_Button.ImageOptions.Image")));
-            this.Exit_Button.Location = new System.Drawing.Point(322, 11);
+            this.Exit_Button.Location = new System.Drawing.Point(373, 11);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.Size = new System.Drawing.Size(105, 35);
             this.Exit_Button.TabIndex = 2;
@@ -189,7 +189,7 @@
             this.Bottom_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Bottom_Panel.Location = new System.Drawing.Point(0, 148);
             this.Bottom_Panel.Name = "Bottom_Panel";
-            this.Bottom_Panel.Size = new System.Drawing.Size(439, 55);
+            this.Bottom_Panel.Size = new System.Drawing.Size(490, 55);
             this.Bottom_Panel.TabIndex = 1;
             // 
             // Login
@@ -197,7 +197,7 @@
             this.AcceptButton = this.Login_Button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 203);
+            this.ClientSize = new System.Drawing.Size(490, 203);
             this.Controls.Add(this.Main_LayoutControl);
             this.Controls.Add(this.Bottom_Panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

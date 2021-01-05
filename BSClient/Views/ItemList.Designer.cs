@@ -38,7 +38,7 @@
             this.ItemType_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.ItemType_GridControl = new DevExpress.XtraGrid.GridControl();
             this.ItemType_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ItemType_ButtonGroup_Panel = new DevExpress.XtraEditors.PanelControl();
+            this.ItemType_Button_Panel = new DevExpress.XtraEditors.PanelControl();
             this.ItemType_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemType_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemType_Save_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -46,7 +46,7 @@
             this.Items_GridControl = new DevExpress.XtraGrid.GridControl();
             this.Items_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.Items_ButtonGroup_Panel = new DevExpress.XtraEditors.PanelControl();
+            this.Items_Button_Panel = new DevExpress.XtraEditors.PanelControl();
             this.Items_Add_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Items_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Items_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -54,7 +54,7 @@
             this.ItemUnit_GroupControl = new DevExpress.XtraEditors.GroupControl();
             this.ItemUnit_GridControl = new DevExpress.XtraGrid.GridControl();
             this.ItemUnit_GridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ItemConpany_Button_Panel = new System.Windows.Forms.Panel();
+            this.ItemUnit_Button_Panel = new System.Windows.Forms.Panel();
             this.ItemUnit_Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemUnit_Save_Button = new DevExpress.XtraEditors.SimpleButton();
             this.ItemUnit_Delete_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -63,20 +63,20 @@
             this.ItemType_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemType_ButtonGroup_Panel)).BeginInit();
-            this.ItemType_ButtonGroup_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemType_Button_Panel)).BeginInit();
+            this.ItemType_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Items_GroupControl)).BeginInit();
             this.Items_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Items_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Items_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Items_ButtonGroup_Panel)).BeginInit();
-            this.Items_ButtonGroup_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Items_Button_Panel)).BeginInit();
+            this.Items_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GroupControl)).BeginInit();
             this.ItemUnit_GroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GridView)).BeginInit();
-            this.ItemConpany_Button_Panel.SuspendLayout();
+            this.ItemUnit_Button_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).BeginInit();
             this.Main_TablePanel.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             // 
             this.Main_TablePanel.SetColumn(this.ItemType_GroupControl, 0);
             this.ItemType_GroupControl.Controls.Add(this.ItemType_GridControl);
-            this.ItemType_GroupControl.Controls.Add(this.ItemType_ButtonGroup_Panel);
+            this.ItemType_GroupControl.Controls.Add(this.ItemType_Button_Panel);
             buttonImageOptions5.Image = global::BSClient.Properties.Resources.excelimport;
             buttonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions6.Image")));
             this.ItemType_GroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
@@ -122,16 +122,16 @@
             this.ItemType_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.ItemType_GridView_ValidateRow);
             this.ItemType_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.ItemType_GridView_RowUpdated);
             // 
-            // ItemType_ButtonGroup_Panel
+            // ItemType_Button_Panel
             // 
-            this.ItemType_ButtonGroup_Panel.Controls.Add(this.ItemType_Delete_Button);
-            this.ItemType_ButtonGroup_Panel.Controls.Add(this.ItemType_Cancel_Button);
-            this.ItemType_ButtonGroup_Panel.Controls.Add(this.ItemType_Save_Button);
-            this.ItemType_ButtonGroup_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ItemType_ButtonGroup_Panel.Location = new System.Drawing.Point(2, 220);
-            this.ItemType_ButtonGroup_Panel.Name = "ItemType_ButtonGroup_Panel";
-            this.ItemType_ButtonGroup_Panel.Size = new System.Drawing.Size(333, 45);
-            this.ItemType_ButtonGroup_Panel.TabIndex = 1;
+            this.ItemType_Button_Panel.Controls.Add(this.ItemType_Delete_Button);
+            this.ItemType_Button_Panel.Controls.Add(this.ItemType_Cancel_Button);
+            this.ItemType_Button_Panel.Controls.Add(this.ItemType_Save_Button);
+            this.ItemType_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ItemType_Button_Panel.Location = new System.Drawing.Point(2, 220);
+            this.ItemType_Button_Panel.Name = "ItemType_Button_Panel";
+            this.ItemType_Button_Panel.Size = new System.Drawing.Size(333, 45);
+            this.ItemType_Button_Panel.TabIndex = 1;
             // 
             // ItemType_Delete_Button
             // 
@@ -170,7 +170,7 @@
             // 
             this.Main_TablePanel.SetColumn(this.Items_GroupControl, 1);
             this.Items_GroupControl.Controls.Add(this.Items_GridControl);
-            this.Items_GroupControl.Controls.Add(this.Items_ButtonGroup_Panel);
+            this.Items_GroupControl.Controls.Add(this.Items_Button_Panel);
             buttonImageOptions1.Image = global::BSClient.Properties.Resources.excelimport;
             buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
             this.Items_GroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
@@ -217,19 +217,19 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             // 
-            // Items_ButtonGroup_Panel
+            // Items_Button_Panel
             // 
-            this.Items_ButtonGroup_Panel.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.Items_ButtonGroup_Panel.Appearance.Options.UseBackColor = true;
-            this.Items_ButtonGroup_Panel.Controls.Add(this.Items_Add_Button);
-            this.Items_ButtonGroup_Panel.Controls.Add(this.Items_Delete_Button);
-            this.Items_ButtonGroup_Panel.Controls.Add(this.Items_Cancel_Button);
-            this.Items_ButtonGroup_Panel.Controls.Add(this.Items_Save_Button);
-            this.Items_ButtonGroup_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Items_ButtonGroup_Panel.Location = new System.Drawing.Point(2, 492);
-            this.Items_ButtonGroup_Panel.Name = "Items_ButtonGroup_Panel";
-            this.Items_ButtonGroup_Panel.Size = new System.Drawing.Size(666, 45);
-            this.Items_ButtonGroup_Panel.TabIndex = 1;
+            this.Items_Button_Panel.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.Items_Button_Panel.Appearance.Options.UseBackColor = true;
+            this.Items_Button_Panel.Controls.Add(this.Items_Add_Button);
+            this.Items_Button_Panel.Controls.Add(this.Items_Delete_Button);
+            this.Items_Button_Panel.Controls.Add(this.Items_Cancel_Button);
+            this.Items_Button_Panel.Controls.Add(this.Items_Save_Button);
+            this.Items_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Items_Button_Panel.Location = new System.Drawing.Point(2, 492);
+            this.Items_Button_Panel.Name = "Items_Button_Panel";
+            this.Items_Button_Panel.Size = new System.Drawing.Size(666, 45);
+            this.Items_Button_Panel.TabIndex = 1;
             // 
             // Items_Add_Button
             // 
@@ -279,7 +279,7 @@
             // 
             this.Main_TablePanel.SetColumn(this.ItemUnit_GroupControl, 0);
             this.ItemUnit_GroupControl.Controls.Add(this.ItemUnit_GridControl);
-            this.ItemUnit_GroupControl.Controls.Add(this.ItemConpany_Button_Panel);
+            this.ItemUnit_GroupControl.Controls.Add(this.ItemUnit_Button_Panel);
             buttonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions3.Image")));
             buttonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions4.Image")));
             this.ItemUnit_GroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
@@ -315,16 +315,16 @@
             this.ItemUnit_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.ItemUnit_GridView_ValidateRow);
             this.ItemUnit_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.ItemUnit_GridView_RowUpdated);
             // 
-            // ItemConpany_Button_Panel
+            // ItemUnit_Button_Panel
             // 
-            this.ItemConpany_Button_Panel.Controls.Add(this.ItemUnit_Cancel_Button);
-            this.ItemConpany_Button_Panel.Controls.Add(this.ItemUnit_Save_Button);
-            this.ItemConpany_Button_Panel.Controls.Add(this.ItemUnit_Delete_Button);
-            this.ItemConpany_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ItemConpany_Button_Panel.Location = new System.Drawing.Point(2, 216);
-            this.ItemConpany_Button_Panel.Name = "ItemConpany_Button_Panel";
-            this.ItemConpany_Button_Panel.Size = new System.Drawing.Size(333, 48);
-            this.ItemConpany_Button_Panel.TabIndex = 2;
+            this.ItemUnit_Button_Panel.Controls.Add(this.ItemUnit_Cancel_Button);
+            this.ItemUnit_Button_Panel.Controls.Add(this.ItemUnit_Save_Button);
+            this.ItemUnit_Button_Panel.Controls.Add(this.ItemUnit_Delete_Button);
+            this.ItemUnit_Button_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ItemUnit_Button_Panel.Location = new System.Drawing.Point(2, 216);
+            this.ItemUnit_Button_Panel.Name = "ItemUnit_Button_Panel";
+            this.ItemUnit_Button_Panel.Size = new System.Drawing.Size(333, 48);
+            this.ItemUnit_Button_Panel.TabIndex = 2;
             // 
             // ItemUnit_Cancel_Button
             // 
@@ -387,20 +387,20 @@
             this.ItemType_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemType_GridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemType_ButtonGroup_Panel)).EndInit();
-            this.ItemType_ButtonGroup_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ItemType_Button_Panel)).EndInit();
+            this.ItemType_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Items_GroupControl)).EndInit();
             this.Items_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Items_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Items_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Items_ButtonGroup_Panel)).EndInit();
-            this.Items_ButtonGroup_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Items_Button_Panel)).EndInit();
+            this.Items_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GroupControl)).EndInit();
             this.ItemUnit_GroupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemUnit_GridView)).EndInit();
-            this.ItemConpany_Button_Panel.ResumeLayout(false);
+            this.ItemUnit_Button_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Main_TablePanel)).EndInit();
             this.Main_TablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -410,11 +410,11 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl ItemType_GroupControl;
-        private DevExpress.XtraEditors.PanelControl ItemType_ButtonGroup_Panel;
+        private DevExpress.XtraEditors.PanelControl ItemType_Button_Panel;
         private DevExpress.XtraGrid.GridControl ItemType_GridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView ItemType_GridView;
         private DevExpress.XtraEditors.GroupControl Items_GroupControl;
-        private DevExpress.XtraEditors.PanelControl Items_ButtonGroup_Panel;
+        private DevExpress.XtraEditors.PanelControl Items_Button_Panel;
         private DevExpress.XtraGrid.GridControl Items_GridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView Items_GridView;
         private DevExpress.XtraEditors.GroupControl ItemUnit_GroupControl;
@@ -428,7 +428,7 @@
         private DevExpress.XtraEditors.SimpleButton ItemType_Cancel_Button;
         private DevExpress.XtraEditors.SimpleButton ItemType_Save_Button;
         private DevExpress.XtraEditors.SimpleButton Items_Add_Button;
-        private System.Windows.Forms.Panel ItemConpany_Button_Panel;
+        private System.Windows.Forms.Panel ItemUnit_Button_Panel;
         private DevExpress.XtraEditors.SimpleButton ItemUnit_Cancel_Button;
         private DevExpress.XtraEditors.SimpleButton ItemUnit_Save_Button;
         private DevExpress.XtraEditors.SimpleButton ItemUnit_Delete_Button;
