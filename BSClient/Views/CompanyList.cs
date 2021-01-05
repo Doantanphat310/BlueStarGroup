@@ -15,7 +15,7 @@ namespace BSClient.Views
 {
     public partial class CompanyList : XtraUserControl
     {
-        public BindingList<Company> CompanyData { get; set; }
+        public BindingList<CM_Company> CompanyData { get; set; }
 
         public CompanyList()
         {
@@ -63,14 +63,14 @@ namespace BSClient.Views
         {
             using (CompanyController controller = new CompanyController())
             {
-                CompanyData = new BindingList<Company>(controller.GetCompanys());
+                CompanyData = new BindingList<CM_Company>(controller.GetCompanys());
                 Company_GridControl.DataSource = CompanyData;
             }
         }
 
         private void Delete_Button_Click(object sender, EventArgs e)
         {
-            Company company = Company_GridView.GetFocusedRow().CastTo<Company>();
+            CM_Company company = Company_GridView.GetFocusedRow().CastTo<CM_Company>();
 
             if (company == null)
             {
@@ -85,7 +85,7 @@ namespace BSClient.Views
                     controller.DeleteCompany(company);
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000027);
 
-                    CompanyData = new BindingList<Company>(controller.GetCompanys());
+                    CompanyData = new BindingList<CM_Company>(controller.GetCompanys());
                     Company_GridControl.DataSource = CompanyData;
                 }
                 catch
@@ -121,7 +121,7 @@ namespace BSClient.Views
 
         private void ExcuteUpdate()
         {
-            Company company = Company_GridView.GetFocusedRow().CastTo<Company>();
+            CM_Company company = Company_GridView.GetFocusedRow().CastTo<CM_Company>();
 
             if (company == null)
             {

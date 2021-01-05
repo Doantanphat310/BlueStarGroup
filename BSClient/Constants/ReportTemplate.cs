@@ -14,15 +14,21 @@ namespace BSClient.Constants
         /// </summary>
         public const string RPT000002 = "ID_RPT000002";
 
-        private static readonly Dictionary<string, string> ReportTempalteDictionary = new Dictionary<string, string>
+        /// <summary>
+        /// Báo Cáo Tài Chính
+        /// </summary>
+        public const string RPT000003 = "ID_RPT000003";
+
+        private static readonly Dictionary<string, string> TempalteDictionary = new Dictionary<string, string>
         {
             { "ID_RPT000001", "BangCanDoiSoPhatSinhTaiKhoan"},
-            { "ID_RPT000002", "SoCaiChiTiet"}
+            { "ID_RPT000002", "SoCaiChiTiet"},
+            { "ID_RPT000003", "BaoCaoTaiChinh"}
         };
 
         public static string GetTemplate(string reportID)
         {
-            return ReportTempalteDictionary[reportID];
+            return TempalteDictionary[reportID];
         }
     }
 }

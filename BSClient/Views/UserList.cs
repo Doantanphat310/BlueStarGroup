@@ -18,13 +18,15 @@ namespace BSClient.Views
 {
     public partial class UserList : XtraUserControl
     {
-        public BindingList<Users> MasterData { get; set; }
+        private BindingList<Users> MasterData { get; set; }
 
-        public BindingList<UserRoleCompany> DetailData { get; set; }
+        private BindingList<UserRoleCompany> DetailData { get; set; }
 
-        public List<Users> MasterDataDelete { get; set; } = new List<Users>();
+        private List<Users> MasterDataDelete { get; set; } = new List<Users>();
 
-        public List<UserRoleCompany> DetailDataDelete { get; set; } = new List<UserRoleCompany>();
+        private List<UserRoleCompany> DetailDataDelete { get; set; } = new List<UserRoleCompany>();
+
+        private List<MasterInfo> UserRoles { get; set; }
 
         public UserList()
         {
@@ -36,21 +38,26 @@ namespace BSClient.Views
 
             if (!ClientCommon.HasAuthority(UserInfo.UserRole, Constants.BSRole.Full))
             {
-                CompanyID_LookUpEdit.ReadOnly = true;
+                Users_GridView.OptionsBehavior.Editable = false;
+                Users_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+
+                UserRole_Panel.Enabled = false;
+                UserButton_Panel.Enabled = false;
             }
+
             CompanyID_LookUpEdit.EditValue = CommonInfo.CompanyInfo.CompanyID;
         }
 
         private void InitComboBox()
         {
-            List<Company> companys = GetCompanyList();
+            List<CM_Company> companys = GetCompanyList();
             CompanyID_LookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", companys);
 
-            List<MasterInfo> userRoles = MasterInfoManager.GetUserRoles();
-            UserRole_ComboBox.SetupLookUpEdit("Id", "Value", userRoles);
+            UserRoles = MasterInfoManager.GetUserRoles();
+            UserRole_ComboBox.SetupLookUpEdit("Id", "Value", UserRoles);
         }
 
-        private List<Company> GetCompanyList()
+        private List<CM_Company> GetCompanyList()
         {
             using (CompanyController controller = new CompanyController())
             {
@@ -100,7 +107,7 @@ namespace BSClient.Views
 
             this.UserRole_GridView.AddColumn("CompanyID", "Mã Công ty", 100, false);
             this.UserRole_GridView.AddColumn("CompanyName", "Tên Công ty", 250, false);
-            this.UserRole_GridView.AddColumn("UserRoleName", "Quyền", 100, false);
+            this.UserRole_GridView.AddLookupEditColumn("UserRoleID", "Quyền", 100, UserRoles, "Id", "Value");
         }
 
         private void SetupGridView()
@@ -110,7 +117,7 @@ namespace BSClient.Views
 
         private void SetupDetailGridView()
         {
-            UserRole_GridView.SetupGridView();
+            UserRole_GridView.SetupGridView(newItemRow: NewItemRowPosition.None);
         }
 
         private void LoadGridView()
@@ -368,9 +375,11 @@ namespace BSClient.Views
 
         private void FilterUserRole()
         {
-            string filter = string.Empty;
+            this.UserRole_GridView.ClearColumnsFilter();
 
+            string filter = string.Empty;
             string company = CompanyID_LookUpEdit.EditValue?.ToString();
+
             if (!string.IsNullOrEmpty(company))
             {
                 filter = $"[CompanyID] = '{company}'";
@@ -391,11 +400,21 @@ namespace BSClient.Views
             }
 
             // filter grid
-            this.UserRole_GridView.ClearColumnsFilter();
             if (!string.IsNullOrEmpty(filter))
             {
                 this.UserRole_GridView.ActiveFilterString = filter;
             }
+        }
+
+        private void UserRole_GridView_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            UserRoleCompany row = e.Row.CastTo<UserRoleCompany>();
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+
+            row.Status = ModifyMode.Update;
         }
     }
 }

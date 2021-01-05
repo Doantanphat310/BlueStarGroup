@@ -9,9 +9,9 @@ CREATE PROCEDURE UserRoleCompanyUpdate (
 AS
 	UPDATE UserRoleCompany
 	SET
-		UpdateDate = GETDATE()
+		RoleID = @RoleID
+		,UpdateDate = GETDATE()
         ,UpdateUser = @UpdateUser
 	WHERE 
 		UserID = @UserID
 		AND CompanyID = @CompanyID
-		AND RoleID = @RoleID

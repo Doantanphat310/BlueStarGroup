@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Constant\CommonEnum.cs" />
     <Compile Include="Models\Balance.cs" />
+    <Compile Include="Models\CM_Company.cs" />
     <Compile Include="Models\CustomerCompany.cs" />
     <Compile Include="Models\GetChiTietSoCai.cs" />
     <Compile Include="Models\GetChiTietTaiKhoan.cs" />

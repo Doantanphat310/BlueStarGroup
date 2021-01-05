@@ -136,14 +136,14 @@
                 <Item5 Ref="82" ControlType="XRTableCell" Name="xrTableCell13" Weight="1.2979508657680938" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Borders="Right, Bottom">
                   <StylePriority Ref="83" UseBorders="false" UseTextAlignment="false" />
                 </Item5>
-                <Item6 Ref="84" ControlType="XRTableCell" Name="xrTableCell15" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9.75pt, charSet=0" Borders="Right, Bottom">
+                <Item6 Ref="84" ControlType="XRTableCell" Name="xrTableCell15" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" Borders="Right, Bottom">
                   <Summary Ref="85" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="86" Expression="Iif(sumSum([DKNo]) = 0, '', sumSum([DKNo]))" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="87" UseFont="false" UseBorders="false" UseTextAlignment="false" />
                 </Item6>
-                <Item7 Ref="88" ControlType="XRTableCell" Name="xrTableCell16" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9.75pt, charSet=0" Borders="Right, Bottom">
+                <Item7 Ref="88" ControlType="XRTableCell" Name="xrTableCell16" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" Borders="Right, Bottom">
                   <Summary Ref="89" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="90" Expression="Iif(sumSum([DKCo]) = 0, '', sumSum([DKCo]))" PropertyName="Text" EventName="BeforePrint" />
@@ -187,14 +187,14 @@
                 <Item1 Ref="105" ControlType="XRTableCell" Name="xrTableCell17" Weight="19.580637834391521" Multiline="true" Text="Đầu kỳ" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
                   <StylePriority Ref="106" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="107" ControlType="XRTableCell" Name="xrTableCell18" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item2 Ref="107" ControlType="XRTableCell" Name="xrTableCell18" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="108" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="109" Expression="Iif(sumSum([DKNo]) = 0, '', sumSum([DKNo]))" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="110" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="111" ControlType="XRTableCell" Name="xrTableCell19" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item3 Ref="111" ControlType="XRTableCell" Name="xrTableCell19" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="112" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="113" Expression="Iif(sumSum([DKCo]) = 0, '', sumSum([DKCo]))" PropertyName="Text" EventName="BeforePrint" />
@@ -208,14 +208,14 @@
                 <Item1 Ref="116" ControlType="XRTableCell" Name="xrTableCell21" Weight="19.580637834391521" TextFormatString="{0:#,##0}" Text="Phát sinh" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
                   <StylePriority Ref="117" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="118" ControlType="XRTableCell" Name="xrTableCell22" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item2 Ref="118" ControlType="XRTableCell" Name="xrTableCell22" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="119" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="120" Expression="Iif(sumSum([PSNo]) = 0, '', sumSum([PSNo]))" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="121" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="122" ControlType="XRTableCell" Name="xrTableCell23" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item3 Ref="122" ControlType="XRTableCell" Name="xrTableCell23" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="123" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="124" Expression="Iif(sumSum([PSCo]) = 0, '', sumSum([PSCo]))" PropertyName="Text" EventName="BeforePrint" />
@@ -229,14 +229,14 @@
                 <Item1 Ref="127" ControlType="XRTableCell" Name="xrTableCell20" Weight="19.580637834391521" Multiline="true" Text="Cuối kỳ" TextAlignment="MiddleRight" Font="Arial, 9.75pt, style=Bold, charSet=0" ForeColor="DodgerBlue" Borders="Left, Right, Bottom">
                   <StylePriority Ref="128" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="129" ControlType="XRTableCell" Name="xrTableCell24" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item2 Ref="129" ControlType="XRTableCell" Name="xrTableCell24" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="130" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="131" Expression="Iif(sumSum([CKNo]) = 0, '', sumSum([CKNo]))" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="132" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="133" ControlType="XRTableCell" Name="xrTableCell25" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, style=Bold, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item3 Ref="133" ControlType="XRTableCell" Name="xrTableCell25" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" Multiline="true" TextAlignment="MiddleRight" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="134" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="135" Expression="Iif(sumSum([CKCo]) = 0, '', sumSum([CKCo]))" PropertyName="Text" EventName="BeforePrint" />
@@ -298,14 +298,14 @@
                   </ExpressionBindings>
                   <StylePriority Ref="165" UseFont="false" UseBorders="false" UseTextAlignment="false" />
                 </Item5>
-                <Item6 Ref="166" ControlType="XRTableCell" Name="xrTableCell31" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Font="Arial, 9.75pt, charSet=0" Borders="Right, Bottom">
+                <Item6 Ref="166" ControlType="XRTableCell" Name="xrTableCell31" Weight="3.7084640187918656" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Font="Arial, 9pt, charSet=0" Borders="Right, Bottom">
                   <Summary Ref="167" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="168" Expression="Iif(sumSum([DebitAmount]) = 0, '', sumSum([DebitAmount]))" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="169" UseFont="false" UseBorders="false" UseTextAlignment="false" />
                 </Item6>
-                <Item7 Ref="170" ControlType="XRTableCell" Name="xrTableCell32" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Font="Arial, 9.75pt, charSet=0" Borders="Right, Bottom">
+                <Item7 Ref="170" ControlType="XRTableCell" Name="xrTableCell32" Weight="3.7455513984529158" TextFormatString="{0:#,##0}" TextAlignment="TopRight" Font="Arial, 9pt, charSet=0" Borders="Right, Bottom">
                   <Summary Ref="171" Running="Group" />
                   <ExpressionBindings>
                     <Item1 Ref="172" Expression="Iif(sumSum([CreditAmount]) = 0, '', sumSum([CreditAmount]))" PropertyName="Text" EventName="BeforePrint" />

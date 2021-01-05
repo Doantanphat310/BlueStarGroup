@@ -55,7 +55,7 @@ namespace BSClient
 
             using (UserController controller = new UserController())
             {
-                Users user = Users?.Find(o => o.UserID == userID);
+                Users user = Users?.Find(o => o.UserID.ToLower() == userID.ToLower());
 
                 if (user != null && ClientCommon.IsCheckPass(Password_TextBox.Text, user.Password))
                 {

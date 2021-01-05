@@ -40,11 +40,11 @@
             this.ItemList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.UserList_Button = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.NhapSoDuaccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.Report_Group = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.SoCaiChiTiet_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.WarehouseList_accordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Report_Group = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.BaoCaoKeToanToanTap_MenuItem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -54,10 +54,10 @@
             this.Content.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.Content.Appearance.Options.UseBackColor = true;
             this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(173, 27);
+            this.Content.Location = new System.Drawing.Point(222, 27);
             this.Content.Margin = new System.Windows.Forms.Padding(2);
             this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(841, 736);
+            this.Content.Size = new System.Drawing.Size(792, 736);
             this.Content.TabIndex = 0;
             // 
             // accordionControl1
@@ -70,8 +70,8 @@
             this.accordionControl1.Location = new System.Drawing.Point(0, 27);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(173, 736);
+            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Auto;
+            this.accordionControl1.Size = new System.Drawing.Size(222, 736);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -151,14 +151,33 @@
             this.NhapSoDuaccordionControlElement.Text = "Nhập số dư";
             this.NhapSoDuaccordionControlElement.Click += new System.EventHandler(this.NhapSoDuaccordionControlElement_Click);
             // 
+            // WarehouseList_accordionControlElement
+            // 
+            this.WarehouseList_accordionControlElement.Name = "WarehouseList_accordionControlElement";
+            this.WarehouseList_accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.WarehouseList_accordionControlElement.Text = "Danh mục kho";
+            this.WarehouseList_accordionControlElement.Click += new System.EventHandler(this.WarehouseList_accordionControlElement_Click);
+            // 
             // Report_Group
             // 
             this.Report_Group.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.BangCanDoiSoPhatSinh_Item,
-            this.SoCaiChiTiet_Item});
+            this.BaoCaoKeToanToanTap_MenuItem,
+            this.BangCanDoiSoPhatSinh_Item});
             this.Report_Group.Expanded = true;
+            this.Report_Group.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
             this.Report_Group.Name = "Report_Group";
             this.Report_Group.Text = "Báo cáo";
+            // 
+            // BaoCaoKeToanToanTap_MenuItem
+            // 
+            this.BaoCaoKeToanToanTap_MenuItem.Name = "BaoCaoKeToanToanTap_MenuItem";
+            this.BaoCaoKeToanToanTap_MenuItem.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.BaoCaoKeToanToanTap_MenuItem.Text = "Báo cáo kế toán toàn tập";
+            this.BaoCaoKeToanToanTap_MenuItem.Click += new System.EventHandler(this.BaoCaoKeToanToanTap_MenuItem_Click);
             // 
             // BangCanDoiSoPhatSinh_Item
             // 
@@ -166,12 +185,6 @@
             this.BangCanDoiSoPhatSinh_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.BangCanDoiSoPhatSinh_Item.Text = "Bảng cân đối số phát sinh tài khoản";
             this.BangCanDoiSoPhatSinh_Item.Click += new System.EventHandler(this.BangCanDoiSoPhatSinh_Item_Click);
-            // 
-            // SoCaiChiTiet_Item
-            // 
-            this.SoCaiChiTiet_Item.Name = "SoCaiChiTiet_Item";
-            this.SoCaiChiTiet_Item.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.SoCaiChiTiet_Item.Text = "Sổ cái chi tiết";
             // 
             // fluentDesignFormControl1
             // 
@@ -182,13 +195,6 @@
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1014, 27);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // WarehouseList_accordionControlElement
-            // 
-            this.WarehouseList_accordionControlElement.Name = "WarehouseList_accordionControlElement";
-            this.WarehouseList_accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.WarehouseList_accordionControlElement.Text = "Danh mục kho";
-            this.WarehouseList_accordionControlElement.Click += new System.EventHandler(this.WarehouseList_accordionControlElement_Click);
             // 
             // MainForm
             // 
@@ -235,7 +241,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement NhapSoDuaccordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Report_Group;
         private DevExpress.XtraBars.Navigation.AccordionControlElement BangCanDoiSoPhatSinh_Item;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement SoCaiChiTiet_Item;
         private DevExpress.XtraBars.Navigation.AccordionControlElement WarehouseList_accordionControlElement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement BaoCaoKeToanToanTap_MenuItem;
     }
 }

@@ -17,7 +17,7 @@ namespace BSServer.Controllers
             this.CompanyDAO = new CompanyDAO(this.Context);
         }
 
-        public List<Company> GetCompanys()
+        public List<CM_Company> GetCompanys()
         {
             return this.CompanyDAO.GetCompanys();
         }
@@ -40,7 +40,7 @@ namespace BSServer.Controllers
             return this.CompanyDAO.UpdateCompany(data);
         }
 
-        public bool DeleteCompany(Company data)
+        public bool DeleteCompany(CM_Company data)
         {
             return this.CompanyDAO.DeleteCompany(data);
         }
