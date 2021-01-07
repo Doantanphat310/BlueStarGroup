@@ -70,7 +70,7 @@
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.KhoaSo_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.VoucherKetChuyen_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
@@ -645,7 +645,7 @@
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.simpleButton12);
-            this.panelControl2.Controls.Add(this.simpleButton5);
+            this.panelControl2.Controls.Add(this.KhoaSo_simpleButton);
             this.panelControl2.Controls.Add(this.simpleButton6);
             this.panelControl2.Controls.Add(this.VoucherKetChuyen_simpleButton);
             this.panelControl2.Controls.Add(this.simpleButton16);
@@ -668,14 +668,15 @@
             this.simpleButton12.TabIndex = 26;
             this.simpleButton12.Text = "TK đối ứng";
             // 
-            // simpleButton5
+            // KhoaSo_simpleButton
             // 
-            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(12, 5);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton5.TabIndex = 22;
-            this.simpleButton5.Text = "Khóa sổ";
+            this.KhoaSo_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.KhoaSo_simpleButton.Location = new System.Drawing.Point(12, 5);
+            this.KhoaSo_simpleButton.Name = "KhoaSo_simpleButton";
+            this.KhoaSo_simpleButton.Size = new System.Drawing.Size(98, 37);
+            this.KhoaSo_simpleButton.TabIndex = 22;
+            this.KhoaSo_simpleButton.Text = "Khóa sổ";
+            this.KhoaSo_simpleButton.Click += new System.EventHandler(this.KhoaSo_simpleButton_Click);
             // 
             // simpleButton6
             // 
@@ -1689,7 +1690,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
         private DevExpress.XtraEditors.SimpleButton CDPSTK_Button;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton KhoaSo_simpleButton;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCapNhat;
         private DevExpress.XtraEditors.SimpleButton simpleButtonNewSave;
         private DevExpress.XtraEditors.LabelControl labelControl6;

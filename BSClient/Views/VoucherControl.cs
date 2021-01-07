@@ -3276,5 +3276,10 @@ namespace BSClient
                 }
             }
         }
+
+        private void KhoaSo_simpleButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

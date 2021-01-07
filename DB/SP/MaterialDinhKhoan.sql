@@ -252,3 +252,5 @@ SPSelectAccountAccountDetail '000'
 select * from Balance
 
 
+select * from company
+
