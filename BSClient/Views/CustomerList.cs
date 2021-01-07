@@ -6,6 +6,7 @@ using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.ButtonsPanelControl;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
@@ -37,6 +38,7 @@ namespace BSClient.Views
             if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
             {
                 Button_Panel.Enabled = false;
+                this.Customer_GroupControl.CustomHeaderButtons[0].CastTo<GroupBoxButton>().Enabled = false;
                 Customer_GridView.OptionsBehavior.Editable = false;
                 Customer_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
             }

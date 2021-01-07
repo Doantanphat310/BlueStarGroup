@@ -6,6 +6,7 @@ using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
@@ -70,41 +71,42 @@ namespace BSClient.Views.Reports
 
         private void InitGridView()
         {
-            Main_GridView.Columns.Clear();
-            this.Main_GridView.AddColumn("AccountID", "Mã TK", 70, false);
-            this.Main_GridView.AddColumn("AccountName", "Tên Tài Khoản", 300, false, fixedWidth: false);
+            this.Main_BandedGridView.Columns.Clear();
+            this.Main_BandedGridView.Bands.Clear();
+
+            this.Main_BandedGridView.AddColumn("AccountID", "Mã TK", 70, false);
+            this.Main_BandedGridView.AddColumn("AccountName", "Tên Tài Khoản", 300, false, fixedWidth: false);
 
             if (TypeSearch_LookUpEdit.ItemIndex == 0)
             {
             }
             else if (TypeSearch_LookUpEdit.ItemIndex == 1)
             {
-                this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
+                this.Main_BandedGridView.AddColumn("AccountDetailID", "T.kê", 50, false);
             }
             else
             {
-                this.Main_GridView.AddColumn("AccountDetailID", "T.kê", 50, false);
-                this.Main_GridView.AddLookupEditColumn("CustomerID", "Mã KH", 90, Customers, "CustomerID", "CustomerSName", isAllowEdit: false);
+                this.Main_BandedGridView.AddColumn("AccountDetailID", "T.kê", 50, false);
+                this.Main_BandedGridView.AddLookupEditColumn("CustomerID", "Mã KH", 90, Customers, "CustomerID", "CustomerSName", isAllowEdit: false);
             }
 
-            this.Main_GridView.AddSpinEditColumn("DKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("DKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("PSNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("PSCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("CKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
-            this.Main_GridView.AddSpinEditColumn("CKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("DKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("DKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("PSNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("PSCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("CKNo", "Nợ", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+            this.Main_BandedGridView.AddSpinEditColumn("CKCo", "Có", 110, false, summaryType: DevExpress.Data.SummaryItemType.Sum);
+
+            // add band
+            Main_BandedGridView.AddBand("", "AccountID", "AccountDetailID", "AccountName", "CustomerID");
+            Main_BandedGridView.AddBand("Số dư đầu kỳ", "DKNo", "DKCo");
+            Main_BandedGridView.AddBand("Phát sinh trong kỳ", "PSNo", "PSCo");
+            Main_BandedGridView.AddBand("Số dư cuối kỳ", "CKNo", "CKCo");
         }
 
         private void SetupGridView()
         {
-            this.Main_GridView.SetupGridView(
-                multiSelect: false,
-                checkBoxSelectorColumnWidth: 0,
-                showAutoFilterRow: false,
-                newItemRow: NewItemRowPosition.None,
-                showFooter: true,
-                columnAutoWidth: true,
-                hasShowRowHeader: true);
+            this.Main_BandedGridView.SetupGridView(showFooter: true, columnAutoWidth: true);
         }
 
         private void LoadDataGridView()
@@ -172,7 +174,7 @@ namespace BSClient.Views.Reports
 
         private void ShowChiTietTaiKhoanForm()
         {
-            var selected = Main_GridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
+            var selected = Main_BandedGridView.GetFocusedRow().CastTo<GetCanDoiSoPhatSinhTaiKhoan>();
 
             if (selected == null)
             {

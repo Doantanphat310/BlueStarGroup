@@ -166,20 +166,21 @@ namespace BSServer.Logics
                 }
             }
 
+            List<GetBalance> psNotDk = new List<GetBalance>();
+
             // tính lại đầu kỳ ( đầu kỳ = đầu kỳ + phát sinh)
             if (psDKData != null)
             {
-                foreach (var item in dkData)
+                foreach (GetCanDoiSoPhatSinhTaiKhoan psdk in psDKData)
                 {
-                    GetCanDoiSoPhatSinhTaiKhoan psdk = psDKData.Find(o =>
-                        o.AccountID == item.AccountID &&
-                        o.AccountDetailID == item.AccountDetailID &&
-                        o.CustomerID == item.CustomerID);
+                    GetBalance item = dkData.Find(o =>
+                        o.AccountID == psdk.AccountID &&
+                        o.AccountDetailID == psdk.AccountDetailID &&
+                        o.CustomerID == psdk.CustomerID);
 
-                    decimal dk = 0;
-                    if (psdk != null)
+                    if (item != null)
                     {
-                        dk = item.DebitBalance - item.CreditBalance + psdk.PSNo - psdk.PSCo;
+                        decimal dk = item.DebitBalance - item.CreditBalance + psdk.PSNo - psdk.PSCo;
 
                         // Với những TK tiền(bắt đầu bằng 11) thì cho phép âm, 
                         // nên sẽ xử lý theo đánh dấu dư nợ hoặc có trong danh mục tài khoản
@@ -215,7 +216,26 @@ namespace BSServer.Logics
                             item.CreditBalance = (-1) * dk;
                         }
                     }
+                    else
+                    {
+                        psNotDk.Add(new GetBalance
+                        {
+                            AccountID = psdk.AccountID,
+                            AccountDetailID = psdk.AccountDetailID,
+                            AccountName = psdk.AccountName,
+                            CustomerID = psdk.CustomerID,
+                            BalanceDate = fromDate,
+                            DebitBalance = psdk.PSNo,
+                            CreditBalance = psdk.PSCo
+                        });
+                    }
                 }
+            }
+
+            // Thêm phát sinh mà không có đầu kỳ vào list đầu kỳ
+            if(psNotDk.Count > 0)
+            {
+                dkData.AddRange(psNotDk);
             }
 
             // Thêm DK
@@ -271,7 +291,7 @@ namespace BSServer.Logics
 
         public List<GetChiTietSoCai> GetChiTietSoCai(DateTime fromDate, DateTime toDate)
         {
-            List<GetCanDoiSoPhatSinhTaiKhoan> psdata = this.GetBangCanDoiSoPhatSinhChiTiet(fromDate, toDate);
+            List<GetCanDoiSoPhatSinhTaiKhoan> psdata = this.GetBangCanDoiSoPhatSinh(fromDate, toDate, 1);
 
             List<GetChiTietSoCai> chitiet = this.AccountsDAO.GetChiTietSoCai(fromDate, toDate);
 
@@ -280,7 +300,7 @@ namespace BSServer.Logics
             {
                 foreach (var item in psdata)
                 {
-                    GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && o.AccountDetailID == item.AccountDetailID);
+                    GetChiTietSoCai itemFind = chitiet.Find(o => o.AccountID == item.AccountID && (o.AccountDetailID ?? string.Empty) == (item.AccountDetailID ?? string.Empty));
                     if (itemFind != null)
                     {
                         itemFind.DKNo = item.DKNo;

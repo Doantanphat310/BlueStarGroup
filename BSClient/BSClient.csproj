@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="GlobalVarient.cs" />
     <Compile Include="Utility\ExcelHelper.cs" />
+    <Compile Include="Utility\BandedGridViewHelper.cs" />
     <Compile Include="Utility\ReportHelper.cs" />
     <Compile Include="Views\ChiTietTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -212,6 +213,12 @@
     </Compile>
     <Compile Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoanReport.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\BaoCaoKeToanToanTap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Reports\BaoCaoKeToanToanTap.Designer.cs">
+      <DependentUpon>BaoCaoKeToanToanTap.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -309,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Reports\BangCanDoiSoPhatSinhTaiKhoanReport.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports\BaoCaoKeToanToanTap.resx">
+      <DependentUpon>BaoCaoKeToanToanTap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>

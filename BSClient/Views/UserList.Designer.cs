@@ -94,6 +94,7 @@
             this.UserRole_GridView.GridControl = this.UserRole_GridControl;
             this.UserRole_GridView.Name = "UserRole_GridView";
             this.UserRole_GridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.UserRole_GridView_RowDeleted);
+            this.UserRole_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.UserRole_GridView_RowUpdated);
             // 
             // Main_Table
             // 

@@ -5,6 +5,7 @@ using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors.ButtonsPanelControl;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
@@ -38,6 +39,23 @@ namespace BSClient.Views
             InitializeComponent();
 
             LoadGrid();
+
+            if (!ClientCommon.HasAuthority(UserInfo.UserRole, BSRole.Full))
+            {
+                ItemType_Button_Panel.Enabled = false;
+                this.ItemType_GroupControl.CustomHeaderButtons[0].CastTo<GroupBoxButton>().Enabled = false;
+                ItemType_GridView.OptionsBehavior.Editable = false;
+                ItemType_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+
+                ItemUnit_Button_Panel.Enabled = false;
+                this.ItemUnit_GroupControl.CustomHeaderButtons[0].CastTo<GroupBoxButton>().Enabled = false;
+                ItemUnit_GridView.OptionsBehavior.Editable = false;
+                ItemUnit_GridView.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
+
+                Items_Button_Panel.Enabled = false;
+                this.Items_GroupControl.CustomHeaderButtons[0].CastTo<GroupBoxButton>().Enabled = false;
+                Items_GridView.OptionsBehavior.Editable = false;
+            }
         }
 
         private void LoadGrid()

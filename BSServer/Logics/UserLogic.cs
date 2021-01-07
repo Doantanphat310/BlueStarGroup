@@ -74,6 +74,11 @@ namespace BSServer.Logics
                                 this.UserDAO.InsertUserRoleCompany(data);
                                 break;
 
+                            // update
+                            case ModifyMode.Update:
+                                this.UserDAO.UpdateUserRoleCompany(data);
+                                break;
+
                             // Delete
                             case ModifyMode.Delete:
                                 this.UserDAO.DeleteUserRoleCompany(data);

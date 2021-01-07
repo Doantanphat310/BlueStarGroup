@@ -79,5 +79,11 @@ namespace BSClient
             WareHouseList WareHouseListForm = new WareHouseList();
             WareHouseListForm.Show();
         }
+
+        private void BaoCaoKeToanToanTap_MenuItem_Click(object sender, EventArgs e)
+        {
+            BaoCaoToanTap form = new BaoCaoToanTap();
+            form.ShowDialog();
+        }
     }
 }
