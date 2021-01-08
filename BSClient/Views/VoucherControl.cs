@@ -3276,5 +3276,16 @@ namespace BSClient
                 }
             }
         }
+
+        private void KhoaSo_simpleButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void VoucherS35_simpleButton_Click(object sender, EventArgs e)
+        {
+            S35 S35Form = new S35();
+            S35Form.Show();
+        }
     }
 }

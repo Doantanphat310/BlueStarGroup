@@ -36,6 +36,16 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
+        public List<Invoice> GetInvoiceSelectS35(DateTime startDate, DateTime endDate, string companyID)
+        {
+            return this.Context.Database.SqlQuery<Invoice>(
+          "InvoiceSelectS35 @StartDate, @EndDate, @CompanyID",
+          new SqlParameter("@StartDate", startDate),
+          new SqlParameter("@EndDate", endDate),
+          new SqlParameter("@CompanyID", companyID)
+          ).ToList();
+        }
+
         public long GetInvoiceSEQ()
         {
             return this.GetMaxSEQ(BSServerConst.InvoiceSymbol);
@@ -63,6 +73,13 @@ namespace BSServer.DAOs
                     new SqlParameter("@Discounts", invoice.Discounts),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", invoice.CompanyID),
+                    new SqlParameter("@PaymentType", invoice.PaymentType?? (object)DBNull.Value),
+                    new SqlParameter("@S35Type", invoice.S35Type?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceAccountID", invoice.InvoiceAccountID?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceAccountDetailID", invoice.InvoiceAccountDetailID?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceVATAccountID",invoice.InvoiceVATAccountID?? (object)DBNull.Value),
+                     new SqlParameter("@MST", invoice.MST?? (object)DBNull.Value),
+                    new SqlParameter("@CustomerName",invoice.CustomerName?? (object)DBNull.Value),
                 };
                 this.Context.ExecuteDataFromProcedure("InvoiceInsert", sqlParameters);
                 return true;
@@ -116,7 +133,14 @@ namespace BSServer.DAOs
                     new SqlParameter("@VAT", invoice.VAT),
                     new SqlParameter("@Discounts", invoice.Discounts),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
-                    new SqlParameter("@CompanyID", invoice.CompanyID)
+                    new SqlParameter("@CompanyID", invoice.CompanyID),
+                    new SqlParameter("@PaymentType", invoice.PaymentType?? (object)DBNull.Value),
+                    new SqlParameter("@S35Type", invoice.S35Type?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceAccountID", invoice.InvoiceAccountID?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceAccountDetailID", invoice.InvoiceAccountDetailID?? (object)DBNull.Value),
+                    new SqlParameter("@InvoiceVATAccountID",invoice.InvoiceVATAccountID?? (object)DBNull.Value),
+                    new SqlParameter("@MST", invoice.MST?? (object)DBNull.Value),
+                    new SqlParameter("@CustomerName",invoice.CustomerName?? (object)DBNull.Value),
                 };
 
                 this.Context.ExecuteDataFromProcedure("InvoiceUpdate", sqlParameters);

@@ -22,5 +22,6 @@ namespace BSCommon.Models
         public Boolean ThueVAT { get; set; }
         public Boolean HopDong { get; set; }
         public Boolean CongNo { get; set; }
+        public string AccountGroupID { get; set; }
     }
 }

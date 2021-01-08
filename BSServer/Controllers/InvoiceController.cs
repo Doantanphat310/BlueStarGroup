@@ -32,6 +32,11 @@ namespace BSServer.Controllers
         }
 
         
+        public List<Invoice> GetInvoiceSelectS35(DateTime startDate, DateTime endDate, string companyID)
+        {
+            return this.InvoiceDAO.GetInvoiceSelectS35(startDate, endDate, companyID);
+        }
+
         public List<Invoice> GetInvoiceSameDaySamCustomer(string companyID)
         {
             return this.InvoiceDAO.GetInvoiceSameDaySamCustomer(companyID);

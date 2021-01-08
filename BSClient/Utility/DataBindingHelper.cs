@@ -35,6 +35,22 @@ namespace BSClient.Utility
             }
         }
 
+        public static void BindingrichTextBox(RichTextBox edit, BindingSource bindingSource)
+        {
+            try
+            {
+                edit.DataBindings.Clear();
+                Binding b = new Binding("Text", bindingSource, edit.Tag?.ToString(), true);
+                edit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingrichTextBox: " + ex.Message);
+            }
+        }
+
+        
+
         public static void BindingPictureEdit(PictureEdit edit, BindingSource bindingSource)
         {
             try
@@ -46,6 +62,20 @@ namespace BSClient.Utility
             catch (Exception ex)
             {
                 BSLog.Logger.Debug("Lỗi BindingPictureEdit: " + ex.Message);
+            }
+        }
+
+        public static void BindingSearchLookUpEdit(SearchLookUpEdit searchLookUpEdit, BindingSource bindingSource)
+        {
+            try
+            {
+                searchLookUpEdit.DataBindings.Clear();
+                Binding b = new Binding("EditValue", bindingSource, searchLookUpEdit.Tag?.ToString(), true);
+                searchLookUpEdit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingSearchLookUpEdit: " + ex.Message);
             }
         }
     }

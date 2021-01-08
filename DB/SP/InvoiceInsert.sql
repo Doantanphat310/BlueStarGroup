@@ -1,5 +1,5 @@
 
-Create proc InvoiceInsert
+alter proc InvoiceInsert
 	@InvoiceID varchar(50),
 	@VouchersID varchar(50) ,
 	@CustomerID varchar(50) ,
@@ -14,7 +14,14 @@ Create proc InvoiceInsert
 	@VAT decimal ,
 	@Discounts money ,
 	@CreateUser varchar(50) ,
-	@CompanyID varchar(50) 
+	@CompanyID varchar(50),
+	@PaymentType varchar(2),
+    @S35Type bit,
+    @InvoiceAccountID varchar(50),
+    @InvoiceAccountDetailID varchar(50),
+    @InvoiceVATAccountID varchar(50),
+	@MST varchar(50),
+    @CustomerName varchar(250)
 as
 begin
 INSERT INTO Invoice(
@@ -33,7 +40,15 @@ INSERT INTO Invoice(
 	Discounts,
 	CreateDate,
 	CreateUser,
-	CompanyID)
+	CompanyID,
+	PaymentType,
+    S35Type,
+    InvoiceAccountID,
+    InvoiceAccountDetailID,
+    InvoiceVATAccountID,
+	MST,
+    CustomerName
+	)
 	VALUES(
 	@InvoiceID,
 	@VouchersID,
@@ -50,5 +65,13 @@ INSERT INTO Invoice(
 	@Discounts,
 	getdate(),
 	@CreateUser,
-	@CompanyID)
+	@CompanyID,
+	@PaymentType,
+    @S35Type,
+    @InvoiceAccountID,
+    @InvoiceAccountDetailID,
+    @InvoiceVATAccountID,
+	@MST,
+    @CustomerName
+	)
 end

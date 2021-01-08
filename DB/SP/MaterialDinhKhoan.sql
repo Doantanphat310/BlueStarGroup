@@ -44,6 +44,17 @@ Values('N', N'Nhập')
 select * from @MaterialWareHouseType
 end
 
+alter proc SPSelectMaterialPaymentType
+as
+begin
+	Declare  @MaterialPaymentType TABLE (PaymentTypeSummary varchar(2),PaymentTypeName Nvarchar(50))
+INSERT INTO @MaterialPaymentType (PaymentTypeSummary,PaymentTypeName)
+Values('TM', N'Tiền mặt')
+INSERT INTO @MaterialPaymentType (PaymentTypeSummary,PaymentTypeName)
+Values('CK', N'Chuyển khoản')
+select * from @MaterialPaymentType
+end
+
 
 alter proc SPSelectMaterialMaSoCustomer
 @CustomerID varchar(50)
@@ -74,7 +85,7 @@ alter proc SPSelectMaterialDoiTuong
 @CompanyID varchar(50)
 as
 begin
-Select A.CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo from Customer as A
+Select A.CustomerID,CustomerSName,CustomerName,InvoiceFormNo,FormNo,SerialNo,CustomerTIN from Customer as A
 inner join CustomerCompany as B
 on A.CustomerID = B.CustomerID
 where CompanyID = @CompanyID
@@ -103,7 +114,7 @@ end  'AccountIDFULL',  A.AccountID,B.AccountDetailID,
 case
 when B.AccountDetailName is null then A.AccountName
 else B.AccountDetailName
-end 'Name',A.DuNo,A.DuCo,A.HachToan,A.ThongKe,A.NgoaiTe,A.TK152_156,A.VatTu,A.ThueVAT,A.HopDong,A.CongNo 
+end 'Name',A.DuNo,A.DuCo,A.HachToan,A.ThongKe,A.NgoaiTe,A.TK152_156,A.VatTu,A.ThueVAT,A.HopDong,A.CongNo, A.AccountGroupID
 from
 (select * from Accounts) as A
 left join
@@ -250,5 +261,9 @@ end
 SPSelectAccountAccountDetail '000'
 
 select * from Balance
+
+
+select * from company
+
 
 
