@@ -107,10 +107,6 @@ namespace BSClient.Utility
             }
 
             report.CreateDocument();
-            //ReportPrintTool reportPrintTool = new ReportPrintTool(report)
-            //{
-            //    AutoShowParametersPanel = false
-            //};
 
             return report;
         }

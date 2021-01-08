@@ -15,7 +15,7 @@ namespace BSClient.Constants
         public const string RPT000002 = "ID_RPT000002";
 
         /// <summary>
-        /// Báo Cáo Tài Chính
+        /// Báo Cáo Kế Toán Toàn Tập
         /// </summary>
         public const string RPT000003 = "ID_RPT000003";
 
@@ -23,7 +23,7 @@ namespace BSClient.Constants
         {
             { "ID_RPT000001", "BangCanDoiSoPhatSinhTaiKhoan"},
             { "ID_RPT000002", "SoCaiChiTiet"},
-            { "ID_RPT000003", "BaoCaoTaiChinh"}
+            { "ID_RPT000003", "BaoCaoKeToanToanTap"}
         };
 
         public static string GetTemplate(string reportID)

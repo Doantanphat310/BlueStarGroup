@@ -2,9 +2,9 @@
 
 namespace BSReport.Reports
 {
-    public partial class TrangBia : DevExpress.XtraReports.UI.XtraReport
+    public partial class BaoCaoKeToanToanTap : DevExpress.XtraReports.UI.XtraReport
     {
-        public TrangBia()
+        public BaoCaoKeToanToanTap()
         {
             InitializeComponent();
         }

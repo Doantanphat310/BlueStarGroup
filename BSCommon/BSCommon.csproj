@@ -134,6 +134,7 @@
     <Compile Include="Models\MaterialTonKho.cs" />
     <Compile Include="Models\MaterialWareHouseType.cs" />
     <Compile Include="Models\MaterialCustomerInvoice.cs" />
+    <Compile Include="Models\ReportInfo.cs" />
     <Compile Include="Models\ReportParam.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserRoleCompany.cs" />
