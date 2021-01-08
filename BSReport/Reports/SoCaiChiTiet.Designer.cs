@@ -131,12 +131,12 @@
             this.xrTableCell32 = new DevExpress.XtraReports.UI.XRTableCell();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.DirectorSignture = new DevExpress.XtraReports.Parameters.Parameter();
-            this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.AccountGroupID = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherDescriptionTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherDateTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherIDTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Voucher_GroupFooter = new DevExpress.XtraReports.UI.GroupFooterBand();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -1265,11 +1265,6 @@
             this.DirectorSignture.Description = "Chữ ký giám đốc";
             this.DirectorSignture.Name = "DirectorSignture";
             // 
-            // GroupFooter1
-            // 
-            this.GroupFooter1.HeightF = 0F;
-            this.GroupFooter1.Name = "GroupFooter1";
-            // 
             // AccountGroupID
             // 
             this.AccountGroupID.Expression = "Iif(IsNullOrEmpty([AccountDetailID]), [AccountID], [AccountID] + \'/\' + [AccountDe" +
@@ -1296,6 +1291,11 @@
             // 
             this.bindingSource1.DataSource = typeof(BSCommon.Models.GetChiTietSoCai);
             // 
+            // Voucher_GroupFooter
+            // 
+            this.Voucher_GroupFooter.HeightF = 0F;
+            this.Voucher_GroupFooter.Name = "Voucher_GroupFooter";
+            // 
             // SoCaiChiTiet
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1310,7 +1310,7 @@
             this.Account_GroupFooter,
             this.Voucher_GroupHeader,
             this.GroupHeader1,
-            this.GroupFooter1});
+            this.Voucher_GroupFooter});
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
             this.AccountGroupID,
             this.VoucherDescriptionTag,
@@ -1446,11 +1446,11 @@
         private DevExpress.XtraReports.UI.GroupHeaderBand GroupHeader1;
         private DevExpress.XtraReports.UI.XRPictureBox DirectorSignture_PictureBox;
         private DevExpress.XtraReports.Parameters.Parameter DirectorSignture;
-        private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraReports.UI.CalculatedField AccountGroupID;
         private DevExpress.XtraReports.UI.CalculatedField VoucherDescriptionTag;
         private DevExpress.XtraReports.UI.CalculatedField VoucherDateTag;
         private DevExpress.XtraReports.UI.CalculatedField VoucherIDTag;
+        private DevExpress.XtraReports.UI.GroupFooterBand Voucher_GroupFooter;
     }
 }
