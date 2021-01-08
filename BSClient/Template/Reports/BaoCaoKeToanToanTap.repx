@@ -20,10 +20,10 @@
     </Item2>
     <Item3 Ref="15" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="140">
       <Controls>
-        <Item1 Ref="16" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Trang" TextAlignment="MiddleCenter" SizeF="120,35" LocationFloat="564.920044, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+        <Item1 Ref="16" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Trang" TextAlignment="MiddleCenter" SizeF="120,35" LocationFloat="564.92, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="17" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
         </Item1>
-        <Item2 Ref="18" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Nội dung" TextAlignment="MiddleCenter" SizeF="504.92,35" LocationFloat="60.0000076, 104.999985" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+        <Item2 Ref="18" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Nội dung" TextAlignment="MiddleCenter" SizeF="504.92,35" LocationFloat="60.00001, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="19" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
         </Item2>
         <Item3 Ref="20" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="TT" TextAlignment="MiddleCenter" SizeF="40,35" LocationFloat="20, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="All">
@@ -45,7 +45,7 @@
     </Item3>
     <Item4 Ref="28" ControlType="DetailBand" Name="Detail" HeightF="30" Borders="None">
       <Controls>
-        <Item1 Ref="29" ControlType="XRTable" Name="xrTable5" TextAlignment="MiddleLeft" SizeF="664.92,30" LocationFloat="20.0000153, 0" Padding="2,2,0,0,96">
+        <Item1 Ref="29" ControlType="XRTable" Name="xrTable5" TextAlignment="MiddleLeft" SizeF="664.92,30" LocationFloat="20.00002, 0" Padding="2,2,0,0,96">
           <Rows>
             <Item1 Ref="30" ControlType="XRTableRow" Name="xrTableRow7" Weight="0.9">
               <Cells>
@@ -87,7 +87,7 @@
     </Item6>
     <Item7 Ref="50" ControlType="PageFooterBand" Name="PageFooter" HeightF="53">
       <Controls>
-        <Item1 Ref="51" ControlType="XRLabel" Name="xrLabel16" Multiline="true" TextAlignment="MiddleCenter" SizeF="700.75,49.8750038" LocationFloat="3.125, 0" StyleName="Title" Font="Arial, 14.25pt, charSet=0" Borders="Top" BorderDashStyle="Solid">
+        <Item1 Ref="51" ControlType="XRLabel" Name="xrLabel16" Multiline="true" TextAlignment="MiddleCenter" SizeF="700.75,49.875" LocationFloat="3.125, 0" StyleName="Title" Font="Arial, 14.25pt, charSet=0" Borders="Top" BorderDashStyle="Solid">
           <ExpressionBindings>
             <Item1 Ref="52" Expression="?CompanyAddress" PropertyName="Text" EventName="BeforePrint" />
           </ExpressionBindings>
@@ -107,7 +107,7 @@
     <Item5 Ref="59" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
   </StyleSheet>
   <ComponentStorage>
-    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiPjxEYXRhU291cmNlIFR5cGU9IkJTQ29tbW9uLk1vZGVscy5SZXBvcnRJbmZvLCBCU0NvbW1vbiwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PC9PYmplY3REYXRhU291cmNlPg==" />
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiIC8+" />
   </ComponentStorage>
   <ObjectStorage>
     <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="2" Content="System.DateTime" Type="System.Type" />

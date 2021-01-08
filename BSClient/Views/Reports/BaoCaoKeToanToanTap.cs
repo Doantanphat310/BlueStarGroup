@@ -93,18 +93,23 @@ namespace BSClient.Views.Reports
 
             List<ReportInfoView> result = new List<ReportInfoView>();
             XtraReport report;
+            int pageStart;
+            int pageEnd = 0;
 
             if (BangCanDoiSoPhatSinhTK_CheckBox.Checked)
             {
                 report = GetBangCanDoiSoPSTKReport(fromDate, toDate);
                 pageCount = report.Pages.Count;
+                pageStart = pageEnd + 1;
+                pageEnd = pageStart + pageCount - 1;
 
                 result.Add(new ReportInfoView
                 {
                     ReportID = ReportTemplate.RPT000001,
                     ReportName = BangCanDoiSoPhatSinhTK_CheckBox.Text,
-                    PageStart = pageCount > 0 ? 1 : 0,
-                    PageEnd = pageCount,
+                    PageStart = pageStart,
+                    PageEnd = pageEnd,
+                    PageCount = pageCount,
                     Report = report
                 });
             }
@@ -113,13 +118,16 @@ namespace BSClient.Views.Reports
             {
                 report = GetSoCaiTaiKhoanReport(fromDate, toDate);
                 pageCount = report.Pages.Count;
+                pageStart = pageEnd + 1;
+                pageEnd = pageStart + pageCount - 1;
 
                 result.Add(new ReportInfoView
                 {
                     ReportID = ReportTemplate.RPT000002,
                     ReportName = SoCaiTaiKhoan_CheckBox.Text,
-                    PageStart = pageCount > 0 ? 1 : 0,
-                    PageEnd = pageCount,
+                    PageStart = pageStart,
+                    PageEnd = pageEnd,
+                    PageCount = pageCount,
                     Report = report
                 });
             }

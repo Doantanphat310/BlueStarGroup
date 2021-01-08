@@ -1,4 +1,4 @@
-﻿namespace BSCommon.Models
+﻿namespace BSReport.Models
 {
     public class ReportInfo
     {

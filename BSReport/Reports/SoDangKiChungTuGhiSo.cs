@@ -4,7 +4,7 @@ namespace BSReport.Reports
 {
     public partial class SoDangKiChungTuGhiSo : DevExpress.XtraReports.UI.XtraReport
     {
-        public SoCaiChiTiet()
+        public SoDangKiChungTuGhiSo()
         {
             InitializeComponent();
         }
