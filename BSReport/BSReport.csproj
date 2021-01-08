@@ -74,6 +74,12 @@
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SoDangKiChungTuGhiSo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoDangKiChungTuGhiSo.Designer.cs">
+      <DependentUpon>SoDangKiChungTuGhiSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\SoCaiChiTiet.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoDangKiChungTuGhiSo.resx">
+      <DependentUpon>SoDangKiChungTuGhiSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SoCaiChiTiet.resx">
       <DependentUpon>SoCaiChiTiet.cs</DependentUpon>
