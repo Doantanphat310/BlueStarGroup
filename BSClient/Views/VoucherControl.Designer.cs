@@ -78,7 +78,7 @@
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
+            this.VoucherS35_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageLKVAT = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
             this.InvoiceCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -653,7 +653,7 @@
             this.panelControl2.Controls.Add(this.simpleButton7);
             this.panelControl2.Controls.Add(this.simpleButton11);
             this.panelControl2.Controls.Add(this.CDPSTK_Button);
-            this.panelControl2.Controls.Add(this.simpleButton15);
+            this.panelControl2.Controls.Add(this.VoucherS35_simpleButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(2, 482);
             this.panelControl2.Name = "panelControl2";
@@ -670,7 +670,7 @@
             // 
             // KhoaSo_simpleButton
             // 
-            this.KhoaSo_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.KhoaSo_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("KhoaSo_simpleButton.ImageOptions.Image")));
             this.KhoaSo_simpleButton.Location = new System.Drawing.Point(12, 5);
             this.KhoaSo_simpleButton.Name = "KhoaSo_simpleButton";
             this.KhoaSo_simpleButton.Size = new System.Drawing.Size(98, 37);
@@ -741,14 +741,15 @@
             this.CDPSTK_Button.Text = "Cân đối TK";
             this.CDPSTK_Button.Click += new System.EventHandler(this.CDPSTK_Button_Click);
             // 
-            // simpleButton15
+            // VoucherS35_simpleButton
             // 
-            this.simpleButton15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton15.ImageOptions.Image")));
-            this.simpleButton15.Location = new System.Drawing.Point(472, 48);
-            this.simpleButton15.Name = "simpleButton15";
-            this.simpleButton15.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton15.TabIndex = 31;
-            this.simpleButton15.Text = "Sổ S35";
+            this.VoucherS35_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("VoucherS35_simpleButton.ImageOptions.Image")));
+            this.VoucherS35_simpleButton.Location = new System.Drawing.Point(472, 48);
+            this.VoucherS35_simpleButton.Name = "VoucherS35_simpleButton";
+            this.VoucherS35_simpleButton.Size = new System.Drawing.Size(98, 37);
+            this.VoucherS35_simpleButton.TabIndex = 31;
+            this.VoucherS35_simpleButton.Text = "Sổ S35";
+            this.VoucherS35_simpleButton.Click += new System.EventHandler(this.VoucherS35_simpleButton_Click);
             // 
             // tabNavigationPageLKVAT
             // 
@@ -1682,7 +1683,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView Voucher_gridView;
         private DevExpress.XtraEditors.DateEdit dateEditBDKT;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton15;
+        private DevExpress.XtraEditors.SimpleButton VoucherS35_simpleButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton16;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;

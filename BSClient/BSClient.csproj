@@ -220,6 +220,12 @@
     <Compile Include="Views\Reports\BaoCaoKeToanToanTap.Designer.cs">
       <DependentUpon>BaoCaoKeToanToanTap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\S35.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\S35.Designer.cs">
+      <DependentUpon>S35.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Reports\BaoCaoKeToanToanTap.resx">
       <DependentUpon>BaoCaoKeToanToanTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\S35.resx">
+      <DependentUpon>S35.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>

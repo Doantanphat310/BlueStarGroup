@@ -127,6 +127,7 @@
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\MaterialGL.cs" />
     <Compile Include="Models\MaterialInvoiceType.cs" />
+    <Compile Include="Models\MaterialPayment.cs" />
     <Compile Include="Models\MaterialNV.cs" />
     <Compile Include="Models\MaterialDT.cs" />
     <Compile Include="Models\MaterialSoDuCuoiKyTK.cs" />

@@ -63,6 +63,37 @@ namespace BSCommon.Models
         //  public decimal DiscountAmount { get; set; }
         [DisplayFormat(DataFormatString = "C2")]
         public decimal TotalAmount { get { return this.Amount  - Discounts + VATAmount; } }
+
+        public string PaymentType { get; set; }
+        public Boolean? S35Type { get; set; }
+        public string InvoiceAccountID { get; set; }
+        public string InvoiceAccountDetailID { get; set; }
+        public string InvoiceVATAccountID { get; set; }
+        public string MST { get; set; }
+
+        public string AccountIDFULL
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.InvoiceAccountDetailID))
+                {
+                    return this.InvoiceAccountID + "/" + this.InvoiceAccountDetailID;
+                }
+                return this.InvoiceAccountID;
+            }
+            set
+            {
+                int index = value.IndexOf('/');
+                if (index >= 0)
+                {
+                    this.InvoiceAccountID = value.Substring(0, index);
+                    this.InvoiceAccountDetailID = value.Substring(index + 1);
+                }
+                else this.InvoiceAccountID = value;
+            }
+        }
+
+        public string CustomerName { get; set; }
         public ModifyMode Status { get; set; }
     }
 }

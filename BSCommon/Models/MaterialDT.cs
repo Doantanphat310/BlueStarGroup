@@ -14,5 +14,6 @@ namespace BSCommon.Models
         public string InvoiceFormNo { get; set; }
         public string FormNo { get; set; }
         public string SerialNo { get; set; }
+        public string CustomerTIN { get; set; }
     }
 }

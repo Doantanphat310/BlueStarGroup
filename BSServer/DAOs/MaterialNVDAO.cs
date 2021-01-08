@@ -24,6 +24,13 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
+        public List<MaterialPayment> GetMaterialPayment()
+        {
+            return this.Context.Database
+                .SqlQuery<MaterialPayment>("SPSelectMaterialPaymentType")
+                .ToList();
+        }
+
         public List<MaterialInvoiceType> GetMaterialInvoiceType()
         {
             return this.Context.Database
