@@ -47,9 +47,7 @@ namespace BSClient.Utility
             {
                 BSLog.Logger.Debug("Lỗi BindingrichTextBox: " + ex.Message);
             }
-        }
-
-        
+        }            
 
         public static void BindingPictureEdit(PictureEdit edit, BindingSource bindingSource)
         {
