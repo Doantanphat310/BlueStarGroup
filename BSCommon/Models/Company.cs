@@ -220,5 +220,23 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
+
+        /// <summary>
+        /// InvoiceFormNo
+        /// </summary>
+        [Column("InvoiceFormNo")]
+        public string InvoiceFormNo { get; set; }
+
+        /// <summary>
+        /// FormNo
+        /// </summary>
+        [Column("FormNo")]
+        public string FormNo { get; set; }
+
+        /// <summary>
+        /// SerialNo
+        /// </summary>
+        [Column("SerialNo")]
+        public string SerialNo { get; set; }
     }
 }

@@ -146,7 +146,15 @@ namespace BSClient.Views
         {
             //InvoiceType
             S35_Invoice_gridView.SetFocusedRowCellValue("InvoiceType", "R");
-            S35_Invoice_gridView.SetFocusedRowCellValue("S35Type", true);       }
+            S35_Invoice_gridView.SetFocusedRowCellValue("S35Type", true);
+            //left form
+            this.S35_InvoiceFormNo_textEdit.EditValue = CommonInfo.CompanyInfo.InvoiceFormNo;
+            this.S35_FormNo_textEdit.EditValue = CommonInfo.CompanyInfo.FormNo;
+            this.S35_SerialNo_textEdit.EditValue = CommonInfo.CompanyInfo.SerialNo;
+            this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
+            this.S35_PaymentTye_searchLookUpEdit.EditValue = "TM";
+
+        }
 
         private void S35_Add_Invoice_simpleButton_Click(object sender, EventArgs e)
         {
