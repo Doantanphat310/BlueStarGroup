@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="BaoCaoKeToanToanTap" Margins="60, 60, 50, 78" PaperKind="A4" PageWidth="827" PageHeight="1169" Version="19.1" RequestParameters="false" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="3" Description="Từ ngày" ValueInfo="2020-01-01" Name="FromDate" Type="#Ref-2" />
+    <Item2 Ref="4" Description="Đến ngày" ValueInfo="2020-12-31" Name="ToDate" Type="#Ref-2" />
+    <Item3 Ref="6" Description="Tên công ty" ValueInfo="CÔNG TY TNHH TM THUỐC THÚ Y NGUYỄN KHOA" Name="CompanyName" />
+    <Item4 Ref="7" Description="Địa chỉ" ValueInfo="237B, đường Nguyễn Văn Tư, KP12, Phưởng 7, TP. Bến Tre, Bến Tre" Name="CompanyAddress" />
+    <Item5 Ref="8" Description="Ngày in" ValueInfo="2020-12-14" Name="PrintDate" Type="#Ref-2" />
+    <Item6 Ref="9" Description="MST" ValueInfo="1301041308" Name="CompanyTIN" />
+  </Parameters>
+  <CalculatedFields>
+    <Item1 Ref="10" Name="Page" FieldType="String" DisplayName="Page" Expression="FormatString('{0:0000}-{1:0000}', [PageStart], [PageEnd])" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="11" ControlType="TopMarginBand" Name="TopMargin" HeightF="50" ForeColor="0,0,0,0" BorderColor="0,0,0,0" Borders="None" BorderWidth="1">
+      <StylePriority Ref="12" UseForeColor="false" UseBorderColor="false" UseBorders="false" UseBorderWidth="false" />
+    </Item1>
+    <Item2 Ref="13" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="78" Borders="Top">
+      <StylePriority Ref="14" UseBorders="false" />
+    </Item2>
+    <Item3 Ref="15" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="140">
+      <Controls>
+        <Item1 Ref="16" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Trang" TextAlignment="MiddleCenter" SizeF="120,35" LocationFloat="564.92, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="17" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="18" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Nội dung" TextAlignment="MiddleCenter" SizeF="504.92,35" LocationFloat="60.00001, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="19" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="20" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="TT" TextAlignment="MiddleCenter" SizeF="40,35" LocationFloat="20, 105" Font="Arial, 12pt, charSet=0" BackColor="0,0,0,0" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="21" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="22" ControlType="XRLabel" Name="xrLabel3" TextFormatString="BÁO CÁO KẾ TOÁN TOÀN TẬP : {0:yyyy}" Text="BÁO CÁO KẾ TOÁN TOÀN TẬP : {0}" TextAlignment="BottomCenter" SizeF="700.75,28" LocationFloat="3.125, 64.99999" StyleName="Title" Font="Times New Roman, 18pt, style=Bold, charSet=0" ForeColor="Black">
+          <ExpressionBindings>
+            <Item1 Ref="23" Expression="?FromDate" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="24" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="25" ControlType="XRLabel" Name="CompanyName_TextBox" TextAlignment="MiddleCenter" SizeF="700.75,30" LocationFloat="3.125, 3.125" StyleName="Title" Font="Times New Roman, 12pt, style=Bold, charSet=0" Borders="Bottom">
+          <ExpressionBindings>
+            <Item1 Ref="26" Expression="?CompanyName + ' : ' + ?CompanyTIN" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="27" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+      </Controls>
+    </Item3>
+    <Item4 Ref="28" ControlType="DetailBand" Name="Detail" HeightF="30" Borders="None">
+      <Controls>
+        <Item1 Ref="29" ControlType="XRTable" Name="xrTable5" TextAlignment="MiddleLeft" SizeF="664.92,30" LocationFloat="20.00002, 0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="30" ControlType="XRTableRow" Name="xrTableRow7" Weight="0.9">
+              <Cells>
+                <Item1 Ref="31" ControlType="XRTableCell" Name="STT_TextBox" Weight="1.4833823995148658" Text="1" TextAlignment="MiddleCenter" Font="Arial, 12pt, charSet=0" Borders="Left, Right, Bottom">
+                  <Summary Ref="32" Running="Page" />
+                  <ExpressionBindings>
+                    <Item1 Ref="33" Expression="[VoucherDateTag]" PropertyName="Tag" EventName="BeforePrint" />
+                    <Item2 Ref="34" PropertyName="Text" EventName="BeforePrint" />
+                    <Item3 Ref="35" Expression="sumRecordNumber()" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="36" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="37" ControlType="XRTableCell" Name="ReportName_TextBox" Weight="18.72474127696939" Multiline="true" Text="Sổ đang kí chứng từ ghi sổ" TextAlignment="MiddleLeft" Font="Arial, 12pt, charSet=0" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="38" Expression="[VoucherDescriptionTag]" PropertyName="Tag" EventName="BeforePrint" />
+                    <Item2 Ref="39" Expression="[ReportName]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="40" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="41" ControlType="XRTableCell" Name="Page_TextBox" Weight="4.4501448600275779" Text="0001-0009" TextAlignment="MiddleCenter" Font="Arial, 12pt, charSet=0" Borders="Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="42" Expression="[Page]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="43" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="44" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+      <StylePriority Ref="45" UseBorders="false" />
+    </Item4>
+    <Item5 Ref="46" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="0" KeepTogether="true">
+      <Scripts Ref="47" OnBeforePrint="ReportFooter_BeforePrint" />
+    </Item5>
+    <Item6 Ref="48" ControlType="PageHeaderBand" Name="PageHeader" HeightF="0">
+      <Scripts Ref="49" OnBeforePrint="PageHeader_BeforePrint" />
+    </Item6>
+    <Item7 Ref="50" ControlType="PageFooterBand" Name="PageFooter" HeightF="53">
+      <Controls>
+        <Item1 Ref="51" ControlType="XRLabel" Name="xrLabel16" Multiline="true" TextAlignment="MiddleCenter" SizeF="700.75,49.875" LocationFloat="3.125, 0" StyleName="Title" Font="Arial, 14.25pt, charSet=0" Borders="Top" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="52" Expression="?CompanyAddress" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="53" UseFont="false" UseBorders="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item7>
+  </Bands>
+  <CrossBandControls>
+    <Item1 Ref="54" ControlType="XRCrossBandBox" Name="xrCrossBandBox1" BorderWidth="3" WidthF="707" StartBand="#Ref-15" EndBand="#Ref-50" StartPointFloat="0, 0" EndPointFloat="0, 53" BorderColor="Red" />
+  </CrossBandControls>
+  <StyleSheet>
+    <Item1 Ref="55" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="56" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="57" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="58" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="59" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiIC8+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="2" Content="System.DateTime" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

@@ -226,12 +226,6 @@
     <Compile Include="Views\S35.Designer.cs">
       <DependentUpon>S35.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UserList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,9 +323,6 @@
     <EmbeddedResource Include="Views\S35.resx">
       <DependentUpon>S35.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Screens\BangCanDoiSoPhatSinhTaiKhoan.resx">
-      <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +382,9 @@
     <None Include="Template\Reports\BangCanDoiSoPhatSinhTaiKhoan.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Template\Reports\BaoCaoKeToanToanTap.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Template\Reports\SoCaiChiTiet.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -416,7 +410,9 @@
     <Content Include="Resources\excelimport.png" />
     <Content Include="star_icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Screens\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

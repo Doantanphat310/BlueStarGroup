@@ -126,17 +126,17 @@ namespace BSClient.Views.Reports
         {
             List<ReportParam> param = new List<ReportParam>
             {
-                new ReportParam { ParamID = "CurrencyUnit", ParamValue =CommonInfo.CompanyInfo.CurrencyUnit },
-                new ReportParam { ParamID = "FromDate", ParamValue =FromDate },
-                new ReportParam { ParamID = "ToDate", ParamValue =ToDate },
-                new ReportParam { ParamID = "PrintDate", ParamValue =DateTime.Now.Date },
-                new ReportParam { ParamID = "CompanyName", ParamValue =CommonInfo.CompanyInfo.CompanyName },
-                new ReportParam { ParamID = "CompanyAddress", ParamValue =CommonInfo.CompanyInfo.Address },
-                new ReportParam { ParamID = "Scheduler", ParamValue =CommonInfo.CompanyInfo.LapBieu },
-                new ReportParam { ParamID = "SchedulerSignature", ParamValue =CommonInfo.CompanyInfo.ChuKyLapBieu },
-                new ReportParam { ParamID = "ChiefaAcountant", ParamValue =CommonInfo.CompanyInfo.KTTruong },
-                new ReportParam { ParamID = "ChiefaAcountantSignture", ParamValue =CommonInfo.CompanyInfo.ChuKyKTTruong },
-                new ReportParam { ParamID = "Director", ParamValue =CommonInfo.CompanyInfo.LanhDao }
+                new ReportParam("CurrencyUnit", CommonInfo.CompanyInfo.CurrencyUnit ),
+                new ReportParam("FromDate", FromDate ),
+                new ReportParam("ToDate", ToDate ),
+                new ReportParam("PrintDate", DateTime.Now.Date ),
+                new ReportParam("CompanyName", CommonInfo.CompanyInfo.CompanyName ),
+                new ReportParam("CompanyAddress", CommonInfo.CompanyInfo.Address ),
+                new ReportParam("Scheduler", CommonInfo.CompanyInfo.LapBieu ),
+                new ReportParam("SchedulerSignature", CommonInfo.CompanyInfo.ChuKyLapBieu ),
+                new ReportParam("ChiefaAcountant", CommonInfo.CompanyInfo.KTTruong ),
+                new ReportParam("ChiefaAcountantSignture", CommonInfo.CompanyInfo.ChuKyKTTruong ),
+                new ReportParam("Director", CommonInfo.CompanyInfo.LanhDao )
             };
 
             ReportHelper.ShowPreview(ReportTemplate.RPT000001, ReportData, param);
@@ -210,17 +210,17 @@ namespace BSClient.Views.Reports
 
             List<ReportParam> param = new List<ReportParam>
             {
-                new ReportParam { ParamID = "CurrencyUnit", ParamValue = CommonInfo.CompanyInfo.CurrencyUnit },
-                new ReportParam { ParamID = "FromDate", ParamValue = FromDate },
-                new ReportParam { ParamID = "ToDate", ParamValue = ToDate },
-                new ReportParam { ParamID = "PrintDate", ParamValue = DateTime.Now.Date },
-                new ReportParam { ParamID = "CompanyName", ParamValue = CommonInfo.CompanyInfo.CompanyName },
-                new ReportParam { ParamID = "CompanyAddress", ParamValue = CommonInfo.CompanyInfo.Address },
-                new ReportParam { ParamID = "Scheduler", ParamValue = CommonInfo.CompanyInfo.LapBieu },
-                new ReportParam { ParamID = "SchedulerSignature", ParamValue = CommonInfo.CompanyInfo.ChuKyLapBieu },
-                new ReportParam { ParamID = "ChiefaAcountant", ParamValue = CommonInfo.CompanyInfo.KTTruong },
-                new ReportParam { ParamID = "ChiefaAcountantSignture", ParamValue = CommonInfo.CompanyInfo.ChuKyKTTruong },
-                new ReportParam { ParamID = "Director", ParamValue = CommonInfo.CompanyInfo.LanhDao }
+                new ReportParam("CurrencyUnit",  CommonInfo.CompanyInfo.CurrencyUnit ),
+                new ReportParam("FromDate",  FromDate ),
+                new ReportParam("ToDate",  ToDate ),
+                new ReportParam("PrintDate",  DateTime.Now.Date ),
+                new ReportParam("CompanyName",  CommonInfo.CompanyInfo.CompanyName ),
+                new ReportParam("CompanyAddress",  CommonInfo.CompanyInfo.Address ),
+                new ReportParam("Scheduler",  CommonInfo.CompanyInfo.LapBieu ),
+                new ReportParam("SchedulerSignature",  CommonInfo.CompanyInfo.ChuKyLapBieu ),
+                new ReportParam("ChiefaAcountant",  CommonInfo.CompanyInfo.KTTruong ),
+                new ReportParam("ChiefaAcountantSignture",  CommonInfo.CompanyInfo.ChuKyKTTruong ),
+                new ReportParam("Director",  CommonInfo.CompanyInfo.LanhDao )
             };
 
             ReportHelper.ShowPreview(ReportTemplate.RPT000002, reportData, param);

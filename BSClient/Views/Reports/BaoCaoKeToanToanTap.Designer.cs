@@ -38,8 +38,8 @@
             this.SoDangKyChungTuGhiSo_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.SoNoTongHopPhaiThu_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.BaoCao02_CheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.checkBox4 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkBox5 = new DevExpress.XtraEditors.CheckEdit();
+            this.BangCanDoiSoPhatSinhTK_CheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.SoCaiTaiKhoan_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.checkBox6 = new DevExpress.XtraEditors.CheckEdit();
             this.SoNoChiTietPhaiThu_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.ReportItem_TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -57,8 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SoDangKyChungTuGhiSo_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoTongHopPhaiThu_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaoCao02_CheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBox4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBox5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BangCanDoiSoPhatSinhTK_CheckBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoCaiTaiKhoan_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkBox6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoChiTietPhaiThu_CheckBox.Properties)).BeginInit();
             this.ReportItem_TableLayoutPanel.SuspendLayout();
@@ -164,27 +164,27 @@
             this.BaoCao02_CheckBox.Size = new System.Drawing.Size(103, 19);
             this.BaoCao02_CheckBox.TabIndex = 2;
             // 
-            // checkBox4
+            // BangCanDoiSoPhatSinhTK_CheckBox
             // 
-            this.checkBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BangCanDoiSoPhatSinhTK_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox4.EditValue = true;
-            this.checkBox4.Location = new System.Drawing.Point(3, 53);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Properties.Caption = "Bảng cân đối số phát sinh tài khoản";
-            this.checkBox4.Size = new System.Drawing.Size(195, 19);
-            this.checkBox4.TabIndex = 3;
+            this.BangCanDoiSoPhatSinhTK_CheckBox.EditValue = true;
+            this.BangCanDoiSoPhatSinhTK_CheckBox.Location = new System.Drawing.Point(3, 53);
+            this.BangCanDoiSoPhatSinhTK_CheckBox.Name = "BangCanDoiSoPhatSinhTK_CheckBox";
+            this.BangCanDoiSoPhatSinhTK_CheckBox.Properties.Caption = "Bảng cân đối số phát sinh tài khoản";
+            this.BangCanDoiSoPhatSinhTK_CheckBox.Size = new System.Drawing.Size(195, 19);
+            this.BangCanDoiSoPhatSinhTK_CheckBox.TabIndex = 3;
             // 
-            // checkBox5
+            // SoCaiTaiKhoan_CheckBox
             // 
-            this.checkBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SoCaiTaiKhoan_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox5.EditValue = true;
-            this.checkBox5.Location = new System.Drawing.Point(3, 78);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Properties.Caption = "Sổ cái tài khoản";
-            this.checkBox5.Size = new System.Drawing.Size(101, 19);
-            this.checkBox5.TabIndex = 4;
+            this.SoCaiTaiKhoan_CheckBox.EditValue = true;
+            this.SoCaiTaiKhoan_CheckBox.Location = new System.Drawing.Point(3, 78);
+            this.SoCaiTaiKhoan_CheckBox.Name = "SoCaiTaiKhoan_CheckBox";
+            this.SoCaiTaiKhoan_CheckBox.Properties.Caption = "Sổ cái tài khoản";
+            this.SoCaiTaiKhoan_CheckBox.Size = new System.Drawing.Size(101, 19);
+            this.SoCaiTaiKhoan_CheckBox.TabIndex = 4;
             // 
             // checkBox6
             // 
@@ -221,8 +221,8 @@
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoNoTongHopPhaiTra_CheckBox, 0, 7);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoNoChiTietPhaiThu_CheckBox, 0, 6);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.checkBox6, 0, 4);
-            this.ReportItem_TableLayoutPanel.Controls.Add(this.checkBox5, 0, 3);
-            this.ReportItem_TableLayoutPanel.Controls.Add(this.checkBox4, 0, 2);
+            this.ReportItem_TableLayoutPanel.Controls.Add(this.SoCaiTaiKhoan_CheckBox, 0, 3);
+            this.ReportItem_TableLayoutPanel.Controls.Add(this.BangCanDoiSoPhatSinhTK_CheckBox, 0, 2);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.BaoCao02_CheckBox, 0, 1);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoNoTongHopPhaiThu_CheckBox, 0, 5);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoDangKyChungTuGhiSo_CheckBox, 0, 0);
@@ -345,12 +345,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.SoDangKyChungTuGhiSo_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoTongHopPhaiThu_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaoCao02_CheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBox4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBox5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BangCanDoiSoPhatSinhTK_CheckBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoCaiTaiKhoan_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkBox6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoChiTietPhaiThu_CheckBox.Properties)).EndInit();
             this.ReportItem_TableLayoutPanel.ResumeLayout(false);
-            this.ReportItem_TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkBox14.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoTheoDoi142_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaoCaoTongHopNhapXuatTon_CheckBox.Properties)).EndInit();
@@ -371,8 +370,8 @@
         private DevExpress.XtraEditors.CheckEdit SoDangKyChungTuGhiSo_CheckBox;
         private DevExpress.XtraEditors.CheckEdit SoNoTongHopPhaiThu_CheckBox;
         private DevExpress.XtraEditors.CheckEdit BaoCao02_CheckBox;
-        private DevExpress.XtraEditors.CheckEdit checkBox4;
-        private DevExpress.XtraEditors.CheckEdit checkBox5;
+        private DevExpress.XtraEditors.CheckEdit BangCanDoiSoPhatSinhTK_CheckBox;
+        private DevExpress.XtraEditors.CheckEdit SoCaiTaiKhoan_CheckBox;
         private DevExpress.XtraEditors.CheckEdit checkBox6;
         private DevExpress.XtraEditors.CheckEdit SoNoChiTietPhaiThu_CheckBox;
         private System.Windows.Forms.TableLayoutPanel ReportItem_TableLayoutPanel;
