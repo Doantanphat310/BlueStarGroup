@@ -32,6 +32,8 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoDangKiChungTuGhiSo));
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailData1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -95,8 +97,11 @@
             this.VoucherDateTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherGroup = new DevExpress.XtraReports.UI.CalculatedField();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Title
@@ -806,14 +811,14 @@
             // 
             // VoucherDateTag
             // 
-            this.VoucherDateTag.DataMember = "SP_ChungTuGhiSo";
+            this.VoucherDateTag.DataMember = "SP_SoDangKyChungTuGhiSo";
             this.VoucherDateTag.Expression = "[VouchersTypeID]+[VoucherDate]";
             this.VoucherDateTag.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherDateTag.Name = "VoucherDateTag";
             // 
             // VoucherGroup
             // 
-            this.VoucherGroup.DataMember = "SP_ChungTuGhiSo";
+            this.VoucherGroup.DataMember = "SP_SoDangKyChungTuGhiSo";
             this.VoucherGroup.Expression = "[VouchersTypeID] + \': \' + [VouchersTypeName]";
             this.VoucherGroup.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherGroup.Name = "VoucherGroup";
@@ -827,6 +832,24 @@
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.ConnectionName = "MyContext";
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            storedProcQuery2.Name = "SP_SoDangKyChungTuGhiSo";
+            queryParameter1.Name = "@CompanyID";
+            queryParameter1.Type = typeof(string);
+            storedProcQuery2.Parameters.Add(queryParameter1);
+            storedProcQuery2.StoredProcName = "SP_SoDangKyChungTuGhiSo";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery2});
+            this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(BSReport.Models.SoDangKyChungTuGhiSo);
+            this.objectDataSource1.Name = "objectDataSource1";
             // 
             // SoDangKiChungTuGhiSo
             // 
@@ -844,9 +867,11 @@
             this.VoucherDateTag,
             this.VoucherGroup});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
-            this.DataMember = "SP_ChungTuGhiSo";
-            this.DataSource = this.sqlDataSource1;
+            this.objectDataSource1,
+            this.sqlDataSource1,
+            this.sqlDataSource2});
+            this.DataMember = "SP_SoDangKyChungTuGhiSo";
+            this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(40, 58, 25, 30);
             this.PageHeight = 1169;
@@ -876,6 +901,7 @@
             this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -944,5 +970,7 @@
         private DevExpress.XtraReports.UI.CalculatedField VoucherGroup;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }

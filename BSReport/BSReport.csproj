@@ -88,6 +88,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\SoDangKyChungTuGhiSo.cs" />
     <Compile Include="Models\ChungTuGhiSo.cs" />
     <Compile Include="Models\ReportInfo.cs" />
     <Compile Include="MyContext.cs" />
@@ -98,6 +99,12 @@
     </Compile>
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ChungTuGhiSo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ChungTuGhiSo.Designer.cs">
+      <DependentUpon>ChungTuGhiSo.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\SoDangKiChungTuGhiSo.cs">
       <SubType>Component</SubType>
@@ -133,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ChungTuGhiSo.resx">
+      <DependentUpon>ChungTuGhiSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SoDangKiChungTuGhiSo.resx">
       <DependentUpon>SoDangKiChungTuGhiSo.cs</DependentUpon>
