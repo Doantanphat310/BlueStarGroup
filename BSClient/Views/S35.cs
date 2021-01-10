@@ -37,7 +37,7 @@ namespace BSClient.Views
         public static MaterialNVController MaterialInvoiceType = new MaterialNVController();
         List<MaterialInvoiceType> materialInvoiceType = MaterialInvoiceType.GetMaterialInvoiceType().Where(item => item.InvoiceTypeSummary == "R").ToList();
 
-        private bool IsFocusRowChanged = false;
+        private bool IsFocusRowChanging = false;
 
         public S35()
         {
@@ -45,7 +45,15 @@ namespace BSClient.Views
             LoadGridviewS35_Invoice();
             InitDefaultControl();
             SetBindingDataInvoiceForm();
+
+            S35InvoiceDataBindingSource.CurrentChanged += S35InvoiceDataBindingSource_CurrentChanged;
         }
+
+        private void S35InvoiceDataBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("S35InvoiceDataBindingSource_CurrentChanged");
+        }
+
         public void InitDefaultControl()
         {
             //set default date search
@@ -89,20 +97,20 @@ namespace BSClient.Views
         #region Init invoice S35
         private void Init_S35_Invoice_GridView()
         {
-            this.S35_Invoice_gridView.Columns.Clear();
-            this.S35_Invoice_gridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
-            this.S35_Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.S35_Invoice_gridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "c2");
-            this.S35_Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
-            this.S35_Invoice_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "c2");
-            this.S35_Invoice_gridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "c2");
-            this.S35_Invoice_gridView.AddSearchLookupEditColumn(
+            this.S35_Invoice_GridView.Columns.Clear();
+            this.S35_Invoice_GridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
+            this.S35_Invoice_GridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
+            this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "c2");
+            this.S35_Invoice_GridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
+            this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "c2");
+            this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "c2");
+            this.S35_Invoice_GridView.AddSearchLookupEditColumn(
     "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: false);
         }
 
         private void Setup_S35_Invoice_GridView()
         {
-            this.S35_Invoice_gridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true);
+            this.S35_Invoice_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true);
             // this.S35_Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
@@ -126,8 +134,8 @@ namespace BSClient.Views
             DataBindingHelper.BindingTextEdit(this.S35_InvoiceNo_textEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingDateEdit(this.S35_NgayHD_dateEdit, S35InvoiceDataBindingSource);
 
-            DataBindingHelper.BindingTextEdit(this.S35_CustomerName_TextBox, S35InvoiceDataBindingSource);
-            DataBindingHelper.BindingrichTextBox(this.S35_Description_richTextBox, S35InvoiceDataBindingSource);
+            DataBindingHelper.BindingMemoEdit(this.S35_CustomerName_MemoEdit, S35InvoiceDataBindingSource);
+            DataBindingHelper.BindingMemoEdit(this.S35_Description_MemoEdit, S35InvoiceDataBindingSource);
 
             DataBindingHelper.BindingSearchLookUpEdit(this.S35_Customer_searchLookUpEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingSearchLookUpEdit(this.S35_TKTkeDoanhThu_searchLookUpEdit, S35InvoiceDataBindingSource);
@@ -135,34 +143,31 @@ namespace BSClient.Views
         }
         #endregion Init invoice S35
 
-        private void S35_Customer_searchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void S35_Customer_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (IsFocusRowChanged)
+            Console.WriteLine("S35_Customer_searchLookUpEdit_EditValueChanged");
+            if (IsFocusRowChanging)
             {
-                IsFocusRowChanged = false;
+                IsFocusRowChanging = false;
                 return;
             }
 
-            var selectRow = S35_Customer_searchLookUpEdit.GetSelectedDataRow().CastTo<MaterialDT>();
-            Invoice invoice = this.S35_Invoice_gridView.GetFocusedRow().CastTo<Invoice>();
+            MaterialDT customer = S35_Customer_searchLookUpEdit.GetSelectedDataRow().CastTo<MaterialDT>();
+            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
             string customerName, customerTIN;
+
             customerName = string.Empty;
             customerTIN = string.Empty;
-            if (selectRow != null && invoice != null)
+            if (customer != null && invoice != null)
             {
-                customerName = selectRow.CustomerName;
-                customerTIN = selectRow.CustomerTIN;
-
-                invoice.MST = customerTIN;
-                invoice.CustomerName = customerName;
-                this.S35_MST_textEdit.EditValue = customerTIN;
-                this.S35_CustomerName_TextBox.EditValue = customerName;
+                customerName = customer.CustomerName;
+                customerTIN = customer.CustomerTIN;
             }
-            else
-            {
-                this.S35_MST_textEdit.EditValue = customerTIN;
-                this.S35_CustomerName_TextBox.EditValue = customerName;
-            }           
+
+            invoice.MST = customerTIN;
+            invoice.CustomerName = customerName;
+            this.S35_MST_textEdit.EditValue = customerTIN;
+            this.S35_CustomerName_MemoEdit.EditValue = customerName;
         }
 
         private void S35_FilterData_simpleButton_Click(object sender, EventArgs e)
@@ -170,11 +175,11 @@ namespace BSClient.Views
             Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
         }
 
-        private void S35_Invoice_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        private void S35_Invoice_GridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             //InvoiceType
-            S35_Invoice_gridView.SetFocusedRowCellValue("InvoiceType", "R");
-            S35_Invoice_gridView.SetFocusedRowCellValue("S35Type", true);
+            S35_Invoice_GridView.SetFocusedRowCellValue("InvoiceType", "R");
+            S35_Invoice_GridView.SetFocusedRowCellValue("S35Type", true);
             //left form
             this.S35_InvoiceFormNo_textEdit.EditValue = CommonInfo.CompanyInfo.InvoiceFormNo;
             this.S35_FormNo_textEdit.EditValue = CommonInfo.CompanyInfo.FormNo;
@@ -215,9 +220,9 @@ namespace BSClient.Views
             }
         }
 
-        private void S35_Invoice_gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        private void S35_Invoice_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
-            bool isNewRow = S35_Invoice_gridView.IsNewItemRow(e.RowHandle);
+            bool isNewRow = S35_Invoice_GridView.IsNewItemRow(e.RowHandle);
             if (isNewRow)
             {
                 return;
@@ -233,17 +238,17 @@ namespace BSClient.Views
 
         private void S35_Delete_Invoice_simpleButton_Click(object sender, EventArgs e)
         {
-            int[] selectIndex = this.S35_Invoice_gridView.GetSelectedRows();
+            int[] selectIndex = this.S35_Invoice_GridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
-                Invoice delete = this.S35_Invoice_gridView.GetRow(index) as Invoice;
+                Invoice delete = this.S35_Invoice_GridView.GetRow(index) as Invoice;
                 if (!string.IsNullOrEmpty(delete.InvoiceID))
                 {
                     this.S35InvoiceData[index].Status = ModifyMode.Delete;
                     this.S35InvoiceDelete.Add(delete);
                 }
             }
-            this.S35_Invoice_gridView.DeleteSelectedRows();
+            this.S35_Invoice_GridView.DeleteSelectedRows();
         }
 
         private void S35_Update_Invoice_simpleButton_Click(object sender, EventArgs e)
@@ -252,7 +257,7 @@ namespace BSClient.Views
             this.Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
         }
 
-        private void S35_Invoice_gridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void S35_Invoice_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             /*
               [Required(ErrorMessage = "Khách hàng không được để trống!")]
@@ -297,9 +302,10 @@ namespace BSClient.Views
         */
         }
 
-        private void S35_Invoice_gridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void S35_Invoice_GridView_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            IsFocusRowChanged = true;
+            Console.WriteLine("S35_Invoice_gridView_BeforeLeaveRow");
+            IsFocusRowChanging = true;
         }
     }
 }
