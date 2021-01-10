@@ -35,6 +35,20 @@ namespace BSClient.Utility
             }
         }
 
+        public static void BindingDateEdit(DateEdit edit, BindingSource bindingSource)
+        {
+            try
+            {
+                edit.DataBindings.Clear();
+                Binding b = new Binding("Datetime", bindingSource, edit.Tag?.ToString(), true);
+                edit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingDateEdit: " + ex.Message);
+            }
+        }
+
         public static void BindingrichTextBox(RichTextBox edit, BindingSource bindingSource)
         {
             try

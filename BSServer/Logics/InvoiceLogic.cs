@@ -39,7 +39,6 @@ namespace BSServer.Logics
                             case ModifyMode.Insert:
                                 seq++;
                                 data.InvoiceID = GenerateID.InvoiceID(seq);
-
                                 this.InvoiceDAO.InsertInvoice(data);
                                 break;
 

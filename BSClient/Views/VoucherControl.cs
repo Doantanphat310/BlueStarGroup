@@ -81,6 +81,10 @@ namespace BSClient
         List<MaterialWareHouseType> materialWareHouseType = MaterialWareHouseType.GetMaterialWareHouseType();
         public static ItemsController Items = new ItemsController();
         List<Items> items = Items.GetItems();
+
+        public static MaterialNVController MaterialPayment = new MaterialNVController();
+        List<MaterialPayment> materialPayment = MaterialPayment.GetMaterialPayment();
+
         #endregion Final
         public VoucherControl()
         {
@@ -1086,6 +1090,13 @@ namespace BSClient
             //this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 60, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
                 "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: true);
+            List<ColumnInfo> columnsPayment = new List<ColumnInfo>
+            {
+                new ColumnInfo("PaymentTypeSummary", "Mã",140),
+                new ColumnInfo("PaymentTypeName", "Tên",140),
+            };
+            this.Invoice_gridView.AddSearchLookupEditColumn("PaymentTypeSummary", "Mã TT",60, materialPayment, "PaymentTypeSummary", "PaymentTypeName", columns: columnsPayment, isAllowEdit:true);
+
             this.Invoice_gridView.AddColumn("Description", "Nội dung", 150, true);
             this.Invoice_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
         }
