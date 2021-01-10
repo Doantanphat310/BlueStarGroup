@@ -668,7 +668,7 @@
             this.VoucherType_GroupHeader.GroupFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
             new DevExpress.XtraReports.UI.GroupField("VouchersTypeID", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             this.VoucherType_GroupHeader.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.VoucherType_GroupHeader.HeightF = 22F;
+            this.VoucherType_GroupHeader.HeightF = 25F;
             this.VoucherType_GroupHeader.Name = "VoucherType_GroupHeader";
             this.VoucherType_GroupHeader.RepeatEveryPage = true;
             // 
@@ -679,7 +679,7 @@
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(729F, 22F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(729F, 25F);
             this.xrTable1.StylePriority.UseTextAlignment = false;
             this.xrTable1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
