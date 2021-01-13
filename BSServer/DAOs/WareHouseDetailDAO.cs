@@ -38,6 +38,15 @@ namespace BSServer.DAOs
           new SqlParameter("@CreateUser", UserInfo.UserName)
           ).ToList();
         }
+        public List<WareHouseDetail> WareHouseDetailSelectInvoiceID(string invoiceID, string CompanyID)
+        {
+            return this.Context.Database.SqlQuery<WareHouseDetail>(
+          "WareHouseDetailSelectInvoiceID @InvoiceID, @CompanyID, @CreateUser",
+          new SqlParameter("@InvoiceID", invoiceID),
+          new SqlParameter("@CompanyID", CompanyID),
+          new SqlParameter("@CreateUser", UserInfo.UserName)
+          ).ToList();
+        }
 
 
         public long GetWareHouseDetailSEQ()

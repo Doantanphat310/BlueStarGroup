@@ -160,6 +160,7 @@
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
+            this.Warehouse_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -1373,6 +1374,7 @@
             // 
             // ChitietKhogroupControl
             // 
+            this.ChitietKhogroupControl.Controls.Add(this.Warehouse_S35_Load_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.WareHouse_checkBox);
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseCancel_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseDelete_simpleButton);
@@ -1586,6 +1588,16 @@
             this.CompanyNameVoucher_labelControl.Size = new System.Drawing.Size(261, 23);
             this.CompanyNameVoucher_labelControl.TabIndex = 6;
             this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
+            // 
+            // Warehouse_S35_Load_simpleButton
+            // 
+            this.Warehouse_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.Warehouse_S35_Load_simpleButton.Location = new System.Drawing.Point(476, 344);
+            this.Warehouse_S35_Load_simpleButton.Name = "Warehouse_S35_Load_simpleButton";
+            this.Warehouse_S35_Load_simpleButton.Size = new System.Drawing.Size(106, 26);
+            this.Warehouse_S35_Load_simpleButton.TabIndex = 29;
+            this.Warehouse_S35_Load_simpleButton.Text = "Tải S35";
+            this.Warehouse_S35_Load_simpleButton.Click += new System.EventHandler(this.Warehouse_S35_Load_simpleButton_Click);
             // 
             // VoucherControl
             // 
@@ -1805,5 +1817,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl7;
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.SimpleButton Warehouse_S35_Load_simpleButton;
     }
 }

@@ -32,7 +32,13 @@ namespace BSCommon.Models
         public string CreateUser { get; set; }
         public string UpdateUser { get; set; }
         public string CompanyID { get; set; }
-        public string ItemUnit { get; set; }
+        public string ItemUnitID { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal VAT { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal VATAmount { get { return this.Amount * VAT / 100; } }
+        public string InvoiceNo { get; set; }
+
         public ModifyMode Status { get; set; }
     }
 }

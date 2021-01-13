@@ -37,7 +37,17 @@ namespace BSClient.Views
         public static MaterialNVController MaterialInvoiceType = new MaterialNVController();
         List<MaterialInvoiceType> materialInvoiceType = MaterialInvoiceType.GetMaterialInvoiceType().Where(item => item.InvoiceTypeSummary == "R").ToList();
 
+
+        public static ItemsController Items = new ItemsController();
+        List<Items> items = Items.GetItems();
+
+        public BindingList<WareHouseDetail> WarehouseDetailData { get; set; }
+
+        public List<WareHouseDetail> WareHouseDetailDelete { get; set; }
+
         private bool IsFocusRowChanging = false;
+
+        private string GlobalwarehouseID = "";
 
         public S35()
         {
@@ -45,14 +55,28 @@ namespace BSClient.Views
             LoadGridviewS35_Invoice();
             InitDefaultControl();
             SetBindingDataInvoiceForm();
-
             S35InvoiceDataBindingSource.CurrentChanged += S35InvoiceDataBindingSource_CurrentChanged;
+         
+            S35InvoiceDataBindingSource.ListChanged += S35InvoiceDataBindingSource_ListChanged;
+
+            LoadWareHouseDetailGridviewFull();
         }
 
         private void S35InvoiceDataBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             Console.WriteLine("S35InvoiceDataBindingSource_CurrentChanged");
         }
+
+        private void S35InvoiceDataBindingSource_ListChanged(object sender, EventArgs e)
+        {
+            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+            if(invoice.Status != ModifyMode.Insert)
+            {
+                invoice.Status = ModifyMode.Update;
+            }
+        }
+
+
 
         public void InitDefaultControl()
         {
@@ -125,11 +149,12 @@ namespace BSClient.Views
 
         private void SetBindingDataInvoiceForm()
         {
+            DataBindingHelper.BindingLabelControl(this.S35_InvoiceCreateUser_labelControl, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingTextEdit(this.S35_AccountVAT_textEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingTextEdit(this.S35_MST_textEdit, S35InvoiceDataBindingSource);
 
             DataBindingHelper.BindingTextEdit(this.S35_InvoiceFormNo_textEdit, S35InvoiceDataBindingSource);
-            DataBindingHelper.BindingTextEdit(this.S35_InvoiceNo_textEdit, S35InvoiceDataBindingSource);
+            DataBindingHelper.BindingTextEdit(this.S35_FormNo_textEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingTextEdit(this.S35_SerialNo_textEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingTextEdit(this.S35_InvoiceNo_textEdit, S35InvoiceDataBindingSource);
             DataBindingHelper.BindingDateEdit(this.S35_NgayHD_dateEdit, S35InvoiceDataBindingSource);
@@ -142,6 +167,64 @@ namespace BSClient.Views
             DataBindingHelper.BindingSearchLookUpEdit(this.S35_PaymentTye_searchLookUpEdit, S35InvoiceDataBindingSource);
         }
         #endregion Init invoice S35
+
+
+        #region Init Invoice WarehouseDetail
+        void LoadWareHouseDetailGridviewFull()
+        {
+            Init_WareHouseDetail_GridView();
+            Setup_WareHouseDetail_GridView();
+            Load_WareHouseDetail_GridView();
+        }
+
+        private void Init_WareHouseDetail_GridView()
+        {
+            this.S35_WarehouseDetail_gridView.Columns.Clear();
+            List<ColumnInfo> columns = new List<ColumnInfo>
+            {
+                new ColumnInfo("ItemID", "ItemID",140),
+                new ColumnInfo("ItemSName", "Tên Hàng Hóa",140),
+                new ColumnInfo("ItemUnitID", "Đơn vị tính",180 ),
+            };
+            this.S35_WarehouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
+            this.S35_WarehouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "###,###,###.##");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "c2");
+        }
+
+        private void Setup_WareHouseDetail_GridView()
+        {
+            this.S35_WarehouseDetail_gridView.SetupGridView(multiSelect: true, showFooter: true, newItemRow: NewItemRowPosition.Top);
+        }
+
+        private void Load_WareHouseDetail_GridView()
+        {
+            WareHouseDetailController controller = new WareHouseDetailController();
+            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+            if (invoice == null)
+            {
+                WarehouseDetailData = new BindingList<WareHouseDetail>(controller.WareHouseDetailSelectInvoiceID("00000", CommonInfo.CompanyInfo.CompanyID));
+            }
+            else
+            {
+                WarehouseDetailData = new BindingList<WareHouseDetail>(controller.WareHouseDetailSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID));
+            }
+            S35_WarehouseDetail_gridControl.DataSource = WarehouseDetailData;
+            WareHouseDetailDelete = new List<WareHouseDetail>();
+        }
+
+
+        public void WareHouseDetail_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<Items>();
+            S35_WarehouseDetail_gridView.SetFocusedRowCellValue("ItemUnitID", selectRow.ItemUnitID);
+        }
+
+        #endregion Init Invoice WarehouseDetail
+
 
         private void S35_Customer_SearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
@@ -185,10 +268,10 @@ namespace BSClient.Views
             this.S35_FormNo_textEdit.EditValue = CommonInfo.CompanyInfo.FormNo;
             this.S35_SerialNo_textEdit.EditValue = CommonInfo.CompanyInfo.SerialNo;
             this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
-            //this.S35_PaymentTye_searchLookUpEdit.EditValue = "TM";
-            //this.S35_Customer_searchLookUpEdit.EditValue = "";
-            //this.S35_MST_textEdit.EditValue = "";
-            //this.S35_CustomerName_richTextBox.Text = "";
+            this.S35_AccountVAT_textEdit.EditValue = "3331";
+            //Invoice default Value
+            S35_Invoice_GridView.SetFocusedRowCellValue("VAT", 10);
+
         }
 
         private void S35_Add_Invoice_simpleButton_Click(object sender, EventArgs e)
@@ -199,25 +282,49 @@ namespace BSClient.Views
                 if (string.IsNullOrEmpty(invoice.InvoiceID))
                 {
                     invoice.CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                    invoice.S35Type = true;
                     invoice.Status = ModifyMode.Insert;
                 }
             }
-
+            int checkAction = 0;
             List<Invoice> saveData = this.S35InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
             if (saveData?.Count > 0)
             {
                 InvoiceController controller = new InvoiceController();
                 if (controller.SaveInvoice(saveData))
                 {
-                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
-                    S35InvoiceDelete = new List<Invoice>();
-                    Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
+                    checkAction++;
+                   // S35InvoiceDelete = new List<Invoice>();
+                  //  Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
                 }
                 else
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
                 }
             }
+
+            #region delete InvoiceDelete
+            if (S35InvoiceDelete?.Count > 0)
+            {
+                InvoiceController controller = new InvoiceController();
+                if (controller.SaveInvoice(S35InvoiceDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            S35InvoiceDelete = new List<Invoice>();
+            #endregion delete warehouseDetail
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
         }
 
         private void S35_Invoice_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
@@ -260,7 +367,7 @@ namespace BSClient.Views
         private void S35_Invoice_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             /*
-              [Required(ErrorMessage = "Khách hàng không được để trống!")]
+        [Required(ErrorMessage = "Khách hàng không được để trống!")]
         [DisplayName("Mã KH")]
         public string CustomerID { get; set; }
         public string Description { get; set; }
@@ -306,6 +413,222 @@ namespace BSClient.Views
         {
             Console.WriteLine("S35_Invoice_gridView_BeforeLeaveRow");
             IsFocusRowChanging = true;
+        }
+
+        private void S35_WarehouseDetail_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+
+            WareHouseDetail wareHouseDetail = this.S35_WarehouseDetail_gridView.GetFocusedRow().CastTo<WareHouseDetail>();
+            wareHouseDetail.VAT = invoice.VAT;
+
+            foreach (WareHouseDetail wareHouseDetailItem in WarehouseDetailData)
+            {
+                wareHouseDetailItem.VAT = invoice.VAT;
+            }
+        }
+
+        private void S35_Add_WareHouseDetail_simpleButton_Click(object sender, EventArgs e)
+        {
+            //Lưu mới nếu WarehouseID trống
+            //WarehouseDetailData
+            string warehouseID = "";
+            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+            foreach (WareHouseDetail wareHouseDetail in WarehouseDetailData)
+            {
+                if (!string.IsNullOrEmpty(wareHouseDetail.WarehouseID))
+                {
+                    warehouseID = wareHouseDetail.WarehouseID;
+                    break;
+                }
+            }
+            GlobalwarehouseID = warehouseID;
+            if (string.IsNullOrEmpty(warehouseID))
+            {
+                //Thêm mới warehouseID
+                #region insert Phiếu kho cho hóa đơn.
+                #region set InvoiceID to WareHouse
+                List<WareHouse> wareHousesData = new List<WareHouse>();
+                WareHouse wareHouseItem = new WareHouse();
+                wareHouseItem.CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                wareHouseItem.InvoiceID = invoice.InvoiceID;
+                wareHouseItem.CustomerID = invoice.CustomerID;
+                wareHouseItem.Status = ModifyMode.Insert;
+
+                wareHousesData.Add(wareHouseItem);
+                #endregion set InvoiceID to WareHouse
+                if (wareHousesData?.Count > 0)
+                {
+                    WareHouseController controller = new WareHouseController();
+                    if (controller.SaveWareHouse(wareHousesData))
+                    {
+                        Console.WriteLine("set InvoiceID to WareHouse Success!");
+                        //get warehousedetail with sql
+                        List<WareHouse>  wareHouseGetID =  controller.InvoiceSelectWareHouseID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
+                        if (wareHouseGetID.Count > 0)
+                        {
+                            foreach(WareHouse wareHouseItemGetID in wareHouseGetID)
+                            {
+                               // GlobalVarient.S35_WareHouseID = wareHouseItemGetID.WarehouseID;
+                                warehouseID = wareHouseItemGetID.WarehouseID;
+                            }  
+                        }
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                        return;
+                    }
+                }
+                #endregion insert Phiếu kho cho hóa đơn.
+            }
+            //
+            #region save warehousedetail
+
+            #region set warehouseID to WareHouseDetail
+            foreach(WareHouseDetail wareHouseDetailItem in WarehouseDetailData)
+            {
+                if (string.IsNullOrEmpty(wareHouseDetailItem.WareHouseDetailID))
+                {
+                    wareHouseDetailItem.CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                    wareHouseDetailItem.WarehouseID = warehouseID;
+                    wareHouseDetailItem.Status = ModifyMode.Insert;
+                }
+            }
+
+            #endregion  set warehouseID to WareHouseDetail
+
+            int checkAction = 0;
+
+            List<WareHouseDetail> saveData = this.WarehouseDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+            if (saveData?.Count > 0)
+            {
+                //  InvoiceController controller = new InvoiceController();
+                WareHouseDetailController controller = new WareHouseDetailController();
+                if (controller.SaveWareHouseDetail(saveData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            #region delete warehouseDetail
+            if (WareHouseDetailDelete?.Count > 0)
+            {
+                WareHouseDetailController controller = new WareHouseDetailController();
+                if (controller.SaveWareHouseDetail(WareHouseDetailDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+
+            if (checkAction > 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+            #endregion delete warehouseDetail
+            this.Load_WareHouseDetail_GridView();
+            #endregion save warehousedetail
+
+            //Update nếu warehouseID không trống.
+        }
+
+        private void S35_Delete_WareHouseDetail_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = this.S35_WarehouseDetail_gridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                WareHouseDetail delete = S35_WarehouseDetail_gridView.GetRow(index) as WareHouseDetail;
+                if (!string.IsNullOrEmpty(delete.WarehouseID))
+                {
+                    WarehouseDetailData[index].Status = ModifyMode.Delete;
+                    WareHouseDetailDelete.Add(delete);
+                }
+            }
+            S35_WarehouseDetail_gridView.DeleteSelectedRows();
+        }
+
+        private void S35_CancelWareHouseDetail_simpleButton_Click(object sender, EventArgs e)
+        {
+            this.Load_WareHouseDetail_GridView();
+        }
+
+        private void S35_WarehouseDetail_gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                decimal QuantityFilter = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+
+                if (QuantityFilter > 0)
+                {
+
+                    Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount") / QuantityFilter;
+
+                    if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price"))
+                    {
+                        this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Price", Cellprice);
+                    }
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage("Số lượng phải lớn hơn 0!");
+                    return;
+                }
+
+            }
+            else if (e.Column.FieldName == "Price")
+            {
+                Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                {
+                    this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
+                }
+            }
+        }
+
+        private void S35_Invoice_GridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            Load_WareHouseDetail_GridView();
+        }
+
+        private void S35_WarehouseDetail_gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            bool isNewRow = S35_WarehouseDetail_gridView.IsNewItemRow(e.RowHandle);
+            if (isNewRow)
+            {
+                return;
+            }
+            WareHouseDetail row = e.Row as WareHouseDetail;
+            if (row.Status == ModifyMode.Insert)
+            {
+                return;
+            }
+            row.Status = ModifyMode.Update;
+        }
+
+        private void S35_SelectData_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = this.S35_Invoice_GridView.GetSelectedRows();
+            GlobalVarient.S35DataSelected = new List<Invoice>();
+            foreach (int index in selectIndex)
+            {
+                Invoice selectinvoice = this.S35_Invoice_GridView.GetRow(index) as Invoice;
+                if (!string.IsNullOrEmpty(selectinvoice.InvoiceID))
+                {
+                    GlobalVarient.S35DataSelected.Add(selectinvoice);
+                }
+            }
         }
     }
 }

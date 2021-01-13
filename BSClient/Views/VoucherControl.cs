@@ -3298,5 +3298,12 @@ namespace BSClient
             S35 S35Form = new S35();
             S35Form.Show();
         }
+
+        private void Warehouse_S35_Load_simpleButton_Click(object sender, EventArgs e)
+        {
+            //load danh sách kho và kho detail của Hóa đơn đã được chọn.
+            // Gán VoucherID cho Hóa đơn.
+
+        }
     }
 }

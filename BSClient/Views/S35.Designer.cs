@@ -57,9 +57,10 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.S35_InvoiceCreateUser_labelControl = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.S35_CustomerName_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.S35_SerialNoSearch_textEdit = new DevExpress.XtraEditors.TextEdit();
             this.S35_InvoiceNoSearch_textEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -79,8 +80,8 @@
             this.S35_WarehouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.S35_Add_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Delete_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.S35_UpdateWareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.S35_CustomerName_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.S35_CancelWareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_SelectData_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.S35_Description_MemoEdit.Properties)).BeginInit();
@@ -98,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_TKTkeDoanhThu_searchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.S35_CustomerName_MemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_SerialNoSearch_textEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_InvoiceNoSearch_textEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -112,7 +114,6 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.S35_WarehouseDetail_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_WarehouseDetail_gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.S35_CustomerName_MemoEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -125,6 +126,7 @@
             this.panelControl1.Controls.Add(this.S35_Delete_Invoice_simpleButton);
             this.panelControl1.Controls.Add(this.S35_SerialNo_textEdit);
             this.panelControl1.Controls.Add(this.S35_InvoiceNo_textEdit);
+            this.panelControl1.Controls.Add(this.S35_SelectData_simpleButton);
             this.panelControl1.Controls.Add(this.S35_Add_Invoice_simpleButton);
             this.panelControl1.Controls.Add(this.S35_MST_textEdit);
             this.panelControl1.Controls.Add(this.S35_FormNo_textEdit);
@@ -141,7 +143,7 @@
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.labelControl13);
+            this.panelControl1.Controls.Add(this.S35_InvoiceCreateUser_labelControl);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.S35_CustomerName_MemoEdit);
@@ -436,17 +438,18 @@
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Hóa Đơn";
             // 
-            // labelControl13
+            // S35_InvoiceCreateUser_labelControl
             // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Navy;
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(383, 34);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(107, 16);
-            this.labelControl13.TabIndex = 0;
-            this.labelControl13.Text = "Tên người nhập";
+            this.S35_InvoiceCreateUser_labelControl.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_InvoiceCreateUser_labelControl.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.S35_InvoiceCreateUser_labelControl.Appearance.Options.UseFont = true;
+            this.S35_InvoiceCreateUser_labelControl.Appearance.Options.UseForeColor = true;
+            this.S35_InvoiceCreateUser_labelControl.Location = new System.Drawing.Point(383, 34);
+            this.S35_InvoiceCreateUser_labelControl.Name = "S35_InvoiceCreateUser_labelControl";
+            this.S35_InvoiceCreateUser_labelControl.Size = new System.Drawing.Size(107, 16);
+            this.S35_InvoiceCreateUser_labelControl.TabIndex = 0;
+            this.S35_InvoiceCreateUser_labelControl.Tag = "CreateUser";
+            this.S35_InvoiceCreateUser_labelControl.Text = "Tên người nhập";
             // 
             // labelControl2
             // 
@@ -467,6 +470,15 @@
             this.labelControl1.Size = new System.Drawing.Size(68, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Loại D. Thu";
+            // 
+            // S35_CustomerName_MemoEdit
+            // 
+            this.S35_CustomerName_MemoEdit.Location = new System.Drawing.Point(94, 161);
+            this.S35_CustomerName_MemoEdit.Name = "S35_CustomerName_MemoEdit";
+            this.S35_CustomerName_MemoEdit.Properties.AcceptsReturn = false;
+            this.S35_CustomerName_MemoEdit.Size = new System.Drawing.Size(390, 55);
+            this.S35_CustomerName_MemoEdit.TabIndex = 3;
+            this.S35_CustomerName_MemoEdit.Tag = "CustomerName";
             // 
             // S35_SerialNoSearch_textEdit
             // 
@@ -516,10 +528,11 @@
             this.S35_Invoice_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.S35_Invoice_GridView});
             // 
-            // S35_Invoice_gridView
+            // S35_Invoice_GridView
             // 
             this.S35_Invoice_GridView.GridControl = this.S35_Invoice_gridControl;
-            this.S35_Invoice_GridView.Name = "S35_Invoice_gridView";
+            this.S35_Invoice_GridView.Name = "S35_Invoice_GridView";
+            this.S35_Invoice_GridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.S35_Invoice_GridView_RowClick);
             this.S35_Invoice_GridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.S35_Invoice_GridView_InitNewRow);
             this.S35_Invoice_GridView.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.S35_Invoice_GridView_BeforeLeaveRow);
             this.S35_Invoice_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.S35_Invoice_GridView_ValidateRow);
@@ -633,7 +646,7 @@
             this.panelControl3.Controls.Add(this.S35_WarehouseDetail_gridControl);
             this.panelControl3.Controls.Add(this.S35_Add_WareHouseDetail_simpleButton);
             this.panelControl3.Controls.Add(this.S35_Delete_WareHouseDetail_simpleButton);
-            this.panelControl3.Controls.Add(this.S35_UpdateWareHouseDetail_simpleButton);
+            this.panelControl3.Controls.Add(this.S35_CancelWareHouseDetail_simpleButton);
             this.panelControl3.Location = new System.Drawing.Point(12, 359);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(1290, 335);
@@ -653,6 +666,9 @@
             // 
             this.S35_WarehouseDetail_gridView.GridControl = this.S35_WarehouseDetail_gridControl;
             this.S35_WarehouseDetail_gridView.Name = "S35_WarehouseDetail_gridView";
+            this.S35_WarehouseDetail_gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.S35_WarehouseDetail_gridView_InitNewRow);
+            this.S35_WarehouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.S35_WarehouseDetail_gridView_CellValueChanged);
+            this.S35_WarehouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.S35_WarehouseDetail_gridView_RowUpdated);
             // 
             // S35_Add_WareHouseDetail_simpleButton
             // 
@@ -663,7 +679,8 @@
             this.S35_Add_WareHouseDetail_simpleButton.Name = "S35_Add_WareHouseDetail_simpleButton";
             this.S35_Add_WareHouseDetail_simpleButton.Size = new System.Drawing.Size(75, 23);
             this.S35_Add_WareHouseDetail_simpleButton.TabIndex = 4;
-            this.S35_Add_WareHouseDetail_simpleButton.Text = "Thêm";
+            this.S35_Add_WareHouseDetail_simpleButton.Text = "Lưu";
+            this.S35_Add_WareHouseDetail_simpleButton.Click += new System.EventHandler(this.S35_Add_WareHouseDetail_simpleButton_Click);
             // 
             // S35_Delete_WareHouseDetail_simpleButton
             // 
@@ -675,26 +692,31 @@
             this.S35_Delete_WareHouseDetail_simpleButton.Size = new System.Drawing.Size(75, 23);
             this.S35_Delete_WareHouseDetail_simpleButton.TabIndex = 4;
             this.S35_Delete_WareHouseDetail_simpleButton.Text = "Xóa";
+            this.S35_Delete_WareHouseDetail_simpleButton.Click += new System.EventHandler(this.S35_Delete_WareHouseDetail_simpleButton_Click);
             // 
-            // S35_UpdateWareHouseDetail_simpleButton
+            // S35_CancelWareHouseDetail_simpleButton
             // 
-            this.S35_UpdateWareHouseDetail_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.S35_UpdateWareHouseDetail_simpleButton.Appearance.Options.UseFont = true;
-            this.S35_UpdateWareHouseDetail_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_UpdateWareHouseDetail_simpleButton.ImageOptions.Image")));
-            this.S35_UpdateWareHouseDetail_simpleButton.Location = new System.Drawing.Point(1210, 304);
-            this.S35_UpdateWareHouseDetail_simpleButton.Name = "S35_UpdateWareHouseDetail_simpleButton";
-            this.S35_UpdateWareHouseDetail_simpleButton.Size = new System.Drawing.Size(75, 23);
-            this.S35_UpdateWareHouseDetail_simpleButton.TabIndex = 4;
-            this.S35_UpdateWareHouseDetail_simpleButton.Text = "Sửa";
+            this.S35_CancelWareHouseDetail_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_CancelWareHouseDetail_simpleButton.Appearance.Options.UseFont = true;
+            this.S35_CancelWareHouseDetail_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_CancelWareHouseDetail_simpleButton.ImageOptions.Image")));
+            this.S35_CancelWareHouseDetail_simpleButton.Location = new System.Drawing.Point(1210, 304);
+            this.S35_CancelWareHouseDetail_simpleButton.Name = "S35_CancelWareHouseDetail_simpleButton";
+            this.S35_CancelWareHouseDetail_simpleButton.Size = new System.Drawing.Size(75, 23);
+            this.S35_CancelWareHouseDetail_simpleButton.TabIndex = 4;
+            this.S35_CancelWareHouseDetail_simpleButton.Text = "Hủy";
+            this.S35_CancelWareHouseDetail_simpleButton.Click += new System.EventHandler(this.S35_CancelWareHouseDetail_simpleButton_Click);
             // 
-            // S35_CustomerName_TextBox
+            // S35_SelectData_simpleButton
             // 
-            this.S35_CustomerName_MemoEdit.Location = new System.Drawing.Point(94, 161);
-            this.S35_CustomerName_MemoEdit.Name = "S35_CustomerName_TextBox";
-            this.S35_CustomerName_MemoEdit.Properties.AcceptsReturn = false;
-            this.S35_CustomerName_MemoEdit.Size = new System.Drawing.Size(390, 55);
-            this.S35_CustomerName_MemoEdit.TabIndex = 3;
-            this.S35_CustomerName_MemoEdit.Tag = "CustomerName";
+            this.S35_SelectData_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_SelectData_simpleButton.Appearance.Options.UseFont = true;
+            this.S35_SelectData_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.S35_SelectData_simpleButton.Location = new System.Drawing.Point(335, 311);
+            this.S35_SelectData_simpleButton.Name = "S35_SelectData_simpleButton";
+            this.S35_SelectData_simpleButton.Size = new System.Drawing.Size(148, 23);
+            this.S35_SelectData_simpleButton.TabIndex = 4;
+            this.S35_SelectData_simpleButton.Text = "Lấy dữ liệu S35";
+            this.S35_SelectData_simpleButton.Click += new System.EventHandler(this.S35_SelectData_simpleButton_Click);
             // 
             // S35
             // 
@@ -725,6 +747,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_TKTkeDoanhThu_searchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.S35_CustomerName_MemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_SerialNoSearch_textEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_InvoiceNoSearch_textEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -740,7 +763,6 @@
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.S35_WarehouseDetail_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.S35_WarehouseDetail_gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.S35_CustomerName_MemoEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -783,7 +805,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.TextEdit S35_SerialNo_textEdit;
         private DevExpress.XtraEditors.TextEdit S35_InvoiceNo_textEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl S35_InvoiceCreateUser_labelControl;
         private DevExpress.XtraGrid.GridControl S35_Invoice_gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView S35_Invoice_GridView;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
@@ -796,8 +818,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView S35_WarehouseDetail_gridView;
         private DevExpress.XtraEditors.SimpleButton S35_Add_WareHouseDetail_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_Delete_WareHouseDetail_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton S35_UpdateWareHouseDetail_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton S35_CancelWareHouseDetail_simpleButton;
         private DevExpress.XtraEditors.MemoEdit S35_Description_MemoEdit;
         private DevExpress.XtraEditors.MemoEdit S35_CustomerName_MemoEdit;
+        private DevExpress.XtraEditors.SimpleButton S35_SelectData_simpleButton;
     }
 }

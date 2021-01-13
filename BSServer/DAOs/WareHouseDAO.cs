@@ -39,6 +39,20 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
+
+        public List<WareHouse> InvoiceSelectWareHouseID(string invoiceID, string CompanyID)
+        {
+
+            return this.Context.Database.SqlQuery<WareHouse>(
+          "InvoiceSelectWareHouseID @InvoiceID, @CompanyID",
+          new SqlParameter("@InvoiceID", invoiceID),
+          new SqlParameter("@CompanyID", CompanyID)
+          ).ToList();
+        }
+
+
+        
+
         public long GetWareHouseSEQ()
         {
             return this.GetMaxSEQ(BSServerConst.WareHouseSymbol);
