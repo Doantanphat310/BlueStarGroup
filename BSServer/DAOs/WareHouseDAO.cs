@@ -49,8 +49,6 @@ namespace BSServer.DAOs
           new SqlParameter("@CompanyID", CompanyID)
           ).ToList();
         }
-
-
         
 
         public long GetWareHouseSEQ()
@@ -136,6 +134,31 @@ namespace BSServer.DAOs
             catch (Exception ex)
             {
                 Console.WriteLine("Update WareHouse Fail! " + ex.Message);
+                return false;
+            }
+        }
+
+        
+
+       public bool WareHouseUpdateS35(WareHouse wareHouse)
+        {
+            //@WareHouseID varchar(50), @VoucherID varchar(50),@CompanyID varchar(50), @CreateUser varchar(50)
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@WarehouseID", wareHouse.WarehouseID),
+                    new SqlParameter("@VoucherID", wareHouse.VouchersID),
+                    new SqlParameter("@CompanyID", wareHouse.CompanyID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID)
+                };
+
+                this.Context.ExecuteDataFromProcedure("WareHouseUpdateS35", sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update WareHouseUpdateS35 Fail! " + ex.Message);
                 return false;
             }
         }

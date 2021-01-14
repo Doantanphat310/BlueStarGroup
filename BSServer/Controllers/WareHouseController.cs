@@ -52,6 +52,12 @@ namespace BSServer.Controllers
             return this.WareHouseDAO.UpdateWareHouse(WareHouse);
         }
 
+       
+        public bool WareHouseUpdateS35(WareHouse wareHouse)
+        {
+            return this.WareHouseDAO.WareHouseUpdateS35(wareHouse);
+        }
+
         public bool DeleteWareHouseDetail(string WareHouseID, string companyID)
         {
             return this.WareHouseDAO.DeleteWareHouse(WareHouseID, companyID);

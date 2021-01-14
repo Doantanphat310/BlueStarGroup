@@ -85,6 +85,9 @@ namespace BSClient
         public static MaterialNVController MaterialPayment = new MaterialNVController();
         List<MaterialPayment> materialPayment = MaterialPayment.GetMaterialPayment();
 
+
+        List<WareHouse> wareHousesListS35 = new List<WareHouse>();
+
         #endregion Final
         public VoucherControl()
         {
@@ -175,20 +178,11 @@ namespace BSClient
 
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("AccountIDFULL", "Tài khoản | T.Kê", 140, 
                                                                 materialTK, "AccountIDFULL", "AccountIDFULL",
-                                                                isAllowEdit: true, columns: columns, 
-                                                                editValueChanged: AccountsFULL_EditValueChanged);
+                                                                isAllowEdit: true, columns: columns);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
             this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "C2");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 1, false);
-        }
-        
-
-        public void AccountsFULL_EditValueChanged(object sender, EventArgs e)
-        {
-            //var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialTK>();
-            //VoucherDetail_gridView.SetFocusedRowCellValue("AccountID", selectRow.AccountID);
-            //VoucherDetail_gridView.SetFocusedRowCellValue("AccountDetailID", selectRow.AccountDetailID);
         }
         
 
@@ -3299,11 +3293,52 @@ namespace BSClient
             S35Form.Show();
         }
 
+
         private void Warehouse_S35_Load_simpleButton_Click(object sender, EventArgs e)
         {
             //load danh sách kho và kho detail của Hóa đơn đã được chọn.
-            // Gán VoucherID cho Hóa đơn.
+            WareHouseController controller = new WareHouseController();
+            wareHousesListS35 = new List<WareHouse>();
+            foreach (Invoice invoice in GlobalVarient.S35DataSelected)
+            {
+                List<WareHouse> wareHousesListFor = new List<WareHouse>();
+                wareHousesListFor  = controller.GetWareHouseSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
+                if (wareHousesListFor.Count > 0)
+                {
+                    wareHousesListS35.AddRange(wareHousesListFor);
+                }
+            }
+            WarehouseData = new BindingList<WareHouse>(wareHousesListS35);
+            WareHouse_gridControl.DataSource = WarehouseData;
+            WareHouseDelete = new List<WareHouse>();
+        }
 
+        private void WareHouse_S35_Save_simpleButton_Click(object sender, EventArgs e)
+        {
+            WareHouseController controller = new WareHouseController();
+            int checkerror = 0;
+           // WarehouseData
+           foreach(WareHouse wareHouseS35 in WarehouseData)
+            {
+               
+               foreach(WareHouse wareHouseItemS35 in wareHousesListS35)
+                {
+                    if (wareHouseItemS35.WarehouseID.Contains(wareHouseS35.WarehouseID))
+                    {
+                        //Nếu warehouse ID này được lấy từ S35 thì cập nhật voucherID. VoucherID chỉ cập nhật 1 lần duy nhất này.
+                        if (!controller.WareHouseUpdateS35(wareHouseS35))
+                        {
+                            //Cập nhật thất bại
+                            MessageBoxHelper.ShowErrorMessage("Cập nhật dữ liệu S35 vào chứng từ thất bại!");
+                            checkerror = 1;
+                        }
+                    }
+                }
+            }
+           if(checkerror == 0)
+            {
+                MessageBoxHelper.ShowInfoMessage("Cập nhật dữ liệu thành công!");
+            }
         }
     }
 }

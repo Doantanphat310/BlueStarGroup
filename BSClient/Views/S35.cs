@@ -75,8 +75,7 @@ namespace BSClient.Views
                 invoice.Status = ModifyMode.Update;
             }
         }
-
-
+        
 
         public void InitDefaultControl()
         {
@@ -453,6 +452,7 @@ namespace BSClient.Views
                 wareHouseItem.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 wareHouseItem.InvoiceID = invoice.InvoiceID;
                 wareHouseItem.CustomerID = invoice.CustomerID;
+                wareHouseItem.Type = "X";
                 wareHouseItem.Status = ModifyMode.Insert;
 
                 wareHousesData.Add(wareHouseItem);
@@ -629,6 +629,7 @@ namespace BSClient.Views
                     GlobalVarient.S35DataSelected.Add(selectinvoice);
                 }
             }
+            MessageBoxHelper.ShowInfoMessage("Lấy dữ liệu S35 thành công!");
         }
     }
 }

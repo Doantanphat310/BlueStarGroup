@@ -140,6 +140,8 @@
             this.WareHouseDepreciationSave_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouseDepreciationSaveNew_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.ChitietKhogroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.WareHouse_S35_Save_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.Warehouse_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WareHouse_checkBox = new System.Windows.Forms.CheckBox();
             this.WWareHouseCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.WWareHouseDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -160,7 +162,6 @@
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.Warehouse_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -1374,6 +1375,7 @@
             // 
             // ChitietKhogroupControl
             // 
+            this.ChitietKhogroupControl.Controls.Add(this.WareHouse_S35_Save_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.Warehouse_S35_Load_simpleButton);
             this.ChitietKhogroupControl.Controls.Add(this.WareHouse_checkBox);
             this.ChitietKhogroupControl.Controls.Add(this.WWareHouseCancel_simpleButton);
@@ -1396,6 +1398,26 @@
             this.ChitietKhogroupControl.Name = "ChitietKhogroupControl";
             this.ChitietKhogroupControl.Size = new System.Drawing.Size(1320, 375);
             this.ChitietKhogroupControl.TabIndex = 4;
+            // 
+            // WareHouse_S35_Save_simpleButton
+            // 
+            this.WareHouse_S35_Save_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WareHouse_S35_Save_simpleButton.ImageOptions.Image")));
+            this.WareHouse_S35_Save_simpleButton.Location = new System.Drawing.Point(540, 344);
+            this.WareHouse_S35_Save_simpleButton.Name = "WareHouse_S35_Save_simpleButton";
+            this.WareHouse_S35_Save_simpleButton.Size = new System.Drawing.Size(106, 26);
+            this.WareHouse_S35_Save_simpleButton.TabIndex = 30;
+            this.WareHouse_S35_Save_simpleButton.Text = "Lưu dữ liệu S35";
+            this.WareHouse_S35_Save_simpleButton.Click += new System.EventHandler(this.WareHouse_S35_Save_simpleButton_Click);
+            // 
+            // Warehouse_S35_Load_simpleButton
+            // 
+            this.Warehouse_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Warehouse_S35_Load_simpleButton.ImageOptions.Image")));
+            this.Warehouse_S35_Load_simpleButton.Location = new System.Drawing.Point(428, 344);
+            this.Warehouse_S35_Load_simpleButton.Name = "Warehouse_S35_Load_simpleButton";
+            this.Warehouse_S35_Load_simpleButton.Size = new System.Drawing.Size(106, 26);
+            this.Warehouse_S35_Load_simpleButton.TabIndex = 29;
+            this.Warehouse_S35_Load_simpleButton.Text = "Tải S35";
+            this.Warehouse_S35_Load_simpleButton.Click += new System.EventHandler(this.Warehouse_S35_Load_simpleButton_Click);
             // 
             // WareHouse_checkBox
             // 
@@ -1588,16 +1610,6 @@
             this.CompanyNameVoucher_labelControl.Size = new System.Drawing.Size(261, 23);
             this.CompanyNameVoucher_labelControl.TabIndex = 6;
             this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
-            // 
-            // Warehouse_S35_Load_simpleButton
-            // 
-            this.Warehouse_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.Warehouse_S35_Load_simpleButton.Location = new System.Drawing.Point(476, 344);
-            this.Warehouse_S35_Load_simpleButton.Name = "Warehouse_S35_Load_simpleButton";
-            this.Warehouse_S35_Load_simpleButton.Size = new System.Drawing.Size(106, 26);
-            this.Warehouse_S35_Load_simpleButton.TabIndex = 29;
-            this.Warehouse_S35_Load_simpleButton.Text = "Tải S35";
-            this.Warehouse_S35_Load_simpleButton.Click += new System.EventHandler(this.Warehouse_S35_Load_simpleButton_Click);
             // 
             // VoucherControl
             // 
@@ -1818,5 +1830,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraEditors.SimpleButton Warehouse_S35_Load_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton WareHouse_S35_Save_simpleButton;
     }
 }
