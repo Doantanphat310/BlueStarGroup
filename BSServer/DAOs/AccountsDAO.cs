@@ -20,11 +20,6 @@ namespace BSServer.DAOs
             return this.GetMaxSEQ(BSServerConst.AccountGroupSymbol);
         }
 
-        public long GetGeneralLedgerSEQ()
-        {
-            return this.GetMaxSEQ(BSServerConst.GeneralLedgerSymbol);
-        }
-
         public List<AccountGroup> GetAccountGroup()
         {
             return this.Context.AccountGroup.OrderBy(o => o.AccountGroupID).ToList();

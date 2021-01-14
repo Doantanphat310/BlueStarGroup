@@ -100,6 +100,12 @@
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SoQuyTienMat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoQuyTienMat.Designer.cs">
+      <DependentUpon>SoQuyTienMat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ChungTuGhiSo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,6 +146,10 @@
     </Compile>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoQuyTienMat.resx">
+      <DependentUpon>SoQuyTienMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ChungTuGhiSo.resx">
       <DependentUpon>ChungTuGhiSo.cs</DependentUpon>

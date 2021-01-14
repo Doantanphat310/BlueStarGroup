@@ -121,6 +121,7 @@
             this.xrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.DirectorSignture = new DevExpress.XtraReports.Parameters.Parameter();
+            this.PageNumber_Label = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -977,6 +978,7 @@
             // PageFooter
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.PageNumber_Label,
             this.xrPageInfo1,
             this.xrLabel53});
             this.PageFooter.HeightF = 23F;
@@ -1237,6 +1239,24 @@
             this.DirectorSignture.Description = "Chữ ký giám đốc";
             this.DirectorSignture.Name = "DirectorSignture";
             // 
+            // PageNumber_Label
+            // 
+            this.PageNumber_Label.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "Iif(IsNull(?PageStart, 0) > 0, true, false)")});
+            this.PageNumber_Label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageNumber_Label.ForeColor = System.Drawing.Color.Blue;
+            this.PageNumber_Label.LocationFloat = new DevExpress.Utils.PointFloat(965.9999F, 0F);
+            this.PageNumber_Label.Multiline = true;
+            this.PageNumber_Label.Name = "PageNumber_Label";
+            this.PageNumber_Label.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.PageNumber_Label.Scripts.OnPrintOnPage = "PageNumber_Label_PrintOnPage";
+            this.PageNumber_Label.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.PageNumber_Label.StylePriority.UseFont = false;
+            this.PageNumber_Label.StylePriority.UseForeColor = false;
+            this.PageNumber_Label.StylePriority.UseTextAlignment = false;
+            this.PageNumber_Label.Text = "Trang: {0}";
+            this.PageNumber_Label.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
             // BangCanDoiSoPhatSinhTaiKhoan
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1369,5 +1389,6 @@
         private DevExpress.XtraReports.UI.GroupHeaderBand GroupHeader1;
         private DevExpress.XtraReports.UI.XRPictureBox DirectorSignture_PictureBox;
         private DevExpress.XtraReports.Parameters.Parameter DirectorSignture;
+        private DevExpress.XtraReports.UI.XRLabel PageNumber_Label;
     }
 }

@@ -32,7 +32,6 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoDangKiChungTuGhiSo));
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
-            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -76,7 +75,7 @@
             this.CurrencyUnit = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.PageNumber_PageInfo = new DevExpress.XtraReports.UI.XRPageInfo();
             this.PrintDate = new DevExpress.XtraReports.Parameters.Parameter();
             this.SchedulerSignature = new DevExpress.XtraReports.Parameters.Parameter();
             this.Scheduler = new DevExpress.XtraReports.Parameters.Parameter();
@@ -96,12 +95,11 @@
             this.DirectorSignture = new DevExpress.XtraReports.Parameters.Parameter();
             this.VoucherDateTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherGroup = new DevExpress.XtraReports.UI.CalculatedField();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+            this.PageNumber_Label = new DevExpress.XtraReports.UI.XRLabel();
+            this.PageStart = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Title
@@ -592,8 +590,9 @@
             // PageFooter
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.PageNumber_Label,
             this.xrLabel10,
-            this.xrPageInfo1});
+            this.PageNumber_PageInfo});
             this.PageFooter.HeightF = 23F;
             this.PageFooter.Name = "PageFooter";
             // 
@@ -612,20 +611,20 @@
             this.xrLabel10.Text = "Mẫu số S02b-DN";
             this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // xrPageInfo1
+            // PageNumber_PageInfo
             // 
-            this.xrPageInfo1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrPageInfo1.ForeColor = System.Drawing.Color.Blue;
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(312F, 1F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.Number;
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(100F, 22F);
-            this.xrPageInfo1.StylePriority.UseFont = false;
-            this.xrPageInfo1.StylePriority.UseForeColor = false;
-            this.xrPageInfo1.StylePriority.UseTextAlignment = false;
-            this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomCenter;
-            this.xrPageInfo1.TextFormatString = "P: {0}";
+            this.PageNumber_PageInfo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageNumber_PageInfo.ForeColor = System.Drawing.Color.Blue;
+            this.PageNumber_PageInfo.LocationFloat = new DevExpress.Utils.PointFloat(312F, 0F);
+            this.PageNumber_PageInfo.Name = "PageNumber_PageInfo";
+            this.PageNumber_PageInfo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.PageNumber_PageInfo.PageInfo = DevExpress.XtraPrinting.PageInfo.Number;
+            this.PageNumber_PageInfo.SizeF = new System.Drawing.SizeF(100F, 22F);
+            this.PageNumber_PageInfo.StylePriority.UseFont = false;
+            this.PageNumber_PageInfo.StylePriority.UseForeColor = false;
+            this.PageNumber_PageInfo.StylePriority.UseTextAlignment = false;
+            this.PageNumber_PageInfo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomCenter;
+            this.PageNumber_PageInfo.TextFormatString = "P: {0}";
             // 
             // PrintDate
             // 
@@ -811,45 +810,53 @@
             // 
             // VoucherDateTag
             // 
-            this.VoucherDateTag.DataMember = "SP_SoDangKyChungTuGhiSo";
             this.VoucherDateTag.Expression = "[VouchersTypeID]+[VoucherDate]";
             this.VoucherDateTag.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherDateTag.Name = "VoucherDateTag";
             // 
             // VoucherGroup
             // 
-            this.VoucherGroup.DataMember = "SP_SoDangKyChungTuGhiSo";
             this.VoucherGroup.Expression = "[VouchersTypeID] + \': \' + [VouchersTypeName]";
             this.VoucherGroup.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherGroup.Name = "VoucherGroup";
-            // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "MyContext";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            storedProcQuery1.Name = "SP_ChungTuGhiSo";
-            storedProcQuery1.StoredProcName = "SP_ChungTuGhiSo";
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            storedProcQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // sqlDataSource2
             // 
             this.sqlDataSource2.ConnectionName = "MyContext";
             this.sqlDataSource2.Name = "sqlDataSource2";
-            storedProcQuery2.Name = "SP_SoDangKyChungTuGhiSo";
+            storedProcQuery1.Name = "SP_SoDangKyChungTuGhiSo";
             queryParameter1.Name = "@CompanyID";
             queryParameter1.Type = typeof(string);
-            storedProcQuery2.Parameters.Add(queryParameter1);
-            storedProcQuery2.StoredProcName = "SP_SoDangKyChungTuGhiSo";
+            storedProcQuery1.Parameters.Add(queryParameter1);
+            storedProcQuery1.StoredProcName = "SP_SoDangKyChungTuGhiSo";
             this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            storedProcQuery2});
+            storedProcQuery1});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
-            // objectDataSource1
+            // PageNumber_Label
             // 
-            this.objectDataSource1.DataSource = typeof(BSReport.Models.SoDangKyChungTuGhiSo);
-            this.objectDataSource1.Name = "objectDataSource1";
+            this.PageNumber_Label.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "Iif(IsNull(?PageStart, 0) > 0, true, false)")});
+            this.PageNumber_Label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageNumber_Label.ForeColor = System.Drawing.Color.Blue;
+            this.PageNumber_Label.LocationFloat = new DevExpress.Utils.PointFloat(628.9999F, 0F);
+            this.PageNumber_Label.Multiline = true;
+            this.PageNumber_Label.Name = "PageNumber_Label";
+            this.PageNumber_Label.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.PageNumber_Label.Scripts.OnPrintOnPage = "PageNumber_Label_PrintOnPage";
+            this.PageNumber_Label.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.PageNumber_Label.StylePriority.UseFont = false;
+            this.PageNumber_Label.StylePriority.UseForeColor = false;
+            this.PageNumber_Label.StylePriority.UseTextAlignment = false;
+            this.PageNumber_Label.Text = "Trang: {0}";
+            this.PageNumber_Label.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // PageStart
+            // 
+            this.PageStart.Description = "Trang đầu";
+            this.PageStart.Name = "PageStart";
+            this.PageStart.Type = typeof(int);
+            this.PageStart.ValueInfo = "10";
             // 
             // SoDangKiChungTuGhiSo
             // 
@@ -867,11 +874,7 @@
             this.VoucherDateTag,
             this.VoucherGroup});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.objectDataSource1,
-            this.sqlDataSource1,
             this.sqlDataSource2});
-            this.DataMember = "SP_SoDangKyChungTuGhiSo";
-            this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(40, 58, 25, 30);
             this.PageHeight = 1169;
@@ -889,7 +892,8 @@
             this.ChiefaAcountant,
             this.Director,
             this.ChiefaAcountantSignture,
-            this.DirectorSignture});
+            this.DirectorSignture,
+            this.PageStart});
             this.RequestParameters = false;
             this.ScriptsSource = resources.GetString("$this.ScriptsSource");
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -901,7 +905,6 @@
             this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -939,7 +942,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel48;
         private DevExpress.XtraReports.UI.XRLabel xrLabel49;
         private DevExpress.XtraReports.UI.PageFooterBand PageFooter;
-        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+        private DevExpress.XtraReports.UI.XRPageInfo PageNumber_PageInfo;
         private DevExpress.XtraReports.Parameters.Parameter PrintDate;
         private DevExpress.XtraReports.UI.XRPictureBox ChiefaAcountantSignture_PictureBox;
         private DevExpress.XtraReports.UI.XRPictureBox SchedulerSignture_PictureBox;
@@ -969,8 +972,8 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
         private DevExpress.XtraReports.UI.CalculatedField VoucherGroup;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
-        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
-        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
+        private DevExpress.XtraReports.UI.XRLabel PageNumber_Label;
+        private DevExpress.XtraReports.Parameters.Parameter PageStart;
     }
 }

@@ -167,11 +167,18 @@ public static System.Drawing.Image Base64ToImage(string base64String)
 
 		return image;
 	}
-	catch (Exception ex)
+	catch
 	{
 		return null;
 	}
 }
+
+private void PageNumber_Label_PrintOnPage(object sender, DevExpress.XtraReports.UI.PrintOnPageEventArgs e) {
+	int pageStart = (int)this.Parameters["PageStart"].Value;
+	int value = e.PageIndex + pageStart;
+	this.PageNumber_Label.Text = string.Format("Trang: {0}", value);
+}
+
 </value>
   </data>
 </root>

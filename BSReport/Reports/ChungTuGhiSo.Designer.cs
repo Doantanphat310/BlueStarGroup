@@ -116,6 +116,8 @@
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.VoucherGroup = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherNoTag = new DevExpress.XtraReports.UI.CalculatedField();
+            this.PageNumber_Label = new DevExpress.XtraReports.UI.XRLabel();
+            this.PageStart = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -673,8 +675,9 @@
             // PageFooter
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.PageNumber_Label,
             this.xrPageInfo1});
-            this.PageFooter.HeightF = 22F;
+            this.PageFooter.HeightF = 23F;
             this.PageFooter.Name = "PageFooter";
             // 
             // xrPageInfo1
@@ -1099,14 +1102,12 @@
             // 
             // VoucherDescriptionTag
             // 
-            this.VoucherDescriptionTag.DataMember = "SP_ChungTuGhiSo";
             this.VoucherDescriptionTag.Expression = "[VouchersTypeID]+[VoucherNo]+[VoucherDescription]";
             this.VoucherDescriptionTag.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherDescriptionTag.Name = "VoucherDescriptionTag";
             // 
             // VoucherDateTag
             // 
-            this.VoucherDateTag.DataMember = "SP_ChungTuGhiSo";
             this.VoucherDateTag.Expression = "[VouchersTypeID]+[VoucherNo]+[VoucherDate]";
             this.VoucherDateTag.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherDateTag.Name = "VoucherDateTag";
@@ -1132,16 +1133,39 @@
             // 
             // VoucherGroup
             // 
-            this.VoucherGroup.DataMember = "SP_ChungTuGhiSo";
             this.VoucherGroup.Expression = "[VouchersTypeID] + \': \' + [VouchersTypeName]";
             this.VoucherGroup.FieldType = DevExpress.XtraReports.UI.FieldType.String;
             this.VoucherGroup.Name = "VoucherGroup";
             // 
             // VoucherNoTag
             // 
-            this.VoucherNoTag.DataMember = "SP_ChungTuGhiSo";
             this.VoucherNoTag.Expression = "[VouchersTypeID]+[VoucherNo]";
             this.VoucherNoTag.Name = "VoucherNoTag";
+            // 
+            // PageNumber_Label
+            // 
+            this.PageNumber_Label.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "Iif(IsNull(?PageStart, 0) > 0, true, false)")});
+            this.PageNumber_Label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageNumber_Label.ForeColor = System.Drawing.Color.Blue;
+            this.PageNumber_Label.LocationFloat = new DevExpress.Utils.PointFloat(628.9999F, 0F);
+            this.PageNumber_Label.Multiline = true;
+            this.PageNumber_Label.Name = "PageNumber_Label";
+            this.PageNumber_Label.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.PageNumber_Label.Scripts.OnPrintOnPage = "PageNumber_Label_PrintOnPage";
+            this.PageNumber_Label.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.PageNumber_Label.StylePriority.UseFont = false;
+            this.PageNumber_Label.StylePriority.UseForeColor = false;
+            this.PageNumber_Label.StylePriority.UseTextAlignment = false;
+            this.PageNumber_Label.Text = "Trang: {0}";
+            this.PageNumber_Label.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // PageStart
+            // 
+            this.PageStart.Description = "Parameter1";
+            this.PageStart.Name = "PageStart";
+            this.PageStart.Type = typeof(int);
+            this.PageStart.ValueInfo = "0";
             // 
             // ChungTuGhiSo
             // 
@@ -1163,8 +1187,6 @@
             this.VoucherDescriptionTag});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
-            this.DataMember = "SP_ChungTuGhiSo";
-            this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(40, 58, 25, 30);
             this.PageHeight = 1169;
@@ -1182,7 +1204,8 @@
             this.ChiefaAcountant,
             this.Director,
             this.ChiefaAcountantSignture,
-            this.DirectorSignture});
+            this.DirectorSignture,
+            this.PageStart});
             this.RequestParameters = false;
             this.ScriptsSource = resources.GetString("$this.ScriptsSource");
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -1283,5 +1306,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell4;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell5;
         private DevExpress.XtraReports.UI.CalculatedField VoucherNoTag;
+        private DevExpress.XtraReports.UI.XRLabel PageNumber_Label;
+        private DevExpress.XtraReports.Parameters.Parameter PageStart;
     }
 }
