@@ -1241,19 +1241,17 @@ namespace BSClient
             }
             #region set invoice
             InvoiceController InvoiceController = new InvoiceController();
-            for (int i = 0; i < InvoiceData.Count; i++)
+            foreach(Invoice invoice in InvoiceData)
             {
-                if (string.IsNullOrEmpty(InvoiceData[i].InvoiceID))
+                if (string.IsNullOrEmpty(invoice.InvoiceID))
                 {
-                    InvoiceData[i].Status = ModifyMode.Insert;
-                    InvoiceData[i].VouchersID = GlobalVarient.voucherChoice.VouchersID;
-                    InvoiceData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                    invoice.Status = ModifyMode.Insert;
+                    invoice.VouchersID = GlobalVarient.voucherChoice.VouchersID;
+                    invoice.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 }
             }
             #endregion set invoice
-
             int checkAction = 0;
-
             List<Invoice> saveData = this.InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
             if (saveData?.Count > 0)
             {
@@ -3326,6 +3324,8 @@ namespace BSClient
                     if (wareHouseItemS35.WarehouseID.Contains(wareHouseS35.WarehouseID))
                     {
                         //Nếu warehouse ID này được lấy từ S35 thì cập nhật voucherID. VoucherID chỉ cập nhật 1 lần duy nhất này.
+                        wareHouseS35.VouchersID = GlobalVarient.voucherChoice.VouchersID;
+                        wareHouseS35.Date = GlobalVarient.voucherChoice.VoucherDate;
                         if (!controller.WareHouseUpdateS35(wareHouseS35))
                         {
                             //Cập nhật thất bại
@@ -3339,6 +3339,8 @@ namespace BSClient
             {
                 MessageBoxHelper.ShowInfoMessage("Cập nhật dữ liệu thành công!");
             }
+            //Load lai data warehouse
+            Load_WareHouse_GridView();
         }
     }
 }
