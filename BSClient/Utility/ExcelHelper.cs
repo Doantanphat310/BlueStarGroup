@@ -277,5 +277,69 @@ namespace BSClient.Utility
                 return result;
             }
         }
+
+        public static List<Invoice> LoadInvoice(out StringBuilder error)
+        {
+            error = new StringBuilder();
+            List<Invoice> resultData = new List<Invoice>();
+
+            object[,] values = GetExcelData(ExcelTemplate.EXL000005);
+
+            if (values == null)
+            {
+                return resultData;
+            }
+
+            string a, b, c, d, e, f, g, h, i, j, k, l, m, n;
+            int row = values.GetLength(0);
+            for (int ir = 2; ir <= row; ir++)
+            {
+                try
+                {
+                    a = values[ir, 1]?.ToString();
+                    if (string.IsNullOrWhiteSpace(a))
+                    {
+                        continue;
+                    }
+
+                    //a = FontHelper.TCVN3ToUnicode(a);
+                    b = values[ir, 2]?.ToString();
+                    c = values[ir, 3]?.ToString();
+                    d = values[ir, 4]?.ToString();
+                    //d = FontHelper.TCVN3ToUnicode(d);
+                    e = values[ir, 5]?.ToString();
+                    f = values[ir, 6]?.ToString();
+                    g = values[ir, 7]?.ToString();
+                    h = values[ir, 8]?.ToString();
+
+                    i = values[ir, 9]?.ToString();
+                    j = values[ir, 10]?.ToString();
+                    k = values[ir, 11]?.ToString();
+                    l = values[ir, 12]?.ToString();
+
+                    m = values[ir, 13]?.ToString();
+                    n = values[ir, 14]?.ToString();
+
+                    resultData.Add(new Invoice
+                    {
+                        InvoiceFormNo = a,
+                        FormNo = b,
+                        SerialNo = c,
+                        InvoiceNo = d,
+                        InvoiceDate = DateTime.Parse(e),
+                        CustomerID = f,
+                        Amount = decimal.Parse(j),
+                        VAT = decimal.Parse(k),
+                        PaymentType = m
+                    });
+                }
+                catch (Exception ex)
+                {
+                    BSLog.Logger.Debug(ex.Message);
+                    error.AppendLine($"Lỗi dòng {ir}: {ex.Message}");
+                }
+            }
+            return resultData;
+        }
     }
 }

@@ -177,13 +177,13 @@
         8j91kUbX3K/WKgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="simpleButton1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="S35_SelectData_simpleButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJXRFWHRUaXRsZQBDb3B5O0Jh
-        cnM7UmliYm9uO1N0YW5kYXJkO0Nsb25lbQ7fWwAAAG9JREFUOE/tjsENgCAQBOnJFu9NB5TmlyJ8uHIG
-        yKJBOcPTTSYQuB1wABpEBB32vC4835QVHepF77z3K0vMgpSNJbX0RIxRi7dz7Q69GkKokhKTQHOVmARM
-        Sd6/Czi/YJKASfn0g7NTmCcYhcsA3AFBL1Q4vy0ExQAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAldEVYdFRpdGxlAENvcHk7QmFycztSaWJib247U3Rh
+        bmRhcmQ7Q2xvbmVtDt9bAAAAb0lEQVQ4T+2OwQ2AIBAE6ckW700HlOaXIny4cgbIokE5w9NNJhC4HXAA
+        GkQEHfa8LjzflBUd6kXvvPcrS8yClI0ltfREjFGLt3PtDr0aQqiSEpNAc5WYBExJ3r8LOL9gkoBJ+fSD
+        s1OYJxiFywDcAUEvVDi/LQTFAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="S35_Add_Invoice_simpleButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

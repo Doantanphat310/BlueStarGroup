@@ -631,5 +631,36 @@ namespace BSClient.Views
             }
             MessageBoxHelper.ShowInfoMessage("Lấy dữ liệu S35 thành công!");
         }
+
+        private void S35_ImportExcel_simpleButton_Click(object sender, EventArgs e)
+        {
+            ImportData();
+        }
+
+        private void ImportData()
+        {
+            List<Invoice> invoices = ExcelHelper.LoadInvoice(out StringBuilder error);
+            foreach (var item in invoices)
+            {
+                item.Status = ModifyMode.Insert;
+                this.S35InvoiceData.Add(item);
+            }
+
+           List<Invoice> result  = S35InvoiceData.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo, x.SerialNo, x.InvoiceNo, x.VAT })
+                .Select(x => new Invoice() { CustomerID = x.First().CustomerID, InvoiceFormNo = x.First().InvoiceFormNo
+                , FormNo = x.First().FormNo, SerialNo = x.First().SerialNo, InvoiceNo = x.First().InvoiceNo, VAT = x.First().VAT, Amount = x.Sum(i => i.Amount) }).ToList();
+            
+            this.S35InvoiceData = new BindingList<Invoice>(result);
+
+            if (error != null && error.Length > 0)
+            {
+                ClientCommon.ShowErrorBox(error.ToString());
+            }
+        }
+
+        private void ExportData()
+        {
+          //  Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+        }
     }
 }

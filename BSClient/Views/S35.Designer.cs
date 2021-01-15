@@ -34,10 +34,11 @@
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Update_Invoice_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_ImportExcel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Delete_Invoice_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_SerialNo_textEdit = new DevExpress.XtraEditors.TextEdit();
             this.S35_InvoiceNo_textEdit = new DevExpress.XtraEditors.TextEdit();
+            this.S35_SelectData_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Add_Invoice_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_MST_textEdit = new DevExpress.XtraEditors.TextEdit();
             this.S35_FormNo_textEdit = new DevExpress.XtraEditors.TextEdit();
@@ -81,7 +82,6 @@
             this.S35_Add_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Delete_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_CancelWareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.S35_SelectData_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.S35_Description_MemoEdit.Properties)).BeginInit();
@@ -122,7 +122,7 @@
             this.panelControl1.Controls.Add(this.simpleButton5);
             this.panelControl1.Controls.Add(this.S35_Update_Invoice_simpleButton);
             this.panelControl1.Controls.Add(this.labelControl12);
-            this.panelControl1.Controls.Add(this.simpleButton4);
+            this.panelControl1.Controls.Add(this.S35_ImportExcel_simpleButton);
             this.panelControl1.Controls.Add(this.S35_Delete_Invoice_simpleButton);
             this.panelControl1.Controls.Add(this.S35_SerialNo_textEdit);
             this.panelControl1.Controls.Add(this.S35_InvoiceNo_textEdit);
@@ -195,16 +195,17 @@
             this.labelControl12.TabIndex = 0;
             this.labelControl12.Text = "Chọn nguồn dữ liệu";
             // 
-            // simpleButton4
+            // S35_ImportExcel_simpleButton
             // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(280, 5);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(100, 23);
-            this.simpleButton4.TabIndex = 4;
-            this.simpleButton4.Text = "Import Excel";
+            this.S35_ImportExcel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_ImportExcel_simpleButton.Appearance.Options.UseFont = true;
+            this.S35_ImportExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.S35_ImportExcel_simpleButton.Location = new System.Drawing.Point(280, 5);
+            this.S35_ImportExcel_simpleButton.Name = "S35_ImportExcel_simpleButton";
+            this.S35_ImportExcel_simpleButton.Size = new System.Drawing.Size(100, 23);
+            this.S35_ImportExcel_simpleButton.TabIndex = 4;
+            this.S35_ImportExcel_simpleButton.Text = "Import Excel";
+            this.S35_ImportExcel_simpleButton.Click += new System.EventHandler(this.S35_ImportExcel_simpleButton_Click);
             // 
             // S35_Delete_Invoice_simpleButton
             // 
@@ -237,6 +238,18 @@
             this.S35_InvoiceNo_textEdit.Size = new System.Drawing.Size(84, 22);
             this.S35_InvoiceNo_textEdit.TabIndex = 3;
             this.S35_InvoiceNo_textEdit.Tag = "InvoiceNo";
+            // 
+            // S35_SelectData_simpleButton
+            // 
+            this.S35_SelectData_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_SelectData_simpleButton.Appearance.Options.UseFont = true;
+            this.S35_SelectData_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_SelectData_simpleButton.ImageOptions.Image")));
+            this.S35_SelectData_simpleButton.Location = new System.Drawing.Point(335, 311);
+            this.S35_SelectData_simpleButton.Name = "S35_SelectData_simpleButton";
+            this.S35_SelectData_simpleButton.Size = new System.Drawing.Size(148, 23);
+            this.S35_SelectData_simpleButton.TabIndex = 4;
+            this.S35_SelectData_simpleButton.Text = "Lấy dữ liệu S35";
+            this.S35_SelectData_simpleButton.Click += new System.EventHandler(this.S35_SelectData_simpleButton_Click);
             // 
             // S35_Add_Invoice_simpleButton
             // 
@@ -706,18 +719,6 @@
             this.S35_CancelWareHouseDetail_simpleButton.Text = "Hủy";
             this.S35_CancelWareHouseDetail_simpleButton.Click += new System.EventHandler(this.S35_CancelWareHouseDetail_simpleButton_Click);
             // 
-            // S35_SelectData_simpleButton
-            // 
-            this.S35_SelectData_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.S35_SelectData_simpleButton.Appearance.Options.UseFont = true;
-            this.S35_SelectData_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.S35_SelectData_simpleButton.Location = new System.Drawing.Point(335, 311);
-            this.S35_SelectData_simpleButton.Name = "S35_SelectData_simpleButton";
-            this.S35_SelectData_simpleButton.Size = new System.Drawing.Size(148, 23);
-            this.S35_SelectData_simpleButton.TabIndex = 4;
-            this.S35_SelectData_simpleButton.Text = "Lấy dữ liệu S35";
-            this.S35_SelectData_simpleButton.Click += new System.EventHandler(this.S35_SelectData_simpleButton_Click);
-            // 
             // S35
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,7 +777,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton S35_Update_Invoice_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_Delete_Invoice_simpleButton;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton S35_ImportExcel_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_Add_Invoice_simpleButton;
         private DevExpress.XtraEditors.TextEdit S35_MST_textEdit;
         private DevExpress.XtraEditors.TextEdit S35_FormNo_textEdit;
