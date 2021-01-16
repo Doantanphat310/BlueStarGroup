@@ -290,7 +290,7 @@ namespace BSClient.Utility
                 return resultData;
             }
 
-            string a, b, c, d, e, f, g, h, i, j, k, l, m, n;
+            string a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
             int row = values.GetLength(0);
             for (int ir = 2; ir <= row; ir++)
             {
@@ -319,6 +319,7 @@ namespace BSClient.Utility
 
                     m = values[ir, 13]?.ToString();
                     n = values[ir, 14]?.ToString();
+                    o = values[ir, 15]?.ToString();
 
                     resultData.Add(new Invoice
                     {
@@ -330,7 +331,11 @@ namespace BSClient.Utility
                         CustomerID = f,
                         Amount = decimal.Parse(j),
                         VAT = decimal.Parse(k),
-                        PaymentType = m
+                        PaymentType = m,
+                        AccountIDFULL = o,
+                        ItemID = g,
+                        Quantity =  decimal.Parse(i),
+                        Price = decimal.Parse(h),
                     });
                 }
                 catch (Exception ex)

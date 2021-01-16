@@ -94,6 +94,13 @@ namespace BSCommon.Models
         }
 
         public string CustomerName { get; set; }
+        public string ItemID { get; set; }
+        [System.ComponentModel.DefaultValue(1)]
+        public decimal Quantity { get; set; }
+        [Required(ErrorMessage = "Đơn giá không được để trống!")]
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal Price { get; set; }
+
         public ModifyMode Status { get; set; }
     }
 }

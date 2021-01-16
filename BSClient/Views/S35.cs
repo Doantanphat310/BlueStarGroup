@@ -133,7 +133,7 @@ namespace BSClient.Views
 
         private void Setup_S35_Invoice_GridView()
         {
-            this.S35_Invoice_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true);
+            this.S35_Invoice_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true,columnAutoWidth:true);
             // this.S35_Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
@@ -209,7 +209,20 @@ namespace BSClient.Views
             }
             else
             {
-                WarehouseDetailData = new BindingList<WareHouseDetail>(controller.WareHouseDetailSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID));
+                if (invoice.InvoiceID != null)
+                {
+                    WarehouseDetailData = new BindingList<WareHouseDetail>(controller.WareHouseDetailSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID));
+                }
+                else if(invoice.InvoiceNo != null)
+                {
+                    // WarehouseDetailData.Where(item => item.InvoiceNo == invoice.InvoiceNo).ToList();
+                    //filter dữ liệu theo số hóa đơn S35
+                    string filter = string.Empty;
+                    filter += $"[InvoiceNo] = '{invoice.InvoiceNo}'";
+                    this.S35_WarehouseDetail_gridView.ActiveFilterString = filter;
+                }
+                else return;
+               
             }
             S35_WarehouseDetail_gridControl.DataSource = WarehouseDetailData;
             WareHouseDetailDelete = new List<WareHouseDetail>();
@@ -640,18 +653,39 @@ namespace BSClient.Views
         private void ImportData()
         {
             List<Invoice> invoices = ExcelHelper.LoadInvoice(out StringBuilder error);
-            foreach (var item in invoices)
+          //  BindingList<Invoice> invoicesBidingList = new BindingList<Invoice>();
+           List<Invoice> result  = invoices.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo, x.SerialNo, x.InvoiceNo, x.VAT })
+                .Select(x => new Invoice() { CustomerID = x.First().CustomerID, InvoiceFormNo = x.First().InvoiceFormNo
+                , FormNo = x.First().FormNo, SerialNo = x.First().SerialNo, InvoiceNo = x.First().InvoiceNo, VAT = x.First().VAT,
+                    InvoiceDate = x.First().InvoiceDate, PaymentType = x.First().PaymentType , InvoiceType = "X", S35Type = true,
+                    InvoiceVATAccountID = x.First().InvoiceVATAccountID, AccountIDFULL = x.First().AccountIDFULL,
+                    Amount = x.Sum(i => i.Amount) }).ToList();
+
+            //Lưu warehouse Detail Chưa có warehouseID và invoiceID
+            // S35_WarehouseDetail_gridView
+            // WarehouseDetailData
+           // InvoiceNo
+           foreach(Invoice invoiceDetail in invoices)
+            {
+                WareHouseDetail wareHouseDetailInvoice = new WareHouseDetail();
+                wareHouseDetailInvoice.Amount = invoiceDetail.Amount;
+                wareHouseDetailInvoice.ItemID = invoiceDetail.ItemID;
+                wareHouseDetailInvoice.Quantity = invoiceDetail.Quantity;
+                wareHouseDetailInvoice.Price = invoiceDetail.Price;
+                wareHouseDetailInvoice.VAT = invoiceDetail.VAT;
+                wareHouseDetailInvoice.InvoiceNo = invoiceDetail.InvoiceNo;
+                WarehouseDetailData.Add(wareHouseDetailInvoice);
+            }
+            //Lưu invoice chưa có InvoiceID
+            foreach (var item in result)
             {
                 item.Status = ModifyMode.Insert;
+                item.S35Type = true;
+                item.InvoiceType = "R";
+                item.InvoiceVATAccountID = "3331";
                 this.S35InvoiceData.Add(item);
             }
-
-           List<Invoice> result  = S35InvoiceData.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo, x.SerialNo, x.InvoiceNo, x.VAT })
-                .Select(x => new Invoice() { CustomerID = x.First().CustomerID, InvoiceFormNo = x.First().InvoiceFormNo
-                , FormNo = x.First().FormNo, SerialNo = x.First().SerialNo, InvoiceNo = x.First().InvoiceNo, VAT = x.First().VAT, Amount = x.Sum(i => i.Amount) }).ToList();
-            
-            this.S35InvoiceData = new BindingList<Invoice>(result);
-
+         //   this.S35InvoiceData = new BindingList<Invoice>(result);
             if (error != null && error.Length > 0)
             {
                 ClientCommon.ShowErrorBox(error.ToString());
