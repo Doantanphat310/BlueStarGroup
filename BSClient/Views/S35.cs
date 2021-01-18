@@ -482,7 +482,6 @@ namespace BSClient.Views
                         {
                             foreach(WareHouse wareHouseItemGetID in wareHouseGetID)
                             {
-                               // GlobalVarient.S35_WareHouseID = wareHouseItemGetID.WarehouseID;
                                 warehouseID = wareHouseItemGetID.WarehouseID;
                             }  
                         }
@@ -695,6 +694,44 @@ namespace BSClient.Views
         private void ExportData()
         {
           //  Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+        }
+
+        private void S35_SaveExcel_simpleButton_Click(object sender, EventArgs e)
+        {
+            int checkAction = 0;
+            ///Lấy data hóa đơn
+            foreach (Invoice invoiceExcel in this.S35InvoiceData)
+            {
+                if (string.IsNullOrEmpty(invoiceExcel.InvoiceID))
+                {
+                    invoiceExcel.CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                    invoiceExcel.S35Type = true;
+                    invoiceExcel.Status = ModifyMode.Insert;
+                    //lưu hóa đơn
+                    InvoiceController controller = new InvoiceController();
+                    ///lấy data chi tiết hóa đơn
+                    List<WareHouseDetail> detailData = new List<WareHouseDetail>();
+                    detailData = this.WarehouseDetailData.Where(item => item.InvoiceNo == invoiceExcel.InvoiceNo).ToList();
+                    //Lưu chi tiết hóa đơn
+                    //Lưu hóa đơn
+                    if (controller.SaveInvoiceExcel(invoiceExcel, detailData))
+                    {
+                        checkAction++;
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002 + " \n HĐ: " + invoiceExcel.InvoiceNo);
+                    }
+                }
+            }
+
+            if(checkAction != 0)
+            {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+            }
+
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
+
         }
     }
 }

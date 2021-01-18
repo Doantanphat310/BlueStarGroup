@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(S35));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.S35_Description_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_SaveExcel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Update_Invoice_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.S35_ImportExcel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -119,7 +119,7 @@
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.S35_Description_MemoEdit);
-            this.panelControl1.Controls.Add(this.simpleButton5);
+            this.panelControl1.Controls.Add(this.S35_SaveExcel_simpleButton);
             this.panelControl1.Controls.Add(this.S35_Update_Invoice_simpleButton);
             this.panelControl1.Controls.Add(this.labelControl12);
             this.panelControl1.Controls.Add(this.S35_ImportExcel_simpleButton);
@@ -160,16 +160,17 @@
             this.S35_Description_MemoEdit.TabIndex = 7;
             this.S35_Description_MemoEdit.Tag = "Description";
             // 
-            // simpleButton5
+            // S35_SaveExcel_simpleButton
             // 
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(386, 5);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(99, 23);
-            this.simpleButton5.TabIndex = 4;
-            this.simpleButton5.Text = "Lưu excel";
+            this.S35_SaveExcel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.S35_SaveExcel_simpleButton.Appearance.Options.UseFont = true;
+            this.S35_SaveExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.S35_SaveExcel_simpleButton.Location = new System.Drawing.Point(386, 5);
+            this.S35_SaveExcel_simpleButton.Name = "S35_SaveExcel_simpleButton";
+            this.S35_SaveExcel_simpleButton.Size = new System.Drawing.Size(99, 23);
+            this.S35_SaveExcel_simpleButton.TabIndex = 4;
+            this.S35_SaveExcel_simpleButton.Text = "Lưu excel";
+            this.S35_SaveExcel_simpleButton.Click += new System.EventHandler(this.S35_SaveExcel_simpleButton_Click);
             // 
             // S35_Update_Invoice_simpleButton
             // 
@@ -199,7 +200,7 @@
             // 
             this.S35_ImportExcel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_ImportExcel_simpleButton.Appearance.Options.UseFont = true;
-            this.S35_ImportExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.S35_ImportExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_ImportExcel_simpleButton.ImageOptions.Image")));
             this.S35_ImportExcel_simpleButton.Location = new System.Drawing.Point(280, 5);
             this.S35_ImportExcel_simpleButton.Name = "S35_ImportExcel_simpleButton";
             this.S35_ImportExcel_simpleButton.Size = new System.Drawing.Size(100, 23);
@@ -774,7 +775,7 @@
         private DevExpress.XtraEditors.SearchLookUpEdit S35_TKTkeDoanhThu_searchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton S35_SaveExcel_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_Update_Invoice_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_Delete_Invoice_simpleButton;
         private DevExpress.XtraEditors.SimpleButton S35_ImportExcel_simpleButton;

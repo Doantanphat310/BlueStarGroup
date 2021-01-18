@@ -62,5 +62,10 @@ namespace BSServer.Controllers
         {
             return this.InvoiceLogic.SaveInvoice(dataList);
         }
+
+        public bool SaveInvoiceExcel(Invoice dataList, List<WareHouseDetail> detailList)
+        {
+            return this.InvoiceLogic.SaveInvoiceExcel(dataList, detailList);
+        }
     }
 }
