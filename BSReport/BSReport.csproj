@@ -94,6 +94,18 @@
     <Compile Include="MyContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\SoDangKyChungTuKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoDangKyChungTuKho.Designer.cs">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.Designer.cs">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,6 +156,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\SoDangKyChungTuKho.resx">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoNoTongHopPhaiThu.resx">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
       <SubType>Designer</SubType>
