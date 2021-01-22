@@ -65,9 +65,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="SSSuporter">
-      <HintPath>..\BSTool\SSSuporter\bin\Debug\SSSuporter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -80,6 +77,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="XMLHelper">
+      <HintPath>..\BSTool\SQLAuto\Lib\XMLHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs">
@@ -88,16 +88,47 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\SoDangKyChungTuGhiSo.cs" />
     <Compile Include="Models\ChungTuGhiSo.cs" />
     <Compile Include="Models\ReportInfo.cs" />
     <Compile Include="MyContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.Designer.cs">
+      <DependentUpon>SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoDangKyChungTuKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoDangKyChungTuKho.Designer.cs">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.Designer.cs">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.Designer.cs">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoQuyTienMat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoQuyTienMat.Designer.cs">
+      <DependentUpon>SoQuyTienMat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ChungTuGhiSo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ChungTuGhiSo.Designer.cs">
+      <DependentUpon>ChungTuGhiSo.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\SoDangKiChungTuGhiSo.cs">
       <SubType>Component</SubType>
@@ -131,8 +162,25 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.resx">
+      <DependentUpon>SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoDangKyChungTuKho.resx">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoNoTongHopPhaiThu.resx">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
       <DependentUpon>BangCanDoiSoPhatSinhTaiKhoan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoQuyTienMat.resx">
+      <DependentUpon>SoQuyTienMat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ChungTuGhiSo.resx">
+      <DependentUpon>ChungTuGhiSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SoDangKiChungTuGhiSo.resx">
       <DependentUpon>SoDangKiChungTuGhiSo.cs</DependentUpon>

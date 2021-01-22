@@ -37,7 +37,7 @@
             this.Year_DateEdit = new DevExpress.XtraEditors.DateEdit();
             this.SoDangKyChungTuGhiSo_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.SoNoTongHopPhaiThu_CheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.BaoCao02_CheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.ChungTuGhiSo_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.BangCanDoiSoPhatSinhTK_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.SoCaiTaiKhoan_CheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.checkBox6 = new DevExpress.XtraEditors.CheckEdit();
@@ -56,7 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Year_DateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDangKyChungTuGhiSo_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoTongHopPhaiThu_CheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BaoCao02_CheckBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChungTuGhiSo_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BangCanDoiSoPhatSinhTK_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoCaiTaiKhoan_CheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkBox6.Properties)).BeginInit();
@@ -153,16 +153,16 @@
             this.SoNoTongHopPhaiThu_CheckBox.Size = new System.Drawing.Size(141, 19);
             this.SoNoTongHopPhaiThu_CheckBox.TabIndex = 1;
             // 
-            // BaoCao02_CheckBox
+            // ChungTuGhiSo_CheckBox
             // 
-            this.BaoCao02_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ChungTuGhiSo_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.BaoCao02_CheckBox.EditValue = true;
-            this.BaoCao02_CheckBox.Location = new System.Drawing.Point(3, 28);
-            this.BaoCao02_CheckBox.Name = "BaoCao02_CheckBox";
-            this.BaoCao02_CheckBox.Properties.Caption = "Chứng từ ghi sổ";
-            this.BaoCao02_CheckBox.Size = new System.Drawing.Size(103, 19);
-            this.BaoCao02_CheckBox.TabIndex = 2;
+            this.ChungTuGhiSo_CheckBox.EditValue = true;
+            this.ChungTuGhiSo_CheckBox.Location = new System.Drawing.Point(3, 28);
+            this.ChungTuGhiSo_CheckBox.Name = "ChungTuGhiSo_CheckBox";
+            this.ChungTuGhiSo_CheckBox.Properties.Caption = "Chứng từ ghi sổ";
+            this.ChungTuGhiSo_CheckBox.Size = new System.Drawing.Size(103, 19);
+            this.ChungTuGhiSo_CheckBox.TabIndex = 2;
             // 
             // BangCanDoiSoPhatSinhTK_CheckBox
             // 
@@ -223,7 +223,7 @@
             this.ReportItem_TableLayoutPanel.Controls.Add(this.checkBox6, 0, 4);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoCaiTaiKhoan_CheckBox, 0, 3);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.BangCanDoiSoPhatSinhTK_CheckBox, 0, 2);
-            this.ReportItem_TableLayoutPanel.Controls.Add(this.BaoCao02_CheckBox, 0, 1);
+            this.ReportItem_TableLayoutPanel.Controls.Add(this.ChungTuGhiSo_CheckBox, 0, 1);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoNoTongHopPhaiThu_CheckBox, 0, 5);
             this.ReportItem_TableLayoutPanel.Controls.Add(this.SoDangKyChungTuGhiSo_CheckBox, 0, 0);
             this.ReportItem_TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -344,7 +344,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Year_DateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDangKyChungTuGhiSo_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoNoTongHopPhaiThu_CheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BaoCao02_CheckBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChungTuGhiSo_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BangCanDoiSoPhatSinhTK_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoCaiTaiKhoan_CheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkBox6.Properties)).EndInit();
@@ -369,7 +369,7 @@
         private DevExpress.XtraEditors.DateEdit Year_DateEdit;
         private DevExpress.XtraEditors.CheckEdit SoDangKyChungTuGhiSo_CheckBox;
         private DevExpress.XtraEditors.CheckEdit SoNoTongHopPhaiThu_CheckBox;
-        private DevExpress.XtraEditors.CheckEdit BaoCao02_CheckBox;
+        private DevExpress.XtraEditors.CheckEdit ChungTuGhiSo_CheckBox;
         private DevExpress.XtraEditors.CheckEdit BangCanDoiSoPhatSinhTK_CheckBox;
         private DevExpress.XtraEditors.CheckEdit SoCaiTaiKhoan_CheckBox;
         private DevExpress.XtraEditors.CheckEdit checkBox6;
