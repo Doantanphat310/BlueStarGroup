@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XMLHelper;
 
 namespace BSReport
 {
@@ -24,7 +25,7 @@ namespace BSReport
             string path = GetPathFile(nameof(ChungTuGhiSo));
             List<ChungTuGhiSo> chungTuGhiSos = GetChungTuGhiSo();
 
-            SSSuporter.XMLHelpper.WriteXML<List<ChungTuGhiSo>>(path, chungTuGhiSos);
+            XMLHelpper.WriteXML<List<ChungTuGhiSo>>(path, chungTuGhiSos);
 
             MessageBox.Show("Success!");
         }
