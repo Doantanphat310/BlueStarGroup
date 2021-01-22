@@ -100,6 +100,18 @@
     <Compile Include="Reports\SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.Designer.cs">
       <DependentUpon>SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SoDangKyChungTuKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoDangKyChungTuKho.Designer.cs">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SoNoTongHopPhaiThu.Designer.cs">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -152,6 +164,12 @@
     </Compile>
     <EmbeddedResource Include="Reports\SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.resx">
       <DependentUpon>SoTheoDoiChiPhiChoPhanBoKhauHaoTSCD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoDangKyChungTuKho.resx">
+      <DependentUpon>SoDangKyChungTuKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SoNoTongHopPhaiThu.resx">
+      <DependentUpon>SoNoTongHopPhaiThu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BangCanDoiSoPhatSinhTaiKhoan.resx">
