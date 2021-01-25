@@ -1597,6 +1597,7 @@
             this.WareHouseDetail_gridView.Name = "WareHouseDetail_gridView";
             this.WareHouseDetail_gridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WareHouseDetail_gridView_RowClick);
             this.WareHouseDetail_gridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WareHouseDetail_gridView_FocusedRowChanged);
+            this.WareHouseDetail_gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WareHouseDetail_gridView_CellValueChanged);
             this.WareHouseDetail_gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.WareHouseDetail_gridView_ValidateRow);
             this.WareHouseDetail_gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.WareHouseDetail_gridView_RowUpdated);
             // 

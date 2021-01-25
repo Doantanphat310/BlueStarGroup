@@ -21,6 +21,23 @@ Values('C', N'Có')
 select * from #MaterialNV
 end
 
+Create proc SPSelectMaterialLockDB
+as
+begin
+	CREATE TABLE #MaterialLockDB
+	(
+	ID Bit,
+	Name Nvarchar(50),
+	)
+INSERT INTO #MaterialLockDB (ID,Name)
+Values('0', N'Khóa sổ')
+INSERT INTO #MaterialLockDB (ID,Name)
+Values('1', N'Mở sổ')
+select * from #MaterialLockDB
+end
+
+SPSelectMaterialLockDB
+
 SPSelectMaterialInvoiceType
 alter proc SPSelectMaterialInvoiceType
 as

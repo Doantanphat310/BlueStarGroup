@@ -3233,7 +3233,7 @@ namespace BSClient
             GridView view = sender as GridView;
             GridColumn columnQuantity = view.Columns["Quantity"];
             MaterialNVController controller = new MaterialNVController();
-            List<MaterialTonKho> tonKhos = controller.GetMaterialTonKho(GlobalVarient.voucherChoice.VoucherDate, WareHouseDetail_gridView.GetFocusedRowCellValue("ItemID").ToString(), CommonInfo.CompanyInfo.CompanyID);
+            List<MaterialTonKho> tonKhos = controller.GetMaterialTonKho(GlobalVarient.voucherChoice.VoucherDate, InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("ItemID").ToString(), CommonInfo.CompanyInfo.CompanyID);
             Decimal Quanlity = Decimal.Parse(InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Quantity").ToString());
             if (Quanlity <= 0)
             {
@@ -3243,7 +3243,7 @@ namespace BSClient
             }
             else
             {
-                if (InvoiceWareHouseDetail_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
+                if (InvoiceWareHouse_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
                 {
                     //Check xuất kho phải nhỏ hơn hoặc bằng nhập kho và đầu kỳ
                     if (tonKhos.Count < 0)
@@ -3282,7 +3282,8 @@ namespace BSClient
 
         private void KhoaSo_simpleButton_Click(object sender, EventArgs e)
         {
-
+            ClockDB ClockDBForm = new ClockDB();
+            ClockDBForm.Show();
         }
 
         private void VoucherS35_simpleButton_Click(object sender, EventArgs e)
@@ -3341,6 +3342,41 @@ namespace BSClient
             }
             //Load lai data warehouse
             Load_WareHouse_GridView();
+        }
+
+        private void WareHouseDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                decimal QuantityFilter = (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+
+                if (QuantityFilter > 0)
+                {
+
+                    Decimal Cellprice = (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Amount") / QuantityFilter;
+
+                    if (Cellprice != (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Price"))
+                    {
+                        WareHouseDetail_gridView.SetFocusedRowCellValue("Price", Cellprice);
+                    }
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage("Số lượng phải lớn hơn 0!");
+                    return;
+                }
+
+            }
+            else if (e.Column.FieldName == "Price")
+            {
+                Decimal Cellprice = (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                if (Cellprice != (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                {
+                    WareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
+                }
+            }
         }
     }
 }

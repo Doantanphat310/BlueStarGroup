@@ -24,6 +24,13 @@ namespace BSServer.Controllers
             return this.MaterialNVDAO.GetMaterialNV();
         }
 
+        public List<MaterialLockDB> GetMaterialLockDB()
+        {
+            return this.MaterialNVDAO.GetMaterialLockDB();
+        }
+
+        
+
         public List<MaterialPayment> GetMaterialPayment()
         {
             return this.MaterialNVDAO.GetMaterialPayment();

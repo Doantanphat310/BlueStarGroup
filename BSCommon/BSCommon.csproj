@@ -122,11 +122,13 @@
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\KetChuyenValue.cs" />
     <Compile Include="Models\KichBanKetChuyentable.cs" />
+    <Compile Include="Models\LockDBCompany.cs" />
     <Compile Include="Models\MaterialCheck.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\MaterialGL.cs" />
     <Compile Include="Models\MaterialInvoiceType.cs" />
+    <Compile Include="Models\MaterialLockDB.cs" />
     <Compile Include="Models\MaterialPayment.cs" />
     <Compile Include="Models\MaterialNV.cs" />
     <Compile Include="Models\MaterialDT.cs" />
