@@ -70,8 +70,6 @@ namespace BSServer.Logics
             {
                 try
                 {
-                    long seq = this.AccountsDAO.GetGeneralLedgerSEQ();
-
                     foreach (Accounts data in saveData)
                     {
                         switch (data.Status)

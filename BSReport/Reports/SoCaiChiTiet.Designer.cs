@@ -135,8 +135,10 @@
             this.VoucherDescriptionTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherDateTag = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherIDTag = new DevExpress.XtraReports.UI.CalculatedField();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.Voucher_GroupFooter = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.PageNumber_Label = new DevExpress.XtraReports.UI.XRLabel();
+            this.PageStart = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -656,8 +658,9 @@
             // PageFooter
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.PageNumber_Label,
             this.xrPageInfo1});
-            this.PageFooter.HeightF = 22F;
+            this.PageFooter.HeightF = 23F;
             this.PageFooter.Name = "PageFooter";
             // 
             // xrPageInfo1
@@ -1287,14 +1290,39 @@
             this.VoucherIDTag.Expression = "[AccountGroupID]+[VouchersTypeID]+[VoucherNo]";
             this.VoucherIDTag.Name = "VoucherIDTag";
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(BSCommon.Models.GetChiTietSoCai);
-            // 
             // Voucher_GroupFooter
             // 
             this.Voucher_GroupFooter.HeightF = 0F;
             this.Voucher_GroupFooter.Name = "Voucher_GroupFooter";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(BSCommon.Models.GetChiTietSoCai);
+            // 
+            // PageNumber_Label
+            // 
+            this.PageNumber_Label.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "Iif(IsNull(?PageStart, 0) > 0, true, false)")});
+            this.PageNumber_Label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageNumber_Label.ForeColor = System.Drawing.Color.Blue;
+            this.PageNumber_Label.LocationFloat = new DevExpress.Utils.PointFloat(628.9999F, 0F);
+            this.PageNumber_Label.Multiline = true;
+            this.PageNumber_Label.Name = "PageNumber_Label";
+            this.PageNumber_Label.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.PageNumber_Label.Scripts.OnPrintOnPage = "PageNumber_Label_PrintOnPage";
+            this.PageNumber_Label.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.PageNumber_Label.StylePriority.UseFont = false;
+            this.PageNumber_Label.StylePriority.UseForeColor = false;
+            this.PageNumber_Label.StylePriority.UseTextAlignment = false;
+            this.PageNumber_Label.Text = "Trang: {0}";
+            this.PageNumber_Label.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // PageStart
+            // 
+            this.PageStart.Description = "Trang bắt đầu";
+            this.PageStart.Name = "PageStart";
+            this.PageStart.Type = typeof(int);
+            this.PageStart.ValueInfo = "0";
             // 
             // SoCaiChiTiet
             // 
@@ -1336,7 +1364,8 @@
             this.ChiefaAcountant,
             this.Director,
             this.ChiefaAcountantSignture,
-            this.DirectorSignture});
+            this.DirectorSignture,
+            this.PageStart});
             this.RequestParameters = false;
             this.ScriptsSource = resources.GetString("$this.ScriptsSource");
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -1452,5 +1481,7 @@
         private DevExpress.XtraReports.UI.CalculatedField VoucherDateTag;
         private DevExpress.XtraReports.UI.CalculatedField VoucherIDTag;
         private DevExpress.XtraReports.UI.GroupFooterBand Voucher_GroupFooter;
+        private DevExpress.XtraReports.UI.XRLabel PageNumber_Label;
+        private DevExpress.XtraReports.Parameters.Parameter PageStart;
     }
 }

@@ -41,7 +41,7 @@ namespace BSClient.Views.Reports
             };
 
             XtraReport trangBia = ReportHelper.CreateDocument(ReportTemplate.RPT000003, reportInfos, param);
-            if(trangBia == null)
+            if (trangBia == null)
             {
                 return;
             }
@@ -93,8 +93,25 @@ namespace BSClient.Views.Reports
 
             List<ReportInfoView> result = new List<ReportInfoView>();
             XtraReport report;
-            int pageStart;
             int pageEnd = 0;
+            int pageStart;
+            string reportName;
+
+            if (SoDangKyChungTuGhiSo_CheckBox.Checked)
+            {
+                pageStart = pageEnd + 1;
+                reportName = SoDangKyChungTuGhiSo_CheckBox.Text;
+                report = GetSoDangKyChungTuGhiSoReport(fromDate, toDate, pageStart);
+                result.Add(GetReportInfo(report, ReportTemplate.RPT000004, reportName, pageStart, ref pageEnd));
+            }
+
+            if (ChungTuGhiSo_CheckBox.Checked)
+            {
+                pageStart = pageEnd + 1;
+                reportName = ChungTuGhiSo_CheckBox.Text;
+                report = GetChungTuGhiSoReport(fromDate, toDate, pageStart);
+                result.Add(GetReportInfo(report, ReportTemplate.RPT000005, reportName, pageStart, ref pageEnd));
+            }
 
             if (BangCanDoiSoPhatSinhTK_CheckBox.Checked)
             {
@@ -133,6 +150,22 @@ namespace BSClient.Views.Reports
             }
 
             return result;
+        }
+
+        private ReportInfoView GetReportInfo(XtraReport report, string reportID, string reportName, int pageStart, ref int pageEnd)
+        {
+            int pageCount = report.Pages.Count;
+            pageEnd = pageStart + pageCount - 1;
+
+            return new ReportInfoView
+            {
+                ReportID = reportID,
+                ReportName = reportName,
+                PageStart = pageStart,
+                PageEnd = pageEnd,
+                PageCount = pageCount,
+                Report = report
+            };
         }
 
         private XtraReport GetSoCaiTaiKhoanReport(DateTime fromDate, DateTime toDate)
@@ -177,6 +210,68 @@ namespace BSClient.Views.Reports
             };
 
             return ReportHelper.CreateDocument(ReportTemplate.RPT000001, reportSource, param);
+        }
+
+        private XtraReport GetChungTuGhiSoReport(DateTime fromDate, DateTime toDate, int pageStart)
+        {
+            List<ChungTuGhiSo> reportSource = GetChungTuGhiSo(fromDate, toDate);
+
+            var param = new List<ReportParam>
+            {
+                new ReportParam("CurrencyUnit", CommonInfo.CompanyInfo.CurrencyUnit ),
+                new ReportParam("FromDate", fromDate ),
+                new ReportParam("ToDate", toDate ),
+                new ReportParam("PrintDate", DateTime.Now.Date ),
+                new ReportParam("CompanyName", CommonInfo.CompanyInfo.CompanyName ),
+                new ReportParam("CompanyAddress", CommonInfo.CompanyInfo.Address ),
+                new ReportParam("Scheduler", CommonInfo.CompanyInfo.LapBieu ),
+                new ReportParam("SchedulerSignature", CommonInfo.CompanyInfo.ChuKyLapBieu ),
+                new ReportParam("ChiefaAcountant", CommonInfo.CompanyInfo.KTTruong ),
+                new ReportParam("ChiefaAcountantSignture", CommonInfo.CompanyInfo.ChuKyKTTruong ),
+                new ReportParam("Director", CommonInfo.CompanyInfo.LanhDao),
+                new ReportParam("PageStart", pageStart)
+            };
+
+            return ReportHelper.CreateDocument(ReportTemplate.RPT000005, reportSource, param);
+        }
+
+        private XtraReport GetSoDangKyChungTuGhiSoReport(DateTime fromDate, DateTime toDate, int pageStart)
+        {
+            List<SoDangKyChungTuGhiSo> reportSource = GetSoDangKyChungTuGhiSo(fromDate, toDate);
+
+            var param = new List<ReportParam>
+            {
+                new ReportParam("CurrencyUnit", CommonInfo.CompanyInfo.CurrencyUnit ),
+                new ReportParam("FromDate", fromDate ),
+                new ReportParam("ToDate", toDate ),
+                new ReportParam("PrintDate", DateTime.Now.Date ),
+                new ReportParam("CompanyName", CommonInfo.CompanyInfo.CompanyName ),
+                new ReportParam("CompanyAddress", CommonInfo.CompanyInfo.Address ),
+                new ReportParam("Scheduler", CommonInfo.CompanyInfo.LapBieu ),
+                new ReportParam("SchedulerSignature", CommonInfo.CompanyInfo.ChuKyLapBieu ),
+                new ReportParam("ChiefaAcountant", CommonInfo.CompanyInfo.KTTruong ),
+                new ReportParam("ChiefaAcountantSignture", CommonInfo.CompanyInfo.ChuKyKTTruong ),
+                new ReportParam("Director", CommonInfo.CompanyInfo.LanhDao),
+                new ReportParam("PageStart", pageStart)
+            };
+
+            return ReportHelper.CreateDocument(ReportTemplate.RPT000004, reportSource, param);
+        }
+
+        private List<ChungTuGhiSo> GetChungTuGhiSo(DateTime fromDate, DateTime toDate)
+        {
+            using (ReportController controller = new ReportController())
+            {
+                return controller.GetChungTuGhiSo(fromDate, toDate);
+            }
+        }
+
+        private List<SoDangKyChungTuGhiSo> GetSoDangKyChungTuGhiSo(DateTime fromDate, DateTime toDate)
+        {
+            using (ReportController controller = new ReportController())
+            {
+                return controller.GetSoDangKyChungTuGhiSo(fromDate, toDate);
+            }
         }
     }
 

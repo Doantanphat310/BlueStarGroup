@@ -60,8 +60,7 @@ namespace BSServer._Core.Utility
         public static string WareHouseListID(long seq)
         {
             return GetGeneralIDWithDate(BSServerConst.WareHouseListSymbol, seq);
-        }
-        
+        }        
 
         public static string WareHouseDetailID(long seq)
         {
@@ -94,7 +93,5 @@ namespace BSServer._Core.Utility
         /// <param name="seq">số thứ tự</param>
         /// <returns></returns>
         public static string AccountGroupID(long seq) => GetGeneralID(BSServerConst.AccountGroupSymbol, seq, 6);
-
-        public static string GeneralLedgerID(long seq) => GetGeneralID(BSServerConst.GeneralLedgerSymbol, seq);
     }
 }

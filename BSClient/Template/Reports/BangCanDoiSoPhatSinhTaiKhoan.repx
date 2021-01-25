@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="BangCanDoiSoPhatSinhTaiKhoan" ScriptsSource="using System;&#xD;&#xA;using System.Drawing;&#xD;&#xA;using System.IO;&#xD;&#xA;&#xD;&#xA;private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;SchedulerSignature&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;ChiefaAcountantSignture&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;private void DirectorSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;DirectorSignture&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;public static System.Drawing.Image Base64ToImage(string base64String)&#xD;&#xA;{&#xD;&#xA;&#x9;try&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;if (string.IsNullOrEmpty(base64String)) return null;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;byte[] imageBytes = Convert.FromBase64String(base64String);&#xD;&#xA;&#x9;&#x9;MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);&#xD;&#xA;&#x9;&#x9;ms.Write(imageBytes, 0, imageBytes.Length);&#xD;&#xA;&#x9;&#x9;System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;return image;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;catch (Exception ex)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;&#x9;}&#xD;&#xA;}" Margins="45, 58, 30, 5" PaperKind="A4Rotated" PageWidth="1169" PageHeight="827" Version="19.1" RequestParameters="false" Font="Arial, 9.75pt">
+<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="BangCanDoiSoPhatSinhTaiKhoan" ScriptsSource="using System;&#xD;&#xA;using System.Drawing;&#xD;&#xA;using System.IO;&#xD;&#xA;&#xD;&#xA;private void SchedulerSignature_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;SchedulerSignature&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void ChiefaAcountantSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;ChiefaAcountantSignture&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;private void DirectorSignture_PictureBox_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;&#x9;XRPictureBox xrBox = sender as XRPictureBox;  &#xD;&#xA;&#x9;string base64String = this.Parameters[&quot;DirectorSignture&quot;].Value.ToString();&#xD;&#xA;&#x9;xrBox.Image = Base64ToImage(base64String); &#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;public static System.Drawing.Image Base64ToImage(string base64String)&#xD;&#xA;{&#xD;&#xA;&#x9;try&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;if (string.IsNullOrEmpty(base64String)) return null;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;byte[] imageBytes = Convert.FromBase64String(base64String);&#xD;&#xA;&#x9;&#x9;MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);&#xD;&#xA;&#x9;&#x9;ms.Write(imageBytes, 0, imageBytes.Length);&#xD;&#xA;&#x9;&#x9;System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;return image;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;catch&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void PageNumber_Label_PrintOnPage(object sender, DevExpress.XtraReports.UI.PrintOnPageEventArgs e) {&#xD;&#xA;&#x9;int pageStart = (int)this.Parameters[&quot;PageStart&quot;].Value;&#xD;&#xA;&#x9;int value = e.PageIndex + pageStart;&#xD;&#xA;&#x9;this.PageNumber_Label.Text = string.Format(&quot;Trang: {0}&quot;, value);&#xD;&#xA;}&#xD;&#xA;" Margins="45, 58, 30, 5" PaperKind="A4Rotated" PageWidth="1169" PageHeight="827" Version="19.1" RequestParameters="false" Font="Arial, 9.75pt">
   <Parameters>
     <Item1 Ref="2" Description="Từ ngày" ValueInfo="2020-01-01" Name="FromDate" Type="#Ref-1" />
     <Item2 Ref="3" Description="Đến ngày" ValueInfo="2020-12-31" Name="ToDate" Type="#Ref-1" />
@@ -171,146 +171,153 @@
     <Item6 Ref="93" ControlType="PageHeaderBand" Name="PageHeader" PrintOn="NotWithReportHeader" HeightF="0" />
     <Item7 Ref="94" ControlType="PageFooterBand" Name="PageFooter" HeightF="23">
       <Controls>
-        <Item1 Ref="95" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="P: {0}" TextAlignment="BottomCenter" SizeF="100,23" LocationFloat="482.5, 0" Font="Times New Roman, 9.75pt, style=Bold, charSet=0" Padding="2,2,0,0,100">
-          <StylePriority Ref="96" UseFont="false" UseTextAlignment="false" />
+        <Item1 Ref="95" ControlType="XRLabel" Name="PageNumber_Label" Multiline="true" Text="Trang: {0}" TextAlignment="MiddleRight" SizeF="100,23" LocationFloat="965.999939, 0" Font="Times New Roman, 12pt, style=Bold, charSet=0" ForeColor="Blue" Padding="2,2,0,0,100">
+          <Scripts Ref="96" OnPrintOnPage="PageNumber_Label_PrintOnPage" />
+          <ExpressionBindings>
+            <Item1 Ref="97" Expression="Iif(IsNull(?PageStart, 0) &gt; 0, true, false)" PropertyName="Visible" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="98" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
         </Item1>
-        <Item2 Ref="97" ControlType="XRLabel" Name="xrLabel53" Text="B01-KTNB(Thông tư 200/2014/TT-BTC 22-12-2014)" TextAlignment="MiddleLeft" SizeF="482,23" LocationFloat="0, 0" StyleName="Title" Font="Times New Roman, 9.75pt, charSet=0" BorderDashStyle="Solid">
-          <StylePriority Ref="98" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        <Item2 Ref="99" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="P: {0}" TextAlignment="BottomCenter" SizeF="100,23" LocationFloat="482.5, 0" Font="Times New Roman, 9.75pt, style=Bold, charSet=0" Padding="2,2,0,0,100">
+          <StylePriority Ref="100" UseFont="false" UseTextAlignment="false" />
         </Item2>
+        <Item3 Ref="101" ControlType="XRLabel" Name="xrLabel53" Text="B01-KTNB(Thông tư 200/2014/TT-BTC 22-12-2014)" TextAlignment="MiddleLeft" SizeF="482,23" LocationFloat="0, 0" StyleName="Title" Font="Times New Roman, 9.75pt, charSet=0" BorderDashStyle="Solid">
+          <StylePriority Ref="102" UseFont="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item3>
       </Controls>
     </Item7>
-    <Item8 Ref="99" ControlType="GroupFooterBand" Name="GroupFooter1" GroupUnion="WithLastDetail" HeightF="23">
+    <Item8 Ref="103" ControlType="GroupFooterBand" Name="GroupFooter1" GroupUnion="WithLastDetail" HeightF="23">
       <Controls>
-        <Item1 Ref="100" ControlType="XRTable" Name="xrTable3" TextAlignment="MiddleLeft" SizeF="1065,23" LocationFloat="0, 0" Font="Arial, 9pt, style=Bold, charSet=0" Padding="2,2,0,0,96">
+        <Item1 Ref="104" ControlType="XRTable" Name="xrTable3" TextAlignment="MiddleLeft" SizeF="1065,23" LocationFloat="0, 0" Font="Arial, 9pt, style=Bold, charSet=0" Padding="2,2,0,0,96">
           <Rows>
-            <Item1 Ref="101" ControlType="XRTableRow" Name="xrTableRow3" Weight="0.92">
+            <Item1 Ref="105" ControlType="XRTableRow" Name="xrTableRow3" Weight="0.92">
               <Cells>
-                <Item1 Ref="102" ControlType="XRTableCell" Name="xrTableCell10" Weight="12.571654540710032" Text="Cộng/Total" TextAlignment="MiddleCenter" WordWrap="false" Font="Arial, 9.75pt, style=Bold, charSet=0" Borders="Left, Right, Bottom">
-                  <StylePriority Ref="103" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                <Item1 Ref="106" ControlType="XRTableCell" Name="xrTableCell10" Weight="12.571654540710032" Text="Cộng/Total" TextAlignment="MiddleCenter" WordWrap="false" Font="Arial, 9.75pt, style=Bold, charSet=0" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="107" UseFont="false" UseBorders="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="104" ControlType="XRTableCell" Name="xrTableCell11" Weight="4.4872306734350778" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
-                  <Summary Ref="105" Running="Report" />
-                  <ExpressionBindings>
-                    <Item1 Ref="106" Expression="sumSum([DKNo])" PropertyName="Text" EventName="BeforePrint" />
-                  </ExpressionBindings>
-                  <StylePriority Ref="107" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
-                </Item2>
-                <Item3 Ref="108" ControlType="XRTableCell" Name="xrTableCell19" Weight="4.4872306734361649" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                <Item2 Ref="108" ControlType="XRTableCell" Name="xrTableCell11" Weight="4.4872306734350778" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="109" Running="Report" />
                   <ExpressionBindings>
-                    <Item1 Ref="110" Expression="sumSum([DKCo])" PropertyName="Text" EventName="BeforePrint" />
+                    <Item1 Ref="110" Expression="sumSum([DKNo])" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="111" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
-                </Item3>
-                <Item4 Ref="112" ControlType="XRTableCell" Name="xrTableCell20" Weight="4.4872307958489159" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                </Item2>
+                <Item3 Ref="112" ControlType="XRTableCell" Name="xrTableCell19" Weight="4.4872306734361649" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="113" Running="Report" />
                   <ExpressionBindings>
-                    <Item1 Ref="114" Expression="sumSum([PSNo])" PropertyName="Text" EventName="BeforePrint" />
+                    <Item1 Ref="114" Expression="sumSum([DKCo])" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="115" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
-                </Item4>
-                <Item5 Ref="116" ControlType="XRTableCell" Name="xrTableCell21" Weight="4.4872307958491113" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                </Item3>
+                <Item4 Ref="116" ControlType="XRTableCell" Name="xrTableCell20" Weight="4.4872307958489159" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="117" Running="Report" />
                   <ExpressionBindings>
-                    <Item1 Ref="118" Expression="sumSum([PSCo])" PropertyName="Text" EventName="BeforePrint" />
+                    <Item1 Ref="118" Expression="sumSum([PSNo])" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="119" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
-                </Item5>
-                <Item6 Ref="120" ControlType="XRTableCell" Name="xrTableCell22" Weight="4.4872307958489142" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                </Item4>
+                <Item5 Ref="120" ControlType="XRTableCell" Name="xrTableCell21" Weight="4.4872307958491113" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="121" Running="Report" />
                   <ExpressionBindings>
-                    <Item1 Ref="122" Expression="sumSum([CKNo])" PropertyName="Text" EventName="BeforePrint" />
+                    <Item1 Ref="122" Expression="sumSum([PSCo])" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="123" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
-                </Item6>
-                <Item7 Ref="124" ControlType="XRTableCell" Name="xrTableCell23" Weight="4.4872302299833633" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                </Item5>
+                <Item6 Ref="124" ControlType="XRTableCell" Name="xrTableCell22" Weight="4.4872307958489142" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
                   <Summary Ref="125" Running="Report" />
                   <ExpressionBindings>
-                    <Item1 Ref="126" Expression="sumSum([CKCo])" PropertyName="Text" EventName="BeforePrint" />
+                    <Item1 Ref="126" Expression="sumSum([CKNo])" PropertyName="Text" EventName="BeforePrint" />
                   </ExpressionBindings>
                   <StylePriority Ref="127" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="128" ControlType="XRTableCell" Name="xrTableCell23" Weight="4.4872302299833633" TextFormatString="{0:#,##0}" TextAlignment="MiddleRight" WordWrap="false" Font="Arial, 9pt, charSet=0" ForeColor="Blue" Borders="Right, Bottom">
+                  <Summary Ref="129" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="130" Expression="sumSum([CKCo])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="131" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item7>
               </Cells>
             </Item1>
           </Rows>
-          <StylePriority Ref="128" UseFont="false" UseTextAlignment="false" />
+          <StylePriority Ref="132" UseFont="false" UseTextAlignment="false" />
         </Item1>
       </Controls>
     </Item8>
-    <Item9 Ref="129" ControlType="GroupHeaderBand" Name="GroupHeader1" RepeatEveryPage="true" HeightF="69.00003" KeepTogether="true">
+    <Item9 Ref="133" ControlType="GroupHeaderBand" Name="GroupHeader1" RepeatEveryPage="true" HeightF="69.00003" KeepTogether="true">
       <Controls>
-        <Item1 Ref="130" ControlType="XRLabel" Name="xrLabel44" Multiline="true" Text="Số dư cuối kỳ" TextAlignment="MiddleCenter" SizeF="242.0001,23" LocationFloat="822.9995, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
-          <StylePriority Ref="131" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item1>
-        <Item2 Ref="132" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Phát sinh trong kỳ" TextAlignment="MiddleCenter" SizeF="242,23" LocationFloat="580.9996, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
-          <StylePriority Ref="133" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item2>
-        <Item3 Ref="134" ControlType="XRLabel" Name="xrLabel32" Multiline="true" Text="A" TextAlignment="MiddleCenter" SizeF="50,23" LocationFloat="0, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
+        <Item1 Ref="134" ControlType="XRLabel" Name="xrLabel44" Multiline="true" Text="Số dư cuối kỳ" TextAlignment="MiddleCenter" SizeF="242.0001,23" LocationFloat="822.9995, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="135" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item3>
-        <Item4 Ref="136" ControlType="XRLabel" Name="xrLabel40" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="822.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item1>
+        <Item2 Ref="136" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text="Phát sinh trong kỳ" TextAlignment="MiddleCenter" SizeF="242,23" LocationFloat="580.9996, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="137" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item4>
-        <Item5 Ref="138" ControlType="XRLabel" Name="xrLabel41" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="943.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item2>
+        <Item3 Ref="138" ControlType="XRLabel" Name="xrLabel32" Multiline="true" Text="A" TextAlignment="MiddleCenter" SizeF="50,23" LocationFloat="0, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
           <StylePriority Ref="139" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item5>
-        <Item6 Ref="140" ControlType="XRLabel" Name="xrLabel38" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="580.9996, 23.00001" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item3>
+        <Item4 Ref="140" ControlType="XRLabel" Name="xrLabel40" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="822.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="141" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item6>
-        <Item7 Ref="142" ControlType="XRLabel" Name="xrLabel39" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="701.9995, 23.00001" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item4>
+        <Item5 Ref="142" ControlType="XRLabel" Name="xrLabel41" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="943.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="143" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item7>
-        <Item8 Ref="144" ControlType="XRLabel" Name="xrLabel36" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="338.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item5>
+        <Item6 Ref="144" ControlType="XRLabel" Name="xrLabel38" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="580.9996, 23.00001" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="145" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item8>
-        <Item9 Ref="146" ControlType="XRLabel" Name="xrLabel37" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="459.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item6>
+        <Item7 Ref="146" ControlType="XRLabel" Name="xrLabel39" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="701.9995, 23.00001" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="147" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item9>
-        <Item10 Ref="148" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="TK" TextAlignment="MiddleCenter" SizeF="30,46" LocationFloat="49.9997, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+        </Item7>
+        <Item8 Ref="148" ControlType="XRLabel" Name="xrLabel36" Multiline="true" Text="Nợ" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="338.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="149" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item10>
-        <Item11 Ref="150" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Tên tài khoản" TextAlignment="MiddleCenter" SizeF="259,46" LocationFloat="79.99973, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+        </Item8>
+        <Item9 Ref="150" ControlType="XRLabel" Name="xrLabel37" Multiline="true" Text="Có" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="459.9995, 22.99995" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="151" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item11>
-        <Item12 Ref="152" ControlType="XRLabel" Name="xrLabel25" Multiline="true" TextAlignment="MiddleCenter" SizeF="30,22.99999" LocationFloat="49.99976, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item9>
+        <Item10 Ref="152" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="TK" TextAlignment="MiddleCenter" SizeF="30,46" LocationFloat="49.9997, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="153" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item12>
-        <Item13 Ref="154" ControlType="XRLabel" Name="xrLabel27" Multiline="true" Text="5" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="822.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item10>
+        <Item11 Ref="154" ControlType="XRLabel" Name="xrLabel35" Multiline="true" Text="Tên tài khoản" TextAlignment="MiddleCenter" SizeF="259,46" LocationFloat="79.99973, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
           <StylePriority Ref="155" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item13>
-        <Item14 Ref="156" ControlType="XRLabel" Name="xrLabel28" Multiline="true" Text="4" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="701.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item11>
+        <Item12 Ref="156" ControlType="XRLabel" Name="xrLabel25" Multiline="true" TextAlignment="MiddleCenter" SizeF="30,22.99999" LocationFloat="49.99976, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="157" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item14>
-        <Item15 Ref="158" ControlType="XRLabel" Name="xrLabel29" Multiline="true" Text="3" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="580.9996, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item12>
+        <Item13 Ref="158" ControlType="XRLabel" Name="xrLabel27" Multiline="true" Text="5" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="822.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="159" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item15>
-        <Item16 Ref="160" ControlType="XRLabel" Name="xrLabel30" Multiline="true" Text="2" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="459.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item13>
+        <Item14 Ref="160" ControlType="XRLabel" Name="xrLabel28" Multiline="true" Text="4" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="701.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="161" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item16>
-        <Item17 Ref="162" ControlType="XRLabel" Name="xrLabel31" Multiline="true" Text="1" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="338.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item14>
+        <Item15 Ref="162" ControlType="XRLabel" Name="xrLabel29" Multiline="true" Text="3" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="580.9996, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="163" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item17>
-        <Item18 Ref="164" ControlType="XRLabel" Name="xrLabel33" Multiline="true" Text="B" TextAlignment="MiddleCenter" SizeF="259,23" LocationFloat="79.99973, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item15>
+        <Item16 Ref="164" ControlType="XRLabel" Name="xrLabel30" Multiline="true" Text="2" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="459.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="165" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item18>
-        <Item19 Ref="166" ControlType="XRLabel" Name="xrLabel15" TextFormatString="{0:#,##0}" Multiline="true" Text="6" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="943.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+        </Item16>
+        <Item17 Ref="166" ControlType="XRLabel" Name="xrLabel31" Multiline="true" Text="1" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="338.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="167" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item19>
-        <Item20 Ref="168" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Mã TK" TextAlignment="MiddleCenter" SizeF="50,46" LocationFloat="0, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="All">
+        </Item17>
+        <Item18 Ref="168" ControlType="XRLabel" Name="xrLabel33" Multiline="true" Text="B" TextAlignment="MiddleCenter" SizeF="259,23" LocationFloat="79.99973, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="169" UseFont="false" UseBorders="false" UseTextAlignment="false" />
-        </Item20>
-        <Item21 Ref="170" ControlType="XRLabel" Name="xrLabel42" Multiline="true" Text="Số dư đầu kỳ" TextAlignment="MiddleCenter" SizeF="241.9997,23" LocationFloat="338.9998, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+        </Item18>
+        <Item19 Ref="170" ControlType="XRLabel" Name="xrLabel15" TextFormatString="{0:#,##0}" Multiline="true" Text="6" TextAlignment="MiddleCenter" SizeF="121,23" LocationFloat="943.9995, 46.00003" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Right, Bottom">
           <StylePriority Ref="171" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item19>
+        <Item20 Ref="172" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Mã TK" TextAlignment="MiddleCenter" SizeF="50,46" LocationFloat="0, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="173" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item20>
+        <Item21 Ref="174" ControlType="XRLabel" Name="xrLabel42" Multiline="true" Text="Số dư đầu kỳ" TextAlignment="MiddleCenter" SizeF="241.9997,23" LocationFloat="338.9998, 0" Font="Arial, 9.75pt, charSet=0" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+          <StylePriority Ref="175" UseFont="false" UseBorders="false" UseTextAlignment="false" />
         </Item21>
       </Controls>
     </Item9>
   </Bands>
   <StyleSheet>
-    <Item1 Ref="172" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
-    <Item2 Ref="173" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
-    <Item3 Ref="174" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
-    <Item4 Ref="175" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
-    <Item5 Ref="176" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+    <Item1 Ref="176" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="177" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="178" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="179" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="180" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
   </StyleSheet>
   <ObjectStorage>
     <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="1" Content="System.DateTime" Type="System.Type" />
