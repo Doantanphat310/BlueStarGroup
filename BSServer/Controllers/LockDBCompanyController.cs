@@ -29,7 +29,13 @@ namespace BSServer.Controllers
         {
             return this.LockDBCompanyDAO.GetLockDBCompany(StartDate, EndDate, CompanyID);
         }
+
         
+       public List<LockDBCompany> LockDBCompanyCheck(DateTime LockDBDate, string CompanyID)
+        {
+            return this.LockDBCompanyDAO.LockDBCompanyCheck(LockDBDate, CompanyID);
+        }
+
 
         public bool InsertLockDB(LockDBCompany lockDB)
         {

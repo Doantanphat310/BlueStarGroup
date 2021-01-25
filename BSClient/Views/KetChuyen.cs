@@ -147,6 +147,15 @@ namespace BSClient.Views
 
         private void KetChuyenSumit_simpleButton_Click(object sender, EventArgs e)
         {
+
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(KetChuyenEnd_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int checkSuccess = 0;
             //insert vouchers và voucherDetail
             foreach(KetChuyenValue item in KetChuyenData)

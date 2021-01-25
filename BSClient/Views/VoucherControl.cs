@@ -393,8 +393,23 @@ namespace BSClient
             }
         }
 
+        public static Boolean CheckLockDBCompany(DateTime dateTime, string CompanyID)
+        {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            LockDBCompanyController lockDBCompanyController = new LockDBCompanyController();
+            List<LockDBCompany> lockDBCompaniesData = lockDBCompanyController.LockDBCompanyCheck(dateTime, CompanyID);
+            if (lockDBCompaniesData.Count > 0)
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                return true;
+            }
+            return false;
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
+        }
+
         private void simpleButtonNewSave_Click(object sender, EventArgs e)
         {
+
             if (dateEditNgayNhapChungTu.EditValue == null)
             {
                 MessageBoxHelper.ShowErrorMessage("Ngày nhập chứng từ không được để trống!");
@@ -410,6 +425,15 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm chứng từ trước khi lưu mới!");
                 return;
             }
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(dateEditNgayNhapChungTu.DateTime,CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             decimal Debit = 0;
             decimal credit = 0;
             var result = VoucherDetailData.GroupBy(o => o.NV)
@@ -469,6 +493,15 @@ namespace BSClient
 
         private void Delete_VoucherDetailsimpleButton_Click(object sender, EventArgs e)
         {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(dateEditNgayNhapChungTu.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
+
             int[] selectIndex = VoucherDetail_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -674,7 +707,14 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng chọn loại chứng từ!");
                 return;
             }
-
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(dateEditNgayNhapChungTu.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             decimal Debit = 0;
             decimal credit = 0;
             var result = VoucherDetailData.GroupBy(o => o.NV)
@@ -1193,6 +1233,7 @@ namespace BSClient
         }
         private void InvoiceSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+
             if (!InvoiceAddNew_checkBox.Checked)
             {
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm hóa đơn trước khi lưu mới!");
@@ -1203,6 +1244,15 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
                 return;
             }
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
 
             #region set VoucherID to invoice
             InvoiceController invoiceController = new InvoiceController();
@@ -1240,6 +1290,15 @@ namespace BSClient
                 return;
             }
             #region set invoice
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             InvoiceController InvoiceController = new InvoiceController();
             foreach(Invoice invoice in InvoiceData)
             {
@@ -1293,6 +1352,15 @@ namespace BSClient
 
         private void InvoiceDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = Invoice_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -1313,6 +1381,15 @@ namespace BSClient
 
         private void WareHouseSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Phiếu kho cho hóa đơn.
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!WareHouseAddNew_checkBox.Checked)
@@ -1372,6 +1449,16 @@ namespace BSClient
 
         private void WareHouseSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
+
             #region set InvoiceID to WareHouse
             for (int i = 0; i < InvoiceWarehouseData.Count; i++)
             {
@@ -1463,6 +1550,15 @@ namespace BSClient
 
         private void WareHouseDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = InvoiceWareHouse_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -1503,6 +1599,15 @@ namespace BSClient
 
         private void InvoiceWareHouseDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert chi tiết hóa đơn Phiếu kho cho hóa đơn.
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!InvoiceWareHouseDetailAddNew_checkBox.Checked)
@@ -1541,6 +1646,15 @@ namespace BSClient
 
         private void InvoiceWareHouseDetailSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set warehouseID to WareHouseDetail
             for (int i = 0; i < InvoiceWarehouseDetailData.Count; i++)
             {
@@ -1596,6 +1710,15 @@ namespace BSClient
 
         private void InvoiceWareHouseDetailDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = InvoiceWareHouseDetail_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -1634,6 +1757,15 @@ namespace BSClient
 
         private void InvoiceDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Khấu hao
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!InvoiceDepreciationAddNew_checkBox.Checked)
@@ -1671,6 +1803,15 @@ namespace BSClient
 
         private void InvoiceDepreciationSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set warehouseDetailID to Depreciation
             for (int i = 0; i < InvoiceDepreciationData.Count; i++)
             {
@@ -1726,6 +1867,15 @@ namespace BSClient
 
         private void InvoiceDepreciationDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = InvoiceDepreciation_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -1770,6 +1920,15 @@ namespace BSClient
 
         private void InvoiceDepreciationDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Khấu hao
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!InvoiceDepreciationDetailAddNew_checkBox.Checked)
@@ -1816,6 +1975,15 @@ namespace BSClient
 
         private void InvoiceDepreciationDetailSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set DepreciationID to DepreciationDetail
 
             var result = InvoiceDepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
@@ -1880,6 +2048,15 @@ namespace BSClient
 
         private void InvoiceDepreciationDetailDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = InvoiceDepreciationDetail_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -2255,6 +2432,15 @@ namespace BSClient
 
         private void WWareHouseSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Phiếu kho.
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!WareHouse_checkBox.Checked)
@@ -2294,6 +2480,15 @@ namespace BSClient
 
         private void WWareHouseSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set Voucher to WareHouse
             for (int i = 0; i < WarehouseData.Count; i++)
             {
@@ -2350,6 +2545,15 @@ namespace BSClient
 
         private void WWareHouseDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = WareHouse_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -2412,6 +2616,15 @@ namespace BSClient
 
         private void WWareHouseDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert chi tiết Kho
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!WareHouseDetailAddNew_checkBox.Checked)
@@ -2450,6 +2663,15 @@ namespace BSClient
 
         private void WWareHouseDetailSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set warehouseID to WareHouseDetail
             for (int i = 0; i < WarehouseDetailData.Count; i++)
             {
@@ -2505,6 +2727,15 @@ namespace BSClient
 
         private void WWareHouseDetailDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = WareHouseDetail_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -2569,6 +2800,15 @@ namespace BSClient
 
         private void WareHouseDepreciationSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Khấu hao
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!DepreciationAddNew_checkBox.Checked)
@@ -2606,6 +2846,15 @@ namespace BSClient
 
         private void WareHouseDepreciationSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set warehouseDetailID to Depreciation
             for (int i = 0; i < DepreciationData.Count; i++)
             {
@@ -2637,7 +2886,7 @@ namespace BSClient
             }
 
             #region delete Depriciation
-            if (InvoiceDepreciationDelete?.Count > 0)
+            if (DepreciationDelete?.Count > 0)
             {
                 DepreciationController controller = new DepreciationController();
                 if (controller.SaveDepreciation(DepreciationDelete))
@@ -2666,6 +2915,15 @@ namespace BSClient
 
         private void WareHouseDepreciationDetailSaveNew_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region insert Khấu hao
             //1 hóa đơn có thể có nhiều phiếu kho
             if (!DepreciationDetailAddNew_checkBox.Checked)
@@ -2711,6 +2969,15 @@ namespace BSClient
 
         private void WareHouseDepreciationDetailSave_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             #region set DepreciationID to DepreciationDetail
 
             var result = DepreciationDetailData.Select(o => o.QuantityPeriod).Sum();
@@ -2775,6 +3042,15 @@ namespace BSClient
 
         private void WareHouseDepreciationDetailDelete_simpleButton_Click(object sender, EventArgs e)
         {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int[] selectIndex = DepreciationDetail_gridView.GetSelectedRows();
             foreach (int index in selectIndex)
             {
@@ -3377,6 +3653,31 @@ namespace BSClient
                     WareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
                 }
             }
+        }
+
+        private void WareHouseDepreciationDelete_simpleButton_Click(object sender, EventArgs e)
+        {
+            //Check khóa sổ
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
+            int[] selectIndex = WareHouseDepreciation_gridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                Depreciation delete = WareHouseDepreciation_gridView.GetRow(index) as Depreciation;
+                if (!string.IsNullOrEmpty(delete.DepreciationID))
+                {
+                    DepreciationData[index].StatusA = ModifyMode.Delete;
+                    DepreciationDelete.Add(delete);
+                }
+            }
+
+            WareHouseDepreciation_gridView.DeleteSelectedRows();
         }
     }
 }

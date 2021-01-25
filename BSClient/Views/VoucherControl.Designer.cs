@@ -1334,6 +1334,7 @@
             this.WareHouseDepreciationDelete_simpleButton.Size = new System.Drawing.Size(80, 26);
             this.WareHouseDepreciationDelete_simpleButton.TabIndex = 30;
             this.WareHouseDepreciationDelete_simpleButton.Text = "Xóa";
+            this.WareHouseDepreciationDelete_simpleButton.Click += new System.EventHandler(this.WareHouseDepreciationDelete_simpleButton_Click);
             // 
             // WareHouseDepreciation_gridControl
             // 

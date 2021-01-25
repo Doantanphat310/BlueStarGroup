@@ -22,6 +22,7 @@ namespace BSClient.Views
         public InputBalance()
         {
             InitializeComponent();
+            Balance_dateEdit.DateTime = DateTime.Now;
             LoadVoucherGrid();
             LoadSearchEditlookup();
             InitLoadBalanceWarehouse();
@@ -194,6 +195,14 @@ namespace BSClient.Views
         #endregion init Balance WareHouse
         private void InputBalanceThem_simpleButton_Click(object sender, EventArgs e)
         {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(Balance_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             // kiểm tra loại tk kho
             int count = materialTK.Where(q => q.TK152_156 == true && q.AccountID == InputBalanceAccount_searchLookUpEdit.EditValue.ToString()).Select(x => x.AccountID).Count();
             if (count > 0) //Kho
@@ -290,6 +299,14 @@ namespace BSClient.Views
 
         private void InputBalanceXoa_simpleButton_Click(object sender, EventArgs e)
         {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(Balance_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             Balance BalanceDataDelete = new Balance();
             BalanceDataDelete.AccountID = this.InputBalanceAccount_searchLookUpEdit.EditValue.ToString();
             BalanceDataDelete.AccountDetailID = this.InputBalanceAccountDetail_searchLookUpEdit.EditValue.ToString();
@@ -315,6 +332,14 @@ namespace BSClient.Views
 
         private void InputBalanceSua_simpleButton_Click(object sender, EventArgs e)
         {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(Balance_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int count = materialTK.Where(q => q.TK152_156 == true && q.AccountID == InputBalanceAccount_searchLookUpEdit.EditValue.ToString()).Select(x => x.AccountID).Count();
             if(count > 0) //kho
             {

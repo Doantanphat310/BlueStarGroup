@@ -422,6 +422,7 @@
             this.Name = "WareHouseList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WareHouseList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseList__gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseList_gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseListCode_textEdit.Properties)).EndInit();

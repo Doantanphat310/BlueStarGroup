@@ -25,6 +25,14 @@ namespace BSServer.DAOs
                 new SqlParameter("@UserCreate", UserInfo.UserID)
                 ).ToList();
         }
+        
+        public List<LockDBCompany> LockDBCompanyCheck(DateTime LockDate, string CompanyID)
+        {
+            return this.Context.Database.SqlQuery<LockDBCompany>("LockDBCompanyCheck @LockDate, @CompanyID",
+                new SqlParameter("@LockDate", LockDate),
+                new SqlParameter("@CompanyID", CompanyID)
+                ).ToList();
+        }
 
         public long GetLockDBCompanySEQ()
         {

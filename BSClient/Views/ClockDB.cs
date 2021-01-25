@@ -155,8 +155,7 @@ namespace BSClient.Views
             {
                 return;
             }
-
-            Invoice row = e.Row as Invoice;
+            LockDBCompany row = e.Row as LockDBCompany;
             if (row.Status == ModifyMode.Insert)
             {
                 return;
