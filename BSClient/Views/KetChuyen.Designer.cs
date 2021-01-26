@@ -48,6 +48,12 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.KetChuyenListData_gridControl = new DevExpress.XtraGrid.GridControl();
             this.KetChuyenListData_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.KichBanKC_SaveData_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.KichBanKC_Cancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.KichBanKC_ImportExcel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.KichBanKC_Delete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenContent_textEdit.Properties)).BeginInit();
@@ -64,6 +70,10 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -82,7 +92,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1314, 73);
+            this.panelControl1.Size = new System.Drawing.Size(1314, 37);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl4
@@ -212,22 +222,22 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.KetChuyenKichBan_GridControl);
-            this.panelControl2.Controls.Add(this.labelControl5);
+            this.panelControl2.Controls.Add(this.panelControl5);
+            this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(0, 73);
+            this.panelControl2.Location = new System.Drawing.Point(0, 37);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(321, 624);
+            this.panelControl2.Size = new System.Drawing.Size(333, 660);
             this.panelControl2.TabIndex = 1;
             // 
             // KetChuyenKichBan_GridControl
             // 
             this.KetChuyenKichBan_GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KetChuyenKichBan_GridControl.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KetChuyenKichBan_GridControl.Location = new System.Drawing.Point(2, 21);
+            this.KetChuyenKichBan_GridControl.Location = new System.Drawing.Point(2, 2);
             this.KetChuyenKichBan_GridControl.MainView = this.KetChuyenKichBan_GridView;
             this.KetChuyenKichBan_GridControl.Name = "KetChuyenKichBan_GridControl";
-            this.KetChuyenKichBan_GridControl.Size = new System.Drawing.Size(317, 601);
+            this.KetChuyenKichBan_GridControl.Size = new System.Drawing.Size(325, 587);
             this.KetChuyenKichBan_GridControl.TabIndex = 0;
             this.KetChuyenKichBan_GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KetChuyenKichBan_GridView});
@@ -241,8 +251,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl5.Location = new System.Drawing.Point(2, 2);
+            this.labelControl5.Location = new System.Drawing.Point(6, 5);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(65, 19);
             this.labelControl5.TabIndex = 4;
@@ -252,9 +261,9 @@
             // 
             this.panelControl3.Controls.Add(this.KetChuyenListData_gridControl);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(321, 73);
+            this.panelControl3.Location = new System.Drawing.Point(333, 37);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(993, 624);
+            this.panelControl3.Size = new System.Drawing.Size(981, 660);
             this.panelControl3.TabIndex = 1;
             // 
             // KetChuyenListData_gridControl
@@ -264,7 +273,7 @@
             this.KetChuyenListData_gridControl.Location = new System.Drawing.Point(2, 2);
             this.KetChuyenListData_gridControl.MainView = this.KetChuyenListData_gridView;
             this.KetChuyenListData_gridControl.Name = "KetChuyenListData_gridControl";
-            this.KetChuyenListData_gridControl.Size = new System.Drawing.Size(989, 620);
+            this.KetChuyenListData_gridControl.Size = new System.Drawing.Size(977, 656);
             this.KetChuyenListData_gridControl.TabIndex = 0;
             this.KetChuyenListData_gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KetChuyenListData_gridView});
@@ -273,6 +282,75 @@
             // 
             this.KetChuyenListData_gridView.GridControl = this.KetChuyenListData_gridControl;
             this.KetChuyenListData_gridView.Name = "KetChuyenListData_gridView";
+            // 
+            // KichBanKC_SaveData_simpleButton
+            // 
+            this.KichBanKC_SaveData_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KichBanKC_SaveData_simpleButton.Appearance.Options.UseFont = true;
+            this.KichBanKC_SaveData_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_SaveExcel_simpleButton.ImageOptions.Image")));
+            this.KichBanKC_SaveData_simpleButton.Location = new System.Drawing.Point(183, 5);
+            this.KichBanKC_SaveData_simpleButton.Name = "KichBanKC_SaveData_simpleButton";
+            this.KichBanKC_SaveData_simpleButton.Size = new System.Drawing.Size(99, 23);
+            this.KichBanKC_SaveData_simpleButton.TabIndex = 5;
+            this.KichBanKC_SaveData_simpleButton.Text = "Lưu dữ liệu";
+            this.KichBanKC_SaveData_simpleButton.Click += new System.EventHandler(this.KichBanKC_SaveData_simpleButton_Click);
+            // 
+            // KichBanKC_Cancel_simpleButton
+            // 
+            this.KichBanKC_Cancel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KichBanKC_Cancel_simpleButton.Appearance.Options.UseFont = true;
+            this.KichBanKC_Cancel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_Update_Invoice_simpleButton.ImageOptions.Image")));
+            this.KichBanKC_Cancel_simpleButton.Location = new System.Drawing.Point(183, 34);
+            this.KichBanKC_Cancel_simpleButton.Name = "KichBanKC_Cancel_simpleButton";
+            this.KichBanKC_Cancel_simpleButton.Size = new System.Drawing.Size(99, 23);
+            this.KichBanKC_Cancel_simpleButton.TabIndex = 6;
+            this.KichBanKC_Cancel_simpleButton.Text = "Hủy";
+            // 
+            // KichBanKC_ImportExcel_simpleButton
+            // 
+            this.KichBanKC_ImportExcel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KichBanKC_ImportExcel_simpleButton.Appearance.Options.UseFont = true;
+            this.KichBanKC_ImportExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_ImportExcel_simpleButton.ImageOptions.Image")));
+            this.KichBanKC_ImportExcel_simpleButton.Location = new System.Drawing.Point(77, 5);
+            this.KichBanKC_ImportExcel_simpleButton.Name = "KichBanKC_ImportExcel_simpleButton";
+            this.KichBanKC_ImportExcel_simpleButton.Size = new System.Drawing.Size(100, 23);
+            this.KichBanKC_ImportExcel_simpleButton.TabIndex = 7;
+            this.KichBanKC_ImportExcel_simpleButton.Text = "Import Excel";
+            this.KichBanKC_ImportExcel_simpleButton.Click += new System.EventHandler(this.KichBanKC_ImportExcel_simpleButton_Click);
+            // 
+            // KichBanKC_Delete_simpleButton
+            // 
+            this.KichBanKC_Delete_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KichBanKC_Delete_simpleButton.Appearance.Options.UseFont = true;
+            this.KichBanKC_Delete_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_Delete_Invoice_simpleButton.ImageOptions.Image")));
+            this.KichBanKC_Delete_simpleButton.Location = new System.Drawing.Point(77, 34);
+            this.KichBanKC_Delete_simpleButton.Name = "KichBanKC_Delete_simpleButton";
+            this.KichBanKC_Delete_simpleButton.Size = new System.Drawing.Size(100, 23);
+            this.KichBanKC_Delete_simpleButton.TabIndex = 8;
+            this.KichBanKC_Delete_simpleButton.Text = "Xóa";
+            this.KichBanKC_Delete_simpleButton.Click += new System.EventHandler(this.KichBanKC_Delete_simpleButton_Click);
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.labelControl5);
+            this.panelControl4.Controls.Add(this.KichBanKC_Cancel_simpleButton);
+            this.panelControl4.Controls.Add(this.KichBanKC_SaveData_simpleButton);
+            this.panelControl4.Controls.Add(this.KichBanKC_Delete_simpleButton);
+            this.panelControl4.Controls.Add(this.KichBanKC_ImportExcel_simpleButton);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl4.Location = new System.Drawing.Point(2, 2);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(329, 65);
+            this.panelControl4.TabIndex = 9;
+            // 
+            // panelControl5
+            // 
+            this.panelControl5.Controls.Add(this.KetChuyenKichBan_GridControl);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl5.Location = new System.Drawing.Point(2, 67);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(329, 591);
+            this.panelControl5.TabIndex = 10;
             // 
             // KetChuyen
             // 
@@ -298,13 +376,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.ketChuyenStart_dateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenKichBan_GridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KetChuyenListData_gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -330,5 +412,11 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraGrid.GridControl KetChuyenListData_gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView KetChuyenListData_gridView;
+        private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.SimpleButton KichBanKC_Cancel_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton KichBanKC_SaveData_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton KichBanKC_Delete_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton KichBanKC_ImportExcel_simpleButton;
     }
 }

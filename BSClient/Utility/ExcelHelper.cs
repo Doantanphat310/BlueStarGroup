@@ -1,4 +1,5 @@
 ﻿using BSClient.Constants;
+using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
 using SSSuporter;
@@ -336,6 +337,52 @@ namespace BSClient.Utility
                         ItemID = g,
                         Quantity =  decimal.Parse(i),
                         Price = decimal.Parse(h),
+                    });
+                }
+                catch (Exception ex)
+                {
+                    BSLog.Logger.Debug(ex.Message);
+                    error.AppendLine($"Lỗi dòng {ir}: {ex.Message}");
+                }
+            }
+            return resultData;
+        }
+
+        public static List<KichBanKetChuyentable> LoadKichBanKC(out StringBuilder error)
+        {
+            error = new StringBuilder();
+            List<KichBanKetChuyentable> resultData = new List<KichBanKetChuyentable>();
+
+            object[,] values = GetExcelData(ExcelTemplate.EXL000006);
+
+            if (values == null)
+            {
+                return resultData;
+            }
+
+            string a, b, c;
+            int row = values.GetLength(0);
+            for (int ir = 2; ir <= row; ir++)
+            {
+                try
+                {
+                    a = values[ir, 1]?.ToString();
+                    if (string.IsNullOrWhiteSpace(a))
+                    {
+                        continue;
+                    }
+
+                    //a = FontHelper.TCVN3ToUnicode(a);
+                    b = values[ir, 2]?.ToString();
+                    c = values[ir, 3]?.ToString();
+                   
+                    resultData.Add(new KichBanKetChuyentable
+                    {
+                        GroupCode = a,
+                        KetChuyenDebitAccountID = b,
+                        KetChuyenCreditAccountID = c,
+                        CompanyID = CommonInfo.CompanyInfo.CompanyID,
+                        Status = ModifyMode.Insert,
                     });
                 }
                 catch (Exception ex)

@@ -128,6 +128,7 @@
     <Compile Include="Logics\InvoiceLogic.cs" />
     <Compile Include="Logics\AccountsLogic.cs" />
     <Compile Include="Logics\ItemsLogic.cs" />
+    <Compile Include="Logics\KichBanKetChuyentableLogic.cs" />
     <Compile Include="Logics\LockDBCompanyLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
