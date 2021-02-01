@@ -19,7 +19,7 @@ namespace BSCommon.Models
             get {
                 if(!string.IsNullOrEmpty(this.AccountDetailID))
                 {
-                    return this.AccountID + "/" + this.AccountDetailID;
+                    return (this.AccountID + "/" + this.AccountDetailID);
                 }
                 return this.AccountID;
             }

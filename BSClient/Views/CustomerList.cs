@@ -212,6 +212,7 @@ namespace BSClient.Views
                 item.Status = ModifyMode.Insert;
                 CustommersData.Add(item);
             }
+            
 
             if (error != null && error.Length > 0)
             {

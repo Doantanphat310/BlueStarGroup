@@ -935,6 +935,34 @@
         Z9dCqatZX1yGYiPBz2TnKnY52M0Y2/EHkux8zxW58vAAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="WareHouse_S35_Save_simpleButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAASdEVYdFRpdGxlAFNhdmUgVG87U2F2ZdSrmXIAAACI
+        SURBVDhPvY/NDYAgDEZZkEUcgEU8MAJHEy+enK3ShjalQfAvHp4U+L4XcQDwCvrM07JnACl7mhvoO+yI
+        QEInAj6zd/8JmGsCBgMN+oKbfCzAWYOBDmNBSFEDCurg+ljAjARc8Gqu9iOBLVp8JTCsOdCT4Lk8YTPl
+        kYTKSPXLFg4VWCLlkKI7AOsCiV3t5qKnAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Warehouse_S35_Load_simpleButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAATdEVYdFRpdGxlAFRhYmxlO0Zvcm1hdDvurMrjAAAC
+        2ElEQVQ4T3WRW0jTURzHj1musqcyKHwI7CEqEqF6KnoJRRMvb2UqJV5AnZuKRBYaWuYldJnibW7KZiqZ
+        lyxvU6emzqlTE3zRTVG836abltOXb+ccTUXsDx9+v/Pndz7nd36HRMv626LkOkTJdIgs1EEs7YeooA8R
+        eb0QUtg/UUFvOyHEGgA5CmHFTWNraBwzQq7S88iQNo7t5+G5WlpJTh0rCM3u4UXKwUUkKAdoXODEK3RQ
+        DiygYdSI4MwuJrA5VhAo6YKkTo+ooiGI5UMQyfaQDkJYMIjUmjE8+/CTCQTHCiRyLcyb21hdtyD/swYr
+        61u7eUk3zS0wbWwjObfz/4LUgm4Yzdu8uFVjwPKaheeGqVWsmi3Y/LMDdY+BCWwp1pSTe7D8BHmb1YHJ
+        WRNk9R+hnzKiXTuOZSpIKg3BxPwcphc3UFY7hOTsFkozkrIon1R4l6lCgqShncRnqPmJomxnyBvTMDw+
+        wgVecfYIkdxBU/83vl6lXZp+76C12wAzjebNHbxJrwd5mdrMBZHpfpDUuyMo4wYCM67D89VldMyE44X8
+        LhKKAzAxN8tFrZpxPiMmiU2pBYlMqFV3DkyjrFGBoLSb6FkRQrMcip5lEepmPNA27w9p5yM8T7mFH5oq
+        qDUT9Eq/oOrSIyaxis2GCCi21jZW5665n33vk3gFidVOUI7cR8X4A5Qb7iGu3BG3ve2hqCnhHfx7HXH8
+        l92noK2Rqy4C4uAisHJwFvg5PBRUusXYIafPEc7h5/FE7IXRyRl+hRY6AxZNdAahsaUHAreYi6RuypvU
+        TXqwrk67Rl+Ak+clKKpL+IYR/RLKvg9DUTlIGUB92yiCYpSHBNF2xDWKcYEJzrzO990/VdVpwJJxi1P8
+        VUejBWv0VQIiiw4Eh2GCNq0BKyYLFummogq2aWs/Z5HhJ5TtCo5CPxvfsDy1f4Qc/kI5L/QNZxRynoYV
+        widUisfBOeq/3Fy/M5QaWQYAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="WWareHouseCancel_simpleButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

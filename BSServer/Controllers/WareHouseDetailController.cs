@@ -37,6 +37,12 @@ namespace BSServer.Controllers
             return this.WareHouseDetailDAO.GetWareHouseDetailSelectWahouseID(warehouseID, companyID);
         }
 
+        
+         public List<WareHouseDetail> WareHouseDetailSelectInvoiceID(string invoiceID, string companyID)
+        {
+            return this.WareHouseDetailDAO.WareHouseDetailSelectInvoiceID(invoiceID, companyID);
+        }
+
         public bool InsertWareHouseDetail(WareHouseDetail WareHouseDetail)
         {
             return this.WareHouseDetailDAO.InsertWareHouseDetail(WareHouseDetail);

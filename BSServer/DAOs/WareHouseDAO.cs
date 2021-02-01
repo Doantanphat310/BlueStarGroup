@@ -39,6 +39,18 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
+
+        public List<WareHouse> InvoiceSelectWareHouseID(string invoiceID, string CompanyID)
+        {
+
+            return this.Context.Database.SqlQuery<WareHouse>(
+          "InvoiceSelectWareHouseID @InvoiceID, @CompanyID",
+          new SqlParameter("@InvoiceID", invoiceID),
+          new SqlParameter("@CompanyID", CompanyID)
+          ).ToList();
+        }
+        
+
         public long GetWareHouseSEQ()
         {
             return this.GetMaxSEQ(BSServerConst.WareHouseSymbol);
@@ -105,15 +117,22 @@ namespace BSServer.DAOs
             {
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
+                
                     new SqlParameter("@WarehouseID", wareHouse.WarehouseID),
+                    new SqlParameter("@VouchersID", wareHouse.VouchersID),
+                    new SqlParameter("@InvoiceID", wareHouse.InvoiceID),
+                    new SqlParameter("@CustomerID", wareHouse.CustomerID),
+                    new SqlParameter("@GeneralLedgerID",wareHouse.WarehouseListID?? (object)DBNull.Value),
+                    new SqlParameter("@Date", wareHouse.Date),
                     new SqlParameter("@DebitAccountID", wareHouse.DebitAccountID),
                     new SqlParameter("@CreditAccountID", wareHouse.CreditAccountID),
                     new SqlParameter("@Type", wareHouse.Type),
                     new SqlParameter("@DeliverReceiver", wareHouse.DeliverReceiver),
                     new SqlParameter("@Description", wareHouse.Description),
                     new SqlParameter("@Attachfile",  wareHouse.Attachfile??(object)DBNull.Value),
+                    new SqlParameter("@Discount", wareHouse.Discount),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
-                    new SqlParameter("@CompanyID", wareHouse.CompanyID),
+                    new SqlParameter("@CompanyID", wareHouse.CompanyID)
                 };
 
                 this.Context.ExecuteDataFromProcedure("WareHouseUpdate", sqlParameters);
@@ -122,6 +141,32 @@ namespace BSServer.DAOs
             catch (Exception ex)
             {
                 Console.WriteLine("Update WareHouse Fail! " + ex.Message);
+                return false;
+            }
+        }
+
+        
+
+       public bool WareHouseUpdateS35(WareHouse wareHouse)
+        {
+            //@WareHouseID varchar(50), @VoucherID varchar(50),@Date datetime,@CompanyID varchar(50), @CreateUser varchar(50)
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@WarehouseID", wareHouse.WarehouseID),
+                    new SqlParameter("@VoucherID", wareHouse.VouchersID),
+                    new SqlParameter("@Date", wareHouse.Date),
+                    new SqlParameter("@CompanyID", wareHouse.CompanyID),
+                    new SqlParameter("@CreateUser", UserInfo.UserID)
+                };
+
+                this.Context.ExecuteDataFromProcedure("WareHouseUpdateS35", sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update WareHouseUpdateS35 Fail! " + ex.Message);
                 return false;
             }
         }

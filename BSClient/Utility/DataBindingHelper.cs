@@ -35,7 +35,35 @@ namespace BSClient.Utility
             }
         }
 
-        public static void BindingrichTextBox(RichTextBox edit, BindingSource bindingSource)
+        public static void BindingLabelControl(LabelControl edit, BindingSource bindingSource)
+        {
+            try
+            {
+                edit.DataBindings.Clear();
+                Binding b = new Binding("Text", bindingSource, edit.Tag?.ToString(), true);
+                edit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingLabelControl: " + ex.Message);
+            }
+        }
+
+        public static void BindingDateEdit(DateEdit edit, BindingSource bindingSource)
+        {
+            try
+            {
+                edit.DataBindings.Clear();
+                Binding b = new Binding("Datetime", bindingSource, edit.Tag?.ToString(), true);
+                edit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingDateEdit: " + ex.Message);
+            }
+        }
+
+        public static void BindingMemoEdit(RichTextBox edit, BindingSource bindingSource)
         {
             try
             {
@@ -47,7 +75,21 @@ namespace BSClient.Utility
             {
                 BSLog.Logger.Debug("Lỗi BindingrichTextBox: " + ex.Message);
             }
-        }            
+        }
+
+        public static void BindingMemoEdit(MemoEdit edit, BindingSource bindingSource)
+        {
+            try
+            {
+                edit.DataBindings.Clear();
+                Binding b = new Binding("EditValue", bindingSource, edit.Tag?.ToString(), true);
+                edit.DataBindings.Add(b);
+            }
+            catch (Exception ex)
+            {
+                BSLog.Logger.Debug("Lỗi BindingrichTextBox: " + ex.Message);
+            }
+        }
 
         public static void BindingPictureEdit(PictureEdit edit, BindingSource bindingSource)
         {
