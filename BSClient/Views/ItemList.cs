@@ -134,7 +134,7 @@ namespace BSClient.Views
         {
             this.ItemUnit_GridView.Columns.Clear();
 
-            this.ItemUnit_GridView.AddColumn("ItemUnitID", "Mã ĐVT", 90, false);
+            this.ItemUnit_GridView.AddColumn("ItemUnitID", "Mã ĐVT", 90, true);
             this.ItemUnit_GridView.AddColumn("ItemUnitName", "Tên ĐVT", 160, true, fixedWidth: false);
         }
 
