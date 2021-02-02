@@ -82,6 +82,11 @@ namespace BSServer._Core.Utility
             return GetGeneralIDWithDate(BSServerConst.BalanceSymbol, seq);
         }
 
+        public static string LockDBID(long seq)
+        {
+            return GetGeneralIDWithDate(BSServerConst.LockDBCompanySymbol, seq);
+        }
+
         /// <summary>
         /// Mã nhóm tài khoản
         /// </summary>

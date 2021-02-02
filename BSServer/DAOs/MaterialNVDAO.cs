@@ -24,6 +24,13 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
+        public List<MaterialLockDB> GetMaterialLockDB()
+        {
+            return this.Context.Database
+                .SqlQuery<MaterialLockDB>("SPSelectMaterialLockDB")
+                .ToList();
+        }
+
         public List<MaterialPayment> GetMaterialPayment()
         {
             return this.Context.Database

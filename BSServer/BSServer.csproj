@@ -86,6 +86,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\KetChuyenController.cs" />
     <Compile Include="Controllers\KichBanKetChuyentableController.cs" />
+    <Compile Include="Controllers\LockDBCompanyController.cs" />
     <Compile Include="Controllers\MaterialNVController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Controllers\VoucherDetailController.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="DAOs\AccountsDAO.cs" />
     <Compile Include="DAOs\KetChuyenDAO.cs" />
     <Compile Include="DAOs\KichBanKetChuyentableDAO.cs" />
+    <Compile Include="DAOs\LockDBCompanyDAO.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
     <Compile Include="DAOs\ItemsDAO.cs" />
     <Compile Include="DAOs\VoucherDAO.cs" />
@@ -126,6 +128,8 @@
     <Compile Include="Logics\InvoiceLogic.cs" />
     <Compile Include="Logics\AccountsLogic.cs" />
     <Compile Include="Logics\ItemsLogic.cs" />
+    <Compile Include="Logics\KichBanKetChuyentableLogic.cs" />
+    <Compile Include="Logics\LockDBCompanyLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\VoucherDetailLogic.cs" />

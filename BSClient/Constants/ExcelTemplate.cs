@@ -29,6 +29,11 @@ namespace BSClient.Constants
         /// </summary>
         public const string EXL000005 = "ID_EXL000005";
 
+        /// <summary>
+        /// Hóa đơn S35
+        /// </summary>
+        public const string EXL000006 = "ID_EXL000006";
+
 
         private static readonly Dictionary<string, string> TempalteDictionary = new Dictionary<string, string>
         {
@@ -37,6 +42,7 @@ namespace BSClient.Constants
             { "ID_EXL000003", "LoaiSanPham"},
             { "ID_EXL000004", "DVT"},
             { "ID_EXL000005", "S35"},
+            { "ID_EXL000006", "KichBanKC"},
         };
 
         public static string GetTemplate(string tempalteID)

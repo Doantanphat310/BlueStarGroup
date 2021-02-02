@@ -288,6 +288,14 @@ namespace BSClient.Views
 
         private void S35_Add_Invoice_simpleButton_Click(object sender, EventArgs e)
         {
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(S35_NgayHD_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             InvoiceController invoiceController = new InvoiceController();
             foreach (Invoice invoice in S35InvoiceData)
             {
@@ -712,6 +720,14 @@ namespace BSClient.Views
                     ///lấy data chi tiết hóa đơn
                     List<WareHouseDetail> detailData = new List<WareHouseDetail>();
                     detailData = this.WarehouseDetailData.Where(item => item.InvoiceNo == invoiceExcel.InvoiceNo).ToList();
+                    #region kiểm tra dữ liệu có đang bị khóa sổ
+                    if (VoucherControl.CheckLockDBCompany(invoiceExcel.InvoiceDate, CommonInfo.CompanyInfo.CompanyID))
+                    {
+                        //Dữ liệu đang nằm trong vùng khóa sổ
+                        MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n" + "Số HĐ: " + invoiceExcel.InvoiceNo);
+                        continue;
+                    }
+                    #endregion kiểm tra dữ liệu có đang bị khóa sổ
                     //Lưu chi tiết hóa đơn
                     //Lưu hóa đơn
                     if (controller.SaveInvoiceExcel(invoiceExcel, detailData))

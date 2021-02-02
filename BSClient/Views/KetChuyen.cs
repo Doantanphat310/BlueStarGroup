@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace BSClient.Views
@@ -15,6 +16,7 @@ namespace BSClient.Views
     {
         #region Kich ban ket chuyen
         public BindingList<KichBanKetChuyentable> KichBanKetChuyentableData { get; set; }
+        public List<KichBanKetChuyentable> KichBanKetChuyentableDelete;
 
         public BindingList<KetChuyenValue> KetChuyenData { get; set; }
 
@@ -49,7 +51,7 @@ namespace BSClient.Views
         {
             this.KetChuyenKichBan_GridView.SetupGridView(
                 columnAutoWidth: false,
-                multiSelect: false,
+                multiSelect: true,
                 newItemRow: DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None);
         }
 
@@ -59,6 +61,7 @@ namespace BSClient.Views
             
             KichBanKetChuyentableData = new BindingList<KichBanKetChuyentable>(controller.KichBanKetChuyentableSelect(CommonInfo.CompanyInfo.CompanyID));
             KetChuyenKichBan_GridControl.DataSource = KichBanKetChuyentableData;
+            this.KichBanKetChuyentableDelete = new List<KichBanKetChuyentable>();
         }
         #endregion kich ban ket chuyen
 
@@ -147,6 +150,15 @@ namespace BSClient.Views
 
         private void KetChuyenSumit_simpleButton_Click(object sender, EventArgs e)
         {
+
+            #region kiểm tra dữ liệu có đang bị khóa sổ
+            if (VoucherControl.CheckLockDBCompany(KetChuyenEnd_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID))
+            {
+                //Dữ liệu đang nằm trong vùng khóa sổ
+                MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!\n");
+                return;
+            }
+            #endregion kiểm tra dữ liệu có đang bị khóa sổ
             int checkSuccess = 0;
             //insert vouchers và voucherDetail
             foreach(KetChuyenValue item in KetChuyenData)
@@ -280,6 +292,75 @@ namespace BSClient.Views
                 }
             }
             return "1";
+        }
+
+        private void KichBanKC_ImportExcel_simpleButton_Click(object sender, EventArgs e)
+        {
+            ImportData();
+        }
+
+        private void ImportData()
+        {
+            List<KichBanKetChuyentable> kichBanKetChuyentables = ExcelHelper.LoadKichBanKC(out StringBuilder error);
+            //Lưu invoice chưa có InvoiceID
+            foreach (var item in kichBanKetChuyentables)
+            {
+                this.KichBanKetChuyentableData.Add(item);
+            }
+            //   this.S35InvoiceData = new BindingList<Invoice>(result);
+            if (error != null && error.Length > 0)
+            {
+                ClientCommon.ShowErrorBox(error.ToString());
+            }
+        }
+
+        private void KichBanKC_Delete_simpleButton_Click(object sender, EventArgs e)
+        {
+            int[] selectIndex = this.KetChuyenKichBan_GridView.GetSelectedRows();
+            foreach (int index in selectIndex)
+            {
+                KichBanKetChuyentable delete = this.KetChuyenKichBan_GridView.GetRow(index) as KichBanKetChuyentable;
+                delete.Status = ModifyMode.Delete;
+                this.KichBanKetChuyentableDelete.Add(delete);
+            }
+            this.KetChuyenKichBan_GridView.DeleteSelectedRows();
+        }
+
+        private void KichBanKC_SaveData_simpleButton_Click(object sender, EventArgs e)
+        {
+                int checkAction = 0;
+                KichBanKetChuyentableController controller = new KichBanKetChuyentableController();
+                List<KichBanKetChuyentable> detailData = new List<KichBanKetChuyentable>();
+                detailData = this.KichBanKetChuyentableData.Where(item => item.Status == ModifyMode.Insert || item.Status == ModifyMode.Delete).ToList();
+                if (controller.SaveKichBanKetChuyentable(detailData))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+
+            #region delete KichBanKC
+            if (this.KichBanKetChuyentableDelete?.Count > 0)
+            {
+                if (controller.SaveKichBanKetChuyentable(KichBanKetChuyentableDelete))
+                {
+                    checkAction++;
+                }
+                else
+                {
+                    checkAction = 0;
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                }
+            }
+            #endregion delete KichBanKC
+
+            if (checkAction != 0)
+                {
+                MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                }
+                Load_KichBanKetChuyen_GridView();
         }
     }
 }

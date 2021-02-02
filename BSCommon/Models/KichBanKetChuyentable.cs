@@ -1,4 +1,6 @@
-﻿namespace BSCommon.Models
+﻿using BSCommon.Constant;
+
+namespace BSCommon.Models
 {
     public class KichBanKetChuyentable
     {
@@ -9,5 +11,7 @@
         public string KetChuyenCreditAccountID { get; set; }
 
         public string CompanyID { get; set; }
+
+        public ModifyMode Status { get; set; }
     }
 }
