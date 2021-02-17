@@ -112,6 +112,12 @@
     <Compile Include="Reports\SoBanHangS35.Designer.cs">
       <DependentUpon>SoBanHangS35.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\BaoCaoTongHopKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BaoCaoTongHopKho.Designer.cs">
+      <DependentUpon>BaoCaoTongHopKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\SoNoTongHopPhaiTra.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -194,6 +200,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SoBanHangS35.resx">
       <DependentUpon>SoBanHangS35.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BaoCaoTongHopKho.resx">
+      <DependentUpon>BaoCaoTongHopKho.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SoNoTongHopPhaiTra.resx">
