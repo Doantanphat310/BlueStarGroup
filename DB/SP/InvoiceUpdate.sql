@@ -22,27 +22,56 @@ alter proc InvoiceUpdate
     @CustomerName varchar(250)
 as
 begin
-update Invoice
-set 
-	CustomerID=@CustomerID,
-	Description=@Description,
-	InvoiceFormNo=@MaSo,
-	FormNo=@MauSo,
-	SerialNo=@KyHieu,
-	InvoiceNo=@InvoiceNo,
-	InvoiceType=@InvoiceType,
-	InvoiceDate=@InvoiceDate,
-	Amount=@Amount,
-	VAT=@VAT,
-	Discounts=@Discounts,
-	updatedate = getdate(),
-	updateuser = @CreateUser,
-	PaymentType = @PaymentType,
-    S35Type = @S35Type,
-    InvoiceAccountID = @InvoiceAccountID,
-    InvoiceAccountDetailID = @InvoiceAccountDetailID,
-    InvoiceVATAccountID = @InvoiceVATAccountID,
-	MST= @MST,
-    CustomerName= @CustomerName
-where InvoiceID = @InvoiceID and CompanyID =@CompanyID and CreateUser =@CreateUser
+	if(exists(Select * from UserRoleCompany where UserID = @CreateUser and CompanyID = @CompanyID and RoleID = 'ROLE01'))
+	begin
+			update Invoice
+		set 
+			CustomerID=@CustomerID,
+			Description=@Description,
+			InvoiceFormNo=@MaSo,
+			FormNo=@MauSo,
+			SerialNo=@KyHieu,
+			InvoiceNo=@InvoiceNo,
+			InvoiceType=@InvoiceType,
+			InvoiceDate=@InvoiceDate,
+			Amount=@Amount,
+			VAT=@VAT,
+			Discounts=@Discounts,
+			updatedate = getdate(),
+			updateuser = @CreateUser,
+			PaymentType = @PaymentType,
+			S35Type = @S35Type,
+			InvoiceAccountID = @InvoiceAccountID,
+			InvoiceAccountDetailID = @InvoiceAccountDetailID,
+			InvoiceVATAccountID = @InvoiceVATAccountID,
+			MST= @MST,
+			CustomerName= @CustomerName
+		where InvoiceID = @InvoiceID and CompanyID =@CompanyID
+	end
+	else
+		begin
+			update Invoice
+			set 
+				CustomerID=@CustomerID,
+				Description=@Description,
+				InvoiceFormNo=@MaSo,
+				FormNo=@MauSo,
+				SerialNo=@KyHieu,
+				InvoiceNo=@InvoiceNo,
+				InvoiceType=@InvoiceType,
+				InvoiceDate=@InvoiceDate,
+				Amount=@Amount,
+				VAT=@VAT,
+				Discounts=@Discounts,
+				updatedate = getdate(),
+				updateuser = @CreateUser,
+				PaymentType = @PaymentType,
+				S35Type = @S35Type,
+				InvoiceAccountID = @InvoiceAccountID,
+				InvoiceAccountDetailID = @InvoiceAccountDetailID,
+				InvoiceVATAccountID = @InvoiceVATAccountID,
+				MST= @MST,
+				CustomerName= @CustomerName
+			where InvoiceID = @InvoiceID and CompanyID =@CompanyID and CreateUser =@CreateUser
+		end
 end

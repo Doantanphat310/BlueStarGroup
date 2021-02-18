@@ -24,7 +24,7 @@ namespace BSCommon.Models
         public decimal BalanceQuatity { get; set; }
         [System.ComponentModel.DefaultValue(0)]
         public decimal BalancePrice { get; set; }
-        public string ItemUnit { get; set; }
+        public string ItemUnitID { get; set; }
         public decimal Amount { get { return this.BalancePrice * this.BalanceQuatity; } }
         public ModifyMode Status { get; set; }
     }
