@@ -1,4 +1,7 @@
-﻿namespace BSCommon.Utility
+﻿using BSCommon.Models;
+using System.Collections.Generic;
+
+namespace BSCommon.Utility
 {
     public static class UserInfo
     {
@@ -37,5 +40,6 @@
         /// </summary>
         public static string CompanyID { get; set; }
 
+        public static List<UserRoleCompany> Companies { get; set; }
     }
 }

@@ -7,4 +7,10 @@
         Update = 2,
         Delete = 3
     }
+
+    public enum LoginMode
+    {
+        None = 0,
+        ChangeCompany = 1
+    }
 }

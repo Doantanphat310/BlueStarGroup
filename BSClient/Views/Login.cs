@@ -1,38 +1,43 @@
 ﻿using BSClient.Utility;
+using BSCommon.Constant;
 using BSCommon.Models;
 using BSCommon.Utility;
 using BSServer.Controllers;
 using DevExpress.Utils.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BSClient
 {
     public partial class Login : DevExpress.XtraEditors.XtraForm
     {
+        private bool IsLogined = false;
         private readonly string LoginCaption = "Đăng nhập";
         private readonly string AccessCaption = "Truy cập";
-        private readonly string CancelCaption = "Quay lại";
-        private readonly string ExitCaption = "Thoát";
-        private bool IsLogined = false;
         private int LoginCount = 0;
+        private readonly LoginMode Mode;
 
-        private List<Users> Users { get; set; }
-
-        public Login()
+        public Login(LoginMode mode = LoginMode.None)
         {
             InitializeComponent();
 
+            this.DialogResult = DialogResult.No;
+            Mode = mode;
 #if DEBUG
             UserID_TextBox.Text = "admin";
             Password_TextBox.Text = "Ab123456";
 #endif
 
-            using (UserController controller = new UserController())
+            if (mode == LoginMode.ChangeCompany)
             {
-                Users = controller.GetUsers();
+                this.Cancel_Button.Visible = true;
+
+                UserID_TextBox.Text = UserInfo.UserID;
+                Password_TextBox.Text = UserInfo.Password;
+                this.DialogResult = DialogResult.Cancel;
+
+                SetCompanyComboBox();
+                SetEnable(true);
             }
         }
 
@@ -55,21 +60,13 @@ namespace BSClient
 
             using (UserController controller = new UserController())
             {
-                Users user = Users?.Find(o => o.UserID.ToLower() == userID.ToLower());
+                Users user = controller.GetUsers()?.Find(o => o.UserID.ToLower() == userID.ToLower());
 
                 if (user != null && ClientCommon.IsCheckPass(Password_TextBox.Text, user.Password))
                 {
-                    UserInfo.UserID = user.UserID;
-                    UserInfo.UserName = user.UserName;
-                    UserInfo.UserRole = user.UserRole;
-                    UserInfo.Password = user.Password;
-                    UserInfo.Address = user.Address;
-                    UserInfo.Phone = user.Phone;
+                    SetUserInfo(user);
 
-                    List<UserRoleCompany> companys = controller.GetUserRoleCompany(UserInfo.UserID);
-
-                    this.Company_LookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", companys);
-                    this.Company_LookUpEdit.ItemIndex = 0;
+                    UserInfo.Companies = controller.GetUserRoleCompany(UserInfo.UserID);
 
                     return true;
                 }
@@ -80,6 +77,20 @@ namespace BSClient
                     UserID_TextBox.Focus();
                     return false;
                 }
+            }
+        }
+
+        private void SetCompanyComboBox()
+        {
+            this.Company_LookUpEdit.SetupLookUpEdit("CompanyID", "CompanyName", UserInfo.Companies);
+
+            if (string.IsNullOrWhiteSpace(UserInfo.CompanyID))
+            {
+                this.Company_LookUpEdit.ItemIndex = 0;
+            }
+            else
+            {
+                this.Company_LookUpEdit.EditValue = UserInfo.CompanyID;
             }
         }
 
@@ -113,6 +124,7 @@ namespace BSClient
                     if (this.IsLogin())
                     {
                         LoginCount = 0;
+                        SetCompanyComboBox();
                         SetEnable(true);
                     }
                 }
@@ -125,18 +137,8 @@ namespace BSClient
 
         private void Exit_Button_Click(object sender, EventArgs e)
         {
-            if (IsLogined)
-            {
-                SetEnable(false);
-                CommonInfo.CompanyInfo = null;
-                SetUserInfo();
-                Company_LookUpEdit.Properties.DataSource = null;
-            }
-            else
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
+            this.DialogResult = DialogResult.No;
+            this.Close();
         }
 
         private void SetUserInfo(Users user = null)
@@ -146,10 +148,10 @@ namespace BSClient
                 user = new Users();
             }
 
-            UserInfo.UserID = user.UserID;
+            UserInfo.UserID = UserID_TextBox.Text;
             UserInfo.UserName = user.UserName;
             UserInfo.UserRole = user.UserRole;
-            UserInfo.Password = user.Password;
+            UserInfo.Password = Password_TextBox.Text;
             UserInfo.Address = user.Address;
             UserInfo.Phone = user.Phone;
         }
@@ -172,7 +174,7 @@ namespace BSClient
             UserInfo.UserRole = selected.UserRoleValue;
             UserInfo.CompanyID = selected.CompanyID;
 
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.Yes;
             this.Close();
         }
 
@@ -183,9 +185,30 @@ namespace BSClient
             this.Password_Label.Enabled = !isLogin;
 
             Login_Button.Text = isLogin ? AccessCaption : LoginCaption;
-            Exit_Button.Text = isLogin ? CancelCaption : ExitCaption;
+            Back_Button.Enabled = isLogin;
+
+            // Khi mode thay đổi cty, nếu chưa login thì ko thể cancel
+            if (this.Mode == LoginMode.ChangeCompany)
+            {
+                Cancel_Button.Enabled = isLogin;
+            }
 
             IsLogined = isLogin;
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            SetEnable(false);
+            CommonInfo.CompanyInfo = null;
+            UserInfo.Companies = null;
+            SetUserInfo();
+            Company_LookUpEdit.Properties.DataSource = null;
+        }
+
+        private void Cancel_Button_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

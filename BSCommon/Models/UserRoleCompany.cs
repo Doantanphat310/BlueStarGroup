@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace BSCommon.Models
 {
     /// <summary>
@@ -18,8 +14,7 @@ namespace BSCommon.Models
         /// UserID
         /// </summary>
         public string UserID { get; set; }
-
-
+        
         /// <summary>
         /// RoleID
         /// </summary>

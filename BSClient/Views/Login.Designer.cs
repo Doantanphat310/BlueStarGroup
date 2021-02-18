@@ -40,6 +40,9 @@
             this.Company_Label = new DevExpress.XtraLayout.LayoutControlItem();
             this.Exit_Button = new DevExpress.XtraEditors.SimpleButton();
             this.Bottom_Panel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Back_Button = new DevExpress.XtraEditors.SimpleButton();
+            this.Cancel_Button = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.UserID_TextBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Main_LayoutControl)).BeginInit();
             this.Main_LayoutControl.SuspendLayout();
@@ -50,15 +53,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.Password_Label)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).BeginInit();
             this.Bottom_Panel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Login_Button
             // 
-            this.Login_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Login_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Login_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_Button.Appearance.Options.UseFont = true;
             this.Login_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Login_Button.ImageOptions.Image")));
-            this.Login_Button.Location = new System.Drawing.Point(255, 11);
+            this.Login_Button.Location = new System.Drawing.Point(35, 10);
+            this.Login_Button.Margin = new System.Windows.Forms.Padding(5);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.Size = new System.Drawing.Size(105, 35);
             this.Login_Button.TabIndex = 1;
@@ -171,11 +176,12 @@
             // 
             // Exit_Button
             // 
-            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Exit_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit_Button.Appearance.Options.UseFont = true;
             this.Exit_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Exit_Button.ImageOptions.Image")));
-            this.Exit_Button.Location = new System.Drawing.Point(373, 11);
+            this.Exit_Button.Location = new System.Drawing.Point(380, 10);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(5);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.Size = new System.Drawing.Size(105, 35);
             this.Exit_Button.TabIndex = 2;
@@ -184,13 +190,62 @@
             // 
             // Bottom_Panel
             // 
-            this.Bottom_Panel.Controls.Add(this.Login_Button);
-            this.Bottom_Panel.Controls.Add(this.Exit_Button);
+            this.Bottom_Panel.Controls.Add(this.tableLayoutPanel1);
             this.Bottom_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Bottom_Panel.Location = new System.Drawing.Point(0, 148);
             this.Bottom_Panel.Name = "Bottom_Panel";
             this.Bottom_Panel.Size = new System.Drawing.Size(490, 55);
             this.Bottom_Panel.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.Back_Button, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Login_Button, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Exit_Button, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Cancel_Button, 3, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 55);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // Back_Button
+            // 
+            this.Back_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Back_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back_Button.Appearance.Options.UseFont = true;
+            this.Back_Button.Enabled = false;
+            this.Back_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Back_Button.ImageOptions.Image")));
+            this.Back_Button.Location = new System.Drawing.Point(150, 10);
+            this.Back_Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Back_Button.Name = "Back_Button";
+            this.Back_Button.Size = new System.Drawing.Size(105, 35);
+            this.Back_Button.TabIndex = 3;
+            this.Back_Button.Text = "Quay lại";
+            this.Back_Button.Click += new System.EventHandler(this.Back_Button_Click);
+            // 
+            // Cancel_Button
+            // 
+            this.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Cancel_Button.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancel_Button.Appearance.Options.UseFont = true;
+            this.Cancel_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.Cancel_Button.Location = new System.Drawing.Point(265, 10);
+            this.Cancel_Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Cancel_Button.Name = "Cancel_Button";
+            this.Cancel_Button.Size = new System.Drawing.Size(105, 35);
+            this.Cancel_Button.TabIndex = 4;
+            this.Cancel_Button.Text = "Bỏ qua";
+            this.Cancel_Button.Visible = false;
+            this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
             // Login
             // 
@@ -217,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Password_Label)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company_Label)).EndInit();
             this.Bottom_Panel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,5 +290,8 @@
         private System.Windows.Forms.Panel Bottom_Panel;
         private DevExpress.XtraLayout.LayoutControlItem Company_Label;
         private DevExpress.XtraEditors.LookUpEdit Company_LookUpEdit;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.SimpleButton Back_Button;
+        private DevExpress.XtraEditors.SimpleButton Cancel_Button;
     }
 }

@@ -3,6 +3,7 @@ using BSClient.Views;
 using BSClient.Views.Reports;
 using BSCommon.Constant;
 using System;
+using System.Windows.Forms;
 
 namespace BSClient
 {
@@ -84,6 +85,25 @@ namespace BSClient
         {
             BaoCaoToanTap form = new BaoCaoToanTap();
             form.ShowDialog();
+        }
+
+        private void ChangeCompany_Button_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Login login = new Login(LoginMode.ChangeCompany);
+
+            DialogResult result = login.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                MainForm_Load(null, null);
+            }
+            else if (result == DialogResult.No)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                // Nothing
+            }
         }
     }
 }

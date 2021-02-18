@@ -23,7 +23,7 @@ namespace BSClient
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
             Login login = new Login();
-            if (login.ShowDialog() == DialogResult.OK)
+            if (login.ShowDialog() == DialogResult.Yes)
             {
                 Application.Run(new MainForm());
             }

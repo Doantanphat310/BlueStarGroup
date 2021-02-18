@@ -45,6 +45,7 @@
             this.BaoCaoKeToanToanTap_MenuItem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.ChangeCompany_Button = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -85,11 +86,7 @@
             // 
             // ACE_Voucher
             // 
-            this.ACE_Voucher.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
+            this.ACE_Voucher.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ACE_Voucher.ImageOptions.Image")));
             this.ACE_Voucher.Name = "ACE_Voucher";
             this.ACE_Voucher.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ACE_Voucher.Text = "Nhập chứng từ";
@@ -189,12 +186,25 @@
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
+            this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ChangeCompany_Button});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1014, 27);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.ChangeCompany_Button);
+            // 
+            // ChangeCompany_Button
+            // 
+            this.ChangeCompany_Button.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.ChangeCompany_Button.Caption = "Đổi Công ty";
+            this.ChangeCompany_Button.Id = 0;
+            this.ChangeCompany_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ChangeCompany_Button.ImageOptions.Image")));
+            this.ChangeCompany_Button.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("ChangeCompany_Button.ImageOptions.LargeImage")));
+            this.ChangeCompany_Button.Name = "ChangeCompany_Button";
+            this.ChangeCompany_Button.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeCompany_Button_ItemClick);
             // 
             // MainForm
             // 
@@ -243,5 +253,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement BangCanDoiSoPhatSinh_Item;
         private DevExpress.XtraBars.Navigation.AccordionControlElement WarehouseList_accordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement BaoCaoKeToanToanTap_MenuItem;
+        private DevExpress.XtraBars.BarButtonItem ChangeCompany_Button;
     }
 }
