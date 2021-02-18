@@ -7,7 +7,7 @@ alter proc BalanceSelectWarehouse
 as
 begin
 Select BalanceID,BalanceDate,AccountID,AccountDetailID,CustomerID,CompanyID,DebitAmount,CreditAmount,
-Balance.ItemID,BalanceQuatity, BalancePrice,Items.ItemUnit,
+Balance.ItemID,BalanceQuatity, BalancePrice,Items.ItemUnitID,
 case
 when IsNull(DebitAmount,0) > 0 then DebitAmount
 when IsNull(CreditAmount,0) > 0 then CreditAmount

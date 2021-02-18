@@ -167,7 +167,7 @@ namespace BSClient.Views
         private void UserRoleAddNew_Button_Click(object sender, EventArgs e)
         {
             string userID = UserID_TextBox.Text;
-            Company company = CompanyID_LookUpEdit.GetSelectedDataRow().CastTo<Company>();
+            CM_Company company = CompanyID_LookUpEdit.GetSelectedDataRow().CastTo<CM_Company>();
             MasterInfo userRole = UserRole_ComboBox.GetSelectedDataRow().CastTo<MasterInfo>();
 
             if (string.IsNullOrEmpty(userID))

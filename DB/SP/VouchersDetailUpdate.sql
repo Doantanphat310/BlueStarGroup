@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create PROCEDURE [dbo].[VouchersDetailUpdate] (
+Alter PROCEDURE [dbo].[VouchersDetailUpdate] (
 	@VouchersID varchar(50),
 	@VouchersDetailID varchar(50),
 	@NV varchar(50),
@@ -19,6 +19,8 @@ create PROCEDURE [dbo].[VouchersDetailUpdate] (
 )
 AS	
 	begin
+		if(exists(Select * from UserRoleCompany where UserID = @CreateUser and CompanyID = @CompanyID and RoleID = 'ROLE01'))
+		begin
 		if(@NV = 'N')
 		begin
 			--------Ghi tk nợ
@@ -53,4 +55,42 @@ AS
 			Descriptions = @Descriptions
 			where VouchersDetailID = @VouchersDetailID
 		end
+		end
+		else
+			begin
+			if(@NV = 'N')
+		begin
+			--------Ghi tk nợ
+			update  VouchersDetail
+			set
+			VouchersID =@VouchersID,
+			AccountID = @AccountID,
+			AccountDetailID = @AccountDetailID,
+			CustomerID =@CustomerID,
+			DebitAmount = @Amount,
+			CreditAmount = null,
+			CompanyID = @CompanyID,
+			UpdateUser = @CreateUser,
+			UpdateDate = GETDATE(),
+			Descriptions = @Descriptions
+			where VouchersDetailID = @VouchersDetailID and CreateUser = @CreateUser
+		end
+		else if(@NV = 'C')
+		begin
+			--------Ghi tk nợ
+			update  VouchersDetail
+			set
+			VouchersID =@VouchersID,
+			AccountID = @AccountID,
+			AccountDetailID = @AccountDetailID,
+			CustomerID =@CustomerID,
+			DebitAmount = null,
+			CreditAmount = @Amount,
+			CompanyID = @CompanyID,
+			UpdateUser = @CreateUser,
+			UpdateDate = GETDATE(),
+			Descriptions = @Descriptions
+			where VouchersDetailID = @VouchersDetailID and CreateUser = @CreateUser
+		end
+			end
 	end

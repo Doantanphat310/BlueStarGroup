@@ -160,7 +160,15 @@ namespace BSClient.Views
             // Thành tiền
             // Đơn vị tính
             this.BalanceWareHouse_gridView.Columns.Clear();
-            this.BalanceWareHouse_gridView.AddSearchLookupEditColumn("ItemID", "Hàng hóa", 80, items, "ItemID", "ItemSName", isAllowEdit: false, editValueChanged: BalanceWareHouseDetail_EditValueChanged);
+
+            List<ColumnInfo> columns = new List<ColumnInfo>
+            {
+                new ColumnInfo("ItemID", "ItemID",140),
+                new ColumnInfo("ItemSName", "Hàng hóa",140),
+                new ColumnInfo("ItemUnitID", "ĐVT",140 ),
+            };
+
+            this.BalanceWareHouse_gridView.AddSearchLookupEditColumn("ItemID", "Hàng hóa", 80, items, "ItemID", "ItemSName", isAllowEdit: false,columns:columns, editValueChanged: BalanceWareHouseDetail_EditValueChanged);
             this.BalanceWareHouse_gridView.AddColumn("ItemUnitID", "ĐVT", 35, isAllowEdit: false);
             this.BalanceWareHouse_gridView.AddSpinEditColumn("BalanceQuatity", "Số lượng", 60, false, "###,###,###.##");
             this.BalanceWareHouse_gridView.AddSpinEditColumn("BalancePrice", "Đơn giá", 120, false, "c2");
