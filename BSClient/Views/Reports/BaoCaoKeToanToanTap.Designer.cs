@@ -152,6 +152,7 @@
             this.SoNoTongHopPhaiThu_CheckBox.Properties.Caption = "Sổ nợ tổng hợp phải thu";
             this.SoNoTongHopPhaiThu_CheckBox.Size = new System.Drawing.Size(141, 19);
             this.SoNoTongHopPhaiThu_CheckBox.TabIndex = 1;
+            this.SoNoTongHopPhaiThu_CheckBox.Visible = false;
             // 
             // ChungTuGhiSo_CheckBox
             // 
@@ -196,6 +197,7 @@
             this.checkBox6.Properties.Caption = "Sổ quỹ tiền mặt, tiền gửi ngân hàng";
             this.checkBox6.Size = new System.Drawing.Size(198, 19);
             this.checkBox6.TabIndex = 5;
+            this.checkBox6.Visible = false;
             // 
             // SoNoChiTietPhaiThu_CheckBox
             // 
@@ -207,6 +209,7 @@
             this.SoNoChiTietPhaiThu_CheckBox.Properties.Caption = "Sổ nợ chi tiết phải thu";
             this.SoNoChiTietPhaiThu_CheckBox.Size = new System.Drawing.Size(130, 19);
             this.SoNoChiTietPhaiThu_CheckBox.TabIndex = 7;
+            this.SoNoChiTietPhaiThu_CheckBox.Visible = false;
             // 
             // ReportItem_TableLayoutPanel
             // 
@@ -258,6 +261,7 @@
             this.checkBox14.Properties.Caption = "Bảng kê tra cứu hóa đơn thuế GTGT";
             this.checkBox14.Size = new System.Drawing.Size(198, 19);
             this.checkBox14.TabIndex = 14;
+            this.checkBox14.Visible = false;
             // 
             // SoTheoDoi142_CheckBox
             // 
@@ -269,6 +273,7 @@
             this.SoTheoDoi142_CheckBox.Properties.Caption = "Sổ theo dõi 142, 242, 211xxx - S21";
             this.SoTheoDoi142_CheckBox.Size = new System.Drawing.Size(197, 19);
             this.SoTheoDoi142_CheckBox.TabIndex = 13;
+            this.SoTheoDoi142_CheckBox.Visible = false;
             // 
             // BaoCaoTongHopNhapXuatTon_CheckBox
             // 
@@ -280,6 +285,7 @@
             this.BaoCaoTongHopNhapXuatTon_CheckBox.Properties.Caption = "Báo cáo tổng hợp Nhập, xuất, tồn - Kiểu 3";
             this.BaoCaoTongHopNhapXuatTon_CheckBox.Size = new System.Drawing.Size(229, 19);
             this.BaoCaoTongHopNhapXuatTon_CheckBox.TabIndex = 12;
+            this.BaoCaoTongHopNhapXuatTon_CheckBox.Visible = false;
             // 
             // SoDangKiChungTuKho_CheckBox
             // 
@@ -291,6 +297,7 @@
             this.SoDangKiChungTuKho_CheckBox.Properties.Caption = "Sổ đăng kí chứng từ kho";
             this.SoDangKiChungTuKho_CheckBox.Size = new System.Drawing.Size(142, 19);
             this.SoDangKiChungTuKho_CheckBox.TabIndex = 11;
+            this.SoDangKiChungTuKho_CheckBox.Visible = false;
             // 
             // checkBox10
             // 
@@ -302,6 +309,7 @@
             this.checkBox10.Properties.Caption = "Sổ bán hàng - S35";
             this.checkBox10.Size = new System.Drawing.Size(114, 19);
             this.checkBox10.TabIndex = 10;
+            this.checkBox10.Visible = false;
             // 
             // SoNoChiTietPhaiTra_CheckBox
             // 
@@ -313,6 +321,7 @@
             this.SoNoChiTietPhaiTra_CheckBox.Properties.Caption = "Sổ nợ chi tiết phải trả";
             this.SoNoChiTietPhaiTra_CheckBox.Size = new System.Drawing.Size(128, 19);
             this.SoNoChiTietPhaiTra_CheckBox.TabIndex = 9;
+            this.SoNoChiTietPhaiTra_CheckBox.Visible = false;
             // 
             // SoNoTongHopPhaiTra_CheckBox
             // 
@@ -324,6 +333,7 @@
             this.SoNoTongHopPhaiTra_CheckBox.Properties.Caption = "Sổ nợ tổng hợp phải trả";
             this.SoNoTongHopPhaiTra_CheckBox.Size = new System.Drawing.Size(139, 19);
             this.SoNoTongHopPhaiTra_CheckBox.TabIndex = 8;
+            this.SoNoTongHopPhaiTra_CheckBox.Visible = false;
             // 
             // BaoCaoToanTap
             // 
