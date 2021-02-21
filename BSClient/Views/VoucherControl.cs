@@ -601,6 +601,7 @@ namespace BSClient
                     else if (TKCheck[0].DuNo == false && DuNo) // Kiểm tra nợ <= có | Đang nhập dư nợ
                     {
                         //Kiểm tra Nợ nhập tk có nhỏ hơn DuCo
+                        /*
                         if (CompareAmount)
                         {
                             if (SoDuCuoiKy.Count > 0)
@@ -616,10 +617,12 @@ namespace BSClient
                                 }
                             }
                         }
+                        */
                     }
                     else if (TKCheck[0].DuCo == false && DuCo) //Kiểm tra có <=N | Đang nhập dư có
                     {
                         //Kiểm tra Có nhập tk có nhỏ hơn DuNo'
+                        /*
                         if (CompareAmount)
                         {
                             if (SoDuCuoiKy.Count > 0)
@@ -635,6 +638,7 @@ namespace BSClient
                                 }
                             }
                         }
+                        */
                     }
                 }
             }
@@ -3456,6 +3460,8 @@ namespace BSClient
             }
             else
             {
+                //Khóa tạm kiểm tra dữ liệu
+               /* 
                 if (WareHouse_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
                 {
                     //Check xuất kho phải nhỏ hơn hoặc bằng nhập kho và đầu kỳ
@@ -3489,14 +3495,15 @@ namespace BSClient
                             view.SetColumnError(columnQuantity, "Số lượng hàng hóa Xuất lớn hơn tồn kho! \n Tồn kho: "+ SLTon.ToString() +".");
                         }
                         
-                        /*
-                        List<MaterialTonKho> tonkhoNs = tonKhos.Where(items => items.Type == "N").ToList();
-                        var result = tonKhos.GroupBy(o => o.Type)
-                                    .Select(g => new { ItemID = g.Key, total = g.Sum(i => i.Quantity) });
-                        List<MaterialTonKho> tonkhoXs = tonKhos.Where(items => items.Type == "X").ToList();
-                        */
+                        
+                        //List<MaterialTonKho> tonkhoNs = tonKhos.Where(items => items.Type == "N").ToList();
+                        //var result = tonKhos.GroupBy(o => o.Type)
+                        //            .Select(g => new { ItemID = g.Key, total = g.Sum(i => i.Quantity) });
+                        //List<MaterialTonKho> tonkhoXs = tonKhos.Where(items => items.Type == "X").ToList();
+                        
                     }
                 }
+               */
             }
             //Luon cho phep nhap.
             //Kiem tra khi xuat
@@ -3519,6 +3526,8 @@ namespace BSClient
             }
             else
             {
+                //Khóa tạm kiểm tra dữ liệu
+                /*
                 if (InvoiceWareHouse_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
                 {
                     //Check xuất kho phải nhỏ hơn hoặc bằng nhập kho và đầu kỳ
@@ -3553,6 +3562,7 @@ namespace BSClient
                         }
                     }
                 }
+                */
             }
         }
 
