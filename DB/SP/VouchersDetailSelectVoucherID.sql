@@ -6,6 +6,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+VouchersDetailSelectVoucherID 'CT20210219000001','CTY0000000240','Tuyen'
+
 Alter PROCEDURE [dbo].[VouchersDetailSelectVoucherID] (
 	@VouchersID varchar(50),
 	@CompanyID varchar(50),
@@ -28,5 +30,5 @@ from VouchersDetail as A inner join Accounts as B
 on A.AccountID = B.AccountID
 left join Customer as D
 on A.CustomerID = D.CustomerID
-where VouchersID = @VouchersID and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser and A.IsDelete is null
+where VouchersID = @VouchersID and A.CompanyID = @CompanyID  and A.IsDelete is null
 	end
