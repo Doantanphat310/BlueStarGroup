@@ -166,7 +166,7 @@ namespace BSClient
         private void InitVoucherDetailGridView()
         {
             this.VoucherDetail_gridView.Columns.Clear();
-            this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true);
+            this.VoucherDetail_gridView.AddSearchLookupEditColumn("NV", "NV", 40, materialNV, "NVSummary", "NVName", isAllowEdit: true, editValueChanged: VoucherDetailNV_EditValueChanged); 
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
                 
@@ -184,7 +184,59 @@ namespace BSClient
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 1, false);
         }
-        
+
+        public void VoucherDetailNV_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectRow = ((SearchLookUpEdit)sender).Properties.View.GetFocusedRow().CastTo<MaterialNV>();
+            string nghiepvu = selectRow.NVSummary.ToString();
+            //Check nghiệp vụ của những dòng khác
+            AutoCompleteAmountVoucherDetail(nghiepvu);
+        }
+
+        void AutoCompleteAmountVoucherDetail(string nghiepvu)
+        {
+            decimal AmountN = 0;
+            int countN = 0;
+            decimal AmountC = 0;
+            int countC = 0;
+            AmountN = VoucherDetailData.Where(x => x.NV == "N").Sum(x => x.Amount);
+            countN = VoucherDetailData.Count(p => p.NV == "N");
+
+            AmountC = VoucherDetailData.Where(x => x.NV == "C").Sum(x => x.Amount);
+            countC = VoucherDetailData.Count(p => p.NV == "C");
+         
+                    if (countN < countC)
+                    {
+                        //đang nhập nghiệp vụ nợ. Đã có nhiều nghiệp vụ có được nhập
+                        // Cập nhật tiền cho nghiệp vụ Nợ
+                        //VoucherDetail_gridView.SetFocusedRowCellValue("Amount", AmountC);
+                        foreach(VoucherDetail item in VoucherDetailData)
+                        {
+                            if (item.NV.Contains("N"))
+                            {
+                                item.Amount = AmountC;
+                                break;
+                            }
+                        }
+                    }
+                    else if (countN > countC)
+                    {
+                        //đang nhập nghiệp vụ có
+                        //cập nhật tiền cho nghiệp vụ có
+                        //VoucherDetail_gridView.SetFocusedRowCellValue("Amount", AmountN);
+                        foreach (VoucherDetail item in VoucherDetailData)
+                        {
+                            if (item.NV.Contains("C"))
+                            {
+                                item.Amount = AmountN;
+                        VoucherDetail_gridView.RefreshData();
+                                break;
+                            }
+                        }
+                    }
+                 
+        }
+
 
         private void SetupVoucherDetailGridView()
         {
@@ -549,8 +601,6 @@ namespace BSClient
 
             Boolean DuNo = false;
             Boolean DuCo = false;
-
-
             if (string.IsNullOrEmpty(row.AccountID) || string.IsNullOrEmpty(row.NV) || (!CompareAmount))
             {
                 if (string.IsNullOrEmpty(row.AccountID))
@@ -3331,7 +3381,16 @@ namespace BSClient
 
         private void VoucherDetail_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-
+            /// AutoCompleteAmountVoucherDetail(nghiepvu);
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                if (!String.IsNullOrEmpty(VoucherDetail_gridView.GetFocusedRowCellValue("NV")?.ToString()))
+                {
+                    AutoCompleteAmountVoucherDetail(VoucherDetail_gridView.GetFocusedRowCellValue("NV").ToString());
+                }
+            }
         }
 
         private void Invoice_gridView_ValidateRow(object sender, ValidateRowEventArgs e)

@@ -6,7 +6,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-VouchersDetailSelectVoucherID 'CT20210219000001','CTY0000000240','Tuyen'
+VouchersDetailSelectVoucherID 'CT20210223000002','CTY0000000241','NGAN'
+
+select * from Vouchers
+where VoucherNo = 2 and year(voucherdate) = '2021'
 
 Alter PROCEDURE [dbo].[VouchersDetailSelectVoucherID] (
 	@VouchersID varchar(50),
@@ -31,4 +34,5 @@ on A.AccountID = B.AccountID
 left join Customer as D
 on A.CustomerID = D.CustomerID
 where VouchersID = @VouchersID and A.CompanyID = @CompanyID  and A.IsDelete is null
+order by 'NV'
 	end

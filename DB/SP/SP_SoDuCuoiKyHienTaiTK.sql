@@ -1,4 +1,4 @@
-﻿
+﻿SP_SoDuCuoiKyHienTaiTK '6427','','','CTY0000000241','2021/01/06','CTD20210223000004'
 
 alter proc SP_SoDuCuoiKyHienTaiTK
 @AccountID varchar(50),@AccountDetailID varchar(50),@CustomerID varchar(50),@CompanyID varchar(50),
@@ -6,7 +6,7 @@ alter proc SP_SoDuCuoiKyHienTaiTK
 as 
 begin
 ---select số dư cuối kỳ
-select AccountID,AccountDetailID,CustomerID,CompanyID, sum(DebitAmount) as 'DebitAmount', sum(CreditAmount) as 'CreditAmount'
+select AccountID,AccountDetailID,CustomerID,CompanyID,ISNULL(sum(DebitAmount), 0)  as 'DebitAmount', ISNULL(sum(CreditAmount), 0)  as 'CreditAmount'
 from
 (
 ---select số dư đầu kỳ
