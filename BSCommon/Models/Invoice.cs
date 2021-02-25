@@ -9,31 +9,31 @@ using System.Threading.Tasks;
 
 namespace BSCommon.Models
 {
-  public  class Invoice
+    public class Invoice
     {
         private DateTime? dateCreated = null;
         public string InvoiceID { get; set; }
         public string VouchersID { get; set; }
-       // [Required(ErrorMessage = "Khách hàng không được để trống!")]
+        // [Required(ErrorMessage = "Khách hàng không được để trống!")]
         [DisplayName("Mã KH")]
         public string CustomerID { get; set; }
         public string Description { get; set; }
-      //  [Required(ErrorMessage = "Mã số HĐ không được để trống!")]
+        //  [Required(ErrorMessage = "Mã số HĐ không được để trống!")]
         [DisplayName("Mã số")]
         public string InvoiceFormNo { get; set; }
-      //  [Required(ErrorMessage = "Mẫu số HĐ không được để trống!")]
+        //  [Required(ErrorMessage = "Mẫu số HĐ không được để trống!")]
         [DisplayName("Mẫu số")]
         public string FormNo { get; set; }
-       // [Required(ErrorMessage = "Ký hiệu HĐ không được để trống!")]
+        // [Required(ErrorMessage = "Ký hiệu HĐ không được để trống!")]
         [DisplayName("Ký hiệu")]
         public string SerialNo { get; set; }
-      //  [Required(ErrorMessage = "Số HĐ không được để trống!")]
+        //  [Required(ErrorMessage = "Số HĐ không được để trống!")]
         [DisplayName("Số HĐ")]
         public string InvoiceNo { get; set; }
-       // [Required(ErrorMessage = "Loại HĐ không được để trống!")]
+        // [Required(ErrorMessage = "Loại HĐ không được để trống!")]
         [DisplayName("Loại HĐ")]
         public string InvoiceType { get; set; }
-     //   [Required(ErrorMessage = "Ngày HĐ không được để trống!")]
+        //   [Required(ErrorMessage = "Ngày HĐ không được để trống!")]
         [DisplayName("Ngày HĐ")]
         public DateTime InvoiceDate
         {
@@ -45,24 +45,29 @@ namespace BSCommon.Models
             }
             set { this.dateCreated = value; }
         }
-       
+
         [DisplayName("Tiền")]
-      //  [Required(ErrorMessage = "Tiền hóa đơn không được để trống!")]
+        //  [Required(ErrorMessage = "Tiền hóa đơn không được để trống!")]
         [DisplayFormat(DataFormatString = "C2")]
         public decimal Amount { get; set; }
-      //  [Required]
+        //  [Required]
         [DisplayName("Thuế GTGT")]
-       // [Range(0, 999.99, ErrorMessage = "Thuế GTGT phải >= 0 và <= 999.99")]
+        // [Range(0, 999.99, ErrorMessage = "Thuế GTGT phải >= 0 và <= 999.99")]
         public decimal VAT { get; set; }
         [DisplayFormat(DataFormatString = "C2")]
         public decimal Discounts { get; set; }
         public string CreateUser { get; set; }
         public string CompanyID { get; set; }
         [DisplayFormat(DataFormatString = "C2")]
-        public decimal VATAmount { get { return this.VAT * (this.Amount - this.Discounts) / 100; } }
+       // public decimal VATAmount1 { get { return this.VAT * (this.Amount - this.Discounts) / 100; } }
+        public decimal VATAmount
+        {
+            get;
+            set;
+        }
         //  public decimal DiscountAmount { get; set; }
         [DisplayFormat(DataFormatString = "C2")]
-        public decimal TotalAmount { get { return this.Amount  - Discounts + VATAmount; } }
+        public decimal TotalAmount { get { return this.Amount - Discounts + VATAmount; } }
 
         public string PaymentType { get; set; }
         public Boolean? S35Type { get; set; }
@@ -100,7 +105,7 @@ namespace BSCommon.Models
         [Required(ErrorMessage = "Đơn giá không được để trống!")]
         [System.ComponentModel.DefaultValue(0)]
         public decimal Price { get; set; }
-
         public ModifyMode Status { get; set; }
+        
     }
 }

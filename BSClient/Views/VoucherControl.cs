@@ -1183,7 +1183,7 @@ namespace BSClient
                 new ColumnInfo("PaymentTypeSummary", "Mã",140),
                 new ColumnInfo("PaymentTypeName", "Tên",140),
             };
-            this.Invoice_gridView.AddSearchLookupEditColumn("PaymentTypeSummary", "Mã TT",60, materialPayment, "PaymentTypeSummary", "PaymentTypeName", columns: columnsPayment, isAllowEdit:true);
+            this.Invoice_gridView.AddSearchLookupEditColumn("PaymentType", "Mã TT",60, materialPayment, "PaymentTypeSummary", "PaymentTypeName", columns: columnsPayment, isAllowEdit:true);
 
             this.Invoice_gridView.AddColumn("Description", "Nội dung", 150, true);
             this.Invoice_gridView.AddColumn("CreateUser", "Người tạo", 60, false);
@@ -3747,6 +3747,70 @@ namespace BSClient
             }
 
             WareHouseDepreciation_gridView.DeleteSelectedRows();
+        }
+
+        private void Invoice_gridView_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            //tính VATAmount tự động
+            //khi nhập amount
+            //khi nhap vat
+            //khi nhap discount
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                decimal Amount = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Amount");
+                decimal VAT = (Decimal)Invoice_gridView.GetFocusedRowCellValue("VAT");
+                decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
+                decimal VATAmount = VAT * (Amount - Discounts) / 100;
+                Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+            }
+            else if (e.Column.FieldName == "VAT")
+            {
+                decimal Amount = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Amount");
+                decimal VAT = (Decimal)Invoice_gridView.GetFocusedRowCellValue("VAT");
+                decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
+                decimal VATAmount = VAT * (Amount - Discounts) / 100;
+                Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+            }
+            else if (e.Column.FieldName == "Discounts")
+            {
+                decimal Amount = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Amount");
+                decimal VAT = (Decimal)Invoice_gridView.GetFocusedRowCellValue("VAT");
+                decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
+                decimal VATAmount = VAT * (Amount - Discounts) / 100;
+                Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+            }
+        }
+
+        private void Invoice_gridView_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+            // nội dung hóa đơn  = nội dung chứng từ
+            string LoaiCT = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
+            string NoiDung = richTextBoxVoucherContent.Text.ToString();
+
+            if (LoaiCT.Contains("CH"))
+            {
+                // CT chi thì tiền mặt  CH
+                Invoice_gridView.SetFocusedRowCellValue("PaymentType", "TM");
+            }
+            else if (LoaiCT.Contains("HT"))
+            {
+                // CT hạch toán thì chuyển khoản HT
+                Invoice_gridView.SetFocusedRowCellValue("PaymentType", "CK");
+            }
+            //Set nội dung hóa đơn
+            Invoice_gridView.SetFocusedRowCellValue("Description", NoiDung);
+            //set loại hóa đơn
+            Invoice_gridView.SetFocusedRowCellValue("InvoiceType", "V");
+        }
+
+        private void VoucherDetail_gridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                MessageBox.Show("F1 pressed");
+            }
         }
     }
 }

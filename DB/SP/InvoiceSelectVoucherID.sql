@@ -1,4 +1,4 @@
-Create PROCEDURE [dbo].[InvoiceSelectVoucherID] (
+ALTER PROCEDURE [dbo].[InvoiceSelectVoucherID] (
 	@VouchersID varchar(50),
 	@CompanyID varchar(50),
 	@CreateUser varchar(20)
@@ -6,6 +6,5 @@ Create PROCEDURE [dbo].[InvoiceSelectVoucherID] (
 AS	
 	begin
 	select * from Invoice as A
-	where VouchersID = @VouchersID and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser and A.IsDelete is null
+	where VouchersID = @VouchersID and A.CompanyID = @CompanyID  and A.IsDelete is null
 	end
-		
