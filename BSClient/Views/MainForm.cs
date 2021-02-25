@@ -91,10 +91,12 @@ namespace BSClient
         {
             Login login = new Login(LoginMode.ChangeCompany);
 
+            this.Hide();
             DialogResult result = login.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.Yes)
             {
                 MainForm_Load(null, null);
+                this.Show();
             }
             else if (result == DialogResult.No)
             {
@@ -103,6 +105,7 @@ namespace BSClient
             else
             {
                 // Nothing
+                this.Show();
             }
         }
     }

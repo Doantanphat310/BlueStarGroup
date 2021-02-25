@@ -29,8 +29,8 @@ namespace BSClient.Utility
             bool isAllowEdit = true,
             string formatString = "#,###0",
             SummaryItemType summaryType = SummaryItemType.None,
-            string summaryFormat = ""
-            )
+            string summaryFormat = "",
+            KeyEventHandler keyDown = null)
         {
             RepositoryItemSpinEdit itemCtrl = new RepositoryItemSpinEdit();
             itemCtrl.DisplayFormat.FormatString = formatString;
@@ -47,7 +47,30 @@ namespace BSClient.Utility
                 summaryItem = new GridColumnSummaryItem(summaryType, fieldName, summaryFormat);
             }
 
+            if (keyDown != null)
+            {
+                itemCtrl.KeyDown += new KeyEventHandler(keyDown);
+            }
+
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl, summaryItem: summaryItem);
+        }
+
+        public static void AddTextEditColumn(
+            this GridView gridView,
+            string fieldName,
+            string caption,
+            int width,
+            bool isAllowEdit = true,
+            KeyEventHandler keyDown = null)
+        {
+            RepositoryItemTextEdit itemCtrl = new RepositoryItemTextEdit();
+
+            if (keyDown != null)
+            {
+                itemCtrl.KeyDown += new KeyEventHandler(keyDown);
+            }
+
+            gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
         public static void AddCheckBoxColumn(
@@ -74,7 +97,8 @@ namespace BSClient.Utility
             List<ColumnInfo> columns = null,
             string nullText = "",
             bool showHearder = false,
-            EventHandler editValueChanged = null)
+            EventHandler editValueChanged = null,
+            KeyEventHandler keyDown = null)
         {
             RepositoryItemLookUpEdit itemCtrl = new RepositoryItemLookUpEdit
             {
@@ -90,6 +114,11 @@ namespace BSClient.Utility
             if (editValueChanged != null)
             {
                 itemCtrl.EditValueChanged += editValueChanged;
+            }
+
+            if (keyDown != null)
+            {
+                itemCtrl.KeyDown += new KeyEventHandler(keyDown);
             }
 
             if (columns != null)
@@ -132,7 +161,8 @@ namespace BSClient.Utility
            string nullText = "",
            EventHandler editValueChanged = null,
            int popupFormWidth = -1,
-           bool enterChoiceFirstRow = true)
+           bool enterChoiceFirstRow = true,
+           KeyEventHandler keyDown = null)
         {
             RepositoryItemSearchLookUpEdit itemCtrl = new RepositoryItemSearchLookUpEdit();
 
@@ -149,27 +179,32 @@ namespace BSClient.Utility
                 itemCtrl.EditValueChanged += editValueChanged;
             }
 
+            if (keyDown != null)
+            {
+                itemCtrl.KeyDown += new KeyEventHandler(keyDown);
+            }
+
             gridView.AddColumn(fieldName, caption, width, isAllowEdit, itemCtrl: itemCtrl);
         }
 
-        private static void ItemCtrl_SearchLookUpEdit_Popup(object sender, EventArgs e)
-        {
-            SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
-            PopupSearchLookUpEditForm popupForm = edit.GetPopupEditForm();
-            popupForm.KeyPreview = true;
-            popupForm.KeyPress += PopupForm_KeyPress;
-        }
+        //private static void ItemCtrl_SearchLookUpEdit_Popup(object sender, EventArgs e)
+        //{
+        //    SearchLookUpEdit edit = sender.CastTo<SearchLookUpEdit>();
+        //    PopupSearchLookUpEditForm popupForm = edit.GetPopupEditForm();
+        //    popupForm.KeyPreview = true;
+        //    popupForm.KeyPress += PopupForm_KeyPress;
+        //}
 
-        private static void PopupForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                PopupSearchLookUpEditForm popupForm = sender as PopupSearchLookUpEditForm;
-                GridView view = popupForm.OwnerEdit.Properties.View;
-                view.FocusedRowHandle = 0;
-                popupForm.OwnerEdit.ClosePopup();
-            }
-        }
+        //private static void PopupForm_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (e.KeyChar == (char)Keys.Enter)
+        //    {
+        //        PopupSearchLookUpEditForm popupForm = sender as PopupSearchLookUpEditForm;
+        //        GridView view = popupForm.OwnerEdit.Properties.View;
+        //        view.FocusedRowHandle = 0;
+        //        popupForm.OwnerEdit.ClosePopup();
+        //    }
+        //}
 
         public static void AddDateEditColumn(
             this GridView gridView,
@@ -239,15 +274,14 @@ namespace BSClient.Utility
             gridView.Columns.Add(col);
         }
 
-        private static GridColumn GetColumn(
+        public static GridColumn GetColumn(
             string fieldName,
             string caption,
             int width,
             bool isAllowEdit = true,
             bool fixedWidth = true,
             RepositoryItem itemCtrl = null,
-            GridSummaryItem summaryItem = null
-            )
+            GridSummaryItem summaryItem = null)
         {
             GridColumn col = new GridColumn
             {
