@@ -180,7 +180,7 @@ namespace BSClient
                                                                 materialTK, "AccountIDFULL", "AccountIDFULL",
                                                                 isAllowEdit: true, columns: columns);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "C2");
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "###,###,###,###,##0.00");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 1, false);
         }
@@ -1213,28 +1213,150 @@ namespace BSClient
             GlobalVarient.invoices = controller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, CommonInfo.CompanyInfo.CompanyID);
             //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, CommonInfo.CompanyInfo.CompanyID));
             InvoiceData = new BindingList<Invoice>(GlobalVarient.invoices);
-            /*
+            
              //Kiểm tra  tổng tiền GTGT có bằng tổng tiền VAT của voucherdetail chưa. Nếu chưa bằng thì tự thêm hóa đơn còn thiếu.
-             
-              int checkLKVAT = 0;
-                    foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
-                    {
-                        string checkAccountID = voucherDetail.AccountID.ToString();
-                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
-                        //if (checkAccountID == "133" || checkAccountID == "333")
-                        if (count > 0)
-                        {
-                            GetWareHouseList(VoucherDetailData);
+            int checkLKVAT = 0;
+            decimal totalAmountVATVoucherDetail = 0;
+            decimal totalAmountVATInvoice = 0;
+            int CountRowVATVoucherDetail = 0;
+            foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
+            {
+                string checkAccountID = voucherDetail.AccountID.ToString();
+                int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+            //if (checkAccountID == "133" || checkAccountID == "333")
+                if (count > 0)
+                {
+                    //xác định có tồn tại tài khoản liên quan VAT
+                    totalAmountVATVoucherDetail += voucherDetail.Amount;
+                    CountRowVATVoucherDetail++;
+                }
+            }
 
-                            tabNavigationPageLKVAT.PageVisible = true;
-                            tabPaneVouchers.SelectedPageIndex = 1;
-                            LoadInvoiceGridviewFull();
-                            checkLKVAT = 1;
-                            break;
+            if (InvoiceData.Count > 0)
+            {
+                // tính tổng tiền VAT
+                totalAmountVATInvoice = InvoiceData.Select(o => o.VATAmount).Sum();
+            }
+            //Nếu số tiền không bằng nhau thì tự động tạo hóa đơn
+            // =0 là chưa có hóa đơn nào
+            if(totalAmountVATInvoice == 0)
+            {
+                for(int i = 0; i< GlobalVarient.voucherDetailChoice.Count; i++)
+                {
+                    //tìm dòng liên quan VAT
+                    string checkAccountID = GlobalVarient.voucherDetailChoice[i].AccountID.ToString();
+                    int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                    if (count > 0)
+                    {
+                        //Tìm dòng không liên quan VAT trước dòng VAT
+                        checkAccountID = GlobalVarient.voucherDetailChoice[i-1].AccountID.ToString();
+                        int countNotVAT = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                        if(countNotVAT == 0) //trước dòng VAT là 1 dòng bình thường
+                        {
+                            //Tạo dòng hóa đơn tương ứng
+                            Invoice invoice = new Invoice();
+                            invoice.InvoiceDate = dateEditNgayNhapChungTu.DateTime;
+                            if (GlobalVarient.voucherDetailChoice[i].Descriptions != null)
+                            {
+                                invoice.Description = GlobalVarient.voucherDetailChoice[i].Descriptions.ToString();
+                            }
+                            else
+                            {
+                                invoice.Description = richTextBoxVoucherContent.Text.ToString();
+                            }
+                            invoice.Amount = GlobalVarient.voucherDetailChoice[i - 1].Amount;
+                            invoice.VAT = 10;
+                            invoice.VATAmount = GlobalVarient.voucherDetailChoice[i].Amount;
+                            // nội dung hóa đơn  = nội dung chứng từ
+                            string LoaiCT = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
+                            string NoiDung = richTextBoxVoucherContent.Text.ToString();
+
+                            if (LoaiCT.Contains("CH"))
+                            {
+                                // CT chi thì tiền mặt  CH
+                                invoice.PaymentType = "TM";
+                            }
+                            else if (LoaiCT.Contains("HT"))
+                            {
+                                // CT hạch toán thì chuyển khoản HT
+                                invoice.PaymentType = "CK";
+                            }
+                            //set loại hóa đơn
+                            invoice.InvoiceType = "V";
+                            //Thêm hóa đơn vào danh sách hóa đơn
+                            InvoiceData.Add(invoice);
                         }
                     }
-             */
+                }
+            }
+            else if(totalAmountVATVoucherDetail > totalAmountVATInvoice)
+            {
+                //Tiền liên quan VAT của định khoản lớn hơn tiền thuế trong hóa đơn
+                //Đếm số hóa đơn so sánh với số dòng liên quan hóa đơn trong định khoản.
+                int CountInvoiceData = 0;
+                int InvoiceDataCount = InvoiceData.Count;
+                if (CountRowVATVoucherDetail > InvoiceData.Count)
+                {
+                    //Có dòng liên quan VAT vừa thêm vào.
+                    for(int j =0; j< GlobalVarient.voucherDetailChoice.Count; j++)
+                    {
+                        //tìm dòng liên quan VAT
+                        string checkAccountID = GlobalVarient.voucherDetailChoice[j].AccountID.ToString();
+                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                        if (count > 0)
+                        {
+                            //Tìm dòng không liên quan VAT trước dòng VAT
+                            checkAccountID = GlobalVarient.voucherDetailChoice[j - 1].AccountID.ToString();
+                            int countNotVAT = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                            if (countNotVAT == 0) //trước dòng VAT là 1 dòng bình thườn
+                            {
+                                //xác định đếm được 1 hóa đơn
+                                CountInvoiceData++;
+                            }
+                            //Nếu số dòng VAT trong định khoản lớn hơn số hóa đơn trong danh sách hóa đơn
+                            if(InvoiceDataCount < CountInvoiceData)
+                            {
+                                //bắt đầu thêm hóa đơn
+                                //Tạo dòng hóa đơn tương ứng
+                                Invoice invoice = new Invoice();
+                                invoice.InvoiceDate = dateEditNgayNhapChungTu.DateTime;
+                                if (GlobalVarient.voucherDetailChoice[j].Descriptions != null)
+                                {
+                                    invoice.Description = GlobalVarient.voucherDetailChoice[j].Descriptions.ToString();
+                                }
+                                else
+                                {
+                                    invoice.Description = richTextBoxVoucherContent.Text.ToString();
+                                }
+                                invoice.Amount = GlobalVarient.voucherDetailChoice[j - 1].Amount;
+                                invoice.VAT = 10;
+                                invoice.VATAmount = GlobalVarient.voucherDetailChoice[j].Amount;
+                                // nội dung hóa đơn  = nội dung chứng từ
+                                string LoaiCT = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
+                                string NoiDung = richTextBoxVoucherContent.Text.ToString();
+
+                                if (LoaiCT.Contains("CH"))
+                                {
+                                    // CT chi thì tiền mặt  CH
+                                    invoice.PaymentType = "TM";
+                                }
+                                else if (LoaiCT.Contains("HT"))
+                                {
+                                    // CT hạch toán thì chuyển khoản HT
+                                    invoice.PaymentType = "CK";
+                                }
+                                //set loại hóa đơn
+                                invoice.InvoiceType = "V";
+                                //Thêm hóa đơn vào danh sách hóa đơn
+                                InvoiceData.Add(invoice);
+                            }
+                        }
+                    }
+                }
+            }
+            
             Invoice_gridControl.DataSource = InvoiceData;
+            Invoice_gridView.RefreshData();
             InvoiceDelete = new List<Invoice>();
         }
 
