@@ -1131,7 +1131,11 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
+            
+      
         }
+
+        
 
         private void Setup_InvoiceWareHouseDetail_GridView()
         {
