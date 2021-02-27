@@ -212,10 +212,13 @@ namespace BSClient
                         //VoucherDetail_gridView.SetFocusedRowCellValue("Amount", AmountC);
                         foreach(VoucherDetail item in VoucherDetailData)
                         {
-                            if (item.NV.Contains("N"))
+                            if (item.NV != null)
                             {
-                                item.Amount = AmountC;
-                                break;
+                                if (item.NV.Contains("N"))
+                                {
+                                    item.Amount = AmountC;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -226,15 +229,17 @@ namespace BSClient
                         //VoucherDetail_gridView.SetFocusedRowCellValue("Amount", AmountN);
                         foreach (VoucherDetail item in VoucherDetailData)
                         {
-                            if (item.NV.Contains("C"))
+                            if (item.NV != null)
                             {
-                                item.Amount = AmountN;
-                        VoucherDetail_gridView.RefreshData();
-                                break;
+                                if (item.NV.Contains("C"))
+                                {
+                                    item.Amount = AmountN;
+                                    VoucherDetail_gridView.RefreshData();
+                                    break;
+                                }
                             }
                         }
                     }
-                 
         }
 
 
@@ -1208,6 +1213,27 @@ namespace BSClient
             GlobalVarient.invoices = controller.GetInvoiceSelectVoucherID(GlobalVarient.voucherChoice.VouchersID, CommonInfo.CompanyInfo.CompanyID);
             //  VoucherDetailData = new BindingList<VoucherDetail>(controller.GetVouchersDetailSelectVoucherID(voucherID, CommonInfo.CompanyInfo.CompanyID));
             InvoiceData = new BindingList<Invoice>(GlobalVarient.invoices);
+            /*
+             //Kiểm tra  tổng tiền GTGT có bằng tổng tiền VAT của voucherdetail chưa. Nếu chưa bằng thì tự thêm hóa đơn còn thiếu.
+             
+              int checkLKVAT = 0;
+                    foreach (VoucherDetail voucherDetail in GlobalVarient.voucherDetailChoice)
+                    {
+                        string checkAccountID = voucherDetail.AccountID.ToString();
+                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == checkAccountID).Select(x => x.AccountID).Count();
+                        //if (checkAccountID == "133" || checkAccountID == "333")
+                        if (count > 0)
+                        {
+                            GetWareHouseList(VoucherDetailData);
+
+                            tabNavigationPageLKVAT.PageVisible = true;
+                            tabPaneVouchers.SelectedPageIndex = 1;
+                            LoadInvoiceGridviewFull();
+                            checkLKVAT = 1;
+                            break;
+                        }
+                    }
+             */
             Invoice_gridControl.DataSource = InvoiceData;
             InvoiceDelete = new List<Invoice>();
         }
