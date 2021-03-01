@@ -46,6 +46,7 @@
             this.BangCanDoiSoPhatSinh_Item = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.ChangeCompany_Button = new DevExpress.XtraBars.BarButtonItem();
+            this.Version_TextBox = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -55,10 +56,10 @@
             this.Content.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.Content.Appearance.Options.UseBackColor = true;
             this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(222, 27);
+            this.Content.Location = new System.Drawing.Point(56, 27);
             this.Content.Margin = new System.Windows.Forms.Padding(2);
             this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(792, 736);
+            this.Content.Size = new System.Drawing.Size(958, 736);
             this.Content.TabIndex = 0;
             // 
             // accordionControl1
@@ -71,8 +72,9 @@
             this.accordionControl1.Location = new System.Drawing.Point(0, 27);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Auto;
-            this.accordionControl1.Size = new System.Drawing.Size(222, 736);
+            this.accordionControl1.Size = new System.Drawing.Size(56, 736);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -160,7 +162,6 @@
             this.Report_Group.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.BaoCaoKeToanToanTap_MenuItem,
             this.BangCanDoiSoPhatSinh_Item});
-            this.Report_Group.Expanded = true;
             this.Report_Group.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
@@ -187,7 +188,8 @@
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ChangeCompany_Button});
+            this.ChangeCompany_Button,
+            this.Version_TextBox});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
@@ -195,6 +197,7 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.ChangeCompany_Button);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.Version_TextBox);
             // 
             // ChangeCompany_Button
             // 
@@ -203,8 +206,17 @@
             this.ChangeCompany_Button.Id = 0;
             this.ChangeCompany_Button.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ChangeCompany_Button.ImageOptions.Image")));
             this.ChangeCompany_Button.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("ChangeCompany_Button.ImageOptions.LargeImage")));
+            this.ChangeCompany_Button.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Escape);
             this.ChangeCompany_Button.Name = "ChangeCompany_Button";
+            this.ChangeCompany_Button.ShortcutKeyDisplayString = "ESC";
+            this.ChangeCompany_Button.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
             this.ChangeCompany_Button.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeCompany_Button_ItemClick);
+            // 
+            // Version_TextBox
+            // 
+            this.Version_TextBox.Caption = "Ver 1.1.1.1";
+            this.Version_TextBox.Id = 0;
+            this.Version_TextBox.Name = "Version_TextBox";
             // 
             // MainForm
             // 
@@ -254,5 +266,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement WarehouseList_accordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement BaoCaoKeToanToanTap_MenuItem;
         private DevExpress.XtraBars.BarButtonItem ChangeCompany_Button;
+        private DevExpress.XtraBars.BarStaticItem Version_TextBox;
     }
 }
