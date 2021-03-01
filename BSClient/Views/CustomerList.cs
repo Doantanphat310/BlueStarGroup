@@ -92,6 +92,7 @@ namespace BSClient.Views
         private void Customer_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             Customer row = e.Row.CastTo<Customer>();
+
             bool isNewRow = Customer_GridView.IsNewItemRow(e.RowHandle);
             if (isNewRow)
             {
@@ -114,6 +115,11 @@ namespace BSClient.Views
 
         private void Save_Button_Click(object sender, EventArgs e)
         {
+            if (!IsCheckValidate())
+            {
+                return;
+            }
+
             List<Customer> saveData = this.CustommersData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
 
             if (this.CustomersDeleteData != null)
@@ -135,6 +141,69 @@ namespace BSClient.Views
                     MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000002);
                 }
             }
+        }
+
+        private bool IsCheckValidate()
+        {
+            GridView view = Customer_GridView;
+            bool isValid = true;
+            view.MoveFirst();
+            Customer selected;
+            view.ClearColumnErrors();
+
+            HashSet<string> CustomerSNameList = new HashSet<string>();
+
+            if(Customer_GridView.RowCount <= 0)
+            {
+                return false;
+            }
+
+            do
+            {
+                selected = view.GetFocusedRow().CastTo<Customer>();
+                if (selected == null) continue;
+
+                if (selected.Status == ModifyMode.Insert || selected.Status == ModifyMode.Update)
+                {
+                    if (string.IsNullOrWhiteSpace(selected.CustomerName))
+                    {
+                        //Set errors with specific descriptions for the columns
+                        GridColumn column = view.Columns[nameof(selected.CustomerName)];
+                        view.SetColumnError(column, BSMessage.BSM000015);
+                        isValid = false;
+                    }
+
+                    string customerSName = selected.CustomerSName;
+                    if (string.IsNullOrWhiteSpace(customerSName))
+                    {
+                        //Set errors with specific descriptions for the columns
+                        GridColumn column = view.Columns[nameof(selected.CustomerSName)];
+                        view.SetColumnError(column, BSMessage.BSM000012);
+                        isValid = false;
+                    }
+
+                    // Kiểm tra tồn tại trong grid
+                    if (CustomerSNameList.Contains(customerSName))
+                    {
+                        //Set errors with specific descriptions for the columns
+                        GridColumn column = view.Columns[nameof(selected.CustomerSName)];
+                        view.SetColumnError(column, BSMessage.BSM000010);
+                        isValid = false;
+                    }
+
+                    if (!isValid)
+                    {
+                        return false;
+                    }
+                }
+
+                CustomerSNameList.Add(selected.CustomerSName);
+
+                view.MoveNext();
+
+            } while (!view.IsLastRow);
+
+            return true;
         }
 
         private void Cancel_Button_Click(object sender, EventArgs e)
@@ -212,7 +281,6 @@ namespace BSClient.Views
                 item.Status = ModifyMode.Insert;
                 CustommersData.Add(item);
             }
-            
 
             if (error != null && error.Length > 0)
             {
