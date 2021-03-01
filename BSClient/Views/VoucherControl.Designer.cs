@@ -347,6 +347,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditNgayNhapChungTu.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayNhapChungTu.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.dateEditNgayNhapChungTu.Size = new System.Drawing.Size(80, 20);
             this.dateEditNgayNhapChungTu.TabIndex = 6;
             // 
@@ -436,7 +437,7 @@
             this.Delete_VoucherDetailsimpleButton.Location = new System.Drawing.Point(213, 89);
             this.Delete_VoucherDetailsimpleButton.Name = "Delete_VoucherDetailsimpleButton";
             this.Delete_VoucherDetailsimpleButton.Size = new System.Drawing.Size(98, 37);
-            this.Delete_VoucherDetailsimpleButton.TabIndex = 23;
+            this.Delete_VoucherDetailsimpleButton.TabIndex = 12;
             this.Delete_VoucherDetailsimpleButton.Text = "Xóa";
             this.Delete_VoucherDetailsimpleButton.Click += new System.EventHandler(this.Delete_VoucherDetailsimpleButton_Click);
             // 
@@ -446,7 +447,7 @@
             this.LKKhosimpleButton.Location = new System.Drawing.Point(540, 4);
             this.LKKhosimpleButton.Name = "LKKhosimpleButton";
             this.LKKhosimpleButton.Size = new System.Drawing.Size(120, 37);
-            this.LKKhosimpleButton.TabIndex = 10;
+            this.LKKhosimpleButton.TabIndex = 24;
             this.LKKhosimpleButton.Text = "Liên kết kho";
             this.LKKhosimpleButton.Click += new System.EventHandler(this.LKKhosimpleButton_Click);
             // 
@@ -456,7 +457,7 @@
             this.LKVATsimpleButton.Location = new System.Drawing.Point(540, 47);
             this.LKVATsimpleButton.Name = "LKVATsimpleButton";
             this.LKVATsimpleButton.Size = new System.Drawing.Size(120, 37);
-            this.LKVATsimpleButton.TabIndex = 11;
+            this.LKVATsimpleButton.TabIndex = 25;
             this.LKVATsimpleButton.Text = "Liên kết VAT";
             this.LKVATsimpleButton.Click += new System.EventHandler(this.LKVATsimpleButton_Click);
             // 
@@ -466,8 +467,8 @@
             this.simpleButtonCapNhat.Location = new System.Drawing.Point(109, 90);
             this.simpleButtonCapNhat.Name = "simpleButtonCapNhat";
             this.simpleButtonCapNhat.Size = new System.Drawing.Size(98, 37);
-            this.simpleButtonCapNhat.TabIndex = 21;
-            this.simpleButtonCapNhat.Text = "Lưu";
+            this.simpleButtonCapNhat.TabIndex = 11;
+            this.simpleButtonCapNhat.Text = "Cập nhật";
             this.simpleButtonCapNhat.Click += new System.EventHandler(this.simpleButtonCapNhat_Click);
             // 
             // labelControl6
@@ -484,7 +485,7 @@
             this.simpleButtonNewSave.Location = new System.Drawing.Point(5, 90);
             this.simpleButtonNewSave.Name = "simpleButtonNewSave";
             this.simpleButtonNewSave.Size = new System.Drawing.Size(98, 37);
-            this.simpleButtonNewSave.TabIndex = 20;
+            this.simpleButtonNewSave.TabIndex = 10;
             this.simpleButtonNewSave.Text = "Lưu mới";
             this.simpleButtonNewSave.Click += new System.EventHandler(this.simpleButtonNewSave_Click);
             // 
@@ -554,6 +555,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditNgayKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditNgayKT.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.dateEditNgayKT.Size = new System.Drawing.Size(80, 20);
             this.dateEditNgayKT.TabIndex = 2;
             // 
@@ -566,6 +568,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditBDKT.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBDKT.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.dateEditBDKT.Properties.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Multiple;
             this.dateEditBDKT.Size = new System.Drawing.Size(80, 20);
             this.dateEditBDKT.TabIndex = 1;

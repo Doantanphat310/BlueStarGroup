@@ -34,5 +34,5 @@ on A.AccountID = B.AccountID
 left join Customer as D
 on A.CustomerID = D.CustomerID
 where VouchersID = @VouchersID and A.CompanyID = @CompanyID  and A.IsDelete is null
-order by 'NV'
+order by VouchersDetailID
 	end
