@@ -523,7 +523,7 @@ namespace BSClient
             int CountRowN = 0;
             int CountRowC = 0;
             CountRowN = VoucherDetailData.Count(n => n.NV == "N");
-            CountRowN = VoucherDetailData.Count(n => n.NV == "C");
+            CountRowC = VoucherDetailData.Count(n => n.NV == "C");
             if((CountRowN ==1 && CountRowC >= 1) ||(CountRowC ==1 && CountRowN >= 1))
             {
                 //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
@@ -537,7 +537,7 @@ namespace BSClient
                 }
                 else
                 {
-                    if(CountRowN >=1 && CountRowC ==0 || (CountRowC >= 1 && CountRowN == 0))
+                    if((CountRowN >=1 && CountRowC ==0) || (CountRowC >= 1 && CountRowN == 0))
                     {
                         //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
                     }
@@ -839,31 +839,38 @@ namespace BSClient
             int CountRowC = 0;
             CountRowN = VoucherDetailData.Count(n => n.NV == "N");
             CountRowC = VoucherDetailData.Count(n => n.NV == "C");
-            if ((CountRowN == 1 && CountRowC >= 1) || (CountRowC == 1 && CountRowN >= 1))
+            if(CountRowN == 0 && CountRowC == 0)
             {
-                //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
+                //Không có dữ liệu gì của định khoản, có thể là đang xóa dữ liệu
             }
             else
             {
-                if (VoucherTypeDK_searchLookUpEdit.EditValue.ToString() != "DK")
+                if ((CountRowN == 1 && CountRowC >= 1) || (CountRowC == 1 && CountRowN >= 1))
                 {
-                    MessageBoxHelper.ShowErrorMessage("Dữ liệu chỉ chấp nhận 1 nợ nhiều có hoặc 1 có nhiều nợ!");
-                    return;
+                    //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
                 }
                 else
                 {
-                    if (CountRowN >= 1 && CountRowC == 0 || (CountRowC >= 1 && CountRowN == 0))
-                    {
-                        //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
-                    }
-                    else
+                    if (VoucherTypeDK_searchLookUpEdit.EditValue.ToString() != "DK")
                     {
                         MessageBoxHelper.ShowErrorMessage("Dữ liệu chỉ chấp nhận 1 nợ nhiều có hoặc 1 có nhiều nợ!");
                         return;
                     }
+                    else
+                    {
+                        if ((CountRowN >= 1 && CountRowC == 0) || (CountRowC >= 1 && CountRowN == 0))
+                        {
+                            //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
+                        }
+                        else
+                        {
+                            MessageBoxHelper.ShowErrorMessage("Dữ liệu chỉ chấp nhận 1 nợ nhiều có hoặc 1 có nhiều nợ!");
+                            return;
+                        }
+                    }
                 }
-            }
 
+            }
             #region kiểm tra dữ liệu có đang bị khóa sổ
             if (CheckLockDBCompany(dateEditNgayNhapChungTu.DateTime, CommonInfo.CompanyInfo.CompanyID))
             {

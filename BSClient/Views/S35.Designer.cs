@@ -164,7 +164,7 @@
             // 
             this.S35_SaveExcel_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_SaveExcel_simpleButton.Appearance.Options.UseFont = true;
-            this.S35_SaveExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.S35_SaveExcel_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_SaveExcel_simpleButton.ImageOptions.Image")));
             this.S35_SaveExcel_simpleButton.Location = new System.Drawing.Point(386, 5);
             this.S35_SaveExcel_simpleButton.Name = "S35_SaveExcel_simpleButton";
             this.S35_SaveExcel_simpleButton.Size = new System.Drawing.Size(99, 23);
@@ -227,7 +227,7 @@
             this.S35_SerialNo_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_SerialNo_textEdit.Properties.Appearance.Options.UseFont = true;
             this.S35_SerialNo_textEdit.Size = new System.Drawing.Size(84, 22);
-            this.S35_SerialNo_textEdit.TabIndex = 3;
+            this.S35_SerialNo_textEdit.TabIndex = 5;
             this.S35_SerialNo_textEdit.Tag = "SerialNo";
             // 
             // S35_InvoiceNo_textEdit
@@ -237,7 +237,7 @@
             this.S35_InvoiceNo_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_InvoiceNo_textEdit.Properties.Appearance.Options.UseFont = true;
             this.S35_InvoiceNo_textEdit.Size = new System.Drawing.Size(84, 22);
-            this.S35_InvoiceNo_textEdit.TabIndex = 3;
+            this.S35_InvoiceNo_textEdit.TabIndex = 6;
             this.S35_InvoiceNo_textEdit.Tag = "InvoiceNo";
             // 
             // S35_SelectData_simpleButton
@@ -282,7 +282,7 @@
             this.S35_FormNo_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_FormNo_textEdit.Properties.Appearance.Options.UseFont = true;
             this.S35_FormNo_textEdit.Size = new System.Drawing.Size(120, 22);
-            this.S35_FormNo_textEdit.TabIndex = 3;
+            this.S35_FormNo_textEdit.TabIndex = 4;
             this.S35_FormNo_textEdit.Tag = "FormNo";
             // 
             // S35_AccountVAT_textEdit
