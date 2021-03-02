@@ -292,6 +292,7 @@ namespace BSClient.Utility
             }
 
             string a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
+            double date;
             int row = values.GetLength(0);
             for (int ir = 2; ir <= row; ir++)
             {
@@ -309,6 +310,7 @@ namespace BSClient.Utility
                     d = values[ir, 4]?.ToString();
                     //d = FontHelper.TCVN3ToUnicode(d);
                     e = values[ir, 5]?.ToString();
+                    date = double.Parse(e);
                     f = values[ir, 6]?.ToString();
                     g = values[ir, 7]?.ToString();
                     h = values[ir, 8]?.ToString();
@@ -328,7 +330,7 @@ namespace BSClient.Utility
                         FormNo = b,
                         SerialNo = c,
                         InvoiceNo = d,
-                        InvoiceDate = DateTime.Parse(e),
+                        InvoiceDate = DateTime.FromOADate(date),
                         CustomerID = f,
                         Amount = decimal.Parse(j),
                         VAT = decimal.Parse(k),

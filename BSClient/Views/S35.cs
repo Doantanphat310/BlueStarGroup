@@ -123,10 +123,10 @@ namespace BSClient.Views
             this.S35_Invoice_GridView.Columns.Clear();
             this.S35_Invoice_GridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "c2");
+            this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "###,###,###,###,###.##");
             this.S35_Invoice_GridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
-            this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "c2");
-            this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "c2");
+            this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###.##");
+            this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "###,###,###,###,###.##");
             this.S35_Invoice_GridView.AddSearchLookupEditColumn(
     "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: false);
         }
@@ -187,11 +187,11 @@ namespace BSClient.Views
             };
             this.S35_WarehouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.S35_WarehouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "###,###,###.##");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "c2", DevExpress.Data.SummaryItemType.Sum, "{0:C}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###.##");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "c2");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###.##");
         }
 
         private void Setup_WareHouseDetail_GridView()
@@ -654,6 +654,8 @@ namespace BSClient.Views
 
         private void S35_ImportExcel_simpleButton_Click(object sender, EventArgs e)
         {
+            //Ngắt dữ liệu S35 của server
+            //S35InvoiceData.Clear();
             ImportData();
         }
 
@@ -684,15 +686,22 @@ namespace BSClient.Views
                 WarehouseDetailData.Add(wareHouseDetailInvoice);
             }
             //Lưu invoice chưa có InvoiceID
+             S35InvoiceData = new BindingList<Invoice>();
+        
             foreach (var item in result)
             {
                 item.Status = ModifyMode.Insert;
                 item.S35Type = true;
                 item.InvoiceType = "R";
                 item.InvoiceVATAccountID = "3331";
+               // S35InvoiceDataTemp.Add(item);
                 this.S35InvoiceData.Add(item);
             }
-         //   this.S35InvoiceData = new BindingList<Invoice>(result);
+            //  this.S35InvoiceData = S35InvoiceDataTemp;
+            //  S35_Invoice_GridView.RefreshData();
+           // this.S35InvoiceData = new BindingList<Invoice>(S35InvoiceDataTemp);
+           // S35_Invoice_GridView.RefreshData();
+            //   this.S35InvoiceData = new BindingList<Invoice>(result);
             if (error != null && error.Length > 0)
             {
                 ClientCommon.ShowErrorBox(error.ToString());
@@ -748,6 +757,15 @@ namespace BSClient.Views
 
             Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
 
+        }
+
+        private void S35_TKTkeDoanhThu_searchLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            MaterialTK TK = S35_TKTkeDoanhThu_searchLookUpEdit.GetSelectedDataRow().CastTo<MaterialTK>();
+            if(TK!= null)
+            {
+                S35_Description_MemoEdit.Text = TK.Name.ToString();
+            }
         }
     }
 }
