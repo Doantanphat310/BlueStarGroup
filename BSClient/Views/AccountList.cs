@@ -137,7 +137,7 @@ namespace BSClient.Views
             this.AccountGroup_GridView.Columns.Clear();
 
             this.AccountGroup_GridView.AddColumn("AccountGroupID", "Mã Loại TK", 70, false);
-            this.AccountGroup_GridView.AddColumn("AccountGroupName", "Tên Loại TK", 150, true, fixedWidth: false);
+            this.AccountGroup_GridView.AddColumn("AccountGroupName", "Tên Loại TK", 220, true, fixedWidth: false) ;
         }
 
         private void InitAccountsGridView()
@@ -161,7 +161,7 @@ namespace BSClient.Views
 
         private void SetupAccountGroupGridView()
         {
-            this.AccountGroup_GridView.SetupGridView(columnAutoWidth: true);
+            this.AccountGroup_GridView.SetupGridView();
         }
 
         private void SetupAccountsGridView()
