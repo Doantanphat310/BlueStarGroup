@@ -108,10 +108,22 @@ namespace BSCommon.Models
         public string SoQuyetDinh { get; set; }
 
         /// <summary>
-        /// MaSoHD
+        /// InvoiceFormNo
         /// </summary>
-        [Column("MaSoHD")]
-        public string MaSoHD { get; set; }
+        [Column("InvoiceFormNo")]
+        public string InvoiceFormNo { get; set; }
+
+        /// <summary>
+        /// FormNo
+        /// </summary>
+        [Column("FormNo")]
+        public string FormNo { get; set; }
+
+        /// <summary>
+        /// SerialNo
+        /// </summary>
+        [Column("SerialNo")]
+        public string SerialNo { get; set; }
 
         /// <summary>
         /// NoiQLThue
@@ -220,23 +232,5 @@ namespace BSCommon.Models
         /// </summary>
         [Column("UpdateUser")]
         public string UpdateUser { get; set; }
-
-        /// <summary>
-        /// InvoiceFormNo
-        /// </summary>
-        [Column("InvoiceFormNo")]
-        public string InvoiceFormNo { get; set; }
-
-        /// <summary>
-        /// FormNo
-        /// </summary>
-        [Column("FormNo")]
-        public string FormNo { get; set; }
-
-        /// <summary>
-        /// SerialNo
-        /// </summary>
-        [Column("SerialNo")]
-        public string SerialNo { get; set; }
     }
 }

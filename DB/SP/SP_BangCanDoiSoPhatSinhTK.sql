@@ -7,40 +7,37 @@ CREATE PROC SP_BangCanDoiSoPhatSinhTK
 AS
 	SELECT 
 		PS.AccountID
-		,ISNULL(PS.AccountDetailID, '') AccountDetailID
-		--,(SELECT CustomerSName FROM Customer WHERE CustomerID = PS.CustomerID) CustomerID
-		,ISNULL(PS.CustomerID, '') CustomerID
+		,PS.AccountDetailID
+		,PS.CustomerID
 		,MAX(PS.AccountName) AccountName
 		,SUM(PS.DebitAmount) PSNo
 		,SUM(PS.CreditAmount) PSCo
 	FROM (
 		SELECT
 			D.AccountID
-			,D.AccountDetailID
+			,ISNULL(D.AccountDetailID, '') AccountDetailID
+			,ISNULL(D.CustomerID, '') CustomerID
 			,TK.AccountName
-			,D.CustomerID
 			,ISNULL(D.DebitAmount, 0) DebitAmount
 			,ISNULL(D.CreditAmount, 0) CreditAmount
 		FROM 
 			Vouchers L
 			INNER JOIN VouchersDetail D
-				ON L.OldVoucherID = D.OldVoucherID
-					AND L.CompanyID = D.CompanyID
+				ON  L.VouchersID = D.VouchersID
+				AND L.CompanyID = D.CompanyID
 			LEFT JOIN (
 				SELECT
 					TK.AccountID
-					,@CompanyID CompanyID
 					,TKD.AccountDetailID
 					,ISNULL(TKD.AccountDetailName, TK.AccountName) AccountName
 				FROM Accounts TK
 				LEFT JOIN AccountDetail TKD 
-					ON TK.AccountID = TKD.AccountID
-						AND TKD.CompanyID = @CompanyID
+					ON  TK.AccountID = TKD.AccountID
+					AND TKD.CompanyID = @CompanyID
 			) AS TK
 				ON TK.AccountID = D.AccountID
-				AND ISNULL(TK.AccountDetailID, '') = ISNULL(D.AccountDetailID, '')	
-				AND TK.CompanyID = D.CompanyID
-		WHERE 
+				AND ISNULL(TK.AccountDetailID, '') = ISNULL(D.AccountDetailID, '')
+		WHERE
 			L.CompanyID = @CompanyID
 			AND L.VoucherDate >= @FromDate
 			AND L.VoucherDate <= @ToDate

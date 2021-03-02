@@ -256,7 +256,6 @@ namespace BSClient.Utility
             col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             col.AppearanceHeader.Options.UseTextOptions = true;
             col.OptionsColumn.FixedWidth = fixedWidth;
-            col.OptionsColumn.AllowSize = false;
 
             col.AppearanceCell.TextOptions.HAlignment = textAlignment;
             col.AppearanceCell.Options.UseTextOptions = true;
@@ -321,7 +320,8 @@ namespace BSClient.Utility
             bool showFooter = false,
             NewItemRowPosition newItemRow = NewItemRowPosition.Top,
             bool editable = true,
-            bool hasShowRowHeader = false)
+            bool hasShowRowHeader = false,
+            int rowHeaderWidth = 30)
         {
             gridView.NewItemRowText = "Chọn vào đây để thêm dòng mới";
             gridView.OptionsBehavior.AutoPopulateColumns = true;
@@ -342,6 +342,8 @@ namespace BSClient.Utility
             gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             gridView.OptionsView.ShowAutoFilterRow = showAutoFilterRow;
 
+            gridView.OptionsCustomization.AllowColumnResizing = true;
+
             if (newItemRow != NewItemRowPosition.None)
             {
                 gridView.OptionsView.NewItemRowPosition = newItemRow;
@@ -358,6 +360,7 @@ namespace BSClient.Utility
 
             if (hasShowRowHeader)
             {
+                gridView.IndicatorWidth = rowHeaderWidth;
                 gridView.CustomDrawRowIndicator += GridView_CustomDrawRowIndicator;
             }
 
@@ -380,7 +383,9 @@ namespace BSClient.Utility
         private static void GridView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle >= 0)
+            {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
         }
 
         private static void GridView_RowStyle(object sender, RowStyleEventArgs e)

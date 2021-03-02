@@ -15,9 +15,11 @@ CREATE PROCEDURE CompanyInsert (
 	,@BankAccount varchar(50)
 	,@BankName nvarchar(250)
 	,@BankBranch nvarchar(250)
-	,@Logo nvarchar(MAX)
+	,@Logo varchar(MAX)
 	,@SoQuyetDinh varchar(50)
-	,@MaSoHD varchar(50)
+	,@InvoiceFormNo varchar(50)
+	,@FormNo varchar(20)
+	,@SerialNo varchar(20)
 	,@NoiQLThue nvarchar(MAX)
 	,@NHKhoBac nvarchar(MAX)
 	,@TKThuThue varchar(50)
@@ -27,11 +29,11 @@ CREATE PROCEDURE CompanyInsert (
 	,@LanhDao nvarchar(250)
 	,@ThuQuy nvarchar(250)
 	,@ChucDanhLanhDao nvarchar(250)
-	,@ChuKyLapBieu nvarchar(MAX)
-	,@ChuKyKTTruong nvarchar(MAX)
-	,@ChuKyKeToanVien nvarchar(MAX)
-	,@ChuKyLanhDao nvarchar(MAX)
-	,@ChuKyThuQuy nvarchar(MAX)
+	,@ChuKyLapBieu varchar(MAX)
+	,@ChuKyKTTruong varchar(MAX)
+	,@ChuKyKeToanVien varchar(MAX)
+	,@ChuKyLanhDao varchar(MAX)
+	,@ChuKyThuQuy varchar(MAX)
     ,@UpdateUser varchar(20)
 )
 AS
@@ -52,7 +54,9 @@ AS
 		,BankBranch
 		,Logo
 		,SoQuyetDinh
-		,MaSoHD
+		,InvoiceFormNo
+		,FormNo
+		,SerialNo
 		,NoiQLThue
 		,NHKhoBac
 		,TKThuThue
@@ -88,7 +92,9 @@ AS
 		,@BankBranch
 		,@Logo
 		,@SoQuyetDinh
-		,@MaSoHD
+		,@InvoiceFormNo
+		,@FormNo
+		,@SerialNo
 		,@NoiQLThue
 		,@NHKhoBac
 		,@TKThuThue
