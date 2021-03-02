@@ -80,9 +80,11 @@ namespace BSClient
             DataBindingHelper.BindingTextEdit(this.SoQuyetDinh_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.NHKhoBac_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.BankName_TextEdit, BinSource);
-            DataBindingHelper.BindingTextEdit(this.MaSoHD_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.TKThuThue_TextEdit, BinSource);
             DataBindingHelper.BindingTextEdit(this.BankBranch_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.InvoiceFormNo_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.FormNo_TextEdit, BinSource);
+            DataBindingHelper.BindingTextEdit(this.SerialNo_TextEdit, BinSource);
 
             //Thông tin chữ ký
             DataBindingHelper.BindingTextEdit(this.Scheduler_TextEdit, BinSource);
