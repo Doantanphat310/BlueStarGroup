@@ -176,13 +176,13 @@ namespace BSClient.Views
                 return;
             }
 
-            if (string.IsNullOrEmpty(company.CompanyID))
+            if (string.IsNullOrEmpty(company?.CompanyID))
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000005);
                 return;
             }
 
-            if (string.IsNullOrEmpty(userRole.Id))
+            if (string.IsNullOrEmpty(userRole?.Id))
             {
                 MessageBoxHelper.ShowErrorMessage(BSMessage.BSM000006);
                 return;

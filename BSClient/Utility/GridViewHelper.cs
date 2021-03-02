@@ -219,6 +219,7 @@ namespace BSClient.Utility
 
             itemCtrl.DisplayFormat.FormatString = formatString;
             itemCtrl.DisplayFormat.FormatType = FormatType.Custom;
+            itemCtrl.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
 
             gridView.AddColumn(fieldName, caption, width, isAllowEdit: isAllowEdit, itemCtrl: itemCtrl, textAlignment: textAlignment);
         }

@@ -12,6 +12,8 @@ namespace BSClient
         public MainForm()
         {
             InitializeComponent();
+            Version ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            Version_TextBox.Caption =$"V{ver.ToString()}";
         }
 
         private void ACE_Voucher_Click(object sender, EventArgs e)

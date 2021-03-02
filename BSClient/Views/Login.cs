@@ -21,6 +21,9 @@ namespace BSClient
         {
             InitializeComponent();
 
+            Version ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            this.Text = $"Đăng Nhập - V{ver.ToString()}";
+
             this.DialogResult = DialogResult.No;
             Mode = mode;
 #if DEBUG
