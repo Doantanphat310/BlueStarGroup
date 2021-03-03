@@ -69,15 +69,15 @@ namespace BSClient.Views
 
         private void S35InvoiceDataBindingSource_ListChanged(object sender, EventArgs e)
         {
-            Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
-            try
-            {
-                if (invoice.Status != ModifyMode.Insert)
-                {
-                    invoice.Status = ModifyMode.Update;
-                }
-            }
-            catch { }
+            //Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+            //try
+            //{
+            //    if (invoice.Status != ModifyMode.Insert)
+            //    {
+            //        invoice.Status = ModifyMode.Update;
+            //    }
+            //}
+            //catch { }
            
         }
         
@@ -653,6 +653,10 @@ namespace BSClient.Views
                     MessageBoxHelper.ShowInfoMessage("Số lượng phải lớn hơn 0!");
                     return;
                 }
+
+                decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.Amount);
+                S35_Invoice_GridView.SetFocusedRowCellValue("Amount", Amounttotal);
+                UpdateInvoiceTemp();
 
             }
             else if (e.Column.FieldName == "Price")

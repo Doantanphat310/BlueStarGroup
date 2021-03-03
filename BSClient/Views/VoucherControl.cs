@@ -2485,7 +2485,7 @@ namespace BSClient
         private void Init_WareHouse_GridView()
         {
             this.WareHouse_gridView.Columns.Clear();
-            this.WareHouse_gridView.AddColumn("Date", "Ngày", 80, false);
+            this.WareHouse_gridView.AddDateEditColumn("Date", "Ngày", 80, false);
 
             List<ColumnInfo> columns = new List<ColumnInfo>
             {
@@ -2520,7 +2520,7 @@ namespace BSClient
             wareHouseList, "WarehouseListID", "WarehouseListName",
             columns: WarehouseListcolumns, isAllowEdit: true, popupFormWidth: 800, enterChoiceFirstRow: true);
 
-            this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: false);
+            this.WareHouse_gridView.AddSearchLookupEditColumn("Type", "Loại", 80, materialWareHouseType, "WareHouseTypeSummary", "WareHouseTypeSummary", isAllowEdit: true);
             List<ColumnInfo> DebitAccountcolumns = new List<ColumnInfo>
             {
                 new ColumnInfo("AccountID", "TK",120),
@@ -3906,11 +3906,15 @@ namespace BSClient
                 wareHousesListFor  = controller.GetWareHouseSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
                 if (wareHousesListFor.Count > 0)
                 {
-                    wareHousesListS35.AddRange(wareHousesListFor);
+                    foreach(WareHouse wareHouseItem in wareHousesListFor)
+                    {
+                        wareHouseItem.Date = GlobalVarient.voucherChoice.VoucherDate;
+                        WarehouseData.Add(wareHouseItem);
+                    }
                 }
             }
-            WarehouseData = new BindingList<WareHouse>(wareHousesListS35);
             WareHouse_gridControl.DataSource = WarehouseData;
+            WareHouse_gridView.RefreshData();
             WareHouseDelete = new List<WareHouse>();
         }
 
@@ -3921,22 +3925,25 @@ namespace BSClient
            // WarehouseData
            foreach(WareHouse wareHouseS35 in WarehouseData)
             {
-               
-               foreach(WareHouse wareHouseItemS35 in wareHousesListS35)
+
+                //foreach(WareHouse wareHouseItemS35 in wareHousesListS35)
+                // {
+                //if (wareHouseItemS35.WarehouseID.Contains(wareHouseS35.WarehouseID))
+                //{
+                //Nếu warehouse ID này được lấy từ S35 thì cập nhật voucherID. VoucherID chỉ cập nhật 1 lần duy nhất này.
+                if(string.IsNullOrEmpty( wareHouseS35.VouchersID))
                 {
-                    if (wareHouseItemS35.WarehouseID.Contains(wareHouseS35.WarehouseID))
+                    wareHouseS35.VouchersID = GlobalVarient.voucherChoice.VouchersID;
+                    wareHouseS35.Date = GlobalVarient.voucherChoice.VoucherDate;
+                    if (!controller.WareHouseUpdateS35(wareHouseS35))
                     {
-                        //Nếu warehouse ID này được lấy từ S35 thì cập nhật voucherID. VoucherID chỉ cập nhật 1 lần duy nhất này.
-                        wareHouseS35.VouchersID = GlobalVarient.voucherChoice.VouchersID;
-                        wareHouseS35.Date = GlobalVarient.voucherChoice.VoucherDate;
-                        if (!controller.WareHouseUpdateS35(wareHouseS35))
-                        {
-                            //Cập nhật thất bại
-                            MessageBoxHelper.ShowErrorMessage("Cập nhật dữ liệu S35 vào chứng từ thất bại!");
-                            checkerror = 1;
-                        }
+                        //Cập nhật thất bại
+                        MessageBoxHelper.ShowErrorMessage("Cập nhật dữ liệu S35 vào chứng từ thất bại!");
+                        checkerror = 1;
                     }
                 }
+                    //}
+                //}
             }
            if(checkerror == 0)
             {
