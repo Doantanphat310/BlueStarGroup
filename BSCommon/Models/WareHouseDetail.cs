@@ -34,9 +34,9 @@ namespace BSCommon.Models
         public string CompanyID { get; set; }
         public string ItemUnitID { get; set; }
         [System.ComponentModel.DefaultValue(0)]
-        public decimal VAT { get; set; }
+        public decimal ?VAT { get; set; }
         [System.ComponentModel.DefaultValue(0)]
-        public decimal VATAmount { get { return this.Amount * VAT / 100; } }
+        public decimal ?VATAmount { get; set; }
         public string InvoiceNo { get; set; }
 
         public ModifyMode Status { get; set; }

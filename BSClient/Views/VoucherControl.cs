@@ -1550,11 +1550,11 @@ namespace BSClient
                 MessageBoxHelper.ShowErrorMessage("Vui lòng tick chọn thêm hóa đơn trước khi lưu mới!");
                 return;
             }
-            if (!CheckInvoiceCondition())
-            {
-                MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
-                return;
-            }
+            //if (!CheckInvoiceCondition())
+            //{
+            //    MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
+            //    return;
+            //}
             //Check khóa sổ
             #region kiểm tra dữ liệu có đang bị khóa sổ
             if (CheckLockDBCompany(GlobalVarient.voucherChoice.VoucherDate, CommonInfo.CompanyInfo.CompanyID))
@@ -1595,11 +1595,11 @@ namespace BSClient
 
         private void InvoiceSave_simpleButton_Click(object sender, EventArgs e)
         {
-            if (!CheckInvoiceCondition())
-            {
-                MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
-                return;
-            }
+            //if (!CheckInvoiceCondition())
+            //{
+            //    MessageBoxHelper.ShowErrorMessage("Tổng tiền hóa đơn của cùng một khách hàng trong một ngày lớn hơn 20 triệu thì phải định khoản tài khoản ngân hàng!");
+            //    return;
+            //}
             #region set invoice
             //Check khóa sổ
             #region kiểm tra dữ liệu có đang bị khóa sổ
@@ -2581,9 +2581,9 @@ namespace BSClient
             };
             this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.WareHouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "###,###,###.##");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
             this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###.##");
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "###,###,###,###,###.##");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
         }
 
         private void Setup_WareHouseDetail_GridView()

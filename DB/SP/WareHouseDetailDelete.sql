@@ -1,20 +1,17 @@
 
-create proc [dbo].[WareHouseDetailDelete]
+alter proc [dbo].[WareHouseDetailDelete]
 	@WareHouseDetailID varchar(50),
 	@CreateUser varchar(50),
 	@CompanyID varchar(50)
 as
 begin
-update WareHouseDetail
-set 
-	IsDelete = 0
-	where WareHouseDetailID = @WareHouseDetailID and CreateUser = @CreateUser and CompanyID =@CompanyID
-update Depreciation
-set IsDelete = 0
-where WareHouseDetailID = @WareHouseDetailID and CreateUser = @CreateUser and CompanyID =@CompanyID
-
-update DepreciationDetail
-set IsDelete = 0
+delete DepreciationDetail
 where DepreciationID in (select DepreciationID from Depreciation where WareHouseDetailID = @WareHouseDetailID and CreateUser = @CreateUser and CompanyID =@CompanyID )
 and CreateUser = @CreateUser and CompanyID =@CompanyID
+
+delete Depreciation
+where WareHouseDetailID = @WareHouseDetailID and CreateUser = @CreateUser and CompanyID =@CompanyID
+
+delete WareHouseDetail
+	where WareHouseDetailID = @WareHouseDetailID and CreateUser = @CreateUser and CompanyID =@CompanyID
 end

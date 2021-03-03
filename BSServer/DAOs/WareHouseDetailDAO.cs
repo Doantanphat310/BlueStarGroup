@@ -66,6 +66,8 @@ namespace BSServer.DAOs
                     new SqlParameter("@Quantity", wareHouseDetail.Quantity),
                     new SqlParameter("@Price",wareHouseDetail.Price),
                     new SqlParameter("@Amount", wareHouseDetail.Amount),
+                    new SqlParameter("@VAT", wareHouseDetail.VAT),
+                    new SqlParameter("@VATAmount", wareHouseDetail.VATAmount),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouseDetail.CompanyID)
                 };

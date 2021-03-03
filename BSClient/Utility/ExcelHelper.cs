@@ -334,6 +334,7 @@ namespace BSClient.Utility
                         CustomerID = f,
                         Amount = decimal.Parse(j),
                         VAT = decimal.Parse(k),
+                        VATAmount = decimal.Parse(l),
                         PaymentType = m,
                         AccountIDFULL = o,
                         ItemID = g,

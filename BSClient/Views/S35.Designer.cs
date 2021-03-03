@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(S35));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblNameDoanhThu = new DevExpress.XtraEditors.LabelControl();
             this.S35_Description_MemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.S35_SaveExcel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Update_Invoice_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -118,6 +119,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.lblNameDoanhThu);
             this.panelControl1.Controls.Add(this.S35_Description_MemoEdit);
             this.panelControl1.Controls.Add(this.S35_SaveExcel_simpleButton);
             this.panelControl1.Controls.Add(this.S35_Update_Invoice_simpleButton);
@@ -151,6 +153,15 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(490, 341);
             this.panelControl1.TabIndex = 0;
+            // 
+            // lblNameDoanhThu
+            // 
+            this.lblNameDoanhThu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameDoanhThu.Appearance.Options.UseFont = true;
+            this.lblNameDoanhThu.Location = new System.Drawing.Point(254, 52);
+            this.lblNameDoanhThu.Name = "lblNameDoanhThu";
+            this.lblNameDoanhThu.Size = new System.Drawing.Size(0, 19);
+            this.lblNameDoanhThu.TabIndex = 23;
             // 
             // S35_Description_MemoEdit
             // 
@@ -308,7 +319,7 @@
             // 
             // S35_NgayHD_dateEdit
             // 
-            this.S35_NgayHD_dateEdit.EditValue = null;
+            this.S35_NgayHD_dateEdit.EditValue = new System.DateTime(2021, 3, 3, 12, 13, 42, 0);
             this.S35_NgayHD_dateEdit.Location = new System.Drawing.Point(94, 77);
             this.S35_NgayHD_dateEdit.Name = "S35_NgayHD_dateEdit";
             this.S35_NgayHD_dateEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,6 +329,8 @@
             this.S35_NgayHD_dateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.S35_NgayHD_dateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+            this.S35_NgayHD_dateEdit.Properties.MinValue = new System.DateTime(2021, 3, 3, 12, 13, 42, 0);
+            this.S35_NgayHD_dateEdit.Properties.NullDate = new System.DateTime(2021, 3, 3, 12, 9, 59, 339);
             this.S35_NgayHD_dateEdit.Size = new System.Drawing.Size(154, 22);
             this.S35_NgayHD_dateEdit.TabIndex = 2;
             this.S35_NgayHD_dateEdit.Tag = "InvoiceDate";
@@ -372,7 +385,7 @@
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Properties.PopupView = this.searchLookUpEdit1View;
-            this.S35_TKTkeDoanhThu_searchLookUpEdit.Size = new System.Drawing.Size(286, 22);
+            this.S35_TKTkeDoanhThu_searchLookUpEdit.Size = new System.Drawing.Size(154, 22);
             this.S35_TKTkeDoanhThu_searchLookUpEdit.TabIndex = 1;
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Tag = "AccountIDFULL";
             this.S35_TKTkeDoanhThu_searchLookUpEdit.EditValueChanged += new System.EventHandler(this.S35_TKTkeDoanhThu_searchLookUpEdit_EditValueChanged);
@@ -828,5 +841,6 @@
         private DevExpress.XtraEditors.MemoEdit S35_Description_MemoEdit;
         private DevExpress.XtraEditors.MemoEdit S35_CustomerName_MemoEdit;
         private DevExpress.XtraEditors.SimpleButton S35_SelectData_simpleButton;
+        private DevExpress.XtraEditors.LabelControl lblNameDoanhThu;
     }
 }
