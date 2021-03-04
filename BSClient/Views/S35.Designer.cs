@@ -563,6 +563,7 @@
             this.S35_Invoice_GridView.Name = "S35_Invoice_GridView";
             this.S35_Invoice_GridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.S35_Invoice_GridView_RowClick);
             this.S35_Invoice_GridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.S35_Invoice_GridView_InitNewRow);
+            this.S35_Invoice_GridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.S35_Invoice_GridView_CellValueChanged);
             this.S35_Invoice_GridView.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.S35_Invoice_GridView_BeforeLeaveRow);
             this.S35_Invoice_GridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.S35_Invoice_GridView_ValidateRow);
             this.S35_Invoice_GridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.S35_Invoice_GridView_RowUpdated);

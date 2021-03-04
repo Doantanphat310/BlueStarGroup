@@ -129,10 +129,10 @@ namespace BSClient.Views
           //  this.S35_Invoice_GridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddDateEditColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "###,###,###,###,###.##");
+            this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "###,###,###,###,###");
             this.S35_Invoice_GridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
-            this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###.##");
-            this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "###,###,###,###,###.##");
+            this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###");
+            this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "###,###,###,###,###");
             this.S35_Invoice_GridView.AddSearchLookupEditColumn(
     "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: false);
         }
@@ -654,6 +654,12 @@ namespace BSClient.Views
                     return;
                 }
 
+                // decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
+                // S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
+
+                Decimal VATAmountEnter = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("VAT") / 100;
+                S35_WarehouseDetail_gridView.SetFocusedRowCellValue("VATAmount", VATAmountEnter);
+
                 decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.Amount);
                 S35_Invoice_GridView.SetFocusedRowCellValue("Amount", Amounttotal);
                 UpdateInvoiceTemp();
@@ -885,6 +891,28 @@ namespace BSClient.Views
             {
                 S35_Description_MemoEdit.Text = TK.Name.ToString();
                 lblNameDoanhThu.Text = TK.Name.ToString();
+            }
+        }
+
+        private void S35_Invoice_GridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "Amount")
+            {
+                //set total Amount
+                decimal VATAmount = (decimal)S35_Invoice_GridView.GetFocusedRowCellValue("VATAmount");
+                decimal Amount = (decimal)S35_Invoice_GridView.GetFocusedRowCellValue("Amount");
+                decimal TotalAmount = Amount + VATAmount;
+                S35_Invoice_GridView.SetFocusedRowCellValue("TotalAmount", TotalAmount);
+            }
+            else if(e.Column.FieldName == "VATAmount")
+            {
+                //set total Amount
+                decimal VATAmount = (decimal)S35_Invoice_GridView.GetFocusedRowCellValue("VATAmount");
+                decimal Amount = (decimal)S35_Invoice_GridView.GetFocusedRowCellValue("Amount");
+                decimal TotalAmount = Amount + VATAmount;
+                S35_Invoice_GridView.SetFocusedRowCellValue("TotalAmount", TotalAmount);
             }
         }
     }

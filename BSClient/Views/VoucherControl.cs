@@ -180,7 +180,7 @@ namespace BSClient
                                                                 materialTK, "AccountIDFULL", "AccountIDFULL",
                                                                 isAllowEdit: true, columns: columns);
             this.VoucherDetail_gridView.AddSearchLookupEditColumn("CustomerID", "Mã KH", 60, materialDT, "CustomerID", "CustomerSName", isAllowEdit: true);
-            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "###,###,###,###,##0.00");
+            this.VoucherDetail_gridView.AddSpinEditColumn("Amount", "Tiền", 150, true, "###,###,###,###,##0");
             this.VoucherDetail_gridView.AddColumn("Descriptions", "Họ tên/Địa chỉ/CTKT", 200, true);
             this.VoucherDetail_gridView.AddColumn("VouchersDetailID", "DKID", 1, false);
             //keydown
@@ -1239,10 +1239,8 @@ namespace BSClient
             this.InvoiceWareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: invoiceWareHouseDetail_EditValueChanged);
             this.InvoiceWareHouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, isAllowEdit: true);
             this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "c2");
-            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "c2");
-            
-      
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,##0");
+            this.InvoiceWareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "###,###,###,###,##0");
         }
 
         
@@ -1284,11 +1282,11 @@ namespace BSClient
             this.Invoice_gridView.AddColumn("FormNo", "Mẫu số", 80, true);
             this.Invoice_gridView.AddColumn("SerialNo", "Kí hiệu", 80, true);
             this.Invoice_gridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
-            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.Invoice_gridView.AddSpinEditColumn("Amount", "Tiền", 120, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###}");
             this.Invoice_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
-            this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 120, true,"###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.Invoice_gridView.AddSpinEditColumn("VATAmount", "Tiền GTGT", 120, true,"###,###,###,###,##0", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###}");
             this.Invoice_gridView.AddSpinEditColumn("Discounts", "CK", 80, true, "c2");
-            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.Invoice_gridView.AddSpinEditColumn("TotalAmount", "Thành Tiền", 120, true, "###,###,###,###,##0", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###}");
             //this.Invoice_gridView.AddColumn("InvoiceType", "Loại HĐ", 60, true);
             this.Invoice_gridView.AddSearchLookupEditColumn(
                 "InvoiceType", "Loại HĐ", 60, materialInvoiceType, "InvoiceTypeSummary", "InvoiceTypeName", isAllowEdit: true);
@@ -1657,8 +1655,173 @@ namespace BSClient
                 MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
             }
             #endregion delete Invoice
+            string ChungTuType = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
+            //Chỉ thực hiện việc cập nhật lại định khoản khi chứng từ là chứng từ ghi sổ
+            switch (ChungTuType)
+            {
+                case "TH":
+                    break;
+                case "CH":
+                    break;
+                case "NH":
+                    break;
+                default:
+                    foreach (VoucherDetail voucherDetail in VoucherDetailData)
+                    {
+                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == voucherDetail.AccountID).Select(x => x.AccountID).Count();
+                        //xác định có tồn tại tài khoản liên quan VAT
+                        //Định khoản có chứa dòng thuộc thuế và có chứa 3 dòng
+                        if (VoucherDetailData.Count == 3 && count > 0)
+                        {
+                            SaveVoucherDetail();
+                            break;
+                        }
+                    }
+                    break;
+            }
 
             this.Load_Invoice_GridView();
+        }
+
+        public void SaveVoucherDetail()
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu lại định khoản không?", "xác nhận muốn lưu lại định khoản", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+                //Check 1 nợ nhiều có hoặc 1 có nhiều nợ
+                int CountRowN = 0;
+                int CountRowC = 0;
+                CountRowN = VoucherDetailData.Count(n => n.NV == "N");
+                CountRowC = VoucherDetailData.Count(n => n.NV == "C");
+                if (CountRowN == 0 && CountRowC == 0)
+                {
+                    //Không có dữ liệu gì của định khoản, có thể là đang xóa dữ liệu
+                }
+                else
+                {
+                    if ((CountRowN == 1 && CountRowC >= 1) || (CountRowC == 1 && CountRowN >= 1))
+                    {
+                        //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
+                    }
+                    else
+                    {
+                        if (VoucherTypeDK_searchLookUpEdit.EditValue.ToString() != "DK")
+                        {
+                            MessageBoxHelper.ShowErrorMessage("Dữ liệu chỉ chấp nhận 1 nợ nhiều có hoặc 1 có nhiều nợ!");
+                            return;
+                        }
+                        else
+                        {
+                            if ((CountRowN >= 1 && CountRowC == 0) || (CountRowC >= 1 && CountRowN == 0))
+                            {
+                                //dữ liệu thỏa 1 nợ nhiều có hoặc 1 có nhiều nợ
+                            }
+                            else
+                            {
+                                MessageBoxHelper.ShowErrorMessage("Dữ liệu chỉ chấp nhận 1 nợ nhiều có hoặc 1 có nhiều nợ!");
+                                return;
+                            }
+                        }
+                    }
+
+                }
+                #region kiểm tra dữ liệu có đang bị khóa sổ
+                if (CheckLockDBCompany(dateEditNgayNhapChungTu.DateTime, CommonInfo.CompanyInfo.CompanyID))
+                {
+                    //Dữ liệu đang nằm trong vùng khóa sổ
+                    MessageBoxHelper.ShowErrorMessage("Dữ liệu đang bị khóa sổ!");
+                    return;
+                }
+                #endregion kiểm tra dữ liệu có đang bị khóa sổ
+                decimal Debit = 0;
+                decimal credit = 0;
+                var result = VoucherDetailData.GroupBy(o => o.NV)
+                        .Select(g => new { nv = g.Key, total = g.Sum(i => i.Amount) });
+                foreach (var group in result)
+                {
+                    Console.WriteLine("Membername = {0} Totalcost={1}", group.nv, group.total);
+                    if (group.nv == "N")
+                    {
+                        Debit = group.total;
+                    }
+                    if (group.nv == "C")
+                    {
+                        credit = group.total;
+                    }
+                }
+                if (Debit != credit)
+                {
+                    MessageBoxHelper.ShowErrorMessage("Tổng tiền nợ có phải bằng nhau!\n" + "N: " + Debit.ToString() + "\nC: " + credit.ToString());
+                    return;
+                }
+
+                #region update Voucher
+                VoucherController voucherController = new VoucherController();
+                Voucher voucher = new Voucher();
+                voucher.VouchersID = GlobalVarient.VoucherIDChoice;
+                voucher.VoucherAmount = Debit;
+                voucher.VoucherDescription = richTextBoxVoucherContent.Text.ToString().Trim();
+                voucherController.UpdateVoucher(voucher);
+
+                #endregion update Voucher
+
+                #region set VoucherDetailID
+                VoucherDetailController voucherDetailController = new VoucherDetailController();
+                for (int i = 0; i < VoucherDetailData.Count; i++)
+                {
+                    if (string.IsNullOrEmpty(VoucherDetailData[i].VouchersDetailID))
+                    {
+                        VoucherDetailData[i].Status = ModifyMode.Insert;
+                        VoucherDetailData[i].VouchersID = GlobalVarient.VoucherIDChoice;
+                        VoucherDetailData[i].CompanyID = CommonInfo.CompanyInfo.CompanyID;
+                    }
+                }
+                #endregion set VoucherDetailID
+
+                int checkActionInvoiceVoucherDetail = 0;
+                List<VoucherDetail> saveDataInvoiceVoucherDetail = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+                if (saveDataInvoiceVoucherDetail?.Count > 0)
+                {
+                    VoucherDetailController controller = new VoucherDetailController();
+                    if (controller.SaveVoucherDetail(saveDataInvoiceVoucherDetail))
+                    {
+                        checkActionInvoiceVoucherDetail++;
+                    }
+                    else
+                    {
+                        checkActionInvoiceVoucherDetail = 0;
+                        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                    }
+                }
+
+                #region delete VoucherDetail
+                if (VoucherDetailDelete?.Count > 0)
+                {
+                    VoucherDetailController controller = new VoucherDetailController();
+                    if (controller.SaveVoucherDetail(VoucherDetailDelete))
+                    {
+                        checkActionInvoiceVoucherDetail++;
+                    }
+                    else
+                    {
+                        checkActionInvoiceVoucherDetail = 0;
+                        MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000002);
+                    }
+                }
+
+                if (checkActionInvoiceVoucherDetail > 0)
+                {
+                    MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
+                }
+                #endregion delete VoucherDetail
+
+                VoucherDetail_gridView.RefreshData();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
 
         private void InvoiceDelete_simpleButton_Click(object sender, EventArgs e)
@@ -2581,9 +2744,9 @@ namespace BSClient
             };
             this.WareHouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.WareHouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###.##");
-            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###}");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###");
+            this.WareHouseDetail_gridView.AddSpinEditColumn("Amount", "Thành tiền", 110, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###}");
         }
 
         private void Setup_WareHouseDetail_GridView()
@@ -2629,8 +2792,8 @@ namespace BSClient
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("UseMonth", "Số tháng SD", 70, true, "###");
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationMonth", "Số tháng KH", 70, true, "###");
             this.WareHouseDepreciation_gridView.AddSpinEditColumn("CurrentMonth", "Tháng HT", 60, true, "###");
-            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "C2");
-            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false, "C2");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmount", "Tiền KH", 120, true, "###,###,###,###,##0");
+            this.WareHouseDepreciation_gridView.AddSpinEditColumn("DepreciationAmountPerMonth", "Tiền/Tháng", 120, false, "###,###,###,###,##0");
         }
 
         private void Setup_Depreciation_GridView()
@@ -4028,6 +4191,9 @@ namespace BSClient
                 decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
                 decimal VATAmount = VAT * (Amount - Discounts) / 100;
                 Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+                //Tính sum Amount để cập nhật cho dòng trước 1331
+                //Cập nhật cho chứng từ ghi sổ. Chứng từ ghi sổ là chứng từ không phải thu chi ngân hàng
+                UpdateVoucherDetailData();
             }
             else if (e.Column.FieldName == "VAT")
             {
@@ -4036,6 +4202,11 @@ namespace BSClient
                 decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
                 decimal VATAmount = VAT * (Amount - Discounts) / 100;
                 Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+                UpdateVoucherDetailData();
+            }
+            else if (e.Column.FieldName == "VATAmount")
+            {
+                UpdateVoucherDetailData();
             }
             else if (e.Column.FieldName == "Discounts")
             {
@@ -4044,6 +4215,47 @@ namespace BSClient
                 decimal Discounts = (Decimal)Invoice_gridView.GetFocusedRowCellValue("Discounts");
                 decimal VATAmount = VAT * (Amount - Discounts) / 100;
                 Invoice_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+                UpdateVoucherDetailData();
+            }
+        }
+
+        public void UpdateVoucherDetailData()
+        {
+            string ChungTuType = VoucherTypeDK_searchLookUpEdit.EditValue.ToString();
+            //Chỉ thực hiện việc cập nhật lại định khoản khi chứng từ là chứng từ ghi sổ
+            switch (ChungTuType)
+            {
+                case "TH":
+                    break;
+                case "CH":
+                    break;
+                case "NH":
+                    break;
+                default:
+                    foreach (VoucherDetail voucherDetail in VoucherDetailData)
+                    {
+                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == voucherDetail.AccountID).Select(x => x.AccountID).Count();
+                        //xác định có tồn tại tài khoản liên quan VAT
+                        //Định khoản có chứa dòng thuộc thuế và có chứa 3 dòng
+                        if (VoucherDetailData.Count == 3 && count > 0)
+                        {
+                            decimal totalAmountVATVoucherDetail;
+                            decimal totalAmountVoucherDetail;
+                            decimal AmountVoucherDetail;
+                            totalAmountVATVoucherDetail = InvoiceData.Select(o => o.VATAmount).Sum();
+                            AmountVoucherDetail = InvoiceData.Select(o => o.Amount).Sum();
+                            totalAmountVoucherDetail = InvoiceData.Select(o => o.TotalAmount).Sum();
+                            VoucherDetailData[0].Amount = AmountVoucherDetail;
+                            VoucherDetailData[0].Status = ModifyMode.Update;
+                            VoucherDetailData[1].Amount = totalAmountVATVoucherDetail;
+                            VoucherDetailData[1].Status = ModifyMode.Update;
+                            VoucherDetailData[2].Amount = totalAmountVoucherDetail;
+                            VoucherDetailData[2].Status = ModifyMode.Update;
+                            VoucherDetail_gridView.RefreshData();
+                            break;
+                        }
+                    }
+                    break;
             }
         }
 

@@ -92,10 +92,12 @@ begin
 	end as 'SerialNo',
 	B.CustomerID,B.CustomerName,B.CustomerSName from Invoice as A  right JOIN Customer as B
 	on A.CustomerID = B.CustomerID 
+	where A.S35Type is null
 	order by CustomerID
 end
 
-
+select * from Invoice
+where S35Type is  Null
 
 
 alter proc SPSelectMaterialDoiTuong
