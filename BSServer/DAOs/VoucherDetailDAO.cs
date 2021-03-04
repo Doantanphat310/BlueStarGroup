@@ -24,7 +24,7 @@ namespace BSServer.DAOs
           "VouchersDetailSelectVoucherID @VouchersID, @CompanyID, @CreateUser",
           new SqlParameter("@VouchersID", voucherID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserID)
           ).ToList();
         }
 

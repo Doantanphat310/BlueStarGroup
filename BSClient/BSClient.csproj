@@ -232,6 +232,12 @@
     <Compile Include="Views\S35.Designer.cs">
       <DependentUpon>S35.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ToKhai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToKhai.Designer.cs">
+      <DependentUpon>ToKhai.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -331,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\S35.resx">
       <DependentUpon>S35.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToKhai.resx">
+      <DependentUpon>ToKhai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>

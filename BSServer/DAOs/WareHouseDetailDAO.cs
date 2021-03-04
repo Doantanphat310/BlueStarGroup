@@ -24,7 +24,7 @@ namespace BSServer.DAOs
           "WareHouseDetailSelect @warehouseDetailID, @CompanyID, @CreateUser",
           new SqlParameter("@WareHouseID", warehouseDetailID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserID)
           ).ToList();
         }
 
@@ -35,7 +35,7 @@ namespace BSServer.DAOs
           "WareHouseDetailSelectWahouseID @WareHouseID, @CompanyID, @CreateUser",
           new SqlParameter("@WareHouseID", warehouseID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserID)
           ).ToList();
         }
         public List<WareHouseDetail> WareHouseDetailSelectInvoiceID(string invoiceID, string CompanyID)
@@ -44,7 +44,7 @@ namespace BSServer.DAOs
           "WareHouseDetailSelectInvoiceID @InvoiceID, @CompanyID, @CreateUser",
           new SqlParameter("@InvoiceID", invoiceID),
           new SqlParameter("@CompanyID", CompanyID),
-          new SqlParameter("@CreateUser", UserInfo.UserName)
+          new SqlParameter("@CreateUser", UserInfo.UserID)
           ).ToList();
         }
 
