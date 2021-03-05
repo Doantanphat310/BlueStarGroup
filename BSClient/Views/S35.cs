@@ -130,7 +130,7 @@ namespace BSClient.Views
             this.S35_Invoice_GridView.AddDateEditColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
             this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "###,###,###,###,###");
-            this.S35_Invoice_GridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "###.##");
+            this.S35_Invoice_GridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "##0.00");
             this.S35_Invoice_GridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###");
             this.S35_Invoice_GridView.AddSpinEditColumn("TotalAmount", "Tổng tiền", 120, true, "###,###,###,###,###");
             this.S35_Invoice_GridView.AddSearchLookupEditColumn(
@@ -193,11 +193,11 @@ namespace BSClient.Views
             };
             this.S35_WarehouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.S35_WarehouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###.##");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "###,###,###,###,###.##", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###,###,##0.00", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "##0.00");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###.##");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###");
         }
 
         private void Setup_WareHouseDetail_GridView()
@@ -666,6 +666,14 @@ namespace BSClient.Views
 
             }
             else if (e.Column.FieldName == "Price")
+            {
+                Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                {
+                    this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
+                }
+            }
+            else if (e.Column.FieldName == "Quantity")
             {
                 Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
                 if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount"))

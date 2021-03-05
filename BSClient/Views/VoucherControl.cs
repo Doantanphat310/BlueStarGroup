@@ -145,7 +145,7 @@ namespace BSClient
             this.Voucher_gridView.AddColumn("VoucherDate", "Ngày", 70, false);
             this.Voucher_gridView.AddColumn("VouchersTypeID", "Loại", 30, false);
             this.Voucher_gridView.AddColumn("VoucherNo", "Số CT", 110, false);
-            this.Voucher_gridView.AddSpinEditColumn("VoucherAmount", "Tiền", 120, false, "c2");
+            this.Voucher_gridView.AddSpinEditColumn("VoucherAmount", "Tiền", 120, false, "###,###,###,###,##0");
             this.Voucher_gridView.AddColumn("VoucherDescription", "Nội dung", 180, false);
             this.Voucher_gridView.AddColumn("CreateUser", "Người tạo", 100, false);
             this.Voucher_gridView.AddColumn("VouchersID", "CT ID", 1, false);
@@ -605,8 +605,18 @@ namespace BSClient
                 {
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     VoucherDetailDelete = new List<VoucherDetail>();
-                    this.LoadVoucherDetailGridView(voucher.VouchersID);
+                   // this.LoadVoucherDetailGridView(voucher.VouchersID);
                     this.LoadGridView(dateEditNgayNhapChungTu.DateTime);
+                    for (int Vi = 0; Vi < VoucherData.Count; Vi++)
+                    {
+                        if (VoucherData[Vi].VouchersID == voucher.VouchersID)
+                        {
+                            Voucher_gridView.MoveBy(Vi);
+                            GlobalVarient.voucherChoice = voucher;
+                            GlobalVarient.VoucherIDChoice = voucher.VouchersID;
+                            break;
+                        }
+                    }
                 }
                 else
                 {
@@ -823,6 +833,7 @@ namespace BSClient
 
         private void simpleButtonCapNhat_Click(object sender, EventArgs e)
         {
+            
             if (dateEditNgayNhapChungTu.EditValue == null)
             {
                 MessageBoxHelper.ShowErrorMessage("Ngày nhập chứng từ không được để trống!");
@@ -963,6 +974,16 @@ namespace BSClient
 
             this.LoadVoucherDetailGridView(GlobalVarient.VoucherIDChoice);
             LoadGridView(dateEditNgayNhapChungTu.DateTime);
+
+           // Voucher_gridView.move
+           for(int Vi = 0; Vi < VoucherData.Count; Vi++)
+            {
+                if(VoucherData[Vi].VouchersID == GlobalVarient.voucherChoice.VouchersID)
+                {
+                    Voucher_gridView.MoveBy(Vi);
+                    break;
+                }
+            }
         }
 
         private void checkBoxThemDuLieu_CheckedChanged(object sender, EventArgs e)
@@ -3639,8 +3660,8 @@ namespace BSClient
             richTextBoxVoucherContent.Text = voucher.VoucherDescription;
             dateEditNgayNhapChungTu.EditValue = voucher.VoucherDate;
             VoucherTypeDK_searchLookUpEdit.EditValue = voucher.VouchersTypeID;
-            GlobalVarient.VoucherIDChoice = voucher.VouchersID;
-            GlobalVarient.voucherChoice = voucher;
+            //GlobalVarient.VoucherIDChoice = voucher.VouchersID;
+            //GlobalVarient.voucherChoice = voucher;
             Voucher_gridView.FocusRectStyle = DrawFocusRectStyle.RowFocus;
 
 
@@ -3890,6 +3911,7 @@ namespace BSClient
                 if (count > 0)
                 {
                     WareHouse_gridView.SetFocusedRowCellValue("WarehouseListID", wareHouseList[0].WarehouseListID);
+                    WareHouse_gridView.SetFocusedRowCellValue("Description", GlobalVarient.voucherChoice.VoucherDescription);
 
                     if (voucherDetail.NV.ToString() == "N")
                     {
