@@ -55,32 +55,43 @@ namespace BSClient.Views
             LoadGridviewS35_Invoice();
             InitDefaultControl();
             SetBindingDataInvoiceForm();
-            S35InvoiceDataBindingSource.CurrentChanged += S35InvoiceDataBindingSource_CurrentChanged;
-         
-            S35InvoiceDataBindingSource.ListChanged += S35InvoiceDataBindingSource_ListChanged;
+            //  S35InvoiceDataBindingSource.CurrentChanged += S35InvoiceDataBindingSource_CurrentChanged;
+
+            S35InvoiceDataBindingSource.DataSourceChanged += S35InvoiceDataBindingSource_DataSourceChanged;
+
+            S35InvoiceDataBindingSource.CurrentItemChanged += S35InvoiceDataBindingSource_CurrentItemChanged;
+
+           
 
             LoadWareHouseDetailGridviewFull();
         }
 
-        private void S35InvoiceDataBindingSource_CurrentChanged(object sender, EventArgs e)
+        //private void S35InvoiceDataBindingSource_CurrentChanged(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine("S35InvoiceDataBindingSource_CurrentChanged");
+        //}
+
+        private void S35InvoiceDataBindingSource_DataSourceChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("S35InvoiceDataBindingSource_CurrentChanged");
+            S35SourceFlat = true;
         }
 
-        private void S35InvoiceDataBindingSource_ListChanged(object sender, EventArgs e)
+        bool S35SourceFlat = false;
+        private void S35InvoiceDataBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
-            //Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
-            //try
-            //{
-            //    if (invoice.Status != ModifyMode.Insert)
-            //    {
-            //        invoice.Status = ModifyMode.Update;
-            //    }
-            //}
-            //catch { }
-           
+            if (S35SourceFlat)
+            {
+                Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+                if (invoice != null)
+                {
+                    if (invoice.Status != ModifyMode.Insert)
+                    {
+                        invoice.Status = ModifyMode.Update;
+                    }
+                }
+            }
         }
-        
+
 
         public void InitDefaultControl()
         {
@@ -147,9 +158,11 @@ namespace BSClient.Views
         {
             InvoiceController controller = new InvoiceController();
             S35InvoiceData = new BindingList<Invoice>(controller.GetInvoiceSelectS35(startDate, endDate, companyID));
+            S35SourceFlat = false;
             S35InvoiceDataBindingSource.DataSource = S35InvoiceData;
             this.S35_Invoice_gridControl.DataSource = S35InvoiceDataBindingSource;
             S35InvoiceDelete = new List<Invoice>();
+            S35SourceFlat = true;
         }
 
         private void SetBindingDataInvoiceForm()
@@ -281,6 +294,7 @@ namespace BSClient.Views
         private void S35_FilterData_simpleButton_Click(object sender, EventArgs e)
         {
             Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
+            //S35SourceFlat = false;
         }
 
         private void S35_Invoice_GridView_InitNewRow(object sender, InitNewRowEventArgs e)
@@ -292,7 +306,7 @@ namespace BSClient.Views
             this.S35_InvoiceFormNo_textEdit.EditValue = CommonInfo.CompanyInfo.InvoiceFormNo;
             this.S35_FormNo_textEdit.EditValue = CommonInfo.CompanyInfo.FormNo;
             this.S35_SerialNo_textEdit.EditValue = CommonInfo.CompanyInfo.SerialNo;
-            this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
+           // this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
             this.S35_AccountVAT_textEdit.EditValue = "3331";
             //Invoice default Value
             S35_Invoice_GridView.SetFocusedRowCellValue("VAT", 10);
@@ -831,9 +845,10 @@ namespace BSClient.Views
                 }
                 this.S35InvoiceData.Add(item);
             }
+            S35SourceFlat = false;
             S35InvoiceDataBindingSource.DataSource = S35InvoiceData;
             this.S35_Invoice_gridControl.DataSource = S35InvoiceDataBindingSource;
-
+            S35SourceFlat = true;
 
             if (error != null && error.Length > 0)
             {

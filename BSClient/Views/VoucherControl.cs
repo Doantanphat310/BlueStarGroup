@@ -1603,6 +1603,21 @@ namespace BSClient
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     InvoiceDelete = new List<Invoice>();
                     this.Load_Invoice_GridView();
+                    //Chọn dòng đang forcus
+                    for (int Ii = 0; Ii < InvoiceData.Count; Ii++)
+                    {
+                        if (InvoiceData[Ii].FormNo == GlobalVarient.invoiceChoice.FormNo & InvoiceData[Ii].InvoiceFormNo == GlobalVarient.invoiceChoice.InvoiceFormNo
+                            && InvoiceData[Ii].InvoiceNo == GlobalVarient.invoiceChoice.InvoiceNo
+                            && InvoiceData[Ii].SerialNo == GlobalVarient.invoiceChoice.SerialNo
+                            && InvoiceData[Ii].CustomerID == GlobalVarient.invoiceChoice.CustomerID)
+                        {
+
+                            Invoice_gridView.MoveBy(Ii);
+                            GlobalVarient.invoiceChoice = InvoiceData[Ii];
+                            break;
+                        }
+                    }
+                    Load_InvoiceWareHouse_GridView();
                 }
                 else
                 {
@@ -1702,6 +1717,21 @@ namespace BSClient
             }
 
             this.Load_Invoice_GridView();
+            //Chọn dòng đang forcus
+            for (int Ii = 0; Ii < InvoiceData.Count; Ii++)
+            {
+                if(InvoiceData[Ii].FormNo == GlobalVarient.invoiceChoice.FormNo & InvoiceData[Ii].InvoiceFormNo == GlobalVarient.invoiceChoice.InvoiceFormNo
+                    && InvoiceData[Ii].InvoiceNo == GlobalVarient.invoiceChoice.InvoiceNo
+                    && InvoiceData[Ii].SerialNo == GlobalVarient.invoiceChoice.SerialNo
+                    && InvoiceData[Ii].CustomerID == GlobalVarient.invoiceChoice.CustomerID)
+                {
+
+                    Invoice_gridView.MoveBy(Ii);
+                    GlobalVarient.invoiceChoice = InvoiceData[Ii];
+                    break;
+                }
+            }
+            Load_InvoiceWareHouse_GridView();
         }
 
         public void SaveVoucherDetail()
@@ -1913,6 +1943,17 @@ namespace BSClient
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     InvoiceWareHouseDelete = new List<WareHouse>();
                     this.LoadInvoiceWareHouseGridviewFull();
+                    //Chọn dòng đang forcus
+                    for (int Ii = 0; Ii < InvoiceWarehouseData.Count; Ii++)
+                    {
+                        if (InvoiceWarehouseData[Ii].WarehouseID == saveData[0].WarehouseID)
+                        {
+                            InvoiceWareHouse_gridView.MoveBy(Ii);
+                            GlobalVarient.warehouseInvoiceChoice = InvoiceWarehouseData[Ii];
+                            break;
+                        }
+                    }
+                    Load_InvoiceWareHouseDetail_GridView();
                 }
                 else
                 {
@@ -2007,6 +2048,17 @@ namespace BSClient
             }
             #endregion delete InvoiceWareHouse
             this.Load_InvoiceWareHouse_GridView();
+            //Chọn dòng đang forcus
+            for (int Ii = 0; Ii < InvoiceWarehouseDetailData.Count; Ii++)
+            {
+                if (InvoiceWarehouseData[Ii].WarehouseID == saveData[0].WarehouseID)
+                {
+                    InvoiceWareHouse_gridView.MoveBy(Ii);
+                    GlobalVarient.warehouseInvoiceChoice = InvoiceWarehouseData[Ii];
+                    break;
+                }
+            }
+            Load_InvoiceWareHouseDetail_GridView();
         }
 
 
@@ -2129,6 +2181,18 @@ namespace BSClient
                     InvoiceWareHouseDetailDelete = new List<WareHouseDetail>();
 
                     this.LoadInvoiceWareHouseDetailGridviewFull();
+                    //Chọn dòng đang forcus
+                    for (int Ii = 0; Ii < InvoiceWarehouseDetailData.Count; Ii++)
+                    {
+                        if (InvoiceWarehouseDetailData[Ii].WareHouseDetailID == saveData[0].WareHouseDetailID)
+                        {
+                            InvoiceWareHouseDetail_gridView.MoveBy(Ii);
+                            GlobalVarient.warehouseDetailInvoiceChoice = InvoiceWarehouseDetailData[Ii];
+                            break;
+                        }
+                    }
+                    //Load khaasu hao
+                   // Load_InvoiceWareHouseDetail_GridView();
                 }
                 else
                 {
@@ -2201,6 +2265,17 @@ namespace BSClient
             }
             #endregion delete warehouseDetail
             this.Load_InvoiceWareHouseDetail_GridView();
+            //Chọn dòng đang forcus
+            for (int Ii = 0; Ii < InvoiceWarehouseDetailData.Count; Ii++)
+            {
+                if (InvoiceWarehouseDetailData[Ii].WareHouseDetailID == saveData[0].WareHouseDetailID)
+                {
+                    InvoiceWareHouseDetail_gridView.MoveBy(Ii);
+                    GlobalVarient.warehouseDetailInvoiceChoice = InvoiceWarehouseDetailData[Ii];
+                    break;
+                }
+            }
+            //load khau hao
         }
 
         private void InvoiceWareHouseDetailDelete_simpleButton_Click(object sender, EventArgs e)
@@ -2582,6 +2657,7 @@ namespace BSClient
                 InvoiceWareHouse_gridView.SetFocusedRowCellValue("CreditAccountID", wareHouseList[0].WarehouseListDebitAccountID);
             }
             InvoiceWareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.VoucherDate);
+            InvoiceWareHouse_gridView.SetFocusedRowCellValue("Description", GlobalVarient.voucherChoice.VoucherDescription);
             //set so cho kho theo voucherdetail
         }
 
@@ -2963,6 +3039,17 @@ namespace BSClient
                     MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
                     WareHouseDelete = new List<WareHouse>();
                     this.LoadWareHouseGridviewFull();
+                    //Chọn dòng đang forcus
+                    for (int Ii = 0; Ii < WarehouseData.Count; Ii++)
+                    {
+                        if (WarehouseData[Ii].WarehouseID == saveData[0].WarehouseID)
+                        {
+                            WareHouse_gridView.MoveBy(Ii);
+                            GlobalVarient.warehouseChoice = WarehouseData[Ii];
+                            break;
+                        }
+                    }
+                    Load_WareHouseDetail_GridView();
                 }
                 else
                 {
@@ -3036,6 +3123,17 @@ namespace BSClient
             }
             #endregion delete WareHouse
             this.Load_WareHouse_GridView();
+            //Chọn dòng đang forcus
+            for (int Ii = 0; Ii < WarehouseData.Count; Ii++)
+            {
+                if (WarehouseData[Ii].WarehouseID == saveData[0].WarehouseID)
+                {
+                    WareHouse_gridView.MoveBy(Ii);
+                    GlobalVarient.warehouseChoice = WarehouseData[Ii];
+                    break;
+                }
+            }
+            Load_WareHouseDetail_GridView();
         }
 
         private void WWareHouseDelete_simpleButton_Click(object sender, EventArgs e)
@@ -3146,6 +3244,17 @@ namespace BSClient
                     WareHouseDetailDelete = new List<WareHouseDetail>();
 
                     this.LoadWareHouseDetailGridviewFull();
+                    //Chọn dòng đang forcus
+                    for (int Ii = 0; Ii < WarehouseDetailData.Count; Ii++)
+                    {
+                        if (WarehouseDetailData[Ii].WareHouseDetailID == saveData[0].WareHouseDetailID)
+                        {
+                            WareHouseDetail_gridView.MoveBy(Ii);
+                            GlobalVarient.warehouseDetailChoice = WarehouseDetailData[Ii];
+                            break;
+                        }
+                    }
+                    //load khau hao
                 }
                 else
                 {
@@ -3218,6 +3327,17 @@ namespace BSClient
             }
             #endregion delete warehouseDetail
             this.Load_WareHouseDetail_GridView();
+            //Chọn dòng đang forcus
+            for (int Ii = 0; Ii < WarehouseDetailData.Count; Ii++)
+            {
+                if (WarehouseDetailData[Ii].WareHouseDetailID == saveData[0].WareHouseDetailID)
+                {
+                    WareHouseDetail_gridView.MoveBy(Ii);
+                    GlobalVarient.warehouseDetailChoice = WarehouseDetailData[Ii];
+                    break;
+                }
+            }
+            //load khau hao
         }
 
         private void WWareHouseDetailDelete_simpleButton_Click(object sender, EventArgs e)
@@ -3677,7 +3797,7 @@ namespace BSClient
             {
                 return;
             }
-            GlobalVarient.invoiceChoice = invoice;
+           // GlobalVarient.invoiceChoice = invoice;
             if (ChoiceInvoice == 0)
             {
                 LoadInvoiceWareHouseGridviewFull();
@@ -3694,7 +3814,7 @@ namespace BSClient
         {
 
             WareHouse wareHouse = InvoiceWareHouse_gridView.GetFocusedRow().CastTo<WareHouse>();
-            GlobalVarient.warehouseInvoiceChoice = wareHouse;
+          //  GlobalVarient.warehouseInvoiceChoice = wareHouse;
             if (ChoiceWareHouse == 0)
             {
                 // LoadInvoiceWareHouseGridviewFull();
@@ -3790,7 +3910,7 @@ namespace BSClient
             InvoiceDepreciationgroupControl.Enabled = true;
             //LoadInvoiceDepreciationGridviewFull()
             WareHouseDetail wareHouseDetail = InvoiceWareHouseDetail_gridView.GetFocusedRow().CastTo<WareHouseDetail>();
-            GlobalVarient.warehouseDetailInvoiceChoice = wareHouseDetail;
+           // GlobalVarient.warehouseDetailInvoiceChoice = wareHouseDetail;
             GlobalVarient.InvoiceDepreciationsChoice = null;
             if (ChoiceWareHouseDetail == 0)
             {
@@ -3911,8 +4031,6 @@ namespace BSClient
                 if (count > 0)
                 {
                     WareHouse_gridView.SetFocusedRowCellValue("WarehouseListID", wareHouseList[0].WarehouseListID);
-                    WareHouse_gridView.SetFocusedRowCellValue("Description", GlobalVarient.voucherChoice.VoucherDescription);
-
                     if (voucherDetail.NV.ToString() == "N")
                     {
                         WareHouse_gridView.SetFocusedRowCellValue("Type", "N");
@@ -3929,6 +4047,7 @@ namespace BSClient
                 }
             }
             WareHouse_gridView.SetFocusedRowCellValue("Date", GlobalVarient.voucherChoice.VoucherDate);
+            WareHouse_gridView.SetFocusedRowCellValue("Description", GlobalVarient.voucherChoice.VoucherDescription);
         }
 
         private void VoucherKetChuyen_simpleButton_Click(object sender, EventArgs e)

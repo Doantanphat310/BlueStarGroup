@@ -329,8 +329,6 @@
             this.S35_NgayHD_dateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.S35_NgayHD_dateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-            this.S35_NgayHD_dateEdit.Properties.MinValue = new System.DateTime(2021, 3, 3, 12, 13, 42, 0);
-            this.S35_NgayHD_dateEdit.Properties.NullDate = new System.DateTime(2021, 3, 3, 12, 9, 59, 339);
             this.S35_NgayHD_dateEdit.Size = new System.Drawing.Size(154, 22);
             this.S35_NgayHD_dateEdit.TabIndex = 2;
             this.S35_NgayHD_dateEdit.Tag = "InvoiceDate";
