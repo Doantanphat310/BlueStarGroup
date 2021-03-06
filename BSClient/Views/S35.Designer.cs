@@ -160,8 +160,9 @@
             this.lblNameDoanhThu.Appearance.Options.UseFont = true;
             this.lblNameDoanhThu.Location = new System.Drawing.Point(254, 52);
             this.lblNameDoanhThu.Name = "lblNameDoanhThu";
-            this.lblNameDoanhThu.Size = new System.Drawing.Size(0, 19);
+            this.lblNameDoanhThu.Size = new System.Drawing.Size(126, 19);
             this.lblNameDoanhThu.TabIndex = 23;
+            this.lblNameDoanhThu.Text = "ssssssssssssssssss";
             // 
             // S35_Description_MemoEdit
             // 
@@ -319,7 +320,7 @@
             // 
             // S35_NgayHD_dateEdit
             // 
-            this.S35_NgayHD_dateEdit.EditValue = new System.DateTime(((long)(0)));
+            this.S35_NgayHD_dateEdit.EditValue = null;
             this.S35_NgayHD_dateEdit.Location = new System.Drawing.Point(94, 77);
             this.S35_NgayHD_dateEdit.Name = "S35_NgayHD_dateEdit";
             this.S35_NgayHD_dateEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -376,6 +377,7 @@
             // 
             // S35_TKTkeDoanhThu_searchLookUpEdit
             // 
+            this.S35_TKTkeDoanhThu_searchLookUpEdit.EditValue = "ssssssssssssssssss";
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Location = new System.Drawing.Point(94, 49);
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Name = "S35_TKTkeDoanhThu_searchLookUpEdit";
             this.S35_TKTkeDoanhThu_searchLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -747,6 +749,7 @@
             this.Name = "S35";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "S35";
+            this.Load += new System.EventHandler(this.S35_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();

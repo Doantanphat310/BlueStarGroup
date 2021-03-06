@@ -22,7 +22,7 @@ alter proc InvoiceInsert
     @InvoiceAccountDetailID varchar(50),
     @InvoiceVATAccountID varchar(50),
 	@MST varchar(50),
-    @CustomerName varchar(250)
+    @CustomerName nvarchar(250)
 as
 begin
 INSERT INTO Invoice(

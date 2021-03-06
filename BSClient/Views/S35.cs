@@ -59,11 +59,26 @@ namespace BSClient.Views
 
             S35InvoiceDataBindingSource.DataSourceChanged += S35InvoiceDataBindingSource_DataSourceChanged;
 
-            S35InvoiceDataBindingSource.CurrentItemChanged += S35InvoiceDataBindingSource_CurrentItemChanged;
+            S35InvoiceDataBindingSource.ListChanged += S35InvoiceDataBindingSource_ListChanged;
 
-           
+
 
             LoadWareHouseDetailGridviewFull();
+        }
+
+        private void S35InvoiceDataBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            if (S35SourceFlat)
+            {
+                Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+                if (invoice != null)
+                {
+                    if (invoice.Status != ModifyMode.Insert)
+                    {
+                        invoice.Status = ModifyMode.Update;
+                    }
+                }
+            }
         }
 
         //private void S35InvoiceDataBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -137,7 +152,7 @@ namespace BSClient.Views
         private void Init_S35_Invoice_GridView()
         {
             this.S35_Invoice_GridView.Columns.Clear();
-          //  this.S35_Invoice_GridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
+            //  this.S35_Invoice_GridView.AddColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddDateEditColumn("InvoiceDate", "Ngày HĐ", 80, true);
             this.S35_Invoice_GridView.AddColumn("InvoiceNo", "Số HĐ", 80, true);
             this.S35_Invoice_GridView.AddSpinEditColumn("Amount", "Doanh thu", 120, true, "###,###,###,###,###");
@@ -150,7 +165,7 @@ namespace BSClient.Views
 
         private void Setup_S35_Invoice_GridView()
         {
-            this.S35_Invoice_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true,columnAutoWidth:true);
+            this.S35_Invoice_GridView.SetupGridView(multiSelect: true, checkBoxSelectorColumnWidth: 30, hasShowRowHeader: true, columnAutoWidth: true);
             // this.S35_Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
@@ -232,7 +247,7 @@ namespace BSClient.Views
                 {
                     WarehouseDetailData = new BindingList<WareHouseDetail>(controller.WareHouseDetailSelectInvoiceID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID));
                 }
-                else if(invoice.InvoiceNo != null)
+                else if (invoice.InvoiceNo != null)
                 {
                     // WarehouseDetailData.Where(item => item.InvoiceNo == invoice.InvoiceNo).ToList();
                     //filter dữ liệu theo số hóa đơn S35
@@ -241,7 +256,7 @@ namespace BSClient.Views
                     this.S35_WarehouseDetail_gridView.ActiveFilterString = filter;
                 }
                 else return;
-               
+
             }
             S35_WarehouseDetail_gridControl.DataSource = WarehouseDetailData;
             WareHouseDetailDelete = new List<WareHouseDetail>();
@@ -284,11 +299,11 @@ namespace BSClient.Views
                 this.S35_MST_textEdit.EditValue = customerTIN;
                 this.S35_CustomerName_MemoEdit.EditValue = customerName;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
             }
-           
+
         }
 
         private void S35_FilterData_simpleButton_Click(object sender, EventArgs e)
@@ -306,7 +321,7 @@ namespace BSClient.Views
             this.S35_InvoiceFormNo_textEdit.EditValue = CommonInfo.CompanyInfo.InvoiceFormNo;
             this.S35_FormNo_textEdit.EditValue = CommonInfo.CompanyInfo.FormNo;
             this.S35_SerialNo_textEdit.EditValue = CommonInfo.CompanyInfo.SerialNo;
-           // this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
+            // this.S35_NgayHD_dateEdit.DateTime = DateTime.Now.Date;
             this.S35_AccountVAT_textEdit.EditValue = "3331";
             //Invoice default Value
             S35_Invoice_GridView.SetFocusedRowCellValue("VAT", 10);
@@ -341,15 +356,15 @@ namespace BSClient.Views
                 }
             }
             int checkAction = 0;
-            List<Invoice> saveData = this.S35InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+            List<Invoice> saveData = this.S35InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
             if (saveData?.Count > 0)
             {
                 InvoiceController controller = new InvoiceController();
                 if (controller.SaveInvoice(saveData))
                 {
                     checkAction++;
-                   // S35InvoiceDelete = new List<Invoice>();
-                  //  Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
+                    // S35InvoiceDelete = new List<Invoice>();
+                    //  Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
                 }
                 else
                 {
@@ -422,7 +437,9 @@ namespace BSClient.Views
                     this.S35InvoiceDelete.Add(delete);
                 }
             }
+            S35SourceFlat = false;
             this.S35_Invoice_GridView.DeleteSelectedRows();
+            S35SourceFlat = true;
         }
 
         private void S35_Update_Invoice_simpleButton_Click(object sender, EventArgs e)
@@ -532,13 +549,13 @@ namespace BSClient.Views
                     {
                         Console.WriteLine("set InvoiceID to WareHouse Success!");
                         //get warehousedetail with sql
-                        List<WareHouse>  wareHouseGetID =  controller.InvoiceSelectWareHouseID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
+                        List<WareHouse> wareHouseGetID = controller.InvoiceSelectWareHouseID(invoice.InvoiceID, CommonInfo.CompanyInfo.CompanyID);
                         if (wareHouseGetID.Count > 0)
                         {
-                            foreach(WareHouse wareHouseItemGetID in wareHouseGetID)
+                            foreach (WareHouse wareHouseItemGetID in wareHouseGetID)
                             {
                                 warehouseID = wareHouseItemGetID.WarehouseID;
-                            }  
+                            }
                         }
                     }
                     else
@@ -553,7 +570,7 @@ namespace BSClient.Views
             #region save warehousedetail
 
             #region set warehouseID to WareHouseDetail
-            foreach(WareHouseDetail wareHouseDetailItem in WarehouseDetailData)
+            foreach (WareHouseDetail wareHouseDetailItem in WarehouseDetailData)
             {
                 if (string.IsNullOrEmpty(wareHouseDetailItem.WareHouseDetailID))
                 {
@@ -699,9 +716,9 @@ namespace BSClient.Views
             {
                 decimal Amount = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount");
                 decimal VAT = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("VAT");
-                decimal VATAmount = VAT * Amount  / 100;
+                decimal VATAmount = VAT * Amount / 100;
                 S35_WarehouseDetail_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
-                
+
                 decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
                 S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
                 UpdateInvoiceTemp();
@@ -771,19 +788,32 @@ namespace BSClient.Views
         private void ImportData()
         {
             List<Invoice> invoices = ExcelHelper.LoadInvoice(out StringBuilder error);
-          //  BindingList<Invoice> invoicesBidingList = new BindingList<Invoice>();
-           List<Invoice> result  = invoices.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo, x.SerialNo, x.InvoiceNo})
-                .Select(x => new Invoice() { CustomerID = x.First().CustomerID, InvoiceFormNo = x.First().InvoiceFormNo
-                , FormNo = x.First().FormNo, SerialNo = x.First().SerialNo, InvoiceNo = x.First().InvoiceNo, VAT = 0,
-                    InvoiceDate = x.First().InvoiceDate, PaymentType = x.First().PaymentType , InvoiceType = "X", S35Type = true,
-                    InvoiceVATAccountID = x.First().InvoiceVATAccountID, AccountIDFULL = x.First().AccountIDFULL,
-                    Amount = x.Sum(i => i.Amount), VATAmount = x.Sum(i => i.VATAmount) }).ToList();
+            //  BindingList<Invoice> invoicesBidingList = new BindingList<Invoice>();
+            List<Invoice> result = invoices.GroupBy(x => new { x.CustomerID, x.InvoiceFormNo, x.FormNo, x.SerialNo, x.InvoiceNo })
+                 .Select(x => new Invoice()
+                 {
+                     CustomerID = x.First().CustomerID,
+                     InvoiceFormNo = x.First().InvoiceFormNo
+                 ,
+                     FormNo = x.First().FormNo,
+                     SerialNo = x.First().SerialNo,
+                     InvoiceNo = x.First().InvoiceNo,
+                     VAT = 0,
+                     InvoiceDate = x.First().InvoiceDate,
+                     PaymentType = x.First().PaymentType,
+                     InvoiceType = "X",
+                     S35Type = true,
+                     InvoiceVATAccountID = x.First().InvoiceVATAccountID,
+                     AccountIDFULL = x.First().AccountIDFULL,
+                     Amount = x.Sum(i => i.Amount),
+                     VATAmount = x.Sum(i => i.VATAmount)
+                 }).ToList();
 
             //Lưu warehouse Detail Chưa có warehouseID và invoiceID
             // S35_WarehouseDetail_gridView
             // WarehouseDetailData
-           // InvoiceNo
-           foreach(Invoice invoiceDetail in invoices)
+            // InvoiceNo
+            foreach (Invoice invoiceDetail in invoices)
             {
                 WareHouseDetail wareHouseDetailInvoice = new WareHouseDetail();
                 wareHouseDetailInvoice.Amount = invoiceDetail.Amount;
@@ -805,8 +835,8 @@ namespace BSClient.Views
                 WarehouseDetailData.Add(wareHouseDetailInvoice);
             }
             //Lưu invoice chưa có InvoiceID
-             S35InvoiceData = new BindingList<Invoice>();
-        
+            S35InvoiceData = new BindingList<Invoice>();
+
             foreach (var item in result)
             {
                 item.Status = ModifyMode.Insert;
@@ -816,7 +846,7 @@ namespace BSClient.Views
                 item.InvoiceFormNo = CommonInfo.CompanyInfo.InvoiceFormNo;
                 item.FormNo = CommonInfo.CompanyInfo.FormNo;
                 item.SerialNo = CommonInfo.CompanyInfo.SerialNo;
-                List<String> materialTKInvoice = materialTK.Where(tk => tk.AccountIDFULL == item.AccountIDFULL).Select(x=>x.Name).ToList();
+                List<String> materialTKInvoice = materialTK.Where(tk => tk.AccountIDFULL == item.AccountIDFULL).Select(x => x.Name).ToList();
                 //tên khách hàng
                 List<String> materialDTInvoice = materialDT.Where(tk => tk.CustomerID == item.CustomerID).Select(x => x.CustomerName).ToList();
                 List<String> materialTINInvoice = materialDT.Where(tk => tk.CustomerID == item.CustomerID).Select(x => x.CustomerTIN).ToList();
@@ -836,7 +866,7 @@ namespace BSClient.Views
                     }
                 }
 
-                if (materialTKInvoice!= null)
+                if (materialTKInvoice != null)
                 {
                     if (materialTKInvoice.Count > 0)
                     {
@@ -858,7 +888,7 @@ namespace BSClient.Views
 
         private void ExportData()
         {
-          //  Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
+            //  Customer_GridControl.ExportExcel(ExcelTemplate.EXL000001);
         }
 
         private void S35_SaveExcel_simpleButton_Click(object sender, EventArgs e)
@@ -898,7 +928,7 @@ namespace BSClient.Views
                 }
             }
 
-            if(checkAction != 0)
+            if (checkAction != 0)
             {
                 MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
             }
@@ -909,11 +939,29 @@ namespace BSClient.Views
 
         private void S35_TKTkeDoanhThu_searchLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            MaterialTK TK = S35_TKTkeDoanhThu_searchLookUpEdit.GetSelectedDataRow().CastTo<MaterialTK>();
-            if(TK!= null)
+            if (IsFocusRowChanging)
             {
-                S35_Description_MemoEdit.Text = TK.Name.ToString();
-                lblNameDoanhThu.Text = TK.Name.ToString();
+                IsFocusRowChanging = false;
+                return;
+            }
+            try
+            {
+                MaterialTK TK = S35_TKTkeDoanhThu_searchLookUpEdit.GetSelectedDataRow().CastTo<MaterialTK>();
+                Invoice invoice = this.S35_Invoice_GridView.GetFocusedRow().CastTo<Invoice>();
+                string name = string.Empty;
+
+                if (TK != null)
+                {
+                    name = TK.Name;
+                }
+
+                invoice.Description = name;
+                S35_Description_MemoEdit.Text = name;
+                lblNameDoanhThu.Text = name;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
             }
         }
 
@@ -929,7 +977,7 @@ namespace BSClient.Views
                 decimal TotalAmount = Amount + VATAmount;
                 S35_Invoice_GridView.SetFocusedRowCellValue("TotalAmount", TotalAmount);
             }
-            else if(e.Column.FieldName == "VATAmount")
+            else if (e.Column.FieldName == "VATAmount")
             {
                 //set total Amount
                 decimal VATAmount = (decimal)S35_Invoice_GridView.GetFocusedRowCellValue("VATAmount");
@@ -937,6 +985,14 @@ namespace BSClient.Views
                 decimal TotalAmount = Amount + VATAmount;
                 S35_Invoice_GridView.SetFocusedRowCellValue("TotalAmount", TotalAmount);
             }
+        }
+
+        private void S35_Load(object sender, EventArgs e)
+        {
+            S35_NgayHD_dateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            S35_NgayHD_dateEdit.Properties.NullDate = DateTime.Now.Date;
+            //S35_NgayHD_dateEdit.Properties.NullText = DateTime.Now.Date.ToString();
+
         }
     }
 }

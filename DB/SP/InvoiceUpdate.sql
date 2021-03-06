@@ -20,7 +20,7 @@ alter proc InvoiceUpdate
     @InvoiceAccountDetailID varchar(50),
     @InvoiceVATAccountID varchar(50),
 	@MST varchar(50),
-    @CustomerName varchar(250)
+    @CustomerName nvarchar(250)
 as
 begin
 	if(exists(Select * from UserRoleCompany where UserID = @CreateUser and CompanyID = @CompanyID and RoleID = 'ROLE01'))
