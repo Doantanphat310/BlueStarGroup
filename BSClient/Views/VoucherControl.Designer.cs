@@ -162,6 +162,7 @@
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
+            this.Invoice_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -760,6 +761,7 @@
             // tabNavigationPageLKVAT
             // 
             this.tabNavigationPageLKVAT.Caption = "Liên kết VAT";
+            this.tabNavigationPageLKVAT.Controls.Add(this.Invoice_S35_Load_simpleButton);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceAddNew_checkBox);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceCancel_simpleButton);
             this.tabNavigationPageLKVAT.Controls.Add(this.InvoiceDelete_simpleButton);
@@ -1619,6 +1621,16 @@
             this.CompanyNameVoucher_labelControl.TabIndex = 6;
             this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
             // 
+            // Invoice_S35_Load_simpleButton
+            // 
+            this.Invoice_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.Invoice_S35_Load_simpleButton.Location = new System.Drawing.Point(1247, 191);
+            this.Invoice_S35_Load_simpleButton.Name = "Invoice_S35_Load_simpleButton";
+            this.Invoice_S35_Load_simpleButton.Size = new System.Drawing.Size(75, 23);
+            this.Invoice_S35_Load_simpleButton.TabIndex = 24;
+            this.Invoice_S35_Load_simpleButton.Text = "Tải S35";
+            this.Invoice_S35_Load_simpleButton.Click += new System.EventHandler(this.Invoice_S35_Load_simpleButton_Click);
+            // 
             // VoucherControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1839,5 +1851,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraEditors.SimpleButton Warehouse_S35_Load_simpleButton;
         private DevExpress.XtraEditors.SimpleButton WareHouse_S35_Save_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton Invoice_S35_Load_simpleButton;
     }
 }

@@ -146,7 +146,7 @@ namespace BSClient.Views
         {
             Init_S35_Invoice_GridView();
             Setup_S35_Invoice_GridView();
-            Load_S35_Invoice_GridView(DateTime.Now.Date, DateTime.Now.Date, CommonInfo.CompanyInfo.CompanyID);
+            Load_S35_Invoice_GridView(DateTime.Now.Date, DateTime.Now.Date, CommonInfo.CompanyInfo.CompanyID,2);
         }
         #region Init invoice S35
         private void Init_S35_Invoice_GridView()
@@ -169,10 +169,10 @@ namespace BSClient.Views
             // this.S35_Invoice_gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
         }
 
-        private void Load_S35_Invoice_GridView(DateTime startDate, DateTime endDate, string companyID)
+        private void Load_S35_Invoice_GridView(DateTime startDate, DateTime endDate, string companyID, int StatusLink)
         {
             InvoiceController controller = new InvoiceController();
-            S35InvoiceData = new BindingList<Invoice>(controller.GetInvoiceSelectS35(startDate, endDate, companyID));
+            S35InvoiceData = new BindingList<Invoice>(controller.GetInvoiceSelectS35(startDate, endDate, companyID, StatusLink));
             S35SourceFlat = false;
             S35InvoiceDataBindingSource.DataSource = S35InvoiceData;
             this.S35_Invoice_gridControl.DataSource = S35InvoiceDataBindingSource;
@@ -225,7 +225,7 @@ namespace BSClient.Views
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###");
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "##0.00");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
         }
 
         private void Setup_WareHouseDetail_GridView()
@@ -308,7 +308,7 @@ namespace BSClient.Views
 
         private void S35_FilterData_simpleButton_Click(object sender, EventArgs e)
         {
-            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID,2);
             //S35SourceFlat = false;
         }
 
@@ -393,7 +393,22 @@ namespace BSClient.Views
             }
             S35InvoiceDelete = new List<Invoice>();
             #endregion delete warehouseDetail
-            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID,2);
+            for (int Vi = 0; Vi < S35InvoiceData.Count; Vi++)
+            {
+                if (S35InvoiceData[Vi].InvoiceFormNo == GlobalVarient.S35invoiceChoice.InvoiceFormNo &&
+                    S35InvoiceData[Vi].FormNo == GlobalVarient.S35invoiceChoice.FormNo &&
+                    S35InvoiceData[Vi].SerialNo == GlobalVarient.S35invoiceChoice.SerialNo &&
+                    S35InvoiceData[Vi].InvoiceNo == GlobalVarient.S35invoiceChoice.InvoiceNo &&
+                    S35InvoiceData[Vi].CustomerID == GlobalVarient.S35invoiceChoice.CustomerID
+                    )
+                {
+                    S35_Invoice_GridView.MoveBy(Vi);
+                    GlobalVarient.S35invoiceChoice = S35InvoiceData[Vi];
+                    break;
+                }
+            }
+
         }
 
         private void S35_Invoice_GridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
@@ -445,7 +460,7 @@ namespace BSClient.Views
         private void S35_Update_Invoice_simpleButton_Click(object sender, EventArgs e)
         {
             this.S35InvoiceDelete = new List<Invoice>();
-            this.Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID);
+            this.Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime.Date, this.S35_EndDate_dateEdit.DateTime.Date, CommonInfo.CompanyInfo.CompanyID,2);
         }
 
         private void S35_Invoice_GridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -654,6 +669,13 @@ namespace BSClient.Views
                 }
             }
             S35_WarehouseDetail_gridView.DeleteSelectedRows();
+            decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
+            S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
+            
+            decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.Amount);
+            S35_Invoice_GridView.SetFocusedRowCellValue("Amount", VATAmounttotal);
+
+            UpdateInvoiceTemp();
         }
 
         private void S35_CancelWareHouseDetail_simpleButton_Click(object sender, EventArgs e)
@@ -747,6 +769,7 @@ namespace BSClient.Views
 
         private void S35_Invoice_GridView_RowClick(object sender, RowClickEventArgs e)
         {
+            GlobalVarient.S35invoiceChoice = S35_Invoice_GridView.GetRow(e.RowHandle).CastTo<Invoice>();
             Load_WareHouseDetail_GridView();
         }
 
@@ -933,7 +956,7 @@ namespace BSClient.Views
                 MessageBoxHelper.ShowInfoMessage(BSMessage.BSM000001);
             }
 
-            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID);
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID,2);
 
         }
 
@@ -993,6 +1016,27 @@ namespace BSClient.Views
             S35_NgayHD_dateEdit.Properties.NullDate = DateTime.Now.Date;
             //S35_NgayHD_dateEdit.Properties.NullText = DateTime.Now.Date.ToString();
 
+        }
+
+        private void S35_FilterDataNoLink_simpleButton_Click(object sender, EventArgs e)
+        {
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID, 0);
+            //S35SourceFlat = false;
+        }
+
+        private void S35_FilterDataLink_simpleButton_Click(object sender, EventArgs e)
+        {
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID, 1);
+        }
+
+        private void S35_FilterDataNoLinkWarehouse_simpleButton_Click(object sender, EventArgs e)
+        {
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID, 10);
+        }
+
+        private void S35_FilterDataLinkWarehouse_simpleButton_Click(object sender, EventArgs e)
+        {
+            Load_S35_Invoice_GridView(this.S35_StartDate_dateEdit.DateTime, this.S35_EndDate_dateEdit.DateTime, CommonInfo.CompanyInfo.CompanyID, 11);
         }
     }
 }

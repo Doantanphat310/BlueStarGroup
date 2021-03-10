@@ -1,5 +1,6 @@
 alter proc InvoiceUpdate
 	@InvoiceID varchar(50),
+	@VouchersID varchar(50),
 	@CustomerID varchar(50) ,
 	@Description nvarchar(max) ,
 	@MaSo varchar(50) ,
@@ -28,6 +29,7 @@ begin
 			update Invoice
 		set 
 			CustomerID=@CustomerID,
+			VouchersID=@VouchersID,
 			Description=@Description,
 			InvoiceFormNo=@MaSo,
 			FormNo=@MauSo,
@@ -55,6 +57,7 @@ begin
 			update Invoice
 			set 
 				CustomerID=@CustomerID,
+				VouchersID=@VouchersID,
 				Description=@Description,
 				InvoiceFormNo=@MaSo,
 				FormNo=@MauSo,

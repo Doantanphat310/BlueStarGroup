@@ -83,6 +83,10 @@
             this.S35_Add_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_Delete_WareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.S35_CancelWareHouseDetail_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_FilterDataNoLink_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_FilterDataLink_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_FilterDataNoLinkWarehouse_simpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.S35_FilterDataLinkWarehouse_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.S35_Description_MemoEdit.Properties)).BeginInit();
@@ -160,9 +164,8 @@
             this.lblNameDoanhThu.Appearance.Options.UseFont = true;
             this.lblNameDoanhThu.Location = new System.Drawing.Point(254, 52);
             this.lblNameDoanhThu.Name = "lblNameDoanhThu";
-            this.lblNameDoanhThu.Size = new System.Drawing.Size(126, 19);
+            this.lblNameDoanhThu.Size = new System.Drawing.Size(0, 19);
             this.lblNameDoanhThu.TabIndex = 23;
-            this.lblNameDoanhThu.Text = "ssssssssssssssssss";
             // 
             // S35_Description_MemoEdit
             // 
@@ -511,7 +514,7 @@
             // 
             // S35_SerialNoSearch_textEdit
             // 
-            this.S35_SerialNoSearch_textEdit.Location = new System.Drawing.Point(580, 6);
+            this.S35_SerialNoSearch_textEdit.Location = new System.Drawing.Point(5, 34);
             this.S35_SerialNoSearch_textEdit.Name = "S35_SerialNoSearch_textEdit";
             this.S35_SerialNoSearch_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_SerialNoSearch_textEdit.Properties.Appearance.Options.UseFont = true;
@@ -520,7 +523,7 @@
             // 
             // S35_InvoiceNoSearch_textEdit
             // 
-            this.S35_InvoiceNoSearch_textEdit.Location = new System.Drawing.Point(670, 6);
+            this.S35_InvoiceNoSearch_textEdit.Location = new System.Drawing.Point(95, 34);
             this.S35_InvoiceNoSearch_textEdit.Name = "S35_InvoiceNoSearch_textEdit";
             this.S35_InvoiceNoSearch_textEdit.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_InvoiceNoSearch_textEdit.Properties.Appearance.Options.UseFont = true;
@@ -529,6 +532,10 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.S35_FilterDataLinkWarehouse_simpleButton);
+            this.panelControl2.Controls.Add(this.S35_FilterDataNoLinkWarehouse_simpleButton);
+            this.panelControl2.Controls.Add(this.S35_FilterDataLink_simpleButton);
+            this.panelControl2.Controls.Add(this.S35_FilterDataNoLink_simpleButton);
             this.panelControl2.Controls.Add(this.S35_Invoice_gridControl);
             this.panelControl2.Controls.Add(this.simpleButton10);
             this.panelControl2.Controls.Add(this.simpleButton9);
@@ -573,7 +580,7 @@
             this.simpleButton10.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton10.Appearance.Options.UseFont = true;
             this.simpleButton10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
-            this.simpleButton10.Location = new System.Drawing.Point(725, 33);
+            this.simpleButton10.Location = new System.Drawing.Point(383, 32);
             this.simpleButton10.Name = "simpleButton10";
             this.simpleButton10.Size = new System.Drawing.Size(64, 23);
             this.simpleButton10.TabIndex = 31;
@@ -584,7 +591,7 @@
             this.simpleButton9.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton9.Appearance.Options.UseFont = true;
             this.simpleButton9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.ImageOptions.Image")));
-            this.simpleButton9.Location = new System.Drawing.Point(655, 33);
+            this.simpleButton9.Location = new System.Drawing.Point(313, 32);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(64, 23);
             this.simpleButton9.TabIndex = 30;
@@ -595,7 +602,7 @@
             this.simpleButton8.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton8.Appearance.Options.UseFont = true;
             this.simpleButton8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.ImageOptions.Image")));
-            this.simpleButton8.Location = new System.Drawing.Point(580, 34);
+            this.simpleButton8.Location = new System.Drawing.Point(238, 33);
             this.simpleButton8.Name = "simpleButton8";
             this.simpleButton8.Size = new System.Drawing.Size(64, 23);
             this.simpleButton8.TabIndex = 29;
@@ -606,7 +613,7 @@
             this.S35_SearchHD_simpleButton.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.S35_SearchHD_simpleButton.Appearance.Options.UseFont = true;
             this.S35_SearchHD_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_SearchHD_simpleButton.ImageOptions.Image")));
-            this.S35_SearchHD_simpleButton.Location = new System.Drawing.Point(760, 5);
+            this.S35_SearchHD_simpleButton.Location = new System.Drawing.Point(185, 33);
             this.S35_SearchHD_simpleButton.Name = "S35_SearchHD_simpleButton";
             this.S35_SearchHD_simpleButton.Size = new System.Drawing.Size(29, 23);
             this.S35_SearchHD_simpleButton.TabIndex = 28;
@@ -618,9 +625,9 @@
             this.S35_FilterData_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("S35_FilterData_simpleButton.ImageOptions.Image")));
             this.S35_FilterData_simpleButton.Location = new System.Drawing.Point(351, 5);
             this.S35_FilterData_simpleButton.Name = "S35_FilterData_simpleButton";
-            this.S35_FilterData_simpleButton.Size = new System.Drawing.Size(92, 23);
+            this.S35_FilterData_simpleButton.Size = new System.Drawing.Size(131, 23);
             this.S35_FilterData_simpleButton.TabIndex = 25;
-            this.S35_FilterData_simpleButton.Text = "Tải dữ liệu";
+            this.S35_FilterData_simpleButton.Text = "Tải dữ liệu tất cả";
             this.S35_FilterData_simpleButton.Click += new System.EventHandler(this.S35_FilterData_simpleButton_Click);
             // 
             // S35_EndDate_dateEdit
@@ -738,6 +745,46 @@
             this.S35_CancelWareHouseDetail_simpleButton.Text = "Hủy";
             this.S35_CancelWareHouseDetail_simpleButton.Click += new System.EventHandler(this.S35_CancelWareHouseDetail_simpleButton_Click);
             // 
+            // S35_FilterDataNoLink_simpleButton
+            // 
+            this.S35_FilterDataNoLink_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image1")));
+            this.S35_FilterDataNoLink_simpleButton.Location = new System.Drawing.Point(488, 4);
+            this.S35_FilterDataNoLink_simpleButton.Name = "S35_FilterDataNoLink_simpleButton";
+            this.S35_FilterDataNoLink_simpleButton.Size = new System.Drawing.Size(137, 23);
+            this.S35_FilterDataNoLink_simpleButton.TabIndex = 33;
+            this.S35_FilterDataNoLink_simpleButton.Text = "Dữ liệu chưa LK VAT";
+            this.S35_FilterDataNoLink_simpleButton.Click += new System.EventHandler(this.S35_FilterDataNoLink_simpleButton_Click);
+            // 
+            // S35_FilterDataLink_simpleButton
+            // 
+            this.S35_FilterDataLink_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image1")));
+            this.S35_FilterDataLink_simpleButton.Location = new System.Drawing.Point(631, 4);
+            this.S35_FilterDataLink_simpleButton.Name = "S35_FilterDataLink_simpleButton";
+            this.S35_FilterDataLink_simpleButton.Size = new System.Drawing.Size(137, 23);
+            this.S35_FilterDataLink_simpleButton.TabIndex = 34;
+            this.S35_FilterDataLink_simpleButton.Text = "Dữ liệu đã LK VAT";
+            this.S35_FilterDataLink_simpleButton.Click += new System.EventHandler(this.S35_FilterDataLink_simpleButton_Click);
+            // 
+            // S35_FilterDataNoLinkWarehouse_simpleButton
+            // 
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.Location = new System.Drawing.Point(488, 34);
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.Name = "S35_FilterDataNoLinkWarehouse_simpleButton";
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.Size = new System.Drawing.Size(137, 23);
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.TabIndex = 35;
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.Text = "Dữ liệu chưa LK Kho";
+            this.S35_FilterDataNoLinkWarehouse_simpleButton.Click += new System.EventHandler(this.S35_FilterDataNoLinkWarehouse_simpleButton_Click);
+            // 
+            // S35_FilterDataLinkWarehouse_simpleButton
+            // 
+            this.S35_FilterDataLinkWarehouse_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.S35_FilterDataLinkWarehouse_simpleButton.Location = new System.Drawing.Point(633, 33);
+            this.S35_FilterDataLinkWarehouse_simpleButton.Name = "S35_FilterDataLinkWarehouse_simpleButton";
+            this.S35_FilterDataLinkWarehouse_simpleButton.Size = new System.Drawing.Size(135, 23);
+            this.S35_FilterDataLinkWarehouse_simpleButton.TabIndex = 36;
+            this.S35_FilterDataLinkWarehouse_simpleButton.Text = "Dữ liệu đã LK Kho";
+            this.S35_FilterDataLinkWarehouse_simpleButton.Click += new System.EventHandler(this.S35_FilterDataLinkWarehouse_simpleButton_Click);
+            // 
             // S35
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -844,5 +891,9 @@
         private DevExpress.XtraEditors.MemoEdit S35_CustomerName_MemoEdit;
         private DevExpress.XtraEditors.SimpleButton S35_SelectData_simpleButton;
         private DevExpress.XtraEditors.LabelControl lblNameDoanhThu;
+        private DevExpress.XtraEditors.SimpleButton S35_FilterDataLink_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton S35_FilterDataNoLink_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton S35_FilterDataLinkWarehouse_simpleButton;
+        private DevExpress.XtraEditors.SimpleButton S35_FilterDataNoLinkWarehouse_simpleButton;
     }
 }

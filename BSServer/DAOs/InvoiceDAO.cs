@@ -36,13 +36,14 @@ namespace BSServer.DAOs
           ).ToList();
         }
 
-        public List<Invoice> GetInvoiceSelectS35(DateTime startDate, DateTime endDate, string companyID)
+        public List<Invoice> GetInvoiceSelectS35(DateTime startDate, DateTime endDate, string companyID, int StatusLink)
         {
             return this.Context.Database.SqlQuery<Invoice>(
-          "InvoiceSelectS35 @StartDate, @EndDate, @CompanyID",
+          "InvoiceSelectS35 @StartDate, @EndDate, @CompanyID, @StatusLink",
           new SqlParameter("@StartDate", startDate),
           new SqlParameter("@EndDate", endDate),
-          new SqlParameter("@CompanyID", companyID)
+          new SqlParameter("@CompanyID", companyID),
+          new SqlParameter("@StatusLink", StatusLink)
           ).ToList();
         }
 
@@ -122,6 +123,7 @@ namespace BSServer.DAOs
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
                     new SqlParameter("@InvoiceID", invoice.InvoiceID),
+                    new SqlParameter("@VouchersID", invoice.VouchersID),
                     new SqlParameter("@CustomerID", invoice.CustomerID),
                     new SqlParameter("@Description", invoice.Description),
                     new SqlParameter("@MaSo",invoice.InvoiceFormNo?? (object)DBNull.Value),

@@ -13,6 +13,7 @@ namespace BSClient
         public static int VoucherDetailID = 0;
         public static string S35_WareHouseID = "";
         public static List<Invoice> S35DataSelected = new List<Invoice>();
+        public static Invoice S35invoiceChoice = new Invoice();
 
         public static Voucher voucherChoice = new Voucher();
         public static List<VoucherDetail> voucherDetailChoice = new List<VoucherDetail>();
