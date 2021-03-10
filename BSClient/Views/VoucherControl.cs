@@ -1689,7 +1689,7 @@ namespace BSClient
             }
             #endregion set invoice
             int checkAction = 0;
-            List<Invoice> saveData = this.InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+            List<Invoice> saveData = this.InvoiceData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
             if (saveData?.Count > 0)
             {
                 InvoiceController controller = new InvoiceController();
@@ -1742,6 +1742,7 @@ namespace BSClient
                         //Định khoản có chứa dòng thuộc thuế và có chứa 3 dòng
                         if (VoucherDetailData.Count == 3 && count > 0)
                         {
+                            UpdateVoucherDetailData();
                             SaveVoucherDetail();
                             break;
                         }
@@ -1864,7 +1865,7 @@ namespace BSClient
                 #endregion set VoucherDetailID
 
                 int checkActionInvoiceVoucherDetail = 0;
-                List<VoucherDetail> saveDataInvoiceVoucherDetail = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update || o.Status == ModifyMode.Delete).ToList();
+                List<VoucherDetail> saveDataInvoiceVoucherDetail = this.VoucherDetailData.Where(o => o.Status == ModifyMode.Insert || o.Status == ModifyMode.Update).ToList();
                 if (saveDataInvoiceVoucherDetail?.Count > 0)
                 {
                     VoucherDetailController controller = new VoucherDetailController();
@@ -1901,6 +1902,18 @@ namespace BSClient
                 #endregion delete VoucherDetail
 
                 VoucherDetail_gridView.RefreshData();
+                LoadGridView(dateEditNgayNhapChungTu.DateTime);
+                Voucher_gridView.RefreshData();
+                // Voucher_gridView.move
+                for (int Vi = 0; Vi < VoucherData.Count; Vi++)
+                {
+                    if (VoucherData[Vi].VouchersID == GlobalVarient.voucherChoice.VouchersID)
+                    {
+                        Voucher_gridView.MoveBy(Vi);
+                        break;
+                    }
+                }
+               
             }
             else if (dialogResult == DialogResult.No)
             {

@@ -80,6 +80,7 @@
             this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
             this.VoucherS35_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageLKVAT = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.Invoice_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceAddNew_checkBox = new System.Windows.Forms.CheckBox();
             this.InvoiceCancel_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.InvoiceDelete_simpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -162,7 +163,6 @@
             this.WareHouseDetail_gridControl = new DevExpress.XtraGrid.GridControl();
             this.WareHouseDetail_gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CompanyNameVoucher_labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.Invoice_S35_Load_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneVouchers)).BeginInit();
@@ -774,6 +774,16 @@
             this.tabNavigationPageLKVAT.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPageLKVAT.ImageOptions.Image")));
             this.tabNavigationPageLKVAT.Name = "tabNavigationPageLKVAT";
             this.tabNavigationPageLKVAT.Size = new System.Drawing.Size(1326, 663);
+            // 
+            // Invoice_S35_Load_simpleButton
+            // 
+            this.Invoice_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Invoice_S35_Load_simpleButton.ImageOptions.Image")));
+            this.Invoice_S35_Load_simpleButton.Location = new System.Drawing.Point(1247, 191);
+            this.Invoice_S35_Load_simpleButton.Name = "Invoice_S35_Load_simpleButton";
+            this.Invoice_S35_Load_simpleButton.Size = new System.Drawing.Size(75, 23);
+            this.Invoice_S35_Load_simpleButton.TabIndex = 24;
+            this.Invoice_S35_Load_simpleButton.Text = "Tải S35";
+            this.Invoice_S35_Load_simpleButton.Click += new System.EventHandler(this.Invoice_S35_Load_simpleButton_Click);
             // 
             // InvoiceAddNew_checkBox
             // 
@@ -1620,16 +1630,6 @@
             this.CompanyNameVoucher_labelControl.Size = new System.Drawing.Size(261, 23);
             this.CompanyNameVoucher_labelControl.TabIndex = 6;
             this.CompanyNameVoucher_labelControl.Text = "Tên công ty đang thực hiện";
-            // 
-            // Invoice_S35_Load_simpleButton
-            // 
-            this.Invoice_S35_Load_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.Invoice_S35_Load_simpleButton.Location = new System.Drawing.Point(1247, 191);
-            this.Invoice_S35_Load_simpleButton.Name = "Invoice_S35_Load_simpleButton";
-            this.Invoice_S35_Load_simpleButton.Size = new System.Drawing.Size(75, 23);
-            this.Invoice_S35_Load_simpleButton.TabIndex = 24;
-            this.Invoice_S35_Load_simpleButton.Text = "Tải S35";
-            this.Invoice_S35_Load_simpleButton.Click += new System.EventHandler(this.Invoice_S35_Load_simpleButton_Click);
             // 
             // VoucherControl
             // 
