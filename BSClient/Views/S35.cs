@@ -222,11 +222,13 @@ namespace BSClient.Views
             this.S35_WarehouseDetail_gridView.AddSearchLookupEditColumn("ItemID", "Sản phẩm", 80, items, "ItemID", "ItemSName", columns: columns, isAllowEdit: true, editValueChanged: WareHouseDetail_EditValueChanged);
             this.S35_WarehouseDetail_gridView.AddColumn("ItemUnitID", "ĐVT", 35, true);
             this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Quantity", "Số lượng", 60, true, "###,###,###,###,##0.00", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Price", "Đơn giá", 120, true, "###,###,###,###,###");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("Amount", "Doanh Thu", 110, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VAT", "%GTGT", 60, true, "##0.00");
-            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("VATAmount", "VAT", 120, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
-        }
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("S35Price", "Đơn giá", 120, true, "###,###,###,###,###");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("S35Amount", "Doanh Thu", 110, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("S35VAT", "%GTGT", 60, true, "##0.00");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("S35VATAmount", "VAT", 120, true, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            this.S35_WarehouseDetail_gridView.AddSpinEditColumn("S35TotalAmount", "Doanh thu + Tiền thuế", 120, false, "###,###,###,###,###", DevExpress.Data.SummaryItemType.Sum, "{0:###,###,###,###,###.##}");
+            
+    }
 
         private void Setup_WareHouseDetail_GridView()
         {
@@ -669,10 +671,10 @@ namespace BSClient.Views
                 }
             }
             S35_WarehouseDetail_gridView.DeleteSelectedRows();
-            decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
+            decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.S35VATAmount);
             S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
             
-            decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.Amount);
+            decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.S35Amount);
             S35_Invoice_GridView.SetFocusedRowCellValue("Amount", VATAmounttotal);
 
             UpdateInvoiceTemp();
@@ -685,20 +687,27 @@ namespace BSClient.Views
 
         private void S35_WarehouseDetail_gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            /*
+                public decimal ?S35Price { get; set; }
+                public decimal ?S35Amount { get; set; }
+                public decimal ?S35VATAmount { get; set; }
+                public decimal ?S35VAT { get; set; }
+             */
             GridView view = sender as GridView;
             if (view == null) return;
-            if (e.Column.FieldName == "Amount")
+            if (e.Column.FieldName == "S35Amount")
             {
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity") == null) return;
                 decimal QuantityFilter = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
 
                 if (QuantityFilter > 0)
                 {
-
-                    Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount") / QuantityFilter;
-
-                    if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price"))
+                    if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") == null) return;
+                    Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") / QuantityFilter;
+                    if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price") == null) return;
+                    if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price"))
                     {
-                        this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Price", Cellprice);
+                        this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("S35Price", Cellprice);
                     }
                 }
                 else
@@ -709,46 +718,60 @@ namespace BSClient.Views
 
                 // decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
                 // S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35VAT") == null) return;
+                Decimal VATAmountEnter = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35VAT") / 100;
+                S35_WarehouseDetail_gridView.SetFocusedRowCellValue("S35VATAmount", VATAmountEnter);
 
-                Decimal VATAmountEnter = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("VAT") / 100;
-                S35_WarehouseDetail_gridView.SetFocusedRowCellValue("VATAmount", VATAmountEnter);
-
-                decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.Amount);
+                decimal Amounttotal = (decimal)WarehouseDetailData.Sum(x => x.S35Amount);
                 S35_Invoice_GridView.SetFocusedRowCellValue("Amount", Amounttotal);
                 UpdateInvoiceTemp();
 
             }
-            else if (e.Column.FieldName == "Price")
+            else if (e.Column.FieldName == "S35Price")
             {
-                Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
-                if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price") != null && this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity") != null)
                 {
-                    this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
+                    Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                    if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") != null)
+                    {
+                        if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount"))
+                        {
+                            this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("S35Amount", Cellprice);
+                        }
+                    }
                 }
             }
             else if (e.Column.FieldName == "Quantity")
             {
-                Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
-                if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount"))
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price")!=null && this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity")!= null)
                 {
-                    this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
-                }
+                    Decimal Cellprice = (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Price") * (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                    if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") != null)
+                    {
+                        if (Cellprice != (Decimal)this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount"))
+                        {
+                            this.S35_WarehouseDetail_gridView.SetFocusedRowCellValue("S35Amount", Cellprice);
+                        }
+                    }
+                }                
             }
-            else if (e.Column.FieldName == "VAT")
+            else if (e.Column.FieldName == "S35VAT")
             {
-                decimal Amount = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("Amount");
-                decimal VAT = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("VAT");
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount") == null) return;
+                if (this.S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35VAT") == null) return;
+                decimal Amount = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35Amount");
+                decimal VAT = (Decimal)S35_WarehouseDetail_gridView.GetFocusedRowCellValue("S35VAT");
                 decimal VATAmount = VAT * Amount / 100;
-                S35_WarehouseDetail_gridView.SetFocusedRowCellValue("VATAmount", VATAmount);
+                S35_WarehouseDetail_gridView.SetFocusedRowCellValue("S35VATAmount", VATAmount);
 
-                decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
+                decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.S35VATAmount);
                 S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
                 UpdateInvoiceTemp();
 
             }
-            else if (e.Column.FieldName == "VATAmount")
+            else if (e.Column.FieldName == "S35VATAmount")
             {
-                decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.VATAmount);
+                decimal VATAmounttotal = (decimal)WarehouseDetailData.Sum(x => x.S35VATAmount);
                 S35_Invoice_GridView.SetFocusedRowCellValue("VATAmount", VATAmounttotal);
                 UpdateInvoiceTemp();
             }
@@ -816,8 +839,7 @@ namespace BSClient.Views
                  .Select(x => new Invoice()
                  {
                      CustomerID = x.First().CustomerID,
-                     InvoiceFormNo = x.First().InvoiceFormNo
-                 ,
+                     InvoiceFormNo = x.First().InvoiceFormNo,
                      FormNo = x.First().FormNo,
                      SerialNo = x.First().SerialNo,
                      InvoiceNo = x.First().InvoiceNo,
@@ -839,12 +861,12 @@ namespace BSClient.Views
             foreach (Invoice invoiceDetail in invoices)
             {
                 WareHouseDetail wareHouseDetailInvoice = new WareHouseDetail();
-                wareHouseDetailInvoice.Amount = invoiceDetail.Amount;
+                wareHouseDetailInvoice.S35Amount = invoiceDetail.Amount;
                 wareHouseDetailInvoice.ItemID = invoiceDetail.ItemID;
                 wareHouseDetailInvoice.Quantity = invoiceDetail.Quantity;
-                wareHouseDetailInvoice.Price = invoiceDetail.Price;
-                wareHouseDetailInvoice.VAT = invoiceDetail.VAT;
-                wareHouseDetailInvoice.VATAmount = invoiceDetail.VATAmount;
+                wareHouseDetailInvoice.S35Price = invoiceDetail.Price;
+                wareHouseDetailInvoice.S35VAT = invoiceDetail.VAT;
+                wareHouseDetailInvoice.S35VATAmount = invoiceDetail.VATAmount;
                 wareHouseDetailInvoice.InvoiceNo = invoiceDetail.InvoiceNo;
                 //dvt
                 List<String> materialDVTInvoice = items.Where(tk => tk.ItemID == invoiceDetail.ItemID).Select(x => x.ItemUnitID).ToList();

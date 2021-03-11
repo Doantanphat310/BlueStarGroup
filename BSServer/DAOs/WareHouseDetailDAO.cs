@@ -69,8 +69,14 @@ namespace BSServer.DAOs
                     new SqlParameter("@VAT", wareHouseDetail.VAT),
                     new SqlParameter("@VATAmount", wareHouseDetail.VATAmount),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
-                    new SqlParameter("@CompanyID", wareHouseDetail.CompanyID)
-                };
+                    new SqlParameter("@CompanyID", wareHouseDetail.CompanyID),
+                    new SqlParameter("@S35Price", wareHouseDetail.S35Price),
+                    new SqlParameter("@S35Amount", wareHouseDetail.S35Amount),
+                    new SqlParameter("@S35VATAmount", wareHouseDetail.S35VATAmount),
+                    new SqlParameter("@S35VAT", wareHouseDetail.S35VAT),
+                    new SqlParameter("@DonGiaBinhQuan", wareHouseDetail.DonGiaBinhQuan),
+                    new SqlParameter("@SoLuongTon", wareHouseDetail.SoLuongTon)
+    };
                 this.Context.ExecuteDataFromProcedure("WareHouseDetailInsert", sqlParameters);
                 return true;
             }
@@ -121,6 +127,12 @@ namespace BSServer.DAOs
                     new SqlParameter("@VATAmount", wareHouseDetail.VATAmount),
                     new SqlParameter("@CreateUser", UserInfo.UserID),
                     new SqlParameter("@CompanyID", wareHouseDetail.CompanyID),
+                    new SqlParameter("@S35Price", wareHouseDetail.S35Price),
+                    new SqlParameter("@S35Amount", wareHouseDetail.S35Amount),
+                    new SqlParameter("@S35VATAmount", wareHouseDetail.S35VATAmount),
+                    new SqlParameter("@S35VAT", wareHouseDetail.S35VAT),
+                    new SqlParameter("@DonGiaBinhQuan", wareHouseDetail.DonGiaBinhQuan),
+                    new SqlParameter("@SoLuongTon", wareHouseDetail.SoLuongTon)
                 };
 
                 this.Context.ExecuteDataFromProcedure("WareHouseDetailUpdate", sqlParameters);

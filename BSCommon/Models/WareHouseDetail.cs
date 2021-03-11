@@ -40,5 +40,19 @@ namespace BSCommon.Models
         public string InvoiceNo { get; set; }
 
         public ModifyMode Status { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?S35Price { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?S35Amount { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?S35VATAmount { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?S35VAT { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?DonGiaBinhQuan { get; set; }
+        [System.ComponentModel.DefaultValue(0)]
+        public decimal ?SoLuongTon { get; set; }
+        public decimal? S35TotalAmount { get { return this.S35Amount + this.S35VATAmount; } }
+
     }
 }
