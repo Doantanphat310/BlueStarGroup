@@ -114,6 +114,7 @@
     <Compile Include="Models\Depreciation.cs" />
     <Compile Include="Models\DepreciationDetail.cs" />
     <Compile Include="Models\ColumnInfo.cs" />
+    <Compile Include="Models\GetDonGiaBQ.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\AccountGroup.cs" />
     <Compile Include="Models\AccountDetail.cs" />

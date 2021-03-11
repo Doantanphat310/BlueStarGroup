@@ -2940,6 +2940,7 @@ namespace BSClient
             else
             {
                 GlobalVarient.warehouseDetail = controller.GetWareHouseDetailSelectWahouseID(GlobalVarient.warehouseChoice.WarehouseID, CommonInfo.CompanyInfo.CompanyID);
+               
             }
 
             WarehouseDetailData = new BindingList<WareHouseDetail>(GlobalVarient.warehouseDetail);
@@ -4322,8 +4323,53 @@ namespace BSClient
                         MessageBoxHelper.ShowErrorMessage("Cập nhật dữ liệu S35 vào chứng từ thất bại!");
                         checkerror = 1;
                     }
+                    else
+                    {
+                        #region Chuẩn bị dữ liệu để cập nhật cho warehouseDetail
+                        //nếu là danh phiếu xuất kho
+                        //WareHouse wareHouseS35 = WareHouse_gridView.GetFocusedDataRow().CastTo<WareHouse>();
+                        if (wareHouseS35.Type == "X")
+                        {
+                            WareHouseDetailController controllerDetail = new WareHouseDetailController();
+                            List<WareHouseDetail> saveData = controllerDetail.GetWareHouseDetailSelectWahouseID(wareHouseS35.WarehouseID, CommonInfo.CompanyInfo.CompanyID);
+
+                            foreach (WareHouseDetail wareHouseDetailS35 in saveData)
+                            {
+                                //Check đơn giá bình quân, và số lượng tồn của sản phẩm theo cty theo ngày đầu năm tới ngày xuất kho.
+                                MaterialNVController materialNVControllerBQ = new MaterialNVController();
+                                List<GetDonGiaBQ> getDonGiaBQ = new List<GetDonGiaBQ>();
+                                int year = DateTime.Now.Year;
+                                DateTime firstDay = new DateTime(year, 1, 1);
+                                getDonGiaBQ = materialNVControllerBQ.GetMaterialDonGiaBQ(CommonInfo.CompanyInfo.CompanyID, wareHouseDetailS35.ItemID, firstDay, GlobalVarient.voucherChoice.VoucherDate);
+                                if (getDonGiaBQ != null)
+                                {
+                                    if (getDonGiaBQ.Count > 0)
+                                    {
+                                        wareHouseDetailS35.Price = (decimal)getDonGiaBQ[0].DonGiaBQ;
+                                        wareHouseDetailS35.Amount = (decimal)getDonGiaBQ[0].DonGiaBQ * wareHouseDetailS35.Quantity;
+                                        wareHouseDetailS35.SoLuongTon = (decimal)getDonGiaBQ[0].SLTon - wareHouseDetailS35.Quantity;
+                                    }
+                                    else
+                                    {
+                                        wareHouseDetailS35.Price = 0;
+                                        wareHouseDetailS35.Amount = 0;
+                                        wareHouseDetailS35.SoLuongTon = 0;
+                                    }
+                                }
+                                wareHouseDetailS35.Status = ModifyMode.Update;
+                            }
+                            WareHouseDetailController controllerDetailS35 = new WareHouseDetailController();
+                            if (!controllerDetailS35.SaveWareHouseDetail(saveData))
+                            {
+                                //Cập nhật thất bại
+                                MessageBoxHelper.ShowErrorMessage("Cập nhật dữ liệu chi tiết kho S35 vào chứng từ thất bại!");
+                                checkerror = 1;
+                            }
+                        }
+                        #endregion Chuẩn bị dữ liệu để cập nhật cho warehouseDetail
+                    }
                 }
-                    //}
+                //}
                 //}
             }
            if(checkerror == 0)

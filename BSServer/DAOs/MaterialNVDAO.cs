@@ -67,6 +67,17 @@ namespace BSServer.DAOs
                 .SqlQuery<MaterialDT>("SPSelectMaterialDoiTuong @CompanyID", param)
                 .ToList();
         }
+        
+        public List<GetDonGiaBQ> GetMaterialDonGiaBQ(string companyID, string ItemID, DateTime FromeDate, DateTime ToDate)
+        {
+            return this.Context.Database.SqlQuery<GetDonGiaBQ>(
+                   "SP_GetDonGiaBQ @CompanyID, @ItemID, @FromDate, @ToDate",
+                   new SqlParameter("@CompanyID", companyID),
+                   new SqlParameter("@ItemID", ItemID),
+                   new SqlParameter("@FromDate", FromeDate),
+                   new SqlParameter("@ToDate", ToDate)
+                   ).ToList();
+        }
 
 
         public List<MaterialCustomerInvoice> GetMaterialCustomerInvoice(string customerID)

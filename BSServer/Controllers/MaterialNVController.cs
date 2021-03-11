@@ -83,6 +83,11 @@ namespace BSServer.Controllers
         {
             return this.MaterialNVDAO.GetMaterialTonKho(VoucherDate, ItemID, CompanyID);
         }
+        
+        public List<GetDonGiaBQ> GetMaterialDonGiaBQ(string companyID, string ItemID, DateTime FromeDate, DateTime ToDate)
+        {
+            return this.MaterialNVDAO.GetMaterialDonGiaBQ( companyID,  ItemID,  FromeDate,  ToDate);
+        }
 
         public void Dispose()
         {
