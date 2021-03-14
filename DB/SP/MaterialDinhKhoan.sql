@@ -50,6 +50,19 @@ Values('V', N'Vào')
 select * from @MaterialInvoiceType
 end
 
+Create proc SPSelectMaterialInvoiceTypeToKhai
+as
+begin
+	Declare @MaterialInvoiceTypeToKhai table (InvoiceTypeSummary varchar(1),	InvoiceTypeName Nvarchar(50))
+INSERT INTO @MaterialInvoiceTypeToKhai (InvoiceTypeSummary,InvoiceTypeName)
+Values('A', N'Tất Cả')
+INSERT INTO @MaterialInvoiceTypeToKhai (InvoiceTypeSummary,InvoiceTypeName)
+Values('R', N'Ra')
+INSERT INTO @MaterialInvoiceTypeToKhai (InvoiceTypeSummary,InvoiceTypeName)
+Values('V', N'Vào')
+select * from @MaterialInvoiceTypeToKhai
+end
+
 alter proc SPSelectMaterialWareHouseType
 as
 begin

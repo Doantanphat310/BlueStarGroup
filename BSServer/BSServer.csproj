@@ -88,6 +88,7 @@
     <Compile Include="Controllers\KichBanKetChuyentableController.cs" />
     <Compile Include="Controllers\LockDBCompanyController.cs" />
     <Compile Include="Controllers\MaterialNVController.cs" />
+    <Compile Include="Controllers\ToKhaiController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Controllers\VoucherDetailController.cs" />
     <Compile Include="Controllers\VoucherDetailDinhKhoanController.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="DAOs\LockDBCompanyDAO.cs" />
     <Compile Include="DAOs\MaterialNVDAO.cs" />
     <Compile Include="DAOs\ItemsDAO.cs" />
+    <Compile Include="DAOs\ToKhaiDAO.cs" />
     <Compile Include="DAOs\VoucherDAO.cs" />
     <Compile Include="DAOs\VoucherDetailDAO.cs" />
     <Compile Include="DAOs\VoucherDetailDinhKhoanDAO.cs" />

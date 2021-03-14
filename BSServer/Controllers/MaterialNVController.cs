@@ -41,6 +41,11 @@ namespace BSServer.Controllers
             return this.MaterialNVDAO.GetMaterialInvoiceType();
         }
 
+        public List<MaterialInvoiceType> GetMaterialInvoiceTypeToKhai()
+        {
+            return this.MaterialNVDAO.GetMaterialInvoiceTypeToKhai();
+        }
+
         public List<MaterialWareHouseType> GetMaterialWareHouseType()
         {
             return this.MaterialNVDAO.GetMaterialWareHouseType();

@@ -45,6 +45,13 @@ namespace BSServer.DAOs
                 .ToList();
         }
 
+        public List<MaterialInvoiceType> GetMaterialInvoiceTypeToKhai()
+        {
+            return this.Context.Database
+                .SqlQuery<MaterialInvoiceType>("SPSelectMaterialInvoiceTypeToKhai")
+                .ToList();
+        }
+
         public List<MaterialWareHouseType> GetMaterialWareHouseType()
         {
             return this.Context.Database

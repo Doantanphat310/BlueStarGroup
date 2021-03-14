@@ -74,7 +74,7 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.VoucherKetChuyen_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.Voucher_ToKhai_simpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.CDPSTK_Button = new DevExpress.XtraEditors.SimpleButton();
@@ -656,7 +656,7 @@
             this.panelControl2.Controls.Add(this.simpleButton6);
             this.panelControl2.Controls.Add(this.VoucherKetChuyen_simpleButton);
             this.panelControl2.Controls.Add(this.simpleButton16);
-            this.panelControl2.Controls.Add(this.simpleButton10);
+            this.panelControl2.Controls.Add(this.Voucher_ToKhai_simpleButton);
             this.panelControl2.Controls.Add(this.simpleButton7);
             this.panelControl2.Controls.Add(this.simpleButton11);
             this.panelControl2.Controls.Add(this.CDPSTK_Button);
@@ -713,14 +713,15 @@
             this.simpleButton16.TabIndex = 30;
             this.simpleButton16.Text = "Sổ S21";
             // 
-            // simpleButton10
+            // Voucher_ToKhai_simpleButton
             // 
-            this.simpleButton10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
-            this.simpleButton10.Location = new System.Drawing.Point(353, 5);
-            this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(98, 37);
-            this.simpleButton10.TabIndex = 28;
-            this.simpleButton10.Text = "Tờ khai";
+            this.Voucher_ToKhai_simpleButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Voucher_ToKhai_simpleButton.ImageOptions.Image")));
+            this.Voucher_ToKhai_simpleButton.Location = new System.Drawing.Point(353, 5);
+            this.Voucher_ToKhai_simpleButton.Name = "Voucher_ToKhai_simpleButton";
+            this.Voucher_ToKhai_simpleButton.Size = new System.Drawing.Size(98, 37);
+            this.Voucher_ToKhai_simpleButton.TabIndex = 28;
+            this.Voucher_ToKhai_simpleButton.Text = "Tờ khai";
+            this.Voucher_ToKhai_simpleButton.Click += new System.EventHandler(this.Voucher_ToKhai_simpleButton_Click);
             // 
             // simpleButton7
             // 
@@ -1729,7 +1730,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton VoucherS35_simpleButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton16;
-        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private DevExpress.XtraEditors.SimpleButton Voucher_ToKhai_simpleButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.SimpleButton simpleButton12;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;

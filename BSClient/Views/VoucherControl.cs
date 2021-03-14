@@ -4386,6 +4386,7 @@ namespace BSClient
             if (view == null) return;
             if (e.Column.FieldName == "Amount")
             {
+                if (WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity") == null) return;
                 decimal QuantityFilter = (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
 
                 if (QuantityFilter > 0)
@@ -4407,11 +4408,56 @@ namespace BSClient
             }
             else if (e.Column.FieldName == "Price")
             {
+                if (WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity") == null || WareHouseDetail_gridView.GetFocusedRowCellValue("Price") == null) return;
                 Decimal Cellprice = (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Price") * (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                if ( WareHouseDetail_gridView.GetFocusedRowCellValue("Amount") == null) return;
                 if (Cellprice != (Decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Amount"))
                 {
                     WareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Cellprice);
                 }
+            }
+            else if (e.Column.FieldName == "Quantity")
+            {
+                if (WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity") == null ) return;
+                // Xác định có phải đang xuất kho không?
+                if(WareHouse_gridView.GetFocusedRowCellValue("Type")!= null)
+                {
+                    if (WareHouse_gridView.GetFocusedRowCellValue("Type").ToString().Contains("X"))
+                    {
+                        //Đây là Phiếu xuất kho
+                        // Cung cấp đơn giá bình quân.
+                        //Get đơn giá bình quân. và số lượng tồn.
+                        #region Chuẩn bị dữ liệu để cập nhật cho warehouseDetail
+                        //nếu là danh phiếu xuất kho
+                        //WareHouse wareHouseS35 = WareHouse_gridView.GetFocusedDataRow().CastTo<WareHouse>();
+                       
+                         //Check đơn giá bình quân, và số lượng tồn của sản phẩm theo cty theo ngày đầu năm tới ngày xuất kho.
+                                MaterialNVController materialNVControllerBQ = new MaterialNVController();
+                                List<GetDonGiaBQ> getDonGiaBQ = new List<GetDonGiaBQ>();
+                                int year = DateTime.Now.Year;
+                                DateTime firstDay = new DateTime(year, 1, 1);
+                        getDonGiaBQ = materialNVControllerBQ.GetMaterialDonGiaBQ(CommonInfo.CompanyInfo.CompanyID, WareHouseDetail_gridView.GetFocusedRowCellValue("ItemID").ToString(), firstDay, GlobalVarient.voucherChoice.VoucherDate);
+                                if (getDonGiaBQ != null)
+                                {
+                                    if (getDonGiaBQ.Count > 0)
+                                    {
+                                        decimal Amount = (decimal)getDonGiaBQ[0].DonGiaBQ * (decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                                         WareHouseDetail_gridView.SetFocusedRowCellValue("Price", (decimal)getDonGiaBQ[0].DonGiaBQ);
+                                         WareHouseDetail_gridView.SetFocusedRowCellValue("Amount", Amount);
+                                         decimal SoLuongTon = (decimal)getDonGiaBQ[0].SLTon - (decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                                         WareHouseDetail_gridView.SetFocusedRowCellValue("SoLuongTon", SoLuongTon);
+                                    }
+                                    else
+                                    {
+                                        WareHouseDetail_gridView.SetFocusedRowCellValue("Price", 0);
+                                        decimal SoLuongTon = (decimal)getDonGiaBQ[0].SLTon - (decimal)WareHouseDetail_gridView.GetFocusedRowCellValue("Quantity");
+                                    }
+                                }                          
+                        
+                        #endregion Chuẩn bị dữ liệu để cập nhật cho warehouseDetail
+                    }
+                }
+             
             }
         }
 
@@ -4574,6 +4620,12 @@ namespace BSClient
             Invoice_gridControl.DataSource = InvoiceData;
             Invoice_gridView.RefreshData();
             InvoiceDelete = new List<Invoice>();
+        }
+
+        private void Voucher_ToKhai_simpleButton_Click(object sender, EventArgs e)
+        {
+            ToKhaiThueGTGT ToKhaiForm = new ToKhaiThueGTGT();
+            ToKhaiForm.Show();
         }
     }
 }

@@ -143,6 +143,7 @@
     <Compile Include="Models\ReportParam.cs" />
     <Compile Include="Models\SoQuyTienMat.cs" />
     <Compile Include="Models\SoDangKyChungTuGhiSo.cs" />
+    <Compile Include="Models\ToKhai.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserRoleCompany.cs" />
     <Compile Include="Models\Voucher.cs" />
