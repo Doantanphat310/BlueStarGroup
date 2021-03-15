@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-Create proc [dbo].[WareHouseDetailSelectInvoiceID]
+alter proc [dbo].[WareHouseDetailSelectInvoiceID]
 @InvoiceID varchar(50), @CompanyID varchar(50), @CreateUser varchar(50)
 as
 begin
@@ -15,5 +15,5 @@ inner join WareHouse as C
 on A.WarehouseID = C.WarehouseID
 inner join Invoice as D
 on D.InvoiceID = C.InvoiceID
-where A.WarehouseID in (Select WarehouseID from WareHouse where InvoiceID = @InvoiceID) and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser
+where A.WarehouseID in (Select WarehouseID from WareHouse where InvoiceID = @InvoiceID) and A.CompanyID = @CompanyID 
 end

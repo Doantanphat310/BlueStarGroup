@@ -11,6 +11,7 @@ namespace BSCommon.Models
         public string InvoiceType { get; set; }
         public string CTNo { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public string InvoiceNo { get; set; }
         public decimal Amount { get; set; }
         public decimal VAT { get; set; }
         public decimal VATAmount { get; set; }

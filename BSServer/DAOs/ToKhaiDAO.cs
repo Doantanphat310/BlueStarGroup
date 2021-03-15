@@ -19,7 +19,7 @@ namespace BSServer.DAOs
             return this.Context.Database.SqlQuery<ToKhai>("ToKhaiSelect @FromDate, @Todate, @InvoiceType, @CompanyID",
                 new SqlParameter("@FromDate", FromDate),
                 new SqlParameter("@Todate", Todate),
-                new SqlParameter("@InvoiceType", Todate),
+                new SqlParameter("@InvoiceType", invoiceType),
                 new SqlParameter("@CompanyID", CompanyID)
                 ).ToList();
         }

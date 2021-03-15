@@ -1728,11 +1728,11 @@ namespace BSClient
             //Chỉ thực hiện việc cập nhật lại định khoản khi chứng từ là chứng từ ghi sổ
             switch (ChungTuType)
             {
-                case "TH":
+                case "TH"://Thu
                     break;
-                case "CH":
+                case "CH"://Chi
                     break;
-                case "NH":
+                case "NH"://Ngân Hàng
                     break;
                 default:
                     foreach (VoucherDetail voucherDetail in VoucherDetailData)
@@ -3951,7 +3951,7 @@ namespace BSClient
         private void WareHouse_gridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             WareHouse wareHouse = WareHouse_gridView.GetFocusedRow().CastTo<WareHouse>();
-           // GlobalVarient.warehouseChoice = wareHouse;
+            GlobalVarient.warehouseChoice = wareHouse;
             if (ChoiceWWareHouse == 0)
             {
                 // LoadInvoiceWareHouseGridviewFull();
@@ -4542,27 +4542,58 @@ namespace BSClient
                 case "NH":
                     break;
                 default:
-                    foreach (VoucherDetail voucherDetail in VoucherDetailData)
+                    if (VoucherDetailData.Count==3)
                     {
-                        int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == voucherDetail.AccountID).Select(x => x.AccountID).Count();
-                        //xác định có tồn tại tài khoản liên quan VAT
-                        //Định khoản có chứa dòng thuộc thuế và có chứa 3 dòng
-                        if (VoucherDetailData.Count == 3 && count > 0)
+                        foreach (VoucherDetail voucherDetail in VoucherDetailData)
                         {
-                            decimal totalAmountVATVoucherDetail;
-                            decimal totalAmountVoucherDetail;
-                            decimal AmountVoucherDetail;
-                            totalAmountVATVoucherDetail = InvoiceData.Select(o => o.VATAmount).Sum();
-                            AmountVoucherDetail = InvoiceData.Select(o => o.Amount).Sum();
-                            totalAmountVoucherDetail = InvoiceData.Select(o => o.TotalAmount).Sum();
-                            VoucherDetailData[0].Amount = AmountVoucherDetail;
-                            VoucherDetailData[0].Status = ModifyMode.Update;
-                            VoucherDetailData[1].Amount = totalAmountVATVoucherDetail;
-                            VoucherDetailData[1].Status = ModifyMode.Update;
-                            VoucherDetailData[2].Amount = totalAmountVoucherDetail;
-                            VoucherDetailData[2].Status = ModifyMode.Update;
-                            VoucherDetail_gridView.RefreshData();
-                            break;
+                            int count = materialTK.Where(q => q.ThueVAT == true && q.AccountID == voucherDetail.AccountID).Select(x => x.AccountID).Count();
+                            //xác định có tồn tại tài khoản liên quan VAT
+                            //Định khoản có chứa dòng thuộc thuế và có chứa 3 dòng
+                            if (count > 0)
+                            {
+                                decimal totalAmountVATVoucherDetail;
+                                decimal totalAmountVoucherDetail;
+                                decimal AmountVoucherDetail;
+                                totalAmountVATVoucherDetail = InvoiceData.Select(o => o.VATAmount).Sum();
+                                AmountVoucherDetail = InvoiceData.Select(o => o.Amount).Sum() - InvoiceData.Select(o => o.Discounts).Sum();
+
+                                //Cần xác định dòng doanh thu, thuế, (131 hoặc 1111)
+                                VoucherDetail voucherDetailDongConLai = new VoucherDetail();
+                                int checkVitriDongConLai = -1;
+                                int checki = 0;
+                                foreach (VoucherDetail voucherDetailUpdateFromVAT in VoucherDetailData)
+                                {
+                                    //Lấy tiền - CK đưa vào Các tài khoản thuộc 'LTK000004'[Doanh Thu], 'LTK000005'[Chi phí], hoặc TK thuộc hệ thống kho TK152_156
+                                    int countTotal = materialTK.Where(q => (q.AccountGroupID == "LTK000004" || q.AccountGroupID == "LTK000005" || q.TK152_156 == true) && q.AccountID == voucherDetailUpdateFromVAT.AccountID).Select(x => x.AccountID).Count();
+                                    if (countTotal > 0)
+                                    {
+                                        voucherDetailUpdateFromVAT.Amount = AmountVoucherDetail;
+                                        voucherDetailUpdateFromVAT.Status = ModifyMode.Update;
+                                        checki++;
+                                        continue;
+                                    }
+                                    // Lấy tiền VAT đưa vào các tài khoản thuộc  ThueVAT
+                                    countTotal = materialTK.Where(q => q.ThueVAT == true && q.AccountID == voucherDetailUpdateFromVAT.AccountID).Select(x => x.AccountID).Count();
+                                    if (countTotal > 0)
+                                    {
+                                        voucherDetailUpdateFromVAT.Amount = totalAmountVATVoucherDetail;
+                                        voucherDetailUpdateFromVAT.Status = ModifyMode.Update;
+                                        checki++;
+                                        continue;
+                                    }
+                                    //Dòng tổng tiền
+                                    checkVitriDongConLai = checki;
+                                }
+                                if (checkVitriDongConLai > -1)
+                                {
+                                    totalAmountVoucherDetail = VoucherDetailData.Where(w => w.NV != VoucherDetailData[checkVitriDongConLai].NV).Select(o => o.Amount).Sum();
+                                    VoucherDetailData[checkVitriDongConLai].Amount = totalAmountVoucherDetail;
+                                    VoucherDetailData[checkVitriDongConLai].CustomerID = InvoiceData[0].CustomerID;
+                                    VoucherDetailData[checkVitriDongConLai].Status = ModifyMode.Update;
+                                }
+                                VoucherDetail_gridView.RefreshData();
+                                //Thoát sau khi thực hiện cập nhật dữ liệu chi tiết định khoản
+                            }
                         }
                     }
                     break;

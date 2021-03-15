@@ -6,7 +6,7 @@ as
 begin
 if(@InvoiceType = 'A')
 begin
-Select A.InvoiceType, C.VouchersTypeID +'/'+ CONVERT(varchar(10),C.VoucherNo) as 'CTNo',A.InvoiceDate,
+Select A.InvoiceType, C.VouchersTypeID +'/'+ CONVERT(varchar(10),C.VoucherNo) as 'CTNo',A.InvoiceDate,A.InvoiceNo,
 	A.Amount,A.VAT,A.VATAmount,A.Description,B.CustomerID,
 	CASE
 		WHEN A.InvoiceType = 'V' THEN B.CustomerTIN
@@ -24,7 +24,7 @@ Select A.InvoiceType, C.VouchersTypeID +'/'+ CONVERT(varchar(10),C.VoucherNo) as
 end
 else
 begin
-Select A.InvoiceType, C.VouchersTypeID +'/'+ CONVERT(varchar(10),C.VoucherNo) as 'CTNo',A.InvoiceDate,
+Select A.InvoiceType, C.VouchersTypeID +'/'+ CONVERT(varchar(10),C.VoucherNo) as 'CTNo',A.InvoiceDate,A.InvoiceNo,
 	A.Amount,A.VAT,A.VATAmount,A.Description,B.CustomerID,
 	CASE
 		WHEN A.InvoiceType = 'V' THEN B.CustomerTIN

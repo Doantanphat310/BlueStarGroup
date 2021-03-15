@@ -11,5 +11,5 @@ as
 begin
 select A.*,B.ItemUnitID from WareHouseDetail as A inner join Items as B
 on A.ItemID = B.ItemID
-where A.WarehouseID = @WareHouseID and A.CompanyID = @CompanyID and A.CreateUser = @CreateUser
+where A.WarehouseID = @WareHouseID and A.CompanyID = @CompanyID
 end

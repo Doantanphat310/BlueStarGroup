@@ -1,7 +1,9 @@
 ﻿using BSCommon.Constant;
 using BSCommon.Models;
+using BSCommon.Utility;
 using BSServer._Core.Context;
 using BSServer._Core.Utility;
+using BSServer.Controllers;
 using BSServer.DAOs;
 using System;
 using System.Collections.Generic;
@@ -99,6 +101,17 @@ namespace BSServer.Logics
                                 wareHouseItem.CompanyID = data.CompanyID;
                                 wareHouseItem.InvoiceID = data.InvoiceID;
                                 wareHouseItem.CustomerID = data.CustomerID;
+                                WareHouseListController WareHouseListS35 = new WareHouseListController();
+                                List<WarehouseList> wareHouseListS35 = WareHouseListS35.GetWareHouseListSelect(CommonInfo.CompanyInfo.CompanyID);
+                                List<WarehouseList> Khohanghoa = wareHouseListS35.Where(o => o.WarehouseListDebitAccountID == "1561" && o.WarehouseListDebitAccountDetailID == "01").ToList();
+                                if (Khohanghoa != null)
+                                {
+                                    if (Khohanghoa.Count > 0)
+                                    {
+                                        wareHouseItem.WarehouseListID = Khohanghoa[0].WarehouseListID;
+                                    }
+                                }
+
                                 wareHouseItem.Type = "X";
 
                                 seqWareHouse++;

@@ -87,10 +87,13 @@ end
 
 
 alter proc SPSelectMaterialMaSoCustomer
-@CustomerID varchar(50)
+@CustomerID varchar(50) --Day la companyid
 as
 begin
-	select  distinct 
+select distinct * from 
+(
+select * from
+    (select  distinct 
 	case
 	when A.InvoiceFormNo is null then B.InvoiceFormNo
 	else A.InvoiceFormNo
@@ -105,8 +108,14 @@ begin
 	end as 'SerialNo',
 	B.CustomerID,B.CustomerName,B.CustomerSName from Invoice as A  right JOIN Customer as B
 	on A.CustomerID = B.CustomerID 
-	where A.S35Type is null
-	order by CustomerID
+	where A.S35Type is null 
+	union all
+	select B.InvoiceFormNo, B.FormNo, B.SerialNo, B.CustomerID, B.CustomerName, B.CustomerSName from CustomerCompany as A inner join Customer as B
+on A.CustomerID = B.CustomerID
+where A.companyID = @CustomerID and A.CustomerID in (Select CustomerID from Invoice where S35Type is not null)
+) as AB
+) as BC
+order by CustomerID
 end
 
 select * from Invoice

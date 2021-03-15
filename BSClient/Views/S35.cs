@@ -28,6 +28,9 @@ namespace BSClient.Views
 
         public static MaterialNVController MaterialDT = new MaterialNVController();
         List<MaterialDT> materialDT = MaterialDT.GetMaterialDT(CommonInfo.CompanyInfo.CompanyID);
+        
+        public static WareHouseListController WareHouseListS35 = new WareHouseListController();
+        List<WarehouseList> wareHouseListS35 = WareHouseListS35.GetWareHouseListSelect(CommonInfo.CompanyInfo.CompanyID);
 
         public BindingList<Invoice> S35InvoiceData;
         public List<Invoice> S35InvoiceDelete;
@@ -554,6 +557,16 @@ namespace BSClient.Views
                 wareHouseItem.CompanyID = CommonInfo.CompanyInfo.CompanyID;
                 wareHouseItem.InvoiceID = invoice.InvoiceID;
                 wareHouseItem.CustomerID = invoice.CustomerID;
+
+                List<WarehouseList> Khohanghoa = wareHouseListS35.Where(o => o.WarehouseListDebitAccountID == "1561" && o.WarehouseListDebitAccountDetailID == "01").ToList();
+                if(Khohanghoa != null)
+                {
+                    if(Khohanghoa.Count > 0)
+                    {
+                        wareHouseItem.WarehouseListID = Khohanghoa[0].WarehouseListID;
+                    }
+                }
+
                 wareHouseItem.Type = "X";
                 wareHouseItem.Status = ModifyMode.Insert;
 
